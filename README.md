@@ -23,3 +23,6 @@ If you have anything, you can open an issue or reach out to contact@coscene.io
 ## How to contribute
 
 See [contribute guide](https://docs.coscene.cn/docs/contribute)
+
+
+hihi~
