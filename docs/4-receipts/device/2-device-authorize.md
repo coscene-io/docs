@@ -12,7 +12,7 @@ sidebar_position: 2
 ## 配置数采规则
 > 数采规则应用于组织中的全部设备，仅组织管理员可编辑
  
-数采规则定义需要监控的设备日志所在目录。数采规则的结构格式参见下文。
+数采规则定义需要监控的设备日志所在目录、设备信息文件的存放目录等。数采规则的结构格式参见下文。
 
 <br />
 
@@ -31,7 +31,7 @@ sidebar_position: 2
 数采规则主要对三个模块进行设置：
 
 - **数据收集器设置（collector）**：完成数据采集后，是否删除设备端数据
-- **存储设置 （mod）**：设备端数据的存储目录
+- **存储设置 （mod）**：设备端数据的存储目录；设备标识文件的地址
 - **事件设置（event_code）**：事件错误码的上传规则地址以及是否上传条件限制
 - **更新设置（updater）**：当前程序是否开启自动更新
 
@@ -49,6 +49,7 @@ mod:
   name: "default" # mod 名称，默认 default，定制版请联系刻行产品了解详细信息
   conf: 
     enabled: true # 是否启用，默认为 true
+    robot_file: "/root/.ros/sn.txt" # 设备标识文件，用于存放设备唯一标识码，如 sn
     base_dir: "/root/.ros/auto-upload/" # 数据监听目录
 
 event_code: # 错误码功能
@@ -88,6 +89,7 @@ mod:
   name: "default" # mod 名称，默认 default，定制版请联系刻行产品了解详细信息
   conf: 
     enabled: true # 是否启用，默认为 true
+    robot_file: "/root/.ros/sn.txt" # 设备标识文件，用于存放设备唯一标识码，如 sn
     base_dir: "/root/.ros/auto-upload/" # 数据监听目录
 ```
 
