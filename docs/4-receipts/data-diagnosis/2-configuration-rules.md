@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 # 配置数采与诊断规则
 > 每个项目规则单独配置，仅项目管理员可编辑
