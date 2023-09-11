@@ -158,7 +158,7 @@ sidebar_position: 2
     2023-09-01 11:29:06.000 INFO "Demo Log message 20"
     ```
 
-3. 在本机终端执行命令，将文件 dev-A.log 复制到 `/root/logs/` 中
+3. 在本机终端执行命令，将文件 dev-A.log 复制到设备端 `/root/logs/` 中
    
     ```
     scp Downloads/dev-A.log root@ubuntu:/root/logs
@@ -170,7 +170,7 @@ sidebar_position: 2
    
     - 当日志中出现如下字段时，表示 log 数据正在上传到刻行平台
 
-      ![rule-log-1](../img/rule-log-1.png)
+      ![rule-log-2](../img/rule-log-2.png)
    
 <br />
 
