@@ -31,7 +31,7 @@ sidebar_position: 2
 
     ![pro-rule-1](../img/pro-rule-1.png)
 
-3. 复制下述规则，粘贴在编辑器中
+3. 清空规则中的默认内容后，复制下述规则，粘贴在编辑器中
 
     ```yaml
     name: error 系列 # 规则组名称
@@ -62,7 +62,7 @@ sidebar_position: 2
 
     ![org-device-1](../img/org-device-1.png)
 
-2. 复制下述规则，粘贴在编辑器中
+2. 清空规则中的默认内容后，复制下述规则，粘贴在编辑器中
 
     ```yaml
     mod:
