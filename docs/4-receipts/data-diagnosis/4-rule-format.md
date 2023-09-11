@@ -73,10 +73,87 @@ version: 1.0.0
   - false 为禁用，禁用规则组后，设备及项目中的数据不再执行该规则组中的规则
 
 - **version：规则组版本**
-  - 规则组版本目前必须是 version: 1.0.0
+  - 规则组版本目前必须是 version: v1
 
 <br />
 
-## 常用规则示例
+## 常用规则条件示例
+ > 以下展示了部分典型的规则触发条件
 
+```yaml
+# Error code happened
+'Error code 123 happened' in log
 
+# Check x velocity is between 4 and 10
+topic == '/velocity' and 4 < msg.linear.x < 10
+
+# Parse value from log and check it's between 4 and 10
+4 < regex_search(log, 'X velocity is (\\d+)').group(1) < 10
+
+# Robot didn't start charging after returning to base in 30 seconds
+timeout(
+  'Returned to base' in log,
+  'charging state: CHARGING' in log,
+  duration=30
+)
+
+# A command didn't finish in 10 seconds
+timeout(
+  set_value('cmd_id', regex_search(log, 'Sending command id (\\d+)').group(1)),
+  regex_search(log, 'Command (\\d+) finished').group(1) == get_value('cmd_id'),
+  duration=10
+)
+
+# If temperature rises by 5 within a minute
+# Assumes the message has a `value` field
+topic == '/temp' and sequential(
+  set_value('start_temp', msg.value),
+  msg.value - get_value('start_temp') > 5,
+  duration=60
+)
+
+# Check initialization finishes in 20 seconds
+timeout(
+  'Initialization start' in log,
+  # The three modules can finish init in any order
+  any_order(
+    'GPS started' in log,
+    'Localization started' in log,
+    'Motor online' in log),
+  'Initialization finished' in log,
+  duration=20
+)
+
+# Detect a topic didn't receive message for more than 20 seconds,
+# for example, localization module crashed
+timeout(
+  topic == '/localization',
+  topic == '/localization',
+  duration=20
+)
+
+# Temperature higher than 40 for longer than a minute
+sustained(
+  topic == '/temp',
+  msg.value > 40,
+  duration=60
+)
+
+# Frequent timeout of chassis loop: more than 10 times per minute
+repeated(
+  timeout(
+    'Send chassis command' in log,
+    'Chassis received' in log,
+    duration=1
+  ),
+  times=10,
+  duration=60
+)
+
+# Trigger an error, but ignore following occurrances if they happen 
+# within 10 seconds of each other
+debounce(
+  'Error 123' in log,
+  duration=10
+)
+```
