@@ -48,7 +48,7 @@ sidebar_position: 2
     version: v1 # 当前规则组版本只有 v1
     ```
 
-    *更多规则样式参见规则的标准格式
+    *更多规则样式参见[规则的标准格式与示例](https://coscene0.feishu.cn/docx/P9YxdYD8ao4RHVxy1UncAOVQnmd)
     
 4. 点击【保存】按钮
 
