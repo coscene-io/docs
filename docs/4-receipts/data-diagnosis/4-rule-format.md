@@ -54,7 +54,7 @@ rules:
       - upload(before=5, extra_files=[...])
       - create_moment('Value is not expected')
 enabled: true
-version: 1.0.0
+version: v1
 ```
 
 - **name：规则组名称**
