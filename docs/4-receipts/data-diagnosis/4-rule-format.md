@@ -81,38 +81,38 @@ version: v1
  > 以下展示了部分典型的规则触发条件
 
 ```yaml
-# Error code happened
+# 触发了某个错误码
 'Error code 123 happened' in log
 
-# Check x velocity is between 4 and 10
+# 检查 x 方向的速度是否在 4~10 之间
 topic == '/velocity' and 4 < msg.linear.x < 10
 
-# Parse value from log and check it's between 4 and 10
+# 分析日志中的值并检查它是否在 4~10 之间
 4 < regex_search(log, 'X velocity is (\\d+)').group(1) < 10
 
-# Robot didn't start charging after returning to base in 30 seconds
+# 机器人返回充电桩 30 秒后没有开始充电
 timeout(
   'Returned to base' in log,
   'charging state: CHARGING' in log,
   duration=30
 )
 
-# A command didn't finish in 10 seconds
+# 命令没有在 10 秒内完成
 timeout(
   set_value('cmd_id', regex_search(log, 'Sending command id (\\d+)').group(1)),
   regex_search(log, 'Command (\\d+) finished').group(1) == get_value('cmd_id'),
   duration=10
 )
 
-# If temperature rises by 5 within a minute
-# Assumes the message has a `value` field
+# 如果温度在 60 秒内上升 5
+# 假设消息中存在字段 `value`
 topic == '/temp' and sequential(
   set_value('start_temp', msg.value),
   msg.value - get_value('start_temp') > 5,
   duration=60
 )
 
-# Check initialization finishes in 20 seconds
+# 检查初始化在 20 秒内完成
 timeout(
   'Initialization start' in log,
   # The three modules can finish init in any order
@@ -124,22 +124,22 @@ timeout(
   duration=20
 )
 
-# Detect a topic didn't receive message for more than 20 seconds,
-# for example, localization module crashed
+# 检测到一个 topic 超过 20 秒未收到消息，
+# 例如，定位模块挂了
 timeout(
   topic == '/localization',
   topic == '/localization',
   duration=20
 )
 
-# Temperature higher than 40 for longer than a minute
+# 温度高于 40 的时间超过 60 秒
 sustained(
   topic == '/temp',
   msg.value > 40,
   duration=60
 )
 
-# Frequent timeout of chassis loop: more than 10 times per minute
+# chassis 环路频繁超时：60 秒内超时次数大于 10 次
 repeated(
   timeout(
     'Send chassis command' in log,
@@ -150,8 +150,8 @@ repeated(
   duration=60
 )
 
-# Trigger an error, but ignore following occurrances if they happen 
-# within 10 seconds of each other
+# 触发错误，但如果发生以下情况，则忽略它们
+# 错误发生的时间间隔在 10 秒之内
 debounce(
   'Error 123' in log,
   duration=10
