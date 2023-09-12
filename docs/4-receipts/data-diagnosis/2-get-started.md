@@ -13,11 +13,11 @@ sidebar_position: 2
 
 1. 请准备好一台设备
 
-2. 请确认你在刻行的组织角色为「管理员」。若不是管理员，请联系组织管理员更新你的组织角色。
+2.请创建名为 auto-upload 的项目，详情参见[创建项目](https://docs.coscene.cn/docs/get-started/create-project-flow#3-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE)。
+
+3. 请确认你在刻行的组织角色为「管理员」。若不是管理员，请联系组织管理员更新你的组织角色。
 
     ![org-role](../img/org-role.png)
-
-3. 请创建名为 auto-upload 的项目，详情参见[创建项目](https://docs.coscene.cn/docs/get-started/create-project-flow#3-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE)。
 
 <br />
 
@@ -48,7 +48,7 @@ sidebar_position: 2
     version: v1 # 当前规则组版本只有 v1
     ```
 
-    *更多规则样式参见[规则的标准格式与示例](https://coscene0.feishu.cn/docx/P9YxdYD8ao4RHVxy1UncAOVQnmd)
+    *更多规则样式参见[规则的结构与示例](./4-rule-format.md)
     
 4. 点击【保存】按钮
 
