@@ -41,7 +41,7 @@ projectKey: TEST # Jira 项目 Key
 
 issueTitleTemplate: '{{task.title}}' # Jira 的标题为任务名称
 issueDescriptionTemplate: '{{task.title}} {{task.description}} {{record.link}}'# Jira 的描述为任务名称、任务描述、记录链接
-issueType: '10000' # Jira 类型
+issueType: 'Bug' # Jira 类型
 
 customFields: # 自定义字段
   customfield_1: 
