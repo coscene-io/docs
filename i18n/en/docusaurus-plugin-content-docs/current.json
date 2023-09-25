@@ -16,7 +16,7 @@
     "description": "The generated-index page description for category 概念 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.操作指南": {
-    "message": "Receipts",
+    "message": "Recipes",
     "description": "The label for category 操作指南 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.设备操作": {
@@ -28,7 +28,7 @@
     "description": "The label for category 记录操作 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.项目协作": {
-    "message": "Project",
+    "message": "Collaboration",
     "description": "The label for category 项目协作 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.数据可视化": {
