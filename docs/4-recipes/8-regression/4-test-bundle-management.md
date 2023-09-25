@@ -10,7 +10,7 @@ sidebar_position: 4
 
 测试代码文件为一个 .deb 格式的文件或 .zip / .tgz / .tar.gz 格式的压缩文件。
 
-你可以 <a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/regression/count" download>点击此处下载</a> 示例测试包文件。
+你可以 <a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/regression/count" download>点击此处下载</a> 示例测试包文件。
 
 <br />
 
@@ -39,4 +39,3 @@ sidebar_position: 4
 ![bundle-management-4](../img/bundle-status.png)
 
 <br />
-

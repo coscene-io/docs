@@ -18,6 +18,6 @@ sidebar_position: 5
 
 观看以下视频，了解如何根据消息类型、节点类型或关键词搜索过滤日志信息。
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/viz/log-filter.mp4" controls="controls" width="700" height="400"></video>
+<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/viz/log-filter.mp4" controls="controls" width="700" height="400"></video>
 
 ## 导入日志

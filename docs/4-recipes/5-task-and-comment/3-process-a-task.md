@@ -26,7 +26,7 @@ sidebar_position: 3
 
 你可以点击任务页面的「状态」修改任务状态。
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/task/change-task-status.mp4" controls="controls" width="700" height="400"></video>
+<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/task/change-task-status.mp4" controls="controls" width="700" height="400"></video>
 
 当一项任务完成并变更状态至「已处理」后，将不会再出现在经办人首页的任务列表中。
 
@@ -36,7 +36,7 @@ sidebar_position: 3
 
 你可以在任务详情页面，修改任务标题与描述。
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/task/edit-task.mp4" controls="controls" width="700" height="400"></video>
+<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/task/edit-task.mp4" controls="controls" width="700" height="400"></video>
 
 <br />
 
@@ -46,7 +46,7 @@ sidebar_position: 3
 
 你可以通过改变「经办人」，将任务流转给其他相关用户；被指定为经办人的用户会收到提示。
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/task/change-assignee.mp4" controls="controls" width="700" height="400"></video>
+<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/task/change-assignee.mp4" controls="controls" width="700" height="400"></video>
 
 <br />
 
@@ -56,7 +56,7 @@ sidebar_position: 3
 
 你可以在任务的详情界面添加评论，@ 以提及其他用户，添加相关链接等信息以提高任务处理效率。
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/task/add-comment-to-task.mp4" controls="controls" width="700" height="400"></video>
+<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/task/add-comment-to-task.mp4" controls="controls" width="700" height="400"></video>
 
 <br />
 
@@ -66,7 +66,7 @@ sidebar_position: 3
 
 点击任务详情页面右上角的操作按钮，删除该任务：
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/task/delete-task.mp4" controls="controls" width="700" height="400"></video>
+<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/task/delete-task.mp4" controls="controls" width="700" height="400"></video>
 
 <br />
 
@@ -74,6 +74,6 @@ sidebar_position: 3
 
 你也可以在项目的「任务」列表中删除任务：
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/task/delete-task-in-list.mp4" controls="controls" width="700" height="400"></video>
+<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/task/delete-task-in-list.mp4" controls="controls" width="700" height="400"></video>
 
 <br />

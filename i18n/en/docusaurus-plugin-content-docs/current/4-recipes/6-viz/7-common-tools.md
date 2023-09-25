@@ -10,7 +10,7 @@ sidebar_position: 7
 
 打开可视化界面中的测量工具，可获取三维场景中任意两点的空间距离信息。
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/viz/measure-distance.mp4" controls="controls" width="700" height="400"></video>
+<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/viz/measure-distance.mp4" controls="controls" width="700" height="400"></video>
 
 ## 设置跟随模式
 

@@ -134,7 +134,7 @@ sidebar_position: 2
 
      ![rule-log-1](../img/rule-log-1.png)
 
-2. <a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/data-diagnosis/dev-A.log.zip" download>点击此处下载</a> 设备 dev-A 生成的 dev-A.log。其内容如下：
+2. <a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/data-diagnosis/dev-A.log.zip" download>点击此处下载</a> 设备 dev-A 生成的 dev-A.log。其内容如下：
 
    ```
    2023-09-01 11:28:47.000 INFO "Demo Log message 1"

@@ -12,7 +12,7 @@ sidebar_position: 2
 
 你可以进入任务详情页中的「评论&任务」模块，针对一条记录创建与之关联的任务。在创建任务时指定经办人并添加对任务的描述，以使得相关用户可以结合有效信息完成任务流程。
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/task/create-task-in-record.mp4" controls="controls" width="700" height="400"></video>
+<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/task/create-task-in-record.mp4" controls="controls" width="700" height="400"></video>
 
 <br />
 
@@ -20,7 +20,7 @@ sidebar_position: 2
 
 在可视化界面中播放记录内容时，你可以通过创建「一刻」进行关键帧的标记，同时勾选「创建一条关联的任务」以便捷推进工作进展，免去需要跳转到记录详情页创建任务并引用「一刻」的流程。
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/task/create-task-with-moment.mp4" controls="controls" width="700" height="400"></video>
+<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/task/create-task-with-moment.mp4" controls="controls" width="700" height="400"></video>
 
 <br />
 

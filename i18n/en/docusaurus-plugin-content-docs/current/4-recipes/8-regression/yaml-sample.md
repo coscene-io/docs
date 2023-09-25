@@ -8,7 +8,7 @@ sidebar_position: 8
 
 <br />
 
-支持解析的配置文件为 yaml 或 yml 类型文件，且名称必须为 **cos.yaml** 或 **cos.yml**。你可以直接复制，或 <a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-receipts/regression/cos.yaml.zip" download>点击此处下载</a> 示例配置文件并进行修改。其基本结构如下：
+支持解析的配置文件为 yaml 或 yml 类型文件，且名称必须为 **cos.yaml** 或 **cos.yml**。你可以直接复制，或 <a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/regression/cos.yaml.zip" download>点击此处下载</a> 示例配置文件并进行修改。其基本结构如下：
 
 ## 自定义测试套件
 

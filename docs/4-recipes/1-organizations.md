@@ -12,7 +12,7 @@ sidebar_position: 1
 
 ## 在组织中添加项目
 
-请参见[操作指南中关于项目的部分](../4-receipts/2-project.md)
+请参见[操作指南中关于项目的部分](../4-recipes/2-project.md)
 
 ## 在组织中添加成员
 
