@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# 配置文件格式与样例
+# Configuration Yaml Example
 
 > 你可以通过本章节的内容了解批量测试配置文件的书写规则；同时本章节会提供样例文件以供参考。
 
