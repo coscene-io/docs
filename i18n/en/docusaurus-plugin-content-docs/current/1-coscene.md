@@ -3,24 +3,24 @@ sidebar_position: 1
 id: intro
 ---
 
-# 简介
+# Introduction
 
-刻行(coScene)是一个基于场景数据的运营和研发平台，是用于管理和大规模应用场景数据的 GitLab 和 Snowflake。在多模态数据爆炸性增长的今天，刻行(coScene)提供了一个公开的、即时可用、云原生和中立的解决方案。
+coScene is a platform for operations and R&D based on scene data, equivalent to the GitLab and Snowflake for the management and large-scale application of scene data. In the face of the explosive growth of multimodal data today, coScene provides an open, instantly available, cloud-native, and unbiased solution.
 
-公司结合国际头部 AI 企业的先进模式及多家业内企业的一线研发经验，针对自动驾驶、机器人、物联网、现实增强等行业复杂场景数据处理高投入、低效率的现状，匠心打造尖端 SaaS 产品，目标是降低多模态场景智能的研发和运维门槛，推动场景行业高速发展。
+The company integrates the advanced models from top global AI companies with the firsthand R&D experience of several industry enterprises. It addresses the high costs and inefficiencies of complex scene data processing in industries like autonomous driving, robotics, IoT, and augmented reality. The ultimate goal is to craft cutting-edge SaaS products, aiming to lower the barriers for R&D and operations in multimodal scene intelligence, thus promoting the rapid development of the scene industry.
 
-## 功能简介
+## Feature Overview
 
-### 场景数据管理和可视化
+### Scene Data Management and Visualization
 
-针对场景数据尺寸大，原始语义难以直接理解，数据格式复杂且多样，数据来源多样化，数据处理难度大等特点，刻行(coScene)提供了一套完整的场景数据管和可视化方案。用户可以通过 API，网页应用，和桌面软件应用等方式，对场景数据进行管理。
+Given the challenges of large scene data dimensions, the difficulty in directly understanding raw semantics, complex and diverse data formats, varied data sources, and the complexity of data processing, coScene offers a comprehensive solution for scene data management and visualization. Users can manage scene data through APIs, web applications, and desktop software applications.
 
-### 大规模工作流应用
+### Large-Scale Workflow Application
 
-使用刻行(coScene)的工作流引擎，您可以方便的在场景数据上构建大规模的工作流应用而不用担心数据的准备和计算资源的调度。我们也将在 2023 年推出基于此的大规模回归测试和验证框架，使得用户能够方便的追踪产品性能变化，保障产品质量，提高企业的核心竞争力。
+With coScene's workflow engine, you can conveniently build large-scale workflow applications on scene data without worrying about data preparation and computational resource scheduling. We will also launch a large-scale regression testing and validation framework in 2023, allowing users to easily track product performance changes, ensure product quality, and enhance the company's core competitiveness.
 
-### 语义搜索引擎
+### Semantic Search Engine
 
-刻行(coScene)的语义搜索引擎提供了一个开放的搜索和发现框架，用户可以在刻行(coScene)上构建自己的场景分类库和对应的索引，从而实现对场景数据的快速检索和发现。这在多模态场景数据的管理中非常有用，例如在自动驾驶中，用户可以通过搜索引擎快速发现某个特定的交通标志，或者在机器人中，用户可以通过搜索引擎快速发现某个特定的物体。
+coScene's semantic search engine provides an open search and discovery framework. Users can build their own scene classification library and corresponding indexes on coScene, enabling quick retrieval and discovery of scene data. This is especially useful in managing multimodal scene data. For example, in autonomous driving, users can quickly locate a specific traffic sign through the search engine, or in robotics, users can swiftly find a particular object via the search engine.
 
-参考我们的快速开始指南，了解更多刻行(coScene)的功能。
+Refer to our Quick Start Guide to learn more about coScene's features.
