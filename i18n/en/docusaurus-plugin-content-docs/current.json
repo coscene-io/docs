@@ -59,12 +59,8 @@
     "message": "开发计划",
     "description": "The label for category 开发计划 in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.writing-guide": {
-    "message": "Writing Guide Normal Title",
-    "description": "The label for category writing-guide in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.writing-guide.link.generated-index.title": {
-    "message": "Writing Guide Generated Index Title",
-    "description": "The generated-index page title for category writing-guide in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.写作指南": {
+    "message": "写作指南",
+    "description": "The label for category 写作指南 in sidebar tutorialSidebar"
   }
 }
