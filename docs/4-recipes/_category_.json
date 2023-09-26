@@ -1,0 +1,9 @@
+{
+  "label": "操作指南",
+  "position": 4,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/recipes"
+  }
+}
