@@ -30,27 +30,6 @@ sidebar_position: 1
 
 示例配置如下：
 
-```yaml
-enabled: true # 启用配置
-
-endpoint: https://jira.com/ # Jira 地址
-httpBasicAuthorization:
-  usernameAndPassword:
-    username: root # Jira 用户名
-    password: admin # Jira 密码
-
-projectKey: TEST # Jira 项目 Key
-
-issueTitleTemplate: '{{task.title}}' # Jira 的标题为任务名称
-issueDescriptionTemplate: '{{task.title}} {{task.description}} {{record.link}}'# Jira 的描述为任务名称、任务描述、记录链接
-issueType: 'Bug' # Jira 类型
-
-customFields: # 自定义字段
-  customfield_1:
-    id: '88888' # 字段 1（下拉框样式），选择 id 为 88888 的选项
-  customfield_2: TEST # 字段 2（文本框样式），输入内容为 TEST
-```
-
 - **Jira 项目 Key**
 
   项目的 Key 需要在 Jira 平台上进行查询，如下：
