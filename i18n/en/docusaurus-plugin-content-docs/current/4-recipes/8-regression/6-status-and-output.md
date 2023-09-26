@@ -14,17 +14,30 @@ You can customize the output test results through configuration files and test c
 
 Batch testing supports parsing JUnit XML format result files. In the 'script' parameter of the configuration file, you can use the following command to create an XML format result file at `path`:
 
-\```
+```
 pytest --junitxml=path
-\```
+```
 
 For specific examples, please see [Configuration File Format and Sample - Output Test Result File](../8-regression/9-yaml-sample.md#output-test-result-file).
 
 The JUnit XML format result file supported for parsing is as follows, where the result data to JUnit XML format mapping please refer to [JUnit Mapping](https://www.ibm.com/docs/en/developer-for-zos/14.1?topic=formats-junit-xml-format#junitschema__table_junitmap):
 
-\```
-... (the XML content)
-\```
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+  <testsuites id="20140612_170519" name="New_configuration (14/06/12 17:05:19)" tests="225" failures="1262" time="0.001">
+    <testsuite id="codereview.cobol.analysisProvider" name="COBOL Code Review" tests="45" failures="17" time="0.001">
+      <testcase id="codereview.cobol.rules.ProgramIdRule" name="Use a program name that matches the source file name" time="0.001">
+        <failure message="PROGRAM.cbl:2 Use a program name that matches the source file name" type="WARNING">
+          WARNING: Use a program name that matches the source file name
+          Category: COBOL Code Review – Naming Conventions
+          File: /project/PROGRAM.cbl
+          Line: 2
+        </failure>
+      </testcase>
+    </testsuite>
+  </testsuites>
+
+```
 
 ### Output Charts
 
@@ -32,9 +45,18 @@ You can add custom attributes starting with "cos\_" in the test report, such as 
 
 You can use custom chart names starting with "cos\_" in the test code file in the image to output charts in the test results, with the following format:
 
-\```
-... (the python code)
-\```
+```python
+  def test_romeo(record_xml_attribute):
+
+    for i in (1, 2, 3):
+      rand_float = random.uniform(1, 100)
+      record_xml_attribute("cos_test_romeo_val" + str(i), rand_float)
+    for i in (1, 2, 3):
+      rand_bool = random.choice([True, False])
+      record_xml_attribute("cos_test_romeo_bool" + str(i), rand_bool)
+
+    assert __count('romeo') > 0
+```
 
 ### Output Shadow Mode Files
 
