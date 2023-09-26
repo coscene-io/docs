@@ -8,7 +8,7 @@ sidebar_position: 3
 
 ## 1. Prepare Configuration File
 
-The configuration file is named either `cos.yaml` or `cos.yml`. For its specific format and rules, please refer to [Configuration File Format and Samples](../8-regression/yaml-sample.md).
+The configuration file is named either `cos.yaml` or `cos.yml`. For its specific format and rules, please refer to [Configuration File Format and Samples](../8-regression/9-yaml-sample.md).
 
 <br />
 

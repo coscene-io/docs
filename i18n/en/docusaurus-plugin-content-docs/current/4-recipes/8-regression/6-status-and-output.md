@@ -18,7 +18,7 @@ Batch testing supports parsing JUnit XML format result files. In the 'script' pa
 pytest --junitxml=path
 \```
 
-For specific examples, please see [Configuration File Format and Sample - Output Test Result File](../8-regression/yaml-sample.md#output-test-result-file).
+For specific examples, please see [Configuration File Format and Sample - Output Test Result File](../8-regression/9-yaml-sample.md#output-test-result-file).
 
 The JUnit XML format result file supported for parsing is as follows, where the result data to JUnit XML format mapping please refer to [JUnit Mapping](https://www.ibm.com/docs/en/developer-for-zos/14.1?topic=formats-junit-xml-format#junitschema__table_junitmap):
 
@@ -40,7 +40,7 @@ You can use custom chart names starting with "cos\_" in the test code file in th
 
 > Output files to the specified directory as test output. The .bag files in it can be played in comparison with the files in the original record on the visualization interface.
 
-You can use the command in the 'script' field of the configuration file to output the file to the `/cos/outputs` directory as a test output. For specific examples, please see [Configuration File Format and Sample - Output Shadow Mode Files](../8-regression/yaml-sample.md#output-shadow-mode-files).
+You can use the command in the 'script' field of the configuration file to output the file to the `/cos/outputs` directory as a test output. For specific examples, please see [Configuration File Format and Sample - Output Shadow Mode Files](../8-regression/9-yaml-sample.md#output-shadow-mode-files).
 
 The test output will be displayed in the "Test Output" column of the test details page, displayed hierarchically according to the corresponding test suite and record.
 
