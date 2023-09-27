@@ -4,20 +4,20 @@ sidebar_position: 2
 
 # Set Up Your Data Collection
 
-Using a preset scenario as an example, let's achieve your automatic data collection and diagnosis:
+Using the following scenario as an example, let's setup your automatic data collection and diagnosis.
 
-- When the "error 1" phrase appears in the log of the device 'dev-A', the log file will be uploaded to the record, and a moment will be created at the time this phrase appears.
+- When "error 1" phrase appears in the log of the device 'dev-A', the log file will be uploaded and create a record. Additionaly, a moment will be created at the exact time this phrase happened.
 
 ## Prerequisites
 
-1. Ensure you have a device ready.
-2. Create a project named `auto-upload`. For more details, refer to [Creating a Project](https://docs.coscene.cn/docs/get-started/create-project-flow#3-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE).
-3. Ensure your role in the CoScene organization is set to "Administrator". If you're not an administrator, contact your organizational admin to update your role.
+1. Have a device ready.
+2. Create a project named `auto-upload`. For more details, refer to [Creating a Project](../../2-get-started/1-create-project-flow.md).
+3. Make sure your role in the coScene organization is "Administrator". If you're not an administrator, contact your organizational admin to update your role.
    ![org-role](../img/org-role.png)
 
 ## Adding Rules to Your Project
 
-1. Navigate to the `auto-upload` project.
+1. Navigate to the `auto-upload` project we just created.
    ![pro-1](../img/pro-1.png)
 2. Within the project, go to the 'Manage Project - Data Collection and Diagnosis Rules' page and click on "Add Rule Group".
    ![pro-rule-1](../img/pro-rule-1.png)
