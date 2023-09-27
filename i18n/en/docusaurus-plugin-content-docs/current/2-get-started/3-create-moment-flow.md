@@ -32,6 +32,6 @@ Click the "Copy Link" icon to easily copy the "Moment" link and share it with co
 
 ## 4. View All "Moments" in the Record
 
-In the "Record Details Page" under "Related Events", it displays all the events marked in the bag of the record:
+In the "Record Details Page" under "Moment", it displays all the moments marked in the bag of the record:
 
 ![record-moment](img/record-moment.png)
