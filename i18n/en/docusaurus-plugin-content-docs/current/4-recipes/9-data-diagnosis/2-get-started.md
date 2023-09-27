@@ -66,7 +66,7 @@ Using the following scenario as an example, let's setup your automatic data coll
 
    ```
 
-   \*For more configurations, refer to [Data Collection Rule Format](https://docs.coscene.cn/docs/receipts/device/device-authorize#%E6%95%B0%E9%87%87%E8%A7%84%E5%88%99%E6%A0%BC%E5%BC%8F)
+   \*For more configurations, refer to [Data Collection Rule Format](./4-rule-format.md)
 
 3. Click the "Save Changes" button.
 
@@ -182,5 +182,3 @@ Using the following scenario as an example, let's setup your automatic data coll
 4. View the moment created at the trigger time.
 
    ![auto-record-3](../img/auto-record-3.png)
-
-<br />
