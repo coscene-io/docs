@@ -17,8 +17,8 @@
     "format:write": "prettier  --write --loglevel warn \"./**/*.{js,jsx,ts,tsx,css,md,json}\" "
   },
   "dependencies": {
-    "@docusaurus/core": "3.0.1",
-    "@docusaurus/preset-classic": "3.0.1",
+    "@docusaurus/core": "3.1.1",
+    "@docusaurus/preset-classic": "3.1.1",
     "@docusaurus/theme-common": "^3.0.1",
     "@docusaurus/theme-mermaid": "^3.0.1",
     "@mdx-js/react": "^3.0.0",
@@ -30,9 +30,9 @@
     "tailwindcss": "^3.3.6"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.0.1",
-    "@docusaurus/tsconfig": "3.0.1",
-    "@docusaurus/types": "3.0.1",
+    "@docusaurus/module-type-aliases": "3.1.1",
+    "@docusaurus/tsconfig": "3.1.1",
+    "@docusaurus/types": "3.1.1",
     "@types/react": "^18.2.45",
     "@tsconfig/docusaurus": "^2.0.2",
     "prettier": "^3.1.1",
