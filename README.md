@@ -4,13 +4,19 @@ Source code of [https://docs.coscene.cn/](https://docs.coscene.cn/). Generated w
 
 ## Prerequisite
 
-- [Node.js >= v18](https://nodejs.org/)
+- [Node.js >= 20](https://nodejs.org/)
 - [pnpm](https://pnpm.io/installation)
 
-## Setup
+## Development
 
 1. Install dependencies. `pnpm install`
-2. Run dev server. `pnpm start`
+2. Run dev server. `pnpm dev`
+
+### Try a local prod build
+
+```bash
+pnpm build && pnpm serve
+```
 
 ## Deploy
 

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "author": "minico",
   "scripts": {
-    "dev": "docusaurus start",
+    "start": "docusaurus start",
+    "start:en": "pnpm run start --locale en",
     "clear": "docusaurus clear",
     "build": "docusaurus build",
     "serve": "docusaurus serve",
