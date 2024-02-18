@@ -10,7 +10,7 @@ Source code of [https://docs.coscene.cn/](https://docs.coscene.cn/). Generated w
 ## Development
 
 1. Install dependencies. `pnpm install`
-2. Run dev server. `pnpm dev`
+2. Run dev server. `pnpm start`
 
 ### Try a local prod build
 
