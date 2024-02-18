@@ -10,7 +10,7 @@ Conceptually, the Rule Engine deals with a stream of tuples (including message, 
 
 Depending on the file type being processed, the coScene agent will populate the variables according to the following table:
 
-|               | Bag file (ROS, Mcap, etc) | Log file                                                                                                                                   |
+|               | Bag file (ROS, MCap, etc) | Log file                                                                                                                                   |
 | ------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | `msg: any`    | Message data              | Encapsulated from a line in the log file as [Foxglove.Log](https://github.com/foxglove/schemas/blob/main/schemas/proto/foxglove/Log.proto) |
 | `ts: float`   | Timestamp                 | Parsed from a single line log                                                                                                              |
@@ -22,8 +22,6 @@ Note:
 - Timestamp is the number of seconds elapsed since 1970/01/01 00:00:00, in float type.
 - Efforts will be made to parse the timestamp, for more information see [Supported Timestamp Formats](https://docs.coscene.cn/docs/recipes/data-diagnosis/rule-format#Prerequisites-for-Using-Rules)
 
-<br />
-
 ## Log Data
 
 To facilitate the reading of log data, we provide additional extractors for the following log data types (`log`, `log_level`):
@@ -32,15 +30,11 @@ To facilitate the reading of log data, we provide additional extractors for the 
 - ROS: `foxglove_msgs/Log`
 - ROS: `rosgraph_msgs/Log`
 
-<br />
-
 **`log`: Filters the supported message types and returns the log content**
 
 ```yaml
 log == 'Error occurred!' # Triggers when a line of log is 'Error occurred!'
 ```
-
-<br />
 
 **`log_level`: Filters the supported message types and returns the log level**
 
@@ -55,8 +49,6 @@ Users can enumerate different log levels using log_level
 log_level == LogLevel.FATAL # Triggers whenever a FATAL log appears
 ```
 
-<br />
-
 ## Operators
 
 - `==`
@@ -69,8 +61,6 @@ log_level == LogLevel.FATAL # Triggers whenever a FATAL log appears
 - `a or b`
 - `not a`
 - `a in b`
-
-<br />
 
 ## Sequence Matchers
 
@@ -90,8 +80,6 @@ log_level == LogLevel.FATAL # Triggers whenever a FATAL log appears
    )
   ```
 
-<br />
-
 - **repeated**
 
   `repeated(condition, times, duration)`
@@ -106,8 +94,6 @@ log_level == LogLevel.FATAL # Triggers whenever a FATAL log appears
     60
   )
   ```
-
-<br />
 
 - **sequential**
 
@@ -134,8 +120,6 @@ log_level == LogLevel.FATAL # Triggers whenever a FATAL log appears
   )
   ```
 
-<br />
-
 - **throttle**
 
   `throttle(condition, duration)`
@@ -148,8 +132,6 @@ log_level == LogLevel.FATAL # Triggers whenever a FATAL log appears
       2
   )
   ```
-
-<br />
 
 - **debounce**
 
@@ -166,8 +148,6 @@ log_level == LogLevel.FATAL # Triggers whenever a FATAL log appears
   )
   ```
 
-<br />
-
 - **any_order**
 
   `any_order(condition1, condition2, ...)`
@@ -177,8 +157,6 @@ log_level == LogLevel.FATAL # Triggers whenever a FATAL log appears
   ```python
   any_order("123" in log, "789" in log, "456" in log)
   ```
-
-<br />
 
 - **timeout**
 
@@ -191,8 +169,6 @@ log_level == LogLevel.FATAL # Triggers whenever a FATAL log appears
 
   timeout("123" in log, "456" in log, duration=1)
   ```
-
-<br />
 
 ## Value Passing
 
@@ -208,8 +184,6 @@ sequential(
 )
 ```
 
-<br />
-
 ## Utilities
 
 - **`concat(...)`: String concatenation**
@@ -217,8 +191,6 @@ sequential(
   ```python
   concat('a', 'b', 123) # 'ab123'
   ```
-
-<br />
 
 - **`regex_search(value, pattern)`: Checks if `value` matches `pattern`**
 
