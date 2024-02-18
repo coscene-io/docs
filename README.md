@@ -14,7 +14,9 @@ Source code of [https://docs.coscene.cn/](https://docs.coscene.cn/). Generated w
 
 ## Deploy
 
-Push the changes to the `master` branch
+Push the changes to the `master` branch.
+
+See the (action file)[.github/workflows/deploy-to-oss.yml] for details.
 
 ## Contact
 
