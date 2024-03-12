@@ -16,7 +16,7 @@ sidebar_position: 2
 
 定义了用户的行为，指想要执行的操作逻辑，主要是用户自己的业务代码逻辑。例如列举目录下所有文件 (`ls -al`)、运行特定的程序 (`python hello.py`) 等。
 
-![create action](./img/create-action.png)
+![create action](../img/action-create-action.png)
 
 #### 动作名称
 用户按照功能填写有含义的名称。
@@ -61,7 +61,7 @@ sidebar_position: 2
 
 触发器定义了动作的触发时机，当新文件上传成功时，触发器会依据配置进行检查。文件通配符可以限制上传文件的名称格式等，条件组可以约束上传文件所属记录的范围，例如只允许有 `hello` 标签的记录在文件上传成功时触发运行。
 
-![create trigger](./img/create-trigger.png)
+![create trigger](../img/action-create-trigger.png)
 
 #### 触发器名称
 
@@ -84,8 +84,8 @@ sidebar_position: 2
 调用历史展示了项目内所有动作的执行历史，用户可以点击记录查看单条运行记录的详情信息，提供了状态、时间、操作用户等概览信息。另外也提供了具体的执行日志信息，用户可以查看日志来检测程序的运行情况，方便开发调试。
 
 #### 调用历史列表页面
-![action runs](./img/action-runs.png)
+![action runs](../img/action-runs.png)
 
 #### 单次运行详情页面
 
-![action run detail](./img/action-run-detail.png)
+![action run detail](../img/action-run-detail.png)
