@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # 设备准入
@@ -37,13 +37,13 @@ sidebar_position: 3
 数采规则主要对三个模块进行设置：
 
 - **数据收集器设置（collector）**：完成数据采集后，是否删除设备端数据
-- **存储设置 （mod）**：设备端数据的存储目录；设备标识文件的地址
+- **存储设置（mod）**：设备端数据的存储目录；设备标识文件的地址
 - **事件设置（event_code）**：事件错误码的上传规则地址以及是否上传条件限制
 - **更新设置（updater）**：当前程序是否开启自动更新
 
 <br />
 
-示例数采设备信息文件如下:
+示例数采设备信息文件如下：
 
 ```yaml
 collector:
@@ -110,7 +110,7 @@ mod:
 event_code: # 错误码功能
   enabled: false # 错误码功能是否启用，默认 False
   whitelist:
-    '1001': 8 # key 为错误码，字符串类型；value 为次数，表示在reset_interval_in_sec周期内只上传规定次数，多余数据会忽略上传
+    '1001': 8 # key 为错误码，字符串类型；value 为次数，表示在 reset_interval_in_sec 周期内只上传规定次数，多余数据会忽略上传
   reset_interval_in_sec: 86400 # 计算周期，单位为秒，默认值为 86400s
   code_json_url: cos://organizations/current/configMaps/device.errorCode # 默认采用云端配置
 ```
@@ -167,7 +167,7 @@ updater:
 '1002': 任务异常结束 # 错误码：1002，错误信息：任务异常结束
 ```
 
-注意：当使用定制版本时，即 mod name 不是 “default”，错误码格式存在定制的情况，具体请和刻行联系。
+注意：当使用定制版本时，即 mod name 不是“default”，错误码格式存在定制的情况，具体请和刻行联系。
 
 <br />
 
@@ -221,7 +221,7 @@ updater:
    $ ./install.sh --server_url=*** --project_slug=*** --use_local=/root/cos_binaries.tar.gz
    ```
 
-   其中，参数 `--server_url` 与 `--project_slug` 可参考上文「联网安装注册-复制安装命令」获取，参数 `--use_local` 为离线二进制文件压缩包的路径。
+   其中，参数 `--server_url` 与 `--project_slug` 可参考上文「联网安装注册 - 复制安装命令」获取，参数 `--use_local` 为离线二进制文件压缩包的路径。
 
 <br />
 
@@ -251,7 +251,7 @@ journalctl -fu cos
    powershell -c "Set-ExecutionPolicy RemoteSigned; Invoke-WebRequest -Uri https://download.coscene.cn/coscout/install-beta.ps1 -OutFile install.ps1; ./install.ps1 --server_url=*** --project_slug=*** --beta"
    ```
 
-   其中，参数 `--server_url` 与 `--project_slug` 可参考上文「联网安装注册-复制安装命令」获取
+   其中，参数 `--server_url` 与 `--project_slug` 可参考上文「联网安装注册 - 复制安装命令」获取
 
 <br />
 
@@ -265,9 +265,9 @@ journalctl -fu cos
 
 2. 问题：识别为病毒，无法安装
 
-   解决方案1：关闭 windows defender
+   解决方案 1：关闭 windows defender
 
-   解决方案2：windows defender 中添加 whitelist
+   解决方案 2：windows defender 中添加 whitelist
 
    ![org-device-5](../img/org-device-5.png)
 
@@ -279,7 +279,7 @@ journalctl -fu cos
 
 > 仅组织管理员可审核设备
 
-在设备端完成数采程序的安装后，刻行平台的组织管理-设备页中，就会增加该设备，且其对应的准入状态为「待审核」。审核通过的设备即为「已准入」状态，准入的设备可按规则，将数据自动上传到项目中。
+在设备端完成数采程序的安装后，刻行平台的组织管理 - 设备页中，就会增加该设备，且其对应的准入状态为「待审核」。审核通过的设备即为「已准入」状态，准入的设备可按规则，将数据自动上传到项目中。
 
 <br />
 

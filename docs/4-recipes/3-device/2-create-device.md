@@ -38,7 +38,7 @@ sidebar_position: 2
 
 ![device install online](../img/device-install-online.png)
 
-1. 安装完成之后，在设备列表页即可查看到相关的设备（依据设备的性能，启动存在一定的延时导致网页端的刷新存在一定的延迟）。此时设备已完成了注册操作，后续更多操作请查看[设备准入](./3-device-authorize.md)。
+1. 安装完成之后，在设备列表页即可查看到相关的设备（依据设备的性能，启动存在一定的延时导致网页端的刷新存在一定的延迟）。此时设备已完成了注册操作，后续更多操作请查看[设备准入](./3-manage-device.md#设备准入)。
 
 ![device-list-2](../img/device-list-2.png)
 
