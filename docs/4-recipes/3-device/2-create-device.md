@@ -10,13 +10,13 @@ sidebar_position: 2
 
 在「组织管理」页面的「设备」分页，点击【添加设备】按钮。
 
-![device add from web](../img/device-add-from-web.png)
+![device add from web](./img/device-add-from-web.png)
 
 在「添加设备」弹框中，输入设备 ID 及其他信息后，点击【创建】。其中，设备 ID 为唯一标识，不可重复。
-
+ 
 当组织管理员设置了[自定义字段](./1-device.md#自定义字段)时，用户需要按照页面提示将所有的必填项填写完整。如图示例中，门店和机型为自定义字段信息。
 
-![device add from web](../img/device-add-from-web-2.png)
+![device add from web](./img/device-add-from-web-2.png)
 
 点击创建后，成功添加了设备。
 
@@ -24,7 +24,7 @@ sidebar_position: 2
 
 和上述「填写信息添加」入口一致，点击【添加设备】之后选择【从设备端添加】。
 
-![device add from device](../img/device-add-from-device.png)
+![device add from device](./img/device-add-from-device.png)
 
 当前只支持**Linux 设备**，支持 arm64 和 x86_64 的架构，暂不支持 Windows 设备，如有相关的需求，请联系刻行团队。
 
@@ -34,15 +34,15 @@ sidebar_position: 2
 
 1. 选择【通过命令行添加设备】，复制相关的命令信息
 
-![device add from device](../img/device-add-from-device.png)
+![device add from device](./img/device-add-from-device.png)
 
 2. 进入设备端，打开 shell 终端，粘贴复制的安装命令，回车执行。
 
-![device install online](../img/device-install-online.png)
+![device install online](./img/device-install-online.png)
 
 1. 安装完成之后，在设备列表页即可查看到相关的设备（依据设备的性能，启动存在一定的延时导致网页端的刷新存在一定的延迟）。此时设备已完成了注册操作，后续更多操作请查看[设备准入](./3-manage-device.md#设备准入)。
 
-![device-list-2](../img/device-list-2.png)
+![device-list-2](./img/device-list-2.png)
 
 ### 离线安装注册
 
@@ -67,7 +67,7 @@ chmod +x /root/coscene.sh
 
  > `/root/.config/cos/sn.txt` 作为机器端记录 ID 的唯一文件，请勿删除。否则会导致无法匹配云端记录，导致设备重新注册。
 
-![device-list-2](../img/device-list-2.png)
+![device-list-2](./img/device-list-2.png)
 
 ### 查看日志信息
 

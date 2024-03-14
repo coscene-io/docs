@@ -11,21 +11,21 @@ sidebar_position: 3
 > 所有组织用户均可查看过滤设备信息。
 
 如图所示，当前支持「设备 ID」和「准入状态」两个字段的筛选
-![device filter](../img/device-filter-device.png)
+![device filter](./img/device-filter-device.png)
 
 ## 编辑设备
 
 > 组织成员及以上角色可以编辑更新设备信息。
 
 在设备列表中选择需要操作的设备，点击【编辑】按钮，对设备的信息进行修改操作。
-![device edit](../img/device-edit-device.png)
+![device edit](./img/device-edit-device.png)
 
 ## 设备准入
 
 > 只有组织管理员可以准入设备。
 
 当你完成[从设备端添加](./2-create-device.md#从设备端添加)后，设备列表会出现【准入】的操作按钮。在设备详情页，可以单独的准入「数据采集」和「远程控制」模块。
-![device authorize](../img/device-authorize.png)
+![device authorize](./img/device-authorize.png)
 
 当「数据采集」准入之后，机器端的程序会按照规则开始采集数据，并且自动上传至对应的项目。
 
@@ -41,4 +41,4 @@ sidebar_position: 3
 3. 记录中将无法添加该设备
 4. 记录中将无法查看该设备的详细信息
 
-![device delete](../img/device-delete-device.png)
+![device delete](./img/device-delete-device.png)

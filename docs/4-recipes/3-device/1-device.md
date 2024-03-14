@@ -19,8 +19,8 @@ sidebar_position: 1
 
 > 自定义字段配置当前只有组织管理员可以操作。
 
-![device custom fields](../img/device-custom-fields.png)
+![device custom fields](./img/device-custom-fields.png)
 
 组织管理 - 设置 - 设备字段配置 - 添加字段，用户可以按照需求添加相关的字段信息。当保存之后相关设备信息就会展示对应的字段信息。
 
-![device list](../img/device-list-1.png)
+![device list](./img/device-list-1.png)

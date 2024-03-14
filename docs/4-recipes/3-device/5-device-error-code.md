@@ -15,7 +15,7 @@ sidebar_position: 5
 
 进入组织管理页面的「设备」分页，点击【错误码对照表】按钮编辑。
 
-![organization device error code](../img/device-error-code.png)
+![organization device error code](./img/device-error-code.png)
 
 
 ## 错误码对照表格式

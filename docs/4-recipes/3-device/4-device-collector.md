@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # 数采规则
 
-> 准入的设备可按数据采集规则，将数据自动上传到项目中。数采规则应用于所有设备共用一套配置，如果需要按照项目划分采集规则，请参考[关于数据自动采集与诊 断](../9-data-diagnosis/1-intro.md) 使用规则引擎来处理满足相关需求。
+> 准入的设备可按数据采集规则，将数据自动上传到项目中。数采规则应用于所有设备共用一套配置，如果需要按照项目划分采集规则，请参考[关于数据自动采集与诊断](../9-data-diagnosis/1-intro.md) 使用规则引擎来处理满足相关需求。
 
 ## 关于数采规则
 
@@ -22,7 +22,7 @@ sidebar_position: 4
 
 在线编辑数采规则，在完成配置后点击【保存编辑】。
 
-![org-dev-rule-save](../img/org-dev-rule-save.png)
+![org-dev-rule-save](./img/device-save-collector.png)
 
 <br />
 
