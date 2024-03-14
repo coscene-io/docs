@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # 添加设备
 
+> 组织成员及以上可以添加设备操作。
+
 ## 填写信息添加
 
 在「组织管理」页面的「设备」分页，点击【添加设备】按钮。
@@ -58,6 +60,14 @@ chmod +x /root/coscene.sh
 ./coscene.sh --server_url=*** --project_slug=*** --virmesh_endpoint=*** --use_local=/root/cos_binaries.tar.gz
 ```
 在 root 目录执行上述命令进行离线安装操作，其中，参数 `--server_url` ，`--project_slug` ，`--virmesh_endpoint`请参考网页端生成结果获取，参数 `--use_local` 为离线二进制文件压缩包的路径。如果修改了二进制文件的目录位置，请修改 `--use_local` 参数，避免出现安装出现错误。
+
+### 设备信息
+
+当设备端安装之后，程序会默认在 `/root/.config/cos/sn.txt` 文件中写入一个 UUID 的 Hex 值作为当前机器的 ID 标识，绑定云端记录的设备 ID。使用设备的网络名称 + ID 的组合作为设备名称的默认值。
+
+ > `/root/.config/cos/sn.txt` 作为机器端记录 ID 的唯一文件，请勿删除。否则会导致无法匹配云端记录，导致设备重新注册。
+
+![device-list-2](../img/device-list-2.png)
 
 ### 查看日志信息
 
