@@ -96,9 +96,9 @@ sidebar_position: 3
 
 模版化参数组的基础编辑操作如下：
 
-- 点击右侧 `+` 按钮增加一组参数组。
+- 点击右侧【+】按钮增加一组参数组。
 - 编辑参数组的 Key-Value 键值对内容。（下图例：第一组 `errorMsg` - `error 1`, 第二组 `recordName` - `record name demo 1`）
-- 点击下方 `+ 增加一组` 按钮增加一组参数组。
+- 点击下方【+ 增加一组】按钮增加一组参数组。
 - 编辑新增的参数组的 Value 内容。（下图例：第一个 Value `error 2`, 第二个 Value `record name demo 2`）
 
 需要注意：因为需要确保不同参数组的 Key 值是一样的，所以只有第一个参数组的 Key 值是可以编辑（且必填）的，其余参数组的 Key 值都预填充了第一个参数组的 Key 值且不可编辑。
@@ -137,12 +137,12 @@ sidebar_position: 3
 
 添加生成记录触发操作的基础编辑操作如下：
 - 勾选 【生成记录】
-- 编辑生成记录的所包含数据时间范围（下图例：在触发条件满足时，生成记录并上传 10 分钟以内的相关文件）
+- 编辑生成记录的所包含数据时间范围（下图例：在触发条件满足时，生成记录并上传`10`分钟以内的相关文件）
 - 编辑记录名称（下图例：`record name demo`）
 - 编辑记录描述（下图例：`record description demo`）
 - 编辑记录标签（下图例：`rule-auto-upload`，注：标签可多选）
 - 编辑附加文件，即在生成记录时需要同时上传的静态文件（下图例：`/path-to-your-static-file`）
-- 点击右侧 `+` 按钮增加一个附加文件
+- 点击右侧 【+】 按钮增加一个附加文件
 - 编辑新增的附加文件路径（下图例：`/path-to-your-static-file2`）
 
 ![pro-rule-action-upload](../img/pro-rule-action-upload.png)
@@ -152,8 +152,8 @@ sidebar_position: 3
 - 编辑一刻名称（下图例：`moment name demo`）
 - 编辑一刻描述（下图例：`moment description demo`）
 - 选择创建任务为【是】
-- 选择任务经办人（下图例：下拉框选择`【我】`）
-- 选择同步任务为【是】
+- 选择任务经办人（下图例：下拉框选择`我`）
+- 选择同步任务为【是】（同步任务参见[任务同步到-jira](../10-integration/1-jira-integration.md#任务同步到-jira)）
 
 ![pro-rule-action-create-moment](../img/pro-rule-action-create-moment.png)
 
