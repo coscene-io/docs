@@ -115,7 +115,7 @@ sidebar_position: 2
 
 3. 在刻行平台，进入组织管理页面的「设备」分页， 点击【添加设备】
 
-   ![org-device](../img/org-device.png)
+   ![org-device](../img/org-device-add.png)
 
 4. 在弹窗中选择【从设备端添加】，复制安装命令，以 root 账户粘贴到设备终端
 
