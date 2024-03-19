@@ -10,12 +10,12 @@ sidebar_position: 5
 
 根据处理的文件类型，coScene agent 将会根据下列图表填充变量：
 
-|               | Bag file (ROS， Mcap，etc) | Log file                                                                                                                     |
-| ------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+|               | Bag file (ROS， Mcap，etc) | Log file                                                                                                        |
+|---------------|--------------------------|-----------------------------------------------------------------------------------------------------------------|
 | `msg: any`    | Message 数据               | 由log文件中的一行信息封装成的 [Foxglove.Log](https://github.com/foxglove/schemas/blob/main/schemas/proto/foxglove/Log.proto) |
-| `ts: float`   | 时间戳                     | 从单行log中解析出的时间戳                                                                                                    |
-| `topic: str`  | Topic 名称                 | log文件名                                                                                                                    |
-| `msgtype:str` | 消息类型                   | `Foxglove.Log`                                                                                                               |
+| `ts: float`   | 时间戳                      | 从单行log中解析出的时间戳                                                                                                  |
+| `topic: str`  | Topic 名称                 | log文件名                                                                                                          |
+| `msgtype:str` | 消息类型                     | `Foxglove.Log`                                                                                                  |
 
 注：
 
