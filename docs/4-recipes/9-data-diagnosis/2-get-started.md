@@ -59,7 +59,7 @@ sidebar_position: 2
 - 编辑触发器名称为「数据诊断」，
 - 选择关联动作为「系统动作」，
 - 从系统动作下拉框中「数据诊断」
-- 编辑文件通配符模式为`**/*`
+- 编辑文件通配符模式为`**/*` (格式使用 Glob，详细可查看[参考文档](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/))
 - 点击【创建触发器】
 
    ![pro-trigger-base](../img/pro-trigger-edit.png)
@@ -97,7 +97,7 @@ sidebar_position: 2
 
 ## 准入设备
 
-> 以 linux 设备为例，其他设备的注册方式参见[设备注册](https://docs.coscene.cn/docs/receipts/device/device-authorize#%E8%AE%BE%E5%A4%87%E6%B3%A8%E5%86%8C)
+> 以 linux 设备为例。
 
 <br />
 
@@ -113,11 +113,11 @@ sidebar_position: 2
    mkdir logs
    ```
 
-3. 在刻行平台，进入组织管理页面的「设备」分页
+3. 在刻行平台，进入组织管理页面的「设备」分页， 点击【添加设备】
 
    ![org-device](../img/org-device.png)
 
-4. 复制安装命令，以 root 账户粘贴到设备终端
+4. 在弹窗中选择【从设备端添加】，复制安装命令，以 root 账户粘贴到设备终端
 
    ![org-device-copy-command](../img/org-device-copy-command.png)
 
