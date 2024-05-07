@@ -8,7 +8,7 @@ coscli record list | grep -v 'ID' | cut -d ' ' -f1 | xargs -I {} coscli record u
 
 ![coscli-upload-file-to-all-records](./img/coscli-upload-file-to-all-records.png)
 
-## 为每一个当前目录下的文件夹建立一个记录
+## 为当前目录下的所有文件夹建立一个记录并上传文件
 
 假定我们有如下的 5 个文件夹，文件夹中包含若干个随机文件和文件夹，具体结构如下图所示。
 
