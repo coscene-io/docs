@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # 常见批量操作举例
 
 ## 上传同一个文件到项目中的所有记录中
@@ -89,8 +93,8 @@ for id in $(coscli record list | grep -v 'ID' | cut -d ' ' -f1); do
 
     # 检查文件列表是否为空
     if [[ -z "$files" ]]; then
-        # 给所有空的记录打上标签 empty-record
-        coscli record update $id -l empty-record
+        # 删除当前记录，使用 -f 标志来跳过手工确认的步骤
+        coscli record delete $id -f
     fi
 done
 ```
