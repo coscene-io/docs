@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # General Data Collection
 
-The Cos platform provides a general data collection scheme for uploading machine-side data based on time periods, allowing users to quickly obtain machine-side data. Users create collection tasks on the platform, confirm the data time range, and the machine-side Agent scans the file data based on the configured file address and uploads the files that meet the time requirements to the platform.
+The coScene platform provides a general data collection scheme for uploading machine-side data based on time periods, allowing users to quickly obtain machine-side data. Users create collection tasks on the platform, confirm the data time range, and the machine-side Agent scans the file data based on the configured file address and uploads the files that meet the time requirements to the platform.
 
 ## Configure Collection Rules
 
@@ -35,7 +35,7 @@ Go to [Organization Management] - [Device] - [Add Device] to get the Agent insta
 The installation command supports specifying the relevant device ID file path and associated field name. If not set, a random ID will be generated to bind to the current device.
 ![device-install-command](./img/device-install-command.png)
 
-Open the command line terminal on the machine, paste the copied installation command from the above image, and add the `--mod=task` parameter at the end of the command to install the cos Agent on the machine. After waiting for a few minutes, you can view the corresponding device information in the organization device list.
+Open the command line terminal on the machine, paste the copied installation command from the above image, and add the `--mod=task` parameter at the end of the command to install the coScene Agent on the machine. After waiting for a few minutes, you can view the corresponding device information in the organization device list.
 
 ![device-install-command-2](./img/device-install-command-2.png)
 
@@ -48,13 +48,13 @@ Enter the corresponding project, select [Project Device] - [Add Device] - [Selec
 
 ## Create Collection Task
 
-In the project, go to [Tasks] - [Auto Collection Task] - [Create Task], select the corresponding device, fill in the time period information and related description for the collection, and click create task.
+In the project, go to [Tasks] - [Auto Collection Task] - [Create Task], select the corresponding device, fill in the time period and related description for the collection, and click create task.
 
 ![create-upload-task](./img/upload-task.png)
 
 ## Wait for Collection Task to Complete
 
-After creating the task, the machine-side Agent will obtain the corresponding task information and process it according to the task's time period and configured file address information, then upload the files that meet the requirements to the Cos platform. Depending on the network speed of the machine side and the number of files being uploaded, the completion time of a single task varies. Please wait patiently.
+After creating the task, the machine-side Agent will obtain the corresponding task information and process it according to the task's time period and configured file address information, then upload the files that meet the requirements to the coScene platform. Depending on the network speed of the machine side and the number of files being uploaded, the completion time of a single task varies. Please wait patiently.
 
 After the task collection is complete, the task details will link to the record information associated with this task. Click to view the record to see the related file information. A single data collection task is thus completed, and it's that simple.
 
@@ -64,7 +64,7 @@ After the task collection is complete, the task details will link to the record 
 
 ## Subsequent Data Processing
 
-Once the data is uploaded to the Cos platform, users can leverage the platform's [automation](../4-recipes/12-action/1-quickstart.md) capabilities for subsequent processing to improve data flow speed and enhance development efficiency.
+Once the data is uploaded to the coScene platform, users can leverage the platform's [automation](../4-recipes/12-action/1-quickstart.md) capabilities for subsequent processing to improve data flow speed and enhance development efficiency.
 
 Here is an example of [automatic decompression]. When the uploaded data contains compressed packages, the automation capability automatically decompresses the compressed package files, avoiding the cumbersome process of downloading data, decompressing, and re-uploading the decompressed data.
 
@@ -91,4 +91,4 @@ A: The file time for data collection uses the last modification time of the file
 
 ## Summary
 
-The above introduced a scenario process where a user creates a collection task, and the machine-side Agent automatically uploads relevant files to the Cos platform based on the task information. By combining the platform's automation capabilities, you can create data diagnosis, data processing, and other processes to quickly build a data flow process that meets your business needs, greatly improving development efficiency.
+The above introduced a scenario process where a user creates a collection task, and the machine-side Agent automatically uploads relevant files to the coScene platform based on the task information. By combining the platform's automation capabilities, you can create data diagnosis, data processing, and other processes to quickly build a data flow process that meets your business needs, greatly improving development efficiency.
