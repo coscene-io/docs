@@ -26,15 +26,15 @@ jobs:
       tag: ${{ steps.build-and-push.outputs.TAG }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
       - name: Setup Node env
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'pnpm'
       - name: Install Dependencies
         run: pnpm install
@@ -44,7 +44,7 @@ jobs:
       - name: Set up CD tools
         uses: coscene-io/setup-cd-tools@v2.0.1
         env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: "true"
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         with:
           skaffold: '2.3.1'
       - name: ACR login
