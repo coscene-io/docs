@@ -6,21 +6,25 @@ id: changelog
 # Release History
 
 ## [24.26.0] - 2024-6-25
-### 【New】
-- Added "Chain Processing" feature: Define multiple data processing steps in actions and process records sequentially with one click.
-- Added "Header Settings" feature: Allows configuration of table displays for "Organization Device List" and "Record List"
-  - Supports setting the display content of the header: In the [Settings] button at the far right of the header, supports showing/hiding fields, adjusting order, and restoring default.
-  - Supports setting table column width: Drag the header to adjust the column width.
-  - Table settings are personalized and do not affect the perspective of other team members.
-- Added "Action Help Documentation": View help documentation on the right side of the page when creating or editing actions.
-- Added "Data Collection Client Version Information": Displays the current data collection client version information in the "Device Details Page - Data Collection Program" section. 
-### 【Changes】
-- Updated file search logic: Allows searching all files of the current record in the record details page.
-- Updated the layout of the record details page to a card style.
-- Updated the "File Preview" style in the record details page:
-  - The preview window now displays the file list, supporting quick file switching.
-  - Supports convenient switching to the previous/next file using the left and right keyboard keys.
-- Updated the ID number of call history from unordered ID to sequential numbers.
+
+### [New]
+
+- **New "Action Chain Processing" Feature**: Define multiple data processing steps within an action and execute them sequentially with a single click.
+- **New "Header Settings" Feature**: Configure the table display for "Organization Device List" and "Record List".
+  - **Configure Header Display Content**: Use the [Settings] button on the far right of the header to show/hide fields, adjust order, and restore defaults.
+  - **Set Table Column Width**: Drag the header to adjust column width.
+  - **Personalized Table Settings**: These settings are personalized and do not affect the view of other team members.
+- **New "Action Help Documentation"**: View help documentation on the right side of the page while creating or editing actions.
+- **New "Data Collection Client Version Information"**: Display the current version information of the data collection client in the "Device Details - Data Collection Program" section.
+
+### [Changes]
+
+- **Updated File Search Logic**: You can now search for all files related to a specific record on the record details page.
+- **Updated Record Details Page Layout**: Changed to a card-style layout.
+- **Updated "File Preview" Style on Record Details Page**:
+  - Display file list in the preview window, enabling quick file switching.
+  - Use keyboard arrow keys to conveniently switch between the previous and next files.
+- **Invocation History** ids are now easy to understand integer numbers.
 
 ---
 
