@@ -155,7 +155,7 @@ unzip dev-A.log.zip
 ## 附录链接
 Glob 格式通配符：https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/
 ## 总结
-按照以上步骤，我们就完成了对名称为 dev-A 的设备，模拟当设备出现故障时，平台会按照定义的规则自动采集数据，降低设备的故障率，提升其可观测性。
+按照以上步骤，我们就完成了对名称为 dev-A 的设备，模拟当设备出现故障时，平台会按照定义的规则自动采集数据并进行诊断，提升其可观测性。
 
 
 
