@@ -2,14 +2,19 @@
 sidebar_position: 3
 ---
 
-# 查看和设置点云/TF
+# 利用三维面板可视化你的数据
 
-本章节将介绍如何进行点云 topic 、TF 的查看与设置。
+本章节将以记录中的 “elevator-08015-19-24-11.bag” 文件为例，展示使用刻行的三维面板可视化数据的步骤。
 
-## 查看/隐藏 topic
+## 文件准备
 
-每个 topic 都可以选择打开或关闭。
+1. 在项目中创建一条包含 bag 文件的记录，创建步骤详情请见[创建记录](../i/viz-3-1.png)
 
+
+2. 点击记录详情页中的播放记录或文件名，进入可视化页面
+![viz-3-1.png](../img/viz-3-1.png)
+
+   
 ### 查看/隐藏全部 topic
 
 <video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/viz/3D-showhide-all-topic.mp4" controls="controls" width="700" height="400"></video>
