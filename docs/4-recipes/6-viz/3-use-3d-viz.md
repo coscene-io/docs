@@ -9,10 +9,10 @@ sidebar_position: 3
 ## 文件准备
 
 1. 在项目中创建一条记录，创建步骤详情请见[创建记录](../4-record/1-create-record.md)。
-2. [下载示例文件](https://download.coscene.cn/public-sample-data/scene-0001.mcap)，点击【上传】按钮将文件上传到记录中。上传文件详情请见(../4-record/2-upload-files.md)
+2. [下载示例文件](https://download.coscene.cn/public-sample-data/scene-0001.mcap)，点击【上传】按钮将文件上传到记录中。上传文件详情请见[上传文件](../4-record/2-upload-files.md)。
 4. 点击【播放记录】按钮，进入可视化页面。
     
-![viz-3-1.png](../img/viz-3-1.png)
+![viz-3-6.png](../img/viz-3-6.png)
 
 ## 添加三维面板
 
