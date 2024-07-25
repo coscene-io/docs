@@ -21,7 +21,7 @@ sidebar_position: 3
 ![viz-3-2.png](../img/viz-3-2.png)
 
 
-3. 选择「三维」面板添加进你的布局中
+2. 选择「三维」面板添加进你的布局中
     
 ![viz-3-3.png](../img/viz-3-3.png)
 
