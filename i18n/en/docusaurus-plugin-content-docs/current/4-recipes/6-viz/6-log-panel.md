@@ -38,3 +38,5 @@ The "Log Panel" is used to display and manage machine-generated log information.
 3. View the filtered logs.
 
     ![viz-6-5-Eng](../img/viz-6-5-Eng.png)
+
+   ---
