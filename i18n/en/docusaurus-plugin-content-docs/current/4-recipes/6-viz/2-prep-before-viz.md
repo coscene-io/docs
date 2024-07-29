@@ -21,9 +21,11 @@ For data lacking map and static TF information:
 ![viz-2-1-Eng](../img/viz-2-1-Eng.png)
 
 2. Click the **Actions** button on the right side of the Record and select **Set File Media Type** in the popup.
+    
 ![viz-2-2-Eng](../img/viz-2-2-Eng.png)
 
 3. Set the media type of the Bag file to **Static Bag** and click **Confirm** to complete the modification.
+   
 ![viz-2-3-Eng](../img/viz-2-3-Eng.png)
 
 ### Manually Importing Static Map and Coordinate Files
@@ -35,9 +37,11 @@ For data lacking map and static TF information:
 ![viz-2-4-Eng](../img/viz-2-4-Eng.png)
  
 2. Click the **Actions** button on the right side of the Record file and select **Set File Media Type** in the popup.
+   
 ![viz-2-5-Eng](../img/viz-2-5-Eng.png)
  
 3. Set the media type of the file to **Map** and click **Confirm** to complete the modification.
+   
 ![viz-2-6-Eng](../img/viz-2-6-Eng.png)
 
 #### Static Coordinates
@@ -51,6 +55,7 @@ For data lacking map and static TF information:
 ![viz-2-8-Eng](../img/viz-2-8-Eng.png)
  
 3. Set the media type of the file to **Static TF** and click **Confirm** to complete the modification.
+    
 ![viz-2-9-Eng](../img/viz-2-9-Eng.png)
 
 ### Extracting Map and Coordinates from Record Files
@@ -68,5 +73,6 @@ For data lacking map and static TF information:
 ![viz-2-12-Eng](../img/viz-2-12-Eng.png)
  
 4. After the action is successfully invoked, return to the Record details page to view the generated map and coordinate files, completing the extraction.
+    
 ![viz-2-13-Eng](../img/viz-2-13-Eng.png)
 
