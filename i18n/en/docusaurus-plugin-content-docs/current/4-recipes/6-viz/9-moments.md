@@ -57,7 +57,7 @@ Click the delete button shown in the illustration to delete this moment.
 
     ![viz-9-9-Eng](../img/viz-9-9-Eng.png)
 
-3. Enter the moment details page to view the information of the created moment. Moments can also be deleted here.
+3. Enter the moment details page to view the information of the created moments. They can also be deleted here.
 
     ![viz-9-10-Eng](../img/viz-9-10-Eng.png)
 
