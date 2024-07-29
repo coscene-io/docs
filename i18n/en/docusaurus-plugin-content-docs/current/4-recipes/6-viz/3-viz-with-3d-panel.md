@@ -12,7 +12,7 @@ This section will demonstrate the steps to visualize data using coScene's 3D pan
 2. [Download the sample file](https://download.coscene.cn/public-sample-data/scene-0001.mcap), and click the **Upload** button to upload the file to the record. For detailed steps on uploading files, refer to [Upload Files](../4-record/2-upload-files.md).
 3. Click the **Play** button to enter the visualization page.
 
-    ![viz-3-1-Eng](../img/viz-3-6-Eng.png)
+    ![viz-3-1-Eng](../img/viz-3-1-Eng.png)
 
 ## Add a 3D Panel
 
