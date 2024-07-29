@@ -38,7 +38,7 @@ The "Panel Scene" refers to the collection of all information and data displayed
 
 ## How to Set Panel Properties
 
-To set the properties of the current panel, go to the "Panel" in the left sidebar. Different panels have different property values, refer to the 3D panel, chart panel, and log panel.
+To set the properties of the current panel, go to the "Panel" in the left sidebar. Different panels have different property values, refer to the [3D Panel](../6-viz/5-3d-panel.md), [Log Panel](../6-viz/6-log-panel.md), and [Plot Panel](../6-viz/7-plot-panel.md).
 
 ![viz-4-6-Eng](../img/viz-4-6-Eng.png)
 
