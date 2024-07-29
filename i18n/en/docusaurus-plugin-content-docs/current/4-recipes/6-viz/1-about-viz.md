@@ -103,3 +103,5 @@ The functions in this area include:
 6. **Playback speed** button
 7. **Playback quality** button
 8. **Absolute**/**Relative** time toggle button
+
+---
