@@ -24,7 +24,7 @@ Click the **Create Blank Layout** button in the Layout Menu to enter the followi
 
     ![viz-8-3-Eng](../img/viz-8-3-Eng.png)
 
-2. Similarly, right-click the copy option in personal layouts to create a copy of the layout.
+2. Similarly, right-click **Duplicate** in personal layouts to create a copy of the layout.
 
     ![viz-8-4-Eng](../img/viz-8-4-Eng.png)
 
