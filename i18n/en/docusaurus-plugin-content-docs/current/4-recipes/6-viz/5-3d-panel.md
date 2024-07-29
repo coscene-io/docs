@@ -202,3 +202,5 @@ Used to control the centering and zooming effects of the 3D view.
 3. You can also use the keyboard and mouse to zoom in and out of the view.
 
     ![viz-5-25-Eng](../img/viz-5-25-Eng.png)
+
+   ---
