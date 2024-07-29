@@ -4,7 +4,8 @@ sidebar_position: 3
 
 # Visualizing Your Data with 3D Panel
 
-This document will demonstrate the steps to visualize data using coScene's 3D panel with the "scene-0001.mcap" file from the Record.
+This document will demonstrate the steps to visualize data using coScene's 3D panel with the [scene-0001.mcap](https://download.coscene.cn/public-sample-data/scene-0001.mcap)
+ file from the Record. 
 
 1. First, create a Record in the project containing the bag file. For detailed steps, refer to [create record](../4-record/1-create-record.md).
    
