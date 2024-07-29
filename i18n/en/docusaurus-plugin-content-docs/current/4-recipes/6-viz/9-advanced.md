@@ -1,34 +1,65 @@
 ---
 sidebar_position: 9
 ---
+# Moments
 
-# Advanced Configs
+"Moments" are key frames in records, capturing either faults or interesting scenes in the visualization interface.
 
-The "Preferences" interface of the visualization page offers settings related to display, language, privacy, experimental features, and more.
+## Creating a Moment
 
-## Set Display Language
+1. Click the **Play Record** button in the record to enter the visualization interface.
 
-Click on the "Preferences" icon in the bottom right corner of the visualization interface to open the preferences settings and make the necessary changes.
+    ![viz-9-1-Eng](../img/viz-9-1-Eng.png)
 
-![viz-preferences-1](../img/viz-preferences-1.png)
+2. Click the **Create Moment** button in the lower left corner and select the start and end points. As shown, you can use shortcut keys or click the **Create Moment** button to set the start point at the desired time.
 
-## Adjust Preload Time Length and Single Request Time Length
+    ![viz-9-2-Eng](../img/viz-9-2-Eng.png)
 
-> Please use this feature with caution, as it may lead to unexpected webpage lags or crashes.
+    Click again at the desired time to set the end point. The blue range in the illustration shows the start and end time of the moment.
 
-### Key Term Explanation
+    ![viz-9-3-Eng](../img/viz-9-3-Eng.png)
 
-- Preload Time Length: The amount of data loaded in advance from the current playback position, measured in seconds. The default is thirty seconds. Setting it too long might cause lags or even webpage crashes due to excessive memory usage.
-- Single Request Time Length: The length of data requested from the server each time, measured in seconds. The default is five seconds. Setting it too long might cause increased server processing time or even request failures.
+3. You can change the range of the moment by clicking and dragging.
 
-### Setting Method
+4. Enter the name, description, and other field information to complete the creation.
 
-- Press the `F12` key to open the developer tools.
-  ![open-devtools](../img/open-devtools.png)
-- In the developer tools, click on the `Application` tab, then the `Storage` tab, and then the website's URL.
-  ![open-local-storage](../img/open-local-storage.png)
-- At the bottom of `Local Storage`, double-click to add the `readAheadDuration` and `singleRequestTime` key-value pairs. These set the preload time length and single request time length, respectively, in seconds.
-  ![set-readAheadDuration-and-singleRequestTime-value](../img/set-readAheadDuration-and-singleRequestTime-value.png)
-- Refresh the page to apply the changes.
+    ![viz-9-4-Eng](../img/viz-9-4-Eng.png)
 
-PS: If you have set these values before, you can directly modify the corresponding values in `Local Storage`.
+## Managing Moments
+
+Manage moments in the **Moments** section of the left sidebar, where you can edit, copy, and delete moments.
+
+### Editing a Moment
+
+Click the edit button shown in the illustration to modify the field information of the moment.
+
+![viz-9-5-Eng](../img/viz-9-5-Eng.png)
+
+### Copying a Moment Link
+
+Click the copy button shown in the illustration to copy the link of the current moment to the clipboard.
+
+![viz-9-6-Eng](../img/viz-9-6-Eng.png)
+
+### Deleting a Moment
+
+Click the delete button shown in the illustration to delete this moment.
+
+![viz-9-7-Eng](../img/viz-9-7-Eng.png)
+
+## Viewing Moments
+
+1. Click the record name in the top toolbar of the visualization page to go to the record details page.
+
+    ![viz-9-8-Eng](../img/viz-9-8-Eng.png)
+
+2. Click the **Moments** button shown in the illustration.
+
+    ![viz-9-9-Eng](../img/viz-9-9-Eng.png)
+
+3. Enter the moment details page to view the information of the created moment. You can also delete the moment here.
+
+    ![viz-9-10-Eng](../img/viz-9-10-Eng.png)
+
+
+---
