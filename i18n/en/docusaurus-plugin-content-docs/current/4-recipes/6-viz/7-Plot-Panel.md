@@ -6,7 +6,7 @@ sidebar_position: 7
 
 The "Plot Panel" is a tool used for plotting and displaying data trends over time or other variables. It allows users to configure multiple data series and visualize these trends in a clear and intuitive chart format.
 
-![viz-7-1-Eng](../img/viz-7-1-Eng.png)
+![viz-7-7-Eng](../img/viz-7-7-Eng.png)
 
 ## Properties in the Plot Panel
 
