@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Panels: Modular Visualization Interface
+# Panels
 
 "Panel" is a modular visualization interface that can be configured and arranged into layouts, and can also be added, edited, and dragged and dropped.
 
@@ -69,3 +69,5 @@ In the **Add Panel** menu, find the complete list of available panels. Hover ove
 Click **Change Panel** in the **Menu** button on the panel top bar to change the panel type.
 
 ![viz-4-11-Eng](../img/viz-4-11-Eng.png)
+
+---
