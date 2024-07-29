@@ -40,13 +40,13 @@ Import a local layout file into personal layouts through **Import from File** in
 
 ### Organization Recommended
 
-"Organization Recommended Layouts" are set and recommended by the organization administrator. Go to **Organization Management** in the avatar menu and select **Visualization Layout Configuration** to choose the recommended layout for the organization.
+"Organization Recommended Layouts" are set and recommended by the organization administrator. Go to **Organization Management** in the avatar menu and select **Viz Layout Settings** to choose the recommended layout for the organization.
 
 ![viz-8-6-Eng](../img/viz-8-6-Eng.png)
 
 ### Project Recommended
 
-"Project Recommended Layouts" are set and recommended by the project administrator. Go to **Project Settings** and select **Visualization Layout Configuration** to choose the recommended layout for the project.
+"Project Recommended Layouts" are set and recommended by the project administrator. Go to **Project Settings** and select **Viz Layout Settings** to choose the recommended layout for the project.
 
 ![viz-8-7-Eng](../img/viz-8-7-Eng.png)
 
@@ -73,19 +73,19 @@ Managing layouts involves editing and modifying existing layouts.
 
 ![viz-8-11-Eng](../img/viz-8-11-Eng.png)
 
-### Rename Layout
+### Rename
 
 Change the name of the layout for better identification and categorization.
 
-### Export Layout
+### Export
 
 Save the layout as a file for sharing or use in other environments.
 
-### Share Layout
+### Share with Team
 
 Share the layout with the team, allowing organization members to use and modify shared layout copies.
 
-### Delete Layout
+### Delete
 
 Remove layouts that are no longer needed to keep the layout list clean and efficient.
 
