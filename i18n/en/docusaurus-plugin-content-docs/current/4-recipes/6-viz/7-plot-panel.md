@@ -56,3 +56,5 @@ The "Plot Panel" is a tool used for plotting and displaying data trends over tim
 - **Show Labels**: Control whether to display scale labels on the X axis.
 - **Max and Min Values**: Set the start and end values of the X axis.
 - **Range (seconds)**: Control the length of the time span displayed on the X axis.
+
+---
