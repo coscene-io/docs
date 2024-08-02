@@ -1,0 +1,9 @@
+{
+  "label": "OpenAPI",
+  "position": 8,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/openapi"
+  }
+}
