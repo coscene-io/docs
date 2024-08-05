@@ -2,24 +2,26 @@
 sidebar_position: 1
 ---
 
-# 开始使用
+# 简介
 
-在调用接口之前，您需要先确认以下操作：
+您可以利用刻行的开放平台 OpenAPI 来构建自动化流程的脚本和应用程序，进行系统集成，并扩展应用功能。
 
-1. 取得 [地址前缀](./2-openapi-url.md)。开放接口地址会依据用户使用的平台版本而有所变化，所以请参考当前访问的平台地址使用最新的地址。
-2. 通过 [获取授权](./3-apikey.md)取得 apikey。开放接口均使用 apikey 鉴权，请妥善保管，切勿上传至公开平台。
+在调用接口之前，请确认以下步骤：
 
-以上完成后，即可开始使用刻行平台的 OpenAPI 了。
+1. [获取开放平台实例地址（Endpoint）](./2-openapi-endpoint.md)。开放平台的实例地址会根据用户使用的刻行产品版本而变化，请参考您当前使用的平台地址以获取最新的实例地址。
 
-## Swagger 
+2. [通过获取授权获取 API 密钥（apikey）](./3-apikey.md)。所有开放接口均需使用 API 密钥进行鉴权，请妥善保管，切勿上传至公开平台。
 
-刻行提供了符合  OpenAPI 3.0.3 标准的 OpenAPI yaml 文件。具体可以通过 [OpenAPI Yaml](https://download.coscene.cn/openapi/openapi.yaml) 下载。当然也可以直接访问 [Swagger Editor](https://petstore.swagger.io/?url=https://download.coscene.cn/openapi/openapi.yaml) 在线查看相关的接口的信息。
+完成上述步骤后，即可开始使用刻行平台的 OpenAPI。
+
+## Swagger
+
+刻行提供了符合 OpenAPI 3.0.3 标准的 OpenAPI YAML 文件，可以通过 [OpenAPI YAML](https://download.coscene.cn/openapi/openapi.yaml) 下载。也可以直接访问 [Swagger Editor](https://petstore.swagger.io/?url=https://download.coscene.cn/openapi/openapi.yaml) 在线查看相关的接口的信息。
 
 ## SDK
 
-刻行 OpenAPI 提供了各类语言的 SDK，具体可以查看 [buf](https://buf.build/coscene-io/coscene-openapi/sdks) 了解对应语言的 SDK 信息。
+刻行 OpenAPI 提供了各类语言的 SDK，您可以在 [buf](https://buf.build/coscene-io/coscene-openapi/sdks) 上查看个目前支持的语言 SDK 信息。
 
 ## 示例
 
-针对各类 SDK，刻行针对常用的 Go、Java、Python 提供了示例代码，具体可以参考 [openapi-example](https://github.com/coscene-io/openapi-example) 项目。若需要其他语言的代码样例，请联系刻行开发人员获取。
-
+针对不同 SDK，刻行提供了常用语言如 Go、Java、Python 的示例代码，可以参考 [openapi-example](https://github.com/coscene-io/openapi-example) 项目。若需要其他语言的代码样例，请联系刻行开发人员获取。
