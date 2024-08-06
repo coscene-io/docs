@@ -28,13 +28,13 @@ sidebar_position: 2
 
    ![pro-1](../img/pro-1.png)
 
-2. 在项目中，进入「管理项目-数采与诊断规则」页面，点击【添加规则组】
+2. 在项目中，进入「数采&诊断规则」分页，点击【添加规则组】
 
-   ![pro-rule-add-rule-set](../img/pro-rule-add-rule-set.png)
+   ![data-2-1](../img/data-2-1.png)
 
-3. 更改规则组名称后，点击【添加规则】
+3. 更改规则组名称后，点击【添加空白规则】
 
-   ![pro-rule-add-rule](../img/pro-rule-add-rule.png)
+   ![data-2-2](../img/data-2-2.png)
 
 4. 更改规则名称，复制规则 `"error 1" in log` 到触发条件，勾选触发操作中的生成记录和创建一刻，更改一刻名称为 `触发了 error 1`，点击【创建】
 
@@ -42,9 +42,9 @@ sidebar_position: 2
    
    ![pro-rule-base-rule](../img/pro-rule-base-rule-2.png)
 
-5. 回到「管理项目-数采与诊断规则」页面，选择刚刚添加的规则组，点击启用按钮
+5. 回到「数采&诊断规则」页面，选择刚刚添加的规则组，点击启用按钮
 
-   ![pro-rule-enable-rule-set](../img/pro-rule-enable-rule-set.png)
+   ![data-2-3](../img/data-2-3.png)
 
    \*更多规则条件样式参见[规则的结构与示例](./3-add-rule.md#常用规则条件示例)
 
