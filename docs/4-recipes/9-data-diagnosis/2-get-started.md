@@ -16,7 +16,7 @@ sidebar_position: 2
 
 2. 请创建名为 auto-upload 的项目，详情参见[创建项目](https://docs.coscene.cn/docs/get-started/create-project-flow#3-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE)。
 
-3. 请确认你在刻行的组织角色为「管理员」。若不是管理员，请联系组织管理员更新你的组织角色。
+3. 请确认你在 coScene 的组织角色为「管理员」。若不是管理员，请联系组织管理员更新你的组织角色。
 
    ![org-role](../img/org-role.png)
 
@@ -196,7 +196,7 @@ sidebar_position: 2
 
 4. log 数据上传
 
-   - 当日志中出现如下字段时，表示 log 数据正在上传到刻行平台
+   - 当日志中出现如下字段时，表示 log 数据正在上传到刻行时空平台
 
      ![rule-log-2](../img/rule-log-2.png)
 
