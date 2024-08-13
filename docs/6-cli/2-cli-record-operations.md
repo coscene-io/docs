@@ -7,18 +7,18 @@ sidebar_position: 2
 
 关于刻行命令行中操作记录的详细信息，您可以使用 `cocli record -h` 来查看详细用法
 
-![cli-record-help](./img/cocli-record-help.png)
+![cli-record-help](./img/2-cocli-record-help.png)
 
 以下是一些常见操作的示例：
 
 ## 创建记录
 
 ```bash
-# 创建一个叫做<预留文件>的记录
+# 创建一个叫做 <预留文件> 的记录
 cocli record create -t 预留文件
 ```
 
-![cocli-record-create](./img/cocli-record-create.png)
+![cocli-record-create](./img/2-cocli-record-create.png)
 
 您可以点击结果中的网址，在网页中查看刚创建的记录
 
@@ -28,7 +28,7 @@ cocli record create -t 预留文件
 cocli record list
 ```
 
-![cocli-record-list](./img/cocli-record-list.png)
+![cocli-record-list](./img/2-cocli-record-list.png)
 
 List 命令会将项目中的所有记录列出，我们可以通过串联`grep` 和 `cut` 等命令来获取某个记录的 ID
 
@@ -36,7 +36,7 @@ List 命令会将项目中的所有记录列出，我们可以通过串联`grep`
 cocli record list | grep '预留' | cut -d ' ' -f1
 ```
 
-![cocli-record-get-id](./img/cocli-record-get-id.png)
+![cocli-record-get-id](./img/2-cocli-record-get-id.png)
 
 ## 上传文件到记录
 
@@ -50,23 +50,23 @@ touch TEST_FILE
 cocli record upload acd706d9-0879-4d88-8550-e69bb8ff8f6b ./TEST_FILE
 ```
 
-![cocli-upload-file-to-record](./img/cocli-upload-file-to-record.png)
+![cocli-upload-file-to-record](./img/2-cocli-upload-file-to-record.png)
 
 此时再刷新网页中的记录，就可以看到我们刚上传的文件了
 
-![view-just-uploaded-file](./img/view-just-uploaded-file.png)
+![view-just-uploaded-file](./img/2-view-just-uploaded-file.png)
 
 ## 下载记录中的文件
 
 我们也可以将记录中的文件下载到本地，在`预留文件`这个记录中，我们又上传了一些随机文件作为示例。
 
-![cocli-record-download-prepare-files](./img/cocli-record-download-prepare-files.png)
+![cocli-record-download-prepare-files](./img/2-cocli-record-download-prepare-files.png)
 
 ```bash
 cocli record download acd706d9-0879-4d88-8550-e69bb8ff8f6b .
 ```
 
-![cocli-record-download-to-local](./img/cocli-record-download-to-local.png)
+![cocli-record-download-to-local](./img/2-cocli-record-download-to-local.png)
 
 命令行工具会将记录中的所有文件打包在以记录 ID 为名字的文件夹内，这个功能在您之后可能会遇到的下载多个记录中帮助您保持文件的独立性，方便管理。
 
