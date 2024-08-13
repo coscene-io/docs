@@ -14,7 +14,7 @@ curl -fL https://download.coscene.cn/cocli/install.sh | sh
 ```
 
 在命令行中可以使用 `cocli -h` 来确认命令行工具已经成功安装，并查看工具的基基本用法。
-![coscli-help](./img/coscli-help.png)
+![cocli-help](./img/cocli-help.png)
 
 ### 更新至最新版本
 
@@ -67,7 +67,7 @@ cocli login set -p <项目 slug> -t <个人访问令牌> -e <openapi 地址>
 cocli project list
 ```
 
-![coscli-list-user-projects](./img/coscli-list-user-projects.png)
+![cocli-list-user-projects](./img/cocli-list-user-projects.png)
 
 找到目标项目之后，使用 `cocli login set` 来更新默认的工作项目， 如果需要，可以使用 `cocli login current` 来确认
 
@@ -76,4 +76,4 @@ cocli login set -p starbase
 cocli login current
 ```
 
-![coscli-update-default-project-slug](./img/coscli-update-default-project-slug.png)
+![cocli-update-default-project-slug](./img/cocli-update-default-project-slug.png)
