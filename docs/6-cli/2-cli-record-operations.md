@@ -1,4 +1,5 @@
 ---
+slug: record-operations
 sidebar_position: 2
 ---
 

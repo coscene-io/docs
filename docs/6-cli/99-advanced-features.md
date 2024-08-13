@@ -1,4 +1,5 @@
 ---
+slug: advanced-features
 sidebar_position: 99
 ---
 

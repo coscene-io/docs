@@ -1,4 +1,5 @@
 ---
+slug: common-batch-tasks
 sidebar_position: 4
 ---
 

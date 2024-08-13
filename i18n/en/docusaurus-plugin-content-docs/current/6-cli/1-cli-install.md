@@ -1,4 +1,5 @@
 ---
+slug: install
 sidebar_position: 1
 ---
 
