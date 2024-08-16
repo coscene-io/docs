@@ -75,23 +75,23 @@ cocli record download acd706d9-0879-4d88-8550-e69bb8ff8f6b .
 命令行工具也可以用来删除记录，删除记录是一个非常危险的操作，请在删除时手工确认是否真的需要
 删除记录，或者使用 `-f` 标记来强制删除。
 
-![delete-a-record](./img/delete-a-record.png)
+![delete-a-record](./img/2-delete-a-record.png)
 
 ## 管理记录的标签
 
 `cocli record list` 可以很方便的看到记录的标签，我们也可以对记录的标签进行更多的操作。我们以列表中的第一个记录举例。
 
-![cocli-labels-list-record](./img/cocli-labels-list-record.png)
+![cocli-labels-list-record](./img/2-cocli-labels-list-record.png)
 
 ### 给记录添加标签
 
 ```
-cocli record update d253523f-5a8a-40dd-8bd9-2d289367d6ff -l afternoon,rainy
+cocli record update f3cb29c5-4312-40b0-8fcd-1df4402824fc -l afternoon,rainy
 ```
 
 记录成功的添加了 afternoon 和 rainy 的标签
 
-![cocli-record-append-labels](./img/cocli-record-append-labels.png)
+![cocli-record-append-labels](./img/2-cocli-record-append-labels.png)
 
 ### 替换记录的已有标签
 
