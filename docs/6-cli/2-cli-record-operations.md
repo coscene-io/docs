@@ -86,7 +86,7 @@ cocli record download acd706d9-0879-4d88-8550-e69bb8ff8f6b .
 ### 给记录添加标签
 
 ```
-cocli record update f3cb29c5-4312-40b0-8fcd-1df4402824fc -l afternoon,rainy
+cocli record update f3cb29c5-4312-40b0-8fcd-1df4402824fc --append-labels afternoon,rainy
 ```
 
 记录成功的添加了 afternoon 和 rainy 的标签
@@ -96,22 +96,22 @@ cocli record update f3cb29c5-4312-40b0-8fcd-1df4402824fc -l afternoon,rainy
 ### 替换记录的已有标签
 
 ```
-cocli record update d253523f-5a8a-40dd-8bd9-2d289367d6ff --update-labels sunny,morning
+cocli record update f3cb29c5-4312-40b0-8fcd-1df4402824fc --update-labels sunny,morning
 ```
 
 可以看到现在的记录的标签已经从 afternoon, rainy 更新成了 sunny, morning
 
-![cocli-record-update-labels](./img/cocli-record-update-labels.png)
+![cocli-record-update-labels](./img/2-cocli-record-update-labels.png)
 
 ### 删除指定标签
 
 ```
-cocli record update d253523f-5a8a-40dd-8bd9-2d289367d6ff --delete-labels sunny
+cocli record update f3cb29c5-4312-40b0-8fcd-1df4402824fc --delete-labels sunny
 ```
 
 通过命令行删除 `sunny` 标签，可以看到现在只剩下了 `morning` 的标签了
 
-![cocli-record-delete-labels-list](./img/cocli-record-delete-labels-list.png)
+![cocli-record-delete-labels-list](./img/2-cocli-record-delete-labels-list.png)
 
 ## 更新记录的原信息
 
@@ -120,7 +120,9 @@ cocli record update d253523f-5a8a-40dd-8bd9-2d289367d6ff --delete-labels sunny
 
 ```bash
 RECORD_ID=$(cocli record list | grep 'empty-record' | head -n1 | cut -d ' ' -f1)
-cocli record update $RECORD_ID -t "Fancy Empty Record Title" -d "Do you really need a description for an empty record"
+
+cocli record update $RECORD_ID -t "Fancy Empty Record Title" \n
+  -d "Do you really need a description for an empty record"
 ```
 
-![update-record-title-and-description](./img/update-record-title-and-description.png)
+![update-record-title-and-description](./img/2-update-record-title-and-description.png)
