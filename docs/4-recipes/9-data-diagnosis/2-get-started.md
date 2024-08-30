@@ -30,21 +30,21 @@ sidebar_position: 2
 
 2. 在项目中，进入「数采&诊断规则」分页，点击【添加规则组】
 
-   ![data-2-1](../img/data-2-1.png)
+   ![data-2-1](../img/9-add-rule-set.png)
 
 3. 更改规则组名称后，点击【添加空白规则】
 
-   ![data-2-2](../img/data-2-2.png)
+   ![data-2-2](../img/9-add-rule.png)
 
 4. 更改规则名称，复制规则 `"error 1" in log` 到触发条件，勾选触发操作中的生成记录和创建一刻，更改一刻名称为 `触发了 error 1`，点击【创建】
 
    ![pro-rule-base-rule](../img/pro-rule-base-rule-1.png)
-   
+
    ![pro-rule-base-rule](../img/pro-rule-base-rule-2.png)
 
 5. 回到「数采&诊断规则」页面，选择刚刚添加的规则组，点击启用按钮
 
-   ![data-2-3](../img/data-2-3.png)
+   ![data-2-3](../img/9-enable-rule-set.png)
 
    \*更多规则条件样式参见[规则的结构与示例](./3-add-rule.md#常用规则条件示例)
 
@@ -141,17 +141,15 @@ sidebar_position: 2
 
 <br />
 
-
 ## 将设备添加到项目里
 
 1.  在项目的「项目设备」分页，点击【添加设备】
 
     ![pro-device-add](../img/pro-device-add-1.png)
 
-2. 勾选需要添加的设备，点击【确定】
+2.  勾选需要添加的设备，点击【确定】
 
     ![pro-device-add-2](../img/pro-device-add-2.png)
-
 
 ## 在设备监听目录中写入文件
 

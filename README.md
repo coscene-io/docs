@@ -1,5 +1,3 @@
-# 【刻行时空】文档网站
-
 <img src="./logo.jpg" alt="coScene Logo" width="250"/>
 
 ## 准备工作
