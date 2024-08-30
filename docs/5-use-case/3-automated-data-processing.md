@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # 自动化处理数据
@@ -7,13 +7,150 @@ sidebar_position: 2
 
 AI 时代大量的数据，带来无限可能的的同时，也给我们带来了更多数据本身和数据应用的挑战。在实际的生产过程中，AI 工程师们需要对数据进行清洗、预处理、训练、测试、部署等一系列的工作，这些工作需要大量的人力和时间，而且往往是重复的。刻行时空平台提供的自动化系统，使用户不再需要手动重复处理数据，只需要构建好数据处理的流程，即可直接调用并输出结果，极大减少了人为操作带来的误差，同时提高了数据处理速度和准确性。
 
-
-1. 配置规则
-2. 配置数据采集设备信息
-3. 注册设备
-4. 以及查看实例
+本文以「视频抽帧」为例，讲述如何实现当 MP4 文件上传后，自动完成抽取图片的流程
 
 ## 准备镜像
+在本机启动 Docker 后，开始准备镜像。若未安装 Docker，请参考对应的[安装文档](https://docs.docker.com/engine/install/)
+
+## 准备镜像文件
+1. 在本机创建一个文件夹，如：`coScene-auto`
+2. 在文件夹中创建 `dockerfile` 文件，文件名为：`dockerfile`，内容如下：
+```
+# 使用 Python 官方镜像作为基础镜像
+FROM python:3.9
+
+# 设置工作目录
+WORKDIR /app
+
+# 将当前目录下的文件复制到镜像的 /app 目录中
+COPY . /app
+
+# 安装所需的依赖库
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6 -y
+RUN pip install opencv-python
+
+# 设置环境变量
+ENV INPUT_FOLDER=/cos/files
+ENV OUTPUT_FOLDER=/cos/outputs
+
+# 运行 Python 脚本
+CMD ["python", "script.py"]
+```
+3. 在文件夹中创建 `.py` 文件，文件名为：`script.py`，内容如下：
+```
+import cv2
+import os
+
+def extract_frames(input_folder, output_folder):
+    # 创建输出目录
+    os.makedirs(output_folder, exist_ok=True)
+
+    # 遍历输入文件夹中的所有文件
+    for file_name in os.listdir(input_folder):
+        # 检查文件是否是 MP4 格式
+        if file_name.endswith(".mp4"):
+            # 构造输入文件路径
+            input_file = os.path.join(input_folder, file_name)
+
+            # 打开视频文件
+            video = cv2.VideoCapture(input_file)
+
+            # 获取视频的帧速率
+            fps = video.get(cv2.CAP_PROP_FPS)
+
+            # 初始化帧计数器
+            frame_count = 0
+
+            # 循环读取视频帧
+            while True:
+                # 读取一帧
+                success, frame = video.read()
+
+                # 检查是否成功读取帧
+                if not success:
+                    break
+
+                # 构造输出文件名
+                output_file = os.path.join(output_folder, f"{file_name}_{frame_count}.jpg")
+
+                # 保存帧为图像文件
+                cv2.imwrite(output_file, frame)
+
+                # 增加帧计数器
+                frame_count += 1
+
+            # 释放视频对象
+            video.release()
+
+            print(f"成功提取 {frame_count} 帧图片，保存到 {output_folder}")
+
+# 输入和输出文件夹路径
+input_folder = "/cos/files"
+output_folder = "/cos/outputs"
+
+# 调用函数提取帧图片
+extract_frames(input_folder, output_folder)
+```
+## 登录镜像仓库
+1. 登录刻行时空平台，在右上角用户设置下拉面板中，访问【个人设置】，在【个人设置】页面中，访问【安全】页面。
+2. 点击生成访问命令，获取登录刻行镜像仓库的命令和密码
+
+3. 在本机命令行中，输入用户名与密码，登录刻行时空的镜像仓库
+
+4. 复制推送镜像命令中的镜像仓库地址，如下图为：cr.coscene.cn/coscene
+
+## 构建镜像
+1. 打开本机终端，进入之前创建的 coScene-auto 文件夹
+2. 执行以下命令，构建镜像
+```
+docker build -f dockerfile -t cr.coscene.cn/coscene/frame:latest .
+```
+注意：
+- `cr.coscene.cn/coscene` 为镜像仓库地址，需用实际的地址替换，获取方式见「准备镜像-登录镜像仓库-4」
+- `frame:latest` 为镜像名称:镜像版本，可自定义命名   
+
+## 推送镜像
+1. 在本机终端执行以下命令，将镜像推送到镜像仓库
+```
+docker push cr.coscene.cn/coscene/frame:latest
+```
+注意：
+- `cr.coscene.cn/coscene` 为镜像仓库地址，需用实际的地址替换，获取方式见「准备镜像-登录镜像仓库-4」
+- `frame:latest` 为镜像名称:镜像版本，可自定义命名
+
+2. 推送成功后，在「我的 - 组织管理 - 镜像」页面中，可以查看已推送的镜像
+
+## 创建动作
+1. 点击项目名称，进入项目
+2. 进入项目-自动化-动作页面，点击【创建动作】
+3. 在创建动作页面，输入以下内容后，点击【保存】
+- 动作名称：`extract-images`
+- 镜像：`cr.coscene.cn/coscene/frame:latest`，获取自「准备镜像-推送镜像」
+- 命令：`python`、`script.py`
+
+## 设置触发器
+1. 进入项目-自动化-触发器页面，点击【创建触发器】
+2. 在创建触发器页面，输入以下内容后，点击【保存】
+- 触发器名称：`auto-extract-images`
+- 关联动作：选择项目动作-`extract-images`
+- 触发条件：在文件通配符模式中输入`*.mp4`，即当有`.mp4`为后缀的文件上传时，自动调用关联动作
+
+## 创建记录并上传文件
+1. 进入项目-记录页面，点击【创建记录】
+2. 点击记录名称进入记录后，上传 MP4 文件，或下载示例文件 [coScene-auto.mp4](https://daiincoscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/5-use-case/coScene-auto.mp4)
+
+
+## 查看结果
+1. 当 MP4 文件上传后，自动触发`extract-images`动作，在记录的「调用历史」中可查看动作的执行情况
+2. 点击调用序号，在调用历史的输出中，可查看提取出的图片信息
+
+## 总结
+当 MP4 文件上传到记录中，自动完成抽取图片的流程之后，即可根据需要将数据另存到新的记录，并进行下一步的处理。更多操作参见：[自动化](https://docs.coscene.cn/docs/category/%E8%87%AA%E5%8A%A8%E5%8C%96/)、[镜像](https://docs.coscene.cn/docs/category/%E9%95%9C%E5%83%8F/)
+
+
+
+
+
 
 首先，登陆刻行平台并创建项目：
 
@@ -37,132 +174,3 @@ AI 时代大量的数据，带来无限可能的的同时，也给我们带来�
    规则是规则组中的单个规则，用于定义触发数据采集与诊断的条件，以及触发后的操作。
    :::
 
-2. 填写模版化信息（可选）：当规则想用于创建多个高度相似但部分信息不同的规则场景，可以将信息不同的部分参数化，进而使用模版化实现自动生成多条规则的操作。例如，当有 「error 1」 和 「error 2」 时，可在平台上创建如下的模板化规则。
-
-![parameter-group](./img/parameter-group.png)
-
-3. 添加触发条件：可添加多个触发条件，只要有一个条件满足即可触发操作。单引号包围的信息是在 log 中出现的信息。 以图片中为例，log 中包含 'error 1' 的信息都会被自动采集并上传到平台。
-
-![triggering-conditions](./img/triggering-conditions.png)
-
-4. 选择触发操作：生成记录和创建一刻。前者对设备端生效，在设备端触发规则后会生成记录并上传文件；后者对记录生效，在记录中触发规则后，在触发时间点创建一刻。
-
-![trigger-action](./img/trigger-action.png)
-
-5. 点击保存完成对规则参数信息的配置，回到数采与诊断规则页面通过按钮启用刚刚添加的规则组。
-
-![enable-rule-group](./img/enable-rule-group.png)
-
-## 添加数据诊断触发器
-
-添加了规则之后，满足触发条件的数据会自动进行上传。但是需要完成自动诊断还需要两个步骤。第一是配置数据处理逻辑，第二是配置触发条件。数据处理逻辑在刻行的平台中被定义为动作，触发条件则被定义为触发器。当前刻行平台中已经预定义了一些系统动作，通过点击记录详情中的“调用动作” 可以手动调用一个动作。 触发器的配置中可绑定动作来自动化完成数据诊断。 在此次样例的演示中，我们不会手动触发动作，会将动作绑定在触发器中，由触发器自动触发。
-
-![trigger](./img/trigger.png)
-
-当触发器满足调用动作的条件的时候，会自动进行诊断。按照以下步骤可完成触发器的创建：
-
-1. 在左侧栏中的自动化-触发器中创建触发器
-
-![create-trigger](./img/create-trigger.png)
-
-2. 输入触发器的名称，触发条件和关联动作。
-   例如，我们将触发器命名为数据诊断，文件通配符模式为 \*.log（格式使用 Glob，详情可以参考附录链接），从系统动作下拉框中选择数据诊断，点击创建触发器。
-
-![trigger-create-details](./img/trigger-create-details.png)
-
-## 配置数采信息
-
-配置完规则和触发器之后，还需要配置数采设备信息去定义需要监控的设备日志所在目录、设备信息文件的存放目录等信息。
-
-1. 点击右上角的用户头像，在下拉栏中选择组织管理，进入设备详情页后点击编辑数采规则。
-
-![devices](./img/devices.png)
-
-2. 清空规则中的默认内容后，复制下述规则，粘贴在编辑器中后点击保存编辑，您就完成了数采信息的配置了。
-
-```yaml
-mod:
-  name: 'default' # mod 名称，默认 default，定制版请联系刻行产品了解详细信息
-  conf:
-    enabled: true # 是否启用，默认为 true
-    base_dir: '/root/logs/' # 数据监听目录
-
-event_code: # 错误码功能
-  enabled: false # 错误码白名单配置，默认 False
-```
-
-## 准入设备&添加设备
-
-在配置完规则和数采信息，我们需要将您需要实现自动化的设备添加到刻行平台中。
-以 Linux 设备为例
-
-1. 打开设备终端，执行以下命令并输入密码，进入 root
-
-```yaml
-sudo su
-```
-
-2. 在设备终端，创建文件监听目录 /root/logs
-
-```yaml
-mkdir /root/logs
-```
-
-3. 在组织管理-设备页面中选择添加设备
-4. 在弹窗中选择从设备端添加，复制安装命令，以 root 账户粘贴到设备终端
-
-![add-device](./img/add-device.png)
-
-5. 当在组织管理页面的设备看到该设备的时候（需耗时 1 分钟左右），该设备的刻行的 Agent 已经安装成功。对于该设备，通过刻行的前端页面可以执行两个操作： 准入数采，准入远程。
-
-![access-data-collection](./img/access-data-collection.png)
-
-6. 点击进入项目设备页面，点击【添加设备】，找到需要添加的设备，将其添加到项目设备中。
-
-![device-project](./img/device-project.png)
-
-## 写入文件
-
-当配置好规则和设备之后，您可以在设备监听目录中写入文件。
-
-1. 确认设备已获取到数采与诊断规则，当日志中出现如下字段时，表示已成功获取到规则。
-
-![log-info](./img/log-info.png)
-
-2. 下载设备的示例 log 文件到设备 dev-A，先通过刻行平台网页 SSH 的能力，远程登录设备
-
-![web-ssh](./img/web-ssh.png)
-
-3. 远程登录设备之后，执行以下命令
-
-```yaml
-cd /roots/logs
-wget https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/data-diagnosis/dev-A.log.zip
-unzip dev-A.log.zip
-```
-
-执行成功以后，会有以下结果
-
-![cli-results](./img/cli-results.png)
-
-示例 log 文件详情：
-
-![log-doc](./img/log-doc.png)
-
-## 查看创建的记录和一刻
-
-1. 当完成上述操作后，您可以前往先前创建的项目，点击左侧边栏中的记录，查看自动创建的记录。
-
-![check-record-and-moment](./img/check-record-and-moment.png)
-
-2. 查看在触发时间点创建的一刻
-
-![check-the-moment](./img/check-the-moment.png)
-
-## 附录
-
-1. Glob 说明：https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/
-
-## 总结
-
-按照以上步骤，我们就完成了对名称为 dev-A 的设备，模拟当设备出现故障时，平台会按照定义的规则自动采集数据并进行诊断，提升其可观测性。
