@@ -147,6 +147,7 @@ docker push cr.coscene.cn/coscene/frame:latest
 ## 总结
 当 MP4 文件上传到记录中，自动完成抽取图片的流程之后，即可根据需要将数据另存到新的记录，并进行下一步的处理。更多操作参见：[自动化](https://docs.coscene.cn/docs/category/%E8%87%AA%E5%8A%A8%E5%8C%96/)、[镜像](https://docs.coscene.cn/docs/category/%E9%95%9C%E5%83%8F/)
 
+![login-page](./img/3-summary.PNG)
 
 
 
@@ -157,7 +158,6 @@ docker push cr.coscene.cn/coscene/frame:latest
 1. 通过浏览器访问 https://www.coscene.cn/
    点击右上角的快速登陆进入登陆界面。选择登陆方式进入刻行平台。若要使用邮箱登陆请联系 contact@coscene.io。
 
-![login-page](./img/login-page.PNG)
 
 3. 在平台创建一个项目，项目作为数据管理单元，负责数据的存储、管理、隔离及权限控制。
 
