@@ -1,8 +1,6 @@
-# 刻行时空文档网站
+# 【刻行时空】文档网站
 
 <img src="./logo.jpg" alt="coScene Logo" width="250"/>
-
-[https://docs.coscene.cn/](https://docs.coscene.cn/) 的源代码。使用 [docusaurus](https://github.com/facebook/docusaurus) 生成。
 
 ## 准备工作
 
@@ -51,10 +49,6 @@
 
 [GitHub Issue #8123](https://github.com/facebook/docusaurus/pull/8123)
 
---
-
-Source code of [https://docs.coscene.cn/](https://docs.coscene.cn/). Generated with [docusaurus](https://github.com/facebook/docusaurus).
-
 ## Prerequisite
 
 - [Node.js >= 20](https://nodejs.org/)
@@ -67,19 +61,18 @@ Source code of [https://docs.coscene.cn/](https://docs.coscene.cn/). Generated w
 
 ### Try a local prod build
 
-```bash
-pnpm build && pnpm serve
-```
+`pnpm build && pnpm serve`
 
 ## Deploy
 
-Push the changes to the `master` branch.
+Push the changes to the `master` branch. And the GitHub action will automatically try to build and deploy
+the content to https://docs.coscene.cn
 
 See the [action file](.github/workflows/deploy-to-oss.yml) for details.
 
 ## Contact
 
-If you have anything, you can open an issue or reach out to contact@coscene.io
+If you have any questions, fill free to open an issue or reach out to contact@coscene.io
 
 ## How to contribute
 
@@ -91,7 +84,7 @@ Other pages, templates, and components, please refer to [docusaurus's i18n guide
 
 #### Note:
 
-The docusaurus-plugin-content-docs plugin always divides its content by versions. The data in ./docs folder will be translated in the current subfolder and current.json file.
+The `docusaurus-plugin-content-docs` plugin always divides its content by versions. The data in `./docs` folder will be translated in the current subfolder and `current.json` file.
 
 ### Everything else
 
