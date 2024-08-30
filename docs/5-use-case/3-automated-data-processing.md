@@ -15,7 +15,7 @@ AI 时代大量的数据，带来无限可能的的同时，也给我们带来�
 ## 准备镜像文件
 1. 在本机创建一个文件夹，如：`coScene-auto`
 2. 在文件夹中创建 `dockerfile` 文件，文件名为：`dockerfile`，内容如下：
-```
+```yaml
 # 使用 Python 官方镜像作为基础镜像
 FROM python:3.9
 
@@ -37,7 +37,7 @@ ENV OUTPUT_FOLDER=/cos/outputs
 CMD ["python", "script.py"]
 ```
 3. 在文件夹中创建 `.py` 文件，文件名为：`script.py`，内容如下：
-```
+```yaml
 import cv2
 import os
 
@@ -104,7 +104,7 @@ extract_frames(input_folder, output_folder)
 ## 构建镜像
 1. 打开本机终端，进入之前创建的 `coScene-auto` 文件夹
 2. 执行以下命令，构建镜像
-```
+```yaml
 docker build -f dockerfile -t cr.coscene.cn/coscene/frame:latest .
 ```
 注意：
@@ -113,7 +113,7 @@ docker build -f dockerfile -t cr.coscene.cn/coscene/frame:latest .
 
 ## 推送镜像
 1. 在本机终端执行以下命令，将镜像推送到镜像仓库
-```
+```yaml
 docker push cr.coscene.cn/coscene/frame:latest
 ```
 注意：
