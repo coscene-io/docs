@@ -62,18 +62,18 @@ sidebar_position: 2
 
 数据处理逻辑在刻行的平台中被定义为动作，触发条件则被定义为触发器。当前平台中已经预定义了一些系统动作，通过点击记录详情中的“调用动作” 可以手动调用一个动作。 触发器的配置中可绑定动作来自动化完成数据诊断。 在此次样例的演示中，我们不会手动触发动作，会将动作绑定在触发器中，由触发器自动触发。
 
-![trigger](./img/trigger.png)
+![trigger](./img/5-2-trigger.png)
 
 当触发器满足调用动作的条件的时候，会自动进行诊断。按照以下步骤可完成触发器的创建：
 
 1. 在左侧栏中的自动化-触发器中创建触发器
 
-![create-trigger](./img/create-trigger.png)
+![create-trigger](./img/5-2-create-trigger.png)
 
 2. 输入触发器的名称，触发条件和关联动作。
    例如，我们将触发器命名为数据诊断，文件通配符模式为 \*.log（格式使用 Glob，详情可以参考附录链接），从系统动作下拉框中选择数据诊断，点击创建触发器。
 
-![trigger-create-details](./img/trigger-create-details.png)
+![trigger-create-details](./img/5-2-trigger-create-details.png)
 
 ## 配置数采信息
 
@@ -81,7 +81,7 @@ sidebar_position: 2
 
 1. 点击右上角的用户头像，在下拉栏中选择组织管理，进入设备详情页后点击编辑数采规则。
 
-![devices](./img/devices.png)
+![devices](./img/5-2-devices.png)
 
 2. 清空规则中的默认内容后，复制下述规则，粘贴在编辑器中后点击保存编辑，您就完成了数采信息的配置了。
 
@@ -120,11 +120,11 @@ mkdir /root/logs
 
 5. 当在组织管理页面的设备看到该设备的时候（需耗时 1 分钟左右），该设备的刻行的 Agent 已经安装成功。对于该设备，通过刻行的前端页面可以执行两个操作： 准入数采，准入远程。
 
-![access-data-collection](./img/access-data-collection.png)
+![access-data-collection](./img/5-2-access-data-collection.png)
 
 6. 点击进入项目设备页面，点击【添加设备】，找到需要添加的设备，将其添加到项目设备中。
 
-![device-project](./img/device-project.png)
+![device-project](./img/5-2-device-project.png)
 
 ## 写入文件
 
@@ -132,11 +132,11 @@ mkdir /root/logs
 
 1. 确认设备已获取到数采与诊断规则，当日志中出现如下字段时，表示已成功获取到规则。
 
-![log-info](./img/log-info.png)
+![log-info](./img/5-2-log-info.png)
 
 2. 下载设备的示例 log 文件到设备 dev-A，先通过刻行平台网页 SSH 的能力，远程登录设备
 
-![web-ssh](./img/web-ssh.png)
+![web-ssh](./img/5-2-web-ssh.png)
 
 3. 远程登录设备之后，执行以下命令
 
@@ -148,21 +148,21 @@ unzip dev-A.log.zip
 
 执行成功以后，会有以下结果
 
-![cli-results](./img/cli-results.png)
+![cli-results](./img/5-2-cli-results.png)
 
 示例 log 文件详情：
 
-![log-doc](./img/log-doc.png)
+![log-doc](./img/5-2-log-doc.png)
 
 ## 查看创建的记录和一刻
 
 1. 当完成上述操作后，您可以前往先前创建的项目，点击左侧边栏中的记录，查看自动创建的记录。
 
-![check-record-and-moment](./img/check-record-and-moment.png)
+![check-record-and-moment](./img/5-2-check-record-and-moment.png)
 
 2. 查看在触发时间点创建的一刻
 
-![check-the-moment](./img/check-the-moment.png)
+![check-the-moment](./img/5-2-check-the-moment.png)
 
 ## 附录
 
