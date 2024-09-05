@@ -2,36 +2,52 @@
 sidebar_position: 4
 ---
 
-# 创建你的第一条"一刻“
+# 创建你的第一条“一刻”
 
-创建记录并上传 BAG 文件后，就可以在可视化页面播放了。在播放 BAG 时，能够创建关键帧”一刻“。”一刻“是 coScene 分析问题的基本方式，可以是记录中的标签、故障或有趣的画面。您可以在可视化页面内创建，编辑并分享”一刻“。
+在可视化界面播放数据时，你可以创建"一刻"来快速标记多模态数据流中的特定时间段。这些"一刻"可能包含重要的数据变化、异常现象或任何你认为值得关注的内容。通过创建"一刻"，你可以方便地回顾、分析和分享这些信息，大大提高数据处理的效率和准确性。
 
-## 1. 创建”一刻“
+## 创建"一刻"
 
-在可视化页面，点击播放进度条上方的 create moment 按钮，进入创建”一刻“的流程，即可对 bag 文件做标记。
+1. 在可视化页面的左下角点击【创建一刻】，或使用快捷键【Alt + 1】（Mac 用户使用 Option + 1）来标记一刻的起点。
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/2-get-started/create-moment.mp4" controls="controls" width="700" height="400"></video>
+![创建一刻起点](./img2/2-4-create-moment-start.png)
 
-<br />
+2. 再次点击以标记一刻的终点。此时会自动弹出创建一刻的窗口，蓝色区域表示一刻的时间范围。
 
-## 2. 查看”一刻“
+![创建一刻终点](./img2/2-4-create-moment-end.png)
 
-在时间轴上，可以看到所有标记的”一刻“；在「Moment」分页中，可以查看已创建的”一刻“详情。点击”一刻“，播放进度自动跳转到对应时间点。
+3. 填写相关信息后，点击"创建一刻"即可完成。
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/2-get-started/click-moment.mp4" controls="controls" width="700" height="400"></video>
+## 管理"一刻"
 
-<br />
+在左侧的一刻面板中，你可以对已创建的"一刻"进行编辑、分享和删除操作。
 
-## 3. 分享”一刻“链接
+### 编辑
 
-点击【复制链接】图标，即可一键复制”一刻“链接，分享给协作伙伴。获得该链接的用户，即可通过链接，直接跳转到可视化页面中该”一刻“所在的画面帧。
+点击编辑按钮可修改当前一刻的信息。
 
-<video src="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/2-get-started/copy-moment-link.mp4" controls="controls" width="700" height="400"></video>
+![编辑一刻](./img2/2-4-edit-moment.png)
 
-<br />
+### 分享
 
-## 4. 查看记录中的所有”一刻“
+点击分享按钮可将当前一刻的链接复制到剪贴板。
 
-在「记录详情页」的「关联事件」中，展示记录中所有的 bag 中标记的所有事件：
+![分享一刻](./img2/2-4-share-moment.png)
 
-![related-event-1](img/related-event-1.png)
+### 删除
+
+点击删除按钮可删除选中的一刻。
+
+![删除一刻](./img2/2-4-delete-moment-confirm.png)
+
+## 查看"一刻"
+
+你可以通过以下两种方式查看已创建的"一刻"：
+
+1. 在可视化页面左侧的一刻面板中查看当前记录的所有一刻。
+
+![查看一刻面板](./img2/2-4-view-moment-panel.png)
+
+2. 在记录详情页面的"一刻"标签页中查看该记录的所有一刻。
+
+![查看一刻详情](./img2/2-4-view-record-moment-list.png)
