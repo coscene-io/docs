@@ -12,7 +12,7 @@ sidebar_position: 3
 
 在记录表格页，点击【创建记录】按钮手动创建一条记录。其他创建方式可参阅[创建记录](../4-recipes/4-record/1-create-record.md)
 
-![create-record-modal](./img2/2-3-create-record-modal.png)
+![create-record-modal](./img/2-3-create-record-modal.png)
 
 ## 上传文件
 
@@ -20,7 +20,7 @@ sidebar_position: 3
 
 点击记录名称进入记录详情，点击【上传】按钮，选择一种方式上传文件。
 
-![select-upload-means](./img2/2-3-select-upload-means.png)
+![select-upload-means](./img/2-3-select-upload-means.png)
 
 在文件上传成功之后，我们就可以在文件列表中看到刚刚上传的文件了。
 
@@ -28,7 +28,7 @@ sidebar_position: 3
 
 对于文本文件、Excel表格、PDF文档、图片等常规文件类型，平台提供了默认的文件预览方式。这种方式直观且易于理解，让您可以快速浏览文件内容。
 
-![preview-common-files](./img2/2-3-preview-common-files.png)
+![preview-common-files](./img/2-3-preview-common-files.png)
 
 #### 多模态数据预览
 
@@ -40,8 +40,8 @@ sidebar_position: 3
 
 在记录中，点击播放记录进入可视化播放界面。
 
-![select-play-record](./img2/2-3-select-play-record.png)
+![select-play-record](./img/2-3-select-play-record.png)
 
-![view-3d](./img2/2-3-view-3d.png)
+![view-3d](./img/2-3-view-3d.png)
 
 有关可视化的更多使用教程详情，请参考[数据可视化](../4-recipes/6-viz/1-about-viz.md)

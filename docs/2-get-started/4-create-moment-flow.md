@@ -10,11 +10,11 @@ sidebar_position: 4
 
 1. 在可视化页面的左下角点击【创建一刻】，或使用快捷键【Alt + 1】（Mac 用户使用 Option + 1）来标记一刻的起点。
 
-![创建一刻起点](./img2/2-4-create-moment-start.png)
+![创建一刻起点](./img/2-4-create-moment-start.png)
 
 2. 再次点击以标记一刻的终点。此时会自动弹出创建一刻的窗口，蓝色区域表示一刻的时间范围。
 
-![创建一刻终点](./img2/2-4-create-moment-end.png)
+![创建一刻终点](./img/2-4-create-moment-end.png)
 
 3. 填写相关信息后，点击"创建一刻"即可完成。
 
@@ -26,19 +26,19 @@ sidebar_position: 4
 
 点击编辑按钮可修改当前一刻的信息。
 
-![编辑一刻](./img2/2-4-edit-moment.png)
+![编辑一刻](./img/2-4-edit-moment.png)
 
 ### 分享
 
 点击分享按钮可将当前一刻的链接复制到剪贴板。
 
-![分享一刻](./img2/2-4-share-moment.png)
+![分享一刻](./img/2-4-share-moment.png)
 
 ### 删除
 
 点击删除按钮可删除选中的一刻。
 
-![删除一刻](./img2/2-4-delete-moment-confirm.png)
+![删除一刻](./img/2-4-delete-moment-confirm.png)
 
 ## 查看"一刻"
 
@@ -46,8 +46,8 @@ sidebar_position: 4
 
 1. 在可视化页面左侧的一刻面板中查看当前记录的所有一刻。
 
-![查看一刻面板](./img2/2-4-view-moment-panel.png)
+![查看一刻面板](./img/2-4-view-moment-panel.png)
 
 2. 在记录详情页面的"一刻"标签页中查看该记录的所有一刻。
 
-![查看一刻详情](./img2/2-4-view-record-moment-list.png)
+![查看一刻详情](./img/2-4-view-record-moment-list.png)
