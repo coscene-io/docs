@@ -159,7 +159,7 @@ Using the following scenario as an example, let's setup your automatic data coll
 
 4. Log Data Upload
 
-   - When the following entry appears in the logs, it indicates that the log data is being uploaded to the Coscene platform.
+   - When the following entry appears in the logs, it indicates that the log data is being uploaded to the coScene platform.
 
      ![rule-log-2](../img/rule-log-2.png)
 
