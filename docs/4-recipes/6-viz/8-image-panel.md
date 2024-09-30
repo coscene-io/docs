@@ -31,7 +31,7 @@ sidebar_position: 8
 - 渲染统计：在面板角落显示渲染性能统计信息
 - 背景：图像背后的背景颜色
 - 标签比例：文字标签的大小
-- 忽略 COLLADA 的 \<up_axis\>：在 COLLADA 文件中忽略 <up_axis> 标签
+- 忽略 COLLADA 的 \<up_axis\>：在 COLLADA 文件中忽略 \<up_axis\> 标签
 - 网格上轴：加载没有方向信息的网格模型（STL、OBJ 格式）时"向上"的方向（"Y 向上"、"Z 向上"）
 
 ### 图像注释
