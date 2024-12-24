@@ -20,7 +20,7 @@ sidebar_position: 5
 注：
 
 - 时间戳为自 1970/01/01 00:00:00 经历的秒数，float 类型
-- 时间戳的解析将尽力完成，相关信息见[支持的时间戳格式](https://docs.coscene.cn/docs/recipes/data-diagnosis/rule-format#%E8%A7%84%E5%88%99%E7%9A%84%E4%BD%BF%E7%94%A8%E5%89%8D%E6%8F%90)
+- 时间戳的解析将尽力完成，相关信息见[支持的时间戳格式](https://docs.coscene.cn/docs/recipes/data-diagnosis/add-rule#%E4%BD%BF%E7%94%A8%E5%89%8D%E6%8F%90)
 - `msg` 的结构取决于输入数据的类型，比如一个 [rosgraph_msgs/Log](https://docs.ros.org/en/melodic/api/rosgraph_msgs/html/msg/Log.html)
   类型的`msg`，它的结构就会如定义所示，下面是一个例子：
   ```yaml
