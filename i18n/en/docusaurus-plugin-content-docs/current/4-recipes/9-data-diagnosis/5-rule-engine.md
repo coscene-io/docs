@@ -20,7 +20,7 @@ Depending on the file type being processed, the coScene agent will populate the 
 Note:
 
 - Timestamp is the number of seconds elapsed since 1970/01/01 00:00:00, in float type.
-- Efforts will be made to parse the timestamp, for more information see [Supported Timestamp Formats](https://docs.coscene.cn/docs/recipes/data-diagnosis/rule-format#Prerequisites-for-Using-Rules)
+- Efforts will be made to parse the timestamp, for more information see [Supported Timestamp Formats](https://docs.coscene.cn/en/docs/recipes/data-diagnosis/add-rule/#prerequisites)
 
 ## Log Data
 
