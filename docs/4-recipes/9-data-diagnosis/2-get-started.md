@@ -14,7 +14,7 @@ sidebar_position: 2
 
 1. 请准备好一台设备
 
-2. 请创建名为 auto-upload 的项目，详情参见[创建项目](https://docs.coscene.cn/docs/recipes/project)。
+2. 请创建名为 auto-upload 的项目，详情参见[创建新项目](https://docs.coscene.cn/docs/recipes/project)。
 
 3. 请确认你在 coScene 的组织角色为「管理员」。若不是管理员，请联系组织管理员更新你的组织角色。
 
