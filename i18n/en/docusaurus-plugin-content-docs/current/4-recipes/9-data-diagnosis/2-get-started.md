@@ -76,7 +76,7 @@ Using the following scenario as an example, let's setup your automatic data coll
 
 ## Authorizing Device
 
-> Using a Linux device as an example, for other device registration methods refer to [Device Registration](https://docs.coscene.cn/docs/receipts/device/device-authorize#%E8%AE%BE%E5%A4%87%E6%B3%A8%E5%86%8C)
+> Using a Linux device as an example, for other device registration methods refer to [Device Registration](https://docs.coscene.cn/en/docs/recipes/device/device-collector/#%E6%95%B0%E9%87%87%E8%A7%84%E5%88%99%E6%A0%BC%E5%BC%8F)
 
 <br />
 

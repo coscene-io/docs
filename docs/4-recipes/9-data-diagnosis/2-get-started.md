@@ -91,7 +91,7 @@ sidebar_position: 2
          - /home/log/
    ```
 
-   \*更多配置参见[数采规则格式](https://docs.coscene.cn/docs/receipts/device/device-authorize#%E6%95%B0%E9%87%87%E8%A7%84%E5%88%99%E6%A0%BC%E5%BC%8F)
+   \*更多配置参见[数采规则格式](https://docs.coscene.cn/docs/recipes/device/device-collector/#%E6%95%B0%E9%87%87%E8%A7%84%E5%88%99%E6%A0%BC%E5%BC%8F)
 
 3. 点击【保存编辑】按钮
 
