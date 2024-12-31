@@ -27,3 +27,6 @@ yarn-error.log*
 
 # oss
 .ossutil_checkpoint
+
+# generated pdf files
+/pdf
