@@ -82,7 +82,6 @@ If you have any questions, fill free to open an issue or reach out to contact@co
 ### Naming Conventions
 
 1. Name files and folders according to their order in the sidebar navigation. For example, if the "Operation Guide" module appears fourth in the sidebar, its corresponding folder would be named `4-recipes`. Similarly, for file names, if a specific content appears second within `4-recipes`, it would be named `2-projects.md`.
-
 2. For naming assets, follow the general principle of having one `img` folder for each major category. When necessary, you can create `img` folders at smaller folder levels. This approach makes it easier to adjust document positions, replace internationalized content, etc. Assets should be prefixed with the numbers of their Section and Sub-Section, followed by a name describing their specific purpose. For instance, an image in the fourth Section (Operation Guide) and third Sub-Section (Device Operation) should be named like `4-3-specific-purpose.png`, facilitating future asset management.
 
 ### i18n
@@ -100,3 +99,6 @@ The `docusaurus-plugin-content-docs` plugin always divides its content by versio
 There's a bug that prevents the translation of the nav button from showing up correctly when transitioning between chapters/categories. The official team is still working on this issue:
 
 [GitHub Issue #8123](https://github.com/facebook/docusaurus/pull/8123)
+
+123
+
