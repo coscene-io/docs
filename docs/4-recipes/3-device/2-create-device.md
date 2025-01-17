@@ -4,27 +4,34 @@ sidebar_position: 2
 
 # 添加设备
 
-> 组织成员及以上可以添加设备操作。
+<div style={
+{ 
+    padding: '12px 16px', backgroundColor: '#EFF6FF', borderRadius: '4px',  border: '1px solid', borderColor: '#2563EB', color: '#111827' }
+}>
+<p style={{margin: 0}}>🤖 仅**组织成员**及以上权限可以添加设备</p>
+</div>
 
-## 填写信息添加
+<br/>
+若你所在的组织新增了一台设备，并期望在平台中创建一台与线下真实设备相对应的设备，可以前往组织页面，通过使用 “添加设备” 的操作方式来进行创建
 
-在「组织管理」页面的「设备」分页，点击【添加设备】按钮。
+平台提供了 3 种添加一台新设备到组织中的方式：
 
-![device add from web](./img/device-add-from-web.png)
+| 添加方式            | 适用场景                                 |
+| :-----------      | :-----------                            |
+| 在设备端执行命令添加  | 适合少量设备逐一准入与平台通信              |
+| 使用离线安装包添加    | 适合设备出厂批量准入与平台通信              |
+| 填写信息添加         | 快速创建仅用于数据流转的设备，不与平台通信    |
 
-在「添加设备」弹框中，输入设备 ID 及其他信息后，点击【创建】。其中，设备 ID 为唯一标识，不可重复。
- 
-当组织管理员设置了[自定义字段](./1-device.md#自定义字段)时，用户需要按照页面提示将所有的必填项填写完整。如图示例中，门店和机型为自定义字段信息。
+下面，我们分别介绍这几种方式的区别与操作教程
 
-![device add from web](./img/device-add-from-web-2.png)
 
-点击创建后，成功添加了设备。
 
-## 从设备端添加
+## 在设备端执行命令添加
 
-和上述「填写信息添加」入口一致，点击【添加设备】之后选择【从设备端添加】。
+在「组织管理」页面的「设备」分页，点击【添加设备】按钮
 
-![device add from device](./img/device-add-from-device.png)
+![device add from device](./img/device-add-from-web.png)
+
 
 当前只支持**Linux 设备**，支持 arm64 和 x86_64 的架构，暂不支持 Windows 设备，如有相关的需求，请联系刻行团队。
 
@@ -76,3 +83,16 @@ chmod +x /root/coscene.sh
 ```shell
 journalctl -fu cos
 ```
+## 填写信息添加
+
+在「组织管理」页面的「设备」分页，点击【添加设备】按钮。
+
+![device add from web](./img/device-add-from-web.png)
+
+在「添加设备」弹框中，输入设备 ID 及其他信息后，点击【创建】。其中，设备 ID 为唯一标识，不可重复。
+ 
+当组织管理员设置了[自定义字段](./1-device.md#自定义字段)时，用户需要按照页面提示将所有的必填项填写完整。如图示例中，门店和机型为自定义字段信息。
+
+![device add from web](./img/device-add-from-web-2.png)
+
+点击创建后，成功添加了设备。
