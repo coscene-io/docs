@@ -4,95 +4,143 @@ sidebar_position: 2
 
 # 添加设备
 
+## 权限说明
 <div style={
 { 
     padding: '12px 16px', backgroundColor: '#EFF6FF', borderRadius: '4px',  border: '1px solid', borderColor: '#2563EB', color: '#111827' }
 }>
 <p style={{margin: 0}}>🤖 仅**组织成员**及以上权限可以添加设备</p>
 </div>
+<br />
+当组织引入新设备，并期望在平台中创建一台与线下真实设备相对应的设备，可前往组织设备页面进行添加。
 
-<br/>
-若你所在的组织新增了一台设备，并期望在平台中创建一台与线下真实设备相对应的设备，可以前往组织页面，通过使用 “添加设备” 的操作方式来进行创建
+## 添加方式概述
 
-平台提供了 3 种添加一台新设备到组织中的方式：
+平台提供以下 3 种添加新设备到组织的方式：
 
-| 添加方式            | 适用场景                                 |
-| :-----------      | :-----------                            |
-| 在设备端执行命令添加  | 适合少量设备逐一准入与平台通信              |
-| 使用离线安装包添加    | 适合设备出厂批量准入与平台通信              |
-| 填写信息添加         | 快速创建仅用于数据流转的设备，不与平台通信    |
-
-下面，我们分别介绍这几种方式的区别与操作教程
-
+| 添加方式       | 适用场景                  |
+| ---------- | --------------------- |
+| 在设备端执行命令添加 | 少量设备逐一准入与平台通信         |
+| 使用离线安装包添加  | 设备出厂批量准入与平台通信         |
+| 填写信息添加     | 快速创建仅用于数据流转的设备，不与平台通信 |
 
 
 ## 在设备端执行命令添加
 
-在「组织管理」页面的「设备」分页，点击【添加设备】按钮
+### 适用情况与入口
 
-![device add from device](./img/device-add-from-web.png)
+此方式适用于少量设备逐次接入平台。用户需手动通过 SSH 登录设备执行命令。入口位于「组织管理」页面的「设备」分页，点击【添加设备】按钮，进入添加设备弹窗
+
+![添加设备入口](./img/add_device_button.png)
+
+![添加设备弹窗](./img/add_device_popup.png)
+
+### 设备系统要求
+
+1. 当前仅支持 Linux 设备，涵盖 arm64 和 x86\_64 架构；
+
+2. 暂不支持 Windows 设备，如有 Windows 设备接入需求，请联系刻行团队。
 
 
-当前只支持**Linux 设备**，支持 arm64 和 x86_64 的架构，暂不支持 Windows 设备，如有相关的需求，请联系刻行团队。
 
-*当前程序需要安装 systemd service，**请使用 root 账户执行下列命令**。*
+### 设备 ID 配置
 
-### 联网安装
+1. 可填写存放设备唯一标识码（如 ID 或 SN）的位置，支持 txt、json、yaml 文本文件类型。
 
-1. 选择【通过命令行添加设备】，复制相关的命令信息
+   * 若为 txt 文件，系统读取整个文件内容。
 
-![device add from device](./img/device-add-from-device.png)
+   * 若为 json、yaml 文件，需在下方输入框填写 ID 号的变量值（如文件中含 `id:123`，则在此处填写 `id`）。
 
-2. 进入设备端，打开 shell 终端，粘贴复制的安装命令，回车执行。
+2. 组织管理员可在「组织设备 - 编辑数采规则」中预设 ID 统一存放地址配置，实现弹窗自动填充，且支持二次更改。
 
-![device install online](./img/device-install-online.png)
+   ![从设备端获取 ID 位置](./img/add_device_id_01.png)
 
-1. 安装完成之后，在设备列表页即可查看到相关的设备（依据设备的性能，启动存在一定的延时导致网页端的刷新存在一定的延迟）。此时设备已完成了注册操作，后续更多操作请查看[设备准入](./3-manage-device.md#设备准入)。
+   1. 若选择系统生成 ID，平台将生成默认 ID 号，安装后不可修改。
 
-![device-list-2](./img/device-list-2.png)
+   ![系统生成 ID](./img/add_device_id_02.png)
+   
 
-### 离线安装注册
+### 安装客户端选择
 
-下面命令假设用户位于 `/root` 目录下，如果切换目录，请注意更改相关的路径信息。
+1. **数据采集（coScout）客户端**
 
-1. 下载安装脚本 [coscene.sh](https://download.coscene.cn/coscout/coscene.sh)、离线二进制文件压缩包 [cos_binaries.tar.gz](https://download.coscene.cn/coscout/tar/latest/cos_binaries.tar.gz) 到设备端，存放位置分别为 `/root/coscene.sh`, `/root/cos_binaries.tar.gz`
-2. 在 root 目录下，给安装脚本赋予执行权限。
-```shell
-chmod +x /root/coscene.sh
-```
+   安装后设备可依据项目规则或采集任务采集数据，安装前需管理员配置数采监听目录等信息，详情参考编辑数采规则文档。
 
-3. 以离线二进制文件压缩包 `cos_binaries.tar.gz` 放置在设备的 `/root/cos_binaries.tar.gz` 位置为例
+2. **远程控制（coLink）客户端**
 
-```shell
-./coscene.sh --server_url=*** --project_slug=*** --virmesh_endpoint=*** --use_local=/root/cos_binaries.tar.gz
-```
-在 root 目录执行上述命令进行离线安装操作，其中，参数 `--server_url` ，`--project_slug` ，`--virmesh_endpoint`请参考网页端生成结果获取，参数 `--use_local` 为离线二进制文件压缩包的路径。如果修改了二进制文件的目录位置，请修改 `--use_local` 参数，避免出现安装出现错误。
+   安装后可实现网页 SSH、结合 [coBridge](https://github.com/coscene-io/coBridge) 实时可视化设备，功能详情参阅远程控制设备[文档](https://docs.coscene.cn/docs/recipes/device/device-remote-control)；
 
-### 设备信息
+3. **初始化客户端配置**
 
-当设备端安装之后，程序会默认在 `/root/.config/cos/sn.txt` 文件中写入一个 UUID 的 Hex 值作为当前机器的 ID 标识，绑定云端记录的设备 ID。使用设备的网络名称 + ID 的组合作为设备名称的默认值。
+   若设备更换上位机或 ID 后需重新安装注册，勾选【初始化客户端配置】；仅升级客户端版本则取消勾选，更多使用方法参阅换机、升级、卸载流程指南
+   
+   ![安装客户端选择](./img/install_coscout_colink.png)
 
- > `/root/.config/cos/sn.txt` 作为机器端记录 ID 的唯一文件，请勿删除。否则会导致无法匹配云端记录，导致设备重新注册。
 
-![device-list-2](./img/device-list-2.png)
+### 执行安装命令
 
-### 查看日志信息
+1. 完成设备 ID 及安装客户端选项配置后，系统生成安装命令。用户复制命令至设备端 shell 终端执行。
 
-在设备端执行以下命令，查看数据采集程序的日志信息。
+   ![系统生成安装命令](./img/install_cmd.png)
 
-```shell
-journalctl -fu cos
-```
+2. 设备端出现 `Installation completed successfully 🎉` 提示即安装成功。受设备性能影响，安装完成后设备列表页显示可能存在延迟，此时设备已完成注册，后续操作参考设备准入部分
+
+   ![设备端安装成功](./img/install_successfully.png)
+
+   ![管理员到平台中准入设备](./img/access_device.png)
+
+
+
+## 使用离线安装包添加
+
+### 适用情况与相关设置
+
+1. 此方式是相当于把数据采集、远程控制的安装包打包到设备软件版本更新包里，并且在安装包启动脚本里可以预先写好要执行的脚本赋权命令和安装命令，适合大规模的准入，比如设备出厂设置就自带了这两个客户端；
+
+2. 此添加方式中的「设备系统」、「设备 ID 配置」、「安装客户端选择」与在设备端执行命令添加的方式相同，可参考对应部分教程。以下重点介绍安装方式区别
+
+### 安装步骤
+
+1. 假设用户位于 `/root` 目录下（切换目录时需注意更改路径），下载安装脚本 [coscene.sh](https://download.coscene.cn/coscout/coscene.sh)、离线二进制文件压缩包 [cos\_binaries.tar.gz](https://download.coscene.cn/coscout/tar/latest/cos_binaries.tar.gz) 至设备端，存放位置分别为 `/root/coscene.sh`, `/root/cos_binaries.tar.gz`。
+
+2. 在 root 目录下，给安装脚本赋予执行权限：
+
+   ```plain&#x20;text
+   chmod +x /root/coscene.sh
+   ```
+
+3. 执行安装命令（以 `cos_binaries.tar.gz` 位于 `/root/cos_binaries.tar.gz` 为例）：
+
+   ```plain&#x20;text
+   ./coscene.sh --server_url=*** --project_slug=*** --virmesh_endpoint=*** --use_local=/root/cos_binaries.tar.gz
+   ```
+
+    其中，参数 `--server_url` ，`--project_slug` ，`--virmesh_endpoint` 请参考网页端添加设备弹窗中的安装命令生成结果替换 `***`，参数 `--use_local` 为离线二进制文件压缩包路径，修改目录位置时需同步修改该参数。
+   
+   ![使用离线安装包添加](./img/offline_install_package.png)
+
+
 ## 填写信息添加
 
-在「组织管理」页面的「设备」分页，点击【添加设备】按钮。
+### 适用情况
 
-![device add from web](./img/device-add-from-web.png)
+此方式平台数据库创建虚拟设备字段，不与真实设备对应。
 
-在「添加设备」弹框中，输入设备 ID 及其他信息后，点击【创建】。其中，设备 ID 为唯一标识，不可重复。
- 
-当组织管理员设置了[自定义字段](./1-device.md#自定义字段)时，用户需要按照页面提示将所有的必填项填写完整。如图示例中，门店和机型为自定义字段信息。
+### 操作步骤
 
-![device add from web](./img/device-add-from-web-2.png)
+1. 在「添加设备」弹框输入设备 ID 及其他信息（设备 ID 不可重复），点击【添加】即可创建设备。
 
-点击创建后，成功添加了设备。
+2. 若组织管理员设置自定义字段，用户需按页面提示填写完整必填项（如示例中的门店、机型）
+
+![使用离线安装包添加](./img/input_information.png)
+
+
+
+
+
+***
+
+通过以上步骤，您可根据实际需求在平台成功添加设备。
+
+如有任何疑问，请随时联系我们获取支持。
+
