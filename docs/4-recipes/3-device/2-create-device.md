@@ -9,7 +9,7 @@ sidebar_position: 2
 { 
     padding: '12px 16px', backgroundColor: '#EFF6FF', borderRadius: '4px',  border: '1px solid', borderColor: '#2563EB', color: '#111827' }
 }>
-<p style={{margin: 0}}>🤖 仅**组织成员**及以上权限可以添加设备</p>
+<p style={{margin: 0}}>🤖 权限：仅**组织成员**及以上权限可以添加设备</p>
 </div>
 <br />
 当组织引入新设备，并期望在平台中创建一台与线下真实设备相对应的设备，可前往组织设备页面进行添加。
