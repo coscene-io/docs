@@ -8,7 +8,7 @@ sidebar_position: 2
 
 ## 文件准备
 
-在刻行平台创建一条记录并上传 bag/mcap 格式的文件及播放相关的文件。创建记录和上传文件步骤详情请见[创建记录](../4-record/1-create-record.md)和 [上传文件](../4-record/2-upload-files.md)。
+在刻行平台创建一条记录并上传 bag/mcap 格式的文件及播放相关的文件。创建记录和上传文件步骤详情请见[创建记录](../record/1-create-record.md)和 [上传文件](../record/2-upload-files.md)。
 
 ## 管理文件媒体状态
 缺少地图与坐标文件可能会影响可视化的播放效果，对于缺少此类文件的数据，用户可以：

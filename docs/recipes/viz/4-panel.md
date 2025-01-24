@@ -36,7 +36,7 @@ sidebar_position: 4
 
 ## 如何设置面板属性
 
-若要设置当前面板的属性详情，可前往左侧边栏中的「面板」，不同的面板有不同的属性值，可参考[三维面板](../6-viz/5-3d-panel.md)、[日志面板](../6-viz/6-log-panel.md)和[图表面板](../6-viz/7-plot-panel.md)。
+若要设置当前面板的属性详情，可前往左侧边栏中的「面板」，不同的面板有不同的属性值，可参考[三维面板](../viz/5-3d-panel.md)、[日志面板](../viz/6-log-panel.md)和[图表面板](../viz/7-plot-panel.md)。
 
 ![viz-4-5.png](../img/viz-4-5.png)
 

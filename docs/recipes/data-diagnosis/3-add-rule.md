@@ -158,7 +158,7 @@ sidebar_position: 3
 - 编辑一刻描述（下图例：`moment description demo`）
 - 选择创建任务为【是】
 - 选择任务经办人（下图例：下拉框选择`我`）
-- 选择同步任务为【是】（同步任务参见[任务同步到-jira](../10-integration/1-jira-integration.md#任务同步到-jira)）
+- 选择同步任务为【是】（同步任务参见[任务同步到-jira](../integration/1-jira-integration.md#任务同步到-jira)）
 
 ![pro-rule-action-create-moment](../img/pro-rule-action-create-moment.png)
 

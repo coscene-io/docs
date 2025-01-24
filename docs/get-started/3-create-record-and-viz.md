@@ -6,11 +6,11 @@ sidebar_position: 3
 
 创建完项目后，就可以在项目内创建并管理记录了。
 
-记录是一段时间内相似场景的数据集合，你可以在记录内上传，修改，编辑，以及可视化刻行支持的数据。关于记录的详细概念 请参看[数据模型中的记录章节](../3-concepts/1-data-models.md#记录-record)。
+记录是一段时间内相似场景的数据集合，你可以在记录内上传，修改，编辑，以及可视化刻行支持的数据。关于记录的详细概念 请参看[数据模型中的记录章节](../concepts/1-data-models.md#记录-record)。
 
 ## 创建记录
 
-在记录表格页，点击【创建记录】按钮手动创建一条记录。其他创建方式可参阅[创建记录](../4-recipes/4-record/1-create-record.md)
+在记录表格页，点击【创建记录】按钮手动创建一条记录。其他创建方式可参阅[创建记录](../recipes/record/1-create-record.md)
 
 ![create-record-modal](./img/2-3-create-record-modal.png)
 
@@ -44,4 +44,4 @@ sidebar_position: 3
 
 ![view-3d](./img/2-3-view-3d.png)
 
-有关可视化的更多使用教程详情，请参考[数据可视化](../4-recipes/6-viz/1-about-viz.md)
+有关可视化的更多使用教程详情，请参考[数据可视化](../recipes/viz/1-about-viz.md)

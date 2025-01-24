@@ -10,7 +10,7 @@ A record is a collection of data from similar scenarios over a period of time. Y
 
 ## Creating a Record
 
-On the records table page, click the [Create Record] button to manually create a record. For other creation methods, please refer to [Creating Records](../4-recipes/4-record/1-create-record.md).
+On the records table page, click the [Create Record] button to manually create a record. For other creation methods, please refer to [Creating Records](../recipes/record/1-create-record.md).
 
 ![create-record-modal](./img/2-3-create-record-modal.png)
 

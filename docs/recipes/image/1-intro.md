@@ -21,4 +21,4 @@ Docker 镜像是一个可执行的软件包，它包含运行应用程序所需�
 
 - 支持快速上传和管理现有镜像
 - 可在平台内直接使用托管的镜像
-- 与平台[自动化服务](../12-action/1-quickstart.md)和[批量测试](../8-regression/1-intro.md)等功能无缝集成
+- 与平台[自动化服务](../action/1-quickstart.md)和[批量测试](../regression/1-intro.md)等功能无缝集成
