@@ -23,11 +23,11 @@ sidebar_position: 4
 
 在组织管理页面的「设备」分页，点击【编辑数采规则】按钮，即可进入数采客户端配置编辑界面。此处使用 yaml 语言进行编辑操作。
 
-![org-device](./img/org-collector.png)
+![org-device](./img/4-3-org-collector.png)
 
 完成配置后点击【保存】，配置将对全组织已准入数采客户端的设备立即生效。
 
-![org-dev-rule-save](./img/device-save-collector.png)
+![org-dev-rule-save](./img/4-3-device-save-collector.png)
 
 ## 数采规则格式详解
 

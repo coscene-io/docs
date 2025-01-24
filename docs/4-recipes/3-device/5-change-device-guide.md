@@ -28,7 +28,7 @@ sidebar_position: 5
 
 - 勾选上初始化程序配置，此勾选将清除旧配置文件
 
-  ![勾选初始化](./img/add-device-initialize-true.png)
+  ![勾选初始化](./img/4-3-add-device-initialize-true.png)
 
 3. 设备终端执行命令
 
@@ -38,7 +38,7 @@ sidebar_position: 5
 
 4. 重新准入设备，安装完成后，联系组织管理员在平台设备管理页面，对设备进行重新准入操作，使设备恢复正常使用。
 
-   ![准入设备](./img/access_device_2.png)
+   ![准入设备](./img/4-3-access-device-2.png)
 
 ## 原机版本升级流程
 
@@ -60,7 +60,7 @@ sidebar_position: 5
 
 5. 在添加设备页面的程序配置区域，取消勾选【初始化程序配置】，否则可能导致正在处理的采集任务异常。
 
-![取消初始化](./img/add-device-initialize-false.png)
+![取消初始化](./img/4-3-add-device-initialize-false.png)
 
 3. 设备终端执行命令
 
@@ -70,7 +70,7 @@ sidebar_position: 5
 
 4. 重新准入设备，安装完成后，联系组织管理员在平台设备管理页面，对设备进行重新准入操作，使得升级后的设备正常运行于平台。
 
-   ![准入设备](./img/access_device_2.png)
+   ![准入设备](./img/4-3-access-device-2.png)
 
 ## 设备端卸载客户端流程
 
@@ -82,11 +82,11 @@ sidebar_position: 5
 
 2. 执行过程中需密切观察输出，直至卸载流程完成，确保 coLink 服务、cos 服务及其相关配置文件和目录等均被成功移除
 
-   ![卸载客户端](./img/unload-1.png)
+   ![卸载客户端](./img/4-3-unload-1.png)
 
 3. 此时平台中仍保留着设备数据在后端数据库中，若平台中不再需要这台设备，可在组织设备中点击【删除】按钮来删除设备
 
-   ![删除设备](./img/device-delete.png)
+   ![删除设备](./img/4-3-device-delete.png)
 
 ## 常见问题解答
 

@@ -66,17 +66,17 @@ sidebar_position: 3
 
 在设备列表选定设备后点击【添加关联项目】按钮；
 
-![从组织设备添加](./img/device_add_project_01.png)
+![从组织设备添加](./img/4-3-device-add-project-01.png)
 
 或者在项目中点击【添加设备】按钮来拉取组织中的设备，均可完成设备与项目的关联。
 
-![从项目设备添加](./img/device_add_project_02.png)
+![从项目设备添加](./img/4-3-device-add-project-02.png)
 
 ### 从项目移除设备
 
 若项目不再需要某设备，可在项目中将其【从本项目移除】。移除后设备仍保留在组织项目中，但项目不再接收该设备采集的数据，后续若有需要仍可再次添加该设备到本项目进行数据采集。
 
-![移除项目设备](./img/delete_project_device.png)
+![移除项目设备](./img/4-3-delete-project-device.png)
 
 ## 设备准入
 
@@ -86,7 +86,7 @@ sidebar_position: 3
 
 完成添加设备后，设备列表会出现【准入】的操作按钮，在设备详情页还可单独准入「数据采集」和「远程控制」模块。
 
-![准入设备](./img/access_device_2.png)
+![准入设备](./img/4-3-access-device-2.png)
 
 「数据采集」准入后，机器端程序将按规则采集数据并自动上传至对应项目；
 
@@ -108,7 +108,7 @@ journalctl --user-unit=cos -f -n 50
 /bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall.sh)"
 ```
 
-![卸载客户端](./img/unload-1.png)
+![卸载客户端](./img/4-3-unload-1.png)
 
 ## 删除设备
 
@@ -126,7 +126,7 @@ journalctl --user-unit=cos -f -n 50
 
 4. 记录中将无法查看该设备的详细信息
 
-![删除设备](./img/device-delete.png)
+![删除设备](./img/4-3-device-delete.png)
 
 <br />
 
