@@ -30,7 +30,7 @@ sidebar_position: 2
 
 ![添加设备入口](./img/4-3-add-device-button.png)
 
-![添加设备弹窗](./img/add_device_popup.png)
+![添加设备弹窗](./img/4-3-add-device-popup.png)
 
 ### 设备系统要求
 
@@ -48,11 +48,11 @@ sidebar_position: 2
 
 2. 组织管理员可在「组织设备 - 编辑数采规则」中预设 ID 统一存放地址配置，实现弹窗自动填充，且支持二次更改。
 
-   ![从设备端获取 ID 位置](./img/add_device_id_01.png)
+   ![从设备端获取 ID 位置](./img/4-3-add-device-id-01.png)
 
    1. 若选择系统生成 ID，平台将生成默认 ID 号，安装后不可修改。
 
-   ![系统生成 ID](./img/add_device_id_02.png)
+   ![系统生成 ID](./img/4-3-add-device-id-02.png)
 
 ### 安装客户端选择
 
@@ -68,19 +68,19 @@ sidebar_position: 2
 
    若设备更换上位机或 ID 后需重新安装注册，勾选【初始化客户端配置】；仅升级客户端版本则取消勾选，更多使用方法参阅换机、升级、卸载流程指南
 
-   ![安装客户端选择](./img/install_coscout_colink.png)
+   ![安装客户端选择](./img/4-3-install-coscout-colink.png)
 
 ### 执行安装命令
 
 1. 完成设备 ID 及安装客户端选项配置后，系统生成安装命令。用户复制命令至设备端 shell 终端执行。
 
-   ![系统生成安装命令](./img/install_cmd.png)
+   ![系统生成安装命令](./img/4-3-install-cmd.png)
 
 2. 设备端出现 `Installation completed successfully 🎉` 提示即安装成功。受设备性能影响，安装完成后设备列表页显示可能存在延迟，此时设备已完成注册，后续操作参考设备准入部分
 
-   ![设备端安装成功](./img/install_successfully.png)
+   ![设备端安装成功](./img/4-3-install-successfully.png)
 
-   ![管理员到平台中准入设备](./img/access_device.png)
+   ![管理员到平台中准入设备](./img/4-3-access-device.png)
 
 ## 使用离线安装包添加
 
@@ -108,7 +108,7 @@ sidebar_position: 2
 
    其中，参数 `--server_url` ，`--project_slug` ，`--virmesh_endpoint` 请参考网页端添加设备弹窗中的安装命令生成结果替换 `***`，参数 `--use_local` 为离线二进制文件压缩包路径，修改目录位置时需同步修改该参数。
 
-   ![使用离线安装包添加](./img/offline_install_package.png)
+   ![使用离线安装包添加](./img/4-3-offline-install-package.png)
 
 ## 填写信息添加
 
@@ -122,7 +122,7 @@ sidebar_position: 2
 
 2. 若组织管理员设置自定义字段，用户需按页面提示填写完整必填项（如示例中的门店、机型）
 
-![使用离线安装包添加](./img/input_information.png)
+![使用离线安装包添加](./img/4-3-input-information.png)
 
 ---
 
