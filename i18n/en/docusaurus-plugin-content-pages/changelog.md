@@ -5,6 +5,51 @@ id: changelog
 
 # Release History
 
+## [25.1.0] - 2025-1-2
+
+### [New]
+
+- Added "Set Map Height" feature: During visualization playback, the 3D panel supports setting the map height to adjust the position of multiple maps displayed in 3D space
+
+### [Improvements]
+
+- Updated browser tab names for visualization pages, making it easier to distinguish between visualization, real-time visualization, and shadow mode
+- Updated account login mechanism, extending single login token validity from 7 days to 30 days
+
+### [Fixes]
+
+- Fixed an issue where file uploads would fail if waiting in the upload queue for over 1 hour
+- Fixed inconsistency between icon and text when devices are offline
+- Fixed abnormal curve display when playing multiple mcap files in visualization
+- Optimized tooltip display style in visualization pages
+
+---
+
+## [24.51.0] - 2024-12-18
+
+### [New]
+
+- Added Data Collection Client v1.0.8
+  - Support using system-generated IDs as device registration IDs
+  - Support custom configuration of file scanning time range
+  - Optimized data collection client installation location on devices
+  - Fixed issue where data could not be collected when no monitoring directory was configured
+- Added Automation Action Template Variables
+  - In automation actions, support using task name and record link as variables in HTTP request steps, i.e., `{{task.title}}`, `{{record.link}}`
+- Added Moment Fields: Added creator and associated rule fields to moments
+
+### [Improvements]
+
+- Updated content and style of the add organization device dialog
+- Updated action command input box interaction style, supporting new line creation via enter button
+
+### [Fixes]
+
+- Fixed issue where file extraction and ROS2 DB3 to MCAP conversion failed due to not skipping zero-size files
+- Fixed issue where projects could not be saved when only modifying project names due to URL length restrictions
+
+---
+
 ## [24.36.0] - 2024-9-04
 
 ### [New]
