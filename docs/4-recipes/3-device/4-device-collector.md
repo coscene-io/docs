@@ -5,6 +5,7 @@ sidebar_position: 4
 # 数采客户端配置
 
 ## 关于数采客户端配置
+
 <div style={
 { 
     padding: '12px 16px', backgroundColor: '#EFF6FF', borderRadius: '4px',  border: '1px solid', borderColor: '#2563EB', color: '#111827' }
@@ -28,18 +29,17 @@ sidebar_position: 4
 
 ![org-dev-rule-save](./img/device-save-collector.png)
 
-
 ## 数采规则格式详解
 
 数采规则主要对 5 个模块进行设置：
 
-| 模块名称               | 功能描述                              |
-| ------------------ | --------------------------------- |
-| 数据收集器设置（collector） | 完成数据采集后，是否删除设备端数据                 |
-| 存储设置（mod）          | 设备 ID 存放位置；监听目录；客户端初始化监听时间范围；采集目录 |
-| 设备事件属性（device）     | 事件的属性值                            |
-| 规则触发话题（topic）      | 规则触发话题                            |
-| 更新设置（updater）      | 当前程序是否开启自动更新                      |
+| 模块名称                    | 功能描述                                                       |
+| --------------------------- | -------------------------------------------------------------- |
+| 数据收集器设置（collector） | 完成数据采集后，是否删除设备端数据                             |
+| 存储设置（mod）             | 设备 ID 存放位置；监听目录；客户端初始化监听时间范围；采集目录 |
+| 设备事件属性（device）      | 事件的属性值                                                   |
+| 规则触发话题（topic）       | 规则触发话题                                                   |
+| 更新设置（updater）         | 当前程序是否开启自动更新                                       |
 
 示例模板如下：
 
@@ -49,28 +49,28 @@ collector:
 
 mod:
   # mod 名称，默认 default，支持监听设备端指定目录下的文件，若有自定义的监听形式，请联系刻行时空
-  name: 'default' 
+  name: 'default'
 
   conf:
     # 启用开关，true/false，默认启用
-    enabled: true 
-    
+    enabled: true
+
     # 假设机器端存在 /home/coscene/example.yaml 文件，其内容为
     # serial_num: 1234
     #
     # 则对应的配置，在机器注册阶段会读取 example.yaml 的 serial_num 字段的值（1234）作为机器的唯一标识码
     sn_file: /home/coscene/example.yaml
     sn_field: serial_num
-    
+
     # 设备端的监听目录，作为项目中规则的监听目录
-    listen_dirs: 
+    listen_dirs:
       - /home/bag/
 
     # 当前时间距离文件更新时间超出 {skip_period_hours} 小时的时候，文件不会被监听/采集
     skip_period_hours: 2
 
     # 设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录
-    collect_dirs: 
+    collect_dirs:
       - /home/bag/
       - /home/log/
 
@@ -92,7 +92,7 @@ topics:
 # 自动更新
 updater:
   # 自动更新开关，true/false，默认关闭
-  enabled: false 
+  enabled: false
 ```
 
 下面我们一一介绍这些功能及用法：
@@ -101,11 +101,11 @@ updater:
 
 此模块用于设置完成数据采集后是否删除设备端数据，以有效管理设备端硬盘存储。可配置的参数包括：
 
-* `delete_after_upload`：默认值为 false，若设置为 true，则上传后删除设备端数据。
+- `delete_after_upload`：默认值为 false，若设置为 true，则上传后删除设备端数据。
 
-* `delete_after_interval_in_hours`：默认值为 -1，即不删除文件；若设置为具体时长（如 48），则默认会删除该时长以前的旧数据。
+- `delete_after_interval_in_hours`：默认值为 -1，即不删除文件；若设置为具体时长（如 48），则默认会删除该时长以前的旧数据。
 
-* `scan_interval_in_secs`：默认值为 60，即每 60 秒对文件夹扫描一次。
+- `scan_interval_in_secs`：默认值为 60，即每 60 秒对文件夹扫描一次。
 
 ```yaml
 # 数据收集器设置
@@ -119,43 +119,43 @@ collector:
 
 主要负责设置设备端数据的存储地址相关信息：
 
-* `name`：名称默认名称 `default`，支持监听设备端指定目录下的文件，如有自定义监听形式，请联系刻行时空。
+- `name`：名称默认名称 `default`，支持监听设备端指定目录下的文件，如有自定义监听形式，请联系刻行时空。
 
-* `conf`：启用开关，`true/false`，默认启用。
+- `conf`：启用开关，`true/false`，默认启用。
 
-* `sn_file`：假设机器端存在对应文件（如 `/home/coscene/example.yaml`），其内容包含设备唯一标识码（如 `serial_num: 1234`），则在机器注册阶段会读取该文件指定字段的值（`1234`）作为机器的唯一标识码。
+- `sn_file`：假设机器端存在对应文件（如 `/home/coscene/example.yaml`），其内容包含设备唯一标识码（如 `serial_num: 1234`），则在机器注册阶段会读取该文件指定字段的值（`1234`）作为机器的唯一标识码。
 
-* `sn_field`：对应标识码字段名。
+- `sn_field`：对应标识码字段名。
 
-* `listen_dirs`：设备端的监听目录，作为项目中规则的监听目录。
+- `listen_dirs`：设备端的监听目录，作为项目中规则的监听目录。
 
-* `collect_dirs`：设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录。
+- `collect_dirs`：设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录。
 
 ```yaml
 mod:
   # mod 名称，默认 default，支持监听设备端指定目录下的文件，若有自定义的监听形式，请联系刻行时空
-  name: 'default' 
+  name: 'default'
 
   conf:
     # 启用开关，true/false，默认启用
-    enabled: true 
-    
+    enabled: true
+
     # 假设机器端存在 /home/coscene/example.yaml 文件，其内容为
     # serial_num: 1234
     #
     # 则对应的配置，在机器注册阶段会读取 example.yaml 的 serial_num 字段的值（1234）作为机器的唯一标识码
     sn_file: /home/coscene/example.yaml
     sn_field: serial_num
-    
+
     # 设备端的监听目录，作为项目中规则的监听目录
-    listen_dirs: 
+    listen_dirs:
       - /home/bag/
 
     # 当前时间距离文件更新时间超出 {skip_period_hours} 小时的时候，文件不会被监听/采集
     skip_period_hours: 2
 
     # 设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录
-    collect_dirs: 
+    collect_dirs:
       - /home/bag/
       - /home/log/
 ```
@@ -195,12 +195,11 @@ topics:
 # 自动更新
 updater:
   # 自动更新开关，true/false，默认关闭
-  enabled: false 
+  enabled: false
 ```
 
-***
+---
 
 通过以上详细步骤和说明，管理员可全面、准确地对设备数采客户端进行配置，确保设备数据采集工作的高效运行。
 
 如有任何疑问，请随时联系我们获取支持。
-

@@ -29,7 +29,6 @@ sidebar_position: 3
 
 ![表格显示设置](./img/device_table_setting.png)
 
-
 ## 设备自定义字段管理
 
 <div style={
@@ -39,17 +38,15 @@ sidebar_position: 3
 <p style={{margin: 0}}>🤖 权限：仅**组织管理员**拥有设定设备自定义字段的权限</p>
 </div>
 
-* **入口：**&#x901A;过「组织管理 - 设置 - 设备字段配置 - 编辑配置」路径进入设置页面，管理员可依据实际需求添加相关设备字段。保存设置后，设备信息展示中会相应出现这些自定义字段。
+- **入口：**&#x901A;过「组织管理 - 设置 - 设备字段配置 - 编辑配置」路径进入设置页面，管理员可依据实际需求添加相关设备字段。保存设置后，设备信息展示中会相应出现这些自定义字段。
 
-* **注意事项：**&#x82E5;管理员删除某一设备自定义字段，该字段的所有数据将一并删除且无法恢复，因此操作时务必谨慎。
+- **注意事项：**&#x82E5;管理员删除某一设备自定义字段，该字段的所有数据将一并删除且无法恢复，因此操作时务必谨慎。
 
 ![设置设备自定义字段](./img/setting_device_fields.png)
 
 ![设备自定义字段弹窗](./img/fields_popup.png)
 
 ![带有自定义字段的设备表格](./img/device_table_fields.png)
-
-
 
 ## 设备信息编辑
 
@@ -65,8 +62,6 @@ sidebar_position: 3
 ![从表格去编辑设备信息](./img/device_table_edit.png)
 
 ![从详情去编辑设备信息](./img/device_details_edit.png)
-
-
 
 ## 设备与项目关联操作
 
@@ -128,8 +123,8 @@ journalctl --user-unit=cos -f -n 50
 ```yaml
 /bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall.sh)"
 ```
-![卸载客户端](./img/unload-1.png)
 
+![卸载客户端](./img/unload-1.png)
 
 ## 删除设备
 
@@ -155,10 +150,8 @@ journalctl --user-unit=cos -f -n 50
 
 <br />
 
-
-***
+---
 
 通过以上步骤和操作说明，您可全面地对设备进行管理操作，确保设备在组织和项目中的有效应用与维护。
 
 如有任何疑问，请随时联系我们获取支持。
-

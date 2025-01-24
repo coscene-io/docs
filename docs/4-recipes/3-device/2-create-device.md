@@ -5,25 +5,22 @@ sidebar_position: 2
 # 添加设备
 
 ## 权限说明
-<div style={
-{ 
-    padding: '12px 16px', backgroundColor: '#EFF6FF', borderRadius: '4px',  border: '1px solid', borderColor: '#2563EB', color: '#111827' }
-}>
-<p style={{margin: 0}}>🤖 权限：仅**组织成员**及以上权限可以添加设备</p>
-</div>
-<br />
+
+:::info
+🤖 权限：仅**组织成员**及以上权限可以添加设备
+:::
+
 当组织引入新设备，并期望在平台中创建一台与线下真实设备相对应的设备，可前往组织设备页面进行添加。
 
 ## 添加方式概述
 
 平台提供以下 3 种添加新设备到组织的方式：
 
-| 添加方式       | 适用场景                  |
-| ---------- | --------------------- |
-| 在设备端执行命令添加 | 少量设备逐一准入与平台通信         |
-| 使用离线安装包添加  | 设备出厂批量准入与平台通信         |
-| 填写信息添加     | 快速创建仅用于数据流转的设备，不与平台通信 |
-
+| 添加方式             | 适用场景                                   |
+| -------------------- | ------------------------------------------ |
+| 在设备端执行命令添加 | 少量设备逐一准入与平台通信                 |
+| 使用离线安装包添加   | 设备出厂批量准入与平台通信                 |
+| 填写信息添加         | 快速创建仅用于数据流转的设备，不与平台通信 |
 
 ## 在设备端执行命令添加
 
@@ -31,25 +28,23 @@ sidebar_position: 2
 
 此方式适用于少量设备逐次接入平台。用户需手动通过 SSH 登录设备执行命令。入口位于「组织管理」页面的「设备」分页，点击【添加设备】按钮，进入添加设备弹窗
 
-![添加设备入口](./img/add_device_button.png)
+![添加设备入口](./img/4-3-add-device-button.png)
 
 ![添加设备弹窗](./img/add_device_popup.png)
 
 ### 设备系统要求
 
-1. 当前仅支持 Linux 设备，涵盖 arm64 和 x86\_64 架构；
+1. 当前仅支持 Linux 设备，涵盖 arm64 和 x86_64 架构；
 
 2. 暂不支持 Windows 设备，如有 Windows 设备接入需求，请联系刻行团队。
-
-
 
 ### 设备 ID 配置
 
 1. 可填写存放设备唯一标识码（如 ID 或 SN）的位置，支持 txt、json、yaml 文本文件类型。
 
-   * 若为 txt 文件，系统读取整个文件内容。
+   - 若为 txt 文件，系统读取整个文件内容。
 
-   * 若为 json、yaml 文件，需在下方输入框填写 ID 号的变量值（如文件中含 `id:123`，则在此处填写 `id`）。
+   - 若为 json、yaml 文件，需在下方输入框填写 ID 号的变量值（如文件中含 `id:123`，则在此处填写 `id`）。
 
 2. 组织管理员可在「组织设备 - 编辑数采规则」中预设 ID 统一存放地址配置，实现弹窗自动填充，且支持二次更改。
 
@@ -58,7 +53,6 @@ sidebar_position: 2
    1. 若选择系统生成 ID，平台将生成默认 ID 号，安装后不可修改。
 
    ![系统生成 ID](./img/add_device_id_02.png)
-   
 
 ### 安装客户端选择
 
@@ -73,9 +67,8 @@ sidebar_position: 2
 3. **初始化客户端配置**
 
    若设备更换上位机或 ID 后需重新安装注册，勾选【初始化客户端配置】；仅升级客户端版本则取消勾选，更多使用方法参阅换机、升级、卸载流程指南
-   
-   ![安装客户端选择](./img/install_coscout_colink.png)
 
+   ![安装客户端选择](./img/install_coscout_colink.png)
 
 ### 执行安装命令
 
@@ -89,8 +82,6 @@ sidebar_position: 2
 
    ![管理员到平台中准入设备](./img/access_device.png)
 
-
-
 ## 使用离线安装包添加
 
 ### 适用情况与相关设置
@@ -101,24 +92,23 @@ sidebar_position: 2
 
 ### 安装步骤
 
-1. 假设用户位于 `/root` 目录下（切换目录时需注意更改路径），下载安装脚本 [coscene.sh](https://download.coscene.cn/coscout/coscene.sh)、离线二进制文件压缩包 [cos\_binaries.tar.gz](https://download.coscene.cn/coscout/tar/latest/cos_binaries.tar.gz) 至设备端，存放位置分别为 `/root/coscene.sh`, `/root/cos_binaries.tar.gz`。
+1. 假设用户位于 `/root` 目录下（切换目录时需注意更改路径），下载安装脚本 [coscene.sh](https://download.coscene.cn/coscout/coscene.sh)、离线二进制文件压缩包 [cos_binaries.tar.gz](https://download.coscene.cn/coscout/tar/latest/cos_binaries.tar.gz) 至设备端，存放位置分别为 `/root/coscene.sh`, `/root/cos_binaries.tar.gz`。
 
 2. 在 root 目录下，给安装脚本赋予执行权限：
 
-   ```plain&#x20;text
+   ```plain text
    chmod +x /root/coscene.sh
    ```
 
 3. 执行安装命令（以 `cos_binaries.tar.gz` 位于 `/root/cos_binaries.tar.gz` 为例）：
 
-   ```plain&#x20;text
+   ```plain text
    ./coscene.sh --server_url=*** --project_slug=*** --virmesh_endpoint=*** --use_local=/root/cos_binaries.tar.gz
    ```
 
-    其中，参数 `--server_url` ，`--project_slug` ，`--virmesh_endpoint` 请参考网页端添加设备弹窗中的安装命令生成结果替换 `***`，参数 `--use_local` 为离线二进制文件压缩包路径，修改目录位置时需同步修改该参数。
-   
-   ![使用离线安装包添加](./img/offline_install_package.png)
+   其中，参数 `--server_url` ，`--project_slug` ，`--virmesh_endpoint` 请参考网页端添加设备弹窗中的安装命令生成结果替换 `***`，参数 `--use_local` 为离线二进制文件压缩包路径，修改目录位置时需同步修改该参数。
 
+   ![使用离线安装包添加](./img/offline_install_package.png)
 
 ## 填写信息添加
 
@@ -134,13 +124,8 @@ sidebar_position: 2
 
 ![使用离线安装包添加](./img/input_information.png)
 
-
-
-
-
-***
+---
 
 通过以上步骤，您可根据实际需求在平台成功添加设备。
 
 如有任何疑问，请随时联系我们获取支持。
-
