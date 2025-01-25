@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # 创建项目
 
-## 项目一览
+## 项目简介
 
 「项目」是管理数据的基本单元，项目可以是一个部门、一个小组或一个专项课题。在平台首页项目栏，所有您可以访问的项目会被直接列在项目列表中。
 
@@ -35,3 +35,4 @@ sidebar_position: 2
 3. 点击一条记录进入记录详情页查看记录中的示例文件，用户可查看后续文档使用该文件体验更多平台功能。
 
 ![view-template-project-record-details](./img/2-2-view-template-project-record-details.png)
+
