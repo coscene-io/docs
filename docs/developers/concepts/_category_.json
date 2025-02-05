@@ -1,0 +1,10 @@
+{
+  "label": "概念",
+  "position": 1,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/core-concepts",
+    "description": "刻行产品使用文档"
+  }
+}

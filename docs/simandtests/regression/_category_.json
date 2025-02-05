@@ -1,9 +1,9 @@
 {
-  "label": "快速开始",
+  "label": "批量测试",
   "position": 1,
   "collapsible": true,
   "link": {
     "type": "generated-index",
-    "slug": "/category/getting-started"
+    "slug": "/category/regression"
   }
 }

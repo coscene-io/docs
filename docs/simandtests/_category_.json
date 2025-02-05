@@ -1,0 +1,10 @@
+{
+    "label": "仿真与测试",
+    "position": 3,
+    "collapsible": true,
+    "link": {
+      "type": "generated-index",
+      "slug": "/category/sim-and-tests"
+    }
+  }
+  
