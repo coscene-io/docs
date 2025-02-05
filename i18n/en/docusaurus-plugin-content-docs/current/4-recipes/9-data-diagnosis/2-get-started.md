@@ -11,7 +11,7 @@ Using the following scenario as an example, let's setup your automatic data coll
 ## Prerequisites
 
 1. Have a device ready.
-2. Create a project named `auto-upload`.
+2. Create a project named `auto-upload`. See [Cerate New Project](https://docs.coscene.cn/en/docs/recipes/project) for details. 
 3. Make sure your role in the coScene organization is "Administrator". If you're not an administrator, contact your organizational admin to update your role.
    ![org-role](../img/org-role.png)
 
@@ -76,7 +76,7 @@ Using the following scenario as an example, let's setup your automatic data coll
 
 ## Authorizing Device
 
-> Using a Linux device as an example, for other device registration methods refer to [Device Registration](https://docs.coscene.cn/docs/receipts/device/device-authorize#%E8%AE%BE%E5%A4%87%E6%B3%A8%E5%86%8C)
+> Using a Linux device as an example, for other device registration methods refer to [Device Registration](https://docs.coscene.cn/en/docs/recipes/device/device-collector/#%E6%95%B0%E9%87%87%E8%A7%84%E5%88%99%E6%A0%BC%E5%BC%8F)
 
 <br />
 
