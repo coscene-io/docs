@@ -31,7 +31,7 @@ updater:
   enabled: false
 ```
 
-For detailed information on the configuration file, please refer to the document [Collection Rules](../4-recipes/device/4-device-collector.md)
+For detailed information on the configuration file, please refer to the document [Collection Rules](../4-recipes/3-device/4-device-collector.md)
 
 ## Install Agent on Device
 
