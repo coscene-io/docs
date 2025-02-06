@@ -27,10 +27,12 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Build Project
         run: |
           export NODE_OPTIONS=--max_old_space_size=5632
-          pnpm install
           pnpm build
 
       - name: Setup OSS

@@ -36,6 +36,18 @@
    如在第四个 Section，操作指南中的第三个 Sub-Section 设备操作中的图片名字，就应该以 `4-3-具体意义.png` 作为命名，方便
    后续的素材管理。
 
+### 段落标题的 ID
+
+Markdown 会自动为标题生成 Header ID。由于中英文编码规则的限制，中文标题生成的 Header ID 在 URL 中会被转换成编码字符（如 `create-device#%E4%BB%8E%E8%AE%BE%E5%A4%87%E7%AB%AF%E6%B7%BB%E5%8A%A0`），不便于阅读和维护。
+
+为了解决这个问题，建议在创建需要被引用的标题时，手动指定一个英文 Header ID。具体语法如下：
+
+```markdown
+# 我的标题 {#my-title}
+```
+
+这样不仅可以使得 URL 更 美观，也统一了中英文文档间的区别，并且由于英文 ID，在 Anchor Broken 的时候比较好定位到问题，方便更新文档。
+
 ### 国际化 i18n
 
 1. 在 /docs 文件夹中编写中文（zh）文档
@@ -48,7 +60,7 @@
 
 ## 已知错误
 
-在章节/类别转换时导航按钮的翻译有问题，这是一个官方已经在解决的问题了。
+在章节/类别转换时导航按钮的翻译有问题，这是一个官方已经在解决问题了。
 
 [GitHub Issue #8123](https://github.com/facebook/docusaurus/pull/8123)
 
@@ -81,9 +93,25 @@ If you have any questions, fill free to open an issue or reach out to contact@co
 
 ### Naming Conventions
 
-1. Name files and folders according to their order in the sidebar navigation. For example, if the "Operation Guide" module appears fourth in the sidebar, its corresponding folder would be named `4-recipes`. Similarly, for file names, if a specific content appears second within `4-recipes`, it would be named `2-projects.md`.
+1. Files and folders should be named according to their order in the sidebar navigation. For example, if the "Operation Guide" module appears fourth in the sidebar, its corresponding folder would be named `4-recipes`. Similarly, if a specific content appears second within `4-recipes`, it would be named `2-projects.md`.
 
-2. For naming assets, follow the general principle of having one `img` folder for each major category. When necessary, you can create `img` folders at smaller folder levels. This approach makes it easier to adjust document positions, replace internationalized content, etc. Assets should be prefixed with the numbers of their Section and Sub-Section, followed by a name describing their specific purpose. For instance, an image in the fourth Section (Operation Guide) and third Sub-Section (Device Operation) should be named like `4-3-specific-purpose.png`, facilitating future asset management.
+2. For assets, follow the principle of having one `img` folder for each major category. When necessary, you can create `img` folders at lower folder levels. This makes it easier to adjust document positions and handle internationalization. Assets should be named with their Section and Sub-Section numbers as prefixes, followed by their specific purpose. For example, an image in the fourth Section (Operation Guide) and third Sub-Section (Device Operation) should be named as `4-3-specific-purpose.png` for easier asset management.
+
+### Header IDs
+
+Markdown automatically generates Header IDs for titles. Due to encoding rules, Chinese titles generate encoded Header IDs in URLs (e.g., `create-device#%E4%BB%8E%E8%AE%BE%E5%A4%87%E7%AB%AF%E6%B7%BB%E5%8A%A0`), which are difficult to read and maintain.
+
+To address this, we recommend manually specifying an English Header ID for titles that need to be referenced. The syntax is as follows:
+
+```markdown
+# My Title {#my-title}
+```
+
+This approach offers several benefits:
+
+- Creates more readable URLs
+- Maintains consistency between Chinese and English documentation
+- Makes it easier to locate and fix broken anchors
 
 ### i18n
 
