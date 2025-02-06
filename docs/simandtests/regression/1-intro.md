@@ -33,7 +33,7 @@ sidebar_position: 1
 1. 准备测试环境
 
    - 准备批量测试环境的 Docker 镜像
-   - 将镜像推送至公开平台或[刻行时空镜像仓库](../../collaboration/image/3-push-image.md)
+   - 将镜像推送至公开平台或[刻行时空镜像仓库](../../image/3-push-image.md)
    - 将测试数据上传到刻行项目中并按「记录」存储
 
 2. 配置测试内容
