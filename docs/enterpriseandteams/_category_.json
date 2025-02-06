@@ -1,6 +1,6 @@
 {
-    "label": "企业和团队",
-    "position": 6,
+    "label": "组织和团队",
+    "position": 7,
     "collapsible": true,
     "link": {
       "type": "generated-index",

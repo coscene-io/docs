@@ -61,7 +61,7 @@ updater:
   enabled: false
 ```
 
-2. 具体的配置文件信息介绍，请查看文档[数采规则](../collaboration/device/4-device-collector.md)
+2. 具体的配置文件信息介绍，请查看文档[数采规则](../device/4-device-collector.md)
 
 ## 安装设备 Agent
 

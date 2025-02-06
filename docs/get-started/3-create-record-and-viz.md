@@ -44,4 +44,4 @@ sidebar_position: 3
 
 ![view-3d](./img/2-3-view-3d.png)
 
-有关可视化的更多使用教程详情，请参考[数据可视化](../collaboration/viz/1-about-viz.md)
+有关可视化的更多使用教程详情，请参考[数据可视化](../viz/1-about-viz.md)

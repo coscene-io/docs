@@ -1,6 +1,6 @@
 {
-    "label": "工作流",
-    "position": 4,
+    "label": "自动化",
+    "position": 5,
     "collapsible": true,
     "link": {
       "type": "generated-index",
