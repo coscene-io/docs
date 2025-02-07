@@ -65,7 +65,8 @@ jobs:
           msg_type: text
           content: |
             text: |
-              A new version of coScene Docs site has been deployed to ${{ inputs.environment }} environment
-              Target bucket: ${{ secrets.OSS_TARGET_BUCKET }}
-              Committer: ${{ github.actor }}
-              URL: ${{ inputs.site_url }}
+              🚀 coScene Docs 新版本部署完成
+              
+              📍 部署环境：${{ inputs.environment }}
+              👨‍💻 部署人员：${{ github.actor }}
+              🔗 访问地址：${{ inputs.site_url }}
