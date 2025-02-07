@@ -1,0 +1,9 @@
+{
+  "label": "开放平台 OpenAPI",
+  "position": 3,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/openapi"
+  }
+}

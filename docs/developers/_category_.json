@@ -1,0 +1,10 @@
+{
+    "label": "开发者",
+    "position": 8,
+    "collapsible": true,
+    "link": {
+      "type": "generated-index",
+      "slug": "/category/developer"
+    }
+  }
+  

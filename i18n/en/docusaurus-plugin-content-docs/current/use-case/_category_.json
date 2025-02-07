@@ -1,0 +1,9 @@
+{
+  "label": "应用场景",
+  "position": 9,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/use-case"
+  }
+}

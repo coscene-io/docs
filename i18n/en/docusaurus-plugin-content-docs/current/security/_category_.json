@@ -1,0 +1,10 @@
+{
+    "label": "Security",
+    "position": 9,
+    "collapsible": true,
+    "link": {
+      "type": "generated-index",
+      "slug": "/category/security"
+    }
+  }
+  

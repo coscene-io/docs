@@ -1,0 +1,10 @@
+{
+    "label": "协作",
+    "position": 2,
+    "collapsible": true,
+    "link": {
+      "type": "generated-index",
+      "slug": "/category/collaboration"
+    }
+  }
+  
