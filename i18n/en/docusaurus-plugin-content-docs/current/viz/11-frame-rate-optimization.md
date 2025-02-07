@@ -8,7 +8,7 @@ sidebar_position: 11
 
 ## Settings
 
-![Frame rate settings interface](../img/4-6-frame-settings.png)
+![Frame rate settings interface](./img/4-6-frame-settings.png)
 
 The "Frame Rate Optimization Options" are located in the bottom right corner of the visualization interface and provide four preset levels:
 
@@ -36,11 +36,11 @@ Development is already underway for topic-level settings. In the future, differe
 
 ### Custom Settings Feature (Planned)
 
-![Custom settings entry](../img/4-6-setting-per-topic-option.png)
+![Custom settings entry](./img/4-6-setting-per-topic-option.png)
 
 Through the custom settings panel, users can:
 
 - Configure frame rate limits independently for different topics
 - Flexibly adjust data sampling frequencies
 
-![Custom settings interface](../img/4-6-setting-per-topic-panel.png)
+![Custom settings interface](./img/4-6-setting-per-topic-panel.png)

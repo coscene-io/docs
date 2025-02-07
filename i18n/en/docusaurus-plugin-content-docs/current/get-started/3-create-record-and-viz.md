@@ -6,11 +6,11 @@ sidebar_position: 3
 
 After creating a project, you can create and manage records within it.
 
-A record is a collection of data from similar scenarios over a period of time. You can upload, modify, edit, and visualize data supported by coScene within records. For detailed concepts about records, please refer to the [Records section in the Data Models chapter](../3-concepts/1-data-models.md#record).
+A record is a collection of data from similar scenarios over a period of time. You can upload, modify, edit, and visualize data supported by coScene within records. For detailed concepts about records, please refer to the [Records section in the Data Models chapter](../developers/concepts/1-data-models.md#record).
 
 ## Creating a Record
 
-On the records table page, click the [Create Record] button to manually create a record. For other creation methods, please refer to [Creating Records](../4-recipes/4-record/1-create-record.md).
+On the records table page, click the [Create Record] button to manually create a record. For other creation methods, please refer to [Creating Records](../collaboration/record/1-create-record.md).
 
 ![create-record-modal](./img/2-3-create-record-modal.png)
 
@@ -44,4 +44,4 @@ In the record, click on Play Record to enter the visualization playback interfac
 
 ![view-3d](./img/2-3-view-3d.png)
 
-For more detailed tutorials on visualization, please refer to [Data Visualization](../4-recipes/6-viz/1-about-viz.md)
+For more detailed tutorials on visualization, please refer to [Data Visualization](../viz/1-about-viz.md)

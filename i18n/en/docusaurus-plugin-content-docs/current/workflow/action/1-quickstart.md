@@ -16,7 +16,7 @@ This tutorial will guide you through creating an action and setting up a trigger
 
 Follow these steps to create an action:
 
-![create action](../img/action-create-action.png)
+![create action](./img/action-create-action.png)
 
 - Name the action `coscene-test`.
 - Add a tag `hello`.
@@ -27,7 +27,7 @@ Follow these steps to create an action:
 
 ### 2. Create a Trigger
 
-![create trigger](../img/action-create-trigger.png)
+![create trigger](./img/action-create-trigger.png)
 
 - Name the trigger.
 - Link it to the `coscene-test` action.
@@ -38,7 +38,7 @@ After setting up, create the trigger.
 
 ### 3. Create a Record and Upload a File
 
-![create record](../img/action-create-record.png)
+![create record](./img/action-create-record.png)
 
 Create a new record and upload a file named `finish.flag`.
 
@@ -46,11 +46,11 @@ Create a new record and upload a file named `finish.flag`.
 
 After the file is upload, the system will check the trigger and execute the related action. View the action's execution details in the invocation list.
 
-![action runs](../img/action-runs.png)
+![action runs](./img/action-runs.png)
 
 Click to view the detailed information.
 
-![action run detail](../img/action-run-detail.png)
+![action run detail](./img/action-run-detail.png)
 
 On the detail page, review the logs to confirm the action's execution and the files listed.
 

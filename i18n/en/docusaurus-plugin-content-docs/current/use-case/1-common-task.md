@@ -31,7 +31,7 @@ updater:
   enabled: false
 ```
 
-For detailed information on the configuration file, please refer to the document [Collection Rules](../../device/4-device-collector.md)
+For detailed information on the configuration file, please refer to the document [Collection Rules](../device/4-device-collector.md)
 
 ## Install Agent on Device
 
@@ -70,7 +70,7 @@ After the task collection is complete, the task details will link to the record 
 
 ## Subsequent Data Processing
 
-Once the data is uploaded to the coScene platform, users can leverage the platform's [automation](../4-recipes/12-action/1-quickstart.md) capabilities for subsequent processing to improve data flow speed and enhance development efficiency.
+Once the data is uploaded to the coScene platform, users can leverage the platform's [automation](../workflow/action/1-quickstart.md) capabilities for subsequent processing to improve data flow speed and enhance development efficiency.
 
 Here is an example of [automatic decompression]. When the uploaded data contains compressed packages, the automation capability automatically decompresses the compressed package files, avoiding the cumbersome process of downloading data, decompressing, and re-uploading the decompressed data.
 

@@ -38,7 +38,7 @@ You can add links to relevant "Moments" within the comments; members can click o
 
 ### Referencing a Task in Comments
 
-For more about "Tasks," you can refer to the following section: [Create a Task](../5-task-and-comment/2-create-a-task.md).
+For more about "Tasks," you can refer to the following section: [Create a Task](../task-and-comment/2-create-a-task.md).
 
 You can add links to relevant tasks within the comments; organization members can click the link to jump directly to the task details page.
 

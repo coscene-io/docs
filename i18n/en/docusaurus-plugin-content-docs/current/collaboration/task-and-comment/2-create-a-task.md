@@ -26,6 +26,6 @@ While playing the content of a record in the visualization interface, you can cr
 
 The created task will automatically reference the "moment" in the description, helping relevant members quickly locate it.
 
-![task-moment](../img/task-moment.png)
+![task-moment](./img/task-moment.png)
 
 <br />

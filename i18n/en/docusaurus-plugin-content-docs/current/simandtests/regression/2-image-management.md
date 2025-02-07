@@ -56,7 +56,7 @@ def test_romeo():
 assert __count('romeo') > 0
 ```
 
-- If you need to output graphic test reports in the final test results, please refer to the [Output Test Results](../8-regression/6-status-and-output.md#output-charts) section.
+- If you need to output graphic test reports in the final test results, please refer to the [Output Test Results](../regression/6-status-and-output.md#output-charts) section.
 
 **3. Build the Image**
 
@@ -80,9 +80,9 @@ docker build -f dockerfile -t cr.coscene.cn/coscene-lark/image:latest --platform
 
 Log in to the coScene platform. In "My Settings - Security - Access coScene Container Image Repository", click "Generate Access Command" to obtain access rights to the coScene container image repository:
 
-![generate-cr-token](../img/generate-cr-token.png)
+![generate-cr-token](./img/generate-cr-token.png)
 
-![login-cr](../img/login-cr.png)
+![login-cr](./img/login-cr.png)
 
 Copy the above command and execute it in the terminal to log in and push the image to the coScene platform.
 
@@ -92,10 +92,10 @@ Copy the above command and execute it in the terminal to log in and push the ima
 
 In the "My - Organization Management - Images" page, you can view the image list within the current organization:
 
-![image-management-3](../img/image-list.png)
+![image-management-3](./img/image-list.png)
 
 Click on the image name to display all versions of that image. You can click the "Copy" button to copy the full image address:
 
-![image-management-4](../img/tag-list.png)
+![image-management-4](./img/tag-list.png)
 
   <br />

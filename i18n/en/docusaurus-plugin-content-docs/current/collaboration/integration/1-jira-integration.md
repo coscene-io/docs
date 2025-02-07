@@ -12,15 +12,15 @@ Integrate with Jira to synchronize tasks as issues in Jira.
 
 In the project, go to the "Manage Project - Service Integration" page and click "Add Config".
 
-![integration-1](../img/integration-1.png)
+![integration-1](./img/integration-1.png)
 
 Edit the configuration as needed. Once done, click "Save".
 
-![integration-2](../img/integration-2.png)
+![integration-2](./img/integration-2.png)
 
 The configuration will take effect immediately.
 
-![integration-3](../img/integration-3.png)
+![integration-3](./img/integration-3.png)
 
 <br />
 
@@ -53,7 +53,7 @@ customFields: # Custom fields
 
   You need to look up the project's Key on the Jira platform:
 
-  ![jira-1](../img/jira-1.png)
+  ![jira-1](./img/jira-1.png)
 
 - **Jira Type**
 
@@ -71,11 +71,11 @@ customFields: # Custom fields
 
 Enter the project's record page:
 
-![jira-record-1](../img/jira-record-1.png)
+![jira-record-1](./img/jira-record-1.png)
 
 In the "Comments & Tasks" module, click the "Synchronize Task" button corresponding to the task:
 
-![jira-record-2](../img/jira-record-2.png)
+![jira-record-2](./img/jira-record-2.png)
 
 Once synchronized successfully, the created Jira link will be displayed.
 
@@ -87,11 +87,11 @@ Once synchronized successfully, the created Jira link will be displayed.
 
 In the project, go to the "Manage Project - Service Integration" page and click "Edit Configuration".
 
-![integration-4](../img/integration-4.png)
+![integration-4](./img/integration-4.png)
 
 Edit the configuration online. Once done, click "Save".
 
-![integration-2](../img/integration-2.png)
+![integration-2](./img/integration-2.png)
 
 ### Disable Integration
 

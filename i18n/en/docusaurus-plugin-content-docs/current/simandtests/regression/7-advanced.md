@@ -12,15 +12,15 @@ sidebar_position: 7
 
 You can set up in the uploaded configuration file's "notifications" field to receive information related to the execution of test suites in DingTalk. You can use a custom template to define the content of the received information.
 
-For specific examples, please refer to the [Configuration File Format and Sample - Message Notification](../8-regression/9-yaml-sample.md#notifications) section.
+For specific examples, please refer to the [Configuration File Format and Sample - Message Notification](../regression/9-yaml-sample.md#notifications) section.
 
 On the "Batch Tests - Test Suite Management" page, for test suites that have message notifications configured, the "Notification" column will display the "View Notification" button:
 
-![advanced-1](../img/notification-1.png)
+![advanced-1](./img/notification-1.png)
 
 You can click the "View Notification" button to see the content of its message template:
 
-![advanced-2](../img/notification-2.png)
+![advanced-2](./img/notification-2.png)
 
 <br />
 

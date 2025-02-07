@@ -16,7 +16,7 @@ Automation primarily includes three sub-functional entries: Actions, Triggers, a
 
 Define user behavior, referring to the operational logic they wish to execute, mainly consisting of the user's own business code logic. For example, listing all files in a directory (`ls -al`) or running a specific program (`python hello.py`).
 
-![create action](../img/action-create-action.png)
+![create action](./img/action-create-action.png)
 
 #### Action Name
 
@@ -71,7 +71,7 @@ Actions offer four default configurations, `1 core/2G`, `2 cores/4G`, `4 cores/8
 
 Triggers define the timing of actions. When a new file is successfully uploaded, the trigger checks based on the configuration. File wildcards can limit the name format of uploaded files, and condition groups can restrict the scope of records to which uploaded files belong, such as only allowing records with the `hello` label to trigger an action upon successful file upload.
 
-![create trigger](../img/action-create-trigger.png)
+![create trigger](./img/action-create-trigger.png)
 
 #### Trigger Name
 
@@ -95,8 +95,8 @@ Invocation history displays the execution history of all actions within the proj
 
 #### Invocation History List Page
 
-![action runs](../img/action-runs.png)
+![action runs](./img/action-runs.png)
 
 #### Single Run Detail Page
 
-![action run detail](../img/action-run-detail.png)
+![action run detail](./img/action-run-detail.png)

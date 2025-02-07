@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Data Collection Rules
 
-> Admitted devices can automatically upload data to projects according to data collection rules. The collection rules apply to all devices using a shared configuration. If you need to set collection rules by project, please refer to [About Automated Data Collection and Diagnosis](../9-data-diagnosis/1-intro.md) to use the rule engine to meet your requirements.
+> Admitted devices can automatically upload data to projects according to data collection rules. The collection rules apply to all devices using a shared configuration. If you need to set collection rules by project, please refer to [About Automated Data Collection and Diagnosis](../use-case/data-diagnosis/1-intro.md) to use the rule engine to meet your requirements.
 
 ## About Data Collection Rules
 
@@ -18,11 +18,11 @@ The structure format of data collection rules is described below.
 
 Go to the "Devices" tab on the organization management page and click the [Edit Collection Rules] button.
 
-![org-device](../img/org-device.png)
+![org-device](./img/org-device.png)
 
 Edit the collection rules online and click [Save Changes] when configuration is complete.
 
-![org-dev-rule-save](../img/org-dev-rule-save.png)
+![org-dev-rule-save](./img/org-dev-rule-save.png)
 
 ## Data Collection Rule Format
 

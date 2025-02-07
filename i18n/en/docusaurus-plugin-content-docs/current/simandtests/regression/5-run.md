@@ -10,11 +10,11 @@ sidebar_position: 5
 
 1. On the "Batch Tests" page, click the "Run Batch Test" button in the top right corner:
 
-   ![run-1](../img/run-1.png)
+   ![run-1](./img/run-1.png)
 
 2. After selecting the test package version and the test suites to be executed, click "Confirm" to run the batch tests. The associated records that meet the conditions will be used as test data to execute the test suites:
 
-   ![run-2](../img/run-2.png)
+   ![run-2](./img/run-2.png)
 
 <br />
 
@@ -22,15 +22,15 @@ sidebar_position: 5
 
 When the uploaded test package type or tag meets the preset conditions in the configuration file, the batch test will be automatically triggered upon completion of the test package upload. The full test suite that meets the conditions will be executed using that test package file.
 
-You can set automatic trigger conditions for test suites in the "on" field of the configuration file. For the specific format and rules, please refer to [Configuration File Format and Sample - Automatic Test Triggering](../8-regression/9-yaml-sample.md#auto-triggering).
+You can set automatic trigger conditions for test suites in the "on" field of the configuration file. For the specific format and rules, please refer to [Configuration File Format and Sample - Automatic Test Triggering](../regression/9-yaml-sample.md#auto-triggering).
 
 On the "Batch Tests - Test Suite Management" page, for test suites with automatic trigger conditions configured, the "Associated Trigger Conditions" column will display the "View Trigger Conditions" button:
 
-![run-3](../img/auto-trigger-1.png)
+![run-3](./img/auto-trigger-1.png)
 
 You can click the "View Trigger Conditions" button to view the test package conditions that automatically trigger the test suite:
 
-![run-4](../img/auto-trigger-2.png)
+![run-4](./img/auto-trigger-2.png)
 
 <br />
 
@@ -84,19 +84,19 @@ You can use the command line to run batch tests locally, following the instructi
 
    - Replace `${YOUR_DOMAIN}` in `endpoint` with the actual website address:
 
-     ![cli-1](../img/cli-1.png)
+     ![cli-1](./img/cli-1.png)
 
    - Steps to obtain `${YOUR_TOKEN}` in `accessToken`:
 
-     ![run-6](../img/cli-2.png)
+     ![run-6](./img/cli-2.png)
 
-     ![run-7](../img/cli-3.png)
+     ![run-7](./img/cli-3.png)
 
-     ![run-8](../img/cli-4.png)
+     ![run-8](./img/cli-4.png)
 
    - Replace `ORG_SLUG` and `PROJECT_SLUG` in `project` according to reality:
 
-     ![run-9](../img/cli-5.png)
+     ![run-9](./img/cli-5.png)
 
   <br />
     

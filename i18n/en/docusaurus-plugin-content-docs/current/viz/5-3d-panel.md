@@ -6,7 +6,7 @@ sidebar_position: 5
 
 The "3D Panel" is a panel that displays markers, entities, camera images, meshes, URDF models, etc., in a 3D scene. This panel provides a rich visual and interactive experience, allowing for intuitive display and manipulation of 3D objects.
 
-![viz-5-1-Eng](../img/viz-5-1-Eng.png)
+![viz-5-1-Eng](./img/viz-5-1-Eng.png)
 
 ## Properties in the 3D Panel
 
@@ -16,7 +16,7 @@ Click the "3D Panel" and then click the **Panel** button in the left sidebar. Th
 
 "Frames" are coordinate systems used to define the position and orientation of data and objects in 3D visualization. They provide a common baseline for all elements in the scene, ensuring that various data can be correctly displayed and interacted with in the same space.
 
-![viz-5-2-Eng](../img/viz-5-2-Eng.png)
+![viz-5-2-Eng](./img/viz-5-2-Eng.png)
 
 #### Display Frames
 
@@ -31,15 +31,15 @@ Click the "3D Panel" and then click the **Panel** button in the left sidebar. Th
 
 1. **Pose**: The view follows changes in the reference frame's position and orientation. If the reference frame rotates or moves, the view also rotates and moves accordingly.
 
-    ![viz-5-3-Eng](../img/viz-5-3-Eng.png)
+    ![viz-5-3-Eng](./img/viz-5-3-Eng.png)
 
 2. **Position**: The view only follows changes in the reference frame's position, not its orientation.
 
-    ![viz-5-4-Eng](../img/viz-5-4-Eng.png)
+    ![viz-5-4-Eng](./img/viz-5-4-Eng.png)
 
 3. **Fixed**: The view does not follow any changes in the reference frame, keeping the perspective fixed.
 
-    ![viz-5-5-Eng](../img/viz-5-5-Eng.png)
+    ![viz-5-5-Eng](./img/viz-5-5-Eng.png)
 
 ### Scene
 
@@ -47,27 +47,27 @@ The "Scene" is the overall environment in the 3D visualization interface used to
 
 - **Render Stats**: Show or hide rendering statistics, enabling this option can display current rendering frame rates and other performance metrics.
 
-    ![viz-5-6-Eng](../img/viz-5-6-Eng.png)
+    ![viz-5-6-Eng](./img/viz-5-6-Eng.png)
 
 - **Background**: Set the background color of the scene to enhance contrast and visualization effect.
 
-    ![viz-5-7-Eng](../img/viz-5-7-Eng.png)
+    ![viz-5-7-Eng](./img/viz-5-7-Eng.png)
 
 - **Label Scale**: Adjust the scale size of labels displayed in the scene.
 
-    ![viz-5-8-Eng](../img/viz-5-8-Eng.png)
+    ![viz-5-8-Eng](./img/viz-5-8-Eng.png)
 
 - **Ignore COLLADA**: Choose whether to ignore the rendering of COLLADA models to speed up rendering or avoid unnecessary model displays.
 
 - **Mesh Up Axis**: Set the up axis direction of the grid in the scene, affecting the coordinate system direction of the entire scene.
 
-    ![viz-5-9-Eng](../img/viz-5-9-Eng.png)
+    ![viz-5-9-Eng](./img/viz-5-9-Eng.png)
 
 ### View
 
 "View" is a functional module in 3D visualization for setting and adjusting camera angles and display parameters. By adjusting different properties in the view, users can achieve better data display effects.
 
-![viz-5-10-Eng](../img/viz-5-10-Eng.png)
+![viz-5-10-Eng](./img/viz-5-10-Eng.png)
 
 - **Sync Camera**: Synchronize the view with other views, facilitating linked observation of data across multiple views.
 - **Distance**: Adjust the distance between the camera and the target object to zoom in or out.
@@ -83,7 +83,7 @@ The "Scene" is the overall environment in the 3D visualization interface used to
 
 "Transforms" is used to adjust the position, rotation, and scaling of objects in 3D space, ensuring they are correctly displayed and operated within the 3D panel.
 
-![viz-5-11-Eng](../img/viz-5-11-Eng.png)
+![viz-5-11-Eng](./img/viz-5-11-Eng.png)
 
 #### Settings
 
@@ -95,7 +95,7 @@ The "Scene" is the overall environment in the 3D visualization interface used to
 - **Line Color**: Choose the color of lines.
 - **Enable Preloading**: Control whether to enable preloading to improve display performance.
 
-    ![viz-5-12-Eng](../img/viz-5-12-Eng.png)
+    ![viz-5-12-Eng](./img/viz-5-12-Eng.png)
 
 #### Base_Link
 
@@ -105,13 +105,13 @@ The "Scene" is the overall environment in the 3D visualization interface used to
 - **Position (X, Y, Z)**: Adjust the position on the X, Y, Z axes.
 - **Rotation (R, P, Y)**: Adjust the rotation on the roll, pitch, and yaw angles.
 
-    ![viz-5-13-Eng](../img/viz-5-13-Eng.png)
+    ![viz-5-13-Eng](./img/viz-5-13-Eng.png)
 
 ### Topics
 
 "Topics" refer to the categories or channels of data streams. Each topic represents a specific type of data source or sensor data, such as camera images, LIDAR data, annotation information, etc.
 
-![viz-5-14-Eng](../img/viz-5-14-Eng.png)
+![viz-5-14-Eng](./img/viz-5-14-Eng.png)
 
 #### Filter List
 
@@ -125,7 +125,7 @@ The "Scene" is the overall environment in the 3D visualization interface used to
   - **Line Width**: Adjust the thickness of the image or data boundary lines.
   - **Color**: Adjust the color of the image or data points.
 
-    ![viz-5-15-Eng](../img/viz-5-15-Eng.png)
+    ![viz-5-15-Eng](./img/viz-5-15-Eng.png)
 
 - **LIDAR Data**: Represents LIDAR data from different positions, usually displayed as point clouds. Users can click on LIDAR data topics to adjust their visualization parameters.
   - **Point Size**: By increasing or decreasing the size of points, the density and structure of point cloud data can be displayed more clearly. For example, larger points can better display sparse data, while smaller points can better show details.
@@ -138,7 +138,7 @@ The "Scene" is the overall environment in the 3D visualization interface used to
   - **Min and Max Values**: Set the minimum and maximum value range for color mapping.
   - **Stixel View**: A pixel-based stereo vision technology used to display and analyze the stereo structure and depth information of point cloud data.
 
-    ![viz-5-16-Eng](../img/viz-5-16-Eng.png)
+    ![viz-5-16-Eng](./img/viz-5-16-Eng.png)
 
 - **Geographic and Location Data**: Represents geographic location, path, and environment information data, usually including drivable areas, global maps, semantic maps, etc.
   - **"drivable_area" and "map" Frame Lock**: Lock the display frame to reduce jitter or instability, ensuring consistent display.
@@ -146,20 +146,20 @@ The "Scene" is the overall environment in the 3D visualization interface used to
     - **Show Outlines**: Control whether to display the outlines of data to see data boundaries more clearly.
     - **Selection Variable**: Decide how to display data based on the selected variable.
 
-    ![viz-5-17-Eng](../img/viz-5-17-Eng.png)
+    ![viz-5-17-Eng](./img/viz-5-17-Eng.png)
 
 - **Markers and Annotations**: Used to add additional information or markers in the visualization scene.
   - **Color**: Set the display color of markers.
   - **Show Outlines**: Choose whether to show surrounding outlines to enhance visual effects.
   - **Selection Variable**: Display data variables.
 
-    ![viz-5-18-Eng](../img/viz-5-18-Eng.png)
+    ![viz-5-18-Eng](./img/viz-5-18-Eng.png)
 
 ## Tools in the 3D Panel
 
 The right side of the "3D Panel" has a toolbar for controlling and operating the 3D view. From top to bottom, the tools are **Inspect Object**, **Toggle 2D/3D Camera**, **Measuring Tool**, **Recenter**, and **Zoom**.
 
-![viz-5-19-Eng](../img/viz-5-19-Eng.png)
+![viz-5-19-Eng](./img/viz-5-19-Eng.png)
 
 ### Inspect Objects
 
@@ -167,20 +167,20 @@ Used to display information about objects in the 3D scene.
 
 1. Click the **Inspect Object** button in the toolbar.
 
-    ![viz-5-20-Eng](../img/viz-5-20-Eng.png)
+    ![viz-5-20-Eng](./img/viz-5-20-Eng.png)
 
 2. Click the object you want to inspect to display the topic and other information about the object.
 3. Click the exit button.
 
-    ![viz-5-21-Eng](../img/viz-5-21-Eng.png)
+    ![viz-5-21-Eng](./img/viz-5-21-Eng.png)
 
 ### Toggle 2D/3D Camera
 
 Used to switch the display mode of the 3D scene view. Click the **3D** button in the toolbar to switch between 2D and 3D perspectives.
 
-![viz-5-22-Eng](../img/viz-5-22-Eng.png)
+![viz-5-22-Eng](./img/viz-5-22-Eng.png)
 
-![viz-5-23-Eng](../img/viz-5-23-Eng.png)
+![viz-5-23-Eng](./img/viz-5-23-Eng.png)
 
 ### Measuring Distance
 
@@ -191,7 +191,7 @@ Used to measure the distance between two points in the 3D scene.
 3. Click at the endpoint to set the end of the measurement.
 4. Click the **Measuring Distance** again to clear the current measurement.
 
-    ![viz-5-24-Eng](../img/viz-5-24-Eng.png)
+    ![viz-5-24-Eng](./img/viz-5-24-Eng.png)
 
 ### Recenter & Zoom
 
@@ -201,6 +201,6 @@ Used to control the centering and zooming effects of the 3D view.
 2. Click the **+** and **-** buttons to zoom in and out of the view.
 3. You can also use the keyboard and mouse to zoom in and out of the view.
 
-    ![viz-5-25-Eng](../img/viz-5-25-Eng.png)
+    ![viz-5-25-Eng](./img/viz-5-25-Eng.png)
 
    ---

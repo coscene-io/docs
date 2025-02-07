@@ -22,13 +22,13 @@ Log in to coScene platform, access [Profile Settings] from the user settings dro
 
 Click to generate access command to get the login command and password for the coScene container registry
 
-![generate-cr-token](../img/generate-cr-token.png)
+![generate-cr-token](./img/generate-cr-token.png)
 
-![login-cr](../img/login-cr.png)
+![login-cr](./img/login-cr.png)
 
 Enter the login command with your username in the command line and authenticate using the credentials obtained earlier
 
-![docker-login](../img/docker-login.png)
+![docker-login](./img/docker-login.png)
 
 ### Push Images
 

@@ -6,11 +6,11 @@ sidebar_position: 6
 
 The "Log Panel" is used to display and manage machine-generated log information. It helps users monitor, filter, and analyze various events and status updates in real-time during system operation.
 
-![viz-6-1-Eng](../img/viz-6-1-Eng.png)
+![viz-6-1-Eng](./img/viz-6-1-Eng.png)
 
 ## Properties in the Log Panel
 
-![viz-6-2-Eng](../img/viz-6-2-Eng.png)
+![viz-6-2-Eng](./img/viz-6-2-Eng.png)
 
 ### General
 
@@ -29,14 +29,14 @@ The "Log Panel" is used to display and manage machine-generated log information.
 
 1. In the **Filter List**, select to list visible.
 
-   ![viz-6-3-Eng](../img/viz-6-3-Eng.png)
+   ![viz-6-3-Eng](./img/viz-6-3-Eng.png)
 
 2. Hide other log modules.
 
-   ![viz-6-4-Eng](../img/viz-6-4-Eng.png)
+   ![viz-6-4-Eng](./img/viz-6-4-Eng.png)
 
 3. View the filtered logs.
 
-   ![viz-6-5-Eng](../img/viz-6-5-Eng.png)
+   ![viz-6-5-Eng](./img/viz-6-5-Eng.png)
 
    ***

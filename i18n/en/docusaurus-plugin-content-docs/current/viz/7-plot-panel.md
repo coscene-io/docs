@@ -6,7 +6,7 @@ sidebar_position: 7
 
 The "Plot Panel" is a tool used for plotting and displaying data trends over time or other variables. It allows users to configure multiple data series and visualize these trends in a clear and intuitive chart format.
 
-![viz-7-7-Eng](../img/viz-7-7-Eng.png)
+![viz-7-7-Eng](./img/viz-7-7-Eng.png)
 
 ## Properties in the Plot Panel
 
@@ -14,11 +14,11 @@ The "Plot Panel" is a tool used for plotting and displaying data trends over tim
 
 1. **Add a new data series**
 
-    ![viz-7-2-Eng](../img/viz-7-2-Eng.png)
+    ![viz-7-2-Eng](./img/viz-7-2-Eng.png)
 
 2. **Enter the message address**
 
-    ![viz-7-3-Eng](../img/viz-7-3-Eng.png)
+    ![viz-7-3-Eng](./img/viz-7-3-Eng.png)
 
 3. **Configure the data series**
 
@@ -36,21 +36,21 @@ The "Plot Panel" is a tool used for plotting and displaying data trends over tim
 
 ### Legend
 
-![viz-7-4-Eng](../img/viz-7-4-Eng.png)
+![viz-7-4-Eng](./img/viz-7-4-Eng.png)
 
 - **Position**: Set the position of the legend; options include floating, left, top, and hidden.
 - **Show Values**: Enable this to show data point values directly in the legend.
 
 ### Y Axis
 
-![viz-7-5-Eng](../img/viz-7-5-Eng.png)
+![viz-7-5-Eng](./img/viz-7-5-Eng.png)
 
 - **Show Labels**: Control whether to display scale labels on the Y axis.
 - **Min and Max Values**: Set the start and end values of the Y axis.
 
 ### X Axis
 
-![viz-7-6-Eng](../img/viz-7-6-Eng.png)
+![viz-7-6-Eng](./img/viz-7-6-Eng.png)
 
 - **Values**: Choose the values displayed on the X axis, options include timestamp, index, address (current), and address (cumulative).
 - **Show Labels**: Control whether to display scale labels on the X axis.

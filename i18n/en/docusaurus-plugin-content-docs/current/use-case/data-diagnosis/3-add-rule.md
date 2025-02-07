@@ -157,7 +157,7 @@ Basic editing operations for adding the create a moment trigger action and creat
 - Edit the moment description (Example in image: `{get_value('momentDescription')}`, similarly, `{get_value('momentDescription')}` is used to obtain the value of the parameter `momentDescription` using the `get_value` function)
 - Choose to create a task as 【Yes】
 - Choose the task agent (Example in image: dropdown select `me`)
-- Choose to sync tasks as 【Yes】 (For task syncing, see [Task Sync to Jira](../10-integration/1-jira-integration.md#synchronize-tasks-to-jira))
+- Choose to sync tasks as 【Yes】 (For task syncing, see [Task Sync to Jira](../../collaboration/integration/1-jira-integration.md#synchronize-tasks-to-jira))
 
 ![pro-rule-action-create-moment](./img/pro-rule-action-create-moment.png)
 

@@ -8,13 +8,13 @@ sidebar_position: 3
 
 On the main page of coScene, on the right under "My Tasks," you can see a list of tasks assigned to you that are not yet completed. Clicking on the task title will redirect you to the task's details page, where you can view task information and take action.
 
-![process-a-task-1](../img/process-a-task-1.png)
+![process-a-task-1](./img/process-a-task-1.png)
 
 <br />
 
 You can also go into a project and click on "Tasks" in the sidebar on the left to view and manage all tasks within the project.
 
-![process-a-task-2](../img/process-a-task-2.png)
+![process-a-task-2](./img/process-a-task-2.png)
 
 <br />
 

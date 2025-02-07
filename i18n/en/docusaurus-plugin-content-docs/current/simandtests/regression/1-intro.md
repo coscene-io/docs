@@ -26,7 +26,7 @@ Users can upload and manage relevant images, test data, test suites, and test pa
 
 Click to enter the project's "Batch Testing" page and create a batch test according to the page prompts:
 
-![regression](../img/regression.png)
+![regression](./img/regression.png)
 
 The following step-by-step overview provides you with a basic process for using the batch testing feature:
 
