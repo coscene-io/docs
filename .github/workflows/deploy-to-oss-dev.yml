@@ -14,5 +14,5 @@ jobs:
     secrets:
       OSS_ACCESS_KEY_ID: ${{ secrets.OSS_ACCESS_KEY_ID }}
       OSS_ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
-      OSS_TARGET_BUCKET: ${{ secrets.OSS_DEV_TARGET_BUCKET }}
+      OSS_TARGET_BUCKET: ${{ secrets.OSS_TARGET_BUCKET_DEV }}
       FEISHU_BOT_WEBHOOK_URL: ${{ secrets.FEISHU_BOT_WEBHOOK_URL_RHODE_ISLAND }}
