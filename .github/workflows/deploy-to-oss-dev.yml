@@ -1,20 +1,18 @@
-# Deploy to https://docs.coscene.cn
-name: Deploy to Production
+name: Deploy to Development
 on:
   push:
     branches:
-      - release
-      - master
+      - dev
   workflow_dispatch:
 
 jobs:
   deploy:
     uses: ./.github/workflows/shared-oss-deploy.yml
     with:
-      environment: 'production'
-      site_url: 'https://docs.coscene.cn'
+      environment: 'development'
+      site_url: 'https://docs-dev.coscene.cn'
     secrets:
       OSS_ACCESS_KEY_ID: ${{ secrets.OSS_ACCESS_KEY_ID }}
       OSS_ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
-      OSS_TARGET_BUCKET: ${{ secrets.OSS_TARGET_BUCKET }}
+      OSS_TARGET_BUCKET: ${{ secrets.OSS_DEV_TARGET_BUCKET }}
       FEISHU_BOT_WEBHOOK_URL: ${{ secrets.FEISHU_BOT_WEBHOOK_URL_RHODE_ISLAND }}
