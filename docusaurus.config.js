@@ -187,7 +187,18 @@ const config = {
 
         //... other Algolia params
       },
+      announcementBar: {
+        id: 'dev_environment',
+        content: '⚠️ 这是开发环境版本 / This is Development Environment Version ⚠️',
+        backgroundColor: '#fafbfc',
+        textColor: '#091E42',
+        isCloseable: false,
+      },
     }),
+  customFields: {
+    // Add custom field to identify environment
+    isDevEnvironment: process.env.NODE_ENV !== 'production',
+  },
 };
 
 export default config;
