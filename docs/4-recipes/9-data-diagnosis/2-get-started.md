@@ -46,7 +46,7 @@ sidebar_position: 2
 
    ![data-2-3](../img/9-enable-rule-set.png)
 
-   \*更多规则条件样式参见[规则的结构与示例](./3-add-rule.md#常用规则条件示例)
+   \*更多规则条件样式参见[规则组](./3-add-rule.md#规则组)
 
 <br />
 
