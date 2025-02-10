@@ -5,6 +5,21 @@ id: changelog
 
 # Release History
 
+## [25.6.0] - 2025-2-8
+
+### [New]
+
+- Added TF compatibility playback mode: When visualizing data, support automatic conversion of frame_ids starting with a slash (/) to a no-slash format, ensuring consistency across all TF message formats
+
+### [Improvements]
+
+- Updated Data Collection & Diagnosis Rules:
+  - Event Code Table Introduction: Replaced template input fields with event code tables, supporting JSON/CSV file import for automatic parsing and application of event codes
+  - Rule Condition Simplification: Replaced code input box with 3 short fields, determining event triggers based on device message field matching with specific values, supporting direct keyword input without coding
+- Updated device page client status display: After device admission, the client status bar only shows two states - green "Online" and gray "Offline"
+
+---
+
 ## [25.1.0] - 2025-1-2
 
 ### [New]
