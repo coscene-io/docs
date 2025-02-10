@@ -7,6 +7,10 @@
     "message": "Getting Started",
     "description": "The label for category 快速开始 in sidebar tutorialSidebar"
   },
+  "sidebar.tutorialSidebar.category.协作": {
+    "message": "Collaboration",
+    "description": "The label for category 协作 in sidebar tutorialSidebar"
+  },
   "sidebar.tutorialSidebar.category.概念": {
     "message": "Core Concepts",
     "description": "The label for category 概念 in sidebar tutorialSidebar"
@@ -14,14 +18,6 @@
   "sidebar.tutorialSidebar.category.概念.link.generated-index.description": {
     "message": "coScene Product Core Concepts",
     "description": "The generated-index page description for category 概念 in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.操作指南": {
-    "message": "Recipes",
-    "description": "The label for category 操作指南 in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.设备操作": {
-    "message": "Device",
-    "description": "The label for category 设备操作 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.记录操作": {
     "message": "Record",
@@ -45,7 +41,7 @@
   },
   "sidebar.tutorialSidebar.category.镜像": {
     "message": "Images",
-    "description": "The label for category Images in sidebar tutorialSidebar"
+    "description": "The label for category 镜像 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.数据自动采集与诊断": {
     "message": "Data Collection and Diagnose",
@@ -73,7 +69,7 @@
   },
   "sidebar.tutorialSidebar.category.命令行工具 coCLI - Beta": {
     "message": "coCLI(Beta)",
-    "description": "The label for category 命令行工具 in sidebar tutorialSidebar"
+    "description": "The label for category 命令行工具 coCLI - Beta in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.命令行工具 coCLI - Beta.link.generated-index.description": {
     "message": "Please note coCLI is under active development and might have unexpected problems. We are working on improving the tool constantly. We apologize if you encounter any issues.",
@@ -86,5 +82,33 @@
   "sidebar.tutorialSidebar.category.开放平台 OpenAPI": {
     "message": "OpenAPI",
     "description": "The label for category 开放平台 OpenAPI in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.组织和团队": {
+    "message": "Organization and Team",
+    "description": "The label for category 组织和团队 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.可视化": {
+    "message": "Visualization",
+    "description": "The label for category 可视化 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.设备": {
+    "message": "Device Management",
+    "description": "The label for category 设备 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.动作": {
+    "message": "动作",
+    "description": "The label for category 动作 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.仿真与测试": {
+    "message": "Sim & Test",
+    "description": "The label for category 仿真与测试 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.开发者": {
+    "message": "Developers",
+    "description": "The label for category 开发者 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.应用场景": {
+    "message": "Use Cases",
+    "description": "The label for category 应用场景 in sidebar tutorialSidebar"
   }
 }
