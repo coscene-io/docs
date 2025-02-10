@@ -3,10 +3,6 @@
     "message": "coScene",
     "description": "The title in the navbar"
   },
-  "logo.alt": {
-    "message": "coScene Logo",
-    "description": "The alt text of navbar logo"
-  },
   "item.label.文档": {
     "message": "Documentation",
     "description": "Navbar item with label 文档"
