@@ -9,7 +9,7 @@ id: changelog
 
 ### [New]
 
-- Added TF compatibility playback mode: During data visualization, support automatic conversion of frame_ids starting with a slash (/) to a no-slash format, ensuring consistency across all TF message formats
+- Added TF compatibility playback mode: When visualizing data, support automatic conversion of frame_ids starting with a slash (/) to a no-slash format, ensuring consistency across all TF message formats
 
 ### [Improvements]
 
