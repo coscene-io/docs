@@ -6,24 +6,20 @@ sidebar_position: 14
 
 ![viz-14-1.png](../img/viz-14-1.png)
 
-The Teleop Panel allows you to remotely control your robot by publishing geometry_msgs/Twist or geometry_msgs/msg/Twist messages on a specified topic. To remotely operate a connected robot using the control panel, you need to establish communication with the robot via [coBridge](https://github.com/coscene-io/cobridge).
+The Teleop Panel allows you to remotely control your robot by publishing `geometry_msgs/Twist` or `geometry_msgs/msg/Twist` messages on a specified topic. To remotely operate a connected robot using this panel, you need to establish communication with the robot via [coBridge](https://github.com/coscene-io/cobridge).
 
-## Settings
-- Publish Rate: Set the frequency of publishing Twist messages.
-- Topic: Specify the topic for publishing Twist messages.
-- Up/Down/Left/Right Buttons: Assign corresponding fields (linear or angular velocity for x, y, or z) and their values for each directional button.
+## Configuration Parameters
 
-## Supported Message Types:
-- Twist:
-  **ROS 1**: `geometry_msgs/Twist`
+- Publish Rate: Control the frequency of publishing Twist messages
+- Topic: Specify the topic for publishing Twist messages
+- Direction Control Buttons: Configure the movement parameters for Up/Down/Left/Right buttons
+  - You can set corresponding values for linear velocity (x, y, z) and angular velocity
 
-- **ROS 2**: `geometry_msgs/msg/Twist`
+## Supported Message Types
 
- 
-**To use this panel, your data source must provide messages that conform to the supported message schema mentioned above.**
+- ROS 1: `geometry_msgs/Twist`
+- ROS 2: `geometry_msgs/msg/Twist`
 
-## How It Works
+## Technical Implementation
 
-The Teleop Panel is a specialized "Publish" panel, and its operation is similar to that of the "Publish" panel, both of which send topics to the machine side via coBridge.
-  
-To achieve teleoperation, the machine side must have components capable of processing the topics sent from the cloud.
+The Teleop Panel is a specialized publish panel, with its core functionality being sending control commands to the robot via coBridge. To achieve remote control functionality, the robot side needs to have corresponding components configured to process the received control messages.

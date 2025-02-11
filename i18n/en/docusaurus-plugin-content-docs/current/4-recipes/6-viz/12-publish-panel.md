@@ -2,27 +2,29 @@
 sidebar_position: 12
 ---
 
-# publish panel
+# Publish Panel
 
 ![viz-12-1.png](../img/viz-12-1.png)
 
-
-The Publish Panel allows you to publish messages on a specified topic, sending information back to your robot system via [coBridge](https://github.com/coscene-io/coBridge).
+The Publish Panel allows the users to publish messages to specified topics via [coBridge](https://github.com/coscene-io/coBridge).
 
 ## Settings Options
-- Editing Mode: When enabled, you can edit the message content; when disabled, only the publish button is displayed.
-- Button Title: Set the label for the publish button.
-- Button Tooltip: Add hover tooltip information for the button.
-- Button Color: Customize the button's color
 
-## Interaction
-1. Specify Topic: Enter the topic you wish to publish the message to, and the system will automatically infer its message schema name, generating the corresponding JSON message template in the text field.
-2. Select Schema: Click on the schema name field to display a dropdown list of common ROS schemas. After selecting a schema, the text field will automatically fill in the corresponding JSON message template.
-3. Edit Message: Modify the message template as needed to customize the content you wish to send back to the robot system.
-4. Publish Message: Click the "Publish" button to send the message to the specified topic.
+- Editing Mode: When enabled, you can edit the message content; when disabled, only the publish button is displayed
+- Button Title: Customize the display text of the publish button
+- Button Tooltip: Set the tooltip information displayed on mouse hover
+- Button Color: Customize the button's display color
+
+## Usage Steps
+
+1. Specify Topic: Enter the target topic name in the topic field, and the system will automatically recognize the corresponding message schema and generate a JSON template
+2. Select Schema: Click the schema selection box to view a list of common ROS schemas, selecting one will automatically generate the corresponding JSON template
+3. Edit Message: Modify the JSON template content according to your needs
+4. Send Message: Click the publish button to send the message to the specified topic
 
 ## Notes
-- If the web client is not connected to a machine that supports the publishing feature, the "Publish" button will be disabled.
-- When connected to a robot with coBridge installed, the coBridge configuration on the machine must declare the clientPublish capability to support publishing topic information from the web client.
 
-**With the Publish Panel, you can easily send custom messages to the robot system, enhancing interaction capabilities with the robot system.**
+- The web client must be connected to a machine that supports the publishing feature, otherwise the publish button will be disabled
+- The coBridge configuration on the machine must enable the clientPublish feature to support publishing topic messages from the web client
+
+The Publish Panel provides you with an intuitive interface to conveniently interact with your robot system, improving operational efficiency.

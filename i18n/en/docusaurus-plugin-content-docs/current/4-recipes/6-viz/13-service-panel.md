@@ -6,19 +6,28 @@ sidebar_position: 13
 
 ![viz-13-1.png](../img/viz-13-1.png)
 
-The Service Call Panel allows you to call ROS services via coBridge and view their responses.
+The Service Call Panel allows the users to call ROS services via [coBridge](https://github.com/coscene-io/coBridge) and view the responses.
 
-## Settings Options
-### General Settings
-- Service Name: The name of the service to request.
-- Layout: The layout method for request and response inputs, with options for "Vertical" or "Horizontal".
+## Configuration Options
+
+### Basic Settings
+
+- **Service Name**: The name of the target service to be called
+- **Layout**: Configure the arrangement of request and response areas
+  - Vertical: Arranged top and bottom
+  - Horizontal: Arranged left and right
 
 ### Button Settings
-- Title: The text for the button.
-- Tooltip: The tooltip text for the button.
-- Color: The button color.
 
-## Interaction
-The "Call Service" button will be disabled until connected to a supported data source. Use a valid JSON formatted service request in the "Request" input box, then click the "Call Service" button. The result will be displayed in the "Response" input box.
+- **Title**: The text displayed on the button
+- **Tooltip**: The hint text shown on mouse hover
+- **Color**: Customize the button's display color
 
-**With the Service Call Panel, you can easily interact with the services of the robot system, send requests, and view responses, enhancing your control and monitoring capabilities over the system.**
+## Usage Instructions
+
+1. Make sure you are connected to a supported data source, otherwise the "Call Service" button will remain disabled
+2. In the request input area, write the service request content using standard JSON format
+3. Click the "Call Service" button to send the request
+4. The service response will automatically display in the response area
+
+The Service Call Panel provides you with an intuitive interface for service-level interaction with the robot system. Through this panel, you can easily test various service calls, view response results in real-time, and effectively perform system debugging and functionality verification.
