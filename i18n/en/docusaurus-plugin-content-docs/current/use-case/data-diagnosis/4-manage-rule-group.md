@@ -21,7 +21,7 @@ To enable/disable a rule group:
 
 ## Edit
 
-The operations to enter the edit rule group page are shown below, for specific operations to edit the rules in the rule group, please refer to [Rules](./3-add-rule.md#rules).
+The operations to enter the edit rule group page are shown below, for specific operations to edit the rules in the rule group, please refer to [Rules](./3-add-rule.md#rule-group).
 
 - Go to the "Manage Project - Data Collection and Diagnostic Rules" page, select the rule group to be edited, and click the name of the rule group (Example in image: `Demo Rule Group 2`).
 
