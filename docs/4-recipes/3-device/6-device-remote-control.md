@@ -17,7 +17,7 @@ sidebar_position: 6
 
 刻行将会提供 [coBridge 源码（C++）](https://github.com/coscene-io/coBridge)，目前支持包括 ROS1 <u>Noetic Ninjemys</u>, <u>Melodic Morenia</u>; ROS2 <u>Foxy Fitzroy</u>, <u>Galactic Geochelone</u>, <u>Humble Hawksbill</u> 等 ROS DISTRIBUTION，若有其他版本需求，请联系刻行团队。
 
-强烈建议用户使用刻行提供的源码编译出可执行文件(编译流程文档：[CN](https://github.com/coscene-io/coBridge/blob/main/README.zh-CN.md)/[EN](https://github.com/coscene-io/coBridge/blob/main/README.md))，将其整合进机器人软件中，并在机器人启动脚本添加 `ros2 launch coBridge coBridge_launch.xml` （或者 `roslaunch coBridge coBridge_launch.xml`）命令。
+强烈建议用户使用刻行提供的源码编译出可执行文件(编译流程文档：[CN](https://github.com/coscene-io/coBridge/blob/main/README.zh-CN.md)/[EN](https://github.com/coscene-io/coBridge/blob/main/README.md))，将其整合进机器人软件中，并在机器人启动脚本添加 `ros2 launch cobridge cobridge_launch.xml` （或者 `roslaunch cobridge cobridge_launch.xml`）命令。
 
 coBridge 节点启动后，配合 virmesh 映射的外网地址及端口，可在网页端实现订阅机器人 topic，下发 service 等操作，实现对机器人的远程实时可视化。
 
