@@ -82,19 +82,18 @@ sidebar_position: 2
 
    ```yaml
    collector:
-   delete_after_interval_in_hours: 48
-   skip_check_same_file: true
+      delete_after_interval_in_hours: 48
    mod:
-   conf:
-      collect_dirs:
-         - /root/logs
-      enabled: true
-      listen_dirs:
-         - /root/logs
-      skip_period_hours: 2
-   name: default
+      conf:
+         collect_dirs:
+            - /root/logs
+         enabled: true
+         listen_dirs:
+            - /root/logs
+         skip_period_hours: 2
+      name: default
    updater:
-   enabled: false
+      enabled: false
 
    ```
 
