@@ -69,9 +69,15 @@ Using the following scenario as an example, let's setup your automatic data coll
        enabled: true # Whether to enable, default is true.
 
        # Monitored directories on the device, specified for data collection tasks and rule collection in the project
-       base_dirs:
-         - /home/bag/
-         - /home/log/
+       collect_dirs:
+            - /root/logs
+       listen_dirs:
+            - /root/logs
+       skip_period_hours: 2
+   collector:
+      delete_after_interval_in_hours: 48
+   updater:
+      enabled: false
    ```
 
 3. Click the "Save Changes" button.
