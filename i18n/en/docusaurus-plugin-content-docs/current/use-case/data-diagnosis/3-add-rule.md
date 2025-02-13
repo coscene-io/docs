@@ -2,344 +2,247 @@
 sidebar_position: 3
 ---
 
-# Adding Your Rules
+# Add Rule
 
-> Each project's rules are configured separately, only editable by project administrators.
+> Only **Project Administrators** and **Organization Administrators** have the right to add and edit rules; other permission roles can only view the rule content.
 
-Data collection and diagnostic rules define the conditions for triggering data collection and diagnostics, as well as the actions to be taken afterward. For example: when a specific event occurs in the device log, it automatically collects data from a specified directory, stores it as a record, and creates a moment at that time point. See subsequent sections for the basic structure and standard format of rules.
+## Data Format Requirements
 
-<br />
+Platform rules only apply to data in specific formats, which must include message, timestamp, topic, and message type, and belong to streaming data.
 
-## Prerequisites
+File requirements:
 
-Rules only apply to specific formats of data, namely: data streams that include messages, timestamps, topics, and message types.
+- File extensions must be: .log, .mcap, .bag
+- Currently supported log timestamp formats are as follows:
 
-The supported timestamp formats in log text files are as follows ([Reference Document](https://www.w3schools.com/python/python_datetime.asp)):
+| Timestamp Type                                                                                                                              | Timestamp Format     | Example                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------------- |
+| Regular file timestamp                                                                                                                      | %m%d %H:%M:%S.%f     | 0212 12:12:12.548513       |
+|                                                                                                                                             | %b %d %H:%M:%S       | Dec 12 12:12:12            |
+|                                                                                                                                             | %Y-%m-%d %H:%M:%S.%f | 2023-02-12 12:12:12.548513 |
+|                                                                                                                                             | %H:%M:%S.%f          | 12:12:12.548513            |
+| Special _filename/first line timestamp_ (for cases where timestamps in files don't contain complete year, month, day, hour, minute, second) | %Y-%m-%d %H:%M:%S    | 2023-02-12 12:12:12        |
+|                                                                                                                                             | %Y/%m/%d %H:%M:%S    | 2023/02/12 12:12:12        |
+|                                                                                                                                             | %Y%m%d%H             | 2023021212                 |
 
-<table>
-    <tr>
-        <th>Timestamp Type</th><th>Timestamp Format</th><th>Example</th>
-    </tr>
-    <tr>
-        <td rowspan="4">General<p><i>*Timestamps within files</i></p></td><td>%m%d %H:%M:%S.%f</td><td>0212 12:12:12.548513</td>
-    </tr>
-    <tr>
-        <td>%b %d %H:%M:%S</td><td>Dec 12 12:12:12</td>
-    </tr>
-    <tr>
-        <td>%Y-%m-%d %H:%M:%S.%f</td><td>2023-02-12 12:12:12.548513</td>
-    </tr>
-    <tr>
-        <td>%H:%M:%S.%f</td><td>12:12:12.548513</td>
-    </tr>
-    <tr>
-        <td rowspan="3">Special<p><i>*Timestamps in file names/first line of files</i></p><p><i>(For cases where the timestamp does not fully include year, month, day, hour, minute, second)</i></p></td><td>%Y-%m-%d %H:%M:%S</td><td>2023-02-12 12:12:12</td>
-    </tr>
-    <tr>
-        <td>%Y/%m/%d %H:%M:%S</td><td>2023/02/12 12:12:12</td>
-    </tr>
-    <tr>
-        <td>%Y%m%d%H</td><td>2023021212</td>
-    </tr>
-</table>
-
-For other timestamp formats, please contact coScene.
-
-<br />
+If you need support for other timestamp formats, please contact us.
 
 ## Rule Groups
 
-Rule groups are collections of rules used for classifying and managing rules. The creation and editing of rule groups are as follows:
+Rule groups are collections of rules used for categorizing and managing rules.
 
-- In the project, go to the "Manage Project - Data Collection and Diagnostic Rules" page and click 【Add Rule Group】.
-  ![pro-rule-add-rule-set](./img/pro-rule-add-rule-set.png)
+### Add Rule Group
 
-- After creating a rule group (or clicking to enter a created rule group page), click the rule group name to edit. Click 【Add Rule】 to add a rule.
+In the project, go to the "Data Collection & Diagnosis Rules" tab, click "Add Rule Group". After successful addition, you can add specific rules within that rule group.
 
-  See subsequent sections for detailed steps on adding rules [Rules](#rules).
-  ![pro-rule-add-rule](./img/pro-rule-add-rule.png)
+![Add Rule Group](./img/add-rule_1.png)
+
+### Enable Rule Group
+
+Newly added rule groups are disabled by default. To monitor project device data, they need to be manually enabled.
+
+![Enable Rule Group](./img/add-rule_2.png)
+
+### Manage Rule Group
+
+In "More" operations, you can rename and delete rule groups.
+
+![Manage Rule Group](./img/add-rule_3.png)
 
 ## Rules
 
-A rule is an individual rule within a rule group, defining the conditions for triggering data collection and diagnostics, as well as the actions taken afterward. The basic creation and editing operations of rules are as follows:
+A rule is a single rule within a rule group, used to define conditions for triggering data collection and diagnosis, as well as actions taken afterward.
 
-(Detailed steps are seen in subsequent sections [Basic Information](#edit-basic-information), [Templatization](#templatization), [Trigger Conditions](#trigger-conditions), [Trigger Actions](#trigger-actions), [Trigger Restrictions](#trigger-restrictions))
+### Add Rule
 
-- After entering a created rule group page (or after creating a rule group), click 【Add Rule】.
-  ![pro-rule-add-rule](./img/pro-rule-add-rule.png)
+In the rule group, you can click "Create Blank Rule" or "Create from Rule Template" to add a new rule.
 
-- Change the rule name.
-- Edit the rule trigger conditions (can copy `"error 1" in log`).
-- Keep the checkbox for generating a record in the trigger action section checked.
-- Click 【Create】.
-  ![pro-rule-base-rule](./img/pro-rule-base-rule.png)
+![Add Rule](./img/add-rule_4.png)
 
-- After successful saving, you can view the configured rule.
-  ![pro-rule-save-success](./img/pro-rule-save-success.png)
+### Rule Content
 
-<br />
+Rules mainly include: basic information, event monitoring conditions, and trigger actions.
 
-### Edit Basic Information
+#### Basic Information
 
-Currently, only the rule name can be edited.
+Name the rule; the rule name is used to distinguish different rules for easier management and identification.
 
-![pro-rule-base-info](./img/pro-rule-base-info.png)
+![Basic Information](./img/add-rule_5.png)
 
-<br />
+#### Device Event Monitoring
 
-### Templatization
+> Monitor project devices. When new files appear in the monitored directory or new messages match the [coListener](https://github.com/coscene-io/coListener) listening topics, events will be automatically reported and displayed in the project dashboard. (Contact us to use the dashboard feature)
 
-Templatization refers to the operation of templating rules, that is, using parameter groups to generate multiple rules, typically used in scenarios where multiple highly similar but partly different rules are needed.
-In such complex scenarios, you can parameterize the different parts of information and then use templatization to generate multiple rules without manually creating each one.
-(This part is optional, if there is no need for templatization, you can skip this section)
+![Device Event Monitoring](./img/add-rule_6.png)
 
-Basic editing operations for templatization parameter groups are as follows:
+##### Topics of Interest
 
-- Click the 【+】 button on the right side to add a parameter group.
-- Edit the Key-Value pair content of the parameter group. (Example in image: first group `errorMsg` - `error 1`, second group `recordName` - `record name demo 1`)
-- Click the 【+ Add a Group】 button below to add another parameter group.
-- Edit the Value content of the new parameter group. (Example in image: first Value `error 2`, second Value `record name demo 2`)
+- Topics of Interest: Narrow down the rule matching range to improve rule diagnosis performance, speed, and accuracy
+- Topic options source: Set in the organization's data collection client configuration, see ["Data Collection Client - Storage Settings"](https://docs.coscene.cn/docs/recipes/device/device-collector#%E8%A7%84%E5%88%99%E8%A7%A6%E5%8F%91%E8%AF%9D%E9%A2%98topic)
+- Topic type: Supports topics with message type `std_msgs/string`
+- To monitor log-type files in the device, please select `/external_log`
 
-Note: Because different parameter groups need to ensure the Key values are the same, only the Key value of the first parameter group can be edited (and is required), and the Key values of the other parameter groups are pre-filled with the first group's Key value and are not editable.
-For the same reason, only the first parameter group can add or delete Key-Value pairs.
+##### Event Code Table
 
-![pro-rule-template](./img/pro-rule-template.png)
+- The event code table defines event code values, event names, levels, solutions, and other information. Including:
+  - Event code table: Supports JSON or CSV files
+  - Must include a code column as the unique identifier for events; other column headers must be in English, content can be customized for later reference
+- Manage event code table: Upload, preview, download, delete
 
-\*More examples of templatization schemes can be found in the subsequent section [Templatization Schemes](#templatization)
+![Event Code Table](./img/add-rule_7.png)
 
-<br />
+##### Event Matching Conditions
 
-### Trigger Conditions
+> Determine whether to trigger events based on the matching relationship between device message fields and values. If triggered, execute subsequent actions.
 
-Trigger conditions, when met, will trigger the rule's actions. Multiple trigger conditions can be added, and the rule will be triggered if any one of the conditions is met.
+Event matching conditions include: message field, logical relationship, value. Where:
 
-Basic editing operations for adding trigger conditions are as follows:
+- Message field: Enter the field to monitor, such as msg.data (if monitoring log files, enter msg.message)
+- Logical relationship: Choose "contains" or "equals"
+- Value: Enter the specific value to match, defaults to referencing the code in the event code table (triggers when any content in the code column is detected), click the "Switch" icon to input value directly
+- Note: Multiple conditions have an "AND" relationship
 
-- Directly edit the trigger condition. (Example in image: `"error 1" in log`)
-- Click the `+` button to the right of the condition to add another condition.
-- Edit the newly added trigger condition (Example in image: `topic == "/velocity" and 4 < msg.linear.x < 10`)
+![Event Matching Conditions](./img/add-rule_8.png)
 
-![pro-rule-condition](./img/pro-rule-condition.png)
+**Example 1: Check if certain codes appear in log files**
 
-\*More examples of rule conditions can be found in the subsequent section [Common Rule Condition Examples](#common-rule-condition-examples), as well as [Rule Engine](./5-rule-engine.md).
+Monitor if values from the event code table's code column appear in log files:
 
-<br />
+1. Topics of Interest: Select `/external_log`
+2. Event code table: Upload csv file with matching content in code column
+3. Event matching conditions: msg.message contains any value from event code table's code column
 
-### Trigger Actions
+![Log Code Match](./img/add-rule_9.png)
 
-Trigger actions refer to the actions taken after the rule conditions are met, currently supported actions include: generating a record, creating a moment.
+When 1001, 1002, or 1003 appears in the log file (any value from the code column), the event match is successful.
 
-The action of generating a record refers to generating a record in the device where data collection and diagnostic rules are configured when the rule's trigger conditions are met, and the record contains the data when the trigger conditions were met.
+**Example 2: Check if a keyword appears in log files**
 
-The action of creating a moment refers to uploading data in the project where data collection and diagnostic rules are configured, and when the rule's trigger conditions are met, a moment containing the trigger information is created in the record where the data resides, and if selected, creating tasks and syncing tasks.
+Monitor if keyword DeviceError appears in log files:
 
-At least one trigger action needs to be checked, and multiple actions can be selected simultaneously.
+1. Topics of Interest: Select `/external_log`
+2. Event matching conditions: msg.message contains DeviceError
 
-<br />
+![Log Keyword Match](./img/add-rule_10.png)
 
-Basic editing operations for adding the generate a record trigger action are as follows:
+When DeviceError appears in the log file, the event match is successful.
 
-- Check 【Generate Record】
-- Edit the data time range included in the generated record (Example in image: when the trigger condition is met, generate a record and upload files within `10` minutes)
-- Edit the record name (Example in image: `record name demo`)
-- Edit the record description (Example in image: `record description demo`)
-- Edit the record tags (Example in image: `rule-auto-upload`, note: tags can be multi-selected)
-- Edit the additional files, that is, static files that need to be uploaded simultaneously when generating a record (Example in image: `/path-to-your-static-file`)
-- Click the 【+】 button on the right to add an additional file
-- Edit the path of the newly added additional file (Example in image: `/path-to-your-static-file2`)
+**Example 3: Check if certain codes appear in bag files**
 
-![pro-rule-action-upload](./img/pro-rule-action-upload.png)
+Monitor if values from the event code table's code column appear in the msg.data message field of the `/error_code` topic (message type std_msgs/string) in bag files:
 
-Basic editing operations for adding the create a moment trigger action and creating tasks and syncing tasks are as follows:
+1. Event code table: Upload csv file with matching content in code column
+2. Event matching conditions: msg.data contains any value from event code table's code column
 
-- Check 【Create a Moment】
-- Edit the moment name (Example in image: `Caught error {get_value('ErrCode')}`, here `{get_value('ErrCode')}` is used to obtain the value of the parameter `ErrCode` using the `get_value` function)
-- Edit the moment description (Example in image: `{get_value('momentDescription')}`, similarly, `{get_value('momentDescription')}` is used to obtain the value of the parameter `momentDescription` using the `get_value` function)
-- Choose to create a task as 【Yes】
-- Choose the task agent (Example in image: dropdown select `me`)
-- Choose to sync tasks as 【Yes】 (For task syncing, see [Task Sync to Jira](../../collaboration/integration/1-jira-integration.md#synchronize-tasks-to-jira))
+![Bag Code Match](./img/add-rule_11.png)
 
-![pro-rule-action-create-moment](./img/pro-rule-action-create-moment.png)
+When 1001, 1002, or 1003 appears in the bag file (any value from the code column), the event match is successful.
 
-<br />
-
-### Trigger Restrictions
-
-Trigger restrictions refer to the frequency restrictions on the rule's trigger to generate record actions, for example: the rule can trigger generating a record up to 10 times in 1 day.
-
-If there are no restrictions, you can skip this part (in this case, if the trigger action setting of the rule has checked generating a record, as long as the trigger conditions are met, a record will be generated and uploaded).
-
-Restrictions are divided into individual device restrictions and all device restrictions, if both types of restrictions are set, then the rule will only be triggered when both types of restrictions are met.
-
-Basic editing operations for adding both types of trigger restrictions are as follows:
-
-- Check 【Single Device】
-- Edit the restriction conditions for a single device (Example in image: up to 10 times within 1 day)
-- Check 【All Devices】
-- Edit the restriction conditions for all devices (Example in image: up to 30 times within 1 day)
-
-![pro-rule-limit](./img/pro-rule-limit.png)
-
-<br />
-
-## Common Rule Condition Examples
-
-> The following shows some typical rule trigger conditions
-
-```yaml
-# Triggered a certain error code
-'Error code 123 happened' in log
-
-# Check if the velocity in the x direction is between 4 and 10
-topic == '/velocity' and 4 < msg.linear.x < 10
-
-# Analyze the value in the log and check if it is between 4 and 10
-4 < regex(log, 'X velocity is (\\d+)').group(1) < 10
-
-# Robot returns to the charging dock and doesn't start charging within 30 seconds
-timeout(
-  'Returned to base' in log,
-  'charging state: CHARGING' in log,
-  duration=30
-)
-
-# Command not completed within 10 seconds
-timeout(
-  set_value('cmd_id', regex(log, 'Sending command id (\\d+)').group(1)),
-  regex(log, 'Command (\\d+) finished').group(1) == get_value('cmd_id'),
-  duration=10
-)
-
-# If the temperature rises by 5 within 60 seconds
-# Assuming there is a `value` field in the message
-topic == '/temp' and sequential(
-  set_value('start_temp', msg.value),
-  msg.value - get_value('start_temp') > 5,
-  duration=60
-)
+**Example 4: Check if a keyword appears in bag files**
 
-# Check if initialization is completed within 20 seconds
-timeout(
-  'Initialization start' in log,
-  # The three modules can finish init in any order
-  any_order(
-    'GPS started' in log,
-    'Localization started' in log,
-    'Motor online' in log),
-  'Initialization finished' in log,
-  duration=20
-)
-
-# Detect that a topic has not received a message for over 20 seconds,
-# For example, the localization module hung
-timeout(
-  topic == '/localization',
-  topic == '/localization',
-  duration=20
-)
+Monitor if keyword DeviceError appears in the msg.data message field of the `/error_code` topic (message type std_msgs/string) in bag files:
 
-# Temperature above 40 for more than 60 seconds
-sustained(
-  topic == '/temp',
-  msg.value > 40,
-  duration=60
-)
+1. Event matching conditions: msg.data contains DeviceError
 
-# Chassis loop frequently times out: more than 10 timeouts within 60 seconds
-repeated(
-  timeout(
-    'Send chassis command' in log,
-    'Chassis received' in log,
-    duration=1
-  ),
-  times=10,
-  duration=60
-)
+![Bag Keyword Match](./img/add-rule_12.png)
 
-# Trigger error, but ignore them if the following occurs
-# The error occurrence intervals are within 10 seconds
-debounce(
-  'Error 123' in log,
-  duration=10
-)
+When DeviceError appears in the bag file, the event match is successful.
 
-```
+Note: Use "+AND" if multiple conditions need to be met simultaneously.
 
-## Templatization
+##### Event Deduplication Duration
 
-In actual use of rules, there are often scenarios where you need to create multiple highly similar but partly different rules. At this time, you can parameterize the different parts of information, and then use templatization to generate multiple rules without manually creating multiple rules.
+> If a new event (same event) occurs within the set time after the last merged event, it will be merged with the original event. Each time a new event occurs, the time is reset until no new events occur beyond the time window, completing the merge.
 
-### Examples
+- Supported range: 1 second ~ 86400 seconds (1 day)
 
-Consider the following scenario: We need to monitor different error codes appearing in log files, and when an error code appears, a moment needs to be created.
-Different error codes have different moment names and different descriptions, as shown in the table below:
+![Event Deduplication Duration](./img/add-rule_13.png)
 
-<table>
-    <tr>
-        <th>Error Code</th><th>Moment Name</th><th>Description</th>
-    </tr>
-    <tr>
-        <td>123</td><td>Caught error 123</td><td>The robot fell and couldn't move.</td>
-    </tr>
-    <tr>
-        <td>456</td><td>Caught error 456</td><td>Failed to upload data to cloud.</td>
-    </tr>
-    <tr>
-        <td>789</td><td>Caught error 789</td><td>Error in turning direction.</td>
-    </tr>
-</table>
+#### Trigger Actions
 
-It is easy to see that these rules' triggering conditions and actions are highly similar, and manually creating these rules would be very cumbersome. At this time, you only need to use templatization with the error codes and moment descriptions to easily complete this task.
-In the trigger conditions and actions, code variables can be used where appropriate with `get_value('VARIABLE')` to retrieve the value of the variable, here note that `VARIABLE` is the key of the parameter.
+Trigger actions are operations executed after rule conditions are met, supporting data collection and data diagnosis.
 
-Specific creation operations are as follows:
+##### Data Collection
 
-- Fill in "Basic Information-Rule Name" as `Error Code Rules`
+> When rules are triggered on the device side, a collection task will be automatically created to collect device data for the corresponding time and save it to records.
 
-![pro-rule-template-edit-rule-name](./img/pro-rule-template-edit-rule-name.png)
+![Data Collection](./img/add-rule_14.png)
 
-- Fill in the "Templatization" parameter group content as shown below
+The data collection module includes: time range for uploaded files, record information, collection limits, more settings. Where:
 
-![pro-rule-template-edit-template](./img/pro-rule-template-edit-template.png)
+- Time range for uploaded files
+  - Define the time range of files to collect before and after the trigger time, see [Data Collection Client - Storage Settings](https://docs.coscene.cn/docs/recipes/device/device-collector#%E5%AD%98%E5%82%A8%E8%AE%BE%E7%BD%AEmod) for collection directory settings
+- Record information
+  - Define record name, description, and tag information for saving data, where name and description support variables (e.g., `{scope.code}`, see below)
+  - When data upload is complete, an "Upload Complete" tag will be automatically added to the record
+- Collection limits
+  - Define maximum number of data collections per day when the same event repeats
+  - Supports limiting single device and all devices, when either limit is reached, no more data will be collected
+  - If no limit is set, all events will trigger uploads, adding limits is recommended
+- More settings
+  - Filter file range: Use file wildcards to set upload whitelist, filter the predetermined upload list to only upload whitelisted files, reducing device traffic costs
+  - Specific additional files: Add extra device files to upload, typically maps, configuration files, and other non-real-time device files
 
-- Use parameters to write the rule's trigger condition as `get_value('ErrCode') in log`, here using the `get_value` function to get the value of the parameter `ErrCode`.
+Example of rule-triggered collection task:
 
-![pro-rule-template-edit-condition](./img/pro-rule-template-edit-condition.png)
+![Rule Collection Task](./img/add-rule_15.png)
 
-- Use parameters to write the rule's trigger action
-  - Check 【Create a Moment】
-  - Write the moment name as `Caught error {get_value('ErrCode')}`, here using the `get_value` function to retrieve the value of the parameter `ErrCode`.
-  - Write the moment description as `{get_value('momentDescription')}`, similarly using the `get_value` function to get the value of the parameter `momentDescription`.
+Example of task-related record:
 
-![pro-rule-template-edit-action-create-moment](./img/pro-rule-template-edit-action-create-moment.png)
+![Task Related Record](./img/add-rule_16.png)
 
-- Click 【Create】 to create a templatized rule.
+##### Data Diagnosis
 
-Next, use the created rule to diagnose the following log file: (For operation see [Data Diagnosis](./2-get-started.md))
+> - After collecting data from the device side and saving to records, automatically create a moment at the rule trigger time
+> - Manually created records can automatically mark key time points by calling the "Data Diagnosis" action. The "Data Diagnosis" action aggregates all rules with "Auto Diagnosis" module checked in the project to match files in the record against rules.
 
-```
-Log start at 2023-08-15 19:46:10
-INFO 0815 19:46:10.000000 Everything OK
-ERROR 0815 19:46:11.000000 code 123 happened
-INFO 0815 19:46:12.000000 Everything OK
-INFO 0815 19:46:12.000000 Everything OK
-ERROR 0815 19:46:13.500000 code 456 happened
-INFO 0815 19:46:14.000000 Everything OK
-INFO 0815 19:46:16.000000 Everything OK
-Error 0815 19:46:16.000000 code 789 happened
-INFO 0815 19:46:16.000000 Everything OK
-```
+![Data Diagnosis](./img/add-rule_17.png)
 
-After waiting for the rule diagnosis to finish, you can see the following effects in the rule's moment:
+The data diagnosis module includes: moment information, task information. Where:
 
-![pro-rule-template-success-effect](./img/pro-rule-template-success-effect.png)
+- Moment information
+  - Define moment name, description, attribute values etc. for the trigger time point, supports variables (e.g., `{scope.code}`, see below)
+- Task information
+  - Define whether to create tasks, task assignee, whether to sync tasks to ticket system etc., to circulate events that trigger rules
 
-Thus, we have completed the task of monitoring multiple error codes with one templatized rule.
+Example of automatically created moment in record:
 
-### Use of Code Variables
+![Auto Diagnosed Moment](./img/add-rule_18.png)
 
-In the trigger actions of the rule, some text input boxes can use code variables to retrieve relevant data values at the time of triggering, such as in the above templatization scenario example,
+### Rule Variables
 
-The moment name in the trigger action used `{get_value('ErrCode')}` to retrieve the value of the parameter `ErrCode`, here `{get_value('ErrCode')}` is a code variable.
+Rules support using variables, see table below:
 
-To use code variables, simply wrap the code variable with `{}` in the text input box, common code variables in addition to `get_value('VARIABLE')` include `msg`, `log`, `topic`, etc., specific code variables can be referenced in [Rule Engine](./5-rule-engine.md).
+| Variable Name      | Meaning                                        | Effect Example                                                                                               |
+| ------------------ | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `{scope.code}`     | Value from code column in event code table     | `ERROR-CODE-001`                                                                                             |
+| `{scope.solution}` | Value from solution column in event code table | `Try restarting device`                                                                                      |
+| `{msg}`            | Message content that triggered the rule        | `{"timestamp": {"sec": 123456, "nsec": 789}, "message": "demo log message", "file": "demo.log", "level": 2}` |
+| `{topic}`          | Topic that triggered the rule                  | `/error_code`                                                                                                |
+| `{ts}`             | Timestamp when rule was triggered              | `1738915780.123`                                                                                             |
+
+### Debug Rule
+
+#### Prerequisites
+
+Prepare a record with files available for debugging, i.e., mcap, bag or log files that can trigger rules.
+
+#### Debug Steps
+
+1. Click "Debug" button in rule details, select the prepared record
+
+![Debug Step 1](./img/add-rule_19.png)
+
+2. View debug logs
+
+![Debug Step 2](./img/add-rule_20.png)
+
+3. Check debug files in the "Output" section of debug logs
+
+![Debug Step 3](./img/add-rule_21.png)
+
+### Manage Rules
+
+In the rule list, you can delete rules
+
+![Manage Rules](./img/add-rule_22.png)
