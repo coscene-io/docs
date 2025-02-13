@@ -82,19 +82,18 @@ sidebar_position: 2
 
    ```yaml
    collector:
-      delete_after_interval_in_hours: 48
+     delete_after_interval_in_hours: 48
    mod:
-      conf:
-         collect_dirs:
-            - /root/logs
-         enabled: true
-         listen_dirs:
-            - /root/logs
-         skip_period_hours: 2
-      name: default
+     conf:
+       collect_dirs:
+         - /root/logs
+       enabled: true
+       listen_dirs:
+         - /root/logs
+       skip_period_hours: 2
+     name: default
    updater:
-      enabled: false
-
+     enabled: false
    ```
 
    \*更多配置参见[数采规则格式](https://docs.coscene.cn/docs/recipes/device/device-collector/#%E6%95%B0%E9%87%87%E8%A7%84%E5%88%99%E6%A0%BC%E5%BC%8F)

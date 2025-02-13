@@ -18,31 +18,31 @@ Using the following scenario as an example, let's setup your automatic data coll
 ## Adding Rules to Your Project
 
 1. Navigate to the `auto-upload` project
-   ![pro-1](../img/pro-1.png)
+   ![pro-1](./img/pro-1.png)
 
 2. Within the project, go to the "Data Collection & Diagnosis Rules" page and click "Add Rule Group"
-   ![data-2-1](../img/9-add-rule-set.png)
+   ![data-2-1](./img/9-add-rule-set.png)
 
 3. After changing the rule group name, click "Add Blank Rule"
-   ![data-2-2](../img/9-add-rule.png)
+   ![data-2-2](./img/9-add-rule.png)
 
 4. Change the rule name, select `/external_log` as the topic, enter "msg.message contains error 1" as the event matching condition, check both "Collect Data" and "Diagnose Data" in trigger actions, change the moment name to "Triggered error 1", and click "Create"
 
-   ![pro-rule-base-rule](../img/pro-rule-base-rule-1.png)
-   ![pro-rule-base-rule](../img/pro-rule-base-rule-2.png)
+   ![pro-rule-base-rule](./img/pro-rule-base-rule-1.png)
+   ![pro-rule-base-rule](./img/pro-rule-base-rule-2.png)
 
 5. Return to the "Data Collection & Diagnosis Rules" page, select the rule group you just added, and click the enable button
-   ![data-2-3](../img/9-enable-rule-set.png)
+   ![data-2-3](./img/9-enable-rule-set.png)
 
    \*For more rule condition styles, see [Rule Groups](./3-add-rule.md#rule-groups)
 
 ## Adding Data Diagnosis Trigger in Project
 
 1. Navigate to the `auto-upload` project
-   ![pro-1](../img/pro-1.png)
+   ![pro-1](./img/pro-1.png)
 
 2. In the project, go to "Automation - Triggers" page and click "Create Trigger"
-   ![pro-trigger-add](../img/pro-trigger-add.png)
+   ![pro-trigger-add](./img/pro-trigger-add.png)
 
 3. Edit trigger content:
 
@@ -52,7 +52,7 @@ Using the following scenario as an example, let's setup your automatic data coll
 - Edit file wildcard pattern as `**/*` (using Glob format, see [reference documentation](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/))
 - Click "Create Trigger"
 
-  ![pro-trigger-base](../img/pro-trigger-edit.png)
+  ![pro-trigger-base](./img/pro-trigger-edit.png)
 
 ## Configure Data Collection Device Information
 
@@ -193,12 +193,12 @@ Using the following scenario as an example, let's setup your automatic data coll
 
 4. View the moment created at the trigger time.
 
-   ![auto-record-3](../img/auto-record-3.png)
+   ![auto-record-3](./img/auto-record-3.png)
 
 ## Adding Device to Project
 
 1. In the project's "Project Devices" tab, click "Add Device"
-   ![pro-device-add](../img/pro-device-add-1.png)
+   ![pro-device-add](./img/pro-device-add-1.png)
 
 2. Select the device(s) you want to add and click "Confirm"
-   ![pro-device-add-2](../img/pro-device-add-2.png)
+   ![pro-device-add-2](./img/pro-device-add-2.png)
