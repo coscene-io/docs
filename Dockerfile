@@ -1,5 +1,5 @@
 # production environment
-FROM caddy:2.6.4-alpine
+FROM caddy:2.9.1-alpine
 WORKDIR /build
 
 COPY /build ./
