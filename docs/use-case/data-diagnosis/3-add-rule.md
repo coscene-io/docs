@@ -211,15 +211,66 @@ sidebar_position: 3
 
 ### 规则变量
 
-规则支持使用变量，详见下表：
+规则支持使用变量或表达式，**在非规则条件中使用变量时请用 `{}`** 包裹变量名或表达式，则被包裹的变量或表达式会被替换为实际的值，支持的变量详见下表：
 
 | 变量名             | 含义                       | 效果示例                                                                                                      |
 | ------------------ | -------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `{scope.code}`     | 事件码表中 code 列的值     | `ERROR-CODE-001`                                                                                              |
-| `{scope.solution}` | 事件码表中 solution 列的值 | `尝试重启设备`                                                                                                |
-| `{msg}`            | 触发规则的消息内容         | `{"timestamp": {"sec": 123456, "nsec": 789}, "message": "demo log message", "file": "demo.log", "level": 2} ` |
-| `{topic}`          | 触发规则的话题             | `/error_code`                                                                                                 |
-| `{ts}`             | 触发规则时的时间戳         | `1738915780.123`                                                                                              |
+| `scope.code`     | 事件码表中 code 列的值     | `ERROR-CODE-001`                                                                                              |
+| `scope.solution` | 事件码表中 solution 列的值 | `尝试重启设备`                                                                                                |
+| `msg`            | 触发规则的消息内容         | `{"timestamp": {"sec": 123456, "nsec": 789}, "message": "demo log message", "file": "demo.log", "level": 2} ` |
+| `topic`          | 触发规则的话题             | `/error_code`                                                                                                 |
+| `ts`             | 触发规则时的时间戳         | `1738915780.123`                                                                                              |
+
+以上 `scope`，`msg`，`topic`，`ts` 变量的值使用的是触发规则时的事件码表行，触发消息，触发话题，触发时间点。
+
+**注意：**
+
+- 在规则条件中使用变量或表达式时，请直接使用，不要用 `{}` 包裹
+- 在非规则条件中使用变量或表达式时，例如记录名称，记录描述等，请用 `{}` 包裹。
+- 表达式的语法遵循 [CEL 语法](https://github.com/google/cel-spec/blob/master/doc/langdef.md)
+
+#### 自定义函数
+
+除了 [CEL 语法](https://github.com/google/cel-spec/blob/master/doc/langdef.md) 支持的函数，还额外支持了以下函数(以下定义参照 CEL)
+
+**timestamp** \- 将其他类型转换为时间戳类型 （CEL 已经支持了从时间戳类型和字符串类型转换为时间戳类型）
+
+  
+  **函数签名（Signature）**
+
+
+  *  `timestamp(double) -> google.protobuf.Timestamp` (将 double 类型转为时间戳类型， 会自行判断单位为秒/毫秒/微妙/纳秒)
+
+
+  **例子:**
+
+  ```
+  timestamp(1738915780.123) -> timestamp("2025-02-07T08:09:40.123")
+  ```
+
+**format** \- 将时间戳类型用指定格式转为字符串类型
+
+**函数签名（Signature）**
+
+* `google.protobuf.Timestamp.format(string) -> string`  （参数为格式化字符串）
+* `google.protobuf.Timestamp.format(string, string) -> string`  （参数为格式化字符串和时区）
+* `google.protobuf.Timestamp.format(string, int) -> string`  （参数为格式化字符串和时区偏移量，单位为秒）
+
+
+**例子：**
+
+```
+timestamp("2025-02-07T08:09:40.123").format("%Y-%m-%d %H:%M:%S") -> "UTC: 2025-02-07 08:09:40"
+timestamp("2025-02-07T08:09:40.123").format("%Y-%m-%d %H:%M:%S", "Asia/Shanghai") -> "2025-02-07 16:09:40"
+timestamp("2025-02-07T08:09:40.123").format("%Y-%m-%d %H:%M:%S", 8*60*60) -> "2025-02-07 16:09:40"
+```
+
+**注意：**
+
+* 时间戳的格式化字符串遵循`man 3 strftime`的格式，[详见](https://linux.die.net/man/3/strftime)
+* 时区支持`UTC`、`Asia/Shanghai`、`America/New_York`等 IANA 规范的时区，[详见](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+
 
 ### 调试规则
 
