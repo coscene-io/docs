@@ -3,9 +3,11 @@ import React from 'react';
 import HomeCatalogue from '../components/homeCatalogue';
 
 export default function Home() {
-    return (
-        <Layout>
-            <HomeCatalogue />
-        </Layout>
-    );
+  return (
+    <Layout>
+      <div className="container py-8">
+        <HomeCatalogue />
+      </div>
+    </Layout>
+  );
 }
