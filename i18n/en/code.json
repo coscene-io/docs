@@ -448,5 +448,155 @@
   "theme.contentVisibility.draftBanner.message": {
     "message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
     "description": "The draft content banner message"
+  },
+  "home.catalogue.getting-started": {
+    "message": "Getting Started"
+  },
+  "home.catalogue.login-to-platform": {
+    "message": "Login to coScene"
+  },
+  "home.catalogue.create-project": {
+    "message": "Create a Project"
+  },
+  "home.catalogue.create-record-and-viz": {
+    "message": "Create and Visualize Record"
+  },
+  "home.catalogue.create-moment-flow": {
+    "message": "Create Your First \"Moment\""
+  },
+  "home.catalogue.collaboration": {
+    "message": "Collaboration"
+  },
+  "home.catalogue.record": {
+    "message": "Record"
+  },
+  "home.catalogue.project-collaboration": {
+    "message": "Project Collaboration"
+  },
+  "home.catalogue.organization-and-team": {
+    "message": "Organization and Team"
+  },
+  "home.catalogue.3rd-party-integration": {
+    "message": "3rd party Integration"
+  },
+  "home.catalogue.viz": {
+    "message": "Visualization"
+  },
+  "home.catalogue.about-viz": {
+    "message": "About Data Visualization"
+  },
+  "home.catalogue.prep-before-viz": {
+    "message": "Preparation Before Visualization"
+  },
+  "home.catalogue.use-3d-viz": {
+    "message": "Visualize Your Data with 3D Panel"
+  },
+  "home.catalogue.panel": {
+    "message": "Panel"
+  },
+  "home.catalogue.3d-panel": {
+    "message": "3D Panel"
+  },
+  "home.catalogue.log-panel": {
+    "message": "Log Panel"
+  },
+  "home.catalogue.plot-panel": {
+    "message": "Plot Panel"
+  },
+  "home.catalogue.image-panel": {
+    "message": "Image Panel"
+  },
+  "home.catalogue.layout": {
+    "message": "Layout"
+  },
+  "home.catalogue.create-moment-viz": {
+    "message": "Create a Moment in Visualization"
+  },
+  "home.catalogue.frame-rate-optimization": {
+    "message": "Frame Rate Optimization"
+  },
+  "home.catalogue.publish-panel": {
+    "message": "Publish Panel"
+  },
+  "home.catalogue.service-panel": {
+    "message": "Service Panel"
+  },
+  "home.catalogue.teleop-panel": {
+    "message": "Teleop Panel"
+  },
+  "home.catalogue.options": {
+    "message": "Visualization Options"
+  },
+  "home.catalogue.device": {
+    "message": "Device"
+  },
+  "home.catalogue.about-device": {
+    "message": "About Devices"
+  },
+  "home.catalogue.create-device": {
+    "message": "Add Device"
+  },
+  "home.catalogue.manage-device": {
+    "message": "Manage Devices"
+  },
+  "home.catalogue.device-collector": {
+    "message": "Data Collection Rules"
+  },
+  "home.catalogue.change-device-guide": {
+    "message": "Device Change, Upgrade and Uninstall Guide"
+  },
+  "home.catalogue.device-remote-control": {
+    "message": "Remote Control Device"
+  },
+  "home.catalogue.workflow": {
+    "message": "Automation"
+  },
+  "home.catalogue.automation": {
+    "message": "Actions"
+  },
+  "home.catalogue.sim-and-tests": {
+    "message": "Simulation and Testing"
+  },
+  "home.catalogue.regression": {
+    "message": "Cloud Test"
+  },
+  "home.catalogue.developer": {
+    "message": "Developer"
+  },
+  "home.catalogue.core-concepts": {
+    "message": "Core Concepts"
+  },
+  "home.catalogue.cocli": {
+    "message": "Command Line Tool coCLI - Beta"
+  },
+  "home.catalogue.openapi": {
+    "message": "OpenAPI Platform"
+  },
+  "home.catalogue.use-case": {
+    "message": "Use Cases"
+  },
+  "home.catalogue.common-task": {
+    "message": "Common Data Collection"
+  },
+  "home.catalogue.automated-data-collection": {
+    "message": "Automated Data Collection and Diagnosis"
+  },
+  "home.catalogue.automated-data-processing": {
+    "message": "Automated Data Processing"
+  },
+  "home.catalogue.data-collection-and-diagnosis": {
+    "message": "Data Collection and Diagnose"
+  },
+  "home.catalogue.intro-image": {
+    "message": "About Images"
+  },
+  "home.catalogue.build-image": {
+    "message": "Prepare Images"
+  },
+  "home.catalogue.push-image": {
+    "message": "Push Images"
+  },
+  "home.catalogue.image-management": {
+    "message": "Image Management"
   }
 }

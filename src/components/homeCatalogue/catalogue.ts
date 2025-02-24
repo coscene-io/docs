@@ -75,7 +75,7 @@ export const CATALOGUE = [
     docs: [
       { docLink: '/use-case/common-task', title: translate({ id: 'home.catalogue.common-task', message: '通用数据采集' }) },
       { docLink: '/use-case/automated-data-collection', title: translate({ id: 'home.catalogue.automated-data-collection', message: '自动数据采集与诊断' }) },
-      { docLink: '/use-case/automated-data-processing', title: translate({ id: 'home.catalogue.common-task', message: '自动化处理数据' }) },
+      { docLink: '/use-case/automated-data-processing', title: translate({ id: 'home.catalogue.automated-data-processing', message: '自动化处理数据' }) },
       { docLink: '/category/data-collection-and-diagnosis', title: translate({ id: 'home.catalogue.data-collection-and-diagnosis', message: '数据自动采集与诊断' }) },
     ],
   },
