@@ -4,6 +4,22 @@ export const CATALOGUE = [
   {
     header: { title: translate({ id: 'home.catalogue.getting-started', message: '快速开始' }) },
     docs: [
+      { docLink: '/get-started/coscene-intro', title: translate({ id: 'home.catalogue.coscene-intro', message: '产品介绍' }) },
+      { docLink: '/get-started/browser-support', title: translate({ id: 'home.catalogue.browser-support', message: '浏览器支持' }) },
+    ],
+  },
+  {
+    header: { title: translate({ id: 'home.catalogue.collaboration', message: '协作' }) },
+    docs: [
+      { docLink: '/collaboration/record', title: translate({ id: 'home.catalogue.record', message: '记录操作' }) },
+      { docLink: '/collaboration/task-and-comment', title: translate({ id: 'home.catalogue.task-and-comment', message: '项目协作' }) },
+      { docLink: '/collaboration/organization', title: translate({ id: 'home.catalogue.organization', message: '组织和团队' }) },
+      { docLink: '/collaboration/integration', title: translate({ id: 'home.catalogue.integration', message: '服务集成' }) },
+    ],
+  },
+  {
+    header: { title: translate({ id: 'home.catalogue.viz', message: '可视化' }) },
+    docs: [
       { docLink: '/viz/about-viz', title: translate({ id: 'home.catalogue.about-viz', message: '关于数据可视化' }) },
       { docLink: '/viz/prep-before-viz', title: translate({ id: 'home.catalogue.prep-before-viz', message: '可视化前的准备' }) },
       { docLink: '/viz/use-3d-viz', title: translate({ id: 'home.catalogue.use-3d-viz', message: '利用三维面板可视化你的数据' }) },
@@ -33,11 +49,32 @@ export const CATALOGUE = [
     ],
   },
   {
+    header: { title: translate({ id: 'home.catalogue.workflow', message: '自动化' }) },
+    docs: [
+      { docLink: '/category/action', title: translate({ id: 'home.catalogue.automation', message: '动作' }) },
+    ],
+  },
+  {
+    header: { title: translate({ id: 'home.catalogue.sim-and-tests', message: '仿真与测试' }) },
+    docs: [
+      { docLink: '/category/regression', title: translate({ id: 'home.catalogue.regression', message: '批量测试' }) },
+    ],
+  },
+  {
     header: { title: translate({ id: 'home.catalogue.developer', message: '开发者' }) },
     docs: [
       { docLink: '/category/core-concepts', title: translate({ id: 'home.catalogue.core-concepts', message: '概念' }) },
-      { docLink: '/category/core-concepts', title: translate({ id: 'home.catalogue.cocli', message: '命令行工具 coCLI - Beta' }) },
+      { docLink: '/category/cocli', title: translate({ id: 'home.catalogue.cocli', message: '命令行工具 coCLI - Beta' }) },
       { docLink: '/category/openapi', title: translate({ id: 'home.catalogue.openapi', message: '开放平台 OpenAPI' }) },
+    ],
+  },
+  {
+    header: { title: translate({ id: 'home.catalogue.use-case', message: '应用场景' }) },
+    docs: [
+      { docLink: '/use-case/common-task', title: translate({ id: 'home.catalogue.common-task', message: '通用数据采集' }) },
+      { docLink: '/use-case/automated-data-collection', title: translate({ id: 'home.catalogue.automated-data-collection', message: '自动数据采集与诊断' }) },
+      { docLink: '/use-case/automated-data-processing', title: translate({ id: 'home.catalogue.common-task', message: '自动化处理数据' }) },
+      { docLink: '/category/data-collection-and-diagnosis', title: translate({ id: 'home.catalogue.data-collection-and-diagnosis', message: '数据自动采集与诊断' }) },
     ],
   },
 ];
