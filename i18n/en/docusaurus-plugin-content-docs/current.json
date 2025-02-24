@@ -24,7 +24,7 @@
     "description": "The label for category 记录操作 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.项目协作": {
-    "message": "Collaboration",
+    "message": "Project Collaboration",
     "description": "The label for category 项目协作 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.数据可视化": {
