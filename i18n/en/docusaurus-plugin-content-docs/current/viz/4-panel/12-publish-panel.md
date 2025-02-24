@@ -4,7 +4,7 @@ sidebar_position: 12
 
 # Publish Panel
 
-![Publish Panel Overview](./img/viz-12-1.png)
+![Publish Panel Overview](../img/viz-12-1.png)
 
 The Publish Panel allows the users to publish messages to specified topics via [coBridge](https://github.com/coscene-io/coBridge).
 

@@ -5,7 +5,7 @@ sidebar_position: 8
 # 图像面板
 显示原始及压缩后的图像和视频，并附带二维注释，如文本标签、圆形和点。同时叠加三维标记，以提供额外的上下文信息。
 
-![img-panel](./img/img-panel.png)
+![img-panel](../img/img-panel.png)
 
 ## 设置
 
@@ -42,11 +42,11 @@ sidebar_position: 8
 ## 用户交互
 右键点击图片以将其下载为 PNG 文件格式。
 
-![download-image](./img/download-image.png)
+![download-image](../img/download-image.png)
 
 点击任何显示的图像标记以查看其详细信息
 
-![image-detail](./img/image-detail.png)
+![image-detail](../img/image-detail.png)
 
 滚动鼠标滚轮来缩放，拖动来平移。缩放时注释会重新渲染以保持清晰。
 
@@ -59,10 +59,10 @@ sidebar_position: 8
 <table>
   <tr>
     <td>
-    ![video-decode](./img/chrome-gpu-setting1.png)
+    ![video-decode](../img/chrome-gpu-setting1.png)
     </td>
     <td>
-    ![video-acceleration](./img/chrome-gpu-setting2.png)
+    ![video-acceleration](../img/chrome-gpu-setting2.png)
     </td>
   </tr>
 </table>
@@ -70,17 +70,17 @@ sidebar_position: 8
 ## 启用硬件加速:
 访问 <code>chrome://settings</code>，搜索 <code>acceleration</code>，确保 <code>Use graphics acceleration when available</code> 切换已启用。
 
-![chrome-settings-acceleration](./img/chrome-settings-acceleration.png)
+![chrome-settings-acceleration](../img/chrome-settings-acceleration.png)
 
 访问 <code>chrome://flags</code>，搜索 <code>video</code>，确保 <code>Hardware-accelerated video decode</code> 已启用。
 
-![chrome-flags-video](./img/chrome-flags-video.png)
+![chrome-flags-video](../img/chrome-flags-video.png)
 
 MacOS：
 
 对于 MacOS，当在基于 Chromium 的浏览器中将图形后端(graphics backend) 更改为使用 <code>Metal</code> 时，观察到显著的性能提升。您可以在 <code>about://flags</code> 中进行更改。
 
-![chrome-flags-graphics-backend](./img/chrome-flags-graphics-backend.png)
+![chrome-flags-graphics-backend](../img/chrome-flags-graphics-backend.png)
 
 
 Linux：

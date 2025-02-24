@@ -4,7 +4,7 @@ sidebar_position: 14
 
 # Teleop Panel
 
-![Teleop Panel Overview](./img/viz-14-1.png)
+![Teleop Panel Overview](../img/viz-14-1.png)
 
 The Teleop Panel allows you to remotely control your robot by publishing `geometry_msgs/Twist` or `geometry_msgs/msg/Twist` messages on a specified topic. To remotely operate a connected robot using this panel, you need to establish communication with the robot via [coBridge](https://github.com/coscene-io/cobridge).
 

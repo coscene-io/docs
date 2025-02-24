@@ -2,10 +2,10 @@
 sidebar_position: 8
 ---
 
-# Image
+# Image Panel
 Display raw and compressed images, as well as compressed videos, with 2D annotations like text labels, circles, and points. Superimpose 3D markers for additional context.
 
-![img-panel](./img/img-panel.png)
+![img-panel](../img/img-panel.png)
 
 ## Settings
 
@@ -42,11 +42,11 @@ Display raw and compressed images, as well as compressed videos, with 2D annotat
 ## User Interaction
 Right-click on the image to download it as a PNG file format.
 
-![download-image](./img/download-image.png)
+![download-image](../img/download-image.png)
 
 Click any displayed image marker to view its details.
 
-![image-detail](./img/image-detail.png)
+![image-detail](../img/image-detail.png)
 
 Scroll the mouse wheel to zoom in and out, and drag to pan. The annotations are re-rendered to keep them clear when zooming.
 
@@ -59,10 +59,10 @@ You can check if your platform supports hardware acceleration video decoding by 
 <table>
   <tr>
     <td>
-    ![video-decode](./img/chrome-gpu-setting1.png)
+    ![video-decode](../img/chrome-gpu-setting1.png)
     </td>
     <td>
-    ![video-acceleration](./img/chrome-gpu-setting2.png)
+    ![video-acceleration](../img/chrome-gpu-setting2.png)
     </td>
   </tr>
 </table>
@@ -70,17 +70,17 @@ You can check if your platform supports hardware acceleration video decoding by 
 ## Enable hardware acceleration:
 Visit <code>chrome://settings</code>, search <code>acceleration</code>, ensure that <code>Use graphics acceleration when available</code> is enabled.
 
-![chrome-settings-acceleration](./img/chrome-settings-acceleration.png)
+![chrome-settings-acceleration](../img/chrome-settings-acceleration.png)
 
 Visit <code>chrome://flags</code>, search <code>video</code>, ensure that <code>Hardware-accelerated video decode</code> is enabled.
 
-![chrome-flags-video](./img/chrome-flags-video.png)
+![chrome-flags-video](../img/chrome-flags-video.png)
 
 MacOS:
 
 For MacOS, when the graphics backend (graphics backend) is changed to use <code>Metal</code> in a Chromium-based browser, a significant performance improvement is observed. You can make the change in <code>about://flags</code>.
 
-![chrome-flags-graphics-backend](./img/chrome-flags-graphics-backend.png)
+![chrome-flags-graphics-backend](../img/chrome-flags-graphics-backend.png)
 
 
 Linux:

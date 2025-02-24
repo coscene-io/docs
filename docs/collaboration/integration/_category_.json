@@ -3,6 +3,7 @@
   "position": 10,
   "collapsible": true,
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "slug": "/category/3rd-party-integration"
   }
 }

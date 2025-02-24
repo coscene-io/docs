@@ -4,7 +4,7 @@ sidebar_position: 12
 
 # 发布面板
 
-![发布面板一览](./img/viz-12-1.png)
+![发布面板一览](../img/viz-12-1.png)
 
 发布面板（Publish Panel）是一个用于向「指定主题（Topic）」发布消息的工具，它通过 [coBridge](https://github.com/coscene-io/coBridge) 将信息传递给您的机器人系统。
 

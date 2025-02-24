@@ -1,9 +1,9 @@
 {
-  "label": "Record",
+  "label": "面板",
   "position": 4,
   "collapsible": true,
   "link": {
     "type": "generated-index",
-    "slug": "/category/record"
+    "slug": "/category/panel"
   }
 }

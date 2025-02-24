@@ -4,7 +4,7 @@ sidebar_position: 13
 
 # Service Call Panel
 
-![Service Call Panel Overview](./img/viz-13-1.png)
+![Service Call Panel Overview](../img/viz-13-1.png)
 
 The Service Call Panel allows the users to call ROS services via [coBridge](https://github.com/coscene-io/coBridge) and view the responses.
 
