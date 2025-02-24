@@ -4,7 +4,7 @@ sidebar_position: 13
 
 # 服务调用面板
 
-![服务调用面板一览](./img/viz-13-1.png)
+![服务调用面板一览](../img/viz-13-1.png)
 
 服务调用面板（Service Call Panel）允许您通过 [coBridge](https://github.com/coscene-io/coBridge) 调用机器端服务（Service）并查看其响应。
 

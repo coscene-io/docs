@@ -4,7 +4,7 @@ sidebar_position: 14
 
 # 远程操控面板
 
-![远程操控面板一览](./img/viz-14-1.png)
+![远程操控面板一览](../img/viz-14-1.png)
 
 远程操控面板使您能够通过发布 `geometry_msgs/Twist` 或 `geometry_msgs/msg/Twist` 消息到指定主题（Topic）来控制机器人。要使用此面板远程操控机器人，您需要先通过 [coBridge](https://github.com/coscene-io/cobridge) 建立与机器人的通信连接。
 
