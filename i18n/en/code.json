@@ -449,6 +449,9 @@
     "message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
     "description": "The draft content banner message"
   },
+  "home.catalogue.overview": {
+    "message": "Overview"
+  },
   "home.catalogue.getting-started": {
     "message": "Getting Started"
   },

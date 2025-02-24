@@ -4,7 +4,8 @@ export const CATALOGUE = [
   {
     header: { title: translate({ id: 'home.catalogue.getting-started', message: '快速开始' }) },
     docs: [
-      { docLink: '/get-started/login-to-platform', title: translate({ id: 'home.catalogue.login-to-platform', message: '产品介绍' }) },
+      { docLink: '/overview', title: translate({ id: 'home.catalogue.overview', message: '总览' }) },
+      { docLink: '/get-started/login-to-platform', title: translate({ id: 'home.catalogue.login-to-platform', message: '登录刻行时空' }) },
       { docLink: '/get-started/create-project', title: translate({ id: 'home.catalogue.create-project', message: '创建项目' }) },
       { docLink: '/get-started/create-record-and-viz', title: translate({ id: 'home.catalogue.create-record-and-viz', message: '创建并可视化记录' }) },
       { docLink: '/get-started/create-moment-flow', title: translate({ id: 'home.catalogue.create-moment-flow', message: '创建你的第一条“一刻”' }) },
