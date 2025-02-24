@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# Image
+# Image Panel
 Display raw and compressed images, as well as compressed videos, with 2D annotations like text labels, circles, and points. Superimpose 3D markers for additional context.
 
 ![img-panel](../img/img-panel.png)

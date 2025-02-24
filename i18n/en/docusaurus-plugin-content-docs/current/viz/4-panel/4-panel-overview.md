@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Panels
+# Panel Overview
 
 "Panel" is a modular visualization interface that can be configured and arranged into layouts, and can also be added, edited, and dragged and dropped.
 

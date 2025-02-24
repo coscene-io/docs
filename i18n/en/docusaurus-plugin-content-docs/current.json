@@ -31,6 +31,10 @@
     "message": "Data Visualization",
     "description": "The label for category 数据可视化 in sidebar tutorialSidebar"
   },
+  "sidebar.tutorialSidebar.category.面板": {
+    "message": "Panel",
+    "description": "The label for category 面板 in sidebar tutorialSidebar"
+  },
   "sidebar.tutorialSidebar.category.工作流": {
     "message": "Workflow",
     "description": "The label for category 工作流 in sidebar tutorialSidebar"
