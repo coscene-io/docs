@@ -4,17 +4,19 @@ export const CATALOGUE = [
   {
     header: { title: translate({ id: 'home.catalogue.getting-started', message: '快速开始' }) },
     docs: [
-      { docLink: '/get-started/coscene-intro', title: translate({ id: 'home.catalogue.coscene-intro', message: '产品介绍' }) },
-      { docLink: '/get-started/browser-support', title: translate({ id: 'home.catalogue.browser-support', message: '浏览器支持' }) },
+      { docLink: '/get-started/login-to-platform', title: translate({ id: 'home.catalogue.login-to-platform', message: '产品介绍' }) },
+      { docLink: '/get-started/create-project', title: translate({ id: 'home.catalogue.create-project', message: '创建项目' }) },
+      { docLink: '/get-started/create-record-and-viz', title: translate({ id: 'home.catalogue.create-record-and-viz', message: '创建并可视化记录' }) },
+      { docLink: '/get-started/create-moment-flow', title: translate({ id: 'home.catalogue.create-moment-flow', message: '创建你的第一条“一刻”' }) },
     ],
   },
   {
     header: { title: translate({ id: 'home.catalogue.collaboration', message: '协作' }) },
     docs: [
-      { docLink: '/collaboration/record', title: translate({ id: 'home.catalogue.record', message: '记录操作' }) },
-      { docLink: '/collaboration/task-and-comment', title: translate({ id: 'home.catalogue.task-and-comment', message: '项目协作' }) },
-      { docLink: '/collaboration/organization', title: translate({ id: 'home.catalogue.organization', message: '组织和团队' }) },
-      { docLink: '/collaboration/integration', title: translate({ id: 'home.catalogue.integration', message: '服务集成' }) },
+      { docLink: '/category/record', title: translate({ id: 'home.catalogue.record', message: '记录操作' }) },
+      { docLink: '/category/project-collaboration', title: translate({ id: 'home.catalogue.project-collaboration', message: '项目协作' }) },
+      { docLink: '/category/organization-and-team', title: translate({ id: 'home.catalogue.organization-and-team', message: '组织和团队' }) },
+      { docLink: '/category/3rd-party-integration', title: translate({ id: 'home.catalogue.3rd-party-integration', message: '服务集成' }) },
     ],
   },
   {
@@ -75,6 +77,15 @@ export const CATALOGUE = [
       { docLink: '/use-case/automated-data-collection', title: translate({ id: 'home.catalogue.automated-data-collection', message: '自动数据采集与诊断' }) },
       { docLink: '/use-case/automated-data-processing', title: translate({ id: 'home.catalogue.common-task', message: '自动化处理数据' }) },
       { docLink: '/category/data-collection-and-diagnosis', title: translate({ id: 'home.catalogue.data-collection-and-diagnosis', message: '数据自动采集与诊断' }) },
+    ],
+  },
+  {
+    header: { title: translate({ id: 'home.catalogue.use-case', message: '镜像' }) },
+    docs: [
+      { docLink: '/image/intro', title: translate({ id: 'home.catalogue.intro-image', message: '关于镜像' }) },
+      { docLink: '/image/build-image', title: translate({ id: 'home.catalogue.build-image', message: '准备镜像' }) },
+      { docLink: '/image/push-image', title: translate({ id: 'home.catalogue.push-image', message: '推送镜像' }) },
+      { docLink: '/image/image-management', title: translate({ id: 'home.catalogue.image-management', message: '管理镜像' }) },
     ],
   },
 ];
