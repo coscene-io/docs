@@ -96,7 +96,7 @@
     "description": "The label for category 设备 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.动作": {
-    "message": "动作",
+    "message": "Action",
     "description": "The label for category 动作 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.仿真与测试": {
