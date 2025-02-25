@@ -42,7 +42,7 @@ export const CATALOGUE = [
       { docLink: '/device/device-collector', title: translate({ id: 'home.catalogue.device-collector', message: '数采客户端配置' }) },
       { docLink: '/device/change-device-guide', title: translate({ id: 'home.catalogue.change-device-guide', message: '换机、升级、卸载流程指南' }) },
       { docLink: '/device/device-remote-control', title: translate({ id: 'home.catalogue.device-remote-control', message: '远程控制设备' }) },
-      { docLink: '/device/batch-remote-command', title: translate({ id: 'home.catalogue.batch-remote-command', message: '批量操作设备' }) },
+      { docLink: '/device/batch-device-operations', title: translate({ id: 'home.catalogue.batch-device-operations', message: '批量操作设备' }) },
     ],
   },
   {

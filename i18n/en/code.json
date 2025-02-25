@@ -527,7 +527,7 @@
   "home.catalogue.manage-device": {
     "message": "Manage Devices"
   },
-  "home.catalogue.batch-remote-command": {
+  "home.catalogue.batch-device-operations": {
     "message": "Batch Device Operations"
   },
   "home.catalogue.device-collector": {
