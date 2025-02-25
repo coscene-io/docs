@@ -10,8 +10,8 @@ interface DocSlugProps {
 
 function Card({ catalogue }: { catalogue: { header: { title: string }; docs: DocSlugProps[] } }) {
   return (
-    <div className="mb-2">
-      <div className="mb-1 text-lg font-medium text-gray-900">{catalogue.header.title}</div>
+    <div className="mb-6">
+      <div className="mb-1 text-xl font-medium text-gray-900">{catalogue.header.title}</div>
       {catalogue.docs.map((doc, index) => {
         if (doc.link) {
           return (
