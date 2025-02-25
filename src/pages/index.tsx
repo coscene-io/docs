@@ -2,15 +2,18 @@ import Layout from '@theme/Layout';
 import React from 'react';
 import HomeCatalogue from '../components/homeCatalogue';
 import Translate from '@docusaurus/Translate';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 export default function Home() {
+  const backgroundImage = useBaseUrl('/assets/images/home_header.png');
+
   return (
     <Layout>
       <div
         className="w-full h-[260px] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/assets/images/home_header.png)' }}
+        style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className="space-y-4 py-16 px-10">
+        <div className="space-y-4 py-20 px-10">
           <div className="text-4xl font-medium text-center">
             <Translate id="home.header.title">帮助文档</Translate>
           </div>
