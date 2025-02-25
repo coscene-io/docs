@@ -37,3 +37,9 @@
   height: 160%;
   margin-top: -10px;
 }
+
+/* Hide the navbar title specifically in English version */
+[data-theme='light'] .navbar__title,
+[data-theme='dark'] .navbar__title {
+  display: none;
+}

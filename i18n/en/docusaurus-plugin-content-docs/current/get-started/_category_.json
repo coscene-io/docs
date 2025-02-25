@@ -1,0 +1,9 @@
+{
+  "label": "快速开始",
+  "position": 1,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/getting-started"
+  }
+}

@@ -1,0 +1,72 @@
+name: Reusable OSS Deploy
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      site_url:
+        required: true
+        type: string
+    secrets:
+      OSS_ACCESS_KEY_ID:
+        required: true
+      OSS_ACCESS_KEY_SECRET:
+        required: true
+      OSS_TARGET_BUCKET:
+        required: true
+      FEISHU_BOT_WEBHOOK_URL:
+        required: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node env
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Project
+        run: |
+          export NODE_OPTIONS=--max_old_space_size=5632
+          pnpm build
+
+      - name: Setup OSS
+        uses: coscene-io/setup-ossutil@v2
+        with:
+          endpoint: oss-cn-hangzhou.aliyuncs.com
+          access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
+          access-key-secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+
+      - name: Deploy to OSS
+        run: |
+          ossutil rm -rf oss://${{ secrets.OSS_TARGET_BUCKET }}/
+          ossutil cp -rf build/  oss://${{ secrets.OSS_TARGET_BUCKET }}/
+
+      - name: Notification to Feishu
+        uses: foxundermoon/feishu-action@v2
+        with:
+          url: ${{ secrets.FEISHU_BOT_WEBHOOK_URL }}
+          msg_type: text
+          content: |
+            text: |
+              🚀 coScene Docs 新版本部署完成
+              
+              📍 部署环境：${{ inputs.environment }}
+              👨‍💻 部署人员：${{ github.actor }}
+              🔗 访问地址：${{ inputs.site_url }}

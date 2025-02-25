@@ -61,12 +61,13 @@ const config = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
+        blog: false,
+        // blog: {
+        //   showReadingTime: true,
+        //   // Please change this to your repo.
+        //   // Remove this to remove the "edit this page" links.
+        //   // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+        // },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -78,7 +79,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        // title: 'coScene',
+        title: 'coScene',
         logo: {
           alt: 'coScene Logo',
           src: 'img/logo.svg',
@@ -86,7 +87,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'overview',
             position: 'left',
             label: '文档',
           },
@@ -187,7 +188,18 @@ const config = {
 
         //... other Algolia params
       },
+      announcementBar: {
+        id: 'dev_environment',
+        content: '⚠️ 这是开发环境版本 / This is Development Environment Version ⚠️',
+        backgroundColor: '#fafbfc',
+        textColor: '#091E42',
+        isCloseable: false,
+      },
     }),
+  customFields: {
+    // Add custom field to identify environment
+    isDevEnvironment: process.env.NODE_ENV !== 'production',
+  },
 };
 
 export default config;

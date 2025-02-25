@@ -11,6 +11,19 @@
 2. 安装依赖 `pnpm install`
 3. 启动本地环境 `pnpm start`
 
+### 环境说明
+
+- **开发环境 (Development)**
+
+  - 分支: `dev`
+  - 用途: 用于新功能开发和测试
+  - URL: https://dev.docs.coscene.cn
+
+- **生产环境 (Production)**
+  - 分支: `master`
+  - 用途: 正式环境，面向用户的稳定版本
+  - URL: https://docs.coscene.cn
+
 ### 尝试本地构建
 
 `pnpm build && pnpm serve`
@@ -73,6 +86,19 @@ Markdown 会自动为标题生成 Header ID。由于中英文编码规则的限�
 
 1. Install dependencies. `pnpm install`
 2. Run dev server. `pnpm start`
+
+### Environments
+
+- **Development**
+
+  - Branch: `dev`
+  - Purpose: For new feature development and testing
+  - URL: https://dev.docs.coscene.cn
+
+- **Production**
+  - Branch: `master`
+  - Purpose: Stable version for end users
+  - URL: https://docs.coscene.cn
 
 ### Try a local prod build
 
