@@ -449,6 +449,12 @@
     "message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
     "description": "The draft content banner message"
   },
+  "home.header.title": {
+    "message": "Documentation"
+  },
+  "home.header.description": {
+    "message": "coScene provides comprehensive features to help you quickly practice SceneOps"
+  },
   "home.catalogue.overview": {
     "message": "Overview"
   },

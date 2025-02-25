@@ -10,16 +10,16 @@ export default function Home() {
         className="w-full h-[260px] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/assets/images/home_header.png)' }}
       >
-        <div className="space-y-4 py-12">,
+        <div className="space-y-4 py-16 px-10">
           <div className="text-4xl font-medium text-center">
-            <Translate id="">帮助文档</Translate>
+            <Translate id="home.header.title">帮助文档</Translate>
           </div>
           <div className="text-base font-normal text-center text-gray-500">
-            <Translate id="">coScene 提供了全面的产品功能，帮助你快速实践 SceneOps</Translate>
+            <Translate id="home.header.description">coScene 提供了全面的产品功能，帮助你快速实践 SceneOps</Translate>
           </div>
         </div>
       </div>
-      <div className="container py-8">
+      <div className="container py-10">
         <HomeCatalogue />
       </div>
     </Layout>
