@@ -83,6 +83,7 @@ const config = {
         logo: {
           alt: 'coScene Logo',
           src: 'img/logo.svg',
+          width: '135px',
         },
         items: [
           {
