@@ -22,7 +22,7 @@ sidebar_position: 4
 
 ![record-upload](./img/record-upload.png)
 
-<!-- ![upload-file-by-url-1](./img/upload-file-by-url-1.png) -->
+![upload-file-by-url-1](./img/upload-file-by-url-1.png)
 
 第二步：粘贴需要上传的文件链接。
 
