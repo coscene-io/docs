@@ -128,6 +128,36 @@ const config = {
           //   ],
           // },
           {
+            title: '法律协议',
+            items: [
+              {
+                label: '隐私政策',
+                href: '/legal/privacy',
+                target: '_blank',
+              },
+              {
+                label: '服务协议',
+                href: '/legal/terms',
+                target: '_blank',
+              },
+            ],
+          },
+          {
+            title: '数据安全',
+            items: [
+              {
+                label: '刻行数据安全白皮书',
+                href: '/security/security-white-paper',
+                target: '_blank',
+              },
+              {
+                label: '刻行数据安全方案',
+                href: '/security/data-security-solution',
+                target: '_blank',
+              },
+            ],
+          },
+          {
             title: '更多相关链接',
             items: [
               // {
