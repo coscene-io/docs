@@ -27,17 +27,18 @@ After device access is granted, you can view devices in the "Devices" page under
 
 The page comes with [Trzsz file transfer tool](https://trzsz.github.io/cn/) by default. Users can upload local files to the remote device using the `trz file1` command, and download files from the remote device using `tsz file1 file2 file3`. For more advanced usage, please refer to the [detailed documentation](https://trzsz.github.io/cn/).
 
-## Remote CMD
+## Remote Command
 
-When a device is online, users can execute specific tasks by sending commands through the Remote CMD feature.
+When a device is online remotely, users can execute specific tasks by sending commands through the Remote Command feature. You can also perform [batch operations](./7-batch-device-operations.md) on multiple devices simultaneously.
 
-![device cmd](./img/4-3-device-cmd.png)
+![device cmd](./img/6-remote-command-1.png)
 
-Click the [Remote CMD] button to enter the operation page. In this example, we execute `touch ~/hello-world.txt` to create a file named `hello-world.txt`.
-![device cmd demo](./img/4-3-device-cmd-demo-1.png)
+Click the [Execute Remote Command] button, enter the command you want to execute in the popup window, and click the [Confirm] button to execute the command on the device.
+![device cmd](./img/6-remote-command-2.png)
+![device cmd](./img/6-remote-command-3.png)
 
-Then execute `ls ~/` to list all files. The command execution history shows that both commands were successful.
-![device cmd demo](./img/4-3-device-cmd-demo-2.png)
+After the command executes successfully, you can view the log results.
+![device cmd](./img/6-remote-command-4.png)
 
 ## Port Forwarding
 
