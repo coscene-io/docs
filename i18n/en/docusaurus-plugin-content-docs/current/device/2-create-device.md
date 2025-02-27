@@ -2,69 +2,130 @@
 sidebar_position: 2
 ---
 
-# Add device
+# Add Device
 
-## Fill in the information to add
+## Permission Requirements
 
-In the "Devices" tab of the "Organization Management" page, click the "Add Device" button.
+:::info
+🤖 Permission: Only **Organization Members** and above can add devices
+:::
 
-![device add from web](./img/device-add-from-web.png)
+When an organization introduces new devices and wants to create a corresponding device on the platform, they can go to the organization devices page to add them.
 
-In the "Add Device" pop-up box, enter the device ID and other information, and click "Create". Among them, the device ID is a unique identifier and cannot be repeated.
+## Overview of Addition Methods
 
-When the organization administrator sets [Custom Field](./1-device.md#Custom Field), the user needs to complete all required fields according to the page prompts. As shown in the example in the figure, the store and model are custom field information.
+The platform provides 3 ways to add new devices to an organization:
 
-![device add from web](./img/device-add-from-web-2.png)
+| Addition Method | Applicable Scenario |
+| -------------- | ------------------ |
+| Execute Command on Device | For adding a small number of devices one by one with platform communication |
+| Use Offline Installation Package | For batch device access during factory setup with platform communication |
+| Fill in Information | For quickly creating virtual devices for data flow without platform communication |
 
-After clicking Create, the device was successfully added.
+## Execute Command on Device {#add-device-from-device}
 
-## Add from device side
+### Applicability and Entry
 
-Same as the above "Fill in information and add" entry, click [Add device] and then select [Add from device side].
+This method is suitable for adding devices one by one. Users need to manually log in to devices via SSH to execute commands. The entry point is located on the "Devices" tab of the "Organization Management" page. Click the [Add Device] button to enter the add device dialog.
 
-![device add from device](./img/device-add-from-device.png)
+![Add Device Entry](./img/4-3-add-device-button.png)
 
-Currently, it only supports **Linux devices**, arm64 and x86_64 architectures, and does not currently support Windows devices. If you have relevant needs, please contact the coScene team.
+![Add Device Dialog](./img/4-3-add-device-popup.png)
 
-_The current program requires systemd service to be installed. **Please use the root account to execute the following commands**. _
+### System Requirements
 
-### Network installation
+1. Currently only supports Linux devices, covering arm64 and x86_64 architectures;
 
-1. Select [Add device via command line] and copy the relevant command information.
+2. Windows devices are not supported yet. Please contact the coScene team if you need Windows device access.
 
-![device add from device](./img/device-add-from-device.png)
+### Device ID Configuration
 
-2. Enter the device, open a shell terminal, paste the copied installation command, and press Enter to execute.
+1. You can specify the location of the device's unique identifier (such as ID or SN), supporting txt, json, and yaml text file types.
 
-![device install online](./img/device-install-online.png)
+   - For txt files, the system reads the entire file content.
 
-1. After the installation is completed, you can view the relevant devices on the device list page (according to the performance of the device, there will be a certain delay in startup, resulting in a certain delay in the refresh of the web page). At this point, the device has completed the registration operation. For further operations, please see [Device Access] (./3-manage-device.md#Device Access).
+   - For json or yaml files, you need to fill in the variable name for the ID in the input box below (e.g., if the file contains `id:123`, enter `id` here).
 
-![device-list-2](./img/device-list-2.png)
+2. Organization administrators can preset unified ID storage location configuration in "Organization Devices - Edit Collection Rules" for automatic dialog population, with support for secondary changes.
 
-### Offline installation registration
+   ![Get ID Location from Device](./img/4-3-add-device-id-01.png)
 
-The following command assumes that the user is located in the `/root` directory. If you switch directories, please pay attention to changing the relevant path information.
+   1. If system-generated ID is selected, the platform will generate a default ID that cannot be modified after installation.
 
-1. Download the installation script [coscene.sh](https://download.coscene.cn/coscout/coscene.sh), offline binary file compression package [cos_binaries.tar.gz](https://download.coscene.cn /coscout/tar/latest/cos_binaries.tar.gz) to the device, the storage locations are `/root/coscene.sh`, `/root/cos_binaries.tar.gz`
-2. In the root directory, grant execution permissions to the installation script.
+   ![System Generated ID](./img/4-3-add-device-id-02.png)
 
-```shell
-chmod +x /root/coscene.sh
-```
+### Client Installation Options
 
-3. Take the offline binary file compression package `cos_binaries.tar.gz` placed in the `/root/cos_binaries.tar.gz` location of the device as an example.
+1. **Data Collection (coScout) Client**
 
-```shell
-./coscene.sh --server_url=*** --project_slug=*** --virmesh_endpoint=*** --use_local=/root/cos_binaries.tar.gz
-```
+   After installation, devices can collect data according to project rules or collection tasks. Before installation, administrators need to configure collection monitoring directories and other information. See the Edit Collection Rules documentation for details.
 
-Execute the above command in the root directory for offline installation. For the parameters `--server_url`, `--project_slug` and `--virmesh_endpoint`, please refer to the web page generation results. The parameter `--use_local` is for offline binary file compression. The path to the package. If the directory location of the binary file is modified, please modify the `--use_local` parameter to avoid installation errors.
+2. **Remote Control (coLink) Client**
 
-### View log information
+   After installation, it enables web SSH and real-time device visualization with [coBridge](https://github.com/coscene-io/coBridge). See the remote control device [documentation](https://docs.coscene.cn/docs/recipes/device/device-remote-control) for details.
 
-Execute the following command on the device to view the log information of the data collection program.
+3. **Initialize Client Configuration**
 
-```shell
-journalctl -fu cos
-```
+   Check [Initialize Client Configuration] when replacing the host computer or ID and reinstalling; uncheck for client version upgrades only. See the device replacement, upgrade, and uninstallation guide for more usage methods.
+
+   ![Select Client Installation](./img/4-3-install-coscout-colink.png)
+
+### Execute Installation Command
+
+1. After completing device ID and client installation options configuration, the system generates an installation command. Users copy the command to the device's shell terminal for execution.
+
+   ![System Generated Installation Command](./img/4-3-install-cmd.png)
+
+2. When `Installation completed successfully 🎉` appears on the device end, the installation is successful. Due to device performance, there might be a delay in the device list page display after installation. The device is registered at this point; refer to the device access section for subsequent operations.
+
+   ![Device Installation Success](./img/4-3-install-successfully.png)
+
+   ![Administrator Grants Device Access on Platform](./img/4-3-access-device.png)
+
+## Add Using Offline Installation Package
+
+### Applicability and Related Settings
+
+1. This method packages data collection and remote control installation packages into the device software update package, with pre-written permission and installation commands in the startup script. It's suitable for large-scale access, such as devices with pre-installed clients from the factory.
+
+2. The "System Requirements," "Device ID Configuration," and "Client Installation Options" in this method are the same as the command execution method. See the corresponding sections for reference. The following focuses on installation method differences.
+
+### Installation Steps
+
+1. Assuming the user is in the `/root` directory (note path changes when switching directories), download the installation script [coscene.sh](https://download.coscene.cn/coscout/coscene.sh) and offline binary file package [cos_binaries.tar.gz](https://download.coscene.cn/coscout/tar/latest/cos_binaries.tar.gz) to the device, stored at `/root/coscene.sh` and `/root/cos_binaries.tar.gz` respectively.
+
+2. In the root directory, grant execution permission to the installation script:
+
+   ```plain text
+   chmod +x /root/coscene.sh
+   ```
+
+3. Execute the installation command (using `cos_binaries.tar.gz` at `/root/cos_binaries.tar.gz` as an example):
+
+   ```plain text
+   ./coscene.sh --server_url=*** --project_slug=*** --virmesh_endpoint=*** --use_local=/root/cos_binaries.tar.gz
+   ```
+
+   Replace `***` in parameters `--server_url`, `--project_slug`, and `--virmesh_endpoint` according to the installation command generated in the web dialog. The `--use_local` parameter is the offline binary file package path; update this parameter when changing directory location.
+
+   ![Add Using Offline Package](./img/4-3-offline-install-package.png)
+
+## Add by Filling Information
+
+### Applicability
+
+This method creates virtual device fields in the platform database without corresponding to real devices.
+
+### Operation Steps
+
+1. Enter device ID and other information in the "Add Device" dialog (device ID must be unique), then click [Add] to create the device.
+
+2. If organization administrators set custom fields, users need to complete all required fields as prompted (such as store and model in the example)
+
+![Add by Information](./img/4-3-input-information.png)
+
+---
+
+Through these steps, you can successfully add devices to the platform according to your actual needs.
+
+If you have any questions, please contact us for support.

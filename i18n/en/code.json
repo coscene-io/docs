@@ -527,6 +527,9 @@
   "home.catalogue.manage-device": {
     "message": "Manage Devices"
   },
+  "home.catalogue.batch-device-operations": {
+    "message": "Batch Device Operations"
+  },
   "home.catalogue.device-collector": {
     "message": "Data Collection Rules"
   },
