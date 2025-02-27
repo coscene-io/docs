@@ -5,7 +5,7 @@ sidebar_position: 2
 # File Preparation
 
 After creating a Record, upload Bag / Mcap format files and other necessary files for playback.
-Note: For detailed steps on creating a Record and uploading files, refer to [Upload Files](../collaboration/record/2-upload-files.md).
+Note: For detailed steps on creating a Record and uploading files, refer to [Upload Files](../collaboration/record/4-upload-files.md).
 
 ## Managing File Media Types
 

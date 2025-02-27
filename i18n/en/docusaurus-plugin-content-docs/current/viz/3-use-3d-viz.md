@@ -8,8 +8,8 @@ This section will demonstrate the steps to visualize data using coScene's 3D pan
 
 ## File Preparation
 
-1. Create a record in the project. For detailed steps, refer to [Create a Record](../collaboration/record/1-create-record.md).
-2. [Download the sample file](https://download.coscene.cn/public-sample-data/scene-0001.mcap), and click the **Upload** button to upload the file to the record. For detailed steps on uploading files, refer to [Upload Files](../collaboration/record/2-upload-files.md).
+1. Create a record in the project. For detailed steps, refer to [Create a Record](../collaboration/record/2-create-record.md).
+2. [Download the sample file](https://download.coscene.cn/public-sample-data/scene-0001.mcap), and click the **Upload** button to upload the file to the record. For detailed steps on uploading files, refer to [Upload Files](../collaboration/record/4-upload-files.md).
 3. Click the **Play** button to enter the visualization page.
 
    ![viz-3-1-Eng](./img/viz-3-1-Eng.png)
