@@ -10,7 +10,7 @@ sidebar_position: 3
 
 ## 创建记录
 
-在记录表格页，点击【创建记录】按钮手动创建一条记录。其他创建方式可参阅[创建记录](../collaboration/record/1-create-record.md)
+在记录表格页，点击【创建记录】按钮手动创建一条记录。其他创建方式可参阅[创建记录123](../collaboration/record/2-create-record.md)
 
 ![create-record-modal](./img/2-3-create-record-modal.png)
 
