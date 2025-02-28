@@ -221,22 +221,15 @@ const config = {
       },
 
       // 只在开发环境中显示公告栏
-      announcementBar: {
-        id: 'dev_environment',
-        content: `⚠️ 这是开发环境版本 / This is Development Environment Version ⚠️ ${process.env.environment} --- ${JSON.stringify(process.env)}`,
-        backgroundColor: '#fafbfc',
-        textColor: '#091E42',
-        isCloseable: false,
-      },
-      // ...(process.env.site_url === 'https://dev.docs.coscene.cn' && {
-      //   announcementBar: {
-      //     id: 'dev_environment',
-      //     content: '⚠️ 这是开发环境版本 / This is Development Environment Version ⚠️',
-      //     backgroundColor: '#fafbfc',
-      //     textColor: '#091E42',
-      //     isCloseable: false,
-      //   },
-      // }),
+      ...(process.env.DEPLOY_ENV === 'development' && {
+        announcementBar: {
+          id: 'dev_environment',
+          content: `⚠️ 这是开发环境版本 / This is Development Environment Version ⚠️ ${process.env.DEPLOY_ENV}`,
+          backgroundColor: '#fafbfc',
+          textColor: '#091E42',
+          isCloseable: false,
+        },
+      }),
     }),
   customFields: {
     // Add custom field to identify environment
