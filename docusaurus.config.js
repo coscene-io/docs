@@ -219,13 +219,17 @@ const config = {
 
         //... other Algolia params
       },
-      announcementBar: {
-        id: 'dev_environment',
-        content: '⚠️ 这是开发环境版本 / This is Development Environment Version ⚠️',
-        backgroundColor: '#fafbfc',
-        textColor: '#091E42',
-        isCloseable: false,
-      },
+
+      // 只在开发环境中显示公告栏
+      ...(process.env.SITE_URL === 'https://dev.docs.coscene.cn' && {
+        announcementBar: {
+          id: 'dev_environment',
+          content: '⚠️ 这是开发环境版本 / This is Development Environment Version ⚠️',
+          backgroundColor: '#fafbfc',
+          textColor: '#091E42',
+          isCloseable: false,
+        },
+      }),
     }),
   customFields: {
     // Add custom field to identify environment
