@@ -224,7 +224,7 @@ const config = {
       ...(process.env.DEPLOY_ENV === 'development' && {
         announcementBar: {
           id: 'dev_environment',
-          content: '⚠️ 这是开发环境版本 / This is Development Environment Version',
+          content: '⚠️ 这是开发环境版本 / This is Development Environment Version ⚠️',
           backgroundColor: '#fafbfc',
           textColor: '#091E42',
           isCloseable: false,
