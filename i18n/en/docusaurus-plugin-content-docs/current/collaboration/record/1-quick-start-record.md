@@ -43,7 +43,7 @@ Records are collections of files describing similar scenarios, used for storing,
 
 ![play-record_1](./img/play-record_1.png)
 
-2. In the layout panel of the visualization page, select [Import from File] to import the [Sample Layout](https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/example/viz/nuScenes.json).
+2. In the layout panel of the visualization page, select [Import from File] to import the <a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/example/viz/nuScenes.json" download="nuScenes.json">Sample Layout</a>
 
 ![play-record_2](./img/play-record_2.png)
 

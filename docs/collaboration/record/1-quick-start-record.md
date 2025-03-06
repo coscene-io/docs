@@ -44,7 +44,7 @@ sidebar_position: 1
 
 ![play-record_1](./img/play-record_1.png)
 
-2. 在可视化页面的布局栏中，选择【从文件导入】，导入[示例布局](https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/example/viz/nuScenes.json)。
+2. 在可视化页面的布局栏中，选择【从文件导入】，导入<a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/example/viz/nuScenes.json" download="nuScenes.json">示例布局</a>。
 
 ![play-record_2](./img/play-record_2.png)
 
