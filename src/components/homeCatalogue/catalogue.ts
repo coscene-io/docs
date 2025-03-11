@@ -24,13 +24,12 @@ export const CATALOGUE = [
     header: { title: translate({ id: 'home.catalogue.viz', message: '可视化' }) },
     docs: [
       { docLink: '/viz/about-viz', title: translate({ id: 'home.catalogue.about-viz', message: '关于数据可视化' }) },
-      { docLink: '/viz/prep-before-viz', title: translate({ id: 'home.catalogue.prep-before-viz', message: '可视化前的准备' }) },
-      { docLink: '/viz/use-3d-viz', title: translate({ id: 'home.catalogue.use-3d-viz', message: '利用三维面板可视化你的数据' }) },
-      { docLink: '/category/panel', title: translate({ id: 'home.catalogue.panel', message: '面板' }) },
+      { docLink: '/viz/use-3d-viz', title: translate({ id: 'home.catalogue.use-3d-viz', message: '快速三维可视化数据' }) },
       { docLink: '/viz/layout', title: translate({ id: 'home.catalogue.layout', message: '布局' }) },
-      { docLink: '/viz/create-moment-viz', title: translate({ id: 'home.catalogue.create-moment-viz', message: '在可视化界面中的一刻' }) },
-      { docLink: '/viz/frame-rate-optimization', title: translate({ id: 'home.catalogue.frame-rate-optimization', message: '帧率优化选项' }) },
+      { docLink: '/category/panel', title: translate({ id: 'home.catalogue.panel', message: '面板' }) },
+      { docLink: '/viz/create-moment-viz', title: translate({ id: 'home.catalogue.create-moment-viz', message: '一刻' }) },
       { docLink: '/viz/options', title: translate({ id: 'home.catalogue.options', message: '可视化选项' }) },
+      { docLink: '/viz/frame-rate-optimization', title: translate({ id: 'home.catalogue.frame-rate-optimization', message: '帧率优化选项' }) },
     ],
   },
   {
