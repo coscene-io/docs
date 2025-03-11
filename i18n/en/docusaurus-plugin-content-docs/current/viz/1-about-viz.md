@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # About Data Visualization
 
-*coScene* provides an efficient data visualization interface that presents machine data as visualized data through different "panels" and "layouts," thereby addressing various common machine issues.
+The data visualization interface presents device data in an intuitive visual manner through configurable "Panels" and "Layouts", empowering users to efficiently analyze and diagnose various issues.
 
 ## How to Enter the Visualization Interface
 

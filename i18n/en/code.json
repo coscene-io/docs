@@ -494,11 +494,8 @@
   "home.catalogue.about-viz": {
     "message": "About Data Visualization"
   },
-  "home.catalogue.prep-before-viz": {
-    "message": "Preparation Before Visualization"
-  },
   "home.catalogue.use-3d-viz": {
-    "message": "Visualize Your Data with 3D Panel"
+    "message": "Quick Start: 3D Data Visualizations"
   },
   "home.catalogue.panel": {
     "message": "Panel"
@@ -507,7 +504,7 @@
     "message": "Layout"
   },
   "home.catalogue.create-moment-viz": {
-    "message": "Create a Moment in Visualization"
+    "message": "Moments"
   },
   "home.catalogue.frame-rate-optimization": {
     "message": "Frame Rate Optimization"
