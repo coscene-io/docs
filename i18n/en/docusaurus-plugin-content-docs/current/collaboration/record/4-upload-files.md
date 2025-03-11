@@ -4,60 +4,76 @@ sidebar_position: 4
 
 # Upload Files
 
-In coScene, there are two ways to upload files: **Local Upload and URL Upload**
+## Introduction
+> Only project members and above can upload files
 
-## Local File Upload
+After [creating a record](2-create-record.md), you can upload files in the following ways:
+1. Upload directly
+2. Copy from other records
+3. Import from URL
+4. Upload using coCLI command line tool
 
-Users can drag and drop files or click the [Upload File] button within a record to upload local files to the record.
+## Local Upload
+Upload local files/folders to records by dragging and dropping or clicking the [Upload] button.
 
-![record-upload](./img/record-upload.png)
+- **Upload via [Upload] button**
 
-![record-upload-file](./img/record-upload-file.png)
+  On the record details page, click the [Upload] button and select files/folders to upload.
 
-## URL File Upload
+    ![upload-file_1](./img/upload-file_1.png)
 
-Within a record, users can paste the file URL to import the remote file into the record.
+- **Upload via drag and drop**
 
-Step 1: On the "Record Details Page", click the dropdown button next to the [Upload File] button to expand [URL Upload].
+  On the record details page, drag and drop files/folders to the file list area to upload.
 
-![record-upload](./img/record-upload.png)
+    ![upload-file_2](./img/upload-file_2.png)
 
-![upload-file-by-url-1](./img/upload-file-by-url-1.png)
+## Copy from Other Records
+Copy files from other records to the current record for quick file reuse.
 
-Step 2: Click the [URL Upload] button and paste the link of the file you want to upload.
+1. On the record details page, click [Copy file from] in the [Upload] menu.
 
-![upload-file-by-url-2](./img/upload-file-by-url-2.png)
+    ![upload-file_3](./img/upload-file_3.png)
 
-Step 3: After verifying the basic file information, click [Confirm] to import the file from the URL into the record.
+2. In the popup window, select which record to copy files from, check the files/folders, and click [OK] .
 
-![upload-file-by-url-3](./img/upload-file-by-url-3.png)
+    ![upload-file_4](./img/upload-file_4.png)
 
-## File Visualization
+## Import from URL
+Import remote files to records by pasting file URLs.
 
-In the "File List", click the file name to redirect to the "Visualization Interface" for playback:
+1. On the record details page, click [Import from URL] in the [Upload] menu.
 
-> Currently, only Rosbag files can be viewed.
+    ![upload-file_5](./img/upload-file_5.png)
 
-![file-1](./img/file-1.png)
+2. In the popup window, paste the file URL and click [OK] .
 
-## File Management
+    ![upload-file_6](./img/upload-file_6.png)
 
-### Search
+3. When the "Upload From URL" action is complete, you can view the imported file in the file list.
 
-Enter keywords in the search box within the "File List" to search for file names:
+    ![upload-file_7](./img/upload-file_7.png)
 
-![file-2](./img/file-2.png)
+## Upload Using coCLI Command Line Tool
 
-### Download
+To batch upload local files to records, you can use the [coCLI command line tool](../../developers/coSceneCli/1-cli-install.md).
 
-In the "File List", click the [Download] button of a file to download it to your local device:
+## Learn More
+- [Manage Files](5-manage-file.md)
 
-![file-3](./img/file-3.png)
+## FAQ
+1. **Q: What happens when uploading files with the same name?**
 
-### Delete
+    A: When uploading local files with the same name, they will automatically overwrite existing files. Files generated through system actions, such as decompression or URL import, will be automatically renamed by adding a suffix to the filename.
 
-In the "File List", click the [Delete] button of a file to remove it:
+2. **Q: What should I do if the file upload fails due to network interruption?**
 
-> Deleted files cannot be restored; however, you can find and download them by tracing back versions.
+    A: When a file upload fails, the upload progress dialog will show a "Upload Failed" status. You'll need to re-upload the file.
 
-![file-4](./img/file-4.png)
+3. **Q: Why are files uploaded twice when dragging and dropping a folder?**
+
+    A: If the folder is expanded during drag and drop, and both the folder and files within it are selected, they will be uploaded separately. To resolve this, only drag and drop the folder itself.
+    
+4. **Q: What should I do if link import fails?**
+
+    A: Please check if the link is correct and publicly accessible.
