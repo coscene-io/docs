@@ -24,7 +24,7 @@ sidebar_position: 5
 
 4. Enter the name, description, and other field information to complete the creation.
 
-   ![viz-9-4-Eng](./img/viz-9-4-Eng.png)
+   <img src={require('./img/viz-9-4-Eng.png').default} alt="viz-9-4" width="400" />
 
 ## Managing Moments
 
@@ -34,19 +34,19 @@ Manage moments in the **Moments** section of the left sidebar, where you can edi
 
 Click the edit button shown in the illustration to modify the field information of the moment.
 
-![viz-9-5-Eng](./img/viz-9-5-Eng.png)
+<img src={require('./img/viz-9-5-Eng.png').default} alt="viz-9-5" width="500" />
 
 ### Copying a Moment Link
 
 Click the copy button shown in the illustration to copy the link of the current moment to the clipboard.
 
-![viz-9-6-Eng](./img/viz-9-6-Eng.png)
+<img src={require('./img/viz-9-6-Eng.png').default} alt="viz-9-6" width="800" />
 
 ### Deleting a Moment
 
 Click the delete button shown in the illustration to delete this moment.
 
-![viz-9-7-Eng](./img/viz-9-7-Eng.png)
+<img src={require('./img/viz-9-7-Eng.png').default} alt="viz-9-7" width="800" />
 
 ## Viewing Moments
 

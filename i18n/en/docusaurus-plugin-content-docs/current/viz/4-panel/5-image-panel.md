@@ -37,7 +37,7 @@ Display raw and compressed images, as well as compressed videos, with 2D annotat
 ### Image Annotation
 2D image annotation markers displayed on the image.
 
-> See more settings in [3d panel](./5-3d-panel.md)
+> See more settings in [3d panel](./2-3d-panel.md)
 
 ## User Interaction
 Right-click on the image to download it as a PNG file format.

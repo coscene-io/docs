@@ -38,7 +38,7 @@ The "Panel Scene" refers to the collection of all information and data displayed
 
 ## How to Set Panel Properties
 
-To set the properties of the current panel, go to the "Panel" in the left sidebar. Different panels have different property values, refer to the [3D Panel](./5-3d-panel.md), [Log Panel](./6-log-panel.md), and [Plot Panel](./7-plot-panel.md).
+To set the properties of the current panel, go to the "Panel" in the left sidebar. Different panels have different property values, refer to the [3D Panel](./2-3d-panel.md), [Log Panel](./3-log-panel.md), and [Plot Panel](./4-plot-panel.md).
 
 ![viz-4-6-Eng](../img/viz-4-6-Eng.png)
 
@@ -48,7 +48,7 @@ To set the properties of the current panel, go to the "Panel" in the left sideba
 
 Click the **Add Panel** button in the upper left corner and click any panel name to add it to the current layout. You can also drag the panel name to the current layout to add it to a specific location.
 
-![viz-4-7-Eng](../img/viz-4-7-Eng.png)
+<img src={require('../img/viz-4-7-Eng.png').default} alt="viz-4-7" width="500" />
 
 In the **Add Panel** menu, find the complete list of available panels. Hover over the right-side information expansion button to view the panel's view and description.
 

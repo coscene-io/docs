@@ -39,20 +39,27 @@ Import a local layout file into personal layouts through **Import from File** in
 "Recommended Layouts" are preset and suggested layout types, including **Organization Recommended Layouts** and **Project Recommended Layouts**.
 
 ### Organization Recommended
+> Only organization administrators can configure
 
-"Organization Recommended Layouts" are set and recommended by the organization administrator. Go to **Organization Management** in the avatar menu and select **Viz Layout Settings** to choose the recommended layout for the organization.
+Newly created projects will automatically use the "Organization Recommended Layout" as the "Project Recommended Layout". When project members play a record without any available layouts, the project layout will be used by default.
+
+You can access **Layout Configuration** in **Organization Management** from the avatar menu to select the recommended layout for your organization.
 
 ![viz-8-6-Eng](./img/viz-8-6-Eng.png)
 
 ### Project Recommended
+> Only project administrators and higher roles can configure
 
-"Project Recommended Layouts" are set and recommended by the project administrator. Go to **Project Settings** and select **Viz Layout Settings** to choose the recommended layout for the project.
+When project members play a record without any available layouts, the project layout will be used by default.
+
+You can access **Layout Configuration** in **Project Settings** to select the recommended layout for your project.
 
 ![viz-8-7-Eng](./img/viz-8-7-Eng.png)
 
 ### Record Recommended
+The "Record Recommended Layout" is the default layout for a record. When any user plays this record, this layout will be used.
 
-"Record Recommended Layouts" are personal recommended layouts for individual records. In the visualization page's **Layout Menu**, right-click the layout to be set, and click **Copy as Record Default Layout**.
+In the visualization page, right-click the layout you want to set in the **Layout Menu** and click "Copy as Record Default Layout".
 
 ![viz-8-8-Eng](./img/viz-8-8-Eng.png)
 
@@ -61,15 +68,10 @@ As shown in the figure, the layout "NuScenes" has been successfully set as the r
 ![viz-8-9-Eng](./img/viz-8-9-Eng.png)
 
 ## Layout Priority
-
-- For records with all three recommended layouts set, the priority is **Record Recommended Layout** > **Project Recommended Layout** > **Organization Recommended Layout**.
-- Any edits and modifications to layouts can be made through saving or discarding changes.
-
-![viz-8-10-Eng](./img/viz-8-10-Eng.png)
+For records with all three recommended layouts set, the priority is **Record Recommended Layout** > **Project Recommended Layout** > **Organization Recommended Layout**.
 
 ## Managing Layouts
-
-Managing layouts involves editing and modifying existing layouts.
+Click the **Actions** icon next to the layout name to manage the layout, including: save changes, revert, rename, copy, share, export, delete, etc.
 
 ![viz-8-11-Eng](./img/viz-8-11-Eng.png)
 

@@ -52,7 +52,7 @@ sidebar_position: 1
 
 2. 在【添加面板】菜单中查找可用面板的完整列表，将鼠标悬浮在右侧信息展开按钮中可以查看面板的视图和介绍。
 
-![viz-4-7.png](../img/viz-4-7.png)
+<img src={require('../img/viz-4-7.png').default} alt="viz-4-7" width="500" />
 
 ### 拆分面板
 

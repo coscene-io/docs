@@ -2,64 +2,64 @@
 sidebar_position: 5
 ---
 
-# Moments
+# 一刻
 
-"Moments" are key frames in records, capturing either faults or interesting scenes in the visualization interface.
+「一刻」是记录中的关键片段，它可以是可视化界面中故障或感兴趣的画面
 
-## Creating a Moment
+## 创建一刻
 
-1. Click the **Play Record** button in the record to enter the visualization interface.
+1. 点击记录中的【播放记录】按钮进入可视化界面
 
-   ![viz-9-1-Eng](./img/viz-9-1-Eng.png)
+![viz-9-1.png](./img/viz-9-1.png)
 
-2. Click the **Create Moment** button in the lower left corner and select the start and end points. As shown, you can use shortcut keys or click the **Create Moment** button to set the start point at the desired time.
+2. 点击左下角的【创建一刻】按钮，选择起止点
+   如图，可使用快捷键或点击【创建一刻】按钮在需要的时间点确定起点
 
-   ![viz-9-2-Eng](./img/viz-9-2-Eng.png)
+![viz-9-2.png](./img/viz-9-2.png)
 
-   Click again at the desired time to set the end point. The blue range in the illustration shows the start and end time of the moment.
+在需要的时间点再次点击确定终点，图示蓝色范围就是「一刻」的起止时间
 
-   ![viz-9-3-Eng](./img/viz-9-3-Eng.png)
+![viz-9-3.png](./img/viz-9-3.png)
 
-3. You can change the range of the moment by clicking and dragging.
+3. 可通过点击拖动更改「一刻」的范围
+4. 输入名称，描述等字段信息完成创建
 
-4. Enter the name, description, and other field information to complete the creation.
+<img src={require('./img/viz-9-4.png').default} alt="viz-9-4" width="400" />
 
-   ![viz-9-4-Eng](./img/viz-9-4-Eng.png)
+## 管理一刻
 
-## Managing Moments
+在左侧边栏中的【一刻】中实现对「一刻」的编辑，复制和删除
 
-Manage moments in the **Moments** section of the left sidebar, where you can edit, copy, and delete moments.
+### 编辑一刻
 
-### Editing a Moment
+点击图示编辑按钮修改「一刻」的字段信息
 
-Click the edit button shown in the illustration to modify the field information of the moment.
+<img src={require('./img/viz-9-5.png').default} alt="viz-9-5" width="500" />
 
-![viz-9-5-Eng](./img/viz-9-5-Eng.png)
+### 复制一刻
 
-### Copying a Moment Link
+点击图示复制按钮来将当前「一刻」的链接复制到剪切板
 
-Click the copy button shown in the illustration to copy the link of the current moment to the clipboard.
+<img src={require('./img/viz-9-6.png').default} alt="viz-9-6" width="300" />
 
-![viz-9-6-Eng](./img/viz-9-6-Eng.png)
+### 删除一刻
 
-### Deleting a Moment
+点击图示删除按钮来删除这条「一刻」
 
-Click the delete button shown in the illustration to delete this moment.
+<img src={require('./img/viz-9-7.png').default} alt="viz-9-7" width="300" />
 
-![viz-9-7-Eng](./img/viz-9-7-Eng.png)
+## 查看一刻
 
-## Viewing Moments
+1. 点击可视化页面顶部工具栏中的记录名称，前往记录详情页
 
-1. Click the record name in the top toolbar of the visualization page to go to the record details page.
+![viz-9-8.png](./img/viz-9-8.png)
 
-   ![viz-9-8-Eng](./img/viz-9-8-Eng.png)
+2. 点击图示的【一刻】按钮
 
-2. Click the **Moments** button shown in the illustration.
+![viz-9-10.png](./img/viz-9-10.png)
 
-   ![viz-9-9-Eng](./img/viz-9-9-Eng.png)
+3. 进入一刻详情页，查看「一刻」的信息
 
-3. Enter the moment details page to view the information of the created moments. They can also be deleted here.
-
-   ![viz-9-10-Eng](./img/viz-9-10-Eng.png)
+![viz-9-11.png](./img/viz-9-11.png)
 
 ---

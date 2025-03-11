@@ -39,12 +39,6 @@ File operations include: preview, search, rename, copy, move, download, copy fil
         Supports switching text types, such as: log, yaml, json, xml, etc.
 
         ![manage-file_31](./img/manage-file_31.png)
-        
-    - **Table Preview**
-
-        Supports switching table encodings, such as: utf-8, gbk, etc.
-
-        ![manage-file_32](./img/manage-file_32.png)
 
 ### Search
 Enter keywords in the search box in the "File List" to search for file names.
@@ -174,7 +168,7 @@ For example: To set a log file, consider a record containing sample.log and samp
 
      <img src={require('./img/manage-file_21.png').default} alt="record-upload" width="500" />
 
-4. During record playback, log information will be displayed synchronously. See [Visualization Log Panel](../../viz/4-panel/6-log-panel.md) for details.
+4. During record playback, log information will be displayed synchronously. See [Visualization Log Panel](../../viz/4-panel/3-log-panel.md) for details.
 
 ### Setting Map
 > Only supports 2D maps in PNG format.
@@ -217,7 +211,7 @@ For example: To set a map file, consider a record containing map.png and sample.
 
     <img src={require('./img/manage-file_25.png').default} alt="record-upload" width="500" />
 
-4. During record playback, the map will be displayed in the visualization interface. See [Visualization 3D Panel - Topics - External Map Import](../../viz/4-panel/5-3d-panel.md) for details.
+4. During record playback, the map will be displayed in the visualization interface. See [Visualization 3D Panel - Topics - External Map Import](../../viz/4-panel/2-3d-panel.md) for details.
 
 ### Setting TF
 > Supports setting .yaml files as tf.
@@ -251,7 +245,7 @@ For example: To set a TF file, consider a record containing tf.yaml and sample.b
 
     <img src={require('./img/manage-file_29.png').default} alt="record-upload" width="500" />
 
-5. During record playback, the corresponding TF information can be used. See [Visualization 3D Panel - Transform](../../viz/4-panel/5-3d-panel.md) for details.
+5. During record playback, the corresponding TF information can be used. See [Visualization 3D Panel - Transform](../../viz/4-panel/2-3d-panel.md) for details.
 
 ### Playing Files
 Click on an mcap or bag file name in the "File List" to open the visualization page, where you can:

@@ -61,7 +61,7 @@ sidebar_position: 1
 
 「面板」中可以查看和更改当前面板的属性，可点击不同类型的面板进行切换。
 
- <img src={require('./img/viz-1-7.png').default} alt="viz-1-7" width="500" />
+ <img src={require('./img/viz-1-7.png').default} alt="viz-1-7" width="300" />
 
 ##### 主题
 
@@ -87,7 +87,7 @@ sidebar_position: 1
 
 可视化界面中的「右侧边栏」可编辑变量信息
  
- <img src={require('./img/viz-1-11.png').default} alt="viz-1-11" width="500" />
+ <img src={require('./img/viz-1-11.png').default} alt="viz-1-11" width="300" />
  
 ### 时间轴
  

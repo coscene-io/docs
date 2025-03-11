@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-# Visualize Your Data Using the 3D Panel
+# Quick Start: 3D Data Visualizations
 
-This section will demonstrate the steps to visualize data using coScene's 3D panel with the "scene-0001.mcap" file as an example.
+This section will demonstrate the steps to visualize data using 3D panel with the "[scene-0001.mcap](https://coscene-download.s3.us-east-1.amazonaws.com/docs/example/viz/scene-0001.mcap)" file as an example.
 
 ## Prerequisites
 1. Browser: Chrome 104 or later version. Please visit [Chrome Official Website](https://www.google.com/chrome/) to get the latest version

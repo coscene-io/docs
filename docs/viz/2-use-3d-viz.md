@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-# 利用三维面板可视化你的数据
+# 快速三维可视化数据
 
-本章节将以 “scene-0001.mcap” 文件为例，展示使用刻行的三维面板可视化数据的步骤。
+本章节将以 “[scene-0001.mcap](https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/example/viz/scene-0001.mcap)” 文件为例，展示使用三维面板可视化数据的步骤。
 
 ## 前提条件
 1. 浏览器为 Chrome 104 或更新的版本，请访问 [Chrome 官方网站](https://www.google.cn/chrome/)获取最新版本
@@ -35,7 +35,7 @@ sidebar_position: 2
 ![viz-3-5.png](./img/viz-3-5.png)
 
 ## 了解更多
-- [三维面板功能介绍](./4-panel/5-3d-panel.md)
+- [三维面板功能介绍](./4-panel/2-3d-panel.md)
 - [导入地图与静态 TF](../collaboration/record/5-manage-file.md)
 
 ## 常见问题
