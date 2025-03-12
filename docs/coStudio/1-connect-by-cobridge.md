@@ -2,11 +2,11 @@
 sidebar_position: 1
 ---
 
-# 通过 CoBridge 连接机器
+# 通过 coBridge 连接机器
 
 CoBridge 是刻行提供的一款开源机端软件，目前支持 **ros1** `noetic`、 **ros2** `foxy` 及 `humble` 版本。
 
-## 安装 CoBridge
+## 安装 coBridge
 * 导入公钥
 ```bash
   wget https://coscene-download.oss-cn-hangzhou.aliyuncs.com/cobridge/coscene.gpg && sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/coscene.gpg coscene.gpg
@@ -35,8 +35,8 @@ CoBridge 是刻行提供的一款开源机端软件，目前支持 **ros1** `noe
   ros2 launch cobridge cobridge_launch.xml 
 ```
 
-## 使用 CoStudio 对机器人进行实时可视化
-* 开启 CoStudio 后，选择 “打开连接” 功能
+## 使用 coStudio 对机器人进行实时可视化
+* 开启 coStudio 后，选择 “打开连接” 功能
 ![打开连接](./img/1-1-open-connection-cn.png)
 * 选择 coScene Websocket 选项，在 WebSocket URL 中输入连接地址。`ws://localhost:21274` **（ 21274 为 CoBridge 的默认端口号 ）**
 ![选择连接](./img/1-2-select-connection-cn.png)
