@@ -105,7 +105,7 @@ journalctl --user-unit=cos -f -n 50
 On the device side, execute the following command to uninstall the data collection and remote control clients. During execution, observe the output until the uninstallation process is complete.
 
 ```yaml
-/bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall.sh)"
+/bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall_en.sh)"
 ```
 
 ![Uninstall Client](./img/4-3-unload-1.png)
