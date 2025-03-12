@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # 通过 coBridge 连接机器
 
-CoBridge 是刻行提供的一款开源机端软件，目前支持 **ros1** `noetic`、 **ros2** `foxy` 及 `humble` 版本。
+coBridge 是刻行提供的一款开源机端软件，目前支持 **ros1** `noetic`、 **ros2** `foxy` 及 `humble` 版本。
 
 ## 安装 coBridge
 * 导入公钥
