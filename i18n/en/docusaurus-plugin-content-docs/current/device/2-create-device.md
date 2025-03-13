@@ -4,95 +4,97 @@ sidebar_position: 2
 
 # Add Device
 
-## Permission Requirements
+## Permission Description
 
 :::info
-🤖 Permission: Only **Organization Members** and above can add devices
+🤖 Permission: Only **Organization Members** and higher permissions can add devices
 :::
 
-When an organization introduces new devices and wants to create a corresponding device on the platform, they can go to the organization devices page to add them.
+When an organization introduces a new device and wishes to create a device in the platform corresponding to a real offline device, they can go to the organization's device page to add it.
 
 ## Overview of Addition Methods
 
-The platform provides 3 ways to add new devices to an organization:
+The platform provides the following 3 ways to add new devices to an organization:
 
 | Addition Method | Applicable Scenario |
-| -------------- | ------------------ |
-| Execute Command on Device | For adding a small number of devices one by one with platform communication |
-| Use Offline Installation Package | For batch device access during factory setup with platform communication |
-| Fill in Information | For quickly creating virtual devices for data flow without platform communication |
+| --------------- | ------------------- |
+| Execute command on device side | Small number of devices individually connecting to the platform |
+| Use offline installation package | Factory batch admission for devices to communicate with the platform |
+| Fill in information | Quickly create devices only used for data transfer, without platform communication |
 
-## Execute Command on Device {#add-device-from-device}
+## Execute Command on Device Side to Add {#add-device-from-device}
 
-### Applicability and Entry
+### Applicable Situations and Entry
 
-This method is suitable for adding devices one by one. Users need to manually log in to devices via SSH to execute commands. The entry point is located on the "Devices" tab of the "Organization Management" page. Click the [Add Device] button to enter the add device dialog.
+This method is suitable for adding a small number of devices to the platform one by one. Users need to manually log in to the device via SSH to execute commands. The entry is located on the "Devices" tab of the "Organization Management" page, click the [Add Device] button to enter the add device popup.
 
 ![Add Device Entry](./img/4-3-add-device-button.png)
 
-![Add Device Dialog](./img/4-3-add-device-popup.png)
+![Add Device Popup](./img/4-3-add-device-popup.png)
 
-### System Requirements
+### Device System Requirements
 
 1. Currently only supports Linux devices, covering arm64 and x86_64 architectures;
 
-2. Windows devices are not supported yet. Please contact the coScene team if you need Windows device access.
+2. Windows devices are not currently supported. If you need to connect Windows devices, please contact the coScene team.
 
 ### Device ID Configuration
 
-1. You can specify the location of the device's unique identifier (such as ID or SN), supporting txt, json, and yaml text file types.
+1. You can fill in the location storing the device's unique identifier (such as ID or SN), supporting txt, json, yaml text file types.
 
    - For txt files, the system reads the entire file content.
 
-   - For json or yaml files, you need to fill in the variable name for the ID in the input box below (e.g., if the file contains `id:123`, enter `id` here).
+   - For json or yaml files, you need to fill in the variable value of the ID number in the input box below (e.g., if the file contains `id:123`, then enter `id` here).
 
-2. Organization administrators can preset unified ID storage location configuration in "Organization Devices - Edit Collection Rules" for automatic dialog population, with support for secondary changes.
+2. Organization administrators can preset the unified ID storage address configuration in "Organization Devices - Edit Collection Rules" to auto-fill the popup, and secondary changes are supported.
 
-   ![Get ID Location from Device](./img/4-3-add-device-id-01.png)
+   ![Get ID Location from Device Side](./img/4-3-add-device-id-01.png)
 
-   1. If system-generated ID is selected, the platform will generate a default ID that cannot be modified after installation.
+   1. If you choose to have the system generate an ID, the platform will generate a default ID number, which cannot be modified after installation.
 
    ![System Generated ID](./img/4-3-add-device-id-02.png)
 
-### Client Installation Options
+### Client Installation Selection
 
 1. **Data Collection (coScout) Client**
 
-   After installation, devices can collect data according to project rules or collection tasks. Before installation, administrators need to configure collection monitoring directories and other information. See the Edit Collection Rules documentation for details.
+   After installation, the device can collect data according to project rules or collection tasks. Before installation, administrators need to configure data collection monitoring directories and other information. For details, please refer to the Edit Collection Rules documentation.
 
 2. **Remote Control (coLink) Client**
 
-   After installation, it enables web SSH and real-time device visualization with [coBridge](https://github.com/coscene-io/coBridge). See the remote control device [documentation](https://docs.coscene.cn/docs/recipes/device/device-remote-control) for details.
+   After installation, it enables web-based SSH and real-time device visualization when combined with [coBridge](https://github.com/coscene-io/coBridge). For detailed functionality, please refer to the Remote Control Device [documentation](https://docs.coscene.cn/en/docs/device/device-remote-control).
 
 3. **Initialize Client Configuration**
 
-   Check [Initialize Client Configuration] when replacing the host computer or ID and reinstalling; uncheck for client version upgrades only. See the device replacement, upgrade, and uninstallation guide for more usage methods.
+   If the device needs to be reinstalled and registered after changing the host computer or ID, check [Initialize Client Configuration]; uncheck it if only upgrading the client version. For more usage methods, please refer to the Machine Replacement, Upgrade, and Uninstallation Process Guide.
 
-   ![Select Client Installation](./img/4-3-install-coscout-colink.png)
+   ![Client Installation Selection](./img/4-3-install-coscout-colink.png)
 
 ### Execute Installation Command
 
-1. After completing device ID and client installation options configuration, the system generates an installation command. Users copy the command to the device's shell terminal for execution.
+1. After completing the device ID and installation client options configuration, the system generates an installation command. Users copy the command to the device's shell terminal to execute.
 
    ![System Generated Installation Command](./img/4-3-install-cmd.png)
 
-2. When `Installation completed successfully 🎉` appears on the device end, the installation is successful. Due to device performance, there might be a delay in the device list page display after installation. The device is registered at this point; refer to the device access section for subsequent operations.
+2. When `Installation completed successfully 🎉` appears on the device side, the installation is successful. Due to device performance impacts, there may be a delay in the device list page display after installation completion. At this point, the device has completed registration. For subsequent operations, refer to the Device Admission section.
 
    ![Device Installation Success](./img/4-3-install-successfully.png)
 
-   ![Administrator Grants Device Access on Platform](./img/4-3-access-device.png)
+   ![Administrator Admits Device on Platform](./img/4-3-access-device.png)
 
 ## Add Using Offline Installation Package
 
-### Applicability and Related Settings
+### Applicable Situations and Related Settings
 
-1. This method packages data collection and remote control installation packages into the device software update package, with pre-written permission and installation commands in the startup script. It's suitable for large-scale access, such as devices with pre-installed clients from the factory.
+1. This method is equivalent to packaging the data collection and remote control installation packages into the device software version update package, and pre-writing the script permission commands and installation commands in the startup script. It is suitable for large-scale admission, such as devices with these two clients pre-installed in factory settings;
 
-2. The "System Requirements," "Device ID Configuration," and "Client Installation Options" in this method are the same as the command execution method. See the corresponding sections for reference. The following focuses on installation method differences.
+2. The "Device System", "Device ID Configuration", and "Client Installation Selection" in this addition method are the same as the method of executing commands on the device side. You can refer to the corresponding tutorial sections. The following focuses on explaining the installation method differences.
 
 ### Installation Steps
 
-1. Assuming the user is in the `/root` directory (note path changes when switching directories), download the installation script [coscene.sh](https://download.coscene.cn/coscout/coscene.sh) and offline binary file package [cos_binaries.tar.gz](https://download.coscene.cn/coscout/tar/latest/cos_binaries.tar.gz) to the device, stored at `/root/coscene.sh` and `/root/cos_binaries.tar.gz` respectively.
+1. Assuming the user is in the `/root` directory (pay attention to changing the path when switching directories), download the installation script **coscene.sh** and the offline binary file compression package **cos_binaries.tar.gz** to the device, stored at `/root/coscene.sh` and `/root/cos_binaries.tar.gz` respectively.
+   ![download offline package](./img/4-3-download-offline-package.png)
+
 
 2. In the root directory, grant execution permission to the installation script:
 
@@ -100,32 +102,32 @@ This method is suitable for adding devices one by one. Users need to manually lo
    chmod +x /root/coscene.sh
    ```
 
-3. Execute the installation command (using `cos_binaries.tar.gz` at `/root/cos_binaries.tar.gz` as an example):
+3. Execute the installation command (using `cos_binaries.tar.gz` located at `/root/cos_binaries.tar.gz` as an example):
 
    ```plain text
    ./coscene.sh --server_url=*** --project_slug=*** --virmesh_endpoint=*** --use_local=/root/cos_binaries.tar.gz
    ```
 
-   Replace `***` in parameters `--server_url`, `--project_slug`, and `--virmesh_endpoint` according to the installation command generated in the web dialog. The `--use_local` parameter is the offline binary file package path; update this parameter when changing directory location.
+   For the parameters `--server_url`, `--project_slug`, and `--virmesh_endpoint`, please refer to the installation command generated in the web page popup to replace `***`. The parameter `--use_local` is the path to the offline binary file compression package, and you need to modify this parameter when changing the directory location.
 
-   ![Add Using Offline Package](./img/4-3-offline-install-package.png)
+   ![Add Using Offline Installation Package](./img/4-3-offline-install-package.png)
 
-## Add by Filling Information
+## Add by Filling in Information
 
-### Applicability
+### Applicable Situations
 
-This method creates virtual device fields in the platform database without corresponding to real devices.
+This method creates virtual device fields in the platform database, which do not correspond to real devices.
 
 ### Operation Steps
 
-1. Enter device ID and other information in the "Add Device" dialog (device ID must be unique), then click [Add] to create the device.
+1. In the "Add Device" popup, enter the device ID and other information (device ID cannot be duplicated), and click [Add] to create the device.
 
-2. If organization administrators set custom fields, users need to complete all required fields as prompted (such as store and model in the example)
+2. If the organization administrator has set custom fields, users need to fill in all required items according to the page prompts (such as the store and model in the example).
 
-![Add by Information](./img/4-3-input-information.png)
+![Add by Filling in Information](./img/4-3-input-information.png)
 
 ---
 
-Through these steps, you can successfully add devices to the platform according to your actual needs.
+By following the steps above, you can successfully add devices to the platform according to your actual needs.
 
-If you have any questions, please contact us for support.
+If you have any questions, please feel free to contact us for support.

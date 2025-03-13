@@ -2,119 +2,99 @@
 sidebar_position: 3
 ---
 
-# Manage Devices
+# Managing Devices
 
 ## Device Management Basics
 
-Devices are managed uniformly at the organization level, and only users with organization member permissions or above can perform related operations. You can view the existing device list on the "Organization Management - Devices" page.
+Devices are managed at the organization level, and only users with organization member permissions or above can perform related operations. You can view the existing device list on the "Organization Management - Devices" page.
 
 ## Device Information Filtering and Table Settings
 
 :::info
-🤖 Permission: All **Organization Users** can view and filter device information
+🤖 Permission: All **organization users** can view and filter device information
 :::
 
 ### Filter Device Information
 
-The system supports filtering by "Device ID", "Access Status", and "Online Status" by default. In the "More" option, you can also filter by custom device fields to meet more personalized information search needs.
+The system by default supports filtering by "Device ID", "Access Status", and "Online Status" - these 3 fields. In the "More" option, you can also select custom device fields for filtering operations to meet more personalized information search needs.
 
-![Organization Device Filter](./img/4-3-device-filter.png)
+![Organization Device Filtering](./img/4-3-device-filter.png)
 
 ### Table Settings
 
-When there are many device fields, you can use the settings button in the top right corner of the table to sort, hide, or perform other operations on table display fields according to personal preferences, making it easier for users to focus on key information. You can also use [Restore Default] to return the table to its initial display state.
+When there are many device fields, you can use the settings button in the upper right corner of the table to sort, hide, and perform other operations on the table display fields according to personal preferences, making it easier for users to focus on key information. At the same time, you can also use [Restore Default] to restore the table to its initial display state.
 
 ![Table Display Settings](./img/4-3-device-table-setting.png)
 
-## Custom Device Field Management
+## Device Custom Field Management
 
 :::info
-🤖 Permission: Only **Organization Administrators** have the authority to set custom device fields
+🤖 Permission: Only **organization administrators** have the authority to set device custom fields
 :::
 
-- **Entry:** Through the "Organization Management - Settings - Device Field Configuration - Edit Configuration" path, administrators can add relevant device fields based on actual needs. After saving the settings, these custom fields will appear in the device information display.
+- **Entry:** Through the "Organization Management - Settings - Device Field Configuration - Edit Configuration" path to enter the settings page, administrators can add relevant device fields according to actual needs. After saving the settings, these custom fields will appear in the device information display.
 
-- **Note:** If an administrator deletes a custom device field, all data for that field will be deleted and cannot be recovered, so please proceed with caution.
+- **Notes:** If an administrator deletes a device custom field, all data for that field will be deleted and cannot be recovered, so operation must be done with caution.
 
-![Set Custom Device Fields](./img/4-3-setting-device-fields.png)
+![Set Device Custom Fields](./img/4-3-setting-device-fields.png)
 
-![Device Custom Fields Dialog](./img/4-3-fields-popup.png)
+![Device Custom Fields Popup](./img/4-3-fields-popup.png)
 
 ![Device Table with Custom Fields](./img/4-3-device-table-fields.png)
 
 ## Edit Device Information
 
 :::info
-🤖 Permission: **Organization Members and above** can edit and update device information
+🤖 Permission: **Organization members and above roles** can edit and update device information
 :::
 
-You can modify device information by either selecting the device in the device list and clicking the [Edit] button, or by clicking the [Edit] button on the device details page.
+You can modify various information about the device by selecting the device you want to operate in the device list and clicking the [Edit] button, or by clicking the [Edit] button on the device details page.
 
-![Edit Device Info from Table](./img/4-3-device-table-edit.png)
+![Edit Device Information from Table](./img/4-3-device-table-edit.png)
 
-![Edit Device Info from Details](./img/4-3-device-details-edit.png)
+![Edit Device Information from Details](./img/4-3-device-details-edit.png)
 
 ## Device and Project Association Operations
 
 :::info
-🤖 Permission: **Organization Members and above** can assign devices to projects
+🤖 Permission: **Organization members and above roles** can assign devices to projects
 :::
 
 ### Assign Devices to Projects
 
-After adding a device to a project, if the data collection client is installed, it will pull enabled rules from the project for automatic monitoring and diagnostics. You can also create collection tasks in the project to collect data.
+After a device is added to a project, if a data collection client is installed, the client will pull the rules that have been enabled in the project for automatic monitoring and diagnosis, and data collection tasks can also be created in the project to collect data.
 
-Select the device in the device list and click the [Add Associated Project] button;
+Select a device in the device list and click the [Add Associated Project] button;
 
-![Add from Organization Devices](./img/4-3-device-add-project-01.png)
+![Add from Organization Device](./img/4-3-device-add-project-01.png)
 
-Or click the [Add Device] button in the project to pull devices from the organization, both methods can complete the association between devices and projects.
+Or click the [Add Device] button in the project to pull devices from the organization, both of which can complete the association between devices and projects.
 
-![Add from Project Devices](./img/4-3-device-add-project-02.png)
+![Add from Project Device](./img/4-3-device-add-project-02.png)
 
-### Remove Device from Project
+### Remove Devices from Projects
 
-If a project no longer needs a device, you can [Remove from This Project]. After removal, the device remains in the organization project, but the project will no longer receive data collected from that device. You can add the device back to this project for data collection if needed later.
+If a project no longer needs a certain device, you can [Remove from this Project] in the project. After removal, the device is still retained in the organization project, but the project no longer receives data collected by the device. If needed in the future, the device can be added back to this project for data collection.
 
 ![Remove Project Device](./img/4-3-delete-project-device.png)
 
-## Device Access
+## Device Admission
 
 :::info
-🤖 Permission: Only **Organization Administrators** can perform device access operations
+🤖 Permission: **Only organization administrators** can perform device admission operations
 :::
 
-After adding a device, the [Grant Access] operation button will appear in the device list. On the device details page, you can separately grant access to the "Data Collection" and "Remote Control" modules.
+After completing device addition, the [Admit] operation button will appear in the device list. On the device details page, you can separately admit the "Data Collection" and "Remote Control" modules.
 
-![Grant Device Access](./img/4-3-access-device-2.png)
+![Admit Device](./img/4-3-access-device-2.png)
 
-After granting "Data Collection" access, the machine-side program will collect data according to rules and automatically upload it to the corresponding project;
+After "Data Collection" admission, the machine-side program will collect data according to rules and automatically upload it to the corresponding project;
 
-After granting "Remote Control" access, users can perform SSH connections and real-time visualization operations on the machine through the coScene platform.
+After "Remote Control" admission, users can perform SSH connections, real-time visualization, and other operations on the machine through the coScene platform.
 
 ### View Data Collection Client Logs
 
-Execute the following command on the device to view the data collection client's log information, helping users understand the data collection process.
-
-```go
-journalctl --user-unit=cos -f -n 50
-```
-
-:::info
-🤖 Permission: Only **Organization Administrators** can perform device access operations
-:::
-
-After adding a device, the [Grant Access] operation button will appear in the device list. On the device details page, you can separately grant access to the "Data Collection" and "Remote Control" modules.
-
-![Grant Device Access](./img/4-3-access-device-2.png)
-
-After granting "Data Collection" access, the machine-side program will collect data according to rules and automatically upload it to the corresponding project;
-
-After granting "Remote Control" access, users can perform SSH connections and real-time visualization operations on the machine through the coScene platform.
-
-### View Data Collection Client Logs
-
-Execute the following command on the device to view the data collection client's log information, helping users understand the data collection process.
+Execute the following command on the device side to view the log information of the data collection client, making it convenient for users to understand the situation during the data collection process.
 
 ```go
 journalctl --user-unit=cos -f -n 50
@@ -122,29 +102,29 @@ journalctl --user-unit=cos -f -n 50
 
 ### Uninstall Data Collection and Remote Control Clients
 
-On the device, execute the following command to uninstall the data collection and remote control clients. Monitor the output during execution until the uninstallation process is complete
+On the device side, execute the following command to uninstall the data collection and remote control clients. During execution, observe the output until the uninstallation process is complete.
 
 ```yaml
-/bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall.sh)"
+/bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall_en.sh)"
 ```
 
 ![Uninstall Client](./img/4-3-unload-1.png)
 
-## Delete Device
+## Delete Devices
 
 :::info
-🤖 Permission: When a device **has been granted access, only Organization Administrators** can delete it; if the device **has no access information, Organization Members and above** can delete it
+🤖 Permission: When a device **has been admitted, only organization administrators** can delete it; if a device **has no admission information, organization members and above roles** can delete it
 :::
 
-Select the device to delete in the device list and click [Delete Device], confirm twice to delete. After deleting a device:
+Select the device you want to delete in the device list and click [Delete Device], and confirm twice to delete. After deleting the device:
 
-1. Devices with granted access will have their access revoked and cannot automatically upload data
+1. Admitted devices will have their admission canceled and will not be able to automatically upload data
 
-2. The organization will clear the device and requests from the device end
+2. The device and requests from the device side will be cleared in the organization
 
 3. The device cannot be added to records
 
-4. Detailed device information cannot be viewed in records
+4. Detailed information about the device cannot be viewed in records
 
 ![Delete Device](./img/4-3-device-delete.png)
 
@@ -152,6 +132,6 @@ Select the device to delete in the device list and click [Delete Device], confir
 
 ---
 
-Through these steps and operation instructions, you can comprehensively manage devices, ensuring their effective application and maintenance in organizations and projects.
+Through the above steps and operation instructions, you can comprehensively manage device operations to ensure the effective application and maintenance of devices in organizations and projects.
 
-If you have any questions, please contact us for support.
+If you have any questions, please feel free to contact us for support.
