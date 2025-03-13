@@ -56,20 +56,21 @@ This method is suitable for adding a small number of devices to the platform one
 
 ### Client Installation Selection
 
-### Offline installation registration
+### Client Installation Selection
 
-   After installation, the device can collect data according to project rules or collection tasks. Before installation, administrators need to configure data collection monitoring directories and other information. For details, refer to the Edit Collection Rules documentation.
+1. **Data Collection (coScout) Client**
 
-1. Download the installation script [coscene.sh](https://download.coscene.cn/coscout/coscene.sh), offline binary file compression package [cos_binaries.tar.gz](https://download.coscene.cn /coscout/tar/latest/cos_binaries.tar.gz) to the device, the storage locations are `/root/coscene.sh`, `/root/cos_binaries.tar.gz`
-2. In the root directory, grant execution permissions to the installation script.
+   After installation, the device can collect data according to project rules or collection tasks. Before installation, administrators need to configure data collection monitoring directories and other information. For details, please refer to the Edit Collection Rules documentation.
 
-   After installation, it enables web-based SSH and real-time visualization of devices when combined with [coBridge](https://github.com/coscene-io/coBridge). For function details, refer to the Remote Control Device [documentation](https://docs.coscene.cn/docs/recipes/device/device-remote-control);
+2. **Remote Control (coLink) Client**
+
+   After installation, it enables web-based SSH and real-time device visualization when combined with [coBridge](https://github.com/coscene-io/coBridge). For detailed functionality, please refer to the Remote Control Device [documentation](https://docs.coscene.cn/docs/recipes/device/device-remote-control).
 
 3. **Initialize Client Configuration**
 
-   If the device changes its host computer or ID and needs to be reinstalled and registered, check [Initialize Client Configuration]; uncheck it if only upgrading the client version. For more usage methods, refer to the Machine Replacement, Upgrade, and Uninstallation Process Guide.
+   If the device needs to be reinstalled and registered after changing the host computer or ID, check [Initialize Client Configuration]; uncheck it if only upgrading the client version. For more usage methods, please refer to the Machine Replacement, Upgrade, and Uninstallation Process Guide.
 
-   ![Client Installation Selection](./img/4-3-install-initialize-config.png)
+   ![Client Installation Selection](./img/4-3-install-coscout-colink.png)
 
 ### Execute Installation Command
 
@@ -93,7 +94,9 @@ This method is suitable for adding a small number of devices to the platform one
 
 ### Installation Steps
 
-1. Assuming the user is in the `/root` directory (pay attention to changing the path when switching directories), download the installation script [coscene.sh](https://download.coscene.cn/coscout/coscene.sh) and the offline binary file compression package [cos_binaries.tar.gz](https://download.coscene.cn/coscout/tar/latest/cos_binaries.tar.gz) to the device, stored at `/root/coscene.sh` and `/root/cos_binaries.tar.gz` respectively.
+1. Assuming the user is in the `/root` directory (pay attention to changing the path when switching directories), download the installation script **coscene.sh** and the offline binary file compression package **cos_binaries.tar.gz** to the device, stored at `/root/coscene.sh` and `/root/cos_binaries.tar.gz` respectively.
+   ![download offline package](./img/4-3-download-offline-package.png)
+
 
 2. In the root directory, grant execution permission to the installation script:
 

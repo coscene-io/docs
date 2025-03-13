@@ -92,7 +92,8 @@ sidebar_position: 2
 
 ### 安装步骤
 
-1. 假设用户位于 `/root` 目录下（切换目录时需注意更改路径），下载安装脚本 [coscene.sh](https://download.coscene.cn/coscout/coscene.sh)、离线二进制文件压缩包 [cos_binaries.tar.gz](https://download.coscene.cn/coscout/tar/latest/cos_binaries.tar.gz) 至设备端，存放位置分别为 `/root/coscene.sh`, `/root/cos_binaries.tar.gz`。
+1. 假设用户位于 `/root` 目录下（切换目录时需注意更改路径），下载安装脚本 **coscene.sh**、离线二进制文件压缩包 **cos_binaries.tar.gz** 至设备端，存放位置分别为 `/root/coscene.sh`, `/root/cos_binaries.tar.gz`。
+   ![下载离线安装包](./img/4-3-download-offline-package.png)
 
 2. 在 root 目录下，给安装脚本赋予执行权限：
 
