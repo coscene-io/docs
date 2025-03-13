@@ -62,7 +62,7 @@ sidebar_position: 2
 
 2. **远程控制（coLink）客户端**
 
-   安装后可实现网页 SSH、结合 [coBridge](https://github.com/coscene-io/coBridge) 实时可视化设备，功能详情参阅远程控制设备[文档](https://docs.coscene.cn/docs/recipes/device/device-remote-control)；
+   安装后可实现网页 SSH、结合 [coBridge](https://github.com/coscene-io/coBridge) 实时可视化设备，功能详情参阅远程控制设备[文档](https://docs.coscene.cn/docs/device/device-remote-control)；
 
 3. **初始化客户端配置**
 

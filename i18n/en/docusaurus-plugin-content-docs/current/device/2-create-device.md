@@ -56,15 +56,13 @@ This method is suitable for adding a small number of devices to the platform one
 
 ### Client Installation Selection
 
-### Client Installation Selection
-
 1. **Data Collection (coScout) Client**
 
    After installation, the device can collect data according to project rules or collection tasks. Before installation, administrators need to configure data collection monitoring directories and other information. For details, please refer to the Edit Collection Rules documentation.
 
 2. **Remote Control (coLink) Client**
 
-   After installation, it enables web-based SSH and real-time device visualization when combined with [coBridge](https://github.com/coscene-io/coBridge). For detailed functionality, please refer to the Remote Control Device [documentation](https://docs.coscene.cn/docs/recipes/device/device-remote-control).
+   After installation, it enables web-based SSH and real-time device visualization when combined with [coBridge](https://github.com/coscene-io/coBridge). For detailed functionality, please refer to the Remote Control Device [documentation](https://docs.coscene.cn/en/docs/device/device-remote-control).
 
 3. **Initialize Client Configuration**
 
