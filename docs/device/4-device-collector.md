@@ -178,7 +178,7 @@ device:
     - /home/coscene/device2.yaml
 ```
 
-### 规则触发话题（topic）
+### 规则触发话题（topics）
 
 话题作为项目中规则触发话题的选项来源，可缩小规则匹配的范围，提高监听效率。例如，假设存在 `error_code` 话题，可进行如下配置：
 

@@ -34,7 +34,7 @@ Using the following scenario as an example, let's setup your automatic data coll
 5. Return to the "Data Collection & Diagnosis Rules" page, select the rule group you just added, and click the enable button
    ![data-2-3](./img/9-enable-rule-set.png)
 
-   \*For more rule condition styles, see [Rule Groups](./3-add-rule.md#rule-groups)
+   \*For more rule condition styles, see [Rule Groups](./3-add-rule.md#rule-group)
 
 ## Adding Data Diagnosis Trigger in Project
 
