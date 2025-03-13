@@ -36,7 +36,7 @@ sidebar_position: 2
 
    ![data-2-2](./img/9-add-rule.png)
 
-4. 更改规则名称，复制规则 `"error 1" in log` 到触发条件，勾选触发操作中的生成记录和创建一刻，更改一刻名称为 `触发了 error 1`，点击【创建】
+4. 更改规则名称，关注的话题选择`/external_log`，事件匹配条件输入：msg.message 包含 error 1，勾选触发操作中的采集数据和诊断数据，更改一刻名称为 `触发了 error 1`，点击【创建】
 
    ![pro-rule-base-rule](./img/pro-rule-base-rule-1.png)
 
@@ -46,7 +46,7 @@ sidebar_position: 2
 
    ![data-2-3](./img/9-enable-rule-set.png)
 
-   \*更多规则条件样式参见[规则组](./3-add-rule.md#规则组)
+   \*更多规则条件样式参见[规则组](./3-add-rule.md#rule-group)
 
 <br />
 
@@ -81,14 +81,19 @@ sidebar_position: 2
 2. 清空规则中的默认内容后，复制下述规则，粘贴在编辑器中
 
    ```yaml
+   collector:
+     delete_after_interval_in_hours: 48
    mod:
-     name: 'default' # mod 名称，默认 default，定制版请联系刻行产品了解详细信息
      conf:
-       enabled: true # 是否启用，默认为 true
-       # 设备端的监听目录，作为项目中数据采集任务与规则采集的指定目录
-       base_dirs:
-         - /home/bag/
-         - /home/log/
+       collect_dirs:
+         - /root/logs
+       enabled: true
+       listen_dirs:
+         - /root/logs
+       skip_period_hours: 2
+     name: default
+   updater:
+     enabled: false
    ```
 
    \*更多配置参见[数采规则格式](https://docs.coscene.cn/docs/recipes/device/device-collector/#%E6%95%B0%E9%87%87%E8%A7%84%E5%88%99%E6%A0%BC%E5%BC%8F)

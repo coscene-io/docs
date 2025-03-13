@@ -2,98 +2,117 @@
 sidebar_position: 3
 ---
 
-# Manage Records
+# Managing Records
 
-On the record list page, you can add, edit, copy, and archive previously created records. You can also search and filter records and generate statistics based on existing categories.
+Records support the following operations:
 
-## Categorization and Tagging
+- **Basic operations**: view, edit, copy, move, archive, delete
+- **Data processing**: invoke actions, annotation
+- **Search and statistics**: search filtering, label statistics
 
-- When creating or editing a record, you can set tags for it. Each tag can correspond to a category.
-- Multiple tags can be set for each record.
 
-  ![manage-record-1](./img/manage-record-1.png)
+## Basic Operations
+### View
+On the record list page, you can view record information including name, thumbnail, device, labels, recent actions, custom fields, etc.
 
-## Statistics
+- Click the record name to enter the record details page
+- Click the thumbnail to view it in full size
+- Click the device ID to enter the project device details page
+- Click recent actions to view details of the most recent action
+- Click the [Settings] button in the upper right corner of the table to set the display fields and sorting method
 
-- Click on the [Statistics] button in the "Record List" to display the number of records under each tag:
+  ![record-list_1](./img/record-list_1.png)
 
-  ![manage-record-2](./img/manage-record-2.png)
+### Edit
+On the record details page, you can edit record information such as name, description, device, labels, etc.
 
-## Search and Filter
+1. Click to directly edit the record name and description.
 
-- In the "Record List", you can input keywords in the search bar to search for record names and descriptions:
+    ![edit-record_1](./img/edit-record_1.png)
 
-  ![manage-record-3](./img/manage-record-3.png)
+2. In the record basic information section, you can select devices and labels.
 
-- You can also click on the [Advanced] button to expand more filter options and filter records by start and end time, tags, devices, and other attributes:
+- Device: Select the project device associated with the record
+- labels: add, edit, and delete labels
 
-![manage-record-4](./img/manage-record-4.png)
+  ![edit-record_2](./img/edit-record_2.png)
 
-## Copy
+### Copy and Move
+Copy/move records to specified projects for data reclassification and organization.
 
-If you wish to reuse or aggregate the collected data, you can copy a record from one project to another.
+1. In the more operations menu of the record details, select [Copy to]/[Move to].
 
-- Select the record and click the [Copy] button. From the pop-up window, choose the project to copy the record to:
+    ![create-record_7](./img/create-record_7.png)
 
-  ![manage-record-5](./img/manage-record-5.png)
+2. Select the target project in the popup window, click [OK] to view the corresponding record in the target project.
 
-  ![manage-record-6](./img/manage-record-6.png)
+    ![create-record_8](./img/create-record_8.png)
 
-## Archive
+### Archive
+The archive function can convert analyzed data to read-only status and remove it from the active list for long-term management of historical data. Use cases include:
 
-You can archive records to store low-activity data for others to view and reference.
+- Data analysis is complete and results need long-term preservation
+- Phase experimental data needs to be archived
+- Historical data needs to be managed separately from active data
+- Important data needs protection from accidental modifications
 
-> Who can use this feature<br />
-> Organization administrators, project administrators, and project members can archive records.
+1. Select [Archive] from more operations in record details. The record will be archived after secondary confirmation.
 
-### Archiving Records
+    ![manage-record_7](./img/manage-record_7.png)
 
-> Once a record is archived, it becomes read-only, and all data within the record will no longer update.
+2. View archived records in the archive column of the record list.
+   
+    ![manage-record_8](./img/manage-record_8.png)
 
-**Archive a Single Record**
+3. In archived record details, click [Unarchive] in the "More" operations to convert the record from archived to active status.
 
-- From the "Record List Page" operation:
+    ![manage-record_9](./img/manage-record_9.png)
 
-  - Click on the [Records] page of the project, go to the [Active] record list.
+### Delete
+> After deletion, records cannot be recovered.
 
-    ![pro-record](./img/pro-record.png)
+Select [Delete] from more operations in record details. The record will be deleted after secondary confirmation.
 
-  - Select the record you wish to archive and click [Archive] on the right.
+![manage-record_10](./img/manage-record_10.png)
 
-    ![record-archive](./img/record-archive.png)
+### Batch Operations
+On the record list page, select records to perform batch operations like editing labels, copying, moving, archiving, deleting, etc.
 
-**Bulk Archive Records**
+![manage-record_11](./img/manage-record_11.png)
 
-- Click on the [Records] page of the project, go to the [Active] record list.
+## Data Processing
+### Invoke Actions
+On the record details page, you can invoke actions to process records, such as: data trimming, automatic diagnostics, data comparison, etc.
 
-  ![pro-record](./img/pro-record.png)
+1. On the record details page, click the [Invoke Action] button and select the operation to perform on the record.
 
-- Select the records you wish to archive, then click [Archive Record].
+    ![manage-record_2](./img/manage-record_2.png)
 
-  ![records-archive](./img/records-archive.png)
+2. When the action is complete, you can view the results in the "Invocations". See [Automated Actions](../../workflow/action/2-learn-coscene-action.md) chapter for details.
 
-### Unarchiving Records
+### Annotation
+> Only available for projects configured with annotation integration. Contact coScene for details.
 
-> Once a record is unarchived, it is restored to a readable and writable state.
+On the record list page, select records to annotate and click the [Create Annotation Task] button to generate annotation tasks on the corresponding annotation platform.
 
-**Unarchive a Single Record**
+![manage-record_3](./img/manage-record_3.png)
 
-- From the "Record List Page" operation:
+## Search and Statistics
+### Search and Filter
 
-  - Click on the [Records] page of the project, go to the [Archived] record list.
+- **Search**
 
-    ![pro-record-archived](./img/pro-record-archived.png)
+  Enter keywords in the search box of the record list to search record names, descriptions and labels:
 
-  - Select the record you wish to unarchive and click [Unarchive] on the right.
+  ![manage-record_5](./img/manage-record_5.png)
 
-    ![record-unarchive](./img/record-unarchive.png)
+- **Filter**
 
-**Bulk Unarchive Records**
+  In the filter items of the record list, you can filter by record labels, creator, device, record custom fields, device custom fields and other properties:
 
-- Click on the [Records] page of the project, go to the [Archived] record list.
+  ![manage-record_6](./img/manage-record_6.png)
 
-  ![pro-record-archived](./img/pro-record-archived.png)
+### Label Statistics
+Click the [Statistics] button in the record list to view the number of records under each label:
 
-- Select the records you wish to unarchive, then click [Unarchived Record].
-
-  ![records-unarchive](./img/records-unarchive.png)
+  ![manage-record_4](./img/manage-record_4.png)

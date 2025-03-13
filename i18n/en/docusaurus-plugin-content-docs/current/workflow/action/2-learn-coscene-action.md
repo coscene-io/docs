@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Learn More About coScene Automation
 
-## Preface
+## Preface {#preface}
 
 This article introduces the functionalities of the automation module provided by coScene, exploring the concepts and usage of related modules.
 
@@ -12,7 +12,7 @@ This article introduces the functionalities of the automation module provided by
 
 Automation primarily includes three sub-functional entries: Actions, Triggers, and Invocation History. Triggers are linked to actions; the uploading of files will initiate the operation of triggers. Triggers that meet conditions will activate actions, completing an automation run displayed on the Invocation History page.
 
-### Actions
+### Actions {#actions}
 
 Define user behavior, referring to the operational logic they wish to execute, mainly consisting of the user's own business code logic. For example, listing all files in a directory (`ls -al`) or running a specific program (`python hello.py`).
 
@@ -67,7 +67,7 @@ Limits the maximum CPU and memory usage of the program. 1 core means up to 1 vir
 
 Actions offer four default configurations, `1 core/2G`, `2 cores/4G`, `4 cores/8G`, `8 cores/16G`. If higher requirements are needed, please contact the coScene team.
 
-### Triggers
+### Triggers {#triggers}
 
 Triggers define the timing of actions. When a new file is successfully uploaded, the trigger checks based on the configuration. File wildcards can limit the name format of uploaded files, and condition groups can restrict the scope of records to which uploaded files belong, such as only allowing records with the `hello` label to trigger an action upon successful file upload.
 
@@ -89,7 +89,7 @@ Used to match whether uploaded files meet the format definition, determining whe
 
 Supports filtering associated record tag information. Only records meeting the tag requirements can satisfy trigger conditions. **Note that changes in record tags will not trigger coScene system verification of related triggers**. For example, adding a new tag to a record will not trigger the trigger to check and then run the corresponding action. _Currently, only file uploads will trigger the operation of triggers._
 
-### Invocation History
+### Invocation History {#invocation-history}
 
 Invocation history displays the execution history of all actions within the project. Users can click on a record to view detailed information about a single run, providing an overview of status, time, operating user, etc. It also provides specific execution log information, allowing users to check the running status of programs for easier development and debugging.
 

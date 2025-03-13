@@ -1,4 +1,4 @@
-<img src="./logo.png" alt="coScene Logo" width="250"/>
+<img src="./logo.svg" alt="coScene Logo" width="250"/>
 
 ## 准备工作
 

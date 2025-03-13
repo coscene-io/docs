@@ -1,8 +1,9 @@
 {
-  "label": "记录操作",
+  "label": "Record",
   "position": 4,
   "collapsible": true,
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "slug": "/category/record"
   }
 }

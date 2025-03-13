@@ -18,5 +18,13 @@
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"
+  },
+  "logo.alt": {
+    "message": "coScene Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.OpenAPI": {
+    "message": "OpenAPI",
+    "description": "Navbar item with label OpenAPI"
   }
 }

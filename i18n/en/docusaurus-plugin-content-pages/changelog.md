@@ -5,6 +5,24 @@ id: changelog
 
 # Release History
 
+## [25.9.0] - 2025-2-26
+
+### [Added]
+
+- Added "Batch Remote Command Execution" feature: In the Organization Management - Devices page, users can send commands in batch to selected devices
+- Added "Teambition Integration": In the Project Settings - Service Integration page, users can configure Teambition integration to automatically create Teambition tasks when issues occur
+
+### [Improved]
+
+- Updated the input method for rule conditions in Collection & Diagnosis, now supporting CEL syntax input
+
+### [Fixed]
+
+- Fixed the issue where downloading single folders from records was not working
+- Fixed issues related to rules in Collection & Diagnosis
+
+---
+
 ## [25.6.0] - 2025-2-8
 
 ### [New]

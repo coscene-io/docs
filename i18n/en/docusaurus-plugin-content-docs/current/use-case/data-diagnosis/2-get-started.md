@@ -11,40 +11,48 @@ Using the following scenario as an example, let's setup your automatic data coll
 ## Prerequisites
 
 1. Have a device ready.
-2. Create a project named `auto-upload`. See [Cerate New Project](https://docs.coscene.cn/en/docs/recipes/project) for details. 
+2. Create a project named `auto-upload`. See [Cerate New Project](https://docs.coscene.cn/en/docs/recipes/project) for details.
 3. Make sure your role in the coScene organization is "Administrator". If you're not an administrator, contact your organizational admin to update your role.
    ![org-role](./img/org-role.png)
 
 ## Adding Rules to Your Project
 
-1. Navigate to the `auto-upload` project we just created.
+1. Navigate to the `auto-upload` project
    ![pro-1](./img/pro-1.png)
-2. Within the project, go to the 'Manage Project - Data Collection and Diagnosis Rules' page and click on "Add Rule Group".
-   ![pro-rule-1](./img/pro-rule-1.png)
-3. Clear any default content in the rules section. Copy the following rule and paste it into the editor:
 
-   ```
-   name: error series # Rule group name
+2. Within the project, go to the "Data Collection & Diagnosis Rules" page and click "Add Rule Group"
+   ![data-2-1](./img/9-add-rule-set.png)
 
-   rules:
-   - when:
-         - has(msg.message, "error 1") # Trigger condition: log contains the string "error 1"
-      actions:
-         - upload(title="Localization lost - error 1") # Create a record named "Localization lost - error 1" and upload the log file to this record
-         - create_moment(title="Localization lost") # Create a moment named "Localization lost"
+3. After changing the rule group name, click "Add Blank Rule"
+   ![data-2-2](./img/9-add-rule.png)
 
-   enabled: true # Rule group status: enabled
+4. Change the rule name, select `/external_log` as the topic, enter "msg.message contains error 1" as the event matching condition, check both "Collect Data" and "Diagnose Data" in trigger actions, change the moment name to "Triggered error 1", and click "Create"
 
-   version: v1 # The current rule group version is only v1
-   ```
+   ![pro-rule-base-rule](./img/pro-rule-base-rule-1.png)
+   ![pro-rule-base-rule](./img/pro-rule-base-rule-2.png)
 
-   \*For more rule styles, see [Structure and Examples of Rules](./4-manage-rule-group.md).
+5. Return to the "Data Collection & Diagnosis Rules" page, select the rule group you just added, and click the enable button
+   ![data-2-3](./img/9-enable-rule-set.png)
 
-4. Click the "Save" button.
+   \*For more rule condition styles, see [Rule Groups](./3-add-rule.md#rule-group)
 
-   ![pro-rule-4](./img/pro-rule-4.png)
+## Adding Data Diagnosis Trigger in Project
 
-<br />
+1. Navigate to the `auto-upload` project
+   ![pro-1](./img/pro-1.png)
+
+2. In the project, go to "Automation - Triggers" page and click "Create Trigger"
+   ![pro-trigger-add](./img/pro-trigger-add.png)
+
+3. Edit trigger content:
+
+- Edit trigger name as "Data Diagnosis"
+- Select "System Action" as the associated action
+- Choose "Data Diagnosis" from the system action dropdown
+- Edit file wildcard pattern as `**/*` (using Glob format, see [reference documentation](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/))
+- Click "Create Trigger"
+
+  ![pro-trigger-base](./img/pro-trigger-edit.png)
 
 ## Configure Data Collection Device Information
 
@@ -61,12 +69,16 @@ Using the following scenario as an example, let's setup your automatic data coll
        enabled: true # Whether to enable, default is true.
 
        # Monitored directories on the device, specified for data collection tasks and rule collection in the project
-       base_dirs:
-         - /home/bag/
-         - /home/log/
+       collect_dirs:
+         - /root/logs
+       listen_dirs:
+         - /root/logs
+       skip_period_hours: 2
+   collector:
+     delete_after_interval_in_hours: 48
+   updater:
+     enabled: false
    ```
-
-   \*For more configurations, refer to [Data Collection Rule Format](./4-manage-rule-group.md)
 
 3. Click the "Save Changes" button.
 
@@ -182,3 +194,11 @@ Using the following scenario as an example, let's setup your automatic data coll
 4. View the moment created at the trigger time.
 
    ![auto-record-3](./img/auto-record-3.png)
+
+## Adding Device to Project
+
+1. In the project's "Project Devices" tab, click "Add Device"
+   ![pro-device-add](./img/pro-device-add-1.png)
+
+2. Select the device(s) you want to add and click "Confirm"
+   ![pro-device-add-2](./img/pro-device-add-2.png)

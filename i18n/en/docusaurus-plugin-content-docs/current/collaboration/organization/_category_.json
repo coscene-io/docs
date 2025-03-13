@@ -1,10 +1,10 @@
 {
-    "label": "组织和团队",
+    "label": "Organization and Team",
     "position": 7,
     "collapsible": true,
     "link": {
       "type": "generated-index",
-      "slug": "/category/enterprise-and-team"
+      "slug": "/category/organization-and-team"
     }
   }
   

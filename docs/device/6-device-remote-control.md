@@ -17,7 +17,7 @@ sidebar_position: 6
 
 刻行将会提供 [coBridge 源码（C++）](https://github.com/coscene-io/coBridge)，目前支持包括 ROS1 <u>Noetic Ninjemys</u>, <u>Melodic Morenia</u>; ROS2 <u>Foxy Fitzroy</u>, <u>Galactic Geochelone</u>, <u>Humble Hawksbill</u> 等 ROS DISTRIBUTION，若有其他版本需求，请联系刻行团队。
 
-强烈建议用户使用刻行提供的源码编译出可执行文件(编译流程文档：[CN](https://github.com/coscene-io/coBridge/blob/main/README.zh-CN.md)/[EN](https://github.com/coscene-io/coBridge/blob/main/README.md))，将其整合进机器人软件中，并在机器人启动脚本添加 `ros2 launch coBridge coBridge_launch.xml` （或者 `roslaunch coBridge coBridge_launch.xml`）命令。
+强烈建议用户使用刻行提供的源码编译出可执行文件(编译流程文档：[CN](https://github.com/coscene-io/coBridge/blob/main/README.zh-CN.md)/[EN](https://github.com/coscene-io/coBridge/blob/main/README.md))，将其整合进机器人软件中，并在机器人启动脚本添加 `ros2 launch cobridge cobridge_launch.xml` （或者 `roslaunch cobridge cobridge_launch.xml`）命令。
 
 coBridge 节点启动后，配合 virmesh 映射的外网地址及端口，可在网页端实现订阅机器人 topic，下发 service 等操作，实现对机器人的远程实时可视化。
 
@@ -35,17 +35,18 @@ coBridge 节点启动后，配合 virmesh 映射的外网地址及端口，可�
 
 页面默认提供了 [Trzsz 文件传输工具](https://trzsz.github.io/cn/)，用户可以通过`trz file1` 命令上传本地的文件至远程机器端，通过 `tsz file1 file2 file3` 将远程机器的文件下载到本地机器上。更为复杂的命令使用请参考[详细说明文档](https://trzsz.github.io/cn/)。
 
-## 远程 CMD
+## 远程命令
 
-当机器实时在线时，用户可以通过远程 CMD 功能对机器进行命令下发操作，执行特定的任务。
+当设备远程在线时，用户可以通过【远程命令】功能对设备进行命令下发操作，执行特定的任务。也可以对多台设备同时进行[批量操作](./7-batch-device-operations.md)。
 
-![device cmd](./img/4-3-device-cmd.png)
+![device cmd](./img/6-remote-command-1.png)
 
-点击【远程 CMD】按钮，进去操作页面。示例中执行 `touch ~/hello-world.txt` 命令，创建一个名为`hello-world.txt` 的文件。
-![device cmd demo](./img/4-3-device-cmd-demo-1.png)
+点击【执行远程命令按钮】，在弹窗中输入需要执行的命令，点击【确认】按钮后，即可在设备上执行命令。
+![device cmd](./img/6-remote-command-2.png)
+![device cmd](./img/6-remote-command-3.png)
 
-然后再执行 `ls ~/` 命令获取所有文件信息，通过执行命令历史记录的结果可以看出，命令均成功执行。
-![device cmd demo](./img/4-3-device-cmd-demo-2.png)
+等待命令执行成功后，可以看到日志结果。
+![device cmd](./img/6-remote-command-4.png)
 
 ## 端口号映射
 

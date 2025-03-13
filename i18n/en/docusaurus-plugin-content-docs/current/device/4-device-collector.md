@@ -2,93 +2,208 @@
 sidebar_position: 4
 ---
 
-# Data Collection Rules
+# Data Collection Client Configuration
 
-> Admitted devices can automatically upload data to projects according to data collection rules. The collection rules apply to all devices using a shared configuration. If you need to set collection rules by project, please refer to [About Automated Data Collection and Diagnosis](../use-case/data-diagnosis/1-intro.md) to use the rule engine to meet your requirements.
+> Devices with granted access can automatically upload data to projects according to data collection rules. Collection rules apply to all devices using a shared configuration. If you need to divide collection rules by project, please refer to [About Automatic Data Collection and Diagnostics](../use-case/data-diagnosis/1-intro.md) to use the rule engine to meet your requirements.
 
-## About Data Collection Rules
+## About Data Collection Client Configuration
 
-> Data collection rules apply to all devices in the organization and can only be edited by organization administrators
+<div style={
+{ 
+    padding: '12px 16px', backgroundColor: '#EFF6FF', borderRadius: '4px',  border: '1px solid', borderColor: '#2563EB', color: '#111827' }
+}>
+<p style={{margin: 0}}>🤖 Permission: Only **Organization Administrators** can edit collection rules, which apply uniformly to all organization devices</p>
+</div>
+<br />
+Data collection configuration is managed by organization administrators and applies to devices with installed data collection clients within the organization. These devices automatically monitor data based on collection rules, and all organization devices share one set of collection configurations.
 
-Data collection rules define the directories for monitoring device logs, device information file storage locations, etc. After device admission, devices will actively fetch the organization's configured collection rules and operate dynamically on the machine according to these rules.
+If you need to divide collection rules by project, please refer to [About Automatic Data Collection and Diagnostics](../use-case/data-diagnosis/1-intro.md) to use the rule engine to meet your requirements.
 
-## Edit Data Collection Rules
+During collection configuration, you need to define key information such as device ID location, device monitoring directory, client initialization monitoring time range, collection directory, rule trigger topics, and client auto-update mechanism. After device access is granted, it will actively pull the organization's configured collection rule information and run dynamically on the machine end accordingly.
 
-The structure format of data collection rules is described below.
+## Entry
 
-Go to the "Devices" tab on the organization management page and click the [Edit Collection Rules] button.
+On the "Devices" tab of the organization management page, click the [Edit Collection Rules] button to enter the data collection client configuration editing interface. YAML language is used for editing here.
 
-![org-device](./img/org-device.png)
+![org-device](./img/4-3-org-collector.png)
 
-Edit the collection rules online and click [Save Changes] when configuration is complete.
+After completing the configuration, click [Save], and the configuration will take effect immediately for all organization devices with granted collection client access.
 
-![org-dev-rule-save](./img/org-dev-rule-save.png)
+![org-dev-rule-save](./img/4-3-device-save-collector.png)
 
-## Data Collection Rule Format
+## Collection Rule Format Details
 
-Data collection rules mainly configure three modules:
+Collection rules primarily configure 5 modules:
 
-- **Collector Settings (collector)**: Whether to delete device-side data after collection is complete
-- **Storage Settings (mod)**: Storage directory for device-side data; Location of device identifier file
-- **Update Settings (updater)**: Whether to enable automatic updates for the current program
+| Module Name | Function Description |
+| ----------- | ------------------- |
+| Data Collector Settings (collector) | Whether to delete device-end data after collection is complete |
+| Storage Settings (mod) | Device ID storage location; monitoring directory; client initialization monitoring time range; collection directory |
+| Device Event Properties (device) | Event attribute values |
+| Rule Trigger Topics (topic) | Rule trigger topics |
+| Update Settings (updater) | Whether to enable auto-update for the current program |
 
-Example data collection configuration file:
+Example template as follows:
 
 ```yaml
 collector:
-  delete_after_upload: true # Default value is False
-  delete_after_interval_in_hours: 48 # Default value is -1, meaning files are not deleted
-  scan_interval_in_secs: 60 # Default value: 60, scans folder every 60s
+  delete_after_interval_in_hours: 48 # Default value is -1, meaning no deletion
 
 mod:
-  name: 'default' # mod name, default is 'default', contact CoScene product team for custom versions
+  # mod name, default is 'default', supports monitoring files in specified device directories
+  # For custom monitoring methods, please contact coScene
+  name: 'default'
+
   conf:
-    enabled: true # Whether enabled, default is true
-    robot_file: '/root/.ros/sn.txt' # Device identifier file, stores unique device identifier like sn
-    # Device-side monitoring directories, used as specified directories for data collection tasks and rule collection in projects
-    base_dirs:
+    # Enable switch, true/false, enabled by default
+    enabled: true
+
+    # Assuming there's a file /home/coscene/example.yaml on the machine end with content:
+    # serial_num: 1234
+    #
+    # Then during machine registration, it will read the serial_num field value (1234) from example.yaml as the machine's unique identifier
+    sn_file: /home/coscene/example.yaml
+    sn_field: serial_num
+
+    # Device monitoring directories, used as rule monitoring directories in projects
+    listen_dirs:
+      - /home/bag/
+
+    # Files won't be monitored/collected when the time difference between current time and file update time exceeds {skip_period_hours}
+    skip_period_hours: 2
+
+    # Device collection directories, used as specified directories for project data collection tasks and rule collection
+    collect_dirs:
       - /home/bag/
       - /home/log/
 
+# Assuming there's a file /home/coscene/device.yaml on the machine end with content:
+# soft_version: v1.0
+#
+# After device rule triggering, it will read soft_version: v1.0 from device.yaml as the generated event's attribute value
+# To view the event statistics panel, please contact coScene
+device:
+  extra_files:
+    - /home/coscene/device1.yaml
+    - /home/coscene/device2.yaml
+
+# Topics serve as options for rule trigger topics in projects to narrow down rule matching scope
+# Assuming there's an error_code topic
+topics:
+  - error_code
+
+# Auto update
 updater:
-  enabled: false # Enable Auto Update, default false
+  # Auto update switch, true/false, disabled by default
+  enabled: false
 ```
 
-### Collector Settings
+Let's go through each function and its usage:
 
-Set whether to delete device-side data after collection is complete to free up device disk storage
+### Data Collector Settings (collector)
+
+This module is used to configure whether to delete device-end data after collection is complete, effectively managing device storage. Configurable parameters include:
+
+- `delete_after_upload`: Default value is false. If set to true, device-end data will be deleted after upload.
+
+- `delete_after_interval_in_hours`: Default value is -1, meaning no deletion; if set to a specific duration (e.g., 48), it will delete data older than that duration.
+
+- `scan_interval_in_secs`: Default value is 60, meaning the folder is scanned every 60 seconds.
 
 ```yaml
-# Collector settings
+# Data collector settings
 collector:
-  delete_after_upload: true # Default value is False
-  delete_after_interval_in_hours: 48 # Default value is -1 meaning files are not deleted; otherwise deletes data older than 48 hours by default
+  delete_after_upload: true # Default value is false
+  delete_after_interval_in_hours: 48 # Default value is -1, meaning no deletion; otherwise will delete data older than 48 hours
   scan_interval_in_secs: 60 # Default value: 60, scans folder every 60s
 ```
 
-### Storage Settings
+### Storage Settings (mod)
 
-Set the storage location for device-side data
+Mainly responsible for configuring device-end data storage location information:
+
+- `name`: Default name is `default`, supports monitoring files in specified device directories. For custom monitoring methods, please contact coScene.
+
+- `conf`: Enable switch, `true/false`, enabled by default.
+
+- `sn_file`: Assuming there's a corresponding file on the machine end (e.g., `/home/coscene/example.yaml`) containing a unique device identifier (e.g., `serial_num: 1234`), during machine registration, it will read the specified field value (`1234`) as the machine's unique identifier.
+
+- `sn_field`: Corresponding identifier field name.
+
+- `listen_dirs`: Device monitoring directories, used as rule monitoring directories in projects.
+
+- `collect_dirs`: Device collection directories, used as specified directories for project data collection tasks and rule collection.
 
 ```yaml
-# Data processing settings, customizable, contact CoScene product team for detailed process
 mod:
-  name: 'default' # mod name, default is 'default', contact CoScene product team for custom versions
+  # mod name, default is 'default', supports monitoring files in specified device directories
+  # For custom monitoring methods, please contact coScene
+  name: 'default'
+
   conf:
-    enabled: true # Whether enabled, default is true
-    robot_file: '/root/.ros/sn.txt' # Device identifier file, stores unique device identifier like sn
-    # Device-side monitoring directories, used as specified directories for data collection tasks and rule collection in projects
-    base_dirs:
+    # Enable switch, true/false, enabled by default
+    enabled: true
+
+    # Assuming there's a file /home/coscene/example.yaml on the machine end with content:
+    # serial_num: 1234
+    #
+    # Then during machine registration, it will read the serial_num field value (1234) from example.yaml as the machine's unique identifier
+    sn_file: /home/coscene/example.yaml
+    sn_field: serial_num
+
+    # Device monitoring directories, used as rule monitoring directories in projects
+    listen_dirs:
+      - /home/bag/
+
+    # Files won't be monitored/collected when the time difference between current time and file update time exceeds {skip_period_hours}
+    skip_period_hours: 2
+
+    # Device collection directories, used as specified directories for project data collection tasks and rule collection
+    collect_dirs:
       - /home/bag/
       - /home/log/
 ```
 
-### Update Settings
+### Device Event Properties (device)
 
-Set whether to automatically update the collection program
+Assuming there's a specific file on the machine end (e.g., `/home/coscene/device.yaml` with content `soft_version: v1.0`), after device rule triggering, it will read the specified content (e.g., `soft_version: v1.0`) as the generated event's attribute value. Additional related files can be configured through `extra_files`.
 
 ```yaml
-# Update settings
-updater:
-  enabled: true # Whether to automatically update collection program, default value is true
+# Assuming there's a file /home/coscene/device.yaml on the machine end with content:
+# soft_version: v1.0
+#
+# After device rule triggering, it will read soft_version: v1.0 from device.yaml as the generated event's attribute value
+# To view the event statistics panel, please contact coScene
+device:
+  extra_files:
+    - /home/coscene/device1.yaml
+    - /home/coscene/device2.yaml
 ```
+
+### Rule Trigger Topics (topic)
+
+Topics serve as options for rule trigger topics in projects, helping narrow down rule matching scope and improve monitoring efficiency. For example, assuming there's an `error_code` topic:
+
+```yaml
+# Topics serve as options for rule trigger topics in projects to narrow down rule matching scope
+# Assuming there's an error_code topic
+topics:
+  - error_code
+```
+
+### Update Settings (updater)
+
+Used to configure whether to auto-update the data collection client. Default is `false` (no auto-update). If changed to `true`, the device will automatically update when connected to the internet after we release a new version of the data collection client.
+
+```yaml
+# Auto update
+updater:
+  # Auto update switch, true/false, disabled by default
+  enabled: false
+```
+
+---
+
+Through these detailed steps and instructions, administrators can comprehensively and accurately configure the device data collection client, ensuring efficient operation of device data collection.
+
+If you have any questions, please feel free to contact us for support.

@@ -5,7 +5,7 @@
   },
   "link.item.label.Docs": {
     "message": "Docs",
-    "description": "The label of footer link with label=Docs linking to /docs/intro"
+    "description": "The label of footer link with label=Docs linking to /docs/overview"
   },
   "link.item.label.Blog": {
     "message": "Blog",
@@ -13,14 +13,42 @@
   },
   "link.item.label.刻行时空官网": {
     "message": "Homepage",
-    "description": "The label of footer link with label=GitHub linking to https://github.com/coscene-io"
+    "description": "The label of footer link with label=刻行时空官网 linking to https://www.coscene.cn"
   },
   "link.title.更多相关链接": {
     "message": "More",
-    "description": "The label of footer link with label=GitHub linking to https://github.com/coscene-io"
+    "description": "The title of the footer links column with title=更多相关链接 in the footer"
   },
   "copyright": {
     "message": "Copyright © 2023 coScene",
     "description": "The footer copyright"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/coscene-io"
+  },
+  "link.item.label.隐私政策": {
+    "message": "Privacy Policy",
+    "description": "The label of footer link with label=隐私政策 linking to /legal/privacy/zh/privacy.html"
+  },
+  "link.item.label.服务协议": {
+    "message": "Terms of Service",
+    "description": "The label of footer link with label=服务协议 linking to /legal/terms/zh/terms.html"
+  },
+  "link.item.label.刻行数据安全白皮书": {
+    "message": "coScene Data Security White Paper",
+    "description": "The label of footer link with label=刻行数据安全白皮书 linking to /security/security-white-paper/en/security-white-paper.html"
+  },
+  "link.item.label.刻行数据安全方案": {
+    "message": "coScene Data Security Solution",
+    "description": "The label of footer link with label=刻行数据安全方案 linking to /security/data-security-solution/en/data-security-solution.html"
+  },
+  "link.title.法律协议": {
+    "message": "Legel",
+    "description": "The title of the footer links column with title=法律协议 in the footer"
+  },
+  "link.title.数据安全": {
+    "message": "Data Security",
+    "description": "The title of the footer links column with title=数据安全 in the footer"
   }
 }
