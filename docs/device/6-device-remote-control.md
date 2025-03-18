@@ -35,17 +35,18 @@ coBridge 节点启动后，配合 virmesh 映射的外网地址及端口，可�
 
 页面默认提供了 [Trzsz 文件传输工具](https://trzsz.github.io/cn/)，用户可以通过`trz file1` 命令上传本地的文件至远程机器端，通过 `tsz file1 file2 file3` 将远程机器的文件下载到本地机器上。更为复杂的命令使用请参考[详细说明文档](https://trzsz.github.io/cn/)。
 
-## 远程 CMD
+## 远程命令
 
-当机器实时在线时，用户可以通过远程 CMD 功能对机器进行命令下发操作，执行特定的任务。
+当设备远程在线时，用户可以通过【远程命令】功能对设备进行命令下发操作，执行特定的任务。也可以对多台设备同时进行[批量操作](./7-batch-device-operations.md)。
 
-![device cmd](./img/4-3-device-cmd.png)
+![device cmd](./img/6-remote-command-1.png)
 
-点击【远程 CMD】按钮，进去操作页面。示例中执行 `touch ~/hello-world.txt` 命令，创建一个名为`hello-world.txt` 的文件。
-![device cmd demo](./img/4-3-device-cmd-demo-1.png)
+点击【执行远程命令按钮】，在弹窗中输入需要执行的命令，点击【确认】按钮后，即可在设备上执行命令。
+![device cmd](./img/6-remote-command-2.png)
+![device cmd](./img/6-remote-command-3.png)
 
-然后再执行 `ls ~/` 命令获取所有文件信息，通过执行命令历史记录的结果可以看出，命令均成功执行。
-![device cmd demo](./img/4-3-device-cmd-demo-2.png)
+等待命令执行成功后，可以看到日志结果。
+![device cmd](./img/6-remote-command-4.png)
 
 ## 端口号映射
 

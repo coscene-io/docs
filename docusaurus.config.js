@@ -221,7 +221,7 @@ const config = {
       },
 
       // 只在开发环境中显示公告栏
-      ...(process.env.SITE_URL === 'https://dev.docs.coscene.cn' && {
+      ...(process.env.DEPLOY_ENV === 'development' && {
         announcementBar: {
           id: 'dev_environment',
           content: '⚠️ 这是开发环境版本 / This is Development Environment Version ⚠️',
