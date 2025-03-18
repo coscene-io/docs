@@ -24,4 +24,4 @@ Docker images are typically built from a base image and customized through a Doc
 
 # About coScene Image Registry
 
-The coScene platform provides a private image registry, eliminating the need for users to set up their own. Users can quickly upload existing images to the coScene image registry, enabling immediate use of these images on the coScene platform to build business processes and improve development efficiency. The coScene image registry is supported in features such as [Automation](../workflow/action/1-quickstart.md) and [Batch Testing](../simandtests/regression/1-intro.md).
+The coScene platform provides a private image registry, eliminating the need for users to set up their own. Users can quickly upload existing images to the coScene image registry, enabling immediate use of these images on the coScene platform to build business processes and improve development efficiency. The coScene image registry is supported in features such as [Automation](../workflow/action/1-quickstart.md) and [Batch Testing](../sim-and-tests/regression/1-intro.md).
