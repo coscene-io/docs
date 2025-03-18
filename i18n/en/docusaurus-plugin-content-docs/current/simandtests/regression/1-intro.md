@@ -84,6 +84,6 @@ Enter the project's "Batch Testing" page and create a batch test following the p
 3. Execute and Monitor
    - Select test bundle version and test suite in the "[Run a Cloud Test](./5-run.md)" dialog
    - Start batch test
-   - Monitor test progress in real-time and [view test results](./6-status-and-output.md#view-test-results)
+   - Monitor test progress in real-time and [view test results](./6-status-and-output.md#viewing-test-results)
 
 For details, please refer to the following chapters.
