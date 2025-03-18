@@ -3,12 +3,9 @@ sidebar_position: 9
 ---
 
 # 配置文件格式与样例
+本章节介绍测试套件配置文件（cos.yaml）的语法规则和使用示例，帮助你快速配置和管理测试套件。
 
-> 你可以通过本章节的内容了解批量测试配置文件的书写规则；同时本章节会提供样例文件以供参考。
-
-<br />
-
-支持解析的配置文件为 yaml 或 yml 类型文件，且名称必须为 **cos.yaml** 或 **cos.yml**。你可以直接复制，或 <a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/regression/cos.yaml.zip" download>点击此处下载</a> 示例配置文件并进行修改。其基本结构如下：
+系统支持解析 YAML 格式的配置文件，其文件名必须为 **cos.yaml** 或 **cos.yml**。你可以<a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/regression/cos.yaml.zip" download>下载示例配置文件</a>进行修改，或参考下方示例创建：
 
 ## 自定义测试套件 {#customize-testing-bundle}
 
@@ -122,7 +119,7 @@ parameters:
 
 ## 自动触发测试 {#auto-triggering}
 
-设置自动触发测试的条件，目前支持：上传的测试包「种类」或「标签」符合预设条件时，自动触发批量测试
+设置自动触发测试的条件，目前支持：上传的测试程序「种类」或「版本」符合预设条件时，自动触发批量测试
 
 ```yaml
 on:
@@ -137,23 +134,23 @@ on:
 
   用于控制何时自动触发测试
 
-- **bundlePush：设置上传测试包触发**
+- **bundlePush：设置上传测试程序触发**
 
-  当上传测试包时，满足条件则会自动触发测试
+  当上传测试程序时，满足条件则会自动触发测试
 
-- **category：测试包种类**
+- **category：测试程序种类**
 
-  用于指定触发测试的测试包种类名称
+  用于指定触发测试的测试程序种类名称
 
-- **tag：测试包标签**
+- **tag：测试程序版本**
 
-  用于指定触发测试的测试包标签名称
+  用于指定触发测试的测试程序版本名称
 
 **备注：**
 
 1. 没有 on 或者只有 on 时，不会自动触发批量测试
-2. 有且仅有 bundlePush 时，任意的测试包上传都会自动触发批量测试
-3. 有 category 或者 tag 时， 只有符合预设条件的测试包会自动触发批量测试
+2. 有且仅有 bundlePush 时，任意的测试程序上传都会自动触发批量测试
+3. 有 category 或者 tag 时， 只有符合预设条件的测试程序会自动触发批量测试
 
 <br />
 
@@ -294,7 +291,7 @@ jobs:
 **备注：**
 
 1. 参考资料：[Django-syntax like templating-language](https://github.com/flosch/pongo2)
-2. 刻行自定义 filter
+2. 刻行时空自定义 filter
 
    a. `formatByOffset:"$offset"`
 

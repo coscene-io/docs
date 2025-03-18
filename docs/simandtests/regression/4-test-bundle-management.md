@@ -2,46 +2,58 @@
 sidebar_position: 4
 ---
 
-# 管理测试包
+# 测试程序
+## 简介
+测试程序是被测试的代码文件，可以是一个.deb 格式的文件或.zip /.tgz /.tar.gz 格式的压缩文件。
 
-> 了解测试包文件内容示例，查看如何将测试包上传至刻行平台并进行相应版本管理。
+![testbundle_1](./img/testbundle_1.png)
 
-## 1. 准备测试包文件
+## 管理测试程序
+### 上传测试程序
+1. 在项目左侧边栏，选择「批量测试」，点击按钮进入「测试程序管理」页面：
 
-测试代码文件为一个 .deb 格式的文件或 .zip / .tgz / .tar.gz 格式的压缩文件。
+- 首次上传测试程序
 
-你可以 <a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/regression/count" download>点击此处下载</a> 示例测试包文件。
+  ![testbundle_2](./img/testbundle_2.png)
 
-<br />
+- 非首次上传测试程序
 
-## 2. 上传测试包文件
+  ![testbundle_3](./img/testbundle_3.png)
 
-1. 点击进入「批量测试」-「测试包管理」页面：
+2. 点击【上传测试程序】：
 
-- 首次上传测试包
+    ![testbundle_4](./img/testbundle_4.png)
 
-  ![goto-test-package-1](./img/goto-test-bundle-1.png)
+3. 上传测试程序，填写测试种类与版本：
 
-- 非首次上传测试包
+    <img src={require('./img/testbundle_5.png').default} alt="testbundle_5" width="500" />
 
-  ![goto-test-package-2](./img/goto-test-bundle-2.png)
+  - **测试程序种类**：自定义输入种类信息，或选择已有的测试种类。
 
-<br />
+  - **测试程序版本**：自定义输入版本信息，如`v0.1`
+  
+    测试种类与版本信息可用于自动触发测试。详见[配置文件格式与样例-自动触发测试](9-yaml-sample.md#自动触发测试)
 
-2. 点击右上角「上传测试包」：
+4. 上传测试程序后，列表「状态」栏显示为「活跃」，即表示该测试程序上传成功：
 
-![upload-test-package](./img/upload-test-bundle.png)
+    ![testbundle_6](./img/testbundle_6.png)
 
-<br />
+### 下载
+1. 在项目左侧边栏，选择「批量测试」，点击按钮进入「测试程序管理」页面：
 
-3. 选择测试包上传：
+    ![testbundle_3](./img/testbundle_3.png)
 
-![bundle-management-3](./img/choose-bundle.png)
+2. 点击列表中测试程序的「下载」按钮，即可下载测试程序：
 
-<br />
+    ![testbundle_7](./img/testbundle_7.png)
 
-4. 测试包列表「状态」栏显示「活跃」，即代表该测试包上传成功：
+### 使用
+在运行批量测试时，可选择特定版本的测试程序执行测试任务。可以通过测试程序的序号、种类、版本号来识别所需的测试程序。
 
-![bundle-management-4](./img/bundle-status.png)
+<img src={require('./img/testbundle_8.png').default} alt="testbundle_8" width="500" />
 
-<br />
+## 了解更多
+- [运行批量测试](./5-run.md)
+- [配置文件格式与样例](./9-yaml-sample.md)
+- [管理测试结果](./6-status-and-output.md)
+- [测试套件](./3-config-management.md)

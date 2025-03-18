@@ -3,12 +3,9 @@ sidebar_position: 9
 ---
 
 # Configuration Yaml Example
+This chapter introduces the syntax rules and usage examples of the test suite configuration file (cos.yaml), helping you quickly configure and manage test suites.
 
-> Through this section, you can understand the writing rules of batch testing configuration files; this section will also provide sample files for reference.
-
-<br />
-
-Supported configuration files are of the type yaml or yml, and the name must be **cos.yaml** or **cos.yml**. You can copy directly or <a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/regression/cos.yaml.zip" download>click here to download</a> the sample configuration file and make modifications. Its basic structure is as follows:
+The system supports parsing YAML format configuration files, and the file name must be **cos.yaml** or **cos.yml**. You can create one by referring to the examples below:
 
 ## Customize Testing Suite {#customize-testing-bundle}
 
