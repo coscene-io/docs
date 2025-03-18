@@ -2,40 +2,58 @@
 sidebar_position: 4
 ---
 
-# Test Bundle Management
+# Test Bundle
+## Introduction
+A test bundle is the code file being tested, which can be a .deb format file or a compressed file in .zip/.tgz/.tar.gz format.
 
-> Understand the sample content of the test bundle file, and see how to upload the test bundle to the coScene platform and manage its versions.
+![testbundle_1](./img/test-bundle_1.png)
 
-## 1. Prepare Test Bundle File
+## Managing Test Bundles
+### Upload Test Bundle
+1. In the project's left sidebar, select "Testing" and click to enter the "Test Bundle Management" page:
 
-The test code file is a .deb format file or a .zip / .tgz / .tar.gz format compressed file.
+- First time uploading test bundle
 
-You can <a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/regression/count" download>click here to download</a> a sample test bundle file.
+  ![testbundle_2](./img/test-bundle_2.png)
 
-<br />
+- Subsequent uploads of test bundle
 
-## 2. Upload Test Bundle File
+  ![testbundle_3](./img/test-bundle_3.png)
 
-1. Click to enter the "Batch Testing" - "Test Bundle Management" page:
+2. Click [Upload Test Bundle]:
 
-![goto-test-bundle-2](./img/goto-test-bundle-2.png)
+    ![testbundle_4](./img/test-bundle_4.png)
 
-<br />
+3. Upload test bundle, fill in test category and version:
 
-2. Click on the top right "Upload Test Bundle":
+    <img src={require('./img/test-bundle_5.png').default} alt="testbundle_5" width="500" />
 
-![upload-test-bundle](./img/upload-test-bundle.png)
+  - **Test Bundle Category**: Enter custom category information or select from existing test categories.
 
-<br />
+  - **Test Bundle Version**: Enter custom version information, such as `v0.1`
+  
+    Test category and version information can be used for automatic test triggering. See [Configuration Yaml Sample - Auto-Triggering Tests](./9-yaml-sample.md#auto-triggering)
 
-3. Choose bundle:
+4. After uploading the test bundle, when the "Status" column in the list shows "Active", it indicates that the test bundle has been successfully uploaded:
 
-![choose-bundle](./img/choose-bundle.png)
+    ![testbundle_6](./img/test-bundle_6.png)
 
-<br />
+### Download
+1. In the project's left sidebar, select "Testing" and click to enter the "Test Bundle Management" page:
 
-4. The "Status" column in the test bundle list shows "Active", which means the test bundle has been successfully uploaded:
+    ![testbundle_3](./img/test-bundle_3.png)
 
-![bundle-status](./img/bundle-status.png)
+2. Click the "Download" button for the test bundle in the list to download it:
 
-<br />
+    ![testbundle_7](./img/test-bundle_7.png)
+
+### Usage
+When running batch tests, you can select a specific version of the test bundle to execute test tasks. Test bundles can be identified by their sequence number, category, and version number.
+
+<img src={require('./img/test-bundle_8.png').default} alt="test-bundle_8" width="500" />
+
+## Learn More
+- [Run a Cloud Test](./5-run.md)
+- [Configuration Yaml Sample](./9-yaml-sample.md)
+- [Managing Test Results](./6-status-and-output.md)
+- [Test Suite](./3-config-management.md)

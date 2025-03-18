@@ -2,25 +2,26 @@
 sidebar_position: 6
 ---
 
-# 输出结果与查看运行信息
+# 管理测试结果
+批量测试支持全面的测试结果管理能力，包括测试用例解析、运行状态追踪、日志收集及产物管理等。平台提供标准化的结果解析引擎，可视化的报告展示，以及丰富的数据分析功能。
 
-> 了解如何自定义输出的测试结果，如何查看批量测试与其中单个测试的进度与运行产物，以及如何在可视化界面下播放影子模式以对比输出等
+## 定义测试结果
+### 定义测试报告
+批量测试支持解析 JUnit XML 格式的文件。 在 [Artifact](./1-intro.md#系统目录) 中输出测试结果文件，系统会自动解析并展示测试结果。示例如下：
+- 在每条记录运行测试的 Artifacts 中输出 .xml 文件：
 
-## 输出测试结果
+  ![result_1](./img/result_1.png)
 
-你可以通过配置文件和测试代码等自定义输出的测试结果，目前支持输出可解析的结果文件与输出图表。
+- 系统会自动解析并展示测试报告：
 
-### 输出可解析的结果文件
+  ![result_2](./img/result_2.png)
 
-批量测试支持解析 JUnit XML 格式的结果文件。你可以在配置文件中的「script」参数中使用以下命令在 `path` 处创建一个 XML 格式的结果文件：
+创建 JUnit XML 格式文件的方法有两种：
+- 在代码中使用 `pytest` 库的 `pytest_junit` 插件
+- 在配置文件中使用命令输出 xml 文件。详见 [配置文件格式与样例-输出测试结果文件](../regression/9-yaml-sample.md#save-artifacts)。
 
-```bash
-pytest --junitxml=path
-```
-
-具体示例请参见 [配置文件格式与样例-输出测试结果文件](../regression/9-yaml-sample.md#save-artifacts)。
-
-支持解析的 JUnit XML 格式的结果文件示例如下，其中结果数据到 JUnit XML 格式的映射请参考 [JUnit Mapping](https://www.ibm.com/docs/en/developer-for-zos/14.1?topic=formats-junit-xml-format#junitschema__table_junitmap)：
+支持解析的测试结果文件示例如下:
+> 其中结果数据到 JUnit XML 格式的映射请参考 [JUnit Mapping](https://www.ibm.com/docs/en/developer-for-zos/14.1?topic=formats-junit-xml-format#junitschema__table_junitmap)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -38,11 +39,10 @@ pytest --junitxml=path
   </testsuites>
 ```
 
-### 输出图表
+### 定义输出图表
+JUnit XML 格式的测试结果文件中，支持添加以 "cos\_" 为前缀的自定义属性（如 `cos_customer_name`），系统会自动解析这些属性及其对应的指标值，并生成可视化图表（柱状图、箱线图）。
 
-你可以在测试报告中增加以 "cos\_" 开头的自定义属性，例如`cos_customer_name`，这些自定义属性将与默认指标一起上传到刻行，刻行会对这些自定义属性进行收集和分析，以及将其作为维度对指标进行分组、排序和过滤展示等。
-
-你可以在镜像中的相关测试代码文件中使用以 "cos\_" 开头的自定义图名，以在测试结果中输出图表，其示例格式如下：
+当前支持的数据类型为：布尔类型、浮点类型。在测试代码文件中输出图表的示例如下：
 
 ```python
   def test_romeo(record_xml_attribute):
@@ -57,57 +57,99 @@ pytest --junitxml=path
     assert __count('romeo') > 0
 ```
 
-### 输出影子模式文件
+系统会自动解析并生成可视化图表：
 
-> 输出文件至指定目录作为测试输出，其中的.bag文件可与原记录中的文件在可视化界面中对比播放。
+![result_3](./img/result_3.png)
 
-你可以配置文件的「script」字段中使用命令将文件输出到 `/cos/outputs` 目录下作为测试输出，具体示例请参见 [配置文件格式与样例-输出影子模式文件](../regression/9-yaml-sample.md#generate-shadow-mode)。
 
-测试输出将展示在测试详情页的「测试输出」栏，按照对应测试套件与记录分级展示。
+### 自定义输出文件
+测试过程中生成的文件可输出至以下目录：
+- Artifact：/cos/artifacts
+- 测试输出：/cos/outputs
 
-![result-12](./img/shadow-mode-1.png)
+  ![result_4](./img/result_4.png)
 
-<br />
+文件预览与播放支持：
+- 「Artifacts」目录下的文件仅支持预览
+- 「测试输出」目录下的文件支持预览与播放。其中，ROSbag 文件播放时将自动进入「影子模式」，与原始记录进行同步对比播放
 
-## 查看运行进度与产物
+### 创建一刻
+批量测试支持在关键时间点（如机器偏移量异常、设备故障等）创建一刻，便于后续快速定位和分析问题。一刻可以：
+- 标记重要的时间点
+- 记录问题发生的具体时刻
+- 提取关键片段用于分析
 
-1. 在批量测试页面的列表中，会展示项目内运行过的批量测试及信息，你可以点击某个批量测试序号以查看其详情页面：
+使用批量测试环境中内置的 `cos` 命令行工具来创建一刻，具体命令如下：
 
-   ![result-1](./img/status-1.png)
+```yaml
+/cos/bins/cos moment create \
+    --display-name "急停" \ # moment 名字
+    --description "机器急停" \ # moment 描述
+    --trigger-time 1532402940 \ # moment 触发时间
+    --duration 10 \ # moment 持续时长
+    --customized-fields '{"key1": "value1"}' # moment 自定义字段
+```
 
-2. 在批量测试详情页中，「进度」Tab会展示该批量测试的运行进度和其中所有单个测试的运行状态：
+在可视化页面查看一刻，参见[一刻](../../viz/5-create-moment-viz.md)
 
-   ![result-2](./img/status-2.png)
+## 查看测试结果
+批量测试列表页展示所有测试的执行历史，包括测试状态、进度等信息。点击测试序号可进入详情页查看完整信息：
 
-   你可以点击某个测试标题以查看其详情页面:
+   ![regression-list_1](./img/regression-list_1.png)
 
-   ![result-3](./img/status-3.png)
+### 查看运行进度与产物
+1. 在批量测试详情页的「进度」栏中，可查看所有子测试任务的运行状态与执行进度：
 
-   点击「步骤」中的单个步骤标题，可以查看其运行日志、步骤详情和运行产物：
+   ![status_1](./img/status_1.png)
 
-   ![result-4](./img/status-4.png)
+2. 点击子测试任务的标题，查看其详情页面:
 
-   你可以在单个步骤的「Artifact」中，查看与下载该步骤的运行产物：
+   ![status_2](./img/status_2.png)
 
-   ![result-5](./img/artifacts-1.png)
+3. 在子测试任务详情页，可查看子测试任务的运行状态、进度、运行日志、测试产物等信息：
+   - **记录**：点击记录名称，查看记录详情
+   - **步骤**：点击步骤名称，查看运行日志
+   - **Artifacts**：查看或下载测试过程中生成的结果文件，如测试报告
+   - **测试输出**：播放测试过程中生成的需要可视化的文件，如 ROSbag 文件
 
-   单个测试详情页的「Artifacts」中，可以查看与下载此测试的所有运行产物：
+   ![status_3](./img/status_3.png)
 
-   ![result-6](./img/artifacts-2.png)
+4. 在批量测试详情页的「Artifacts」中，可查看与下载该批量测试的所有 Artifacts。文件层级如下：
+    
+    ```plaintext
+    所有 Artifacts
+    ├── 测试套件 A
+    │   ├── 记录 1
+    │   │   ├── report.xml
+    │   │   └── ...
+    │   └── 记录 2
+    │       └── ...
+    └── 测试套件 B
+        └── ...
+    ```
 
-3. 你可以在批量测试详情页的「Artifacts」Tab 中，查看与下载该批量测试的所有运行产物：
+   ![artifacts_1](./img/artifacts_1.png)
 
-   ![result-7](./img/artifacts-3.png)
+4. 在批量测试详情页的「测试输出」中，可查看与下载该批量测试的所有测试输出。文件层级如下：
+   
+    ```plaintext
+    所有测试输出
+    ├── 测试套件 A
+    │   ├── 记录 1
+    │   │   ├── test.bag
+    │   │   └── ...
+    │   └── 记录 2
+    │       └── ...
+    └── 测试套件 B
+        └── ...
+    ```
 
-<br />
+### 查看测试报告
+当批量测试运行完成后，在「测试报告」中可查看测试套件运行结果统计，包括运行信息以及各测试套件运行解析出的测试用例等:
 
-## 查看运行结果
+![report_1](./img/report_1.png)
 
-当批量测试运行完成后，你可以点击批量测试详情页中的「测试报告」Tab 查看测试套件运行结果统计，包括运行信息以及各测试套件运行解析出的测试用例等:
-
-![result-8](./img/report-1.png)
-
-你可以点击单个测试用例名称，查看该测试用例的运行报告，包括各测试详情列表和输出图表等：
+点击单个测试用例名称，可查看该测试用例的运行报告，包括各测试详情列表和输出图表等：
 
 ![result-9](./img/report-2.png)
 
@@ -117,16 +159,20 @@ pytest --junitxml=path
 
 ![result-11](./img/report-4.png)
 
-<br />
+### 播放影子模式
+若测试输出中有 ROSbag 文件，则可与原记录进行对比播放。
 
-## 播放影子模式
+1. 在测试详情页的「测试输出」栏，选择对应的记录层级，点击右上角的「影子模式」按钮进入可视化界面：
 
-测试输出中包含.bag 文件的记录支持影子模式；点击测试详情页的「测试输出」栏中对应记录测试输出列表上方，或者单个测试详情页右上角的「影子模式」按钮进入可视化界面：
+    ![shadow-mode_1](./img/shadow-mode_1.png)
 
-![result-13](./img/shadow-mode-2.png)
+2. 测试输出文件将与原记录中的文件一起在可视化界面中对比播放。
 
-![result-14](./img/shadow-mode-3.png)
+    ![shadow-mode_2](./img/shadow-mode_2.png)
 
-测试输出文件将与原记录中的文件一起在可视化界面中对比播放。
-
-![result-15](./img/shadow-mode-4.png)
+## 了解更多
+- [测试程序](./4-test-bundle-management.md)
+- [测试套件](./3-config-management.md)
+- [运行批量测试](./5-run.md)
+- [记录](../../collaboration/record/1-quick-start-record.md)
+- [可视化](../../viz/1-about-viz.md)

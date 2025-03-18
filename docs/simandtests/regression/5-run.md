@@ -4,47 +4,50 @@ sidebar_position: 5
 
 # 运行批量测试
 
-> 了解如何运行批量测试，包括在网站上指定相关条件后触发、通过配置文件指定自动触发条件，以及使用命令行在本地运行批量测试等。
+> 了解如何运行批量测试，包括手动触发、自动触发、以及使用命令行在本地运行批量测试等。
 
-## 网页端运行批量测试
+## 前提条件
+1. 已创建[测试套件](./3-config-management.md)
+2. 已上传[测试程序](./4-test-bundle-management.md)
 
-1. 点击进入「批量测试」页面：
+## 手动运行
+
+1. 在项目左侧边栏，选择「批量测试」，点击【运行批量测试】按钮
 
 - 首次运行批量测试
 
-  ![run-1](./img/run-1.png)
+  ![run_1](./img/run_1.png)
 
 - 非首次运行批量测试
 
-  ![run-2](./img/run-2.png)
+  ![run_2](./img/run_2.png)
 
-<br />
+2. 在运行批量测试弹框中，选择测试程序、测试套件后，点击【确定】，运行批量测试。
 
-2. 选择测试包版本和需要执行的测试套件后，点击「确定」运行批量测试，会使用符合条件的关联记录作为测试数据执测试套件：
+    <img src={require('./img/test-suite_14.png').default} alt="test-suite_14" width="500" />
 
-   ![run-wfrun](./img/run-wfrun.png)
+3. 系统会为每个测试套件关联的记录创建独立的测试任务。例如，当一个测试套件关联了 10 条记录时，系统会创建 10 个子任务，每个任务会使用选定的测试程序和测试套件配置，对单条记录进行测试。
 
-<br />
+    ![run_3](./img/run_3.png)
 
-## 自动触发批量测试
+4. 运行完成后，在测试列表中可查看其运行结果。详见[管理测试结果](./6-status-and-output.md)。
 
-上传的测试包种类或标签符配置文件中的预设条件时，测试包完成上传后会自动触发批量测试，使用该测试包文件执行符合条件的全部测试套件。
+    ![run_4](./img/run_4.png)
 
-你可以在配置文件中的「on」字段对测试套件设置自动触发条件，具体格式与规则请参见 [配置文件格式与样例-自动触发测试](../regression/9-yaml-sample.md#auto-triggering)。
+## 自动触发
+当上传的「测试程序」满足测试套件中[预设的触发条件](./9-yaml-sample.md#auto-triggering)时，系统会自动执行相关的测试套件。
 
-在「批量测试-测试套件管理」页面中，对于配置了自动触发条件的测试套件，其「关联触发条件」列会显示「查看触发条件」按钮：
+查看测试套件的自动触发条件：
+1. 进入「批量测试-测试套件管理」页面，找到带有「关联触发条件」标识的测试套件：
 
-![auto-trigger-1](./img/auto-trigger-1.png)
+    ![run_5](./img/run_5.png)
 
-你可以点击「查看触发条件」按钮，查看该测试套件自动触发对应的测试包条件：
+2. 点击【查看触发条件】，查看该测试套件的具体触发规则：
 
-![auto-trigger-2](./img/auto-trigger-2.png)
+    <img src={require('./img/test-suite_12.png').default} alt="test-suite_12" width="500" />
 
-<br />
-
-## 本地运行批量测试
-
-你可以使用命令行，按照以下说明在本地运行批量测试。
+## 本地运行
+除了使用 Web 界面，平台支持通过命令行工具（CLI）在本地运行批量测试。以下是详细的配置和使用说明。
 
 ### 下载与配置
 
@@ -85,49 +88,57 @@ sidebar_position: 5
 
    其中各参数说明如下：
 
-   - `endpoint` 中 `${YOUR_DOMAIN}` 需替换成实际的网站地址。如下图的网址，`${YOUR_DOMAIN}` 为 `api.coscene.cn`
+   - **`endpoint`**
 
-     ![run-5](./img/cli-1.png)
+      `${YOUR_DOMAIN}` 需替换成实际的网站地址。如下图的网址，`${YOUR_DOMAIN}` 为 `api.coscene.cn`
 
-   - `accessToken` 中 `${YOUR_TOKEN}` 的获取步骤如下所示：
+      ![cli_1](./img/cli_1.png)
 
-     ![run-6](./img/cli-2.png)
+   - **`accessToken`**
 
-     ![run-7](./img/cli-3.png)
+      `${YOUR_TOKEN}` 的获取步骤如下所示：
 
-     ![run-8](./img/cli-4.png)
+      ![run_2](./img/cli_2.png)
 
-   - `project` 中 `ORG_SLUG` 和 `PROJECT_SLUG` 需根据实际替换：
+      <img src={require('./img/cli_3.png').default} alt="cli_3" width="300" />
 
-     ![run-9](./img/cli-5.png)
+      <img src={require('./img/cli_4.png').default} alt="cli_4" width="300" />
 
-  <br />
+   - **`project`**
+
+      `ORG_SLUG` 和 `PROJECT_SLUG` 需根据实际替换：
+
+      ![cli_5](./img/cli_5.png)
     
 ### 运行
-
-你可以参考以下命令示例运行批量测试：
+以下是常用的命令行示例，展示了不同场景下如何运行批量测试：
 
 ```bash
-# 使用最新的测试包运行项目下所有批量测试
+# 使用最新的测试程序运行项目下所有批量测试
 cos test run
 
 # 只用本地的配置文件 cos.yaml 运行批量测试
 cos test run --test-config cos.yaml
 
-# 使用最新的测试包，对项目下名称为 gazebo 的测试套件运行批量测试
-cos test run -t gezebo
+# 使用最新的测试程序，对项目下名称为 sample-test-suite 的测试套件运行批量测试
+cos test run -t sample-test-suite
 
 # 使用指定的记录 定位采集数据 运行批量测试
 cos test run -r 定位采集数据
 
-# 使用标签为 v0.0.1 的测试包，对项目下所有测试套件运行批量测试
+# 使用标签为 v0.0.1 的测试程序，对项目下所有测试套件运行批量测试
 cos test run --bundle-tag v0.0.1
 
-# 使用种类为 Gazebo 的测试包，对项目下所有测试套件运行批量测试
-cos test run --bundle-category Gazebo
+# 使用种类为 sample-test-bundle 的测试程序，对项目下所有测试套件运行批量测试
+cos test run --bundle-category sample-test-bundle
 
 # 上传 bundle.zip 并运行批量测试
 cos test run -b bundle.zip
 ```
 
- <br />
+## 了解更多
+- [如何输出测试结果](./6-status-and-output.md)
+- [如何查看运行信息](./6-status-and-output.md#查看运行进度与产物)
+- [管理测试套件](./3-config-management.md)
+- [管理测试程序](./4-test-bundle-management.md)
+- [自动触发测试](./9-yaml-sample.md#auto-triggering)

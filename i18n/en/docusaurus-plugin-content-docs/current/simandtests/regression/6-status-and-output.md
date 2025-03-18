@@ -3,24 +3,25 @@ sidebar_position: 6
 ---
 
 # Test Metadata and Test Results
+Batch testing provides comprehensive test result management capabilities, including test case parsing, run status tracking, log collection, and artifact management. The platform offers standardized result parsing engines, visualized report displays, and rich data analysis functions.
 
-> Learn how to customize output test results, how to view the progress and output of batch tests and individual tests within them, and how to play shadow mode in the visualization interface for comparison.
+## Defining Test Results
+### Defining Test Reports
+Batch testing supports parsing JUnit XML format files. Output test result files in [Artifacts](./1-intro.md#system-directories), and the system will automatically parse and display the test results. Examples:
+- Output .xml files in the Artifacts of each record's test run:
 
-## Output Test Results
+  ![result_1](./img/result_1.png)
 
-You can customize the output of test results through configuration files, test codes, etc. Currently, outputting parsable result files and charts are supported.
+- The system will automatically parse and display the test report:
 
-### Output Parsable Result Files
+  ![result_2](./img/result_2.png)
 
-Batch tests support parsing JUnit XML format result files. You can use the following command in the `script` parameter of the configuration file to create an XML format result file at `path`:
+There are two methods to create JUnit XML format files:
+- Use the `pytest_junit` plugin of the `pytest` library in your code
+- Use commands in the configuration file to output xml files. See [Configuration Yaml Sample - Output Test Result Files](../regression/9-yaml-sample.md#save-artifacts).
 
-```bash
-pytest --junitxml=path
-```
-
-For an example, see [Configuration File Format and Samples - Outputting Test Result Files](... /8-regression/9-yaml-sample.md#Output test result file).
-
-Examples of result files in JUnit XML format that support parsing are as follows, where the mapping of result data to JUnit XML format is described in [JUnit Mapping](https://www.ibm.com/docs/en/developer-for-zos/14.1?topic=formats- junit-xml-format#junitschema\_\_table_junitmap):
+Example of supported test result file:
+> For mapping of result data to JUnit XML format, refer to [JUnit Mapping](https://www.ibm.com/docs/en/developer-for-zos/14.1?topic=formats-junit-xml-format#junitschema__table_junitmap)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -38,95 +39,137 @@ Examples of result files in JUnit XML format that support parsing are as follows
   </testsuites>
 ```
 
-### Output charts
+### Defining Output Charts
+In JUnit XML format test result files, you can add custom attributes prefixed with "cos_" (e.g., `cos_customer_name`). The system will automatically parse these attributes and their corresponding metric values to generate visualization charts (bar charts, box plots).
 
-You can add custom attributes starting with "cos\_" in the test report, e.g. `cos_customer_name`. These custom attributes will be uploaded together with the default metrics to carve line, which collects and analyzes these custom attributes, as well as grouping, sorting, and filtering metrics to display as dimensions, etc.
-
-You can use a custom chart name starting with "cos\_" in the relevant test code file in the image to output the chart in the test results in the sample format below:
+Currently supported data types are: boolean and float. Here's an example of outputting charts in the test code file:
 
 ```python
-  def test_romeo(record_xml_attribute):
-
+def test_romeo(record_xml_attribute):
     for i in (1, 2, 3):
-      rand_float = random.uniform(1, 100)
-      record_xml_attribute("cos_test_romeo_val" + str(i), rand_float)
+        rand_float = random.uniform(1, 100)
+        record_xml_attribute("cos_test_romeo_val" + str(i), rand_float)
     for i in (1, 2, 3):
-      rand_bool = random.choice([True, False])
-      record_xml_attribute("cos_test_romeo_bool" + str(i), rand_bool)
+        rand_bool = random.choice([True, False])
+        record_xml_attribute("cos_test_romeo_bool" + str(i), rand_bool)
 
     assert __count('romeo') > 0
 ```
 
-### Generate Shadow Mode Artifacts
+### Custom Output Files
+Files generated during testing can be output to the following directories:
 
-> Output files to the specified directory as test output, where the .bag files can be compared with the files in the original record to be played in the visualization interface.
+- Artifacts: /cos/artifacts
+- Test Output: /cos/outputs
 
-You can configure the "script" field in the file to use commands to output files to the `/cos/outputs` directory as test output. For specific examples, please refer to [Configuration File Format and Examples - Output Shadow Mode Files](../regression/9-yaml-sample.md#generate-shadow-mode)
+File preview and playback support:
 
-Test outputs will be displayed in the "Test Output" column of the test details page, displayed hierarchically according to the corresponding test suite and record.
+![result_3](./img/result_3.png)
 
-![result-12](./img/shadow-mode-1.png)
+- Files in the "Artifacts" directory only support preview
+- Files in the "Outputs" directory support both preview and playback. ROSbag files will automatically enter "Shadow Mode" during playback for synchronized comparison with the original record
 
-<br />
+### Creating Moments
+Batch testing supports creating moments at key time points (such as when machine offset is abnormal or device failures occur) for quick problem location and analysis later. Moments can:
 
-## View Running Progress and Artifacts
+- Mark important time points
+- Record when problems occur
+- Extract key segments for analysis
 
-1. In the list on the batch test page, it will display the batch tests and information that have been run within the project. You can click on a batch test number to view its details page:
+Use the built-in `cos` command line tool in the batch testing environment to create moments. The specific command is:
 
-   ![result-1](./img/status-1.png)
+```
+/cos/bins/cos moment create \
+    --display-name "Emergency Stop" \ # moment name
+    --description "Machine emergency stop" \ # moment description
+    --trigger-time 1532402940 \ # moment trigger time
+    --duration 10 \ # moment duration
+    --customized-fields '{"key1": "value1"}' # moment custom fields
+```
 
-2. In the batch test details page, the "Progress" Tab will display the running progress of this batch test and the running status of all individual tests within it:
+To view moments in the visualization page, see [Moments](../../viz/5-create-moment-viz.md)
 
-   ![result-2](./img/status-2.png)
+## Viewing Test Results
+The batch testing list page displays the execution history of all tests, including test status, progress, and other information. Click on the test sequence number to view complete information on the details page:
 
-   You can click on a test title to view its details page:
+   ![regression-list_1](./img/regression-list_1.png)
 
-   ![result-3](./img/status-3.png)
+### Viewing Progress and Artifacts
+1. In the "Progress" section of the batch test details page, you can view the running status and execution progress of all subtasks:
 
-   Clicking on the title of an individual step in "Steps" will allow you to view its running log, step details, and running artifacts:
+   ![run_3](./img/run_3.png)
 
-   ![result-4](./img/status-4.png)
+2. Click on the subtitle of a subtask to view its details page:
 
-   You can view and download the running artifacts of the individual step in "Artifact":
+   ![status_2](./img/status_2.png)
 
-   ![result-5](./img/artifacts-1.png)
+3. On the subtask details page, you can view the running status, progress, execution logs, test artifacts, and other information:
+   - **Records**: Click on the record name to view record details
+   - **Steps**: Click on the step name to view execution logs
+   - **Artifacts**: View or download result files generated during testing, such as test reports
+   - **Outputs**: Play files that need visualization, such as ROSbag files
 
-   In the "Artifacts" section of the individual test details page, you can view and download all the running artifacts of this test:
+   ![status_3](./img/status_3.png)
 
-   ![result-6](./img/artifacts-2.png)
+4. In the "Artifacts" section of the batch test details page, you can view and download all Artifacts for this batch test. The file hierarchy is as follows:
+    
+    ```plaintext
+    All Artifacts
+    ├── Test Suite A
+    │   ├── Record 1
+    │   │   ├── report.xml
+    │   │   └── ...
+    │   └── Record 2
+    │       └── ...
+    └── Test Suite B
+        └── ...
+    ```
 
-3. In the "Artifacts" Tab of the batch test details page, you can view and download all the running artifacts of this batch test:
+   ![artifacts_1](./img/artifacts_1.png)
 
-   ![result-7](./img/artifacts-3.png)
+4. In the "Test Output" section of the batch test details page, you can view and download all test outputs for this batch test. The file hierarchy is as follows:
+   
+    ```plaintext
+    All Test Outputs
+    ├── Test Suite A
+    │   ├── Record 1
+    │   │   ├── test.bag
+    │   │   └── ...
+    │   └── Record 2
+    │       └── ...
+    └── Test Suite B
+        └── ...
+    ```
 
-<br />
+### Viewing Test Reports
+After the batch test is completed, you can view test suite execution result statistics in the "Test Report" section, including running information and test cases parsed from each test suite:
 
-## View Running Results
+![regression-detail_1](./img/regression-detail_1.png)
 
-After the batch test is completed, you can click on the "Test Report" Tab in the batch test details page to view the test suite running results statistics, including running information and test cases analyzed from each test suite:
+Click on an individual test case name to view its execution report, including test detail lists and output charts:
 
-![result-8](./img/report-1.png)
+![report_1](./img/report_1.png)
 
-You can click on the name of a single test case to view its running report, which includes the test details list and output charts, etc:
+Click "View History" in the upper right corner to view historical result statistics for this test case, including test result matrix and metric statistics charts:
 
-![result-9](./img/report-2.png)
+![report_2](./img/report_2.png)
 
-Click on the "View Historical Data" in the top right corner of the page to view the historical result data statistics for the test case, including the test running results matrix, metric statistics chart, etc:
+![report_3](./img/report_3.png)
 
-![result-10](./img/report-3.png)
+### Playing Shadow Mode
+If there are ROSbag files in the test output, they can be played back in comparison with the original record.
 
-![result-11](./img/report-4.png)
+1. In the "Test Output" section of the test details page, select the corresponding record level and click the "Shadow Mode" button in the upper right corner to enter the visualization interface:
 
-<br />
+    ![shadow-mode_1](./img/shadow-mode_1.png)
 
-## Play Shadow Mode
+2. The test output files will be played back together with the files from the original record in the visualization interface.
 
-Test outputs containing .bag files support shadow mode. Click on the "Test Output" column in the test details page corresponding to the test output list above, or the "Shadow Mode" button in the top right corner of the single test details page to enter the visualization interface:
+    ![shadow-mode_2](./img/shadow-mode_2.png)
 
-![result-13](./img/shadow-mode-2.png)
-
-![result-14](./img/shadow-mode-3.png)
-
-The test output files will be played back in comparison with the files in the original record in the visualization interface.
-
-![result-15](./img/shadow-mode-4.png)
+## Learn More
+- [Test Bundle](./4-test-bundle-management.md)
+- [Test Suites](./3-config-management.md)
+- [Run a Cloud Test](./5-run.md)
+- [Records](../../collaboration/record/1-quick-start-record.md)
+- [Visualization](../../viz/1-about-viz.md)
