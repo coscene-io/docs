@@ -35,7 +35,7 @@ sidebar_position: 5
     ![run_4](./img/run_4.png)
 
 ## 自动触发
-当上传的「测试程序」满足测试套件中[预设的触发条件](./9-yaml-sample.md#自动触发测试)时，系统会自动执行相关的测试套件。
+当上传的「测试程序」满足测试套件中[预设的触发条件](./9-yaml-sample.md#auto-triggering)时，系统会自动执行相关的测试套件。
 
 查看测试套件的自动触发条件：
 1. 进入「批量测试-测试套件管理」页面，找到带有「关联触发条件」标识的测试套件：
@@ -141,4 +141,4 @@ cos test run -b bundle.zip
 - [如何查看运行信息](./6-status-and-output.md#查看运行进度与产物)
 - [管理测试套件](./3-config-management.md)
 - [管理测试程序](./4-test-bundle-management.md)
-- [自动触发测试](./9-yaml-sample.md#自动触发测试)
+- [自动触发测试](./9-yaml-sample.md#auto-triggering)
