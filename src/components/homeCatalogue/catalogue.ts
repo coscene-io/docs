@@ -74,7 +74,7 @@ export const CATALOGUE = [
     ],
   },
   {
-    header: { title: translate({ id: 'home.catalogue.use-case', message: '镜像' }) },
+    header: { title: translate({ id: 'home.catalogue.docker-images', message: 'Docker 镜像' }) },
     docs: [
       { docLink: '/image/intro', title: translate({ id: 'home.catalogue.intro-image', message: '关于镜像' }) },
       { docLink: '/image/build-image', title: translate({ id: 'home.catalogue.build-image', message: '准备镜像' }) },
