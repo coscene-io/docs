@@ -5,6 +5,7 @@ on:
     branches:
       - master # Set a branch name to trigger deployment
   workflow_dispatch:
+  pull_request:
 
 permissions:
   contents: write
