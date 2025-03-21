@@ -48,7 +48,7 @@ jobs:
       - name: Notification to Feishu
         uses: foxundermoon/feishu-action@v2
         with:
-          url: ${{ secrets.FEISHU_BOT_WEBHOOK_URL }}
+          url: ${{ secrets.FEISHU_BOT_WEBHOOK_URL_RHODE_ISLAND }}
           msg_type: text
           content: |
             text: |
