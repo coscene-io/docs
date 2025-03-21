@@ -3,9 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master # Set a branch name to trigger deployment
+      - master
   workflow_dispatch:
-  pull_request:
 
 permissions:
   contents: write
@@ -54,3 +53,4 @@ jobs:
             text: |
               🚀 coScene Docs 海外版本部署完成
               👨‍💻 部署人员：${{ github.actor }}
+              🔗 访问地址：https://docs.coscene.io
