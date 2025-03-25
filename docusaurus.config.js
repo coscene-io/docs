@@ -97,7 +97,7 @@ const config = {
             type: 'localeDropdown',
             position: 'right',
           },
-          { href: 'https://www.coscene.cn', label: '官方网站', position: 'right' },
+          { href: 'https://www.coscene.io', label: '官方网站', position: 'right' },
           { href: 'https://github.com/coscene-io', label: 'GitHub', position: 'right' },
           {
             href: 'https://petstore.swagger.io/?url=https://download.coscene.cn/openapi/openapi.yaml',
@@ -170,7 +170,7 @@ const config = {
               },
               {
                 label: '刻行时空官网',
-                href: 'https://www.coscene.cn',
+                href: 'https://www.coscene.io',
               },
             ],
           },

@@ -23,7 +23,7 @@ sidebar_position: 1
 
 首先，登录刻行时空平台并创建项目：
 
-1. 访问[官方网站 https://www.coscene.cn/](https://www.coscene.cn)，点击右上角的快速登录进入登录界面，选择登录方式进入刻行平台。
+1. 访问[官方网站 https://www.coscene.io/](https://www.coscene.io)，点击右上角的快速登录进入登录界面，选择登录方式进入刻行平台。
 
 ![login-page](./img/5-2-login-page.png)
 

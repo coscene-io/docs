@@ -21,7 +21,7 @@ This article will use a device named **dev-A** as an example to demonstrate how 
 
 First, log in to the coScene platform and create a project:
 
-1. Visit [Official Website https://www.coscene.cn/](https://www.coscene.cn), click Quick Login in the upper right corner to enter the login interface, and choose your login method to access the coScene platform.
+1. Visit [Official Website https://www.coscene.io/](https://www.coscene.io), click Quick Login in the upper right corner to enter the login interface, and choose your login method to access the coScene platform.
 
 ![login-page](./img/5-2-login-page.png)
 

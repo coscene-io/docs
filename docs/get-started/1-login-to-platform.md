@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # 登录刻行时空
 
-1. 通过浏览器访问[刻行时空平台 https://www.coscene.cn/](https://www.coscene.cn)，点击右上角的【快速登录】，进入登录界面
+1. 通过浏览器访问[刻行时空平台 https://www.coscene.io/](https://www.coscene.io)，点击右上角的【快速登录】，进入登录界面
 
 ![homepage-login](./img/2-1-coscene-homepage.png)
 

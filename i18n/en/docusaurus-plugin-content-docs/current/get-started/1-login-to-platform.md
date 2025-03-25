@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Login to coScene
 
-1. Access the [coScene platform https://www.coscene.cn/](https://www.coscene.cn) through your browser, click on "Quick Login" in the upper right corner to enter the login interface
+1. Access the [coScene platform https://www.coscene.io/](https://www.coscene.io) through your browser, click on "Quick Login" in the upper right corner to enter the login interface
 
 ![homepage-login](./img/2-1-coscene-homepage.png)
 
