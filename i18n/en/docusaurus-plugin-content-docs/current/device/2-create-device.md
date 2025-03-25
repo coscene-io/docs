@@ -62,7 +62,7 @@ This method is suitable for adding a small number of devices to the platform one
 
 2. **Remote Control (coLink) Client**
 
-   After installation, it enables web-based SSH and real-time device visualization when combined with [coBridge](https://github.com/coscene-io/coBridge). For detailed functionality, please refer to the Remote Control Device [documentation](https://docs.coscene.cn/en/docs/device/device-remote-control).
+   After installation, it enables web-based SSH and real-time device visualization when combined with [coBridge](https://github.com/coscene-io/coBridge). For detailed functionality, please refer to the Remote Control Device [documentation](https://docs.coscene.io/en/docs/device/device-remote-control).
 
 3. **Initialize Client Configuration**
 

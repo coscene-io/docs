@@ -30,7 +30,7 @@ Provides a detailed introduction to the action's related information, optional t
 
 Currently supports two methods of operation:
 
-1. Users can upload a custom image to the coScene platform, then use the corresponding image URL. For more details, see [Pushing Images](https://docs.coscene.cn/docs/recipes/regression/image-management#2-%E6%8E%A8%E9%80%81%E9%95%9C%E5%83%8F)
+1. Users can upload a custom image to the coScene platform, then use the corresponding image URL. For more details, see [Pushing Images](https://docs.coscene.io/docs/recipes/regression/image-management#2-%E6%8E%A8%E9%80%81%E9%95%9C%E5%83%8F)
 2. Use a **publicly accessible** image URL, such as various open images on Docker Hub
 
 #### Command

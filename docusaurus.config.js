@@ -11,7 +11,7 @@ const config = {
   title: 'coScene',
   staticDirectories: ['public', 'static'],
   tagline: 'User Docs',
-  url: 'https://docs.coscene.cn',
+  url: 'https://docs.coscene.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
@@ -24,11 +24,11 @@ const config = {
   themes: ['@docusaurus/theme-mermaid'],
 
   i18n: {
-    defaultLocale: 'zh',
-    locales: ['zh', 'en'],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
 
-  scripts: [{ src: 'https://plausible.io/js/script.js', defer: true, 'data-domain': 'docs.coscene.cn' }],
+  scripts: [{ src: 'https://plausible.io/js/script.js', defer: true, 'data-domain': 'docs.coscene.io' }],
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

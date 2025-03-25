@@ -57,7 +57,7 @@ npm install
 3. Add your document to the corresponding folder. For the specific file structure, please refer to the [File Structure Guide](https://tutorial.docusaurus.io/docs/category/tutorial---basics).
 4. Use `npm run start` to preview the documentation.
 5. If everything goes well, submit a PR to the Docs repository.
-6. CI will automatically deploy the changes to `https://docs.coscene.cn`.
+6. CI will automatically deploy the changes to `https://docs.coscene.io`.
 
 ```
 

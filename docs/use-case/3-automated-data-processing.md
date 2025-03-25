@@ -177,6 +177,6 @@ docker push cr.coscene.cn/coscene/frame:latest
 
 ## 总结
 
-当 MP4 文件上传到记录中，自动完成抽取图片的流程之后，即可根据需要将数据另存到新的记录，并进行下一步的处理。更多操作参见：[自动化](https://docs.coscene.cn/docs/category/%E8%87%AA%E5%8A%A8%E5%8C%96/)、[镜像](https://docs.coscene.cn/docs/category/%E9%95%9C%E5%83%8F/)
+当 MP4 文件上传到记录中，自动完成抽取图片的流程之后，即可根据需要将数据另存到新的记录，并进行下一步的处理。更多操作参见：[自动化](https://docs.coscene.io/docs/category/%E8%87%AA%E5%8A%A8%E5%8C%96/)、[镜像](https://docs.coscene.io/docs/category/%E9%95%9C%E5%83%8F/)
 
 ![summary](./img/3-summary.png)

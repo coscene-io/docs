@@ -57,4 +57,4 @@ npm install
 3. 把你的文档加入到对应的文件夹中，具体的文件结构，请参看[文件结构说明](https://tutorial.docusaurus.io/docs/category/tutorial---basics)
 4. 使用 `npm run start` 来预览文档效果
 5. 如果一切顺利，提交 PR 到 Docs 仓库
-6. CI 会将改动自动部署到 `https://docs.coscene.cn`
+6. CI 会将改动自动部署到 `https://docs.coscene.io`

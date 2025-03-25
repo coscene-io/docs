@@ -54,5 +54,5 @@ sidebar_position: 1
 
 ## 可视化相关参考链接
 
-- 面板相关设置：[面板设置](https://docs.coscene.cn/docs/category/panel)
-- 布局相关设置：[布局](https://docs.coscene.cn/docs/viz/layout)
+- 面板相关设置：[面板设置](https://docs.coscene.io/docs/category/panel)
+- 布局相关设置：[布局](https://docs.coscene.io/docs/viz/layout)
