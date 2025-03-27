@@ -114,5 +114,9 @@
   "sidebar.tutorialSidebar.category.应用场景": {
     "message": "Use Cases",
     "description": "The label for category 应用场景 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.客户端": {
+    "message": "Desktop Apps",
+    "description": "The label for category 客户端 in the sidebar"
   }
 }
