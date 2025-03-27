@@ -44,7 +44,7 @@
     "description": "The label for category 批量测试 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.镜像": {
-    "message": "Images",
+    "message": "Docker Images",
     "description": "The label for category 镜像 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.数据自动采集与诊断": {

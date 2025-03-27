@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# About Images
+# About Docker Images
 
 Docker images are lightweight, executable software packages that contain everything needed to run a piece of software or application—code, runtime environment, libraries, environment variables, and configuration files. Docker images are the foundation for building Docker containers, and each image is immutable; when you run an image, it becomes a container.
 
