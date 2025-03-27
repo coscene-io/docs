@@ -46,11 +46,11 @@ On the device side, open a terminal and follow these steps to install coBridge.
 
 1. Download [coStudio](https://www.coscene.cn/download).
 2. After launching coStudio, select the "Open Connection" feature.
-   ![Open Connection](./img/1-1-open-connection-cn.png)
+   ![Open Connection](./img/1-open-connection.png)
 3. Choose the coScene Websocket option and enter the connection address in the WebSocket URL field. `ws://localhost:21274` **(21274 is the default port for coBridge)**.
-   ![Select Connection](./img/1-2-select-connection-cn.png)
+   ![Select Connection](./img/1-select-connection.png)
 4. Once connected, you can use different panels for real-time device data visualization.
-   ![Real-time Visualization](./img/1-3-realtime-viz-cn.png)
+   ![Real-time Visualization](./img/1-realtime-viz.png)
 
 ## Visualization Reference Links
 

@@ -46,11 +46,11 @@ sidebar_position: 1
 
 1. 下载 [coStudio](https://www.coscene.cn/download)。
 2. 开启 coStudio 后，选择 “打开连接” 功能。
-   ![打开连接](./img/1-1-open-connection-cn.png)
+   ![打开连接](./img/1-open-connection.png)
 3. 选择 coScene Websocket 选项，在 WebSocket URL 中输入连接地址。`ws://localhost:21274` **（ 21274 为 coBridge 的默认端口号 ）**。
-   ![选择连接](./img/1-2-select-connection-cn.png)
+   ![选择连接](./img/1-select-connection.png)
 4. 打开后即可使用不同面板对机器数据进行实时可视化。
-   ![实时可视化](./img/1-3-realtime-viz-cn.png)
+   ![实时可视化](./img/1-realtime-viz.png)
 
 ## 可视化相关参考链接
 
