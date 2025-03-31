@@ -130,7 +130,7 @@ sidebar_position: 2
 - [将设备添加到项目](./3-manage-device.md#分配设备到项目)
    - [手动采集数据](../use-case/1-common-task.md)
    - [根据错误码自动采集数据](../use-case/data-diagnosis/2-get-started.md)
-- [远程连接设备](./6-device-remote-control.md)
+- [远程连接设备](./5-device-remote-control.md)
    - 实时可视化
    - 网页 SSH
    - 远程下发命令

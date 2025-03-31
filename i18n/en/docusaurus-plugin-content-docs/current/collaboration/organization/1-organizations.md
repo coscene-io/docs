@@ -50,7 +50,7 @@ The method of adding members differs depending on how the organization was creat
 
 ## Adding Organization Devices
 
-> Devices in the organization can be added to various projects, and the same device can be added to multiple projects for [Data Collection](../../use-case/1-common-task.md) and [Remote Connection](../../device/6-device-remote-control.md).
+> Devices in the organization can be added to various projects, and the same device can be added to multiple projects for [Data Collection](../../use-case/1-common-task.md) and [Remote Connection](../../device/5-device-remote-control.md).
 
 Please refer to the [Adding Devices](../../device/2-create-device.md) section
 

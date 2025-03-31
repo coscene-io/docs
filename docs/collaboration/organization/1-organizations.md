@@ -50,7 +50,7 @@ sidebar_position: 1
 
 ## 添加组织设备
 
-> 组织中的设备可以添加到各个项目中，同一台设备可以添加到多个项目，用于[数据采集](../../use-case/1-common-task.md)与[远程连接](../../device/6-device-remote-control.md)。
+> 组织中的设备可以添加到各个项目中，同一台设备可以添加到多个项目，用于[数据采集](../../use-case/1-common-task.md)与[远程连接](../../device/5-device-remote-control.md)。
 
 请参见[添加设备](../../device/2-create-device.md)章节
 
