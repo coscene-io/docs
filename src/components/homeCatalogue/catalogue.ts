@@ -73,9 +73,9 @@ export const CATALOGUE = [
     ],
   },
   {
-    header: { title: translate({ id: 'home.catalogue.intro-image', message: '镜像' }) },
+    header: { title: translate({ id: 'home.catalogue.docker-images', message: 'Docker 镜像' }) },
     docs: [
-      { docLink: '/image/intro', title: translate({ id: 'home.catalogue.intro-image', message: '关于镜像' }) },
+      { docLink: '/image/about-docker-image', title: translate({ id: 'home.catalogue.intro-image', message: '关于镜像' }) },
       { docLink: '/image/build-image', title: translate({ id: 'home.catalogue.build-image', message: '准备镜像' }) },
       { docLink: '/image/push-image', title: translate({ id: 'home.catalogue.push-image', message: '推送镜像' }) },
       { docLink: '/image/image-management', title: translate({ id: 'home.catalogue.image-management', message: '管理镜像' }) },

@@ -44,7 +44,7 @@
     "description": "The label for category 批量测试 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.镜像": {
-    "message": "Images",
+    "message": "Docker Images",
     "description": "The label for category 镜像 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.数据自动采集与诊断": {
@@ -116,7 +116,7 @@
     "description": "The label for category 应用场景 in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.客户端": {
-    "message": "coStudio",
-    "description": "The label for category 客户端 in sidebar tutorialSidebar"
+    "message": "Desktop Apps",
+    "description": "The label for category 客户端 in the sidebar"
   }
 }

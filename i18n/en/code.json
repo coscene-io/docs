@@ -569,6 +569,9 @@
   "home.catalogue.data-collection-and-diagnosis": {
     "message": "Data Collection and Diagnose"
   },
+  "home.catalogue.docker-images": {
+    "message": "Docker Images"
+  },
   "home.catalogue.intro-image": {
     "message": "About Images"
   },
