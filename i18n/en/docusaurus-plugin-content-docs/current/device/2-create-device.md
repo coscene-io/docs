@@ -126,8 +126,13 @@ This method creates virtual device fields in the platform database, which do not
 
 ![Add by Filling in Information](./img/4-3-input-information.png)
 
----
-
-By following the steps above, you can successfully add devices to the platform according to your actual needs.
-
-If you have any questions, please feel free to contact us for support.
+## Next Steps
+- [Device Admission](./3-manage-device.md#device-admission)
+- [Add Device to Project](./3-manage-device.md#assign-devices-to-projects)
+   - [Manual Data Collection](../use-case/1-common-task.md)
+   - [Automatic Data Collection Based on Error Codes](../use-case/data-diagnosis/2-get-started.md)
+- [Remote Device Connection](./5-device-remote-control.md)
+   - Realtime Viz
+   - Web SSH
+   - Remote Command
+   - Ports

@@ -35,7 +35,7 @@ jobs:
 
 - **images - base: Image Address**
 
-  The image serves as the virtual environment for running batch tests. You need to specify the image version address in the configuration file for each test suite to use when running.
+  The image serves as the virtual environment for running batch tests. You need to specify the image version address in the configuration file for each test suite to use when running. You can prepare the image and push it to a public platform or [coScene Image Registry](../../image/1-intro.md).
 
 - **parameters - scripts: Running Parameters**
 
