@@ -2,13 +2,12 @@ import { translate } from '@docusaurus/Translate';
 
 export const CATALOGUE = [
   {
-    header: { title: translate({ id: 'home.catalogue.getting-started', message: '快速开始' }) },
+    header: { title: translate({ id: 'home.catalogue.getting-started', message: '新手入门' }) },
     docs: [
       { docLink: '/overview', title: translate({ id: 'home.catalogue.overview', message: '总览' }) },
-      { docLink: '/get-started/login-to-platform', title: translate({ id: 'home.catalogue.login-to-platform', message: '登录刻行时空' }) },
-      { docLink: '/get-started/create-project', title: translate({ id: 'home.catalogue.create-project', message: '创建项目' }) },
-      { docLink: '/get-started/create-record-and-viz', title: translate({ id: 'home.catalogue.create-record-and-viz', message: '创建并可视化记录' }) },
-      { docLink: '/get-started/create-moment-flow', title: translate({ id: 'home.catalogue.create-moment-flow', message: '创建你的第一条“一刻”' }) },
+      { docLink: '/get-started/quick-start', title: translate({ id: 'home.catalogue.quick-start', message: '快速开始' }) },
+      { docLink: '/browser-support', title: translate({ id: 'home.catalogue.browser-support', message: '浏览器支持' }) },
+      
     ],
   },
   {
@@ -39,9 +38,9 @@ export const CATALOGUE = [
       { docLink: '/device/create-device', title: translate({ id: 'home.catalogue.create-device', message: '添加设备' }) },
       { docLink: '/device/manage-device', title: translate({ id: 'home.catalogue.manage-device', message: '管理设备' }) },
       { docLink: '/device/device-collector', title: translate({ id: 'home.catalogue.device-collector', message: '数采客户端配置' }) },
-      { docLink: '/device/change-device-guide', title: translate({ id: 'home.catalogue.change-device-guide', message: '换机、升级、卸载流程指南' }) },
-      { docLink: '/device/device-remote-control', title: translate({ id: 'home.catalogue.device-remote-control', message: '远程控制设备' }) },
+      { docLink: '/device/device-remote-control', title: translate({ id: 'home.catalogue.device-remote-control', message: '远程连接设备' }) },
       { docLink: '/device/batch-device-operations', title: translate({ id: 'home.catalogue.batch-device-operations', message: '批量操作设备' }) },
+      { docLink: '/device/change-device-guide', title: translate({ id: 'home.catalogue.change-device-guide', message: '换机、升级、卸载流程指南' }) },
     ],
   },
   {
@@ -74,7 +73,7 @@ export const CATALOGUE = [
     ],
   },
   {
-    header: { title: translate({ id: 'home.catalogue.use-case', message: '镜像' }) },
+    header: { title: translate({ id: 'home.catalogue.intro-image', message: '镜像' }) },
     docs: [
       { docLink: '/image/intro', title: translate({ id: 'home.catalogue.intro-image', message: '关于镜像' }) },
       { docLink: '/image/build-image', title: translate({ id: 'home.catalogue.build-image', message: '准备镜像' }) },

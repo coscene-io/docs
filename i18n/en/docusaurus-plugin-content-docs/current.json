@@ -3,7 +3,7 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.tutorialSidebar.category.快速开始": {
+  "sidebar.tutorialSidebar.category.新手入门": {
     "message": "Getting Started",
     "description": "The label for category 快速开始 in sidebar tutorialSidebar"
   },
@@ -114,5 +114,9 @@
   "sidebar.tutorialSidebar.category.应用场景": {
     "message": "Use Cases",
     "description": "The label for category 应用场景 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.客户端": {
+    "message": "coStudio",
+    "description": "The label for category 客户端 in sidebar tutorialSidebar"
   }
 }
