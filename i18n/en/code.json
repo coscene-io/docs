@@ -461,17 +461,11 @@
   "home.catalogue.getting-started": {
     "message": "Getting Started"
   },
-  "home.catalogue.login-to-platform": {
-    "message": "Login to coScene"
+  "home.catalogue.quick-start": {
+    "message": "Quick Start"
   },
-  "home.catalogue.create-project": {
-    "message": "Create a Project"
-  },
-  "home.catalogue.create-record-and-viz": {
-    "message": "Create and Visualize Record"
-  },
-  "home.catalogue.create-moment-flow": {
-    "message": "Create Your First \"Moment\""
+  "home.catalogue.browser-support": {
+    "message": "Browser Support"
   },
   "home.catalogue.collaboration": {
     "message": "Collaboration"

@@ -1,0 +1,75 @@
+---
+sidebar_position: 5
+---
+
+# 远程连接设备
+
+在刻行时空平台可以实时远程操作设备，例如远程下发命令，SSH 连接等操作，提升运维能力。
+
+## 前提条件
+
+1. 设备端已经安装刻行相关的设备端程序，具体请参考[设备端安装](./2-create-device.md#add-device-from-device)。
+2. 组织管理员已经准入设备，允许进行远程控制设备。[设备准入](./3-manage-device.md#设备准入)请参考相关文档。
+
+## 实时可视化
+> 前提条件：
+>
+> 1. 安装 coBridge 组件
+>    - coBridge 是一个独立的 ROS 节点，通过 websocket 协议将订阅的数据传递至前端
+>    - 支持的 ROS 版本：
+>      - ROS1：<u>Noetic Ninjemys</u>、<u>Melodic Morenia</u>
+>      - ROS2：<u>Foxy Fitzroy</u>、<u>Galactic Geochelone</u>、<u>Humble Hawksbill</u>
+>    - [查看 coBridge 源码（C++）](https://github.com/coscene-io/coBridge)
+>    - 强烈建议使用 coBridge 源码编译出可执行文件(编译流程文档：[CN](https://github.com/coscene-io/coBridge/blob/main/README.zh-CN.md)/[EN](https://github.com/coscene-io/coBridge/blob/main/README.md))，将其整合进机器人软件中，并在机器人启动脚本添加 `ros2 launch cobridge cobridge_launch.xml` （或者 `roslaunch cobridge cobridge_launch.xml`）命令。
+>
+> 2. coBridge 节点启动后，配合 virmesh 映射的外网地址及端口，可在网页端实现订阅机器人 topic，下发 service 等操作，实现对机器人的远程实时可视化。
+
+当设备准入后，在「组织管理」里「设备」页面列表查看设备，设备会出现【实时可视化】的按钮，点击之后即可连接到机器实时展示机器的实时情况。
+
+![device realtime](./img/4-3-device-realtime.png)
+
+在实时可视化页面，通过配置三维、原始消息、服务调用、远程操纵等面板，可以更直观地调试设备。更多详情请参考[面板介绍](../viz/4-panel/1-panel-overview.md)。
+
+![device realtime demo](./img/4-3-device-realtime-demo.png)
+
+## 网页 SSH
+
+当设备准入后，在「组织管理」里「设备」页面列表查看设备，设备会出现【网页 SSH】的按钮，点击之后即可在浏览器中打开新的 Tab 通过 SSH 连接到机器。
+
+![device ssh](./img/4-3-device-ssh.png)
+![device ssh demo](./img/4-3-device-ssh-demo.png)
+
+页面默认提供了 [Trzsz 文件传输工具](https://trzsz.github.io/cn/)，用户可以通过`trz file1` 命令上传本地的文件至远程机器端，通过 `tsz file1 file2 file3` 将远程机器的文件下载到本地机器上。更为复杂的命令使用请参考[详细说明文档](https://trzsz.github.io/cn/)。
+
+## 远程命令
+
+当设备远程在线时，用户可以通过【远程命令】功能对设备进行命令下发操作，执行特定的任务。也可以对多台设备同时进行[批量操作](./6-batch-device-operations.md)。
+
+![device cmd](./img/6-remote-command-1.png)
+
+点击【执行远程命令按钮】，在弹窗中输入需要执行的命令，点击【确认】按钮后，即可在设备上执行命令。
+![device cmd](./img/6-remote-command-2.png)
+![device cmd](./img/6-remote-command-3.png)
+
+等待命令执行成功后，可以看到日志结果。
+![device cmd](./img/6-remote-command-4.png)
+
+## 端口号映射
+
+当机器端没有公网 IP 时，用户无法直接访问机器的端口，而端口号映射功能可以将机器端的端口进行转发，使得可以被用户在公网进行访问。例如可以将机器端运行的服务暂时暴露，本地连接进行调试等操作。
+
+![device port](./img/4-3-device-port.png)
+
+我们这里操作一个简单的示例。通过【网页 SSH】功能我们连接到远端机器，在机器上执行命令 `python3 -m http.server 9000 -d ~` 运行一个简单的 HTTP Server，会将`~`目录下的文件作为静态文件提供给用户访问。Server 监听了 9000 的端口，然后我们配置对机器端 9000 的端口进行转发。此时我们在本地浏览器请求映射后的地址，即可将请求转发至机器端。
+
+1. 网页端配置 9000 端口映射
+   ![device port demo](./img/4-3-device-port-demo-1.png)
+
+2. 通过网页 SSH 在机器端执行 `python3 -m http.server 9000 -d ~` 启动简易 HTTP Server
+   ![device port demo](./img/4-3-device-port-demo-3.png)
+
+3. 在浏览器中请求相关地址，发现列举了机器端 `~` 目录下的所有文件信息
+   ![device port demo](./img/4-3-device-port-demo-2.png)
+
+4. 查看机器端的日志信息，发现浏览器的请求已经转发到了机器端，并且返回了 200 标识请求成功。
+   ![device port demo](./img/4-3-device-port-demo-3.png)
