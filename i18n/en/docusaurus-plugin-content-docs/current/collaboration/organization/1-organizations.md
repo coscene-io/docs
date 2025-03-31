@@ -13,7 +13,7 @@ On the "Organization Management" page, you can view information about the organi
 | Projects | Manage all projects within the organization in the project list. Projects are the units of data management, see [Projects](../project-collaboration/1-project.md) |
 | Members | Manage all users and their permissions within the organization in the member list |
 | Devices | Centrally manage all devices within the organization in the organization device list. Devices can establish connections with physical devices, see [Devices](../../device/1-device.md) |
-| Images | The platform provides a professional private image registry to centrally manage all images within the organization, see [Images](../../image/1-intro.md) |
+| Images | The platform provides a professional private image registry to centrally manage all images within the organization, see [Images](../../image/1-about-docker-image.md) |
 | Usage & Billing | Display information about the organization's storage, number of devices, computation time, etc. |
 
 ![org_1](./img/org_1.png)
@@ -57,7 +57,7 @@ Please refer to the [Adding Devices](../../device/2-create-device.md) section
 ## Adding Images
 > Images in the organization can be used in various projects for [Automation](../../workflow/action/2-learn-coscene-action.md) or [Cloud Test](../../sim-and-tests/regression/1-intro.md).
 
-Please refer to the [Images](../../image/1-intro.md) section
+Please refer to the [Images](../../image/1-about-docker-image.md) section
 
 ## Usage & Billing
 > Only organization administrators can view organization usage information.

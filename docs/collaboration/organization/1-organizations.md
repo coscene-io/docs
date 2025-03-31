@@ -13,7 +13,7 @@ sidebar_position: 1
 | 项目 | 在项目列表中管理组织内所有项目。项目是数据管理的单元，详见[项目](../project-collaboration/1-project.md) |
 | 成员 | 在成员列表中管理组织内的所有用户及其权限 |
 | 设备 | 在组织设备列表中统一管理组织内所有设备。设备可以与真实设备建立联系，详见[设备](../../device/1-device.md) |
-| 镜像 | 平台提供专业的私有镜像仓库，统一管理组织内所有镜像，详见[镜像](../../image/1-intro.md) |
+| 镜像 | 平台提供专业的私有镜像仓库，统一管理组织内所有镜像，详见[镜像](../../image/1-about-docker-image.md) |
 | 用量与计费 | 展示组织的存储量、设备数、计算时长等信息 |
 
 ![org_1](./img/org_1.png)
@@ -57,7 +57,7 @@ sidebar_position: 1
 ## 添加镜像
 > 组织中的镜像可以在各个项目中使用，用于[自动化](../../workflow/action/2-learn-coscene-action.md)或[批量测试](../../sim-and-tests/regression/1-intro.md)。
 
-请参见[镜像](../../image/1-intro.md)章节
+请参见[镜像](../../image/1-about-docker-image.md)章节
 
 
 ## 用量与计费
