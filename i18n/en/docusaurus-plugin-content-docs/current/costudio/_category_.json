@@ -1,9 +1,9 @@
 {
-  "label": "客户端",
+  "label": "client",
   "position": 12,
   "collapsible": true,
   "link": {
     "type": "generated-index",
-    "slug": "/category/costudio"
+    "slug": "/category/client"
   }
 }
