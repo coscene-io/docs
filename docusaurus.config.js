@@ -55,7 +55,6 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: '/',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
@@ -84,11 +83,12 @@ const config = {
         logo: {
           alt: 'coScene Logo',
           src: 'img/logo.svg',
+          width: '135px',
         },
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'overview',
             position: 'left',
             label: '文档',
           },
@@ -127,6 +127,36 @@ const config = {
           //     },
           //   ],
           // },
+          {
+            title: '法律协议',
+            items: [
+              {
+                label: '隐私政策',
+                href: '/legal/privacy',
+                target: '_blank',
+              },
+              {
+                label: '服务协议',
+                href: '/legal/terms',
+                target: '_blank',
+              },
+            ],
+          },
+          {
+            title: '数据安全',
+            items: [
+              {
+                label: '刻行数据安全白皮书',
+                href: '/security/security-white-paper',
+                target: '_blank',
+              },
+              {
+                label: '刻行数据安全方案',
+                href: '/security/data-security-solution',
+                target: '_blank',
+              },
+            ],
+          },
           {
             title: '更多相关链接',
             items: [
@@ -189,13 +219,17 @@ const config = {
 
         //... other Algolia params
       },
-      announcementBar: {
-        id: 'dev_environment',
-        content: '⚠️ 这是开发环境版本 / This is Development Environment Version ⚠️',
-        backgroundColor: '#fafbfc',
-        textColor: '#091E42',
-        isCloseable: false,
-      },
+
+      // 只在开发环境中显示公告栏
+      ...(process.env.DEPLOY_ENV === 'development' && {
+        announcementBar: {
+          id: 'dev_environment',
+          content: '⚠️ 这是开发环境版本 / This is Development Environment Version ⚠️',
+          backgroundColor: '#fafbfc',
+          textColor: '#091E42',
+          isCloseable: false,
+        },
+      }),
     }),
   customFields: {
     // Add custom field to identify environment

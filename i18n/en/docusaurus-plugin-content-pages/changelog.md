@@ -5,6 +5,47 @@ id: changelog
 
 # Release History
 
+## [25.12.0] - 2025-3-19
+
+### [Added]
+
+- Added "Personal Organization" feature
+  - Support login and organization creation with regular email
+  - Support inviting members to join personal organizations via email
+- Added "Public Project" feature: Support viewing public datasets
+
+### [Improved]
+
+- Improved Data Collection Client
+  - Optimized file upload logic: Ensure file writing is completed before uploading
+  - Optimized device registration logic: Automatically remove line breaks and spaces when reading device IDs from specified files
+  - Fixed the issue where device installation commands could not be executed repeatedly
+
+### [Fixed]
+
+- Fixed the issue of abnormal display of overlapping time periods when playing multiple files in visualization
+- Fixed the issue where files output from actions did not automatically generate visualization indexes
+
+---
+
+## [25.9.0] - 2025-2-26
+
+### [Added]
+
+- Added "Batch Remote Command Execution" feature: In the Organization Management - Devices page, users can send commands in batch to selected devices
+- Added "Teambition Integration": In the Project Settings - Service Integration page, users can configure Teambition integration to automatically create Teambition tasks when issues occur
+
+### [Improved]
+
+- Updated the input method for rule conditions in Collection & Diagnosis, now supporting CEL syntax input
+
+### [Fixed]
+
+- Fixed the issue where downloading single folders from records was not working
+- Fixed issues related to rules in Collection & Diagnosis
+
+---
+
 ## [25.6.0] - 2025-2-8
 
 ### [New]

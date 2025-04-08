@@ -4,13 +4,22 @@ sidebar_position: 1
 
 # About Devices
 
-Devices serve two primary purposes: first, as a basic piece of information for records, indicating the source of the data; second, as an object for automatic data collection, connecting with the real device end. Device information can be attached to records, allowing for retrieval and statistics of data uploaded by the device.
+**In the coScene Spatiotemporal Data Platform, devices serve two key functions:**
+
+- Act as carriers of basic record information, clearly identifying data sources
+- Connect with real device endpoints as targets for data collection, allowing device information to be added to relevant records for precise retrieval and comprehensive statistics of data uploaded by the device
+  <br />
+
+**The platform is divided into two modules: Organization Devices and Project Devices:**
+
+- Organization Devices: Used for unified management of all devices within an organization
+- Project Devices: Allocated from organization devices to various projects; one organization device can be added to multiple projects but corresponds to the same physical device
 
 ## Basic Elements
 
-Devices mainly consist of 4 basic elements:
-
-- ID: The unique identifier for the device.
-- Name: Custom name for the device, such as an alias that's easier to recognize than the ID.
-- Store: The location where the device operates.
-- Model: The type or model of the device.
+Devices contain 3 basic elements:
+| Field Name | Description |
+| :----------- | :----------- |
+| Device ID | Also known as the SN number, it is the unique identifier for devices in the platform |
+| Name | Custom device name, such as an alias that's easier to identify than the ID |
+| Client Status | Status information exists when a device is registered through client installation; no related information when added by filling in information |

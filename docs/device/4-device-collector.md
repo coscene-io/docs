@@ -37,17 +37,17 @@ sidebar_position: 4
 
 | 模块名称                    | 功能描述                                                       |
 | --------------------------- | -------------------------------------------------------------- |
-| 数据收集器设置（collector） | 完成数据采集后，是否删除设备端数据                             |
+| 数据收集器设置（collector） | 完成数据采集后，是否删除数采客户端在设备端生成的缓存数据                             |
 | 存储设置（mod）             | 设备 ID 存放位置；监听目录；客户端初始化监听时间范围；采集目录 |
 | 设备事件属性（device）      | 事件的属性值                                                   |
 | 规则触发话题（topic）       | 规则触发话题                                                   |
-| 更新设置（updater）         | 当前程序是否开启自动更新                                       |
+| 更新设置（updater）         | 数采客户端是否开启自动更新                                       |
 
 示例模板如下：
 
 ```yaml
 collector:
-  delete_after_interval_in_hours: 48 # 默认值为 -1，即不删除
+  delete_after_interval_in_hours: 48 # 默认 48 小时后自动删除数采客户端在设备端生成的缓存数据，-1 为不删除
 
 mod:
   # mod 名称，默认 default，支持监听设备端指定目录下的文件，若有自定义的监听形式，请联系刻行时空
@@ -105,7 +105,7 @@ updater:
 
 - `delete_after_upload`：默认值为 false，若设置为 true，则上传后删除设备端数据。
 
-- `delete_after_interval_in_hours`：默认值为 -1，即不删除文件；若设置为具体时长（如 48），则默认会删除该时长以前的旧数据。
+- `delete_after_interval_in_hours`：-1 为不删除文件；若设置为具体时长（如 48），则默认会删除该时间以前的旧数据（特指数采客户端生成的数据）。
 
 - `scan_interval_in_secs`：默认值为 60，即每 60 秒对文件夹扫描一次。
 
@@ -113,7 +113,7 @@ updater:
 # 数据收集器设置
 collector:
   delete_after_upload: true # 默认值为 false
-  delete_after_interval_in_hours: 48 # 默认值为 -1，即不删除文件；否则默认会删除 48 小时以前的旧数据
+  delete_after_interval_in_hours: 48 # 默认 48 小时后自动删除数采客户端在设备端生成的缓存数据，-1 为不删除
   scan_interval_in_secs: 60 # 默认值：60，即 60s 对文件夹扫描一次
 ```
 
@@ -178,7 +178,7 @@ device:
     - /home/coscene/device2.yaml
 ```
 
-### 规则触发话题（topic）
+### 规则触发话题（topics）
 
 话题作为项目中规则触发话题的选项来源，可缩小规则匹配的范围，提高监听效率。例如，假设存在 `error_code` 话题，可进行如下配置：
 
