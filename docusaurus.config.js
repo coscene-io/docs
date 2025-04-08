@@ -188,13 +188,9 @@ const config = {
       },
 
       algolia: {
-        // The application ID provided by Algolia
-        appId: '1TFD6DKASB',
-
-        // Public API key: it is safe to commit it
-        apiKey: '6340803417c38ec67854ac4ae37c55ce',
-
-        indexName: 'coscene',
+        appId: process.env.ALGOLIA_APP_ID || '1TFD6DKASB',
+        apiKey: process.env.ALGOLIA_API_KEY || '6340803417c38ec67854ac4ae37c55ce',
+        indexName: process.env.ALGOLIA_INDEX_NAME || 'coscene',
 
         // Optional: see doc section below
         contextualSearch: true,
