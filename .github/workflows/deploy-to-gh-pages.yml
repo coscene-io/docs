@@ -48,6 +48,7 @@ jobs:
           sed -i 's|from: '\''/docs/'\''|from: '\''/en/'\''|' docusaurus.config.js
 
           pnpm build
+          echo "docs.coscene.io" > ./build/CNAME
 
       - name: Deploy to GH Pages
         uses: peaceiris/actions-gh-pages@v4
