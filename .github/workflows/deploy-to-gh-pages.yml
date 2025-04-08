@@ -5,7 +5,6 @@ on:
     branches:
       - master
   workflow_dispatch:
-  pull_request:
 
 permissions:
   contents: write
@@ -14,11 +13,6 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
-    environment: production-en
-    # env:
-    #   ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
-    #   ALGOLIA_API_KEY: ${{ vars.ALGOLIA_API_KEY }}
-    #   ALGOLIA_INDEX_NAME: ${{ vars.ALGOLIA_INDEX_NAME }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
