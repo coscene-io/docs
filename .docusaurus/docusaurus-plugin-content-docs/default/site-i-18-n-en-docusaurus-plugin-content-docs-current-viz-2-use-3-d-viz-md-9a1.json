@@ -1,0 +1,28 @@
+{
+  "id": "viz/use-3d-viz",
+  "title": "Quick Start: 3D Data Visualizations",
+  "description": "This section will demonstrate the steps to visualize data using 3D panel with the \"scene-0001.mcap\" file as an example.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/viz/2-use-3d-viz.md",
+  "sourceDirName": "viz",
+  "slug": "/viz/use-3d-viz",
+  "permalink": "/docs/viz/use-3d-viz",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1741682696000,
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "About Data Visualization",
+    "permalink": "/docs/viz/about-viz"
+  },
+  "next": {
+    "title": "Layout",
+    "permalink": "/docs/viz/layout"
+  }
+}

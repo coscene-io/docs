@@ -1,0 +1,29 @@
+{
+  "id": "developers/coSceneCli/cli-record-operations",
+  "title": "Using CLI to Operate Records",
+  "description": "For detailed information on operating records in the coScene CLI, you can use cocli record -h to see detailed usage.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/developers/coSceneCli/2-cli-record-operations.md",
+  "sourceDirName": "developers/coSceneCli",
+  "slug": "/developers/coSceneCli/record-operations",
+  "permalink": "/docs/developers/coSceneCli/record-operations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zhexuan Yang",
+  "lastUpdatedAt": 1738910751000,
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "slug": "record-operations",
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Install and Init",
+    "permalink": "/docs/developers/coSceneCli/install"
+  },
+  "next": {
+    "title": "Managing Actions with CLI Tools",
+    "permalink": "/docs/developers/coSceneCli/action-operations"
+  }
+}

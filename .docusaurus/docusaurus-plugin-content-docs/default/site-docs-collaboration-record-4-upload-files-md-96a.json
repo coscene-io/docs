@@ -1,0 +1,28 @@
+{
+  "id": "collaboration/record/upload-files",
+  "title": "上传文件",
+  "description": "简介",
+  "source": "@site/docs/collaboration/record/4-upload-files.md",
+  "sourceDirName": "collaboration/record",
+  "slug": "/collaboration/record/upload-files",
+  "permalink": "/docs/collaboration/record/upload-files",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1741682696000,
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "管理记录",
+    "permalink": "/docs/collaboration/record/manage-records"
+  },
+  "next": {
+    "title": "管理文件",
+    "permalink": "/docs/collaboration/record/manage-file"
+  }
+}

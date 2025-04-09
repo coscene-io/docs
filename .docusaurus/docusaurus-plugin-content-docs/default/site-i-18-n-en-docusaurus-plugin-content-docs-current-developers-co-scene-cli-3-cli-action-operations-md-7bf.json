@@ -1,0 +1,29 @@
+{
+  "id": "developers/coSceneCli/cli-action-operations",
+  "title": "Managing Actions with CLI Tools",
+  "description": "The coScene action system can be used to trigger complex calculations and processing tasks. By scripting with the CLI tool, you can greatly enhance the automation in your workflow. For detailed help on using the CLI to operate actions, refer to",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/developers/coSceneCli/3-cli-action-operations.md",
+  "sourceDirName": "developers/coSceneCli",
+  "slug": "/developers/coSceneCli/action-operations",
+  "permalink": "/docs/developers/coSceneCli/action-operations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zhexuan Yang",
+  "lastUpdatedAt": 1738910751000,
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "slug": "action-operations",
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Using CLI to Operate Records",
+    "permalink": "/docs/developers/coSceneCli/record-operations"
+  },
+  "next": {
+    "title": "Examples of Common Batch Operations",
+    "permalink": "/docs/developers/coSceneCli/common-batch-tasks"
+  }
+}

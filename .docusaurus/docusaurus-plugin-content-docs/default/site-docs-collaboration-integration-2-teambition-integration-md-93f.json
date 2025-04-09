@@ -1,0 +1,28 @@
+{
+  "id": "collaboration/integration/teambition-integration",
+  "title": "Teambition 集成",
+  "description": "简介",
+  "source": "@site/docs/collaboration/integration/2-teambition-integration.md",
+  "sourceDirName": "collaboration/integration",
+  "slug": "/collaboration/integration/teambition-integration",
+  "permalink": "/docs/collaboration/integration/teambition-integration",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1740646695000,
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Jira 集成",
+    "permalink": "/docs/collaboration/integration/jira-integration"
+  },
+  "next": {
+    "title": "可视化",
+    "permalink": "/docs/category/viz"
+  }
+}

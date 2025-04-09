@@ -1,0 +1,28 @@
+{
+  "id": "viz/panel/plot-panel",
+  "title": "Plot Panel: Visualizing Data Trends",
+  "description": "The \"Plot Panel\" is a tool used for plotting and displaying data trends over time or other variables. It allows users to configure multiple data series and visualize these trends in a clear and intuitive chart format.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/viz/4-panel/4-plot-panel.md",
+  "sourceDirName": "viz/4-panel",
+  "slug": "/viz/panel/plot-panel",
+  "permalink": "/docs/viz/panel/plot-panel",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1741682696000,
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Log Panel",
+    "permalink": "/docs/viz/panel/log-panel"
+  },
+  "next": {
+    "title": "Image Panel",
+    "permalink": "/docs/viz/panel/image-panel"
+  }
+}

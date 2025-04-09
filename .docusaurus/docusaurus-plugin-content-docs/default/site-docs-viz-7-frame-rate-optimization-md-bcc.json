@@ -1,0 +1,28 @@
+{
+  "id": "viz/frame-rate-optimization",
+  "title": "帧率优化选项",
+  "description": "「帧率优化选项」用于在数据量较大且带宽受限的情况下，通过主动调整 topic 数据的帧率来实现流畅的播放效果。",
+  "source": "@site/docs/viz/7-frame-rate-optimization.md",
+  "sourceDirName": "viz",
+  "slug": "/viz/frame-rate-optimization",
+  "permalink": "/docs/viz/frame-rate-optimization",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1741682696000,
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "可视化选项",
+    "permalink": "/docs/viz/options"
+  },
+  "next": {
+    "title": "设备",
+    "permalink": "/docs/category/device"
+  }
+}

@@ -1,0 +1,473 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "overview",
+          "docs": [
+            {
+              "id": "browser-support",
+              "path": "/docs/browser-support",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "collaboration/integration/jira-integration",
+              "path": "/docs/collaboration/integration/jira-integration",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "collaboration/integration/teambition-integration",
+              "path": "/docs/collaboration/integration/teambition-integration",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "collaboration/organization/organizations",
+              "path": "/docs/collaboration/organization/organizations",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "collaboration/project-collaboration/add-comment-to-record",
+              "path": "/docs/collaboration/project-collaboration/add-comment-to-record",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "collaboration/project-collaboration/general-task",
+              "path": "/docs/collaboration/project-collaboration/general-task",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "collaboration/project-collaboration/project",
+              "path": "/docs/collaboration/project-collaboration/project",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "collaboration/record/create-record",
+              "path": "/docs/collaboration/record/create-record",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "collaboration/record/manage-file",
+              "path": "/docs/collaboration/record/manage-file",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "collaboration/record/manage-records",
+              "path": "/docs/collaboration/record/manage-records",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "collaboration/record/quick-start-record",
+              "path": "/docs/collaboration/record/quick-start-record",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "collaboration/record/upload-files",
+              "path": "/docs/collaboration/record/upload-files",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "costudio/connect-by-cobridge",
+              "path": "/docs/costudio/connect-by-cobridge",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/concepts/auth-models",
+              "path": "/docs/developers/concepts/auth-models",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/concepts/data-models",
+              "path": "/docs/developers/concepts/data-models",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/concepts/workflow",
+              "path": "/docs/developers/concepts/workflow",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/coSceneCli/advanced-features",
+              "path": "/docs/developers/coSceneCli/advanced-features",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/coSceneCli/cli-action-operations",
+              "path": "/docs/developers/coSceneCli/action-operations",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/coSceneCli/cli-auto-complete",
+              "path": "/docs/developers/coSceneCli/auto-complete",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/coSceneCli/cli-common-batch-tasks",
+              "path": "/docs/developers/coSceneCli/common-batch-tasks",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/coSceneCli/cli-install",
+              "path": "/docs/developers/coSceneCli/install",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/coSceneCli/cli-record-operations",
+              "path": "/docs/developers/coSceneCli/record-operations",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/openapi/apikey",
+              "path": "/docs/developers/openapi/apikey",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/openapi/intro",
+              "path": "/docs/developers/openapi/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/openapi/openapi-endpoint",
+              "path": "/docs/developers/openapi/openapi-endpoint",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "developers/openapi/postman",
+              "path": "/docs/developers/openapi/postman",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "device/batch-device-operations",
+              "path": "/docs/device/batch-device-operations",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "device/change-device-guide",
+              "path": "/docs/device/change-device-guide",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "device/create-device",
+              "path": "/docs/device/create-device",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "device/device",
+              "path": "/docs/device/device",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "device/device-collector",
+              "path": "/docs/device/device-collector",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "device/device-remote-control",
+              "path": "/docs/device/device-remote-control",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "device/manage-device",
+              "path": "/docs/device/manage-device",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "get-started/quick-start",
+              "path": "/docs/get-started/quick-start",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "image/about-docker-image",
+              "path": "/docs/image/about-docker-image",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "image/build-image",
+              "path": "/docs/image/build-image",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "image/image-management",
+              "path": "/docs/image/image-management",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "image/push-image",
+              "path": "/docs/image/push-image",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "overview",
+              "path": "/docs/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "sim-and-tests/regression/config-management",
+              "path": "/docs/sim-and-tests/regression/config-management",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "sim-and-tests/regression/intro",
+              "path": "/docs/sim-and-tests/regression/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "sim-and-tests/regression/run",
+              "path": "/docs/sim-and-tests/regression/run",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "sim-and-tests/regression/status-and-output",
+              "path": "/docs/sim-and-tests/regression/status-and-output",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "sim-and-tests/regression/test-bundle-management",
+              "path": "/docs/sim-and-tests/regression/test-bundle-management",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "sim-and-tests/regression/yaml-sample",
+              "path": "/docs/sim-and-tests/regression/yaml-sample",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "use-case/automated-data-collection",
+              "path": "/docs/use-case/automated-data-collection",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "use-case/automated-data-processing",
+              "path": "/docs/use-case/automated-data-processing",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "use-case/common-task",
+              "path": "/docs/use-case/common-task",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "use-case/data-diagnosis/add-rule",
+              "path": "/docs/use-case/data-diagnosis/add-rule",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "use-case/data-diagnosis/get-started",
+              "path": "/docs/use-case/data-diagnosis/get-started",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "use-case/data-diagnosis/intro",
+              "path": "/docs/use-case/data-diagnosis/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "use-case/data-diagnosis/manage-rule-group",
+              "path": "/docs/use-case/data-diagnosis/manage-rule-group",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/about-viz",
+              "path": "/docs/viz/about-viz",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/create-moment-viz",
+              "path": "/docs/viz/create-moment-viz",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/frame-rate-optimization",
+              "path": "/docs/viz/frame-rate-optimization",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/layout",
+              "path": "/docs/viz/layout",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/options",
+              "path": "/docs/viz/options",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/panel/2-3d-panel",
+              "path": "/docs/viz/panel/2-3d-panel",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/panel/image-panel",
+              "path": "/docs/viz/panel/image-panel",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/panel/log-panel",
+              "path": "/docs/viz/panel/log-panel",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/panel/panel-overview",
+              "path": "/docs/viz/panel/panel-overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/panel/plot-panel",
+              "path": "/docs/viz/panel/plot-panel",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/panel/publish-panel",
+              "path": "/docs/viz/panel/publish-panel",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/panel/service-panel",
+              "path": "/docs/viz/panel/service-panel",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/panel/teleop-panel",
+              "path": "/docs/viz/panel/teleop-panel",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "viz/use-3d-viz",
+              "path": "/docs/viz/use-3d-viz",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "workflow/action/learn-coscene-action",
+              "path": "/docs/workflow/action/learn-coscene-action",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "workflow/action/quickstart",
+              "path": "/docs/workflow/action/quickstart",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/getting-started",
+              "path": "/docs/category/getting-started",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/collaboration",
+              "path": "/docs/category/collaboration",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/record",
+              "path": "/docs/category/record",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/project-collaboration",
+              "path": "/docs/category/project-collaboration",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/organization-and-team",
+              "path": "/docs/category/organization-and-team",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/3rd-party-integration",
+              "path": "/docs/category/3rd-party-integration",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/viz",
+              "path": "/docs/category/viz",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/panel",
+              "path": "/docs/category/panel",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/device",
+              "path": "/docs/category/device",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/workflow",
+              "path": "/docs/category/workflow",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/action",
+              "path": "/docs/category/action",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/sim-and-tests",
+              "path": "/docs/category/sim-and-tests",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/regression",
+              "path": "/docs/category/regression",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/developer",
+              "path": "/docs/category/developer",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/core-concepts",
+              "path": "/docs/category/core-concepts",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/cocli",
+              "path": "/docs/category/cocli",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/openapi",
+              "path": "/docs/category/openapi",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/use-case",
+              "path": "/docs/category/use-case",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/data-collection-and-diagnosis",
+              "path": "/docs/category/data-collection-and-diagnosis",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/image",
+              "path": "/docs/category/image",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/costudio",
+              "path": "/docs/category/costudio",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/overview",
+                "label": "overview"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

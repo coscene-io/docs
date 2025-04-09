@@ -1,0 +1,28 @@
+{
+  "id": "collaboration/integration/jira-integration",
+  "title": "Jira Integration",
+  "description": "Introduction",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/collaboration/integration/1-jira-integration.md",
+  "sourceDirName": "collaboration/integration",
+  "slug": "/collaboration/integration/jira-integration",
+  "permalink": "/docs/collaboration/integration/jira-integration",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1743408693000,
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "服务集成",
+    "permalink": "/docs/category/3rd-party-integration"
+  },
+  "next": {
+    "title": "Teambition Integration",
+    "permalink": "/docs/collaboration/integration/teambition-integration"
+  }
+}

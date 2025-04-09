@@ -1,0 +1,29 @@
+{
+  "id": "developers/coSceneCli/advanced-features",
+  "title": "高级功能",
+  "description": "切换登录凭证",
+  "source": "@site/docs/developers/coSceneCli/99-advanced-features.md",
+  "sourceDirName": "developers/coSceneCli",
+  "slug": "/developers/coSceneCli/advanced-features",
+  "permalink": "/docs/developers/coSceneCli/advanced-features",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zhexuan Yang",
+  "lastUpdatedAt": 1738910751000,
+  "sidebarPosition": 99,
+  "frontMatter": {
+    "slug": "advanced-features",
+    "sidebar_position": 99
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "自动补全",
+    "permalink": "/docs/developers/coSceneCli/auto-complete"
+  },
+  "next": {
+    "title": "开放平台 OpenAPI",
+    "permalink": "/docs/category/openapi"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "collaboration/project-collaboration/general-task",
+  "title": "通用任务",
+  "description": "任务流转是项目协作的重要方式，在记录中创建任务并分配给团队成员，结合「评论」和「一刻」功能，高效地完成协作流程。",
+  "source": "@site/docs/collaboration/project-collaboration/2-general-task.md",
+  "sourceDirName": "collaboration/project-collaboration",
+  "slug": "/collaboration/project-collaboration/general-task",
+  "permalink": "/docs/collaboration/project-collaboration/general-task",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiran.yu",
+  "lastUpdatedAt": 1743397726000,
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "项目",
+    "permalink": "/docs/collaboration/project-collaboration/project"
+  },
+  "next": {
+    "title": "在记录中管理评论",
+    "permalink": "/docs/collaboration/project-collaboration/add-comment-to-record"
+  }
+}

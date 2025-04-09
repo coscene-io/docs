@@ -1,0 +1,28 @@
+{
+  "id": "developers/openapi/openapi-endpoint",
+  "title": "获取实例地址",
+  "description": "OpenAPI 平台使用 openapi 作为请求地址的前缀。将 openapi 添加到您当前访问的平台地址前，即可获得 OpenAPI 服务的请求地址。",
+  "source": "@site/docs/developers/openapi/2-openapi-endpoint.md",
+  "sourceDirName": "developers/openapi",
+  "slug": "/developers/openapi/openapi-endpoint",
+  "permalink": "/docs/developers/openapi/openapi-endpoint",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zhexuan Yang",
+  "lastUpdatedAt": 1738910751000,
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "简介",
+    "permalink": "/docs/developers/openapi/intro"
+  },
+  "next": {
+    "title": "获取授权和 Token 认证",
+    "permalink": "/docs/developers/openapi/apikey"
+  }
+}

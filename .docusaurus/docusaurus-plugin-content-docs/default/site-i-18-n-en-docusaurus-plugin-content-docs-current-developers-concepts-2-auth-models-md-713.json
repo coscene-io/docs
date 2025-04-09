@@ -1,0 +1,28 @@
+{
+  "id": "developers/concepts/auth-models",
+  "title": "Users and Permissions",
+  "description": "Data is the most important asset for all coScene users. While enabling users to efficiently use data, we also pay great attention to users' requirements for the security and confidentiality of their data assets. From day one, we have been designing and building a flexible, scalable, and configurable permission model to meet our customers' needs for confidentiality, security, and control.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/developers/concepts/2-auth-models.md",
+  "sourceDirName": "developers/concepts",
+  "slug": "/developers/concepts/auth-models",
+  "permalink": "/docs/developers/concepts/auth-models",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zhexuan Yang",
+  "lastUpdatedAt": 1738910751000,
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Data Model",
+    "permalink": "/docs/developers/concepts/data-models"
+  },
+  "next": {
+    "title": "Automation",
+    "permalink": "/docs/developers/concepts/workflow"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "developers/coSceneCli/cli-install",
+  "title": "安装和初始化",
+  "description": "安装",
+  "source": "@site/docs/developers/coSceneCli/1-cli-install.md",
+  "sourceDirName": "developers/coSceneCli",
+  "slug": "/developers/coSceneCli/install",
+  "permalink": "/docs/developers/coSceneCli/install",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zhexuan Yang",
+  "lastUpdatedAt": 1738910751000,
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "slug": "install",
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "命令行工具 coCLI - Beta",
+    "permalink": "/docs/category/cocli"
+  },
+  "next": {
+    "title": "使用命令行操作记录（Records）",
+    "permalink": "/docs/developers/coSceneCli/record-operations"
+  }
+}

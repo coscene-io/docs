@@ -1,0 +1,28 @@
+{
+  "id": "device/device-remote-control",
+  "title": "Remote Device Control",
+  "description": "The coScene platform enables real-time remote device operations, such as remote command execution and SSH connections, enhancing operational capabilities.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/device/5-device-remote-control.md",
+  "sourceDirName": "device",
+  "slug": "/device/device-remote-control",
+  "permalink": "/docs/device/device-remote-control",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1743408693000,
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Data Collection Client Configuration",
+    "permalink": "/docs/device/device-collector"
+  },
+  "next": {
+    "title": "Batch Device Operations",
+    "permalink": "/docs/device/batch-device-operations"
+  }
+}

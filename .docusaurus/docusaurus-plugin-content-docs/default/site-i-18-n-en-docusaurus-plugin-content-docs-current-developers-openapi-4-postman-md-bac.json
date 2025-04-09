@@ -1,0 +1,28 @@
+{
+  "id": "developers/openapi/postman",
+  "title": "Using Postman",
+  "description": "What is Postman?",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/developers/openapi/4-postman.md",
+  "sourceDirName": "developers/openapi",
+  "slug": "/developers/openapi/postman",
+  "permalink": "/docs/developers/openapi/postman",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zhexuan Yang",
+  "lastUpdatedAt": 1738910751000,
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Authorization and Token Authentication",
+    "permalink": "/docs/developers/openapi/apikey"
+  },
+  "next": {
+    "title": "应用场景",
+    "permalink": "/docs/category/use-case"
+  }
+}

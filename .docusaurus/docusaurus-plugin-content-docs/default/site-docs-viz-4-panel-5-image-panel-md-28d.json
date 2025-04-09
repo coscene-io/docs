@@ -1,0 +1,28 @@
+{
+  "id": "viz/panel/image-panel",
+  "title": "图像面板",
+  "description": "显示原始及压缩后的图像和视频，并附带二维注释，如文本标签、圆形和点。同时叠加三维标记，以提供额外的上下文信息。",
+  "source": "@site/docs/viz/4-panel/5-image-panel.md",
+  "sourceDirName": "viz/4-panel",
+  "slug": "/viz/panel/image-panel",
+  "permalink": "/docs/viz/panel/image-panel",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1741682696000,
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "图表面板",
+    "permalink": "/docs/viz/panel/plot-panel"
+  },
+  "next": {
+    "title": "发布面板",
+    "permalink": "/docs/viz/panel/publish-panel"
+  }
+}

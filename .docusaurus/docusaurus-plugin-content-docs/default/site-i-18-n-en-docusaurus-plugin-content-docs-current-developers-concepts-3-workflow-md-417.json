@@ -1,0 +1,28 @@
+{
+  "id": "developers/concepts/workflow",
+  "title": "Automation",
+  "description": "coScene's workflow is a task-based workflow system. As one of the three core engines of coScene, the flexible and powerful workflow system brings more possibilities to the data stored on the coScene platform. This article introduces the basic features of the workflow. For details on the workflow's usage and components, please refer to the workflow section in the operation guide.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/developers/concepts/3-workflow.md",
+  "sourceDirName": "developers/concepts",
+  "slug": "/developers/concepts/workflow",
+  "permalink": "/docs/developers/concepts/workflow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zhexuan Yang",
+  "lastUpdatedAt": 1738910751000,
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Users and Permissions",
+    "permalink": "/docs/developers/concepts/auth-models"
+  },
+  "next": {
+    "title": "命令行工具 coCLI - Beta",
+    "permalink": "/docs/category/cocli"
+  }
+}

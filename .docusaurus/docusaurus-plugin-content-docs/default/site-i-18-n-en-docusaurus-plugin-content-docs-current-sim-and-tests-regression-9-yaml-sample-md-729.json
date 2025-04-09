@@ -1,0 +1,28 @@
+{
+  "id": "sim-and-tests/regression/yaml-sample",
+  "title": "Configuration Yaml Example",
+  "description": "This chapter introduces the syntax rules and usage examples of the test suite configuration file (cos.yaml), helping you quickly configure and manage test suites.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/sim-and-tests/regression/9-yaml-sample.md",
+  "sourceDirName": "sim-and-tests/regression",
+  "slug": "/sim-and-tests/regression/yaml-sample",
+  "permalink": "/docs/sim-and-tests/regression/yaml-sample",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1743408693000,
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "sidebar_position": 9
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Test Metadata and Test Results",
+    "permalink": "/docs/sim-and-tests/regression/status-and-output"
+  },
+  "next": {
+    "title": "开发者",
+    "permalink": "/docs/category/developer"
+  }
+}

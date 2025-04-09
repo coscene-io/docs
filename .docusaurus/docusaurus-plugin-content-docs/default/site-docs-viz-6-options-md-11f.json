@@ -1,0 +1,28 @@
+{
+  "id": "viz/options",
+  "title": "可视化选项",
+  "description": "可视化中还有一些其他选项，可以进行设置。",
+  "source": "@site/docs/viz/6-options.md",
+  "sourceDirName": "viz",
+  "slug": "/viz/options",
+  "permalink": "/docs/viz/options",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1741682696000,
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "一刻",
+    "permalink": "/docs/viz/create-moment-viz"
+  },
+  "next": {
+    "title": "帧率优化选项",
+    "permalink": "/docs/viz/frame-rate-optimization"
+  }
+}

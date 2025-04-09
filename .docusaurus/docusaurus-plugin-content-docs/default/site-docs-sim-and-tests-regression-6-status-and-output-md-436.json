@@ -1,0 +1,28 @@
+{
+  "id": "sim-and-tests/regression/status-and-output",
+  "title": "管理测试结果",
+  "description": "批量测试支持全面的测试结果管理能力，包括测试用例解析、运行状态追踪、日志收集及产物管理等。平台提供标准化的结果解析引擎，可视化的报告展示，以及丰富的数据分析功能。",
+  "source": "@site/docs/sim-and-tests/regression/6-status-and-output.md",
+  "sourceDirName": "sim-and-tests/regression",
+  "slug": "/sim-and-tests/regression/status-and-output",
+  "permalink": "/docs/sim-and-tests/regression/status-and-output",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Yujing Zheng",
+  "lastUpdatedAt": 1742308305000,
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "运行批量测试",
+    "permalink": "/docs/sim-and-tests/regression/run"
+  },
+  "next": {
+    "title": "配置文件格式与样例",
+    "permalink": "/docs/sim-and-tests/regression/yaml-sample"
+  }
+}

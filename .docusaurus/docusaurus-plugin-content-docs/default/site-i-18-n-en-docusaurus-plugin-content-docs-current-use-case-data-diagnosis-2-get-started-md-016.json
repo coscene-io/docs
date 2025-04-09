@@ -1,0 +1,28 @@
+{
+  "id": "use-case/data-diagnosis/get-started",
+  "title": "Set Up Your Data Collection",
+  "description": "Using the following scenario as an example, let's setup your automatic data collection and diagnosis.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/use-case/data-diagnosis/2-get-started.md",
+  "sourceDirName": "use-case/data-diagnosis",
+  "slug": "/use-case/data-diagnosis/get-started",
+  "permalink": "/docs/use-case/data-diagnosis/get-started",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Qi He",
+  "lastUpdatedAt": 1744180135000,
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "About Automatic Data Collection and Diagnosis",
+    "permalink": "/docs/use-case/data-diagnosis/intro"
+  },
+  "next": {
+    "title": "Add Rule",
+    "permalink": "/docs/use-case/data-diagnosis/add-rule"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "sim-and-tests/regression/status-and-output",
+  "title": "Test Metadata and Test Results",
+  "description": "Batch testing provides comprehensive test result management capabilities, including test case parsing, run status tracking, log collection, and artifact management. The platform offers standardized result parsing engines, visualized report displays, and rich data analysis functions.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/sim-and-tests/regression/6-status-and-output.md",
+  "sourceDirName": "sim-and-tests/regression",
+  "slug": "/sim-and-tests/regression/status-and-output",
+  "permalink": "/docs/sim-and-tests/regression/status-and-output",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Yujing Zheng",
+  "lastUpdatedAt": 1742308305000,
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Run a Cloud Test",
+    "permalink": "/docs/sim-and-tests/regression/run"
+  },
+  "next": {
+    "title": "Configuration Yaml Example",
+    "permalink": "/docs/sim-and-tests/regression/yaml-sample"
+  }
+}

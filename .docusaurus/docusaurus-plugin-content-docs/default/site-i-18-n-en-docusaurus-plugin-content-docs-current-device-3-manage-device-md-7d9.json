@@ -1,0 +1,28 @@
+{
+  "id": "device/manage-device",
+  "title": "Managing Devices",
+  "description": "Device Management Basics",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/device/3-manage-device.md",
+  "sourceDirName": "device",
+  "slug": "/device/manage-device",
+  "permalink": "/docs/device/manage-device",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "fei.gao",
+  "lastUpdatedAt": 1741860393000,
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Add Device",
+    "permalink": "/docs/device/create-device"
+  },
+  "next": {
+    "title": "Data Collection Client Configuration",
+    "permalink": "/docs/device/device-collector"
+  }
+}

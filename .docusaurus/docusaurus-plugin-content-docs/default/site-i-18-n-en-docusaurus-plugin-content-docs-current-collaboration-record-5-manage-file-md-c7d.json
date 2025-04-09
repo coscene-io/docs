@@ -1,0 +1,28 @@
+{
+  "id": "collaboration/record/manage-file",
+  "title": "Managing Files",
+  "description": "Files are divided into two categories: \"General Files\" and \"Visualization Files\". General files include common text, images, archives, etc.; visualization files support special preview and playback functions, such as Rosbag, log, map, TF files, etc.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/collaboration/record/5-manage-file.md",
+  "sourceDirName": "collaboration/record",
+  "slug": "/collaboration/record/manage-file",
+  "permalink": "/docs/collaboration/record/manage-file",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1741682696000,
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Upload Files",
+    "permalink": "/docs/collaboration/record/upload-files"
+  },
+  "next": {
+    "title": "项目协作",
+    "permalink": "/docs/category/project-collaboration"
+  }
+}

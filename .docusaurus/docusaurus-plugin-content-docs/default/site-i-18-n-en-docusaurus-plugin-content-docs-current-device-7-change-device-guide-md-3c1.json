@@ -1,0 +1,28 @@
+{
+  "id": "device/change-device-guide",
+  "title": "Device Replacement, Upgrade, and Uninstallation Guide",
+  "description": "Overview",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/device/7-change-device-guide.md",
+  "sourceDirName": "device",
+  "slug": "/device/change-device-guide",
+  "permalink": "/docs/device/change-device-guide",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1743408693000,
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Batch Device Operations",
+    "permalink": "/docs/device/batch-device-operations"
+  },
+  "next": {
+    "title": "自动化",
+    "permalink": "/docs/category/workflow"
+  }
+}

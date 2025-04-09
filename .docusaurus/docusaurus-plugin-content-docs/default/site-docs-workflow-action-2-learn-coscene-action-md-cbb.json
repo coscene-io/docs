@@ -1,0 +1,28 @@
+{
+  "id": "workflow/action/learn-coscene-action",
+  "title": "了解刻行自动化",
+  "description": "序言",
+  "source": "@site/docs/workflow/action/2-learn-coscene-action.md",
+  "sourceDirName": "workflow/action",
+  "slug": "/workflow/action/learn-coscene-action",
+  "permalink": "/docs/workflow/action/learn-coscene-action",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Qi He",
+  "lastUpdatedAt": 1739260304000,
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "快速入门",
+    "permalink": "/docs/workflow/action/quickstart"
+  },
+  "next": {
+    "title": "仿真与测试",
+    "permalink": "/docs/category/sim-and-tests"
+  }
+}

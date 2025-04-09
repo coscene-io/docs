@@ -1,0 +1,29 @@
+{
+  "id": "developers/coSceneCli/cli-action-operations",
+  "title": "使用命令行工具管理动作（Actions）",
+  "description": "coScene 的动作系统可以用来触发复杂的计算和处理过程，通过使用 CLI 工具编写脚本，可以极大",
+  "source": "@site/docs/developers/coSceneCli/3-cli-action-operations.md",
+  "sourceDirName": "developers/coSceneCli",
+  "slug": "/developers/coSceneCli/action-operations",
+  "permalink": "/docs/developers/coSceneCli/action-operations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zhexuan Yang",
+  "lastUpdatedAt": 1738910751000,
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "slug": "action-operations",
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "使用命令行操作记录（Records）",
+    "permalink": "/docs/developers/coSceneCli/record-operations"
+  },
+  "next": {
+    "title": "常见批量操作举例",
+    "permalink": "/docs/developers/coSceneCli/common-batch-tasks"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "use-case/data-diagnosis/manage-rule-group",
+  "title": "管理规则组",
+  "description": "下面将介绍如何管理规则组。",
+  "source": "@site/docs/use-case/data-diagnosis/4-manage-rule-group.md",
+  "sourceDirName": "use-case/data-diagnosis",
+  "slug": "/use-case/data-diagnosis/manage-rule-group",
+  "permalink": "/docs/use-case/data-diagnosis/manage-rule-group",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zhexuan Yang",
+  "lastUpdatedAt": 1741860417000,
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "添加规则",
+    "permalink": "/docs/use-case/data-diagnosis/add-rule"
+  },
+  "next": {
+    "title": "镜像",
+    "permalink": "/docs/category/image"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "sim-and-tests/regression/intro",
+  "title": "关于批量测试",
+  "description": "批量测试是一种并行执行多个测试任务的自动化解决方案，主要用于回归测试、仿真测试等大规模测试场景。平台提供完整的测试资源管理能力，支持镜像、数据集、测试套件与测试程序的统一管理，可在项目中一站式完成测试执行、状态监控及结果分析。",
+  "source": "@site/docs/sim-and-tests/regression/1-intro.md",
+  "sourceDirName": "sim-and-tests/regression",
+  "slug": "/sim-and-tests/regression/intro",
+  "permalink": "/docs/sim-and-tests/regression/intro",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Yujing Zheng",
+  "lastUpdatedAt": 1743058277000,
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "批量测试",
+    "permalink": "/docs/category/regression"
+  },
+  "next": {
+    "title": "测试套件",
+    "permalink": "/docs/sim-and-tests/regression/config-management"
+  }
+}

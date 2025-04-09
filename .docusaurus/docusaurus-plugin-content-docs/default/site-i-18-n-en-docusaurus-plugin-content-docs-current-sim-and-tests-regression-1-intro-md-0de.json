@@ -1,0 +1,28 @@
+{
+  "id": "sim-and-tests/regression/intro",
+  "title": "About Cloud Test",
+  "description": "Batch testing is an automated solution for parallel execution of multiple test tasks, primarily used in large-scale testing scenarios such as regression testing and simulation testing. The platform provides comprehensive test resource management capabilities, supporting unified management of images, datasets, test suites, and test bundles, enabling one-stop test execution, status monitoring, and result analysis within projects.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/sim-and-tests/regression/1-intro.md",
+  "sourceDirName": "sim-and-tests/regression",
+  "slug": "/sim-and-tests/regression/intro",
+  "permalink": "/docs/sim-and-tests/regression/intro",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Yujing Zheng",
+  "lastUpdatedAt": 1743058277000,
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "批量测试",
+    "permalink": "/docs/category/regression"
+  },
+  "next": {
+    "title": "Test Suite",
+    "permalink": "/docs/sim-and-tests/regression/config-management"
+  }
+}

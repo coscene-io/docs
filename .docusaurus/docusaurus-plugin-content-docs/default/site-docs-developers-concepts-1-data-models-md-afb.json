@@ -1,0 +1,28 @@
+{
+  "id": "developers/concepts/data-models",
+  "title": "数据模型",
+  "description": "组织 Organization",
+  "source": "@site/docs/developers/concepts/1-data-models.md",
+  "sourceDirName": "developers/concepts",
+  "slug": "/developers/concepts/data-models",
+  "permalink": "/docs/developers/concepts/data-models",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zhexuan Yang",
+  "lastUpdatedAt": 1738910751000,
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "概念",
+    "permalink": "/docs/category/core-concepts"
+  },
+  "next": {
+    "title": "用户和权限",
+    "permalink": "/docs/developers/concepts/auth-models"
+  }
+}

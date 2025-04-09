@@ -1,0 +1,29 @@
+{
+  "id": "developers/coSceneCli/cli-auto-complete",
+  "title": "自动补全",
+  "description": "coCLI 为 Bash、Zsh 提供自动补全功能，可以为你节省大量的输入。",
+  "source": "@site/docs/developers/coSceneCli/98-cli-auto-complete.mdx",
+  "sourceDirName": "developers/coSceneCli",
+  "slug": "/developers/coSceneCli/auto-complete",
+  "permalink": "/docs/developers/coSceneCli/auto-complete",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Zhexuan Yang",
+  "lastUpdatedAt": 1738910751000,
+  "sidebarPosition": 98,
+  "frontMatter": {
+    "slug": "auto-complete",
+    "sidebar_position": 98
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "常见批量操作举例",
+    "permalink": "/docs/developers/coSceneCli/common-batch-tasks"
+  },
+  "next": {
+    "title": "高级功能",
+    "permalink": "/docs/developers/coSceneCli/advanced-features"
+  }
+}

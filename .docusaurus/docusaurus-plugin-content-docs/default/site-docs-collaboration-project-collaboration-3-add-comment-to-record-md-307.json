@@ -1,0 +1,28 @@
+{
+  "id": "collaboration/project-collaboration/add-comment-to-record",
+  "title": "在记录中管理评论",
+  "description": "在记录创建后，团队成员可能需要协作处理数据。通过「评论」功能，成员可以发布和获取相关信息，实现高效协作。",
+  "source": "@site/docs/collaboration/project-collaboration/3-add-comment-to-record.md",
+  "sourceDirName": "collaboration/project-collaboration",
+  "slug": "/collaboration/project-collaboration/add-comment-to-record",
+  "permalink": "/docs/collaboration/project-collaboration/add-comment-to-record",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiran.yu",
+  "lastUpdatedAt": 1743397726000,
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "通用任务",
+    "permalink": "/docs/collaboration/project-collaboration/general-task"
+  },
+  "next": {
+    "title": "组织和团队",
+    "permalink": "/docs/category/organization-and-team"
+  }
+}
