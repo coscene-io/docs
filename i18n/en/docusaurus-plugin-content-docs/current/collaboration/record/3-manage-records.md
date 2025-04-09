@@ -88,7 +88,7 @@ On the record details page, you can invoke actions to process records, such as: 
 
     ![manage-record_2](./img/manage-record_2.png)
 
-2. When the action is complete, you can view the results in the "Invocations". See [Automated Actions](../../workflow/action/2-learn-coscene-action.md) chapter for details.
+2. When the action is complete, you can view the results in the "Invocations". See [Automated Actions](../../workflow/1-quick-start-workflow.md) chapter for details.
 
 ### Annotation
 > Only available for projects configured with annotation integration. Contact coScene for details.

@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Connect to Devices w/ coBridge
+# Connect to Devices coBridge
 
 [coBridge](https://github.com/coscene-io/coBridge) is an open-source edge software provided by coScene, currently supporting **ros1** `noetic`, **ros2** `foxy` and `humble` versions. coBridge runs as a ros node on the robot side and interacts with the cloud through websocket connections. After establishing a connection with the cloud, coBridge can subscribe to ros topics and call ros services based on cloud commands, enabling real-time robot status monitoring, remote command deployment, and other functionalities.
 

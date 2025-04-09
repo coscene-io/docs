@@ -284,5 +284,5 @@ Automatic data collection uses predefined rules to continuously monitor device l
     | Moments | <img src={require('./img/rule_10.png').default} alt="rule_10" width="1000" /> |
 
 ## Learn More
-- [Automate Data Processing](../workflow/action/2-learn-coscene-action.md)
+- [Automate Data Processing](../workflow/1-quick-start-workflow.md)
 - [Changelog](https://docs.coscene.io/changelog)

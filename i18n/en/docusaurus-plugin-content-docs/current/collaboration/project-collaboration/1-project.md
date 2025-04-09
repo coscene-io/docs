@@ -12,7 +12,7 @@ Projects contain modules such as Records, Tasks, Automations, Testing, Collectio
 | --- | --- |
 | Records | Records are the basic units for data storage and management. See [Records](../record/1-quick-start-record.md) for details |
 | Tasks | Tasks include general tasks, annotation tasks, and collection tasks, used for managing data processing workflows |
-| Automations | Automation includes actions, triggers, and action invocation history, used for automated data processing. See [Automation](../../workflow/action/2-learn-coscene-action.md) for details |
+| Automations | Automation includes actions, triggers, and action invocation history, used for automated data processing. See [Automation](../../workflow/1-quick-start-workflow.md) for details |
 | Testing | Batch testing is an automated solution for parallel execution of multiple test tasks, used for regression testing, simulation testing, and other large-scale testing scenarios. See [Testing](../../sim-and-tests/regression/1-intro.md) for details |
 | Collection & Diagnosis | Data Collection & Diagnosis uses defined rules to implement device monitoring, data collection, and automatic diagnosis. See [Collection & Diagnosis](../../use-case/data-diagnosis/1-intro.md) for details |
 | Devices | Devices establish connections with physical device endpoints as targets for data collection. All devices are managed centrally in the organization and allocated to projects as needed. See [Devices](../../device/1-device.md) for details |

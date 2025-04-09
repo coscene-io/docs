@@ -533,8 +533,17 @@
   "home.catalogue.workflow": {
     "message": "Automation"
   },
-  "home.catalogue.automation": {
+  "home.catalogue.quick-start-workflow": {
+    "message": "Quick Start with Automation"
+  },
+  "home.catalogue.action": {
     "message": "Actions"
+  },
+  "home.catalogue.trigger": {
+    "message": "Triggers"
+  },
+  "home.catalogue.invocation": {
+    "message": "Invocations"
   },
   "home.catalogue.sim-and-tests": {
     "message": "Simulation and Testing"
@@ -559,9 +568,6 @@
   },
   "home.catalogue.common-task": {
     "message": "Common Data Collection"
-  },
-  "home.catalogue.automated-data-collection": {
-    "message": "Automated Data Collection and Diagnosis"
   },
   "home.catalogue.automated-data-processing": {
     "message": "Automated Data Processing"
