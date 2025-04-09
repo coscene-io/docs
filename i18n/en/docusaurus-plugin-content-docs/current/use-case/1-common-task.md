@@ -78,7 +78,7 @@ Here is an example of [automatic decompression]. When the uploaded data contains
 
 In [Automation] - [Trigger] - [Create Trigger], create a new trigger. Fill in the file wildcard with `*.tar.gz` and `finish.flag`, which determines the presence of a compressed package and triggers when the file upload is complete (the Agent will upload the finish.flag marker file to indicate the end of the file upload process).
 ![decompress](./img/decompress-files.png)
-![decompress](./img/trigger_2.png)
+![trigger_2](./img/trigger_2.png)
 
 ### Trigger Decompression
 
