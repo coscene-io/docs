@@ -36,7 +36,13 @@ jobs:
         run: |
           # Temporarily modify the default locale to English
           sed -i 's/defaultLocale: '\''zh'\''/defaultLocale: '\''en'\''/' docusaurus.config.js
+
+          # Uncomment and update Algolia search path for GitHub Pages deployment
+          sed -i '/replaceSearchResultPathname: {/,/},/ s/^        \/\/ /        /' docusaurus.config.js
+          sed -i 's|from: '\''/docs/'\''|from: '\''/en/'\''|' docusaurus.config.js
+
           pnpm build
+          echo "docs.coscene.io" > ./build/CNAME
 
       - name: Deploy to GH Pages
         uses: peaceiris/actions-gh-pages@v4
