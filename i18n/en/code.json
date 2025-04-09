@@ -569,9 +569,6 @@
   "home.catalogue.common-task": {
     "message": "Common Data Collection"
   },
-  "home.catalogue.automated-data-collection": {
-    "message": "Automated Data Collection and Diagnosis"
-  },
   "home.catalogue.automated-data-processing": {
     "message": "Automated Data Processing"
   },
