@@ -55,7 +55,7 @@ The method of adding members differs depending on how the organization was creat
 Please refer to the [Adding Devices](../../device/2-create-device.md) section
 
 ## Adding Images
-> Images in the organization can be used in various projects for [Automation](../../workflow/action/2-learn-coscene-action.md) or [Cloud Test](../../sim-and-tests/regression/1-intro.md).
+> Images in the organization can be used in various projects for [Automation](../../workflow/1-quick-start-workflow.md) or [Cloud Test](../../sim-and-tests/regression/1-intro.md).
 
 Please refer to the [Images](../../image/1-about-docker-image.md) section
 

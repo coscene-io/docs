@@ -55,7 +55,7 @@ sidebar_position: 1
 请参见[添加设备](../../device/2-create-device.md)章节
 
 ## 添加镜像
-> 组织中的镜像可以在各个项目中使用，用于[自动化](../../workflow/action/2-learn-coscene-action.md)或[批量测试](../../sim-and-tests/regression/1-intro.md)。
+> 组织中的镜像可以在各个项目中使用，用于[自动化](../../workflow/1-quick-start-workflow.md)或[批量测试](../../sim-and-tests/regression/1-intro.md)。
 
 请参见[镜像](../../image/1-about-docker-image.md)章节
 

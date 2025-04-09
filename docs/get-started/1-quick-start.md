@@ -284,5 +284,5 @@ sidebar_position: 1
     | 一刻 | <img src={require('./img/rule_10.png').default} alt="rule_10" width="1000" /> |
 
 ## 了解更多
-- [自动化处理数据](../workflow/action/2-learn-coscene-action.md)
+- [自动化处理数据](../workflow/1-quick-start-workflow.md)
 - [更新日志](https://docs.coscene.cn/changelog)

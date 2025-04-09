@@ -20,10 +20,10 @@ Using the following scenario as an example, let's setup your automatic data coll
 1. Navigate to the `auto-upload` project
    ![pro-1](./img/pro-1.png)
 
-2. Within the project, go to the "Data Collection & Diagnosis Rules" page and click "Add Rule Group"
+2. Within the project, go to the "Collection & Diagnosis" page and click "Add Rule Group"
    ![data-2-1](./img/9-add-rule-set.png)
 
-3. After changing the rule group name, click "Add Blank Rule"
+3. After changing the rule group name, click "Create Blank Rule"
    ![data-2-2](./img/9-add-rule.png)
 
 4. Change the rule name, select `/external_log` as the topic, enter "msg.message contains error 1" as the event matching condition, check both "Collect Data" and "Diagnose Data" in trigger actions, change the moment name to "Triggered error 1", and click "Create"
@@ -42,11 +42,11 @@ Using the following scenario as an example, let's setup your automatic data coll
    ![pro-1](./img/pro-1.png)
 
 2. In the project, go to "Automation - Triggers" page and click "Create Trigger"
-   ![pro-trigger-add](./img/pro-trigger-add.png)
+   ![pro-trigger-add](./img/trigger_1.png)
 
 3. Edit trigger content:
 
-- Edit trigger name as "Data Diagnosis"
+- Edit trigger name as "Auto Diagnosis"
 - Select "System Action" as the associated action
 - Choose "Data Diagnosis" from the system action dropdown
 - Edit file wildcard pattern as `**/*` (using Glob format, see [reference documentation](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/))
@@ -58,7 +58,7 @@ Using the following scenario as an example, let's setup your automatic data coll
 
 1. Go to the "Devices" tab on the organization management page, and click the "Edit Data Collection Rules" button.
 
-   ![org-device-1](./img/org-device-1.png)
+   ![org-device-1](./img/device-config_1.png)
 
 2. Clear the default content in the rules, then copy and paste the following rule into the editor:
 
@@ -82,13 +82,11 @@ Using the following scenario as an example, let's setup your automatic data coll
 
 3. Click the "Save Changes" button.
 
-   ![org-device-7](./img/org-device-7.png)
-
 <br />
 
 ## Authorizing Device
 
-> Using a Linux device as an example, for other device registration methods refer to [Device Registration](https://docs.coscene.cn/en/docs/recipes/device/device-collector/#%E6%95%B0%E9%87%87%E8%A7%84%E5%88%99%E6%A0%BC%E5%BC%8F)
+> Using a Linux device as an example, for other device registration methods refer to [Device Registration](../../device/2-create-device.md)
 
 <br />
 
@@ -106,11 +104,11 @@ Using the following scenario as an example, let's setup your automatic data coll
 
 3. In coScene Web, enter the Device tab in the Org management page
 
-   ![org-device](./img/org-device.png)
+   ![org-device](./img/device_1.png)
 
 4. Copy the installation command, and paste it to the terminal input as Root user
 
-   ![org-device-copy-command](./img/org-device-copy-command.png)
+   ![org-device-copy-command](./img/device_2.png)
 
 5. Run the script, and checkout the system logs
 
@@ -122,11 +120,18 @@ Using the following scenario as an example, let's setup your automatic data coll
 
      ![dev-install-1](./img/dev-install-1.png)
 
-6. In the device page of the Org settings page, find the to be permitted device, and click "Permit"
+6. In the device page of the Org settings page, find the to be permitted device, and click "Enable Client"
 
    ![org-device-authorize](./img/org-device-authorize.png)
 
 <br />
+
+## Adding Device to Project
+
+1. In the project's "Project Devices" tab, click "Add Device"
+   ![pro-device-add](./img/pro-device-add-1.png)
+
+2. Select the device(s) you want to add and click "Confirm"
 
 ## Write Files in the Device Monitoring Directory
 
@@ -183,22 +188,9 @@ Using the following scenario as an example, let's setup your automatic data coll
 
    ![pro-1](./img/pro-1.png)
 
-2. View the automatically created record.
+2. View the automatically created record, and check the data uploaded in the record.
 
    ![auto-record-1](./img/auto-record-1.png)
 
-3. Check the data uploaded in the record.
 
-   ![auto-record-2](./img/auto-record-2.png)
 
-4. View the moment created at the trigger time.
-
-   ![auto-record-3](./img/auto-record-3.png)
-
-## Adding Device to Project
-
-1. In the project's "Project Devices" tab, click "Add Device"
-   ![pro-device-add](./img/pro-device-add-1.png)
-
-2. Select the device(s) you want to add and click "Confirm"
-   ![pro-device-add-2](./img/pro-device-add-2.png)
