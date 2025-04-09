@@ -1,0 +1,28 @@
+{
+  "id": "workflow/action/intro",
+  "title": "关于动作",
+  "description": "动作是自动化流程的基本构建块，它代表了一个具体的任务。借助动作，可以对数据开展一系列处理操作，涵盖数据清洗、预处理、训练以及测试等环节。通过对记录调用相应的动作，即可完成数据处理流程。",
+  "source": "@site/docs/workflow/action/1-intro.md",
+  "sourceDirName": "workflow/action",
+  "slug": "/workflow/action/intro",
+  "permalink": "/docs/workflow/action/intro",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "动作",
+    "permalink": "/docs/category/action"
+  },
+  "next": {
+    "title": "创建动作",
+    "permalink": "/docs/workflow/action/create-action"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "workflow/invocation",
+  "title": "Invocations",
+  "description": "The invocation history displays the execution history of all actions within the project, including information such as time, status, and execution results.",
+  "source": "@site/i18n/en/docusaurus-plugin-content-docs/current/workflow/4-invocation.md",
+  "sourceDirName": "workflow",
+  "slug": "/workflow/invocation",
+  "permalink": "/docs/workflow/invocation",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "xiranyu",
+  "lastUpdatedAt": 1744204125000,
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Triggers",
+    "permalink": "/docs/workflow/trigger"
+  },
+  "next": {
+    "title": "仿真与测试",
+    "permalink": "/docs/category/sim-and-tests"
+  }
+}

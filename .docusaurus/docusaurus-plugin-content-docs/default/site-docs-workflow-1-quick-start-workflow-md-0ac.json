@@ -1,0 +1,28 @@
+{
+  "id": "workflow/quick-start-workflow",
+  "title": "快速上手自动化",
+  "description": "自动化是一套基于任务的工作流系统，它凭借灵活且强大的特性，为您存储在平台的数据赋予了更多价值。主要应用于数据处理、转换、分析等场景，借助自动化流程，您能够高效处理海量数据，显著提升工作效能。",
+  "source": "@site/docs/workflow/1-quick-start-workflow.md",
+  "sourceDirName": "workflow",
+  "slug": "/workflow/quick-start-workflow",
+  "permalink": "/docs/workflow/quick-start-workflow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "自动化",
+    "permalink": "/docs/category/workflow"
+  },
+  "next": {
+    "title": "动作",
+    "permalink": "/docs/category/action"
+  }
+}

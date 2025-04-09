@@ -1,0 +1,28 @@
+{
+  "id": "workflow/trigger",
+  "title": "触发器",
+  "description": "触发器定义了动作的触发条件，当满足触发时机时，触发器会依据配置进行检查，并执行对应的动作。",
+  "source": "@site/docs/workflow/3-trigger.md",
+  "sourceDirName": "workflow",
+  "slug": "/workflow/trigger",
+  "permalink": "/docs/workflow/trigger",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "创建动作",
+    "permalink": "/docs/workflow/action/create-action"
+  },
+  "next": {
+    "title": "调用历史",
+    "permalink": "/docs/workflow/invocation"
+  }
+}
