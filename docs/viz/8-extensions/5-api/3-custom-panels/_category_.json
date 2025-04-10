@@ -1,0 +1,9 @@
+{
+  "label": "Custom Panels",
+  "position": 3,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/extensions/custom-panels"
+  }
+}
