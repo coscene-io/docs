@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Authorization and Token Authentication
 
-![apikey](./img/apikey-1-zh.png)
+![apikey](./img/apikey-1-en.png)
 
 In the coScene platform, follow the steps shown (Profile Icon -> Personal Settings -> Security -> Generate Access Token) to generate your personal API key (apikey). The permissions of the generated API key match those of your current account. Do not upload your personal API key to public platforms to avoid information leakage and other issues.
 

@@ -188,13 +188,9 @@ const config = {
       },
 
       algolia: {
-        // The application ID provided by Algolia
-        appId: '1TFD6DKASB',
-
-        // Public API key: it is safe to commit it
-        apiKey: '6340803417c38ec67854ac4ae37c55ce',
-
-        indexName: 'coscene',
+        appId: process.env.ALGOLIA_APP_ID || '1TFD6DKASB',
+        apiKey: process.env.ALGOLIA_API_KEY || '6340803417c38ec67854ac4ae37c55ce',
+        indexName: process.env.ALGOLIA_INDEX_NAME || 'coscene',
 
         // Optional: see doc section below
         contextualSearch: true,
@@ -202,7 +198,7 @@ const config = {
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
         // externalUrlRegex: 'external\\.com|domain\\.com',
 
-        // // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
         // replaceSearchResultPathname: {
         //   from: '/docs/', // or as RegExp: /\/docs\//
         //   to: '/',

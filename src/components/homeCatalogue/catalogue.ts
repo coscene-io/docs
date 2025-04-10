@@ -2,13 +2,12 @@ import { translate } from '@docusaurus/Translate';
 
 export const CATALOGUE = [
   {
-    header: { title: translate({ id: 'home.catalogue.getting-started', message: '快速开始' }) },
+    header: { title: translate({ id: 'home.catalogue.getting-started', message: '新手入门' }) },
     docs: [
       { docLink: '/overview', title: translate({ id: 'home.catalogue.overview', message: '总览' }) },
-      { docLink: '/get-started/login-to-platform', title: translate({ id: 'home.catalogue.login-to-platform', message: '登录刻行时空' }) },
-      { docLink: '/get-started/create-project', title: translate({ id: 'home.catalogue.create-project', message: '创建项目' }) },
-      { docLink: '/get-started/create-record-and-viz', title: translate({ id: 'home.catalogue.create-record-and-viz', message: '创建并可视化记录' }) },
-      { docLink: '/get-started/create-moment-flow', title: translate({ id: 'home.catalogue.create-moment-flow', message: '创建你的第一条“一刻”' }) },
+      { docLink: '/get-started/quick-start', title: translate({ id: 'home.catalogue.quick-start', message: '快速开始' }) },
+      { docLink: '/browser-support', title: translate({ id: 'home.catalogue.browser-support', message: '浏览器支持' }) },
+      
     ],
   },
   {
@@ -39,15 +38,18 @@ export const CATALOGUE = [
       { docLink: '/device/create-device', title: translate({ id: 'home.catalogue.create-device', message: '添加设备' }) },
       { docLink: '/device/manage-device', title: translate({ id: 'home.catalogue.manage-device', message: '管理设备' }) },
       { docLink: '/device/device-collector', title: translate({ id: 'home.catalogue.device-collector', message: '数采客户端配置' }) },
-      { docLink: '/device/change-device-guide', title: translate({ id: 'home.catalogue.change-device-guide', message: '换机、升级、卸载流程指南' }) },
-      { docLink: '/device/device-remote-control', title: translate({ id: 'home.catalogue.device-remote-control', message: '远程控制设备' }) },
+      { docLink: '/device/device-remote-control', title: translate({ id: 'home.catalogue.device-remote-control', message: '远程连接设备' }) },
       { docLink: '/device/batch-device-operations', title: translate({ id: 'home.catalogue.batch-device-operations', message: '批量操作设备' }) },
+      { docLink: '/device/change-device-guide', title: translate({ id: 'home.catalogue.change-device-guide', message: '换机、升级、卸载流程指南' }) },
     ],
   },
   {
     header: { title: translate({ id: 'home.catalogue.workflow', message: '自动化' }) },
     docs: [
-      { docLink: '/category/action', title: translate({ id: 'home.catalogue.automation', message: '动作' }) },
+      { docLink: '/workflow/quick-start-workflow', title: translate({ id: 'home.catalogue.quick-start-workflow', message: '快速上手自动化' }) },
+      { docLink: '/category/action', title: translate({ id: 'home.catalogue.action', message: '动作' }) },
+      { docLink: '/workflow/trigger', title: translate({ id: 'home.catalogue.trigger', message: '触发器' }) },
+      { docLink: '/workflow/invocation', title: translate({ id: 'home.catalogue.invocation', message: '调用历史' }) },
     ],
   },
   {
@@ -68,15 +70,14 @@ export const CATALOGUE = [
     header: { title: translate({ id: 'home.catalogue.use-case', message: '应用场景' }) },
     docs: [
       { docLink: '/use-case/common-task', title: translate({ id: 'home.catalogue.common-task', message: '通用数据采集' }) },
-      { docLink: '/use-case/automated-data-collection', title: translate({ id: 'home.catalogue.automated-data-collection', message: '自动数据采集与诊断' }) },
       { docLink: '/use-case/automated-data-processing', title: translate({ id: 'home.catalogue.automated-data-processing', message: '自动化处理数据' }) },
       { docLink: '/category/data-collection-and-diagnosis', title: translate({ id: 'home.catalogue.data-collection-and-diagnosis', message: '数据自动采集与诊断' }) },
     ],
   },
   {
-    header: { title: translate({ id: 'home.catalogue.use-case', message: '镜像' }) },
+    header: { title: translate({ id: 'home.catalogue.docker-images', message: 'Docker 镜像' }) },
     docs: [
-      { docLink: '/image/intro', title: translate({ id: 'home.catalogue.intro-image', message: '关于镜像' }) },
+      { docLink: '/image/about-docker-image', title: translate({ id: 'home.catalogue.intro-image', message: '关于镜像' }) },
       { docLink: '/image/build-image', title: translate({ id: 'home.catalogue.build-image', message: '准备镜像' }) },
       { docLink: '/image/push-image', title: translate({ id: 'home.catalogue.push-image', message: '推送镜像' }) },
       { docLink: '/image/image-management', title: translate({ id: 'home.catalogue.image-management', message: '管理镜像' }) },

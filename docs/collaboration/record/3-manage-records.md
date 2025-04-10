@@ -85,7 +85,7 @@ sidebar_position: 3
 
     ![manage-record_2](./img/manage-record_2.png)
 
-2. 当动作执行完成后，即可在「调用历史」中查看处理结果。详见[自动化动作](../../workflow/action/2-learn-coscene-action.md)章节。
+2. 当动作执行完成后，即可在「调用历史」中查看处理结果。详见[自动化动作](../../workflow/1-quick-start-workflow.md)章节。
 
 ### 标注
 > 仅配置了标注集成的项目可以使用。详情请咨询刻行时空。

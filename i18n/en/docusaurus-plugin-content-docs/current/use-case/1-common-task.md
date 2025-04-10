@@ -70,7 +70,7 @@ After the task collection is complete, the task details will link to the record 
 
 ## Subsequent Data Processing
 
-Once the data is uploaded to the coScene platform, users can leverage the platform's [automation](../workflow/action/1-quickstart.md) capabilities for subsequent processing to improve data flow speed and enhance development efficiency.
+Once the data is uploaded to the coScene platform, users can leverage the platform's [automation](../workflow/1-quick-start-workflow.md) capabilities for subsequent processing to improve data flow speed and enhance development efficiency.
 
 Here is an example of [automatic decompression]. When the uploaded data contains compressed packages, the automation capability automatically decompresses the compressed package files, avoiding the cumbersome process of downloading data, decompressing, and re-uploading the decompressed data.
 
@@ -78,6 +78,7 @@ Here is an example of [automatic decompression]. When the uploaded data contains
 
 In [Automation] - [Trigger] - [Create Trigger], create a new trigger. Fill in the file wildcard with `*.tar.gz` and `finish.flag`, which determines the presence of a compressed package and triggers when the file upload is complete (the Agent will upload the finish.flag marker file to indicate the end of the file upload process).
 ![decompress](./img/decompress-files.png)
+![trigger_2](./img/trigger_2.png)
 
 ### Trigger Decompression
 
