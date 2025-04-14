@@ -83,4 +83,11 @@ export const CATALOGUE = [
       { docLink: '/image/image-management', title: translate({ id: 'home.catalogue.image-management', message: '管理镜像' }) },
     ],
   },
+  {
+    header: { title: translate({ id: 'home.catalogue.client', message: '客户端' }) },
+    docs: [
+      { docLink: '/client/connect-by-cobridge', title: translate({ id: 'home.catalogue.connect-by-cobridge', message: '通过 coBridge 连接机器' }) },
+      { docLink: '/client/apt-source-install', title: translate({ id: 'home.catalogue.apt-source-install', message: '通过 APT 安装 coScene 软件' }) },
+    ],
+  },
 ];
