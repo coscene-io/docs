@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # LayoutActions
 
 面板可以通过 `context.layout` 执行与用户当前布局相关的操作。
