@@ -10,7 +10,7 @@ type MessageEvent<T> = object;
 
 MessageEvent 表示单个消息及其元数据。
 
-请记住从 `@foxglove/extension` 导入 MessageEvent。这与 DOM MessageEvent 类不同。
+请记住从 `@coscene/extension` 导入 MessageEvent。这与 DOM MessageEvent 类不同。
 
 ## 类型参数
 

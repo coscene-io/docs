@@ -4,13 +4,13 @@ sidebar_position: 1
 
 # 扩展介绍
 
-通过自定义扩展来扩展 Foxglove 的功能，以更好地支持您团队的独特工作流程。构建定制面板，将自定义消息转换为 Foxglove 支持的架构，并为主题名称创建别名以便于可视化。
+通过自定义扩展来扩展可视化的功能，以更好地支持您团队的独特工作流程。构建定制面板，将自定义消息转换为可视化支持的架构，并为主题名称创建别名以便于可视化。
 
 一旦您开发并安装了扩展，您可以在应用设置中打开以显示所有可用和已安装的扩展。
 
 ## 自定义面板
 
-虽然 Foxglove 提供了一套内置面板用于机器人数据可视化和调试，但许多用户有我们开箱即用的产品无法满足的特定领域需求。
+虽然可视化提供了一套内置面板用于机器人数据可视化和调试，但许多用户有我们开箱即用的产品无法满足的特定领域需求。
 
 自定义面板扩展允许您构建完整的面板。自定义面板可以订阅各种主题上的消息，发布和接收消息，并以最适合您工作流程的形式显示消息信息。
 
@@ -23,7 +23,7 @@ sidebar_position: 1
 
 ## 消息转换器
 
-消息转换器扩展允许您将消息从一种架构转换为另一种架构。通过将消息转换为符合 Foxglove 支持的架构，您可以使用 Foxglove 的内置可视化功能检查它们。例如，您可以使用消息转换器将自定义 GPS 消息转换为 foxglove.LocationFix 消息，以便在地图面板中可视化。
+消息转换器扩展允许您将消息从一种架构转换为另一种架构。通过将消息转换为符合可视化支持的架构，您可以使用可视化的内置可视化功能检查它们。例如，您可以使用消息转换器将自定义 GPS 消息转换为 foxglove.LocationFix 消息，以便在地图面板中可视化。
 
 > 注意：消息转换器仅在面板订阅主题时按需运行。
 
@@ -35,13 +35,13 @@ sidebar_position: 1
 
 ## 主题别名
 
-主题别名扩展允许您将数据源中的主题别名到新主题。Foxglove 面板可以同时订阅别名主题和原始数据源的主题。
+主题别名扩展允许您将数据源中的主题别名到新主题。可视化面板可以同时订阅别名主题和原始数据源的主题。
 
 ## 编写扩展
 
-您可以使用 JavaScript 或 TypeScript 编写扩展，并将其打包成 `.foxe` 文件。您可以私下将这些文件分发给您的 Foxglove 组织，或通过我们的注册表公开分发 - 通过注册表安装扩展仅支持桌面应用。单个扩展可以包含多个面板或转换器。
+您可以使用 JavaScript 或 TypeScript 编写扩展，并将其打包成 `.foxe` 文件。您可以私下将这些文件分发给您的组织，或通过我们的注册表公开分发(开发中) - 通过注册表安装扩展仅支持桌面应用。单个扩展可以包含多个面板或转换器。
 
-Foxglove 在 create-foxglove-extension 包中提供了一套入门模板和命令，以简化扩展的编写。
+刻行时空在 [create-coscene-extension](https://github.com/coscene-io/create-coscene-extension) 包中提供了一套入门模板和命令，以简化扩展的编写。
 
 要求：
 
@@ -50,7 +50,7 @@ Foxglove 在 create-foxglove-extension 包中提供了一套入门模板和命�
 要设置您的扩展项目，请导航到您希望源代码所在的目录，并在终端窗口中运行以下命令：
 
 ```
-npm init foxglove-extension@latest my-extension-name
+npm init coscene-extension@latest my-extension-name
 ```
 
 这将设置扩展目录结构。您的扩展入口点是 `index.ts` 文件。
@@ -59,5 +59,5 @@ npm init foxglove-extension@latest my-extension-name
 
 ## API 参考
 
-* ExtensionContext
-* @foxglove/extension
+* [ExtensionContext](./5-api/2-entry-point//1-extension-context.md)
+* @coscene/coscene-extension

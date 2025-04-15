@@ -4,11 +4,11 @@ sidebar_position: 1
 
 # ExtensionContext
 
-`activate` 函数的第一个参数是 `ExtensionContext` — 这个上下文允许你扩展 Foxglove 以支持自定义工作流。
+`activate` 函数的第一个参数是 `ExtensionContext` — 这个上下文允许你扩展可视化以支持自定义工作流。
 
 ```typescript
 export function activate(extensionContext: ExtensionContext) {
-  // ... 调用 extensionContext 上的方法来扩展 Foxglove
+  // ... 调用 extensionContext 上的方法来扩展可视化
 }
 ```
 
@@ -20,17 +20,17 @@ export function activate(extensionContext: ExtensionContext) {
 registerPanel(params): void
 ```
 
-`registerPanel` 向 Foxglove 界面添加一个新的面板。要注册一个面板，你需要提供一个 `name` 和一个 `initPanel` 函数。
+`registerPanel` 向可视化界面添加一个新的面板。要注册一个面板，你需要提供一个 `name` 和一个 `initPanel` 函数。
 
 `initPanel` 函数接受一个 `PanelExtensionContext` 参数，该参数包含用于访问面板数据和渲染 UI 更新的属性和方法。它还返回一个可选的清理函数，在扩展 `panelElement` 卸载时运行。
 
-有关详细信息，请参阅[创建自定义面板](/extension-api/guides/creating-custom-panel)指南。
+有关详细信息，请参阅[创建自定义面板](../../guides/create-custom-panel)指南。
 
 #### 参数
 
 | 参数   | 类型                                                                                 |
 | ------ | ------------------------------------------------------------------------------------ |
-| params | [ExtensionPanelRegistration](/extension-api/type-aliases/ExtensionPanelRegistration) |
+| params | [ExtensionPanelRegistration](../custom-panels/extension-panel-registration) |
 
 #### 返回值
 
