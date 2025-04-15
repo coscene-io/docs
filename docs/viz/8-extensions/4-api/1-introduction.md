@@ -6,7 +6,7 @@ sidebar_position: 1
 
 `@coscene/extension` 包含了编写 CoScene 扩展所需的类型定义。
 
-请参阅 [扩展介绍](../../extensions/introduction) 以获取更多信息。
+请参阅 [扩展介绍](../1-introduction) 以获取更多信息。
 
 ## 入门指南
 
