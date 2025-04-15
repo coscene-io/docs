@@ -12,7 +12,7 @@ type PanelExtensionContext = object;
 
 `registerPanel` 中使用的 `initPanel` 函数接受一个 `PanelExtensionContext` 参数。该参数包含用于访问面板数据和渲染 UI 更新的属性和方法。`initPanel` 函数还可以返回一个可选的清理函数，当扩展的 `panelElement` 卸载时运行。
 
-有关详细信息，请参阅[创建自定义面板指南](/docs/panels/custom-panels)。
+有关详细信息，请参阅[创建自定义面板指南](../../../../category/extensions/custom-panels)。
 
 ## 属性
 
@@ -42,7 +42,7 @@ readonly initialState: unknown;
 readonly layout: LayoutActions;
 ```
 
-面板可以执行的与用户当前布局相关的操作。有关详细信息，请参阅 [LayoutActions](/docs/panels/custom-panels/layout-actions)。
+面板可以执行的与用户当前布局相关的操作。有关详细信息，请参阅 [LayoutActions](./2-layout-actions.md)。
 
 ---
 
