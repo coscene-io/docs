@@ -52,7 +52,7 @@ readonly layout: LayoutActions;
 readonly optional dataSourceProfile: string;
 ```
 
-标识正在播放的数据的语义，例如哪些主题或参数在语义上有意义，或者使用哪些规范化约定。这通常映射到机器人框架的简写标识符，如 "ros1"、"ros2" 或 "ulog"。有关详细信息，请参阅 [MCAP profiles 概念](https://github.com/foxglove/mcap/blob/main/docs/specification/appendix.md#well-known-profiles)。
+标识正在播放的数据的语义，例如哪些主题或参数在语义上有意义，或者使用哪些规范化约定。这通常映射到机器人框架的简写标识符，如 "ros1"、"ros2" 或 "ulog"。有关详细信息，请参阅 [MCAP profiles 概念](https://mcap.dev/spec/registry#well-known-profiles)。
 
 ---
 
@@ -436,7 +436,7 @@ context.advertise("/my_topic", "std_msgs/String");
 | -------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | topic    | string                                                                             | 要发布消息的主题名称。                                               |
 | datatype | string                                                                             | 消息的数据类型。                                                     |
-| options  | [AdvertiseOptions](/extension-api/type-aliases/AdvertiseOptions) \| undefined | 发布选项。有关详细信息，请参阅 [AdvertiseOptions](/extension-api/type-aliases/AdvertiseOptions)。 |
+| options  | Record\<string, unknown\> | 发布选项。有关详细信息，请参阅 [AdvertiseOptions](/extension-api/type-aliases/AdvertiseOptions)。 |
 
 #### 返回
 

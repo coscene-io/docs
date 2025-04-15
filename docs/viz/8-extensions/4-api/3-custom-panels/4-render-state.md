@@ -76,7 +76,7 @@ optional sharedPanelState: Record<string, unknown>;
 optional variables: Map<string, VariableValue>;
 ```
 
-当前 Studio 变量的映射。变量是键/值对，在当前布局中可被面板和脚本全局访问。有关更多信息，请参见 [变量文档](https://docs.foxglove.dev/docs/visualization/variables)。
+当前 Studio 变量的映射。变量是键/值对，在当前布局中可被面板和脚本全局访问。
 
 ---
 
