@@ -59,5 +59,5 @@ npm init coscene-extension@latest my-extension-name
 
 ## API 参考
 
-* [ExtensionContext](./5-api/2-entry-point//1-extension-context.md)
+* [ExtensionContext](/docs/viz/8-extensions/4-api/2-entry-point/1-extension-context)
 * @coscene/coscene-extension

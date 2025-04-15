@@ -24,13 +24,13 @@ registerPanel(params): void
 
 `initPanel` 函数接受一个 `PanelExtensionContext` 参数，该参数包含用于访问面板数据和渲染 UI 更新的属性和方法。它还返回一个可选的清理函数，在扩展 `panelElement` 卸载时运行。
 
-有关详细信息，请参阅[创建自定义面板](../../guides/create-custom-panel)指南。
+有关详细信息，请参阅[创建自定义面板](/viz/8-extensions/guides/create-custom-panel)指南。
 
 #### 参数
 
 | 参数   | 类型                                                                                 |
 | ------ | ------------------------------------------------------------------------------------ |
-| params | [ExtensionPanelRegistration](../custom-panels/extension-panel-registration) |
+| params | [ExtensionPanelRegistration](/viz/8-extensions/4-api/3-custom-panels/extension-panel-registration) |
 
 #### 返回值
 
@@ -46,11 +46,11 @@ registerMessageConverter<Src>(args): void
 
 `registerMessageConverter` 注册一个函数，用于将消息从一种模式转换为另一种模式。
 
-消息转换器允许你通过将消息转换为符合 Foxglove 支持的模式的格式，来利用 Foxglove 的内置可视化面板 — 例如，你可以将自定义的 GPS 消息转换为 `foxglove.LocationFix` 消息，以便在地图面板中可视化。
+消息转换器允许你通过将消息转换为符合可视化支持的模式的格式，来利用可视化的内置可视化面板 — 例如，你可以将自定义的 GPS 消息转换为 `foxglove.LocationFix` 消息，以便在地图面板中可视化。
 
 每当面板使用 `convertTo` 选项订阅主题时，转换器函数就会在原始消息上运行并输出转换后的消息，然后将其提供给面板。如果函数返回 `undefined`，则忽略输出，并且不会向面板提供消息。这在你想根据输入消息的内容选择性地输出转换后的消息时很有用。
 
-有关详细信息，请参阅[创建消息转换器](/extension-api/guides/creating-message-converter)指南。
+有关详细信息，请参阅[创建消息转换器](/viz/8-extensions/4-api/guides/creating-message-converter)指南。
 
 #### 类型参数
 
@@ -62,7 +62,7 @@ registerMessageConverter<Src>(args): void
 
 | 参数 | 类型                                                                                           |
 | ---- | ---------------------------------------------------------------------------------------------- |
-| args | [RegisterMessageConverterArgs](/extension-api/type-aliases/RegisterMessageConverterArgs)`\<Src\>` |
+| args | [RegisterMessageConverterArgs](/viz/8-extensions/4-api/type-aliases/RegisterMessageConverterArgs)`\<Src\>` |
 
 #### 返回值
 
@@ -84,7 +84,7 @@ registerTopicAliases(aliasFunction): void
 
 | 参数          | 类型                                                                 |
 | ------------- | -------------------------------------------------------------------- |
-| aliasFunction | [TopicAliasFunction](/extension-api/type-aliases/TopicAliasFunction) |
+| aliasFunction | [TopicAliasFunction](/viz/8-extensions/4-api/type-aliases/TopicAliasFunction) |
 
 #### 返回值
 
