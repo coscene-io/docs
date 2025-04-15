@@ -60,7 +60,7 @@ async function onNewRangeIterator(batchIterator) {
 
 | 参数          | 类型                                                                                                                            |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| batchIterator | AsyncIterable\<[Immutable](/extension-api/type-aliases/Immutable)\<[MessageEvent](/extension-api/type-aliases/MessageEvent)\[\]\>\> |
+| batchIterator | AsyncIterable\<[Immutable](../6-other/2-immutable.md)\<[MessageEvent](../6-other/1-app-setting-value.md)\[\]\>\> |
 
 #### 返回
 
@@ -78,7 +78,7 @@ optional onReset: (batchIterator) => Promise<void>;
 
 | 参数          | 类型                                                                                                                            |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| batchIterator | AsyncIterable\<[Immutable](/extension-api/type-aliases/Immutable)\<[MessageEvent](/extension-api/type-aliases/MessageEvent)\[\]\>\> |
+| batchIterator | AsyncIterable\<[Immutable](../6-other/2-immutable.md)\<[MessageEvent](../6-other/1-app-setting-value.md)\[\]\>\> |
 
 #### 返回
 
