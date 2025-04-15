@@ -35,7 +35,7 @@ activate: (extensionContext) => void;
 
 | 参数             | 类型                                                           |
 | ---------------- | -------------------------------------------------------------- |
-| extensionContext | [ExtensionContext](/extension-api/interfaces/ExtensionContext) |
+| extensionContext | [ExtensionContext](/docs/viz/extensions/api/entry-point/extension-context) |
 
 #### 返回值
 
