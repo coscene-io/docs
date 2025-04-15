@@ -29,6 +29,7 @@ export const CATALOGUE = [
       { docLink: '/viz/create-moment-viz', title: translate({ id: 'home.catalogue.create-moment-viz', message: '一刻' }) },
       { docLink: '/viz/options', title: translate({ id: 'home.catalogue.options', message: '可视化选项' }) },
       { docLink: '/viz/frame-rate-optimization', title: translate({ id: 'home.catalogue.frame-rate-optimization', message: '帧率优化选项' }) },
+      { docLink: '/category/extensions', title: translate({ id: 'home.catalogue.extensions', message: '插件' }) },
     ],
   },
   {
