@@ -45,7 +45,7 @@ converter: (msg, event) =\> unknown;
 | 参数 | 类型                                                                                                               |
 | --------- | ------------------------------------------------------------------------------------------------------------------ |
 | msg       | Src                                                                                                                |
-| event     | [Immutable](/extension-api/type-aliases/Immutable)\<[MessageEvent](/extension-api/type-aliases/MessageEvent)\<Src\>\> |
+| event     | [Immutable](../6-other/2-immutable.md)\<[MessageEvent](../6-other/3-message-event.md)\<Src\>\> |
 
 #### 返回值
 
