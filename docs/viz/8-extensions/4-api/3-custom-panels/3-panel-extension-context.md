@@ -206,7 +206,7 @@ watch(field): void
 saveState(state): void
 ```
 
-使用 `context.saveState` 将任意对象作为持久化面板状态（也称为面板设置）保存在当前布局中。您可以使用[导入/导出设置](/docs/panels/custom-panels/import-export-settings)查看当前面板状态。
+使用 `context.saveState` 将任意对象作为持久化面板状态（也称为面板设置）保存在当前布局中。
 
 ```
 context.initialState = undefined; // 面板的初始状态
@@ -435,8 +435,8 @@ context.advertise("/my_topic", "std_msgs/String");
 | 参数     | 类型                                                                               | 描述                                                                 |
 | -------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | topic    | string                                                                             | 要发布消息的主题名称。                                               |
-| datatype | string                                                                             | 消息的数据类型。                                                     |
-| options  | Record\<string, unknown\> | 发布选项。有关详细信息，请参阅 [AdvertiseOptions](/extension-api/type-aliases/AdvertiseOptions)。 |
+| schemaName | string                                                                             | 已发布消息将遵循的模式名称。|
+| options  | Record\<string, unknown\> | 传递给当前数据源的选项，用于附加配置。|
 
 #### 返回
 
