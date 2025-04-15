@@ -503,6 +503,9 @@
   "home.catalogue.frame-rate-optimization": {
     "message": "Frame Rate Optimization"
   },
+  "home.catalogue.extensions": {
+    "message": "Extensions"
+  },
   "home.catalogue.options": {
     "message": "Visualization Options"
   },
