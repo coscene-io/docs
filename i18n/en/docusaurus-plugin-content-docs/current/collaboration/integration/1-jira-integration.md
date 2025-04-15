@@ -2,101 +2,172 @@
 sidebar_position: 1
 ---
 
-# Jira
+# Jira Integration
+## Introduction
+After configuring Jira integration, you can synchronize project tasks to Jira for unified task management on the enterprise ticketing platform. Here are typical use cases:
+1. When device issues occur, automatically upload data and create tasks in Jira
+2. During data visualization analysis, create tasks at key timestamps and sync them to Jira
 
-Integrate with Jira to synchronize tasks as issues in Jira.
+## Operation Process
+### Configure Integration
 
-## Initial Configuration
+> Each project is configured independently, and only project administrators can edit
 
-> Each project is configured independently, and only the project administrator can edit the config.
+1. Enter the project that needs integration configuration, go to Project Settings - Service Integration - Jira, and click the [Add Config] button.
 
-In the project, go to the "Manage Project - Service Integration" page and click "Add Config".
+    ![jira_1](./img/jira_1.png)
 
-![integration-1](./img/integration-1.png)
+2. Fill in the integration configuration and save. Field descriptions are as follows:
 
-Edit the configuration as needed. Once done, click "Save".
+    ```yaml
+    enabled: true # Enable configuration
 
-![integration-2](./img/integration-2.png)
+    endpoint: https://jira.com/ # Jira URL
+    httpBasicAuthorization:
+      usernameAndPassword:
+        username: root # Jira username
+        password: admin # Jira password
 
-The configuration will take effect immediately.
+    projectKey: TEST # Jira project Key
+    issueType: 'Bug' # Jira issue type
+    issueTitleTemplate: '{{task.title}}' # Jira issue title, e.g., task name
+    issueDescriptionTemplate: | # Issue description
+      [Task Name]: {{task.title}}
+      [Device ID]: {{device.id}}
+      [Record Link]: {{record.link}}
 
-![integration-3](./img/integration-3.png)
+    customFields: # Issue custom fields
+      customfield_1:
+        id: '88888' # Field 1 (dropdown style), select option with id 88888
+      customfield_2: TEST # Field 2 (text box style), enter content as TEST
+      customfield_3: # Field 3, enter P1
+        value: P1
+    ```
 
-<br />
+- **enabled**
+  
+  Jira integration status, enable/disable (true/false). Enabled by default, when disabled tasks cannot be synced to Jira
 
-## Integration Configuration Format
+- **endpoint**
 
-Here is an example configuration:
+  Jira URL, e.g., `https://www.atlassian.com/`
 
-```yaml
-enabled: true # Enable configuration
+- **username**
+  
+  Jira username, used to create issues and get issue information in Jira projects with this user's identity
 
-endpoint: https://jira.com/ # Jira URL
-httpBasicAuthorization:
-  usernameAndPassword:
-    username: root # Jira username
-    password: admin # Jira password
+- **password**
+  
+  Password corresponding to the Jira username
 
-projectKey: TEST # Jira project Key
+- **projectKey**
 
-issueTitleTemplate: '{{task.title}}' # Jira title is the task name
-issueDescriptionTemplate: '{{task.title}} {{task.description}} {{record.link}}' # Jira description consists of task name, task description, and record link
-issueType: 'Bug' # Jira type
-
-customFields: # Custom fields
-  customfield_1:
-    id: '88888' # Field 1 (dropdown style), select the option with id 88888
-  customfield_2: TEST # Field 2 (text box style), enter the content as TEST
-```
-
-- **Jira Project Key**
-
-  You need to look up the project's Key on the Jira platform:
+  Jira project Key, create issues in this project. The project Key needs to be looked up on the Jira platform, as shown:
 
   ![jira-1](./img/jira-1.png)
 
-- **Jira Type**
+- **issueType**
 
-  Supports standard fields, such as: Bug, Task, Story.
+  Issue type, configure what type of issue to create (bug/task/other), obtain as follows:
 
-- **Custom Fields**
+  1. Open browser, modify as needed and enter the following URL to get information about all issue types in the Jira project.
 
-  If there are custom fields, please contact coScene.
+     ```Plain Text
+     {jira_endpoint}/rest/api/2/project/{projectKey}
+     ```
 
-<br />
+     Where:
+     - `{jira_endpoint}`: Jira URL, e.g., https://www.atlassian.com/
+     - `{projectKey}`: Jira project Key
 
-## Synchronize Tasks to Jira
+  2. After getting all issue type information, use ctrl + f shortcut to quickly find the id corresponding to the issue type you need to configure, e.g., find the id value for `issuetype` `Bug`
 
-> After the Jira integration configuration is complete, the tasks in the project can be synchronized to Jira.
+        ![jira_2](./img/jira_2.png)
 
-Enter the project's record page:
+  3. After finding the id corresponding to the issue type, configure it in the `issueType` field.
+    
+      ```yaml
+      issueType: '10004' # Jira issue type
+      ```
 
-![jira-record-1](./img/jira-record-1.png)
+- **issueTitleTemplate**
 
-In the "Comments & Tasks" module, click the "Synchronize Task" button corresponding to the task:
+  Jira issue title template, can be customized or use variables, defaults to using the general task title, i.e., `'{{task.title}}'`
 
-![jira-record-2](./img/jira-record-2.png)
+- **issueDescriptionTemplate**
 
-Once synchronized successfully, the created Jira link will be displayed.
+  Jira issue description template, can be customized or use variables
 
-<br />
+- **customFields**
 
-## Manage Jira Integration
+  Issue custom fields, can be customized or use variables. Get custom field names and values as follows:
+
+  1. Open browser, modify as needed and enter the following URL to get information about all fields in the Jira project.
+
+     ```Plain Text
+     {jira_endpoint}/rest/api/2/issue/createmeta?projectKeys={projectKey}&expand=projects.issuetypes.fields
+     ```
+
+     Where:
+     - `{jira_endpoint}`: Jira URL, e.g., https://www.atlassian.com/
+     - `{projectKey}`: Jira project Key
+
+  2. After getting all field information, use ctrl + f shortcut to quickly find the custom field name you need to configure, e.g., find the name and value of field `test1-type`
+
+       ![jira_3](./img/jira_3.png)
+
+  3. Enter the corresponding field format according to the [Jira Official Documentation](https://developer.atlassian.com/server/jira/platform/rest/v10000/intro/#field-input-formats), enter the field name and value in the Jira configuration. Taking the multi-select box `test1-type` as an example:
+     - Find "Multi-select Type" in the Jira official documentation, copy the format
+
+       ![jira_4](./img/jira_4.png)
+
+     - Under custom fields in the Jira configuration, paste the "Multi-select Type" format, replace the content with the previously found `test1-type` field name and value
+
+        ```yaml
+        customFields: 
+          "customfield_10187" : [ { "value": "n1" }, { "value": "n2" } ]
+        ```
+
+### Variable Description
+Task information in integration supports using variables, see the table below:
+
+| Variable Name | Meaning |
+|--------|------|
+| `{{task.title}}` | Task name |
+| `{{record.title}}` | Record name |
+| `{{record.description}}` | Record description |
+| `{{record.labels}}` | Record labels |
+| `{{record.link}}` | Record link |
+| `{{device.id}}` | Device ID |
+| `{{device.title}}` | Device name |
+
+### Synchronize Tasks to Jira
+
+> After Jira integration configuration is complete, general tasks in the project can be synchronized to Jira. Learn about [General Tasks](../project-collaboration/2-general-task.md)
+
+1. Enter the project's "General Tasks" page, click the [Sync Task] button corresponding to the task
+
+    ![jira_5](./img/jira_5.png)
+
+2. After successful synchronization, the created Jira link and status will be displayed. Click the status button to jump to Jira to view issue details.
+
+## Managing Jira Integration
+> Only project administrators can manage Jira integration
 
 ### Edit Integration
+1. In the project, go to "Project Settings - Service Integration" page, click [Edit Config] for Jira.
 
-In the project, go to the "Manage Project - Service Integration" page and click "Edit Configuration".
+   ![jira_6](./img/jira_6.png)
 
-![integration-4](./img/integration-4.png)
+2. After completing the configuration, click [Save].
 
-Edit the configuration online. Once done, click "Save".
-
-![integration-2](./img/integration-2.png)
-
-### Disable Integration
-
-Follow the Edit Integration Step and change the enabled configuration to false and save.
+   ![jira_7](./img/jira_7.png)
 
 ### Delete Integration
+1. In the project, go to "Project Settings - Service Integration" page, click [Edit Config] for Jira.
 
-Follow the Edit Integration Step, delete all the configurations and save.
+   ![jira_6](./img/jira_6.png)
+
+2. Click [Delete], confirm again to delete the integration information. After deletion, tasks cannot be synchronized to Jira.
+
+   ![jira_8](./img/jira_8.png)

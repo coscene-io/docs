@@ -2,55 +2,72 @@
 sidebar_position: 1
 ---
 
-# Organization
+# Organizations
+An organization is a logical concept that represents a team or a company. An organization can have multiple projects and members.
 
-You and your team will automatically join the same organization. On the "Organization Management" page, you can view the projects, members, devices, and statistics of the organization.
+## Organization Management Interface
+On the "Organization Management" page, you can view information about the organization's projects, members, devices, images, billing, and more.
 
-![org-1](./img/org-1.png)
+| Name | Description |
+| --- | --- |
+| Projects | Manage all projects within the organization in the project list. Projects are the units of data management, see [Projects](../project-collaboration/1-project.md) |
+| Members | Manage all users and their permissions within the organization in the member list |
+| Devices | Centrally manage all devices within the organization in the organization device list. Devices can establish connections with physical devices, see [Devices](../../device/1-device.md) |
+| Images | The platform provides a professional private image registry to centrally manage all images within the organization, see [Images](../../image/1-about-docker-image.md) |
+| Usage & Billing | Display information about the organization's storage, number of devices, computation time, etc. |
 
-![org-2](./img/org-2.png)
+![org_1](./img/org_1.png)
 
-## Adding Projects within the Organization
+## Creating an Organization
+1. Access [coScene Platform https://www.coscene.io/](https://www.coscene.io) through your browser, click [Login] in the upper right corner to enter the login interface
+    
+     ![org_2](./img/org_2.png)
 
-Please refer to [the section about projects in the operation guide](../task-and-comment/2-project.md).
+2. Choose a login method to enter the platform: Email or Google Workspace
 
-## Adding Members to the Organization
+    ![org_3](./img/org_3.png)
 
-> Taking logging in as a member of a certain DingTalk company as an example.
+3. Fill in "Organization Name" and "Organization ID", check "Agree", and click the [Create Organization] button
+    
+    ![org_4](./img/org_4.png)
 
-After a user from a certain DingTalk company logs in, they automatically join the company's organization, becoming a "member" with organizational member permissions.
+4. After successful creation, you will automatically enter the organization homepage
 
-![org-3](./img/org-3.png)
+## Adding Projects
 
-When a user leaves the company and is no longer a member of the DingTalk company, they can no longer enter the original organization. However, the user's operation records are still retained.
+Please refer to the [Projects](../project-collaboration/1-project.md) section
 
-## Adding Devices to the Organization
+## Adding Organization Members
+The method of adding members differs depending on how the organization was created:
+- **Organizations created with email login**:
+  - Organization administrators can click the [Invite Members] button on the "Organization Management-Members" page to invite members to join the organization via email.
 
-> Devices within the organization can be invoked by various projects.
+    ![org_5](./img/org_5.png)
 
-On the "Organization Management" page's "Devices" tab, click the [Add Device] button.
+- **Organizations created with Google Workspace login**:
+  - Enterprise users will automatically join their enterprise's corresponding organization upon login, with "Organization collaborator" permissions.
+  - When users are no longer members of the enterprise, they cannot access the corresponding organization, but their operation records are retained.
 
-![org-4](./img/org-4.png)
+## Adding Organization Devices
 
-In the "Add Device" pop-up, enter the device ID and other information, then click [Confirm]. The device ID is a unique identifier and cannot be duplicated.
+> Devices in the organization can be added to various projects, and the same device can be added to multiple projects for [Data Collection](../../use-case/1-common-task.md) and [Remote Connection](../../device/5-device-remote-control.md).
 
-![org-5](./img/org-5.png)
+Please refer to the [Adding Devices](../../device/2-create-device.md) section
 
-The device is successfully added.
+## Adding Images
+> Images in the organization can be used in various projects for [Automation](../../workflow/1-quick-start-workflow.md) or [Cloud Test](../../sim-and-tests/regression/1-intro.md).
 
-![org-6](./img/org-6.png)
+Please refer to the [Images](../../image/1-about-docker-image.md) section
 
-## Viewing Organization Statistics
+## Usage & Billing
+> Only organization administrators can view organization usage information.
 
-> Who can use this feature<br />
-> Only organization administrators can view organizational statistics.
+Organization usage information includes: organization storage, number of active devices, computation time, etc.
 
-Organizational statistics include: organization storage capacity, number of organization records, number of organization projects, and number of organization devices.
+On the "Organization Management-Usage & Billing" page, you can view organization usage information.
 
-On the "Organization Management" page's "Settings" tab, you can view the organization's storage capacity.
+![org_6](./img/org_6.png)
 
-![org-7](./img/org-7.png)
+On the homepage, you can view the number of organization records, projects, and devices.
 
-On the homepage, you can view the number of organization records, number of projects, and number of devices.
-
-![org-8](./img/org-8.png)
+![org_7](./img/org_7.png)

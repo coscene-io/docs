@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node env
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build website with English locale
+        run: |
+          # Temporarily modify the default locale to English
+          sed -i 's/defaultLocale: '\''zh'\''/defaultLocale: '\''en'\''/' docusaurus.config.js
+
+          # Uncomment and update Algolia search path for GitHub Pages deployment
+          sed -i '/replaceSearchResultPathname: {/,/},/ s/^        \/\/ /        /' docusaurus.config.js
+          sed -i 's|from: '\''/docs/'\''|from: '\''/en/'\''|' docusaurus.config.js
+
+          pnpm build
+          echo "docs.coscene.io" > ./build/CNAME
+
+      - name: Deploy to GH Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+
+      - name: Notification to Feishu
+        uses: foxundermoon/feishu-action@v2
+        with:
+          url: ${{ secrets.FEISHU_BOT_WEBHOOK_URL_RHODE_ISLAND }}
+          msg_type: text
+          content: |
+            text: |
+              🚀 coScene Docs 海外版本部署完成
+              👨‍💻 部署人员：${{ github.actor }}
+              🔗 访问地址：https://docs.coscene.io

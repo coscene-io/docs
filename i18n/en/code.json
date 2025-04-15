@@ -461,17 +461,11 @@
   "home.catalogue.getting-started": {
     "message": "Getting Started"
   },
-  "home.catalogue.login-to-platform": {
-    "message": "Login to coScene"
+  "home.catalogue.quick-start": {
+    "message": "Quick Start"
   },
-  "home.catalogue.create-project": {
-    "message": "Create a Project"
-  },
-  "home.catalogue.create-record-and-viz": {
-    "message": "Create and Visualize Record"
-  },
-  "home.catalogue.create-moment-flow": {
-    "message": "Create Your First \"Moment\""
+  "home.catalogue.browser-support": {
+    "message": "Browser Support"
   },
   "home.catalogue.collaboration": {
     "message": "Collaboration"
@@ -539,8 +533,17 @@
   "home.catalogue.workflow": {
     "message": "Automation"
   },
-  "home.catalogue.automation": {
+  "home.catalogue.quick-start-workflow": {
+    "message": "Quick Start with Automation"
+  },
+  "home.catalogue.action": {
     "message": "Actions"
+  },
+  "home.catalogue.trigger": {
+    "message": "Triggers"
+  },
+  "home.catalogue.invocation": {
+    "message": "Invocations"
   },
   "home.catalogue.sim-and-tests": {
     "message": "Simulation and Testing"
@@ -566,14 +569,14 @@
   "home.catalogue.common-task": {
     "message": "Common Data Collection"
   },
-  "home.catalogue.automated-data-collection": {
-    "message": "Automated Data Collection and Diagnosis"
-  },
   "home.catalogue.automated-data-processing": {
     "message": "Automated Data Processing"
   },
   "home.catalogue.data-collection-and-diagnosis": {
     "message": "Data Collection and Diagnose"
+  },
+  "home.catalogue.docker-images": {
+    "message": "Docker Images"
   },
   "home.catalogue.intro-image": {
     "message": "About Images"
@@ -586,5 +589,14 @@
   },
   "home.catalogue.image-management": {
     "message": "Image Management"
+  },
+  "home.catalogue.client": {
+    "message": "Desktop Apps"
+  },
+  "home.catalogue.connect-by-cobridge": {
+    "message": "Connect to Devices coBridge"
+  },
+  "home.catalogue.apt-source-install": {
+    "message": "Installing coScene Software via APT"
   }
 }
