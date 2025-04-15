@@ -64,7 +64,7 @@ optional onRender: (renderState, done) => void;
 
 在面板初始化期间将此属性设置为函数。
 
-Foxglove 将在播放期间需要重新渲染面板时运行 `context.onRender`。该函数接受 `renderState` 和 `done` 回调作为参数。渲染事件频繁发生（60hz、30hz 等）。
+可视化将在播放期间需要重新渲染面板时运行 `context.onRender`。该函数接受 `renderState` 和 `done` 回调作为参数。渲染事件频繁发生（60hz、30hz 等）。
 
 **注意**：您的 `onRender` 函数**必须**在渲染后调用 `done`，以指示面板已准备好渲染下一组数据。`done` 调用的确切位置将因框架和不同扩展的逻辑而异。
 
@@ -82,7 +82,7 @@ context.onRender = (renderState, done) => {
 
 | 参数        | 类型                                                                                                        |
 | ----------- | ----------------------------------------------------------------------------------------------------------- |
-| renderState | [Immutable](/extension-api/type-aliases/Immutable)\<[RenderState](/extension-api/type-aliases/RenderState)\> |
+| renderState | [Immutable](../6-other/2-immutable.md)\<[RenderState](../3-custom-panels/4-render-state.md)\> |
 | done        | () => void                                                                                                  |
 
 #### 返回
@@ -99,7 +99,7 @@ optional subscribeMessageRange: (args) => () => void;
 
 订阅以接收当前数据源的给定主题的整个时间范围的消息。
 
-有关行为的详细信息，请参阅 [SubscribeMessageRangeArgs](/extension-api/type-aliases/SubscribeMessageRangeArgs)。
+有关行为的详细信息，请参阅 [SubscribeMessageRangeArgs](../3-custom-panels/16-subscribe-message-range-args.md)。
 
 注意：这不会读取实时源的消息，如 foxglove_bridge、rosbridge 或 ROS 1 原生连接。对于这些消息，您仍需要使用 `context.subscribe()` 和 `watch("currentFrame")`。
 
@@ -107,7 +107,7 @@ optional subscribeMessageRange: (args) => () => void;
 
 | 参数 | 类型                                                                               |
 | ---- | ---------------------------------------------------------------------------------- |
-| args | [SubscribeMessageRangeArgs](/extension-api/type-aliases/SubscribeMessageRangeArgs) |
+| args | [SubscribeMessageRangeArgs](../3-custom-panels/16-subscribe-message-range-args.md) |
 
 #### 返回
 
@@ -131,7 +131,7 @@ optional UNSTABLE_subscribeMessageRange: (args) => () => void;
 
 | 参数 | 类型                                                                               |
 | ---- | ---------------------------------------------------------------------------------- |
-| args | [SubscribeMessageRangeArgs](/extension-api/type-aliases/SubscribeMessageRangeArgs) |
+| args | [SubscribeMessageRangeArgs](../3-custom-panels/16-subscribe-message-range-args.md) |
 
 #### 返回
 
@@ -170,7 +170,7 @@ context.watch("currentTime");
 
 | 参数  | 类型                                                         |
 | ----- | ------------------------------------------------------------ |
-| field | keyof [RenderState](/extension-api/type-aliases/RenderState) |
+| field | keyof [RenderState](../3-custom-panels/4-render-state.md) |
 
 ##### 返回
 
@@ -243,7 +243,7 @@ context.setParameter("/param1", "value1");
 | 参数  | 类型                                                         | 描述                       |
 | ----- | ------------------------------------------------------------ | -------------------------- |
 | name  | string                                                       | 要设置的参数的名称。       |
-| value | [ParameterValue](/extension-api/type-aliases/ParameterValue) | 参数的新值。               |
+| value | [ParameterValue](../6-other/4-parameter-value.md) | 参数的新值。               |
 
 #### 返回
 
@@ -297,7 +297,7 @@ context.onRender = (renderState: RenderState, done) => {
 | 参数  | 类型                                                       | 描述                      |
 | ----- | ---------------------------------------------------------- | ------------------------- |
 | name  | string                                                     | 要设置的变量的名称。      |
-| value | [VariableValue](/extension-api/type-aliases/VariableValue) | 变量的新值。              |
+| value | [VariableValue](../6-other/8-variable-value.md) | 变量的新值。              |
 
 #### 返回
 
@@ -367,7 +367,7 @@ unsubscribe();
 | 参数    | 类型                                                                               | 描述                                                                 |
 | ------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | topic   | string                                                                             | 要订阅的主题名称。                                                   |
-| options | [SubscribeOptions](/extension-api/type-aliases/SubscribeOptions) \| undefined | 订阅选项。有关详细信息，请参阅 [SubscribeOptions](/extension-api/type-aliases/SubscribeOptions)。 |
+| options | [SubscribeOptions](../3-custom-panels/17-subscription.md) \| undefined | 订阅选项。有关详细信息，请参阅 [SubscribeOptions](../3-custom-panels/17-subscription.md)。 |
 
 #### 返回
 

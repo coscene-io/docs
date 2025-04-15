@@ -34,7 +34,7 @@ initPanel: (context) => void | () => void;
 
 | 参数 | 类型 |
 | --- | --- |
-| context | [PanelExtensionContext](/extension-api/type-aliases/PanelExtensionContext) |
+| context | [PanelExtensionContext](./3-panel-extension-context.md) |
 
 #### 返回值
 
