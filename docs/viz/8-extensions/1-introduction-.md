@@ -61,3 +61,5 @@ npm init coscene-extension@latest my-extension-name
 
 * [ExtensionContext](/docs/viz/extensions/api/entry-point/extension-context)
 * @coscene/coscene-extension
+
+
