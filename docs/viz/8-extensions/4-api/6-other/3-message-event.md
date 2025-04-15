@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+title: MessageEvent<T>
 ---
 
 # MessageEvent\<T\>
