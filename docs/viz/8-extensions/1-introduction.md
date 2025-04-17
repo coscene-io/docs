@@ -39,7 +39,7 @@ sidebar_position: 1
 
 ## 编写扩展
 
-您可以使用 JavaScript 或 TypeScript 编写扩展，并将其打包成 `.foxe` 文件。您可以私下将这些文件分发给您的组织，或通过我们的注册表公开分发(开发中) - 通过注册表安装扩展仅支持桌面应用。单个扩展可以包含多个面板或转换器。
+您可以使用 JavaScript 或 TypeScript 编写扩展，并将其打包成 `.coe` 文件。您可以私下将这些文件分发给您的组织，或通过我们的注册表公开分发(开发中) - 通过注册表安装扩展仅支持桌面应用。单个扩展可以包含多个面板或转换器。
 
 刻行时空在 [create-coscene-extension](https://github.com/coscene-io/create-coscene-extension) 包中提供了一套入门模板和命令，以简化扩展的编写。
 
