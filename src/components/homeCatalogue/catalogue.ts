@@ -29,6 +29,7 @@ export const CATALOGUE = [
       { docLink: '/viz/create-moment-viz', title: translate({ id: 'home.catalogue.create-moment-viz', message: '一刻' }) },
       { docLink: '/viz/options', title: translate({ id: 'home.catalogue.options', message: '可视化选项' }) },
       { docLink: '/viz/frame-rate-optimization', title: translate({ id: 'home.catalogue.frame-rate-optimization', message: '帧率优化选项' }) },
+      { docLink: '/category/extensions', title: translate({ id: 'home.catalogue.extensions', message: '插件' }) },
     ],
   },
   {
@@ -81,6 +82,13 @@ export const CATALOGUE = [
       { docLink: '/image/build-image', title: translate({ id: 'home.catalogue.build-image', message: '准备镜像' }) },
       { docLink: '/image/push-image', title: translate({ id: 'home.catalogue.push-image', message: '推送镜像' }) },
       { docLink: '/image/image-management', title: translate({ id: 'home.catalogue.image-management', message: '管理镜像' }) },
+    ],
+  },
+  {
+    header: { title: translate({ id: 'home.catalogue.client', message: '客户端' }) },
+    docs: [
+      { docLink: '/client/connect-by-cobridge', title: translate({ id: 'home.catalogue.connect-by-cobridge', message: '通过 coBridge 连接机器' }) },
+      { docLink: '/client/apt-source-install', title: translate({ id: 'home.catalogue.apt-source-install', message: '通过 APT 安装 coScene 软件' }) },
     ],
   },
 ];

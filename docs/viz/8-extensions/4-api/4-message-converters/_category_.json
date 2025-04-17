@@ -1,0 +1,9 @@
+{
+  "label": "消息转换器",
+  "position": 4,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/extensions/message-converters"
+  }
+}

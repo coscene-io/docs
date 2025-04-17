@@ -503,6 +503,9 @@
   "home.catalogue.frame-rate-optimization": {
     "message": "Frame Rate Optimization"
   },
+  "home.catalogue.extensions": {
+    "message": "Extensions"
+  },
   "home.catalogue.options": {
     "message": "Visualization Options"
   },
@@ -589,5 +592,14 @@
   },
   "home.catalogue.image-management": {
     "message": "Image Management"
+  },
+  "home.catalogue.client": {
+    "message": "Desktop Apps"
+  },
+  "home.catalogue.connect-by-cobridge": {
+    "message": "Connect to Devices coBridge"
+  },
+  "home.catalogue.apt-source-install": {
+    "message": "Installing coScene Software via APT"
   }
 }
