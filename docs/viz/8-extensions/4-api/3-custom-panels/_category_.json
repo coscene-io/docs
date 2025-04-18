@@ -1,9 +1,0 @@
-{
-  "label": "自定义面板",
-  "position": 3,
-  "collapsible": true,
-  "link": {
-    "type": "generated-index",
-    "slug": "/category/extensions/custom-panels"
-  }
-}
