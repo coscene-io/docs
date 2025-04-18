@@ -1,0 +1,9 @@
+{
+  "label": "入口",
+  "position": 2,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/extensions/entry-point"
+  }
+}
