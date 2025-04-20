@@ -86,7 +86,7 @@ onRender 函数中会接受最新的面板状态：
 - `renderState.topics` 最新的主题列表
 - `renderState.currentFrame` 订阅主题的新消息
 
-接下来，使用 `context.watch` 函数来告知上下文哪些状态需要监听，当状态发生变化时，会触发 `onRender` 事件，`context.watch` 监听 [`RenderState`]('docs/viz/extensions/api/custom-panels/render-state/') 中的 key 值，您可以从 [`RenderState`]('docs/viz/extensions/api/custom-panels/render-state/') 中查看所有可以被监听的 key 值
+接下来，使用 `context.watch` 函数来告知上下文哪些状态需要监听，当状态发生变化时，会触发 `onRender` 事件，`context.watch` 监听 [`RenderState`]('/docs/viz/extensions/api/custom-panels/render-state/') 中的 key 值，您可以从 [`RenderState`]('/docs/viz/extensions/api/custom-panels/render-state/') 中查看所有可以被监听的 key 值
 ```ts
 context.onRender = (renderState: RenderState, done) => {
   // ...
