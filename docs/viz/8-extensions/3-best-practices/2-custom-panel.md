@@ -9,10 +9,10 @@ sidebar_position: 2
 当现有面板不支持您想要可视化的需求时，自定义面板非常有用，您可以完全控制面板的外观和行为，以满足您的特定需求。
 
 ## 我们的目标
-我们将创建一个自定义面板，在这个面板中我们将原始消息面板，使用 [react-json-view](https://github.com/microlinkhq/react-json-view) 来展示对应话题的原始消息。
+我们将创建一个自定义面板，在这个面板中我们将模拟原始消息面板，使用 [react-json-view](https://github.com/microlinkhq/react-json-view) 来展示对应话题的原始消息。
 
 ## 开始之前
-在开始之前，需要基础的概念/环境需要您自行了解/安装：
+在开始之前，需要基础的概念/环境，您需要自行了解/安装：
 - 一些基础的机器人概念
 - 刻行时空可视化功能的基础使用
 - [js/ts 的基础语法](https://www.typescriptlang.org/docs/handbook/basic-types.html)
@@ -27,16 +27,16 @@ npm init coscene-extension@latest custom-raw-message-panel
 ```
 这条命令将创建一个 `custom-raw-message-panel` 目录，里面已经包含一些模板源代码
 
-然后，我们需要安装一些依赖包，到我们的项目中
-- `@microlink/react-json-view` 是用于展示 json 数据的 react 组件：
+然后，我们需要安装一些依赖包到我们的项目中：
+- `@microlink/react-json-view` 是用于展示 json 数据的 react 组件
 - `immer` 是一个用于处理不可变（immutable）状态的 JavaScript 库 
 - `lodash` 是知名的 JavaScript 工具库，提供了许多实用的函数，包括数组操作、对象操作等
 
 ```bash
-npm install @microlink/react-json-view
+npm install @microlink/react-json-view immer lodash
 ```
 
-然后我们打开package.json 文件，修改 `displayName` 和 `description` 字段为 `custom raw message panel`，修改后的 `package.json` 文件内的内容应该如下。
+然后我们打开 `package.json` 文件，修改 `displayName` 和 `description` 字段为 `custom raw message panel`，修改后的 `package.json` 文件内的内容应该如下。
 ```json
 {
   "name": "custom-raw-message-panel",
@@ -44,11 +44,10 @@ npm install @microlink/react-json-view
   "description": "custom raw message panel",
   ...
 }
-
 ```
 
 ## 编写自定义面板
-现在在您选择的编辑器中打开 `custom-raw-message-panel` 文件夹, 然后打开其中的 `src/index.ts` 文件, 您将看到文件中已经注册了一个示例面板，该面板已注册为 `example-panel`, 第一步我们将这个示例面板的名称修改为 `custom-raw-message-panel`，修改后的 `index.ts` 文件内的内容应该如下。
+现在在您选择的编辑器中打开 `custom-raw-message-panel` 文件夹，然后打开其中的 `src/index.ts` 文件，您将看到文件中已经注册了一个示例面板，该面板已注册为 `example-panel`，第一步，我们需要将这个示例面板的名称修改为 `custom-raw-message-panel`，修改后的 `index.ts` 文件内的内容应该如下。
 ```ts
 import { ExtensionContext } from "@coscene/extension";
 
@@ -62,13 +61,13 @@ export function activate(extensionContext: ExtensionContext): void {
 }
 ```
 
-然后我们打开 src/ExamplePanel.tsx 文件，在 src/ExamplePanel.tsx 文件中，你会看到一个简单的 ExamplePanel 组件，我们需要先解释一下这个文件中的代码，然后根据我们的需求，修改这个文件，这个文件中它使用 React 的状态管理来跟踪订阅的主题、消息及其渲染状态。
+然后我们打开 `src/ExamplePanel.tsx` 文件，在 `src/ExamplePanel.tsx` 文件中，你会看到一个简单的面板组件，我们需要先解释一下这个文件中的代码，然后根据我们的需求，修改这个文件，这个文件中它使用 React 的状态管理来跟踪订阅的主题、消息及其渲染状态。
 ```ts
 function ExamplePanel({ context }: { context: PanelExtensionContext }): JSX.Element {
   const [topics, setTopics] = useState<readonly Topic[] | undefined>();
   const [messages, setMessages] = useState<readonly MessageEvent<unknown>[] | undefined>();
 
-  const [renderDone, setRenderDone] = useState<(() => void) | undefined>();
+  const [renderDone, setRenderDone] = useState<() => void | undefined>();
 ```
 
 示例中当检测到相关更新时将运行 `onRender` 事件 
@@ -81,12 +80,12 @@ useLayoutEffect(() => {
   };
 }, [context]);
 ```
-onRender 函数中会接受最新的面板状态：
-- `done` 新的渲染完成后的回调函数, 当渲染完成时，需要调用 `done` 函数, 标识面板已经完成上一个渲染周期
+onRender 函数会接收最新的面板状态：
+- `done` 新的渲染完成后的回调函数，当渲染完成时，需要调用 `done` 函数，标识面板已经完成上一个渲染周期
 - `renderState.topics` 最新的主题列表
 - `renderState.currentFrame` 订阅主题的新消息
 
-接下来，使用 `context.watch` 函数来告知上下文哪些状态需要监听，当状态发生变化时，会触发 `onRender` 事件，`context.watch` 监听 [`RenderState`](/docs/viz/extensions/api/custom-panels/render-state) 中的 key 值，您可以从 [`RenderState`](/docs/viz/extensions/api/custom-panels/render-state) 中查看所有可以被监听的 key 值
+接下来，使用 `context.watch` 函数来告知上下文哪些状态需要监听，当状态发生变化时，会触发 `onRender` 事件，`context.watch` 用于监听 [`RenderState`](/docs/viz/extensions/api/custom-panels/render-state) 中的 key 值，您可以从 [`RenderState`](/docs/viz/extensions/api/custom-panels/render-state) 中查看所有可以被监听的 key 值
 ```ts
 context.onRender = (renderState: RenderState, done) => {
   // ...
@@ -97,7 +96,7 @@ context.watch("topics");
 context.watch("currentFrame");
 ```
 
-然后我们需要使用 `context.subscribe` 函数来订阅主题数组，这些主题的消息将填充到 `renderState.currentFrame` 中
+然后我们需要使用 `context.subscribe` 函数来订阅主题数组，这些主题的消息将被填充到 `renderState.currentFrame` 中
 ```ts
 context.subscribe(["/some/topic"]);
 ```
@@ -109,27 +108,27 @@ useEffect(() => {
 }, [renderDone]);
 ```
 
-在函数的底部，我们看到如何使用所有这些逻辑来呈现数据源主题和模式名称的表
+在函数的底部，我们可以看到如何使用所有这些逻辑来呈现数据源主题和模式名称的表
 ```ts
 return (
   <div style={{ padding: "1rem" }}>
     <h2>Welcome to your new extension panel!</h2>
-    // ...
+    {/* ... */}
     {(topics ?? []).map((topic) => (
       <>
         <div key={topic.name}>{topic.name}</div>
         <div key={topic.datatype}>{topic.datatype}</div>
       </>
     ))}
-    // ...
+    {/* ... */}
   </div>
 );
 ```
 
 
-根据我们的需求，在设置中我们需要让用户自定义用户选择要展示的话题(Topic)，并且我们可以让用户自定义 `@microlink/react-json-view` 中支持的主题(Theme)，锁进(Indent Width)，以及是否展示数据类型(Display DataTypes)
+根据我们的需求，在设置中我们需要让用户选择要展示的话题，并且让用户选择 `@microlink/react-json-view` 中支持的主题，缩进，以及是否展示数据类型
 
-所以我们需要先定义设置的 ts 类型：State，以及 `@microlink/react-json-view` 支持的主题 ThemeOptions。
+所以我们需要先定义设置的 TypeScript 类型：State，以及 `@microlink/react-json-view` 支持的主题 `ThemeOptions`。
 
 ```ts
 // @microlink/react-json-view 支持的主题
@@ -188,7 +187,7 @@ type State = {
 };
 ```
 
-然后我们需要使用 `React` 的 `useState` 来管理设置状态，并且声明一个函数来更新设置状态。
+然后我们需要使用 React 的 `useState` 来管理设置的状态，并声明一个函数来更新设置的状态。
 ```ts
 import { produce } from "immer";
 import { set } from "lodash";
@@ -210,7 +209,7 @@ const [state, setState] = useState<State>(() => {
   };
 });
 
-// 响应来自设置面板的编辑操更新我们的状态。
+// 响应来自设置面板的编辑操作更新我们的状态。
 const actionHandler = useCallback(
   (action: SettingsTreeAction) => {
     if (action.action === "update") {
@@ -231,7 +230,7 @@ const actionHandler = useCallback(
 );
 ```
 
-接下来，我们使用 `context.updatePanelSettingsEditor` 来将设置注册到我们的面板中，并且当设置的状态变化时，使用`context.saveState` 将状态保存到布局中。
+接下来，我们使用 `context.updatePanelSettingsEditor` 来将设置注册到我们的面板中，并且当设置的状态变化时，使用 `context.saveState` 将状态保存到布局中。
 ```ts
 // 每次我们的状态或可用主题列表发生变化时更新设置编辑器。
 useEffect(() => {
@@ -240,7 +239,7 @@ useEffect(() => {
 
   const topicOptions = (topics ?? []).map((topic) => ({ value: topic.name, label: topic.name }));
 
-  // 我们设置我们的设置树来镜像面板状态的形状，以便我们可以使用设置树中的路径来直接更新我们的状态。
+  // 我们设置设置树来镜像面板状态的形状，以便我们可以使用设置树中的路径来直接更新我们的状态。
   context.updatePanelSettingsEditor({
     actionHandler,
     nodes: {
@@ -293,8 +292,8 @@ useEffect(() => {
 }, [context, actionHandler, state, topics]);
 ```
 
-然后我们需要作两处小的改动
-- 判断 `renderState.currentFrame` 是否为 undefined，如果为 undefined，保留上一帧的数据，不要讲 message 置空。
+然后我们需要做两处小的改动：
+- 判断 `renderState.currentFrame` 是否为 undefined，如果为 undefined，保留上一帧的数据，不要将 message 置空。
 - 在初始化时就去监听设置中设置的 topic
 ```ts
 useLayoutEffect(() => {
@@ -306,7 +305,6 @@ useLayoutEffect(() => {
       setMessages(renderState.currentFrame);
     }
   };
-
 
   // 添加渲染处理程序后，必须指明渲染状态 (RenderState) 中的哪些字段会触发更新。
   // 如果不监听任何字段，面板上下文会认为您不需要任何更新，因此面板将不会渲染。
@@ -355,13 +353,13 @@ return (
 npm run local-install
 ```
 
-在 coStudio 中，打开右侧的插件列表 您现在将看到 `custom raw message panel` 已安装插件的列表中：
+在 coStudio 中，打开右侧的插件列表，您现在将看到 `custom raw message panel` 已安装插件的列表中：
 ![extensionList](./img/customRawMessageExtensionList.png)
 
-面板列表中也将多出一个 `custom-raw-message-panel` 的面板，添加我们的面板，并且打开任意文件，你就使用我们自定义的 `custom-raw-message-panel` 面板了：
+面板列表中也将多出一个 `custom-raw-message-panel` 的面板，添加我们的面板，并且打开任意文件，你就可以使用我们自定义的 `custom-raw-message-panel` 面板了：
 ![customRawMessagePanel](./img/customRawMessagePanelList.png)
 
-你可以设置中选择你要查看的话题,并且自定义面板的外观，并且在面板中查看到对应话题的消息：
+你可以在设置中选择你要查看的话题，并且自定义面板的外观，在面板中查看到对应话题的消息：
 ![customRawMessagePanel](./img/customRawMessagePanel.png)
 
 ## 分享您的插件
@@ -370,4 +368,4 @@ npm run local-install
 npm run package
 ```
 
-您将在插件目录中找到一个 `unknown.custom-raw-message-panel-0.0.0.coe` 文件。您可以将其分发给其他人，他们可以通过拖拽将其安装到他们的 coStudio 实例中.
+您将在插件目录中找到一个 `unknown.custom-raw-message-panel-0.0.0.coe` 文件。您可以将其分发给其他人，他们可以通过拖拽将其安装到他们的 coStudio 实例中。
