@@ -1,0 +1,9 @@
+{
+  "label": "话题别名",
+  "position": 5,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/extensions/topic-aliases"
+  }
+}
