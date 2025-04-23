@@ -301,5 +301,254 @@ sidebar_position: 2
 2. 点击 【+】和 【-】可以放大和缩小画面
 3. 亦可通过键盘鼠标来放大和缩小画面
 
----
+## 支持的消息类型
 
+三维面板可以可视化各种不同类型的消息。要可视化一个话题，该话题上的消息必须符合以下列出的已知消息模式之一。
+
+### 相机视场
+
+场景相机的校准参数。
+
+| 框架 | 模式 |
+| --- | --- |
+| ROS 1 | [sensor_msgs/CameraInfo](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CameraInfo.html) |
+| ROS 2 | [sensor_msgs/msg/CameraInfo](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CameraInfo.msg) |
+| 自定义 | [foxglove.CameraCalibration](/docs/visualization/message-schemas/camera-calibration) |
+
+### 网格
+
+2D 彩色网格。
+
+| 框架 | 模式 |
+| --- | --- |
+| ROS 1 | [nav_msgs/OccupancyGrid](https://docs.ros.org/en/noetic/api/nav_msgs/html/msg/OccupancyGrid.html) |
+| ROS 2 | [nav_msgs/msg/OccupancyGrid](https://github.com/ros2/common_interfaces/blob/master/nav_msgs/msg/OccupancyGrid.msg) |
+| 自定义 | [foxglove.Grid](/docs/visualization/message-schemas/grid) |
+
+#### `foxglove.Grid` 设置
+
+| 字段 | 描述 |
+| --- | --- |
+| **颜色模式** | 以下之一：**Flat**：纯色**Color map**：预定义调色板**Gradient**：两个自定义颜色之间的平滑过渡**RGBA（单独字段）**：使用每个单元格的红色、绿色、蓝色和 alpha 字段中嵌入的颜色（[见下文](#rgba-单独字段-颜色模式)） |
+| **纯色** | 仅在"颜色模式"设置为"Flat"时显示；每个单元格颜色的十六进制代码 |
+| **按颜色** | 仅在"颜色模式"未设置为"Flat"时显示；用于着色逻辑的消息中的数字字段 |
+| **颜色映射** | 仅在"颜色模式"设置为"Color map"时显示；"Turbo"（Google）或"Rainbow"（RViz）；用于将"按颜色"字段值映射到颜色 |
+| **不透明度** | 仅在"颜色模式"设置为"Color map"或"BGR（打包）"时显示；设置所有单元格的 alpha 值 |
+| **最小值** | 仅在"颜色模式"未设置为"Flat"时显示；用于规范化传入网格的"按颜色"字段值的最小值 |
+| **最大值** | 仅在"颜色模式"未设置为"Flat"时显示；用于规范化传入网格的"按颜色"字段值的最大值 |
+| **帧锁定** | "开启"表示网格锁定到其 frame_id 指定的帧，并将随着该帧的变换变化而移动。"关闭"表示网格相对于固定帧，在首次显示后将不会移动。 |
+
+##### RGBA（单独字段）颜色模式
+
+每个单元格可以在四个单独的字段中包含颜色信息，名为 `red`、`green`、`blue` 和 `alpha`，可以是任何数字类型：
+
+* **浮点值** — 0–1 范围
+* **无符号整数值** — 最大可能范围（例如，对于 `UINT8` 字段为 0–255）
+* **有符号整数值** — `-max` 到 `max`（例如，对于 `INT8` 字段为 −127 到 127；−128 的值被视为与 −127 相同）
+
+#### `nav_msgs/OccupancyGrid` 设置
+
+| 字段 | 描述 |
+| --- | --- |
+| **颜色模式** | 以下之一：**Costmap**：预定义 RViz 调色板。无法进一步自定义设置。**Custom**：使用以下设置的自定义调色板 |
+| **最小颜色** | 对应于最小单元格值（0）的颜色 |
+| **最大颜色** | 对应于最大单元格值（100）的颜色。注意，值为 100 的单元格显示为完全透明。 |
+| **未知颜色** | 对应于未知单元格值（−1）的颜色 |
+| **回退颜色** | 对应于超出 −1 到 100 范围的单元格值的颜色 |
+| **帧锁定** | "开启"表示网格锁定到其 frame_id 指定的帧，并将随着该帧的变换变化而移动。"关闭"表示网格相对于固定帧，在首次显示后将不会移动。 |
+
+### 图像
+
+使用相应的相机视场消息在 3D 场景中显示的图像。
+
+| 框架 | 模式 |
+| --- | --- |
+| ROS 1 | [sensor_msgs/Image](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html) |
+| ROS 2 | [sensor_msgs/msg/Image](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/Image.msg) |
+| ROS 1 | [sensor_msgs/CompressedImage](https://docs.ros.org/en/api/sensor_msgs/html/msg/CompressedImage.html) |
+| ROS 2 | [sensor_msgs/msg/CompressedImage](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
+| 自定义 | [foxglove.RawImage](/docs/visualization/message-schemas/raw-image) |
+| 自定义 | [foxglove.CompressedImage](/docs/visualization/message-schemas/compressed-image) |
+
+### 激光扫描
+
+来自平面激光测距仪的单次扫描。
+
+| 框架 | 模式 |
+| --- | --- |
+| ROS 1 | [sensor_msgs/LaserScan](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/LaserScan.html) |
+| ROS 2 | [sensor_msgs/msg/LaserScan](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/LaserScan.msg) |
+| 自定义 | [foxglove.LaserScan](/docs/visualization/message-schemas/laser-scan) |
+
+### ROS 多边形
+
+由一系列连接点组成的带时间戳的多边形。
+
+| 框架 | 模式 |
+| --- | --- |
+| ROS 1 | [geometry_msgs/PolygonStamped](https://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/PolygonStamped.html) |
+| ROS 2 | [geometry_msgs/msg/PolygonStamped](https://github.com/ros2/common_interfaces/blob/master/geometry_msgs/msg/PolygonStamped.msg) |
+
+### ROS 标记
+
+类似于场景实体，这些 `Marker` 消息描述了基本形状或网格。
+
+| 框架 | 模式 |
+| --- | --- |
+| ROS 1 | [visualization_msgs/Marker](https://docs.ros.org/en/noetic/api/visualization_msgs/html/msg/Marker.html) |
+| ROS 2 | [visualization_msgs/msg/Marker](https://github.com/ros2/common_interfaces/blob/master/visualization_msgs/msg/Marker.msg) |
+| ROS 1 | [visualization_msgs/MarkerArray](https://docs.ros.org/en/noetic/api/visualization_msgs/html/msg/MarkerArray.html) |
+| ROS 2 | [visualization_msgs/msg/MarkerArray](https://github.com/ros2/common_interfaces/blob/master/visualization_msgs/msg/MarkerArray.msg) |
+
+#### 网格标记
+
+具有 `mesh_resource` 字段的标记支持以下 URL 方案：
+
+* `http(s)://`
+* `package://`（仅限Studio）
+* `file://`（仅限Studio）
+
+以及文件格式：
+
+**glTF (.glb)** 
+
+这是首选的格式，因为它在所有支持的文件类型中具有最佳性能。
+
+二进制 glTF 文件将所有必需的资源捆绑到一个文件中，支持嵌入式网格、压缩，并使用与可视化相同的基于物理的材质系统。因此，您的模型在可视化中的显示效果应该与在其他 3D 程序中的显示效果相似。
+
+**STL (.stl)**
+
+一种简单的三角网格格式，不包含材质信息。可视化将使用标记的颜色属性来渲染 STL 模型。
+
+**COLLADA (.dae)**
+
+一种基于 XML 的格式，支持材质、纹理和动画。可视化目前仅支持 COLLADA 的几何和材质部分。
+
+**Wavefront OBJ (.obj)**
+
+一种简单的文本格式，通常与 MTL 文件一起使用来定义材质。可视化将尝试加载关联的 MTL 文件，如果找不到，将使用标记的颜色属性。
+
+**glTF (.glb)**
+
+这是首选的格式，因为它在所有支持的文件类型中具有最佳性能。二进制 glTF 文件将所有必需的资源打包到一个文件中，支持嵌入网格、压缩以及可视化中使用的相同基于物理的材质系统。因此，您的模型在可视化中的显示方式应该与其他 3D 程序中的显示方式相似。
+
+**STL (.stl)**
+
+STL 文件在可视化中得到良好支持，但缺少 glTF 的一些可视化功能。STL 的主要优势是能够在硬件制造过程和机器人可视化工具之间共享相同的文件。
+
+STL 是为 3D 打印和 CAD 应用程序设计的，不包含材质或网格层次结构。虽然它们可以用二进制编码表示，但 STL 文件通常用 ASCII 字符表示，这会导致文件更大。
+
+**COLLADA (.dae)**
+
+作为 glTF 的前身，COLLADA 具有类似的功能集。尽管如此，它确实有较大的基于 XML 的文件，没有压缩，并且有额外的处理开销。
+
+RViz 中存在一个错误，即忽略 up-axis 元数据，导致许多 .dae 文件在 ROS 环境中方向不正确。为了解决这个问题，3D 面板有一个忽略 COLLADA \<up_axis\> 设置，可以在观察 \<up-axis\> 标签或像 RViz 一样忽略它之间切换。
+
+**Wavefront OBJ (.obj)**
+
+OBJ 是一种简单的 ASCII 格式，早于所有其他支持的格式。它具有大文件大小、无材质支持、无网格层次结构、无压缩和额外的处理开销。
+
+材质支持是作为单独的 .mtl 文件添加到 OBJ 格式中的，但可视化不读取这些文件。
+
+
+### 路径
+
+一个在指定坐标系中、带有时间戳的姿态数组，表示一个物体在空间中的路径。
+
+| 框架 | 模式 |
+| --- | --- |
+| ROS 1 | [nav_msgs/Path](https://docs.ros.org/en/noetic/api/nav_msgs/html/msg/Path.html) |
+| ROS 2 | [nav_msgs/msg/Path](https://github.com/ros2/common_interfaces/blob/master/nav_msgs/msg/Path.msg) |
+| 自定义 | [foxglove.Path](/docs/visualization/message-schemas/path) |
+
+### 点云
+
+一个 N 维点的集合，可能包含附加字段，如法线(normals)、强度(intensity)等信息。
+
+| 框架 | 模式 |
+| --- | --- |
+| ROS 1 | [sensor_msgs/PointCloud2](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/PointCloud2.html) |
+| ROS 2 | [sensor_msgs/msg/PointCloud2](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/PointCloud2.msg) |
+| 自定义 | [foxglove.PointCloud](/docs/visualization/message-schemas/point-cloud) |
+
+#### 设置
+
+| 字段 | 描述 |
+| --- | --- |
+| **点形状** | 每个渲染点的形状：`圆形(Circle)`、`方形(Square)`或`立方体(Cube)`。默认：`圆形(Circle)` |
+| **点大小** | 每个渲染点的像素大小。仅当点形状为 `圆形(Circle)` 或 `方形(Square)` 时显示。 |
+| **立方体大小** | 每个立方体在 3D 场景中的大小。仅当点形状为 `立方体(Cube)` 时显示。 |
+| **显示轮廓** | 切换是否在立方体周围显示线框轮廓。仅当点形状为 `立方体(Cube)` 时显示。默认：`关闭` |
+| **衰减时间** | 每个点保持渲染状态的持续时间（秒） |
+| **颜色模式** | 以下之一：`平面(Flat)`：纯色`颜色映射(Color map)`：预定义调色板`渐变(Gradient)`：两个自定义颜色之间的平滑过渡`BGR（打包）(BGR (packed))`：仅适用于 `sensor_msgs/PointCloud2`；使用每个点的 rgb 字段中嵌入的颜色（见下文）`BGRA（打包）(BGRA (packed))`：仅适用于 `sensor_msgs/PointCloud2`；使用每个点的 rgba 字段中嵌入的颜色（见下文）`RGBA (separate fields)`：仅适用于 `foxglove.PointCloud`；使用每个点的红色、绿色、蓝色和 alpha 字段中嵌入的颜色（见下文） |
+| **纯色** | 仅在"颜色模式"设置为`平面(Flat)`时显示；每个点颜色的十六进制代码 |
+| **按颜色** | 仅在"颜色模式"未设置为`平面(Flat)`时显示；用于`颜色映射(Color map)`着色逻辑的值；消息中的任何数字字段，如 x、y、z、\<距离\>（坐标的 L2 范数）或自定义定义字段 |
+| **颜色映射** | 仅在"颜色模式"设置为`颜色映射(Color map)`时显示；`Turbo`（Google）或`Rainbow`（RViz）；用于将"按颜色"字段值映射到颜色 |
+| **不透明度** | 仅在"颜色模式"设置为`颜色映射(Color map)`或`BGR（打包）(BGR (packed))`时显示；设置所有点的 alpha 值 |
+| **最小值** | 仅在"颜色模式"未设置为`平面(Flat)`时显示；用于规范化传入点的"按颜色"字段值的最小值 |
+| **最大值** | 仅在"颜色模式"未设置为`平面(Flat)`时显示；用于规范化传入点的"按颜色"字段值的最大值 |
+| **Stixel 视图** | 将点可视化为从点的 z 位置延伸到 0 的 stixel |
+
+##### RGBA 颜色模式
+
+当使用 `BGR (packed)`, `BGRA (packed)`, and `RGBA (separate fields)` 颜色模式时，您的点云消息必须包含某些字段以显示每个点的颜色信息。
+
+
+##### RGBA (separate fields)
+
+对于 foxglove.PointCloud 消息，每个点可以在四个单独的字段中包含颜色信息，名为 `red`、`green`、`blue` 和 `alpha`，可以是任何数字类型：
+
+* **浮点值** — 0–1 范围
+* **无符号整数值** — 最大可能范围（例如，对于 `UINT8` 字段为 0–255）
+* **有符号整数值** — `-max` 到 `max`（例如，对于 `INT8` 字段为 −127 到 127；−128 的值被视为与 −127 相同）
+
+##### BGR (packed) and BGRA (packed)
+
+对于 sensor_msgs/PointCloud2 消息，每个点可以在一个名为 `rgb` 或 `rgba` 的单字段中包含颜色信息：
+
+- 必须使用 sensor_msgs/PointField 中的 4 字节类型（推荐使用 UINT32，值为 6）
+- 每个红色、绿色、蓝色和 alpha 值由一个字节表示，范围为 0–255
+- 字节必须按 [0xBB, 0xGG, 0xRR, 0xAA] 顺序打包（即 (0xAA \<\< 24) | (0xRR \<\< 16) | (0xGG \<\< 8) | 0xBB 以小端顺序）。此顺序与 RViz 兼容。
+
+如果使用 "BGR" 模式，alpha 值必须仍然存在，但被忽略。
+
+### 姿态
+
+在命名坐标系中带有时间戳的姿态数据。
+
+| 框架 | 模式 |
+| --- | --- |
+| ROS 1 | [geometry_msgs/PoseStamped](https://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/PoseStamped.html) |
+| ROS 2 | [geometry_msgs/msg/PoseStamped](https://github.com/ros2/common_interfaces/blob/master/geometry_msgs/msg/PoseStamped.msg) |
+| 自定义 | [foxglove.Pose](/docs/visualization/message-schemas/pose) |
+
+### 场景实体
+
+用于显示从基本包围框到复杂 3D 决策树或道路网络的任何内容的一系列基本形状（立方体、球体、文本、网格、线条等）。
+
+场景实体必须包装在 `SceneUpdate` 消息中。
+
+| 框架 | 模式 |
+| --- | --- |
+| 自定义 | [foxglove.SceneEntity](/docs/visualization/message-schemas/scene-entity) |
+| 自定义 | [foxglove.SceneUpdate](/docs/visualization/message-schemas/scene-update) |
+
+### 变换
+
+3D 空间中两个参考坐标系之间的变换（平移和旋转）。
+
+| 框架 | 模式 |
+| --- | --- |
+| ROS 1 | [tf/tfMessage](https://docs.ros.org/en/noetic/api/tf2_msgs/html/msg/TFMessage.html) |
+| ROS 1 | [tf2_msgs/TF2Error](https://docs.ros.org/en/noetic/api/tf2_msgs/html/msg/TF2Error.html) |
+| ROS 2 | [tf2_msgs/msg/TFMessage](https://github.com/ros2/common_interfaces/blob/master/tf2_msgs/msg/TFMessage.msg) |
+| 自定义 | [foxglove.Transform](/docs/visualization/message-schemas/transform) |
+
+### Velodyne 扫描
+
+来自 Velodyne ROS 驱动程序或 coStudio 的 Velodyne 激光雷达扫描数据包。
+
+| 框架 | 模式 |
+| --- | --- |
+| ROS1 | [velodyne_msgs/VelodyneScan](https://docs.ros.org/en/noetic/api/velodyne_msgs/html/msg/VelodyneScan.html) |
+| ROS2 | [velodyne_msgs/msg/VelodyneScan](https://github.com/ros-drivers/velodyne/blob/ros2/velodyne_msgs/msg/VelodyneScan.msg) |
