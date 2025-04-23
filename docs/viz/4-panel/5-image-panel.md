@@ -87,3 +87,44 @@ Linux：
 
 - 请注意，Chrome/Chromium 默认不支持 Linux 上的视频加速，可能需要使用自定义 Chrome/Chromium 标记来启用 GPU。
 - 确保您的图形驱动程序已更新并正确安装。
+
+## 支持的消息类型
+想要使用图像面板,你的数据源必须提供 3D 标记类型的消息或者以下支持的消息类型。
+
+### `RawImage`
+
+| 框架 | 消息类型 |
+| --- | --- |
+| ROS 1 | [sensor_msgs/Image](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html) |
+| ROS 2 | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/Image.msg) |
+| 自定义 | [foxglove.RawImage](/) |
+
+### `CompressedImage`
+
+| 框架 | 消息类型 |
+| --- | --- |
+| ROS 1 | [sensor_msgs/CompressedImage](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CompressedImage.html) |
+| ROS 2 | [sensor_msgs/CompressedImage](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
+| 自定义 | [foxglove.CompressedImage](/) |
+
+### `CameraCalibration`
+
+提供可选的相机校准数据以在图像面板中渲染 3D 实体，或在 3D 面板中渲染图像。校准数据不是必需的，因为 ImageAnnotations 使用像素坐标。
+
+可视化支持 plumb_bob 和 rational_polynomial 畸变模型。
+
+| 框架 | 消息类型 |
+| --- | --- |
+| ROS 1 | [sensor_msgs/CameraInfo](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CameraInfo.html) |
+| ROS 2 | [sensor_msgs/CameraInfo](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CameraInfo.msg) |
+| 自定义 | [foxglove.CameraCalibration](/) |
+
+
+### `ImageAnnotations`
+
+| 框架 | 消息类型 |
+| --- | --- |
+| ROS 1 | [visualization_msgs/ImageMarker](https://docs.ros.org/en/noetic/api/visualization_msgs/html/msg/ImageMarker.html) |
+| ROS 2 | [visualization_msgs/ImageMarker](https://github.com/ros2/common_interfaces/blob/master/visualization_msgs/msg/ImageMarker.msg) |
+| 自定义 | [foxglove.ImageAnnotations](/) |
+
