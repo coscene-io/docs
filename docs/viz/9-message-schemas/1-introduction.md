@@ -15,7 +15,7 @@ sidebar_position: 1
 - [TypeScript](https://github.com/foxglove/foxglove-sdk/tree/main/typescript/schemas/src/types)
 - [FlatBuffers](https://github.com/foxglove/foxglove-sdk/tree/main/schemas/flatbuffer)
 
-如果您已经编写了自定义消息，可以使用[消息转换器](插入文档链接)扩展将其转换为 coScene 支持的模式。
+如果您已经编写了自定义消息，可以使用[消息转换器](/)扩展将其转换为 coScene 支持的模式。
 
 ## Protobuf 和 JSON 架构类型
 
@@ -23,7 +23,7 @@ sidebar_position: 1
 
 **注意：** 
 
-对于 Protobuf 数据，类型为 [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) 或 [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) 的时间值，在[用户脚本](插入文档链接)、[消息转换器](插入文档链接)和 coScene 的其他部分中，将以 `sec` 和 `nsec` 字段表示，而不是 `seconds` 和 `nanos`，以与其他数据格式中的时间和持续时间类型保持一致。
+对于 Protobuf 数据，类型为 [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) 或 [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) 的时间值，在[用户脚本](/)、[消息转换器](/)和 coScene 的其他部分中，将以 `sec` 和 `nsec` 字段表示，而不是 `seconds` 和 `nanos`，以与其他数据格式中的时间和持续时间类型保持一致。
 
 您还可以通过[ `@foxglove/schemas` npm 包](https://www.npmjs.com/package/@foxglove/schemas)导入 JSON 模式：
 ```typescript
@@ -57,7 +57,7 @@ msg.y = 0.7
 
 将 coScene 消息架构作为 TypeScript 类型导入，以进行类型检查。
 
-在 coScene 的[用户脚本面板](插入文章链接)中，您可以使用 `Message<"foxglove.[SchemaName]"> `指定所需的架构类型：
+在 coScene 的[用户脚本面板](/)中，您可以使用 `Message<"foxglove.[SchemaName]"> `指定所需的架构类型：
 ```typescript
 sudo apt install ros-noetic-foxglove-msgs # For ROS 1
 sudo apt install ros-galactic-foxglove-msgs # For ROS 2
@@ -83,4 +83,4 @@ import { Point2 } from "@foxglove/schemas";
 const myPoint: Point2 = { x: 1, y: 2 };
 ```
 
-在处理 JavaScript WebSocket 或 MCAP 项目，或在 coScene 的[用户脚本面板](插入文章链接)中编写自定义数据转换脚本时，请导入这些类型。
+在处理 JavaScript WebSocket 或 MCAP 项目，或在 coScene 的[用户脚本面板](/)中编写自定义数据转换脚本时，请导入这些类型。

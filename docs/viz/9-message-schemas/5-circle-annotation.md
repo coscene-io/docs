@@ -1,5 +1,6 @@
 ---
 sidebar_position: 5
+title: CircleAnnotation
 ---
 
 # 圆形标注
@@ -8,14 +9,14 @@ sidebar_position: 5
 
 ## 父级架构
 
-`CircleAnnotation` 出现在 [`图像标注`](插入文档链接) 消息模式中。
+`CircleAnnotation` 出现在 [`图像标注`](/) 消息模式中。
 
 ## 字段定义
 
 | 字段名         | 类型      | 描述     |
 |--------------|-----------|----------|
 | `timestamp`    | [`time`](./built-in%20types#time)      | 圆形的时间戳                           |
-| `position`     | [`Point 2`](插入文档链接)    | 圆心在图像中的二维像素坐标位置        |
+| `position`     | [`Point 2`](/)    | 圆心在图像中的二维像素坐标位置        |
 | `diameter`     | [`float64`](./built-in%20types#float64)  | 圆的直径（单位：像素）                |
 | `thickness`    | [`float64`](./built-in%20types#float64)  | 线条粗细（单位：像素）                |
 | `fill_color`   | [`color`](./6-color.md)     | 填充颜色                               |

@@ -32,7 +32,7 @@ sidebar_position: 2
 
 > **注意：** 
 
-coScene 的 Protobuf schema 中使用 [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) 表示 `time` 类型，其中字段为 `seconds` 和 `nanos`。但在[用户脚本](插入文章链接)、[消息转换器](插入文章链接)和 coScene 其他部分中，值将表示为 `sec` 和 `nsec` 字段，以与其他数据格式保持一致。
+coScene 的 Protobuf schema 中使用 [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) 表示 `time` 类型，其中字段为 `seconds` 和 `nanos`。但在[用户脚本](/)、[消息转换器](/)和 coScene 其他部分中，值将表示为 `sec` 和 `nsec` 字段，以与其他数据格式保持一致。
 
 ### `duration`
 
@@ -43,7 +43,7 @@ coScene 的 Protobuf schema 中使用 [`google.protobuf.Timestamp`](https://prot
 
 > **注意：** 
 
-coScene 的 Protobuf schema 中使用 [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) 表示 `duration` 类型，其中字段为 `seconds` 和 `nanos`。但在[用户脚本](插入文章链接)、[消息转换器](插入文章链接)和 coScene 其他部分中，值将表示为 `sec` 和 `nsec` 字段，以与其他数据格式保持一致。
+coScene 的 Protobuf schema 中使用 [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) 表示 `duration` 类型，其中字段为 `seconds` 和 `nanos`。但在[用户脚本](/)、[消息转换器](/)和 coScene 其他部分中，值将表示为 `sec` 和 `nsec` 字段，以与其他数据格式保持一致。
 
 ### `uint32`
 取值范围为 `0` 到 `4294967295`（ 2 的 32 次方减 1） 的非负整数。

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 6
+title: Color
 ---
 
 # 颜色
@@ -7,7 +8,7 @@ sidebar_position: 6
 RGBA 格式的颜色。
 
 ## 面板支持
-`Color` 用于 [三维面板](../4-panel/2-3d-panel.md) 和 [图像面板](../4-panel/5-image-panel.md) 中。
+`Color` 用于 [三维面板](../panel/2-3d-panel) 和 [图像面板](../panel/image-panel) 中。
 
 ## 父级架构
 

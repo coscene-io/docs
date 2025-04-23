@@ -1,11 +1,12 @@
 ---
 sidebar_position: 6
+title: CompressedImage
 ---
 
 # 压缩图像
 
 ## 面板支持
-`CompressedImage` 用于 [三维面板](../4-panel/2-3d-panel.md) 和 [图像面板](../4-panel/5-image-panel.md) 中。
+`CompressedImage` 用于 [三维面板](../panel/2-3d-panel) 和 [图像面板](../panel/image-panel) 中。
 
 ## 字段定义
 
@@ -30,6 +31,6 @@ coScene 的架构类型（schemas）是与框架无关的，可以使用任何�
 | JSON         |  [`foxglove.CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/CompressedImage.json) |
 | Protobuf     |  [`foxglove.CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/CompressedImage.proto) |
 | FlatBuffers  |  [`foxglove.CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/CompressedImage.fbs) |
-| OMG IDL      |  [`foxglove::CompressedImage`](	foxglove::CompressedImage) |
+| OMG IDL      |  [`foxglove::CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/CompressedImage.idl) |
 
 > **注意**：必须使用上述指定的 schema 名称，coScene 才能正确识别。

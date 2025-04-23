@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+title: ArrowPrimitive
 ---
 
 # 表示箭头的基本图形
@@ -14,7 +15,7 @@ sidebar_position: 3
 
 | 字段 | 类型      | 描述                 |
 |------|----------|----------------------|
-| `pose`  | [`pose`](插入文档链接)  | 箭头尾部的位置和箭头的方向。单位方向意味着箭头指向 + x 方向。 |
+| `pose`  | [`pose`](/)  | 箭头尾部的位置和箭头的方向。单位方向意味着箭头指向 + x 方向。 |
 | `shaft_length`  | [`float64`](./built-in%20types#float64)  | 箭杆的长度 |
 | `shaft_diameter`  | [`float64`](./built-in%20types#float64)  | 箭杆的直径 |
 | `head_length`  | [`float64`](./built-in%20types#float64)  | 箭头的长度 |
@@ -25,7 +26,7 @@ sidebar_position: 3
 coScene 的架构类型（schemas）是与框架无关的，可以使用任何受支持的消息编码格式来实现。
 | 编码格式   | Schema 名称                            |
 |------|--------------------------------|
-| ROS 1  | [`foxglove_msgs/ArrowPrimitive`](http://localhost:3000/docs/viz/message-schemas/built-in%20types) |
+| ROS 1  | [`foxglove_msgs/ArrowPrimitive`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/ArrowPrimitive.msg) |
 | ROS 2  | [`foxglove_msgs/msg/ArrowPrimitive`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/ArrowPrimitive.msg)|
 | JSON  | [`foxglove.ArrowPrimitive`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/ArrowPrimitive.json) |
 | Protobuf  | [`foxglove.ArrowPrimitive`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/ArrowPrimitive.proto) |

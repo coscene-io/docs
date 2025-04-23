@@ -1,12 +1,13 @@
 ---
 sidebar_position: 4
+title: CameraCalibration
 ---
 
 # 相机校准
 
 ## 面板支持
 
-`CameraCalibration` 用于 [三维面板](../4-panel/2-3d-panel.md) 和 [图像面板](../4-panel/5-image-panel.md) 中。
+`CameraCalibration` 用于 [三维面板](../panel/2-3d-panel) 和 [图像面板](../panel/image-panel) 中。
 
 ## 字段定义
 
