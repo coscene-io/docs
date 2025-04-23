@@ -313,7 +313,7 @@ sidebar_position: 2
 | --- | --- |
 | ROS 1 | [sensor_msgs/CameraInfo](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CameraInfo.html) |
 | ROS 2 | [sensor_msgs/msg/CameraInfo](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CameraInfo.msg) |
-| 自定义 | [foxglove.CameraCalibration](/docs/visualization/message-schemas/camera-calibration) |
+| 自定义 | [foxglove.CameraCalibration](/) |
 
 ### 网格
 
@@ -323,13 +323,13 @@ sidebar_position: 2
 | --- | --- |
 | ROS 1 | [nav_msgs/OccupancyGrid](https://docs.ros.org/en/noetic/api/nav_msgs/html/msg/OccupancyGrid.html) |
 | ROS 2 | [nav_msgs/msg/OccupancyGrid](https://github.com/ros2/common_interfaces/blob/master/nav_msgs/msg/OccupancyGrid.msg) |
-| 自定义 | [foxglove.Grid](/docs/visualization/message-schemas/grid) |
+| 自定义 | [foxglove.Grid](/) |
 
 #### `foxglove.Grid` 设置
 
 | 字段 | 描述 |
 | --- | --- |
-| **颜色模式** | 以下之一：**Flat**：纯色**Color map**：预定义调色板**Gradient**：两个自定义颜色之间的平滑过渡**RGBA（单独字段）**：使用每个单元格的红色、绿色、蓝色和 alpha 字段中嵌入的颜色（[见下文](#rgba-单独字段-颜色模式)） |
+| **颜色模式** | 以下之一：**Flat**：纯色**Color map**：预定义调色板**Gradient**：两个自定义颜色之间的平滑过渡**RGBA（单独字段）**：使用每个单元格的红色、绿色、蓝色和 alpha 字段中嵌入的颜色（[见下文](#rgba单独字段颜色模式)） |
 | **纯色** | 仅在"颜色模式"设置为"Flat"时显示；每个单元格颜色的十六进制代码 |
 | **按颜色** | 仅在"颜色模式"未设置为"Flat"时显示；用于着色逻辑的消息中的数字字段 |
 | **颜色映射** | 仅在"颜色模式"设置为"Color map"时显示；"Turbo"（Google）或"Rainbow"（RViz）；用于将"按颜色"字段值映射到颜色 |
@@ -367,8 +367,8 @@ sidebar_position: 2
 | ROS 2 | [sensor_msgs/msg/Image](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/Image.msg) |
 | ROS 1 | [sensor_msgs/CompressedImage](https://docs.ros.org/en/api/sensor_msgs/html/msg/CompressedImage.html) |
 | ROS 2 | [sensor_msgs/msg/CompressedImage](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
-| 自定义 | [foxglove.RawImage](/docs/visualization/message-schemas/raw-image) |
-| 自定义 | [foxglove.CompressedImage](/docs/visualization/message-schemas/compressed-image) |
+| 自定义 | [foxglove.RawImage](/) |
+| 自定义 | [foxglove.CompressedImage](/) |
 
 ### 激光扫描
 
@@ -378,7 +378,7 @@ sidebar_position: 2
 | --- | --- |
 | ROS 1 | [sensor_msgs/LaserScan](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/LaserScan.html) |
 | ROS 2 | [sensor_msgs/msg/LaserScan](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/LaserScan.msg) |
-| 自定义 | [foxglove.LaserScan](/docs/visualization/message-schemas/laser-scan) |
+| 自定义 | [foxglove.LaserScan](/) |
 
 ### ROS 多边形
 
@@ -459,7 +459,7 @@ OBJ 是一种简单的 ASCII 格式，早于所有其他支持的格式。它具
 | --- | --- |
 | ROS 1 | [nav_msgs/Path](https://docs.ros.org/en/noetic/api/nav_msgs/html/msg/Path.html) |
 | ROS 2 | [nav_msgs/msg/Path](https://github.com/ros2/common_interfaces/blob/master/nav_msgs/msg/Path.msg) |
-| 自定义 | [foxglove.Path](/docs/visualization/message-schemas/path) |
+| 自定义 | [foxglove.Path](/) |
 
 ### 点云
 
@@ -469,7 +469,7 @@ OBJ 是一种简单的 ASCII 格式，早于所有其他支持的格式。它具
 | --- | --- |
 | ROS 1 | [sensor_msgs/PointCloud2](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/PointCloud2.html) |
 | ROS 2 | [sensor_msgs/msg/PointCloud2](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/PointCloud2.msg) |
-| 自定义 | [foxglove.PointCloud](/docs/visualization/message-schemas/point-cloud) |
+| 自定义 | [foxglove.PointCloud](/) |
 
 #### 设置
 
@@ -480,7 +480,7 @@ OBJ 是一种简单的 ASCII 格式，早于所有其他支持的格式。它具
 | **立方体大小** | 每个立方体在 3D 场景中的大小。仅当点形状为 `立方体(Cube)` 时显示。 |
 | **显示轮廓** | 切换是否在立方体周围显示线框轮廓。仅当点形状为 `立方体(Cube)` 时显示。默认：`关闭` |
 | **衰减时间** | 每个点保持渲染状态的持续时间（秒） |
-| **颜色模式** | 以下之一：`平面(Flat)`：纯色`颜色映射(Color map)`：预定义调色板`渐变(Gradient)`：两个自定义颜色之间的平滑过渡`BGR（打包）(BGR (packed))`：仅适用于 `sensor_msgs/PointCloud2`；使用每个点的 rgb 字段中嵌入的颜色（见下文）`BGRA（打包）(BGRA (packed))`：仅适用于 `sensor_msgs/PointCloud2`；使用每个点的 rgba 字段中嵌入的颜色（见下文）`RGBA (separate fields)`：仅适用于 `foxglove.PointCloud`；使用每个点的红色、绿色、蓝色和 alpha 字段中嵌入的颜色（见下文） |
+| **颜色模式** | 以下之一：<br/>`Flat`：纯色 <br/>`Color map`：预定义调色板<br/>`Gradient`：两个自定义颜色之间的平滑过渡<br/>`BGR (packed)`：仅适用于 `sensor_msgs/PointCloud2`；使用每个点的 rgb 字段中嵌入的颜色([见下文](#rgba-颜色模式)) <br/>`BGRA (packed)`：仅适用于 `sensor_msgs/PointCloud2`；使用每个点的 rgba 字段中嵌入的颜色（[见下文](#rgba-颜色模式)）<br/>`RGBA (separate fields)`：仅适用于 `foxglove.PointCloud`；使用每个点的红色、绿色、蓝色和 alpha 字段中嵌入的颜色（[见下文](#rgba-颜色模式)） |
 | **纯色** | 仅在"颜色模式"设置为`平面(Flat)`时显示；每个点颜色的十六进制代码 |
 | **按颜色** | 仅在"颜色模式"未设置为`平面(Flat)`时显示；用于`颜色映射(Color map)`着色逻辑的值；消息中的任何数字字段，如 x、y、z、\<距离\>（坐标的 L2 范数）或自定义定义字段 |
 | **颜色映射** | 仅在"颜色模式"设置为`颜色映射(Color map)`时显示；`Turbo`（Google）或`Rainbow`（RViz）；用于将"按颜色"字段值映射到颜色 |
@@ -520,7 +520,7 @@ OBJ 是一种简单的 ASCII 格式，早于所有其他支持的格式。它具
 | --- | --- |
 | ROS 1 | [geometry_msgs/PoseStamped](https://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/PoseStamped.html) |
 | ROS 2 | [geometry_msgs/msg/PoseStamped](https://github.com/ros2/common_interfaces/blob/master/geometry_msgs/msg/PoseStamped.msg) |
-| 自定义 | [foxglove.Pose](/docs/visualization/message-schemas/pose) |
+| 自定义 | [foxglove.Pose](/) |
 
 ### 场景实体
 
@@ -530,8 +530,8 @@ OBJ 是一种简单的 ASCII 格式，早于所有其他支持的格式。它具
 
 | 框架 | 模式 |
 | --- | --- |
-| 自定义 | [foxglove.SceneEntity](/docs/visualization/message-schemas/scene-entity) |
-| 自定义 | [foxglove.SceneUpdate](/docs/visualization/message-schemas/scene-update) |
+| 自定义 | [foxglove.SceneEntity](/) |
+| 自定义 | [foxglove.SceneUpdate](/) |
 
 ### 变换
 
@@ -542,7 +542,7 @@ OBJ 是一种简单的 ASCII 格式，早于所有其他支持的格式。它具
 | ROS 1 | [tf/tfMessage](https://docs.ros.org/en/noetic/api/tf2_msgs/html/msg/TFMessage.html) |
 | ROS 1 | [tf2_msgs/TF2Error](https://docs.ros.org/en/noetic/api/tf2_msgs/html/msg/TF2Error.html) |
 | ROS 2 | [tf2_msgs/msg/TFMessage](https://github.com/ros2/common_interfaces/blob/master/tf2_msgs/msg/TFMessage.msg) |
-| 自定义 | [foxglove.Transform](/docs/visualization/message-schemas/transform) |
+| 自定义 | [foxglove.Transform](/) |
 
 ### Velodyne 扫描
 
