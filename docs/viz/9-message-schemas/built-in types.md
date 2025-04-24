@@ -1,7 +1,3 @@
----
-sidebar_position: 2
----
-
 # 内置类型
 
 基本类型是 coScene 所支持消息消息架构的构建基础。

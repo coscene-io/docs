@@ -1,7 +1,3 @@
----
-sidebar_position: 1
----
-
 # 介绍
 
  coScene 通常要求传入的消息遵循特定结构，以便正确进行可视化。使用 [Foxglove 架构](https://github.com/foxglove/foxglove-sdk)可充分利用平台内置的可视化功能。
