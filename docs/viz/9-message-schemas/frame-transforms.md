@@ -6,7 +6,7 @@ FrameTransform 消息的数组
 
 | 字段       | 类型                                                                      | 描述           |
 | ---------- | ------------------------------------------------------------------------- | -------------- |
-| transforms | [FrameTransform\[\]](/docs/visualization/message-schemas/frame-transform) | 变换数组       |
+| transforms | [FrameTransform\[\]](/) | 变换数组       |
 
 ## 参考实现
 

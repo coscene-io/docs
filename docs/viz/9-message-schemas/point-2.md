@@ -10,8 +10,8 @@
 
 | 字段 | 类型                                                                  | 描述           |
 | ----- | --------------------------------------------------------------------- | --------------------- |
-| x     | [float64](/docs/visualization/message-schemas/built-in-types#float64) | x 坐标位置 |
-| y     | [float64](/docs/visualization/message-schemas/built-in-types#float64) | y 坐标位置 |
+| x     | [float64](/) | x 坐标位置 |
+| y     | [float64](/) | y 坐标位置 |
 
 ## 参考实现
 
