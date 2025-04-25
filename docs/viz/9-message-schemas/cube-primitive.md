@@ -4,15 +4,15 @@
 
 ## 父数据结构
 
-`CubePrimitive` 出现在 SceneEntity 消息数据结构中。
+`CubePrimitive` 出现在 [`SceneEntity`](./scene-entity) 消息数据结构中。
 
 ## 数据结构
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| pose | [Pose](/) | 立方体中心的位置和立方体的方向 |
-| size | [Vector3](/) | 立方体沿每个轴的尺寸 |
-| color | [Color](/) | 立方体的颜色 |
+| pose | [`pose`](./pose) | 立方体中心的位置和立方体的方向 |
+| size | [`Vector3`](./vector-3) | 立方体沿每个轴的尺寸 |
+| color | [`color`](./color) | 立方体的颜色 |
 
 ## 参考实现
 

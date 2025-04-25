@@ -9,20 +9,20 @@
 ## 数据结构
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| timestamp | [time](/) | 实体的时间戳 |
-| frame_id | [string](/) | 参考系 |
-| id | [string](/) | 实体的标识符。一个实体将替换同一主题上具有相同 id 的任何先前实体。 |
-| lifetime | [duration](/) | 实体应自动移除的时间长度（相对于时间戳）。零值表示实体应保持可见，直到它被替换或删除。 |
-| frame_locked | [boolean](/) | 实体是否应保持在固定框架中的位置（false）或跟随 frame_id 中指定的框架相对于固定框架移动（true） |
-| metadata | [KeyValuePair[]](/) | 与实体关联的额外用户提供的元数据。键必须唯一。 |
-| arrows | [ArrowPrimitive[]](/) | 箭头图元 |
-| cubes | [CubePrimitive[]](/) | 立方体图元 |
-| spheres | [SpherePrimitive[]](/) | 球体图元 |
-| cylinders | [CylinderPrimitive[]](/) | 圆柱体图元 |
-| lines | [LinePrimitive[]](/) | 线条图元 |
-| triangles | [TriangleListPrimitive[]](/) | 三角形列表图元 |
-| texts | [TextPrimitive[]](/) | 文本图元 |
-| models | [ModelPrimitive[]](/) | 模型图元 |
+| timestamp | [`time`](./built-in%20types#time) | 实体的时间戳 |
+| frame_id | [`string`](./built-in%20types#string) | 参考系 |
+| id | [`string`](./built-in%20types#string) | 实体的标识符。一个实体将替换同一主题上具有相同 id 的任何先前实体。 |
+| lifetime | [`duration`](./built-in%20types#duration) | 实体应自动移除的时间长度（相对于时间戳）。零值表示实体应保持可见，直到它被替换或删除。 |
+| frame_locked | [`boolean`](./built-in%20types#boolean) | 实体是否应保持在固定框架中的位置（false）或跟随 frame_id 中指定的框架相对于固定框架移动（true） |
+| metadata | [`KeyValuePair[]`](./key-value-pair) | 与实体关联的额外用户提供的元数据。键必须唯一。 |
+| arrows | [`ArrowPrimitive[]`](./arrow-primitive) | 箭头图元 |
+| cubes | [`CubePrimitive[]`](./cube-primitive) | 立方体图元 |
+| spheres | [`SpherePrimitive[]`](./sphere-primitive) | 球体图元 |
+| cylinders | [`CylinderPrimitive[]`](./cylinder-primitive) | 圆柱体图元 |
+| lines | [`LinePrimitive[]`](./line-primitive) | 线条图元 |
+| triangles | [`TriangleListPrimitive[]`](./triangle-list-primitive) | 三角形列表图元 |
+| texts | [`TextPrimitive[]`](./text-primitive) | 文本图元 |
+| models | [`ModelPrimitive[]`](./model-primitive) | 模型图元 |
 
 ## 参考实现
 

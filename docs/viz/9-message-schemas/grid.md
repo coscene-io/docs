@@ -14,15 +14,15 @@ title: Grid
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| timestamp | [time](/) | 网格的时间戳 |
-| frame_id | [string](/) | 参考坐标系 |
-| pose | [Pose](/) | 网格原点相对于参考坐标系的位置；网格在 x-y 平面上相对于此原点定位 |
-| column_count | [uint32](/) | 网格列数 |
-| cell_size | [Vector2](/) | 单个网格单元格沿 x 和 y 轴的大小，相对于 pose |
-| row_stride | [uint32](/) | 数据中行之间的字节数 |
-| cell_stride | [uint32](/) | 数据中行内单元格之间的字节数 |
-| fields | [PackedElementField[]](/) | 数据中的字段。red、green、blue 和 alpha 是可选的，用于自定义网格的颜色 |
-| data | [bytes](/) | 网格单元格数据，使用 fields 解释，以行优先（y 优先）顺序排列 |
+| timestamp | [`time`](./built-in%20types#time) | 网格的时间戳 |
+| frame_id | [`string`](./built-in%20types#string) | 参考坐标系 |
+| pose | [`pose`](./pose) | 网格原点相对于参考坐标系的位置；网格在 x-y 平面上相对于此原点定位 |
+| column_count | [`uint32`](./built-in%20types#uint32) | 网格列数 |
+| cell_size | [`Vector2`](./vector-2) | 单个网格单元格沿 x 和 y 轴的大小，相对于 pose |
+| row_stride | [`uint32`](./built-in%20types#uint32) | 数据中行之间的字节数 |
+| cell_stride | [`uint32`](./built-in%20types#uint32) | 数据中行内单元格之间的字节数 |
+| fields | [`PackedElementField[]`](./packed-element-field) | 数据中的字段。red、green、blue 和 alpha 是可选的，用于自定义网格的颜色 |
+| data | [`bytes`](./built-in%20types#bytes) | 网格单元格数据，使用 fields 解释，以行优先（y 优先）顺序排列 |
 
 ## 参考实现
 

@@ -10,13 +10,13 @@
 
 | 字段         | 类型                                                                      | 描述 |
 | ------------ | ------------------------------------------------------------------------- | ---- |
-| timestamp    | [time](/)        | 扫描的时间戳 |
-| frame_id     | [string](/)      | 参考坐标系 |
-| pose         | [Pose](/)        | 相对于参考坐标系的扫描原点；点位于相对于此原点的 x-y 平面中；角度被解释为绕 z 轴的逆时针旋转，0 弧度表示 +x 方向 |
-| start_angle  | [float64](/)     | 第一个点的方位角，以弧度表示 |
-| end_angle    | [float64](/)     | 最后一个点的方位角，以弧度表示 |
-| ranges       | [float64[]](/)   | 检测点到原点的距离；假设这些点在 `start_angle` 和 `end_angle` 之间均匀分布 |
-| intensities  | [float64[]](/)   | 检测点的强度 |
+| timestamp    | [`time`](./built-in%20types#time)        | 扫描的时间戳 |
+| frame_id     | [`string`](./built-in%20types#string)      | 参考坐标系 |
+| pose         | [`pose`](./pose)        | 相对于参考坐标系的扫描原点；点位于相对于此原点的 x-y 平面中；角度被解释为绕 z 轴的逆时针旋转，0 弧度表示 +x 方向 |
+| start_angle  | [`float64`](./built-in%20types#float64)     | 第一个点的方位角，以弧度表示 |
+| end_angle    | [`float64`](./built-in%20types#float64)     | 最后一个点的方位角，以弧度表示 |
+| ranges       | [`float64[]`](./built-in%20types#float64)   | 检测点到原点的距离；假设这些点在 `start_angle` 和 `end_angle` 之间均匀分布 |
+| intensities  | [`float64[]`](./built-in%20types#float64)   | 检测点的强度 |
 
 ## 参考实现
 

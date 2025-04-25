@@ -4,15 +4,15 @@
 
 ## 父数据结构
 
-`Vector3` 出现在以下数据结构中：[CubePrimitive](/)、[CylinderPrimitive](/)、[FrameTransform](/)、[ModelPrimitive](/)、[Pose](/) 和 [SpherePrimitive](/)。
+`Vector3` 出现在以下数据结构中：[`CubePrimitive`](./cube-primitive)、[`CylinderPrimitive`](./cylinder-primitive)、[`FrameTransform`](./frame-transform)、[`ModelPrimitive`](./model-primitive)、[`pose`](./pose) 和 [`SpherePrimitive`](./sphere-primitive)。
 
 ## 数据结构
 
 | 字段 | 类型                                                                  | 描述         |
 | ----- | --------------------------------------------------------------------- | ------------------- |
-| x     | [float64](/) | x 坐标长度 |
-| y     | [float64](/) | y 坐标长度 |
-| z     | [float64](/) | z 坐标长度 |
+| x     | [`float64`](./built-in%20types#float64) | x 坐标长度 |
+| y     | [`float64`](./built-in%20types#float64) | y 坐标长度 |
+| z     | [`float64`](./built-in%20types#float64) | z 坐标长度 |
 
 ## 参考实现
 

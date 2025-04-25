@@ -1,4 +1,4 @@
-# 点云数据结构
+# PointCloud
 
 点云是一组 N 维点的集合，可能包含额外的字段信息，如法线、强度等。
 
@@ -10,12 +10,12 @@
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| timestamp | [time](/) | 点云的时间戳 |
-| frame_id | [string](/) | 参考坐标系 |
-| pose | [Pose](/) | 点云相对于参考坐标系的原点位置 |
-| point_stride | [uint32](/) | 数据中相邻点之间的字节数 |
-| fields | [PackedElementField[]](/) | `data` 中的字段。每个点的位置至少需要 x、y、z 中的 2 个坐标字段；red、green、blue 和 alpha 是可选的，用于自定义每个点的颜色。 |
-| data | [bytes](/) | 点数据，使用 fields 进行解释 |
+| timestamp | [`time`](./built-in%20types#time) | 点云的时间戳 |
+| frame_id | [`string`](./built-in%20types#string) | 参考坐标系 |
+| pose | [`pose`](./pose) | 点云相对于参考坐标系的原点位置 |
+| point_stride | [`uint32`](./built-in%20types#uint32) | 数据中相邻点之间的字节数 |
+| fields | [`PackedElementField[]`](./packed-element-field) | `data` 中的字段。每个点的位置至少需要 x、y、z 中的 2 个坐标字段；red、green、blue 和 alpha 是可选的，用于自定义每个点的颜色。 |
+| data | [`bytes`](./built-in%20types#bytes) | 点数据，使用 fields 进行解释 |
 
 ## 参考实现
 

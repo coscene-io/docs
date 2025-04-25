@@ -4,7 +4,7 @@
 
 ## 父类型
 
-`NumericType` 出现在 [PackedElementField](/) 数据结构中。
+`NumericType` 出现在 [`PackedElementField`](./packed-element-field) 数据结构中。
 
 ## 值
 

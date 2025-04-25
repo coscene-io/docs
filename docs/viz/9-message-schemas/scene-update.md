@@ -10,8 +10,8 @@
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| deletions | [SceneEntityDeletion[]](/) | 要删除的场景实体 |
-| entities | [SceneEntity[]](/) | 要添加或替换的场景实体 |
+| deletions | [`SceneEntityDeletion[]`](./scene-entity-deletion) | 要删除的场景实体 |
+| entities | [`SceneEntity[]`](./scene-entity) | 要添加或替换的场景实体 |
 
 ## 参考实现
 

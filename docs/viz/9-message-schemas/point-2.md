@@ -4,14 +4,14 @@
 
 ## 父模式
 
-`Point2` 出现在 [CircleAnnotation](/)、[PointsAnnotation](/) 和 [TextAnnotation](/) 消息模式中。
+`Point2` 出现在 [`CircleAnnotation`](./circle-annotation)、[`PointsAnnotation`](./points-annotation) 和 [`TextAnnotation`](./text-annotation) 消息模式中。
 
 ## 模式定义
 
 | 字段 | 类型                                                                  | 描述           |
 | ----- | --------------------------------------------------------------------- | --------------------- |
-| x     | [float64](/) | x 坐标位置 |
-| y     | [float64](/) | y 坐标位置 |
+| x     | [`float64`](./built-in%20types#float64) | x 坐标位置 |
+| y     | [`float64`](./built-in%20types#float64) | y 坐标位置 |
 
 ## 参考实现
 

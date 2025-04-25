@@ -1,12 +1,12 @@
 # FrameTransforms
 
-FrameTransform 消息的数组
+[`FrameTransform`](./frame-transform) 消息的数组
 
 ## 数据结构
 
 | 字段       | 类型                                                                      | 描述           |
 | ---------- | ------------------------------------------------------------------------- | -------------- |
-| transforms | [FrameTransform\[\]](/) | 变换数组       |
+| transforms | [FrameTransform\[\]](./frame-transform) | 变换数组       |
 
 ## 参考实现
 

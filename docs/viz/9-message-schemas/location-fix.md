@@ -10,13 +10,13 @@
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| timestamp | [time](/) | 消息的时间戳 |
-| frame_id | [string](/) | 传感器的坐标系。纬度和经度读数位于该坐标系的原点。 |
-| latitude | [float64](/) | 纬度（度） |
-| longitude | [float64](/) | 经度（度） |
-| altitude | [float64](/) | 高度（米） |
-| position_covariance | [float64[9]](/) | 位置协方差（平方米），相对于通过报告位置的切平面定义。分量按行优先顺序排列为东、北、上（ENU）。 |
-| position_covariance_type | [PositionCovarianceType](/) | 如果提供了 position_covariance，则必须设置 position_covariance_type 以指示协方差的类型。 |
+| timestamp | [`time`](./built-in%20types#time) | 消息的时间戳 |
+| frame_id | [`string`](./built-in%20types#string) | 传感器的坐标系。纬度和经度读数位于该坐标系的原点。 |
+| latitude | [`float64`](./built-in%20types#float64) | 纬度（度） |
+| longitude | [`float64`](./built-in%20types#float64) | 经度（度） |
+| altitude | [`float64`](./built-in%20types#float64) | 高度（米） |
+| position_covariance | [`float64[9]`](./built-in%20types#float64) | 位置协方差（平方米），相对于通过报告位置的切平面定义。分量按行优先顺序排列为东、北、上（ENU）。 |
+| position_covariance_type | [`PositionCovarianceType`](./enum-position-covariance-type) | 如果提供了 position_covariance，则必须设置 position_covariance_type 以指示协方差的类型。 |
 
 ## 参考实现
 

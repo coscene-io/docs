@@ -4,16 +4,16 @@
 
 ## 父级数据结构
 
-`Quaternion` 出现在 [FrameTransform](/) 和 [Pose](/) 消息数据结构中。
+`Quaternion` 出现在 [`FrameTransform`](./frame-transform) 和 [`pose`](./pose) 消息数据结构中。
 
 ## 数据结构
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| x | [float64](/) | x 值 |
-| y | [float64](/) | y 值 |
-| z | [float64](/) | z 值 |
-| w | [float64](/) | w 值 |
+| x | [`float64`](./built-in%20types#float64) | x 值 |
+| y | [`float64`](./built-in%20types#float64) | y 值 |
+| z | [`float64`](./built-in%20types#float64) | z 值 |
+| w | [`float64`](./built-in%20types#float64) | w 值 |
 
 ## 参考实现
 

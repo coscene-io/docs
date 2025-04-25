@@ -8,7 +8,7 @@ title: Enum LogLevel
 
 ## 父类型
 
-`LogLevel` 出现在 [Log](/) 数据结构中。
+`LogLevel` 出现在 [`Log`](./log) 数据结构中。
 
 ## 值
 

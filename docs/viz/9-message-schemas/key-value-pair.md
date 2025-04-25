@@ -4,14 +4,14 @@
 
 ## 父级数据结构
 
-`KeyValuePair` 出现在[SceneEntity](/) 消息数据结构中。
+`KeyValuePair` 出现在 [`SceneEntity`](./scene-entity) 消息数据结构中。
 
 ## 数据结构
 
 | 字段  | 类型                                                                 | 描述 |
 | ----- | -------------------------------------------------------------------- | ---- |
-| key   | [string](/)  | 键   |
-| value | [string](/)  | 值   |
+| key   | [`string`](./built-in%20types#string)  | 键   |
+| value | [`string`](./built-in%20types#string)  | 值   |
 
 ## 参考实现
 

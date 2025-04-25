@@ -97,7 +97,7 @@ Linux：
 | --- | --- |
 | ROS 1 | [sensor_msgs/Image](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html) |
 | ROS 2 | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/Image.msg) |
-| 自定义 | [foxglove.RawImage](/) |
+| 自定义 | [foxglove.RawImage](../message-schemas/raw-image) |
 
 ### `CompressedImage`
 
@@ -105,7 +105,7 @@ Linux：
 | --- | --- |
 | ROS 1 | [sensor_msgs/CompressedImage](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CompressedImage.html) |
 | ROS 2 | [sensor_msgs/CompressedImage](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
-| 自定义 | [foxglove.CompressedImage](/) |
+| 自定义 | [foxglove.CompressedImage](../message-schemas/compressed-image) |
 
 ### `CameraCalibration`
 
@@ -117,7 +117,7 @@ Linux：
 | --- | --- |
 | ROS 1 | [sensor_msgs/CameraInfo](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CameraInfo.html) |
 | ROS 2 | [sensor_msgs/CameraInfo](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CameraInfo.msg) |
-| 自定义 | [foxglove.CameraCalibration](/) |
+| 自定义 | [foxglove.CameraCalibration](../message-schemas/camera-calibration) |
 
 
 ### `ImageAnnotations`
@@ -126,5 +126,5 @@ Linux：
 | --- | --- |
 | ROS 1 | [visualization_msgs/ImageMarker](https://docs.ros.org/en/noetic/api/visualization_msgs/html/msg/ImageMarker.html) |
 | ROS 2 | [visualization_msgs/ImageMarker](https://github.com/ros2/common_interfaces/blob/master/visualization_msgs/msg/ImageMarker.msg) |
-| 自定义 | [foxglove.ImageAnnotations](/) |
+| 自定义 | [foxglove.ImageAnnotations](../message-schemas/image-annotations) |
 

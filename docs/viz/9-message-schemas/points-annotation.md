@@ -4,19 +4,19 @@
 
 ## 父级数据结构
 
-`PointsAnnotation` 出现在 [ImageAnnotations](/) 消息数据结构中。
+`PointsAnnotation` 出现在 [`ImageAnnotations`](./image-annotations) 消息数据结构中。
 
 ## 数据结构
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| timestamp | [time](/) | 标注的时间戳 |
-| type | [PointsAnnotationType](/) | 要绘制的点标注类型 |
-| points | [Point2\[\]](/) | 二维图像坐标（像素）中的点 |
-| outline_color | [Color](/) | 轮廓颜色 |
-| outline_colors | [Color\[\]](/) | 如果 `type` 是 `POINTS`，则为每个点的颜色；如果 `type` 是 `LINE_LIST`、`LINE_STRIP` 或 `LINE_LOOP`，则为每个线段的描边颜色。 |
-| fill_color | [Color](/) | 填充颜色 |
-| thickness | [float64](/) | 描边粗细（像素） |
+| timestamp | [`time`](./built-in%20types#time) | 标注的时间戳 |
+| type | [`PointsAnnotationType`](./enum-points-annotation-type) | 要绘制的点标注类型 |
+| points | [`Point2[]`](./point-2) | 二维图像坐标（像素）中的点 |
+| outline_color | [`color`](./color) | 轮廓颜色 |
+| outline_colors | [`Color[]`](./color) | 如果 `type` 是 `POINTS`，则为每个点的颜色；如果 `type` 是 `LINE_LIST`、`LINE_STRIP` 或 `LINE_LOOP`，则为每个线段的描边颜色。 |
+| fill_color | [`color`](./color) | 填充颜色 |
+| thickness | [`float64`](./built-in%20types#float64) | 描边粗细（像素） |
 
 ### `points`
 

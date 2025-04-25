@@ -4,7 +4,7 @@
 
 ## 父类型
 
-`PositionCovarianceType` 出现在 [LocationFix](/) 数据结构中。
+`PositionCovarianceType` 出现在 [`LocationFix`](./location-fix) 数据结构中。
 
 ## 值
 

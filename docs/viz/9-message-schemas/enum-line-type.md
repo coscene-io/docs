@@ -8,7 +8,7 @@ title: Enum LineType
 
 ## 父级数据结构
 
-`LineType` 出现在 [LinePrimitive](/) 数据结构中。
+`LineType` 出现在 [`LinePrimitive`](./line-primitive) 数据结构中。
 
 ## 值
 

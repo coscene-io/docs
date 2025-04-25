@@ -4,17 +4,17 @@
 
 ## 父级数据结构
 
-`TriangleListPrimitive` 出现在 [SceneEntity](/) 消息数据结构中。
+`TriangleListPrimitive` 出现在 [`SceneEntity`](./scene-entity) 消息数据结构中。
 
 ## 数据结构
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| pose | [Pose](/) | 三角形相对于参考坐标系的原点 |
-| points | [Point3[]](/) | 用于三角形的顶点，解释为三元组列表（0-1-2, 3-4-5, ...） |
-| color | [Color](/) | 用于整个形状的纯色。必须提供 color 或 colors 之一。 |
-| colors | [Color[]](/) | 每个顶点的颜色（如果指定，必须与 points 长度相同）。必须提供 color 或 colors 之一。 |
-| indices | [uint32[]](/) | 指向 points 和 colors 属性数组的索引，可用于避免重复属性数据。 |
+| pose | [`pose`](./pose) | 三角形相对于参考坐标系的原点 |
+| points | [`Point3[]`](./point-3) | 用于三角形的顶点，解释为三元组列表（0-1-2, 3-4-5, ...） |
+| color | [`color`](./color) | 用于整个形状的纯色。必须提供 color 或 colors 之一。 |
+| colors | [`Color[]`](./color) | 每个顶点的颜色（如果指定，必须与 points 长度相同）。必须提供 color 或 colors 之一。 |
+| indices | [`uint32[]`](./built-in%20types#uint32) | 指向 points 和 colors 属性数组的索引，可用于避免重复属性数据。 |
 
 ### `indices`
 

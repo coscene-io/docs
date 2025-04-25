@@ -4,14 +4,14 @@
 
 ## 父数据结构
 
-`Pose` 出现在以下数据结构中：[ArrowPrimitive](/)、[CubePrimitive](/)、[CylinderPrimitive](/)、[Grid](/)、[LaserScan](/)、[LinePrimitive](/)、[ModelPrimitive](/)、[PointCloud](/)、[PoseInFrame](/)、[PosesInFrame](/)、[SpherePrimitive](/)、[TextPrimitive](/) 和 [TriangleListPrimitive](/)。
+`Pose` 出现在以下数据结构中：[`ArrowPrimitive`](./arrow-primitive)、[`CubePrimitive`](./cube-primitive)、[`CylinderPrimitive`](./cylinder-primitive)、[`Grid`](./grid)、[`LaserScan`](./laser-scan)、[`LinePrimitive`](./line-primitive)、[`ModelPrimitive`](./model-primitive)、[`PointCloud`](./point-cloud)、[`PoseInFrame`](./pose-in-frame)、[`PosesInFrame`](./poses-in-frame)、[`SpherePrimitive`](./sphere-primitive)、[`TextPrimitive`](./text-primitive) 和 [`TriangleListPrimitive`](./triangle-list-primitive)。
 
 ## 数据结构
 
 | 字段         | 类型                                                         | 描述                                 |
 | ------------ | ------------------------------------------------------------ | ------------------------------------ |
-| position     | [Vector3](/)      | 表示三维空间中的位置点               |
-| orientation  | [Quaternion](/) | 表示三维空间中的方向四元数           |
+| position     | [`Vector3`](./vector-3)      | 表示三维空间中的位置点               |
+| orientation  | [`Quaternion`](./quaternion) | 表示三维空间中的方向四元数           |
 
 ## 参考实现
 

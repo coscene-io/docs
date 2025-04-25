@@ -4,17 +4,17 @@
 
 ## 父级数据结构
 
-`TextAnnotation` 出现在 [ImageAnnotations](/) 消息数据结构中。
+`TextAnnotation` 出现在 [`ImageAnnotations`](./image-annotations) 消息数据结构中。
 
 ## 数据结构
  字段 | 类型 | 描述 |
 | --- | --- | --- |
-| timestamp | [time](/) | 注释的时间戳 |
-| position | [Point2](/) | 文本标签在 2D 图像坐标（像素）中的左下角原点 |
-| text | [string](/) | 要显示的文本 |
-| font_size | [float64](/) | 字体大小（像素） |
-| text_color | [Color](/) | 文本颜色 |
-| background_color | [Color](/) | 背景填充颜色 |
+| timestamp | [`time`](./built-in%20types#time) | 注释的时间戳 |
+| position | [`Point2`](./point-2) | 文本标签在 2D 图像坐标（像素）中的左下角原点 |
+| text | [`string`](./built-in%20types#string) | 要显示的文本 |
+| font_size | [`float64`](./built-in%20types#float64) | 字体大小（像素） |
+| text_color | [`color`](./color) | 文本颜色 |
+| background_color | [`color`](./color) | 背景填充颜色 |
 
 ### `position`
 

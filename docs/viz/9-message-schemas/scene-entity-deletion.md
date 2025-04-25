@@ -4,15 +4,15 @@
 
 ## 父数据结构
 
-`SceneEntityDeletion` 出现在 [SceneUpdate](/) 消息数据结构中。
+`SceneEntityDeletion` 出现在 [`SceneUpdate`](./scene-update) 消息数据结构中。
 
 ## 数据结构
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| timestamp | [time](/) | 删除操作的时间戳。只有早于此时间戳的匹配实体才会被删除。 |
-| type | [SceneEntityDeletionType](/) | 要执行的删除操作类型 |
-| id | [string](/) | 当 `type` 为 `MATCHING_ID` 时必须匹配的标识符。 |
+| timestamp | [`time`](./built-in%20types#time) | 删除操作的时间戳。只有早于此时间戳的匹配实体才会被删除。 |
+| type | [`SceneEntityDeletionType`](./enum-scene-entity-deletion-type) | 要执行的删除操作类型 |
+| id | [`string`](./built-in%20types#string) | 当 `type` 为 `MATCHING_ID` 时必须匹配的标识符。 |
 
 ## 参考实现
 

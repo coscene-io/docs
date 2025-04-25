@@ -10,10 +10,10 @@
 
 | 字段       | 类型                                                                  | 描述                     |
 | ---------- | --------------------------------------------------------------------- | ------------------------ |
-| timestamp  | [time](/)       | 视频帧的时间戳           |
-| frame_id   | [string](/)   | 视频的参考坐标系         |
-| data       | [bytes](/)     | 压缩视频帧数据           |
-| format     | [string](/)   | 视频格式                 |
+| `timestamp`  | [`time`](./built-in%20types#time)       | 视频帧的时间戳           |
+| `frame_id`   | [`string`](./built-in%20types#string)   | 视频的参考坐标系         |
+| `data`       | [`bytes`](./built-in%20types#bytes)     | 压缩视频帧数据           |
+| `format`     | [`string`](./built-in%20types#string)   | 视频格式                 |
 
 ### `frame_id`
 

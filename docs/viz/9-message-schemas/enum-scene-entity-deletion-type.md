@@ -1,10 +1,10 @@
 # SceneEntityDeletionType
 
-一个枚举类型，用于指示哪些实体应该匹配 [SceneEntityDeletion](/) 命令。
+一个枚举类型，用于指示哪些实体应该匹配 [`SceneEntityDeletion`](./scene-entity-deletion) 命令。
 
 ## 父类型
 
-`SceneEntityDeletionType` 出现在 [SceneEntityDeletion](/) 数据结构中。
+`SceneEntityDeletionType` 出现在 [`SceneEntityDeletion`](./scene-entity-deletion) 数据结构中。
 
 ## 值
 

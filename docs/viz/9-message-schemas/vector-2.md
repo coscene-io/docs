@@ -4,14 +4,14 @@
 
 ## 父级数据结构
 
-`Vector2` 出现在 [Grid](/) 消息数据结构中。
+`Vector2` 出现在 [`Grid`](./grid) 消息数据结构中。
 
 ## 数据结构
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| x | [float64](/) | x 坐标长度 |
-| y | [float64](/) | y 坐标长度 |
+| x | [`float64`](./built-in%20types#float64) | x 坐标长度 |
+| y | [`float64`](./built-in%20types#float64) | y 坐标长度 |
 
 ## 参考实现
 

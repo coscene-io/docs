@@ -8,17 +8,17 @@
 
 ## 父级数据结构
 
-`FrameTransform` 出现在 [FrameTransforms](/) 消息数据结构中。
+`FrameTransform` 出现在 [`FrameTransforms`](./frame-transforms) 消息数据结构中。
 
 ## 数据结构
 
 | 字段 | 类型 | 描述 |
 |:---|:---|:---|
-| timestamp | [time](/) | 变换的时间戳 |
-| parent_frame_id | [string](/) | 父坐标系的名称 |
-| child_frame_id | [string](/) | 子坐标系的名称 |
-| translation | [Vector3](/) | 变换的平移分量 |
-| rotation | [Quaternion](/) | 变换的旋转分量 |
+| timestamp | [`time`](./built-in%20types#time) | 变换的时间戳 |
+| parent_frame_id | [`string`](./built-in%20types#string) | 父坐标系的名称 |
+| child_frame_id | [`string`](./built-in%20types#string) | 子坐标系的名称 |
+| translation | [`Vector3`](./vector-3) | 变换的平移分量 |
+| rotation | [`Quaternion`](./quaternion) | 变换的旋转分量 |
 
 ## 参考实现
 

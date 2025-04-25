@@ -4,15 +4,15 @@
 
 ## 父数据结构
 
-`Point3` 出现在 LinePrimitive 和 TriangleListPrimitive 消息数据结构中。
+`Point3` 出现在 [`LinePrimitive`](./line-primitive) 和 [`TriangleListPrimitive`](./triangle-list-primitive) 消息数据结构中。
 
 ## 数据结构
 
 | 字段 | 类型                                                                  | 描述           |
 | ----- | --------------------------------------------------------------------- | --------------------- |
-| x     | [float64](/) | x 坐标位置 |
-| y     | [float64](/) | y 坐标位置 |
-| z     | [float64](/) | z 坐标位置 |
+| x     | [`float64`](./built-in%20types#float64) | x 坐标位置 |
+| y     | [`float64`](./built-in%20types#float64) | y 坐标位置 |
+| z     | [`float64`](./built-in%20types#float64) | z 坐标位置 |
 
 ## 参考实现
 

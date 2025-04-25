@@ -4,15 +4,15 @@
 
 ## 父级数据结构
 
-`SpherePrimitive` 出现在 [SceneEntity](/) 消息数据结构中。
+`SpherePrimitive` 出现在 [`SceneEntity`](./scene-entity) 消息数据结构中。
 
 ## 数据结构
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| pose | [Pose](/) | 球体中心的位置和球体的方向 |
-| size | [Vector3](/) | 球体沿每个轴的尺寸（直径） |
-| color | [Color](/) | 球体的颜色 |
+| pose | [`pose`](./pose) | 球体中心的位置和球体的方向 |
+| size | [`Vector3`](./vector-3) | 球体沿每个轴的尺寸（直径） |
+| color | [`color`](./color) | 球体的颜色 |
 
 ## 参考实现
 

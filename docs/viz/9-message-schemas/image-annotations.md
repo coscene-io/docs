@@ -14,9 +14,9 @@ title: ImageAnnotations
 
 | 字段     | 类型                                                                          | 描述         |
 | ------- | ----------------------------------------------------------------------------- | ------------ |
-| circles | [CircleAnnotation\[\]](/) | 圆形注释     |
-| points  | [PointsAnnotation\[\]](/) | 点注释       |
-| texts   | [TextAnnotation\[\]](/)     | 文本注释     |
+| circles | [`CircleAnnotation\[\]`](./circle-annotation) | 圆形注释     |
+| points  | [`PointsAnnotation\[\]`](./points-annotation) | 点注释       |
+| texts   | [`TextAnnotation\[\]`](./text-annotation)     | 文本注释     |
 
 ## 参考实现
 

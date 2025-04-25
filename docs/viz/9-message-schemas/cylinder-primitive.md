@@ -4,17 +4,17 @@
 
 ## 父级数据结构
 
-`CylinderPrimitive` 出现在 [SceneEntity](/) 消息数据结构中。
+`CylinderPrimitive` 出现在 [`SceneEntity`](./scene-entity) 消息数据结构中。
 
 ## 数据结构
 
 | 字段 | 类型 | 描述 |
 |:---|:---|:---|
-| pose | [Pose](/) | 圆柱体中心的位置和圆柱体的方向。平面（面）垂直于 z 轴。 |
-| size | [Vector3](/) | 圆柱体边界框的大小 |
-| bottom_scale | [float64](/) | 0-1，圆柱体底面（最小 z 值）直径与边界框底部的比率 |
-| top_scale | [float64](/) | 0-1，圆柱体顶面（最大 z 值）直径与边界框顶部的比率 |
-| color | [Color](/) | 圆柱体的颜色 |
+| pose | [`pose`](./pose) | 圆柱体中心的位置和圆柱体的方向。平面（面）垂直于 z 轴。 |
+| size | [`Vector3`](./vector-3) | 圆柱体边界框的大小 |
+| bottom_scale | [`float64`](./built-in%20types#float64) | 0-1，圆柱体底面（最小 z 值）直径与边界框底部的比率 |
+| top_scale | [`float64`](./built-in%20types#float64) | 0-1，圆柱体顶面（最大 z 值）直径与边界框顶部的比率 |
+| color | [`color`](./color) | 圆柱体的颜色 |
 
 ## 参考实现
 

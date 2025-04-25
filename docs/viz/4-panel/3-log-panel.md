@@ -43,4 +43,4 @@ sidebar_position: 3
 | --- | --- |
 | ROS 1 | [rosgraph_msgs/Log](https://docs.ros.org/en/noetic/api/rosgraph_msgs/html/msg/Log.html) |
 | ROS 2 | [rcl_interfaces/msg/Log](https://github.com/ros2/rcl_interfaces/blob/master/rcl_interfaces/msg/Log.msg) |
-| 自定义 | [foxglove.Log](/) |
+| 自定义 | [foxglove.Log](../message-schemas/log) |

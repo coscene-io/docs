@@ -10,12 +10,12 @@
 
 | 字段      | 类型                                                                | 描述                  |
 | --------- | ------------------------------------------------------------------- | --------------------- |
-| timestamp | [time](/)     | 日志消息的时间戳      |
-| level     | [LogLevel](/)           | 日志级别              |
-| message   | [string](/) | 日志消息内容          |
-| name      | [string](/) | 进程或节点名称        |
-| file      | [string](/) | 文件名                |
-| line      | [uint32](/) | 文件中的行号          |
+| timestamp | [`time`](./built-in%20types#time)     | 日志消息的时间戳      |
+| level     | [`LogLevel`](./enum-log-level)           | 日志级别              |
+| message   | [`string`](./built-in%20types#string) | 日志消息内容          |
+| name      | [`string`](./built-in%20types#string) | 进程或节点名称        |
+| file      | [`string`](./built-in%20types#string) | 文件名                |
+| line      | [`uint32`](./built-in%20types#uint32) | 文件中的行号          |
 
 ## 参考实现
 

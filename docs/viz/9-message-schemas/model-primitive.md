@@ -4,19 +4,19 @@
 
 ## 父级数据结构
 
-`ModelPrimitive` 出现在 [SceneEntity](/) 消息数据结构中。
+`ModelPrimitive` 出现在 [`SceneEntity`](./scene-entity) 消息数据结构中。
 
 ## 数据结构
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| pose | [Pose](/) | 相对于参考系的模型原点 |
-| scale | [Vector3](/) | 沿每个轴应用于模型的缩放因子 |
-| color | [Color](/) | 如果 override_color 为 true，则用于整个模型的纯色 |
-| override_color | [boolean](/) | 是否使用 color 中指定的颜色，而不是原始模型中嵌入的任何材质 |
-| url | [string](/) | 指向模型文件的 URL。应提供 url 或 data 之一 |
-| media_type | [string](/) | 嵌入模型的[媒体类型](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)（例如 model/gltf-binary）。如果提供 data 而不是 url，则需要此字段。如果提供了 url，则覆盖推断的媒体类型 |
-| data | [bytes](/) | 嵌入的模型。应提供 url 或 data 之一。如果提供了 data，则必须设置 media_type 以指示数据的类型 |
+| pose | [`pose`](./pose) | 相对于参考系的模型原点 |
+| scale | [`Vector3`](./vector-3) | 沿每个轴应用于模型的缩放因子 |
+| color | [`color`](./color) | 如果 override_color 为 true，则用于整个模型的纯色 |
+| override_color | [`boolean`](./built-in%20types#boolean) | 是否使用 color 中指定的颜色，而不是原始模型中嵌入的任何材质 |
+| url | [`string`](./built-in%20types#string) | 指向模型文件的 URL。应提供 url 或 data 之一 |
+| media_type | [`string`](./built-in%20types#string) | 嵌入模型的[媒体类型](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)（例如 model/gltf-binary）。如果提供 data 而不是 url，则需要此字段。如果提供了 url，则覆盖推断的媒体类型 |
+| data | [`bytes`](./built-in%20types#bytes) | 嵌入的模型。应提供 url 或 data 之一。如果提供了 data，则必须设置 media_type 以指示数据的类型 |
 
 ## 参考实现
 

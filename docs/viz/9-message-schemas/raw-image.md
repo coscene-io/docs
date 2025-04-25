@@ -10,13 +10,13 @@
 
 | 字段 | 类型 | 描述 |
 | --- | --- | --- |
-| timestamp | [time](/) | 图像的时间戳 |
-| frame_id | [string](/) | 图像的参考坐标系。坐标系的原点是相机的光学中心。+x 指向图像的右侧，+y 指向下方，+z 指向图像平面内部。 |
-| width | [uint32](/) | 图像宽度 |
-| height | [uint32](/) | 图像高度 |
-| encoding | [string](/) | 原始图像数据的编码格式 |
-| step | [uint32](/) | 单行的字节长度 |
-| data | [bytes](/) | 原始图像数据 |
+| timestamp | [`time`](./built-in%20types#time) | 图像的时间戳 |
+| frame_id | [`string`](./built-in%20types#string) | 图像的参考坐标系。坐标系的原点是相机的光学中心。+x 指向图像的右侧，+y 指向下方，+z 指向图像平面内部。 |
+| width | [`uint32`](./built-in%20types#uint32) | 图像宽度 |
+| height | [`uint32`](./built-in%20types#uint32) | 图像高度 |
+| encoding | [`string`](./built-in%20types#string) | 原始图像数据的编码格式 |
+| step | [`uint32`](./built-in%20types#uint32) | 单行的字节长度 |
+| data | [`bytes`](./built-in%20types#bytes) | 原始图像数据 |
 
 ### `encoding`
 

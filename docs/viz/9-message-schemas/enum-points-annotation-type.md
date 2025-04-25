@@ -4,7 +4,7 @@
 
 ## 父类型
 
-`PointsAnnotationType` 出现在 [PointsAnnotation](/) 数据结构中。
+`PointsAnnotationType` 出现在 [`PointsAnnotation`](./points-annotation) 数据结构中。
 
 ## 值
 
