@@ -9,18 +9,18 @@ title: ArrowPrimitive
 
 ## 父架构
 
-`ArrowPrimitive` 出现在 `SceneEntity` 消息架构中。
+`ArrowPrimitive` 出现在 [`SceneEntity`](./scene-entity) 消息架构中。
 
-## 架构
+## 架构定义
 
 | 字段 | 类型      | 描述                 |
 |------|----------|----------------------|
-| `pose`  | [`pose`](/)  | 箭头尾部的位置和箭头的方向。单位方向意味着箭头指向 + x 方向。 |
+| `pose`  | [`pose`](./pose)  | 箭头尾部的位置和箭头的方向。单位方向意味着箭头指向 + x 方向。 |
 | `shaft_length`  | [`float64`](./built-in%20types#float64)  | 箭杆的长度 |
 | `shaft_diameter`  | [`float64`](./built-in%20types#float64)  | 箭杆的直径 |
 | `head_length`  | [`float64`](./built-in%20types#float64)  | 箭头的长度 |
 | `head_diameter`  | [`float64`](./built-in%20types#float64)  | 箭头的直径 |
-| `color`  | [`color`](./6-color.md)  | 箭头的颜色 |
+| `color`  | [`color`](./color)  | 箭头的颜色 |
 
 ## 参考
 coScene 的架构类型（schemas）是与框架无关的，可以使用任何受支持的消息编码格式来实现。

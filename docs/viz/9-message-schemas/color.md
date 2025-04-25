@@ -12,16 +12,16 @@ RGBA 格式的颜色。
 
 ## 父级架构
 
-`CircleAnnotation` 出现在 `ArrowPrimitive`、 `CircleAnnotation`、 `CubePrimitive`、 `CylinderPrimitive`、 `LinePrimitive`、 `ModelPrimitive`、 `PointsAnnotation`、 `SpherePrimitive`、 `TextAnnotation`、 `TextPrimitive`、 `TriangleListPrimitive` 消息模式中。
+`Color` 出现在 [`ArrowPrimitive`](./arrow-primitive)、 [`CircleAnnotation`](./circle-annotation)、 [`CubePrimitive`](./cube-primitive)、 [`CylinderPrimitive`](./cylinder-primitive)、 [`LinePrimitive`](./line-primitive)、 [`ModelPrimitive`](./model-primitive)、 [`PointsAnnotation`](./points-annotation)、 [`SpherePrimitive`](./sphere-primitive)、 [`TextAnnotation`](./text-annotation)、 [`TextPrimitive`](./text-primitive)、 [`TriangleListPrimitive`](./triangle-list-primitive) 消息模式中。
 
 ## 字段定义
 
-| 字段名         | 类型      | 描述     |
-|--------------|-----------|----------|
-| `r`    | [`float64`](./built-in%20types#float64)     | 红色，数值介于 0 和 1 之间                          |
-| `g`     | [`float64`](./built-in%20types#float64)     | 绿色，数值介于 0 和 1 之间                          |
-| `b`     | [`float64`](./built-in%20types#float64)  | 蓝色，数值介于 0 和 1 之间                          |
-| `a`    | [`float64`](./built-in%20types#float64)  | 透明度，数值介于 0 和 1 之间                          |
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| `r` | [`float64`](./built-in%20types#float64) | 红色，数值介于 0 和 1 之间 |
+| `g` | [`float64`](./built-in%20types#float64) | 绿色，数值介于 0 和 1 之间 |
+| `b` | [`float64`](./built-in%20types#float64) | 蓝色，数值介于 0 和 1 之间 |
+| `a` | [`float64`](./built-in%20types#float64) | 透明度，数值介于 0 和 1 之间 |
 
 ## 参考
 

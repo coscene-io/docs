@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+title: 内置类型
 ---
 
 # 内置类型

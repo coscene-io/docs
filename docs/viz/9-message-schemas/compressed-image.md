@@ -10,12 +10,12 @@ title: CompressedImage
 
 ## 字段定义
 
-| 字段名         | 类型      | 描述     |
-|--------------|-----------|----------|
-| `timestamp`    | [`time`](./built-in%20types#time)     | 图像的时间戳                         |
-| `frame_id`     | [`string`](./built-in%20types#string)     | 图像的参考坐标系。坐标系的原点是相机的光学中心。+x 指向图像右侧，+y 指向图像下方，+z 指向图像平面内部。                         |
-| `data`     | [`byte`](./built-in%20types#bytes)  | 压缩图像数据                          |
-| `format`    | [`string`](./built-in%20types#string)  | 图像格式                         |
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| `timestamp` | [`time`](./built-in%20types#time) | 图像的时间戳 |
+| `frame_id` | [`string`](./built-in%20types#string) | 图像的参考坐标系。坐标系的原点是相机的光学中心。+x 指向图像右侧，+y 指向图像下方，+z 指向图像平面内部。 |
+| `data` | [`byte`](./built-in%20types#bytes) | 压缩图像数据 |
+| `format` | [`string`](./built-in%20types#string) | 图像格式 |
 
 ### `format`
 支持的值：Chrome 支持的图片媒体类型，例如`webp`、`jpeg`、`png`

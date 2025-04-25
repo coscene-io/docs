@@ -3,7 +3,7 @@ sidebar_position: 4
 title: CameraCalibration
 ---
 
-# 相机校准
+# CameraCalibration
 
 ## 面板支持
 
@@ -37,7 +37,7 @@ K 是原始（未校正）图像的 3x3 行主矩阵。
 使用焦距（fx，fy）和主点（cx，cy）将相机坐标系中的 3D 点投影到 2D 像素坐标。
 
 ```
-    [fx  0  cx]
+    [fx   0  cx]
 K = [ 0  fy  cy]
     [ 0   0   1]
 ```

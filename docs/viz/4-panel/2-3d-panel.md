@@ -313,7 +313,7 @@ sidebar_position: 2
 | --- | --- |
 | ROS 1 | [sensor_msgs/CameraInfo](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CameraInfo.html) |
 | ROS 2 | [sensor_msgs/msg/CameraInfo](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CameraInfo.msg) |
-| 自定义 | [foxglove.CameraCalibration](/) |
+| 自定义 | [foxglove.CameraCalibration](../message-schemas/camera-calibration) |
 
 ### 网格
 
@@ -323,7 +323,7 @@ sidebar_position: 2
 | --- | --- |
 | ROS 1 | [nav_msgs/OccupancyGrid](https://docs.ros.org/en/noetic/api/nav_msgs/html/msg/OccupancyGrid.html) |
 | ROS 2 | [nav_msgs/msg/OccupancyGrid](https://github.com/ros2/common_interfaces/blob/master/nav_msgs/msg/OccupancyGrid.msg) |
-| 自定义 | [foxglove.Grid](/) |
+| 自定义 | [foxglove.Grid](../message-schemas/grid) |
 
 #### `foxglove.Grid` 设置
 
@@ -367,8 +367,8 @@ sidebar_position: 2
 | ROS 2 | [sensor_msgs/msg/Image](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/Image.msg) |
 | ROS 1 | [sensor_msgs/CompressedImage](https://docs.ros.org/en/api/sensor_msgs/html/msg/CompressedImage.html) |
 | ROS 2 | [sensor_msgs/msg/CompressedImage](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
-| 自定义 | [foxglove.RawImage](/) |
-| 自定义 | [foxglove.CompressedImage](/) |
+| 自定义 | [foxglove.RawImage](../message-schemas/raw-image) |
+| 自定义 | [foxglove.CompressedImage](../message-schemas/compressed-image) |
 
 ### 激光扫描
 
@@ -378,7 +378,7 @@ sidebar_position: 2
 | --- | --- |
 | ROS 1 | [sensor_msgs/LaserScan](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/LaserScan.html) |
 | ROS 2 | [sensor_msgs/msg/LaserScan](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/LaserScan.msg) |
-| 自定义 | [foxglove.LaserScan](/) |
+| 自定义 | [foxglove.LaserScan](../message-schemas/laser-scan) |
 
 ### ROS 多边形
 
@@ -459,7 +459,7 @@ OBJ 是一种简单的 ASCII 格式，早于所有其他支持的格式。它具
 | --- | --- |
 | ROS 1 | [nav_msgs/Path](https://docs.ros.org/en/noetic/api/nav_msgs/html/msg/Path.html) |
 | ROS 2 | [nav_msgs/msg/Path](https://github.com/ros2/common_interfaces/blob/master/nav_msgs/msg/Path.msg) |
-| 自定义 | [foxglove.Path](/) |
+| 自定义 | [foxglove.PosesInFrame](../message-schemas/poses-in-frame) |
 
 ### 点云
 
@@ -469,7 +469,7 @@ OBJ 是一种简单的 ASCII 格式，早于所有其他支持的格式。它具
 | --- | --- |
 | ROS 1 | [sensor_msgs/PointCloud2](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/PointCloud2.html) |
 | ROS 2 | [sensor_msgs/msg/PointCloud2](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/PointCloud2.msg) |
-| 自定义 | [foxglove.PointCloud](/) |
+| 自定义 | [foxglove.PointCloud](../message-schemas/point-cloud) |
 
 #### 设置
 
@@ -520,7 +520,7 @@ OBJ 是一种简单的 ASCII 格式，早于所有其他支持的格式。它具
 | --- | --- |
 | ROS 1 | [geometry_msgs/PoseStamped](https://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/PoseStamped.html) |
 | ROS 2 | [geometry_msgs/msg/PoseStamped](https://github.com/ros2/common_interfaces/blob/master/geometry_msgs/msg/PoseStamped.msg) |
-| 自定义 | [foxglove.Pose](/) |
+| 自定义 | [foxglove.Pose](../message-schemas/pose) |
 
 ### 场景实体
 
@@ -528,10 +528,10 @@ OBJ 是一种简单的 ASCII 格式，早于所有其他支持的格式。它具
 
 场景实体必须包装在 `SceneUpdate` 消息中。
 
-| 框架 | 模式 |
+| 框架 | 模式 
 | --- | --- |
-| 自定义 | [foxglove.SceneEntity](/) |
-| 自定义 | [foxglove.SceneUpdate](/) |
+| 自定义 | [foxglove.SceneEntity](../message-schemas/scene-entity) |
+| 自定义 | [foxglove.SceneUpdate](../message-schemas/scene-update) |
 
 ### 变换
 
@@ -542,7 +542,7 @@ OBJ 是一种简单的 ASCII 格式，早于所有其他支持的格式。它具
 | ROS 1 | [tf/tfMessage](https://docs.ros.org/en/noetic/api/tf2_msgs/html/msg/TFMessage.html) |
 | ROS 1 | [tf2_msgs/TF2Error](https://docs.ros.org/en/noetic/api/tf2_msgs/html/msg/TF2Error.html) |
 | ROS 2 | [tf2_msgs/msg/TFMessage](https://github.com/ros2/common_interfaces/blob/master/tf2_msgs/msg/TFMessage.msg) |
-| 自定义 | [foxglove.Transform](/) |
+| 自定义 | [foxglove.FrameTransform](../message-schemas/frame-transform) |
 
 ### Velodyne 扫描
 

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+title: 介绍
 ---
 
 # 介绍
@@ -83,4 +84,4 @@ import { Point2 } from "@foxglove/schemas";
 const myPoint: Point2 = { x: 1, y: 2 };
 ```
 
-在处理 JavaScript WebSocket 或 MCAP 项目，或在 coScene 的[用户脚本面板](/)中编写自定义数据转换脚本时，请导入这些类型。
+在处理 JavaScript WebSocket 或 MCAP 项目，或在 coScene 的用户脚本面板中编写自定义数据转换脚本时，请导入这些类型。
