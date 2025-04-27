@@ -9,7 +9,7 @@ title: CircleAnnotation
 
 ## 父级架构
 
-`CircleAnnotation` 出现在 [`ImageAnnotations`](/image-annotations) 消息模式中。
+`CircleAnnotation` 出现在 [`ImageAnnotations`](../message-schemas/image-annotations) 消息模式中。
 
 ## 字段定义
 
