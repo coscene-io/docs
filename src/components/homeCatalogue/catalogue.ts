@@ -52,11 +52,13 @@ export const CATALOGUE = [
         docLink: '/viz/frame-rate-optimization',
         title: translate({ id: 'home.catalogue.frame-rate-optimization', message: '帧率优化选项' }),
       },
-      { docLink: '/category/extensions', title: translate({ id: 'home.catalogue.extensions', message: '插件' }) },
-      {
-        docLink: '/viz/message-schemas',
-        title: translate({ id: 'home.catalogue.message-schemas', message: '消息架构' }),
-      },
+      ...(typeof process !== 'undefined' && process.env.DOCUSAURUS_CURRENT_LOCALE === 'zh' ? [
+        { docLink: '/category/extensions', title: translate({ id: 'home.catalogue.extensions', message: '插件' }) },
+        {
+          docLink: '/viz/message-schemas',
+          title: translate({ id: 'home.catalogue.message-schemas', message: '消息架构' }),
+        },
+      ] : []),
     ],
   },
   {
