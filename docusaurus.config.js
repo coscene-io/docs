@@ -6,6 +6,11 @@
 
 import { themes } from 'prism-react-renderer';
 
+const defaultExclude = ['**/_*.{js,jsx,ts,tsx,md,mdx}', '**/_*/**', '**/*.test.{js,jsx,ts,tsx}', '**/__tests__/**'];
+
+// some docs are not translated, so we need to exclude them
+const excludeInEn = ['**/viz/8-extensions/**', '**/viz/9-message-schemas/**'];
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'coScene',
@@ -60,7 +65,8 @@ const config = {
           // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          exclude: process.env.DOCUSAURUS_CURRENT_LOCALE === 'en' ? ['**/viz/8-extension/**'] : [],
+          exclude:
+            process.env.DOCUSAURUS_CURRENT_LOCALE === 'en' ? [...defaultExclude, ...excludeInEn] : defaultExclude,
         },
         blog: false,
         // blog: {
