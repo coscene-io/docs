@@ -60,6 +60,7 @@ const config = {
           // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
+          exclude: process.env.DOCUSAURUS_CURRENT_LOCALE === 'en' ? ['**/viz/8-extension/**'] : [],
         },
         blog: false,
         // blog: {
