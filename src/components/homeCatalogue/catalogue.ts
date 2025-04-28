@@ -1,6 +1,6 @@
 import { translate } from '@docusaurus/Translate';
 
-export const CATALOGUE = [
+export const CATALOGUE = (local: string) => [
   {
     header: { title: translate({ id: 'home.catalogue.getting-started', message: '新手入门' }) },
     docs: [
@@ -52,13 +52,15 @@ export const CATALOGUE = [
         docLink: '/viz/frame-rate-optimization',
         title: translate({ id: 'home.catalogue.frame-rate-optimization', message: '帧率优化选项' }),
       },
-      ...(typeof process !== 'undefined' && process.env.DOCUSAURUS_CURRENT_LOCALE === 'zh' ? [
-        { docLink: '/category/extensions', title: translate({ id: 'home.catalogue.extensions', message: '插件' }) },
-        {
-          docLink: '/viz/message-schemas',
-          title: translate({ id: 'home.catalogue.message-schemas', message: '消息架构' }),
-        },
-      ] : []),
+      ...(local === 'zh'
+        ? [
+            { docLink: '/category/extensions', title: translate({ id: 'home.catalogue.extensions', message: '插件' }) },
+            {
+              docLink: '/viz/message-schemas',
+              title: translate({ id: 'home.catalogue.message-schemas', message: '消息架构' }),
+            },
+          ]
+        : []),
     ],
   },
   {
