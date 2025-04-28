@@ -34,3 +34,13 @@ sidebar_position: 3
 3. 查看过滤后的日志
 
 ![viz-6-5.png](../img/viz-6-5.png)
+
+## 支持的消息类型
+
+想要使用日志面板，你的数据源必须提供符合以下支持的消息类型。
+
+| 框架 | 消息类型 |
+| --- | --- |
+| ROS 1 | [rosgraph_msgs/Log](https://docs.ros.org/en/noetic/api/rosgraph_msgs/html/msg/Log.html) |
+| ROS 2 | [rcl_interfaces/msg/Log](https://github.com/ros2/rcl_interfaces/blob/master/rcl_interfaces/msg/Log.msg) |
+| 自定义 | [foxglove.Log](../message-schemas/log) |
