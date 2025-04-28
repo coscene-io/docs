@@ -38,8 +38,9 @@ jobs:
           sed -i 's/defaultLocale: '\''zh'\''/defaultLocale: '\''en'\''/' docusaurus.config.js
 
           # Uncomment and update Algolia search path for GitHub Pages deployment
-          sed -i '/replaceSearchResultPathname: {/,/},/ s/^        \/\/ /        /' docusaurus.config.js
-          sed -i 's|from: '\''/docs/'\''|from: '\''/en/'\''|' docusaurus.config.js
+          # sed -i '/replaceSearchResultPathname: {/,/},/ s/^        \/\/ /        /' docusaurus.config.js
+          # sed -i 's|from: '\''/docs/'\''|from: '\''/en/'\''|' docusaurus.config.js
+          sed -i '' -e "s/defaultLocale: 'zh'/defaultLocale: 'en'/" -e "s/locales: \['zh', 'en'\]/locales: \['en'\]/" docusaurus.config.js
 
           pnpm build
           echo "docs.coscene.io" > ./build/CNAME
