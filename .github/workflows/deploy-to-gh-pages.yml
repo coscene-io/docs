@@ -38,8 +38,10 @@ jobs:
           sed -i 's/defaultLocale: '\''zh'\''/defaultLocale: '\''en'\''/' docusaurus.config.js
 
           # Uncomment and update Algolia search path for GitHub Pages deployment
-          sed -i '/replaceSearchResultPathname: {/,/},/ s/^        \/\/ /        /' docusaurus.config.js
-          sed -i 's|from: '\''/docs/'\''|from: '\''/en/'\''|' docusaurus.config.js
+          sed -i '/{ type: '\''localeDropdown'\'', position: '\''right'\'' }/d' docusaurus.config.js
+          sed -i -e "s/defaultLocale: 'zh'/defaultLocale: 'en'/" -e "s/locales: \['zh', 'en'\]/locales: \['en'\]/" -e 's|coscene.cn|coscene.io|g' docusaurus.config.js
+          find docs blog src i18n -type f \( -name "*.md" -o -name "*.mdx" -o -name "*.js" -o -name "*.ts" -name "*.tsx" -o -name "*.json" \) -exec sed -i -e 's|https://coscene.cn|https://portal.coscene.io|g' {} +
+          find docs blog src i18n -type f \( -name "*.md" -o -name "*.mdx" -o -name "*.js" -o -name "*.ts" -name "*.tsx" -o -name "*.json" \) -exec sed -i -e 's|coscene.cn|coscene.io|g' {} +
 
           pnpm build
           echo "docs.coscene.io" > ./build/CNAME

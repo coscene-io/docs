@@ -100,10 +100,7 @@ const config = {
             label: '文档',
           },
           { to: '/changelog', label: '更新历史', position: 'left' },
-          {
-            type: 'localeDropdown',
-            position: 'right',
-          },
+          { type: 'localeDropdown', position: 'right' },
           { href: 'https://www.coscene.cn', label: '官方网站', position: 'right' },
           { href: 'https://github.com/coscene-io', label: 'GitHub', position: 'right' },
           {
