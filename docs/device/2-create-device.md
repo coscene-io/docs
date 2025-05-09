@@ -36,7 +36,7 @@ sidebar_position: 2
 
 1. 当前仅支持 Linux 设备，涵盖 arm64 和 x86_64 架构；
 
-2. 暂不支持 Windows 设备，如有 Windows 设备接入需求，请联系刻行团队。
+2. 暂不支持 Windows 设备，如有 Windows 设备接入需求，请联系刻行时空团队。
 
 ### 设备 ID 配置
 
@@ -126,12 +126,13 @@ sidebar_position: 2
 ![使用离线安装包添加](./img/4-3-input-information.png)
 
 ## 后续操作
+
 - [设备准入](./3-manage-device.md#设备准入)
 - [将设备添加到项目](./3-manage-device.md#分配设备到项目)
-   - [手动采集数据](../use-case/1-common-task.md)
-   - [根据错误码自动采集数据](../use-case/data-diagnosis/2-get-started.md)
+  - [手动采集数据](../use-case/1-common-task.md)
+  - [根据错误码自动采集数据](../use-case/data-diagnosis/2-get-started.md)
 - [远程连接设备](./5-device-remote-control.md)
-   - 实时可视化
-   - 网页 SSH
-   - 远程下发命令
-   - 端口映射
+  - 实时可视化
+  - 网页 SSH
+  - 远程下发命令
+  - 端口映射

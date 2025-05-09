@@ -6,7 +6,7 @@ sidebar_position: 2
 
 数据是所有 coScene 用户最重要的资产，在让用户能高效利用数据的同时，我们也充分重视用户对于数据资产的安全和保密性的要求。从第一天开始，我们就在设计和构建一个灵活的、可扩展的、可配置的权限模型，以满足我们的客户的保密、安全和控制的需要。
 
-coScene 目前的权限体系充分参考了行业内最佳实践，充分考虑了 [RBAC](https://en.wikipedia.org/wiki/Role-based_access_control) 和 [ABAC](https://en.wikipedia.org/wiki/Attribute-based_access_control) 模型对于我们应用的影响。在目前阶段，刻行的实现以 RBAC 作为基础，但会在接下来的发布中，逐渐引入 ABAC 的特性。最终达到一个灵活而又易懂的权限设置模型。
+coScene 目前的权限体系充分参考了行业内最佳实践，充分考虑了 [RBAC](https://en.wikipedia.org/wiki/Role-based_access_control) 和 [ABAC](https://en.wikipedia.org/wiki/Attribute-based_access_control) 模型对于我们应用的影响。在目前阶段，刻行时空的实现以 RBAC 作为基础，但会在接下来的发布中，逐渐引入 ABAC 的特性。最终达到一个灵活而又易懂的权限设置模型。
 
 ## 组织和项目
 

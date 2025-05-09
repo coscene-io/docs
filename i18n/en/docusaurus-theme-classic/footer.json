@@ -35,13 +35,13 @@
     "message": "Terms of Service",
     "description": "The label of footer link with label=服务协议 linking to /legal/terms/zh/terms.html"
   },
-  "link.item.label.刻行数据安全白皮书": {
+  "link.item.label.刻行时空数据安全白皮书": {
     "message": "coScene Data Security White Paper",
-    "description": "The label of footer link with label=刻行数据安全白皮书 linking to /security/security-white-paper/en/security-white-paper.html"
+    "description": "The label of footer link with label=刻行时空数据安全白皮书 linking to /security/security-white-paper/en/security-white-paper.html"
   },
-  "link.item.label.刻行数据安全方案": {
+  "link.item.label.刻行时空数据安全方案": {
     "message": "coScene Data Security Solution",
-    "description": "The label of footer link with label=刻行数据安全方案 linking to /security/data-security-solution/en/data-security-solution.html"
+    "description": "The label of footer link with label=刻行时空数据安全方案 linking to /security/data-security-solution/en/data-security-solution.html"
   },
   "link.title.法律协议": {
     "message": "Legel",

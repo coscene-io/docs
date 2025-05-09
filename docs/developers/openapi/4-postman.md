@@ -15,7 +15,7 @@ Postman 是一个用于构建和使用 API 的 API 平台。Postman 简化了 AP
 
 ![postman-import](./img/postman-import.png)
 
-在地址栏中输入 `https://download.coscene.cn/openapi/openapi.yaml` 刻行对应的 OpenAPI 定义文件地址，导入新的 OpenAPI 接口定义。
+在地址栏中输入 `https://download.coscene.cn/openapi/openapi.yaml` 刻行时空对应的 OpenAPI 定义文件地址，导入新的 OpenAPI 接口定义。
 
 ### 自定义变量信息
 
