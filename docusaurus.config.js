@@ -150,12 +150,12 @@ const config = {
             title: '数据安全',
             items: [
               {
-                label: '刻行数据安全白皮书',
+                label: '刻行时空数据安全白皮书',
                 href: '/security/security-white-paper',
                 target: '_blank',
               },
               {
-                label: '刻行数据安全方案',
+                label: '刻行时空数据安全方案',
                 href: '/security/data-security-solution',
                 target: '_blank',
               },

@@ -18,8 +18,8 @@ sidebar_position: 1
 
 ### 链接和资源
 
-* 指南：创建自定义面板
-* 构建自定义面板扩展（React）
+- 指南：创建自定义面板
+- 构建自定义面板扩展（React）
 
 ## 消息转换器
 
@@ -29,9 +29,9 @@ sidebar_position: 1
 
 ### 链接和资源
 
-* 指南：创建消息转换器
-* 编写消息转换器扩展（地图面板）
-* 编写消息转换器扩展（3D 面板）
+- 指南：创建消息转换器
+- 编写消息转换器扩展（地图面板）
+- 编写消息转换器扩展（3D 面板）
 
 ## 主题别名
 
@@ -45,7 +45,7 @@ sidebar_position: 1
 
 要求：
 
-* Node.js 14+
+- Node.js 14+
 
 要设置您的扩展项目，请导航到您希望源代码所在的目录，并在终端窗口中运行以下命令：
 
@@ -59,7 +59,5 @@ npm init coscene-extension@latest my-extension-name
 
 ## API 参考
 
-* [ExtensionContext](/docs/viz/extensions/api/entry-point/extension-context)
-* @coscene/coscene-extension
-
-
+- [ExtensionContext](/docs/viz/extensions/api/entry-point/extension-context)
+- @coscene/coscene-extension

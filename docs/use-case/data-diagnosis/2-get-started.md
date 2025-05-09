@@ -122,7 +122,7 @@ sidebar_position: 2
    mkdir logs
    ```
 
-3. 在刻行平台，进入组织管理页面的「设备」分页， 点击【添加设备】
+3. 在刻行时空平台，进入组织管理页面的「设备」分页， 点击【添加设备】
 
    ![org-device](./img/org-device-add.png)
 

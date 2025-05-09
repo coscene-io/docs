@@ -3,6 +3,7 @@ sidebar_position: 9
 ---
 
 # 配置文件格式与样例
+
 本章节介绍测试套件配置文件（cos.yaml）的语法规则和使用示例，帮助你快速配置和管理测试套件。
 
 系统支持解析 YAML 格式的配置文件，其文件名必须为 **cos.yaml** 或 **cos.yml**。你可以<a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/regression/cos.yaml.zip" download>下载示例配置文件</a>进行修改，或参考下方示例创建：

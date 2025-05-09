@@ -31,14 +31,14 @@ cocli update
 
 :::tip
 
-登录和初始化刻行 CLI 需要如下信息
+登录和初始化刻行时空 CLI 需要如下信息
 
 - 个人访问令牌(Token)：
 - 默认工作项目的(Slug)：
 
 :::
 
-您可以在[刻行-我的设置](https://coscene.cn/profile?section=security)页面中生成访问令牌。
+您可以在[刻行时空-我的设置](https://coscene.cn/profile?section=security)页面中生成访问令牌。
 
 命令行工具同时需要指定一个默认项目作为所有操作的默认环境，请选择您想要工作的项目，并在 URL 中获取项目的 Slug。
 
@@ -53,7 +53,7 @@ cocli login set -p <项目 slug> -t <个人访问令牌>
 ```
 
 :::info
-如果您是刻行的企业用户，单独部署了刻行的实例，您需要在 login 的同时设置
+如果您是刻行时空的企业用户，单独部署了刻行时空的实例，您需要在 login 的同时设置
 您所在企业实例的 endpoint
 
 例如 https://server2.coscene.cn -> https://openapi.server2.coscene.cn
