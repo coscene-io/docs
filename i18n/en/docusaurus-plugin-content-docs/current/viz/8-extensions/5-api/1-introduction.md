@@ -2,12 +2,12 @@
 sidebar_position: 1
 ---
 
-# coScene 扩展 API
+# coScene Extension API
 
-`@coscene/extension` 包含了编写 coScene 扩展所需的类型定义。
+`@coscene/extension` contains the type definitions required to write coScene extensions.
 
-请参阅 [扩展介绍](../introduction) 以获取更多信息。
+See [Extension Introduction](../introduction) for more information.
 
-## 入门指南
+## Getting Started
 
-你的扩展的默认导出必须是一个 ExtensionModule。当扩展被加载时，`activate` 函数将被调用，并且可以使用 ExtensionContext 的功能。
+Your extension's default export must be an `ExtensionModule`. When the extension is loaded, the `activate` function will be called, and you can use the functionality of `ExtensionContext`.
