@@ -4,16 +4,16 @@ title: Enum LineType
 
 # LineType
 
-一个枚举类型，用于指示如何解释输入点以创建线条
+An enumeration type used to indicate how input points should be interpreted to create lines
 
-## 父级数据结构
+## Parent Data Structure
 
-`LineType` 出现在 [`LinePrimitive`](./line-primitive) 数据结构中。
+`LineType` appears in the [`LinePrimitive`](./line-primitive) data structure.
 
-## 值
+## Values
 
-| 名称        | 值 | 描述                                     |
-| ----------- | ----- | ----------------------------------------------- |
-| LINE_STRIP | 0     | 连接的线段：0-1, 1-2, ..., (n-1)-n |
-| LINE_LOOP  | 1     | 闭合多边形：0-1, 1-2, ..., (n-1)-n, n-0     |
-| LINE_LIST  | 2     | 独立的线段：0-1, 2-3, 4-5, ...    |
+| Name       | Value | Description                                     |
+| ---------- | ----- | ----------------------------------------------- |
+| LINE_STRIP | 0     | Connected line segments: 0-1, 1-2, ..., (n-1)-n |
+| LINE_LOOP  | 1     | Closed polygon: 0-1, 1-2, ..., (n-1)-n, n-0     |
+| LINE_LIST  | 2     | Independent line segments: 0-1, 2-3, 4-5, ...   |

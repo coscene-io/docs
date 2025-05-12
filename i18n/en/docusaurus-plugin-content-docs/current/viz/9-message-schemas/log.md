@@ -1,33 +1,33 @@
 # Log
 
-日志消息
+Log message
 
-## 面板支持
+## Panel Support
 
-`Log` 消息类型在[日志面板](../panel/log-panel)中使用。
+The `Log` message type is used in the [Log Panel](../panel/log-panel).
 
-## 数据结构
+## Data Structure
 
-| 字段      | 类型                                                                | 描述                  |
-| --------- | ------------------------------------------------------------------- | --------------------- |
-| timestamp | [`time`](./built-in%20types#time)     | 日志消息的时间戳      |
-| level     | [`LogLevel`](./enum-log-level)           | 日志级别              |
-| message   | [`string`](./built-in%20types#string) | 日志消息内容          |
-| name      | [`string`](./built-in%20types#string) | 进程或节点名称        |
-| file      | [`string`](./built-in%20types#string) | 文件名                |
-| line      | [`uint32`](./built-in%20types#uint32) | 文件中的行号          |
+| Field     | Type                                  | Description                  |
+| --------- | ------------------------------------- | ---------------------------- |
+| timestamp | [`time`](./built-in%20types#time)     | Timestamp of the log message |
+| level     | [`LogLevel`](./enum-log-level)        | Log level                    |
+| message   | [`string`](./built-in%20types#string) | Log message content          |
+| name      | [`string`](./built-in%20types#string) | Process or node name         |
+| file      | [`string`](./built-in%20types#string) | Filename                     |
+| line      | [`uint32`](./built-in%20types#uint32) | Line number in file          |
 
-## 参考实现
+## Reference Implementation
 
-可视化数据结构是框架无关的，可以使用任何支持的消息编码方式实现：
+The visualization data structure is framework-independent and can be implemented using any supported message encoding:
 
-| 编码方式    | 数据结构                                                                                              |
+| Encoding    | Data Structure                                                                                      |
 | ----------- | --------------------------------------------------------------------------------------------------- |
-| ROS 1       | [foxglove\_msgs/Log](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/Log.msg)       |
-| ROS 2       | [foxglove\_msgs/msg/Log](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/Log.msg)   |
+| ROS 1       | [foxglove_msgs/Log](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/Log.msg)        |
+| ROS 2       | [foxglove_msgs/msg/Log](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/Log.msg)    |
 | JSON        | [foxglove.Log](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/Log.json)      |
 | Protobuf    | [foxglove.Log](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/Log.proto) |
 | FlatBuffers | [foxglove.Log](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/Log.fbs)       |
 | OMG IDL     | [foxglove::Log](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/Log.idl) |
 
-您必须使用上面指定的数据结构名称，以便可视化能够识别该数据结构。
+You must use the data structure names specified above for the visualization to recognize the data structure.

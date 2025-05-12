@@ -1,36 +1,36 @@
 # FrameTransform
 
-3D 空间中两个参考坐标系之间的变换
+Transformation between two reference coordinate systems in 3D space
 
-## 面板支持
+## Panel Support
 
-`FrameTransform` 在[三维面板](../panel/2-3d-panel)和[图像面板](../panel/image-panel)中使用。
+`FrameTransform` is used in the [3D Panel](../panel/2-3d-panel) and [Image Panel](../panel/image-panel).
 
-## 父级数据结构
+## Parent Data Structure
 
-`FrameTransform` 出现在 [`FrameTransforms`](./frame-transforms) 消息数据结构中。
+`FrameTransform` appears in the [`FrameTransforms`](./frame-transforms) message data structure.
 
-## 数据结构
+## Data Structure
 
-| 字段 | 类型 | 描述 |
-|:---|:---|:---|
-| timestamp | [`time`](./built-in%20types#time) | 变换的时间戳 |
-| parent_frame_id | [`string`](./built-in%20types#string) | 父坐标系的名称 |
-| child_frame_id | [`string`](./built-in%20types#string) | 子坐标系的名称 |
-| translation | [`Vector3`](./vector-3) | 变换的平移分量 |
-| rotation | [`Quaternion`](./quaternion) | 变换的旋转分量 |
+| Field           | Type                                  | Description                                 |
+| :-------------- | :------------------------------------ | :------------------------------------------ |
+| timestamp       | [`time`](./built-in%20types#time)     | Timestamp of the transformation             |
+| parent_frame_id | [`string`](./built-in%20types#string) | Name of the parent coordinate system        |
+| child_frame_id  | [`string`](./built-in%20types#string) | Name of the child coordinate system         |
+| translation     | [`Vector3`](./vector-3)               | Translation component of the transformation |
+| rotation        | [`Quaternion`](./quaternion)          | Rotation component of the transformation    |
 
-## 参考实现
+## Reference Implementation
 
-可视化数据结构是框架无关的，可以使用任何支持的消息编码方式实现：
+The visualization data structure is framework-independent and can be implemented using any supported message encoding:
 
-| 编码方式    | 数据结构                                                                                                                    |
+| Encoding    | Data Structure                                                                                                            |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------- |
-| ROS 1       | [foxglove_msgs/FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/FrameTransform.msg)       |
-| ROS 2       | [foxglove_msgs/msg/FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/FrameTransform.msg)   |
+| ROS 1       | [foxglove_msgs/FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/FrameTransform.msg)        |
+| ROS 2       | [foxglove_msgs/msg/FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/FrameTransform.msg)    |
 | JSON        | [foxglove.FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/FrameTransform.json)      |
 | Protobuf    | [foxglove.FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/FrameTransform.proto) |
 | FlatBuffers | [foxglove.FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/FrameTransform.fbs)       |
 | OMG IDL     | [foxglove::FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/FrameTransform.idl) |
 
-您必须使用上面指定的数据结构名称，以便可视化能够识别该数据结构。
+You must use the data structure names specified above for the visualization to recognize the data structure.

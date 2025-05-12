@@ -1,30 +1,30 @@
 # PackedElementField
 
-打包元素字节数组中每个元素内存在的一个字段定义
+Defines a field within each element of a packed byte array
 
-## 父级数据结构
+## Parent Data Structure
 
-`PackedElementField` 出现在 Grid 和 PointCloud 消息的数据结中。
+`PackedElementField` appears in the [`Grid`](./grid) and [`PointCloud`](./point-cloud) message data structures.
 
-## 数据结构
+## Data Structure
 
-| 字段   | 类型                                                                 | 描述                                                                 |
-| ------ | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| name   | [`string`](./built-in%20types#string)  | 字段的名称                                                           |
-| offset | [`uint32`](./built-in%20types#uint32)  | 从数据缓冲区开始的字节偏移量                                         |
-| type   | [`NumericType`](./enum-numeric-type)      | 字段中数据的类型。整数使用小端字节序存储。                           |
+| Field  | Type                                  | Description                                                                     |
+| ------ | ------------------------------------- | ------------------------------------------------------------------------------- |
+| name   | [`string`](./built-in%20types#string) | The name of the field                                                           |
+| offset | [`uint32`](./built-in%20types#uint32) | The byte offset from the data buffer                                            |
+| type   | [`NumericType`](./enum-numeric-type)  | The type of data in the field. Integers are stored in little-endian byte order. |
 
-## 参考实现
+## Reference Implementation
 
-可视化数据结与框架无关，可以使用任何支持的消息编码来实现：
+The visualization data structure is framework-independent and can be implemented using any supported message encoding:
 
-| 编码        | 数据结构                                                                                                                              |
+| Encoding    | Data Structure                                                                                                                    |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| ROS 1       | [foxglove\_msgs/PackedElementField](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/PackedElementField.msg)       |
-| ROS 2       | [foxglove\_msgs/msg/PackedElementField](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/PackedElementField.msg)   |
+| ROS 1       | [foxglove_msgs/PackedElementField](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/PackedElementField.msg)        |
+| ROS 2       | [foxglove_msgs/msg/PackedElementField](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/PackedElementField.msg)    |
 | JSON        | [foxglove.PackedElementField](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/PackedElementField.json)      |
 | Protobuf    | [foxglove.PackedElementField](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/PackedElementField.proto) |
 | FlatBuffers | [foxglove.PackedElementField](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/PackedElementField.fbs)       |
 | OMG IDL     | [foxglove::PackedElementField](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/PackedElementField.idl) |
 
-您必须使用上面指定的数据结构名称，以便可视化能够识别该数据结构。
+You must use the data structure name specified above so that the visualization can recognize the data structure.

@@ -1,30 +1,30 @@
 # SceneEntityDeletion
 
-用于删除之前发布的实体的命令
+Command used to delete previously published entities
 
-## 父数据结构
+## Parent Data Structure
 
-`SceneEntityDeletion` 出现在 [`SceneUpdate`](./scene-update) 消息数据结构中。
+`SceneEntityDeletion` appears in the [`SceneUpdate`](./scene-update) message data structure.
 
-## 数据结构
+## Data Structure
 
-| 字段 | 类型 | 描述 |
-| --- | --- | --- |
-| timestamp | [`time`](./built-in%20types#time) | 删除操作的时间戳。只有早于此时间戳的匹配实体才会被删除。 |
-| type | [`SceneEntityDeletionType`](./enum-scene-entity-deletion-type) | 要执行的删除操作类型 |
-| id | [`string`](./built-in%20types#string) | 当 `type` 为 `MATCHING_ID` 时必须匹配的标识符。 |
+| Field     | Type                                                           | Description                                                                                              |
+| --------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| timestamp | [`time`](./built-in%20types#time)                              | Timestamp of the deletion operation. Only matching entities earlier than this timestamp will be deleted. |
+| type      | [`SceneEntityDeletionType`](./enum-scene-entity-deletion-type) | Type of deletion operation to perform                                                                    |
+| id        | [`string`](./built-in%20types#string)                          | Identifier that must match when `type` is `MATCHING_ID`.                                                 |
 
-## 参考实现
+## Reference Implementation
 
-可视化数据结构是框架无关的，可以使用任何支持的消息编码方式实现：
+Visualization data structures are framework-agnostic and can be implemented using any supported message encoding method:
 
-| 编码方式    | 数据结构                                                                                                                              |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| ROS 1       | [foxglove\_msgs/SceneEntityDeletion](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/SceneEntityDeletion.msg)       |
-| ROS 2       | [foxglove\_msgs/msg/SceneEntityDeletion](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/SceneEntityDeletion.msg)   |
-| JSON        | [foxglove.SceneEntityDeletion](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/SceneEntityDeletion.json)      |
-| Protobuf    | [foxglove.SceneEntityDeletion](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/SceneEntityDeletion.proto) |
-| FlatBuffers | [foxglove.SceneEntityDeletion](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/SceneEntityDeletion.fbs)       |
-| OMG IDL     | [foxglove::SceneEntityDeletion](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/SceneEntityDeletion.idl) |
+| Encoding Method | Data Structure                                                                                                                      |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| ROS 1           | [foxglove_msgs/SceneEntityDeletion](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/SceneEntityDeletion.msg)        |
+| ROS 2           | [foxglove_msgs/msg/SceneEntityDeletion](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/SceneEntityDeletion.msg)    |
+| JSON            | [foxglove.SceneEntityDeletion](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/SceneEntityDeletion.json)      |
+| Protobuf        | [foxglove.SceneEntityDeletion](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/SceneEntityDeletion.proto) |
+| FlatBuffers     | [foxglove.SceneEntityDeletion](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/SceneEntityDeletion.fbs)       |
+| OMG IDL         | [foxglove::SceneEntityDeletion](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/SceneEntityDeletion.idl) |
 
-您必须使用上面指定的数据结构名称，以便可视化能够识别该数据结构。
+You must use the data structure names specified above so that the visualization can recognize the data structure.

@@ -1,29 +1,29 @@
 # Point2
 
-表示二维空间中位置的点
+Represents a position point in two-dimensional space
 
-## 父模式
+## Parent Schema
 
-`Point2` 出现在 [`CircleAnnotation`](./circle-annotation)、[`PointsAnnotation`](./points-annotation) 和 [`TextAnnotation`](./text-annotation) 消息模式中。
+`Point2` appears in the [`CircleAnnotation`](./circle-annotation), [`PointsAnnotation`](./points-annotation), and [`TextAnnotation`](./text-annotation) message schemas.
 
-## 模式定义
+## Schema Definition
 
-| 字段 | 类型                                                                  | 描述           |
-| ----- | --------------------------------------------------------------------- | --------------------- |
-| x     | [`float64`](./built-in%20types#float64) | x 坐标位置 |
-| y     | [`float64`](./built-in%20types#float64) | y 坐标位置 |
+| Field | Type                                    | Description           |
+| ----- | --------------------------------------- | --------------------- |
+| x     | [`float64`](./built-in%20types#float64) | x coordinate position |
+| y     | [`float64`](./built-in%20types#float64) | y coordinate position |
 
-## 参考实现
+## Reference Implementation
 
-可视化模式是框架无关的，可以使用任何支持的消息编码方式实现：
+The visualization schema is framework-independent and can be implemented using any supported message encoding:
 
-| 编码方式    | 模式                                                                                                    |
+| Encoding    | Schema                                                                                                    |
 | ----------- | --------------------------------------------------------------------------------------------------------- |
-| ROS 1       | [foxglove\_msgs/Point2](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/Point2.msg)       |
-| ROS 2       | [foxglove\_msgs/msg/Point2](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/Point2.msg)   |
+| ROS 1       | [foxglove_msgs/Point2](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/Point2.msg)        |
+| ROS 2       | [foxglove_msgs/msg/Point2](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/Point2.msg)    |
 | JSON        | [foxglove.Point2](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/Point2.json)      |
 | Protobuf    | [foxglove.Point2](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/Point2.proto) |
 | FlatBuffers | [foxglove.Point2](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/Point2.fbs)       |
 | OMG IDL     | [foxglove::Point2](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/Point2.idl) |
 
-您必须使用上面指定的模式名称，以便可视化能够识别该模式。
+You must use the schema names specified above for the visualization to recognize the schema.

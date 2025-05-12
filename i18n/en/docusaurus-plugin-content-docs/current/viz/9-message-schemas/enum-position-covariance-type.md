@@ -1,16 +1,16 @@
 # PositionCovarianceType
 
-位置协方差类型
+Position covariance type
 
-## 父类型
+## Parent Type
 
-`PositionCovarianceType` 出现在 [`LocationFix`](./location-fix) 数据结构中。
+`PositionCovarianceType` appears in the [`LocationFix`](./location-fix) data structure.
 
-## 值
+## Values
 
-| 名称            | 值 | 描述 |
-| --------------- | ----- | ----------- |
-| UNKNOWN         | 0     | 未知类型 |
-| APPROXIMATED    | 1     | 近似值 |
-| DIAGONAL_KNOWN  | 2     | 对角线已知 |
-| KNOWN           | 3     | 完全已知 |
+| Name           | Value | Description        |
+| -------------- | ----- | ------------------ |
+| UNKNOWN        | 0     | Unknown type       |
+| APPROXIMATED   | 1     | Approximated value |
+| DIAGONAL_KNOWN | 2     | Diagonal known     |
+| KNOWN          | 3     | Fully known        |

@@ -4,31 +4,31 @@ title: ImageAnnotations
 
 # ImageAnnotations
 
-用于 2D 图像的注释数组
+An array of annotations for 2D images
 
-## 面板支持
+## Panel Support
 
-`ImageAnnotations` 在[图像面板](../panel/image-panel)中使用。
+`ImageAnnotations` is used in the [Image Panel](../panel/image-panel).
 
-## 数据结构
+## Data Structure
 
-| 字段     | 类型                                                                          | 描述         |
-| ------- | ----------------------------------------------------------------------------- | ------------ |
-| circles | [`CircleAnnotation\[\]`](./circle-annotation) | 圆形注释     |
-| points  | [`PointsAnnotation\[\]`](./points-annotation) | 点注释       |
-| texts   | [`TextAnnotation\[\]`](./text-annotation)     | 文本注释     |
+| Field   | Type                                          | Description        |
+| ------- | --------------------------------------------- | ------------------ |
+| circles | [`CircleAnnotation\[\]`](./circle-annotation) | Circle annotations |
+| points  | [`PointsAnnotation\[\]`](./points-annotation) | Point annotations  |
+| texts   | [`TextAnnotation\[\]`](./text-annotation)     | Text annotations   |
 
-## 参考实现
+## Reference Implementation
 
-可视化数据结构是框架无关的，可以使用任何支持的消息编码来实现：
+The visualization data structure is framework-independent and can be implemented using any supported message encoding:
 
-| 编码        | 数据结构                                                                                                                        |
+| Encoding    | Data Structure                                                                                                                |
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| ROS 1       | [foxglove\_msgs/ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/ImageAnnotations.msg)       |
-| ROS 2       | [foxglove\_msgs/msg/ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/ImageAnnotations.msg)   |
+| ROS 1       | [foxglove_msgs/ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/ImageAnnotations.msg)        |
+| ROS 2       | [foxglove_msgs/msg/ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/ImageAnnotations.msg)    |
 | JSON        | [foxglove.ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/ImageAnnotations.json)      |
 | Protobuf    | [foxglove.ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/ImageAnnotations.proto) |
 | FlatBuffers | [foxglove.ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/ImageAnnotations.fbs)       |
 | OMG IDL     | [foxglove::ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/ImageAnnotations.idl) |
 
-您必须使用上面指定的数据结构名称，以便可视化能够识别该数据结构。
+You must use the data structure names specified above for the visualization to recognize the data structure.

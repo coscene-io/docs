@@ -4,37 +4,37 @@ title: Grid
 
 # Grid
 
-一个二维数据网格。
+A two-dimensional grid of data.
 
-## 面板支持
+## Panel Support
 
-`Grid` 在[三维面板](../panel/2-3d-panel)和[图像面板](../panel/image-panel)中使用。
+`Grid` is used in the [3D Panel](../panel/2-3d-panel) and [Image Panel](../panel/image-panel).
 
-## 数据结构
+## Data Structure
 
-| 字段 | 类型 | 描述 |
-| --- | --- | --- |
-| timestamp | [`time`](./built-in%20types#time) | 网格的时间戳 |
-| frame_id | [`string`](./built-in%20types#string) | 参考坐标系 |
-| pose | [`pose`](./pose) | 网格原点相对于参考坐标系的位置；网格在 x-y 平面上相对于此原点定位 |
-| column_count | [`uint32`](./built-in%20types#uint32) | 网格列数 |
-| cell_size | [`Vector2`](./vector-2) | 单个网格单元格沿 x 和 y 轴的大小，相对于 pose |
-| row_stride | [`uint32`](./built-in%20types#uint32) | 数据中行之间的字节数 |
-| cell_stride | [`uint32`](./built-in%20types#uint32) | 数据中行内单元格之间的字节数 |
-| fields | [`PackedElementField[]`](./packed-element-field) | 数据中的字段。red、green、blue 和 alpha 是可选的，用于自定义网格的颜色 |
-| data | [`bytes`](./built-in%20types#bytes) | 网格单元格数据，使用 fields 解释，以行优先（y 优先）顺序排列 |
+| Field        | Type                                             | Description                                                                                                                              |
+| ------------ | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| timestamp    | [`time`](./built-in%20types#time)                | Timestamp of the grid                                                                                                                    |
+| frame_id     | [`string`](./built-in%20types#string)            | Reference coordinate system                                                                                                              |
+| pose         | [`Pose`](./pose)                                 | Position of the grid origin relative to the reference coordinate system; the grid is positioned in the x-y plane relative to this origin |
+| column_count | [`uint32`](./built-in%20types#uint32)            | Number of columns in the grid                                                                                                            |
+| cell_size    | [`Vector2`](./vector-2)                          | Size of a single grid cell along the x and y axes, relative to the pose                                                                  |
+| row_stride   | [`uint32`](./built-in%20types#uint32)            | Number of bytes between rows in the data                                                                                                 |
+| cell_stride  | [`uint32`](./built-in%20types#uint32)            | Number of bytes between cells within a row in the data                                                                                   |
+| fields       | [`PackedElementField[]`](./packed-element-field) | Fields in the data. red, green, blue, and alpha are optional for customizing the color of the grid                                       |
+| data         | [`bytes`](./built-in%20types#bytes)              | Grid cell data, interpreted using fields, arranged in row-major (y-major) order                                                          |
 
-## 参考实现
+## Reference Implementation
 
-可视化数据结构是框架无关的，可以使用任何支持的消息编码来实现：
+The visualization data structure is framework-independent and can be implemented using any supported message encoding:
 
-| 编码 | 数据结构 |
-| --- | --- |
-| ROS 1 | [foxglove_msgs/Grid](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/Grid.msg) |
-| ROS 2 | [foxglove_msgs/msg/Grid](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/Grid.msg) |
-| JSON | [foxglove.Grid](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/Grid.json) |
-| Protobuf | [foxglove.Grid](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/Grid.proto) |
-| FlatBuffers | [foxglove.Grid](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/Grid.fbs) |
-| OMG IDL | [foxglove::Grid](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/Grid.idl) |
+| Encoding    | Data Structure                                                                                        |
+| ----------- | ----------------------------------------------------------------------------------------------------- |
+| ROS 1       | [foxglove_msgs/Grid](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/Grid.msg)        |
+| ROS 2       | [foxglove_msgs/msg/Grid](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/Grid.msg)    |
+| JSON        | [foxglove.Grid](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/Grid.json)      |
+| Protobuf    | [foxglove.Grid](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/Grid.proto) |
+| FlatBuffers | [foxglove.Grid](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/Grid.fbs)       |
+| OMG IDL     | [foxglove::Grid](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/Grid.idl) |
 
-您必须使用上述指定的数据结构名称，以便可视化能够识别该数据结构。
+You must use the data structure names specified above for the visualization to recognize the data structure.

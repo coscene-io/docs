@@ -1,14 +1,14 @@
 # SceneEntityDeletionType
 
-一个枚举类型，用于指示哪些实体应该匹配 [`SceneEntityDeletion`](./scene-entity-deletion) 命令。
+An enumeration type used to indicate which entities should match the [`SceneEntityDeletion`](./scene-entity-deletion) command.
 
-## 父类型
+## Parent Type
 
-`SceneEntityDeletionType` 出现在 [`SceneEntityDeletion`](./scene-entity-deletion) 数据结构中。
+`SceneEntityDeletionType` appears in the [`SceneEntityDeletion`](./scene-entity-deletion) data structure.
 
-## 值
+## Values
 
-| 名称         | 值 | 描述                                                           |
-| ------------ | ----- | --------------------------------------------------------------------- |
-| MATCHING_ID | 0     | 删除同一主题下具有指定 ID 的现有实体 |
-| ALL          | 1     | 删除同一主题下的所有现有实体                        |
+| Name        | Value | Description                                                      |
+| ----------- | ----- | ---------------------------------------------------------------- |
+| MATCHING_ID | 0     | Delete existing entities with the specified ID on the same topic |
+| ALL         | 1     | Delete all existing entities on the same topic                   |

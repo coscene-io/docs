@@ -1,38 +1,38 @@
 # PointsAnnotation
 
-二维图像上的点数组
+An array of points on a 2D image.
 
-## 父级数据结构
+## Parent Data Structure
 
-`PointsAnnotation` 出现在 [`ImageAnnotations`](./image-annotations) 消息数据结构中。
+`PointsAnnotation` appears in the [`ImageAnnotations`](./image-annotations) message data structure.
 
-## 数据结构
+## Data Structure
 
-| 字段 | 类型 | 描述 |
-| --- | --- | --- |
-| timestamp | [`time`](./built-in%20types#time) | 标注的时间戳 |
-| type | [`PointsAnnotationType`](./enum-points-annotation-type) | 要绘制的点标注类型 |
-| points | [`Point2[]`](./point-2) | 二维图像坐标（像素）中的点 |
-| outline_color | [`color`](./color) | 轮廓颜色 |
-| outline_colors | [`Color[]`](./color) | 如果 `type` 是 `POINTS`，则为每个点的颜色；如果 `type` 是 `LINE_LIST`、`LINE_STRIP` 或 `LINE_LOOP`，则为每个线段的描边颜色。 |
-| fill_color | [`color`](./color) | 填充颜色 |
-| thickness | [`float64`](./built-in%20types#float64) | 描边粗细（像素） |
+| Field          | Type                                                    | Description                                                                                                                                     |
+| -------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| timestamp      | [`time`](./built-in%20types#time)                       | Annotation timestamp                                                                                                                            |
+| type           | [`PointsAnnotationType`](./enum-points-annotation-type) | Type of point annotation to draw                                                                                                                |
+| points         | [`Point2[]`](./point-2)                                 | Points in 2D image coordinates (pixels)                                                                                                         |
+| outline_color  | [`color`](./color)                                      | Outline color                                                                                                                                   |
+| outline_colors | [`Color[]`](./color)                                    | Outline color for each point if `type` is `POINTS`; outline color for each line segment if `type` is `LINE_LIST`, `LINE_STRIP`, or `LINE_LOOP`. |
+| fill_color     | [`color`](./color)                                      | Fill color                                                                                                                                      |
+| thickness      | [`float64`](./built-in%20types#float64)                 | Outline thickness (pixels)                                                                                                                      |
 
 ### `points`
 
-这些坐标使用图像左上角像素的左上角作为原点。
+These coordinates use the top-left pixel of the image as the origin.
 
-## 参考实现
+## Reference Implementation
 
-Foxglove 数据结构是框架无关的，可以使用任何支持的消息编码来实现：
+Foxglove data structures are framework agnostic and can be implemented in any message encoding:
 
-| 编码        | 数据结构                                                                                                                        |
+| Encoding    | Data Structure                                                                                                                |
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| ROS 1       | [foxglove_msgs/PointsAnnotation](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/PointsAnnotation.msg)       |
-| ROS 2       | [foxglove_msgs/msg/PointsAnnotation](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/PointsAnnotation.msg)   |
+| ROS 1       | [foxglove_msgs/PointsAnnotation](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/PointsAnnotation.msg)        |
+| ROS 2       | [foxglove_msgs/msg/PointsAnnotation](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/PointsAnnotation.msg)    |
 | JSON        | [foxglove.PointsAnnotation](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/PointsAnnotation.json)      |
 | Protobuf    | [foxglove.PointsAnnotation](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/PointsAnnotation.proto) |
 | FlatBuffers | [foxglove.PointsAnnotation](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/PointsAnnotation.fbs)       |
 | OMG IDL     | [foxglove::PointsAnnotation](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/PointsAnnotation.idl) |
 
-您必须使用上面指定的数据结构名称，以便 Foxglove 能够识别该数据结构。
+You must use the data structure name specified above so that Foxglove can recognize it.

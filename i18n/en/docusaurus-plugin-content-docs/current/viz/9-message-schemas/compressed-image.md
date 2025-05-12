@@ -3,34 +3,36 @@ sidebar_position: 6
 title: CompressedImage
 ---
 
-# 压缩图像
+# Compressed Image
 
-## 面板支持
-`CompressedImage` 用于 [三维面板](../panel/2-3d-panel) 和 [图像面板](../panel/image-panel) 中。
+## Panel Support
 
-## 字段定义
+`CompressedImage` is used in the [3D Panel](../panel/2-3d-panel) and [Image Panel](../panel/image-panel).
 
-| 字段名 | 类型 | 描述 |
-|--------|------|------|
-| `timestamp` | [`time`](./built-in%20types#time) | 图像的时间戳 |
-| `frame_id` | [`string`](./built-in%20types#string) | 图像的参考坐标系。坐标系的原点是相机的光学中心。+x 指向图像右侧，+y 指向图像下方，+z 指向图像平面内部。 |
-| `data` | [`byte`](./built-in%20types#bytes) | 压缩图像数据 |
-| `format` | [`string`](./built-in%20types#string) | 图像格式 |
+## Field Definitions
+
+| Field Name  | Type                                  | Description                                                                                                                                                                                                 |
+| ----------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `timestamp` | [`time`](./built-in%20types#time)     | Timestamp of the image                                                                                                                                                                                      |
+| `frame_id`  | [`string`](./built-in%20types#string) | Reference coordinate system of the image. The origin of the coordinate system is the optical center of the camera. +x points to the right in the image, +y points down, and +z points into the image plane. |
+| `data`      | [`byte`](./built-in%20types#bytes)    | Compressed image data                                                                                                                                                                                       |
+| `format`    | [`string`](./built-in%20types#string) | Image format                                                                                                                                                                                                |
 
 ### `format`
-支持的值：Chrome 支持的图片媒体类型，例如`webp`、`jpeg`、`png`
 
-## 参考
+Supported values: Picture media types supported by Chrome, such as `webp`, `jpeg`, `png`
 
-coScene 的架构类型（schemas）是与框架无关的，可以使用任何受支持的消息编码格式来实现。
+## References
 
-| 编码格式     | Schema 名称                     |
-|--------------|----------------------------------|
-| ROS 1        |  [`foxglove_msgs/CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/CompressedImage.msg) |
-| ROS 2        |  [`foxglove_msgs/msg/CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/CompressedImage.msg) | 
-| JSON         |  [`foxglove.CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/CompressedImage.json) |
-| Protobuf     |  [`foxglove.CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/CompressedImage.proto) |
-| FlatBuffers  |  [`foxglove.CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/CompressedImage.fbs) |
-| OMG IDL      |  [`foxglove::CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/CompressedImage.idl) |
+coScene's schema types are framework-independent and can be implemented using any supported message encoding format.
 
-> **注意**：必须使用上述指定的 schema 名称，coScene 才能正确识别。
+| Encoding Format | Schema Name                                                                                                                   |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| ROS 1           | [`foxglove_msgs/CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/CompressedImage.msg)        |
+| ROS 2           | [`foxglove_msgs/msg/CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/CompressedImage.msg)    |
+| JSON            | [`foxglove.CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/CompressedImage.json)      |
+| Protobuf        | [`foxglove.CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/CompressedImage.proto) |
+| FlatBuffers     | [`foxglove.CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/CompressedImage.fbs)       |
+| OMG IDL         | [`foxglove::CompressedImage`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/CompressedImage.idl) |
+
+> **Note**: You must use the schema names specified above for coScene to recognize them correctly.

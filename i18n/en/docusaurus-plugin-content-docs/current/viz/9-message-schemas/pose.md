@@ -1,29 +1,29 @@
 # Pose
 
-表示物体或参考系在三维空间中的位置和方向
+Represents the position and orientation of an object or reference frame in three-dimensional space
 
-## 父数据结构
+## Parent Data Structure
 
-`Pose` 出现在以下数据结构中：[`ArrowPrimitive`](./arrow-primitive)、[`CubePrimitive`](./cube-primitive)、[`CylinderPrimitive`](./cylinder-primitive)、[`Grid`](./grid)、[`LaserScan`](./laser-scan)、[`LinePrimitive`](./line-primitive)、[`ModelPrimitive`](./model-primitive)、[`PointCloud`](./point-cloud)、[`PoseInFrame`](./pose-in-frame)、[`PosesInFrame`](./poses-in-frame)、[`SpherePrimitive`](./sphere-primitive)、[`TextPrimitive`](./text-primitive) 和 [`TriangleListPrimitive`](./triangle-list-primitive)。
+`Pose` appears in the following data structures: [`ArrowPrimitive`](./arrow-primitive), [`CubePrimitive`](./cube-primitive), [`CylinderPrimitive`](./cylinder-primitive), [`Grid`](./grid), [`LaserScan`](./laser-scan), [`LinePrimitive`](./line-primitive), [`ModelPrimitive`](./model-primitive), [`PointCloud`](./point-cloud), [`PoseInFrame`](./pose-in-frame), [`PosesInFrame`](./poses-in-frame), [`SpherePrimitive`](./sphere-primitive), [`TextPrimitive`](./text-primitive), and [`TriangleListPrimitive`](./triangle-list-primitive).
 
-## 数据结构
+## Data Structure
 
-| 字段         | 类型                                                         | 描述                                 |
-| ------------ | ------------------------------------------------------------ | ------------------------------------ |
-| position     | [`Vector3`](./vector-3)      | 表示三维空间中的位置点               |
-| orientation  | [`Quaternion`](./quaternion) | 表示三维空间中的方向四元数           |
+| Field       | Type                         | Description                                       |
+| ----------- | ---------------------------- | ------------------------------------------------- |
+| position    | [`Vector3`](./vector-3)      | Represents the position point in 3D space         |
+| orientation | [`Quaternion`](./quaternion) | Represents the orientation quaternion in 3D space |
 
-## 参考实现
+## Reference Implementation
 
-可视化数据结构是框架无关的，可以使用任何支持的消息编码方式实现：
+The visualization data structure is framework-independent and can be implemented using any supported message encoding:
 
-| 编码方式     | 数据结构                                                                                                |
-| ------------ | ------------------------------------------------------------------------------------------------------- |
-| ROS 1        | [geometry_msgs/Pose](https://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Pose.html)              |
-| ROS 2        | [geometry_msgs/msg/Pose](https://docs.ros2.org/galactic/api/geometry_msgs/msg/Pose.html)               |
-| JSON         | [foxglove.Pose](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/Pose.json)        |
-| Protobuf     | [foxglove.Pose](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/Pose.proto)   |
-| FlatBuffers  | [foxglove.Pose](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/Pose.fbs)         |
-| OMG IDL      | [foxglove::Pose](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/Pose.idl)   |
+| Encoding    | Data Structure                                                                                        |
+| ----------- | ----------------------------------------------------------------------------------------------------- |
+| ROS 1       | [geometry_msgs/Pose](https://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Pose.html)             |
+| ROS 2       | [geometry_msgs/msg/Pose](https://docs.ros2.org/galactic/api/geometry_msgs/msg/Pose.html)              |
+| JSON        | [foxglove.Pose](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/Pose.json)      |
+| Protobuf    | [foxglove.Pose](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/Pose.proto) |
+| FlatBuffers | [foxglove.Pose](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/Pose.fbs)       |
+| OMG IDL     | [foxglove::Pose](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/Pose.idl) |
 
-您必须使用上面指定的数据结构名称，以便可视化能够识别该数据结构。
+You must use the data structure names specified above for the visualization to recognize the data structure.

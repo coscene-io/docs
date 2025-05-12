@@ -1,30 +1,30 @@
 # CubePrimitive
 
-表示立方体或矩形棱柱的图元
+Represents a primitive for a cube or rectangular prism
 
-## 父数据结构
+## Parent Data Structure
 
-`CubePrimitive` 出现在 [`SceneEntity`](./scene-entity) 消息数据结构中。
+`CubePrimitive` appears in the [`SceneEntity`](./scene-entity) message data structure.
 
-## 数据结构
+## Data Structure
 
-| 字段 | 类型 | 描述 |
-| --- | --- | --- |
-| pose | [`pose`](./pose) | 立方体中心的位置和立方体的方向 |
-| size | [`Vector3`](./vector-3) | 立方体沿每个轴的尺寸 |
-| color | [`color`](./color) | 立方体的颜色 |
+| Field | Type                    | Description                                             |
+| ----- | ----------------------- | ------------------------------------------------------- |
+| pose  | [`Pose`](./pose)        | Position of the cube center and orientation of the cube |
+| size  | [`Vector3`](./vector-3) | Dimensions of the cube along each axis                  |
+| color | [`Color`](./color)      | Color of the cube                                       |
 
-## 参考实现
+## Reference Implementation
 
-可视化数据结构是框架无关的，可以使用任何支持的消息编码方式实现：
+The visualization data structure is framework-independent and can be implemented using any supported message encoding:
 
-| 编码方式 | 数据结构 |
-| --- | --- |
-| ROS 1 | [foxglove_msgs/CubePrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/CubePrimitive.msg) |
-| ROS 2 | [foxglove_msgs/msg/CubePrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/CubePrimitive.msg) |
-| JSON | [foxglove.CubePrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/CubePrimitive.json) |
-| Protobuf | [foxglove.CubePrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/CubePrimitive.proto) |
-| FlatBuffers | [foxglove.CubePrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/CubePrimitive.fbs) |
-| OMG IDL | [foxglove::CubePrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/CubePrimitive.idl) |
+| Encoding    | Data Structure                                                                                                          |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------- |
+| ROS 1       | [foxglove_msgs/CubePrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/CubePrimitive.msg)        |
+| ROS 2       | [foxglove_msgs/msg/CubePrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/CubePrimitive.msg)    |
+| JSON        | [foxglove.CubePrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/CubePrimitive.json)      |
+| Protobuf    | [foxglove.CubePrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/CubePrimitive.proto) |
+| FlatBuffers | [foxglove.CubePrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/CubePrimitive.fbs)       |
+| OMG IDL     | [foxglove::CubePrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/CubePrimitive.idl) |
 
-您必须使用上面指定的数据结构名称，以便可视化能够识别该数据结构。
+You must use the data structure names specified above for the visualization to recognize the data structure.

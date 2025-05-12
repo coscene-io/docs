@@ -3,40 +3,40 @@ sidebar_position: 5
 title: CircleAnnotation
 ---
 
-# 圆形标注
+# Circle Annotation
 
-在二维图像上的圆形标注。
+A circular annotation on a 2D image.
 
-## 父级架构
+## Parent Schema
 
-`CircleAnnotation` 出现在 [`ImageAnnotations`](../message-schemas/image-annotations) 消息模式中。
+`CircleAnnotation` appears in the [`ImageAnnotations`](../message-schemas/image-annotations) message schema.
 
-## 字段定义
+## Field Definitions
 
-| 字段名 | 类型 | 描述 |
-|:------|:-----|:-----|
-| `timestamp` | [`time`](./built-in%20types#time) | 圆形的时间戳 |
-| `position` | [`Point 2`](./point-2) | 圆心在图像中的二维像素坐标位置 |
-| `diameter` | [`float64`](./built-in%20types#float64) | 圆的直径（单位：像素） |
-| `thickness` | [`float64`](./built-in%20types#float64) | 线条粗细（单位：像素） |
-| `fill_color` | [`color`](./color) | 填充颜色 |
-| `outline_color` | [`color`](./color) | 边框颜色 |
+| Field Name      | Type                                    | Description                                                        |
+| :-------------- | :-------------------------------------- | :----------------------------------------------------------------- |
+| `timestamp`     | [`time`](./built-in%20types#time)       | Timestamp of the circle                                            |
+| `position`      | [`Point2`](./point-2)                   | Position of the circle center in 2D pixel coordinates in the image |
+| `diameter`      | [`float64`](./built-in%20types#float64) | Diameter of the circle (in pixels)                                 |
+| `thickness`     | [`float64`](./built-in%20types#float64) | Thickness of the line (in pixels)                                  |
+| `fill_color`    | [`Color`](./color)                      | Fill color                                                         |
+| `outline_color` | [`Color`](./color)                      | Outline color                                                      |
 
 ### `position`
 
-该坐标系以图像左上角像素的左上角为原点。
+The coordinate system has its origin at the top-left corner of the top-left pixel of the image.
 
-## 参考
+## References
 
-coScene 的架构类型（schemas）是与框架无关的，可以使用任何受支持的消息编码格式来实现。
+coScene's schema types are framework-independent and can be implemented using any supported message encoding format.
 
-| 编码格式     | Schema 名称                     |
-|--------------|----------------------------------|
-| ROS 1        | [`foxglove_msgs/CircleAnnotation`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/CircleAnnotation.msg) |
-| ROS 2        | [`foxglove_msgs/msg/CircleAnnotation`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/CircleAnnotation.msg) |
-| JSON         | [`foxglove.CircleAnnotation`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/CircleAnnotation.json)      |
-| Protobuf     | [`foxglove.CircleAnnotation`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/CircleAnnotation.proto)      |
-| FlatBuffers  | [`foxglove.CircleAnnotation`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/CircleAnnotation.fbs)      |
-| OMG IDL      | [`foxglove::CircleAnnotation`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/CircleAnnotation.idl)     |
+| Encoding Format | Schema Name                                                                                                                     |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| ROS 1           | [`foxglove_msgs/CircleAnnotation`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/CircleAnnotation.msg)        |
+| ROS 2           | [`foxglove_msgs/msg/CircleAnnotation`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/CircleAnnotation.msg)    |
+| JSON            | [`foxglove.CircleAnnotation`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/CircleAnnotation.json)      |
+| Protobuf        | [`foxglove.CircleAnnotation`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/CircleAnnotation.proto) |
+| FlatBuffers     | [`foxglove.CircleAnnotation`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/CircleAnnotation.fbs)       |
+| OMG IDL         | [`foxglove::CircleAnnotation`](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/CircleAnnotation.idl) |
 
-> **注意**：必须使用上述指定的 schema 名称，coScene 才能正确识别。
+> **Note**: You must use the schema names specified above for coScene to recognize them correctly.

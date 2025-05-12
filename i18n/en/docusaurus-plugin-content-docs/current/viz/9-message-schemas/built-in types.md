@@ -1,53 +1,60 @@
 ---
 sidebar_position: 2
-title: 内置类型
+title: Built-in Types
 ---
 
-# 内置类型
+# Built-in Types
 
-基本类型是 coScene 所支持消息消息架构的构建基础。
+Built-in types are the building blocks of coScene's message schemas.
 
-消息中的每个字段都有一个类型。这个类型可以是另一个消息架构类型，一个枚举，或以下列出的基本类型之一：
+Each field in a message has a type. This type can be another message schema type, an enum, or one of the following built-in types:
 
 ### `boolean`
-布尔值，取值为 `true` 或 `false`。
+
+A boolean value, which can be `true` or `false`.
 
 ### `bytes`
-原始二进制数据，在 JavaScript 中表示为 `Uint8Array`。
+
+Raw binary data, represented as a `Uint8Array` in JavaScript.
 
 ### `enum`
-作为命名常量集合中充当键的数字。
+
+An enum, which is a set of named constants.
 
 ### `float64`
-64 位浮点数。
+
+A 64-bit floating-point number.
 
 ### `string`
-以 UTF-8 编码的字符串值。
+
+A string value encoded in UTF-8.
 
 ### `time`
 
-| 字段 | 类型   | 必填 | 描述                 |
-|------|--------|------|----------------------|
-| `sec`  | uint32 | ✓    | 自 Unix 纪元起的秒数 |
-| `nsec` | uint32 | ✓    | 附加的纳秒数         |
+| Field  | Type   | Required | Description                  |
+| ------ | ------ | -------- | ---------------------------- |
+| `sec`  | uint32 | ✓        | Seconds since the Unix epoch |
+| `nsec` | uint32 | ✓        | Additional nanoseconds       |
 
-> **注意：** 
+> **Note**:
 
-coScene 的 Protobuf schema 中使用 [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) 表示 `time` 类型，其中字段为 `seconds` 和 `nanos`。但在[用户脚本](/)、[消息转换器](/)和 coScene 其他部分中，值将表示为 `sec` 和 `nsec` 字段，以与其他数据格式保持一致。
+coScene's Protobuf schema uses [`google.protobuf.Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp) to represent the `time` type, with fields `seconds` and `nanos`. However, in [user scripts](/), [message converters](/), and other parts of coScene, the values will be represented as `sec` and `nsec` fields to maintain consistency with other data formats.
 
 ### `duration`
 
-| 字段 | 类型   | 必填 | 描述                   |
-|------|--------|------|------------------------|
-| sec  | int32  | ✓    | 秒数偏移               |
-| nsec | uint32 | ✓    | 向正方向的纳秒偏移量   |
+| Field | Type   | Required | Description                   |
+| ----- | ------ | -------- | ----------------------------- |
+| sec   | int32  | ✓        | Seconds offset                |
+| nsec  | uint32 | ✓        | Additional nanoseconds offset |
 
-> **注意：** 
+> **Note**:
 
-coScene 的 Protobuf schema 中使用 [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) 表示 `duration` 类型，其中字段为 `seconds` 和 `nanos`。但在[用户脚本](/)、[消息转换器](/)和 coScene 其他部分中，值将表示为 `sec` 和 `nsec` 字段，以与其他数据格式保持一致。
+coScene's Protobuf schema uses [`google.protobuf.Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration) to represent the `duration` type, with fields `seconds` and `nanos`. However, in [user scripts](/), [message converters](/), and other parts of coScene, the values will be represented as `sec` and `nsec` fields to maintain consistency with other data formats.
 
 ### `uint32`
-取值范围为 `0` 到 `4294967295`（ 2 的 32 次方减 1） 的非负整数。
+
+A non-negative integer ranging from `0` to `4294967295` (2^32 - 1).
 
 ### `int32`
-取值范围为 `-2147483648`（ −2的 31 次方 ） 到 `2147483647` （ 2 的 31 次方减 1） 的整数。
+
+An integer ranging from `-2147483648` (2^31) to `2147483647` (2^31 - 1).

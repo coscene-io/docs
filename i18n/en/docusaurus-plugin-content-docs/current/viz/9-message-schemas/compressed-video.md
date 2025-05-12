@@ -1,52 +1,52 @@
 # CompressedVideo
 
-压缩视频比特流的单帧
+A single frame of a compressed video bitstream
 
-## 面板支持
+## Panel Support
 
-`CompressedVideo` 在[三维面板](../panel/2-3d-panel)和[图像面板](../panel/image-panel)中使用。
+`CompressedVideo` is used in the [3D Panel](../panel/2-3d-panel) and [Image Panel](../panel/image-panel).
 
-## 数据结构
+## Data Structure
 
-| 字段       | 类型                                                                  | 描述                     |
-| ---------- | --------------------------------------------------------------------- | ------------------------ |
-| `timestamp`  | [`time`](./built-in%20types#time)       | 视频帧的时间戳           |
-| `frame_id`   | [`string`](./built-in%20types#string)   | 视频的参考坐标系         |
-| `data`       | [`bytes`](./built-in%20types#bytes)     | 压缩视频帧数据           |
-| `format`     | [`string`](./built-in%20types#string)   | 视频格式                 |
+| Field       | Type                                  | Description                              |
+| ----------- | ------------------------------------- | ---------------------------------------- |
+| `timestamp` | [`time`](./built-in%20types#time)     | Timestamp of the video frame             |
+| `frame_id`  | [`string`](./built-in%20types#string) | Reference coordinate system of the video |
+| `data`      | [`bytes`](./built-in%20types#bytes)   | Compressed video frame data              |
+| `format`    | [`string`](./built-in%20types#string) | Video format                             |
 
 ### `frame_id`
 
-帧的原点是相机的光学中心。+x 指向视频的右侧，+y 指向下方，+z 指向视频平面的内部。
+The origin of the frame is the optical center of the camera. +x points to the right side of the video, +y points downward, and +z points into the video plane.
 
 ### `data`
 
-对于基于数据包的视频编解码器，此数据必须在数据包边界开始和结束（没有部分数据包），并且必须包含足够的视频数据包来解码恰好一个图像（关键帧或增量帧）。注意：Foxglove 不支持包含 B 帧的视频流，因为它们需要前瞻。
+For packet-based video codecs, this data must begin and end on packet boundaries (no partial packets), and must contain enough video packets to decode exactly one image (key frame or incremental frame). Note: Foxglove does not support video streams that contain B-frames because they require lookahead.
 
-具体来说，不同 `format` 值的要求如下：
+Specifically, the requirements for different `format` values are as follows:
 
-* `h264`  
-   * 使用 Annex B 格式的数据  
-   * 每个 CompressedVideo 消息应包含足够的 NAL 单元来解码恰好一个视频帧  
-   * 每个包含关键帧（IDR）的消息还必须包含 SPS NAL 单元
+- `h264`
+  - Data using Annex B format
+  - Each CompressedVideo message should contain enough NAL units to decode exactly one video frame
+  - Each message containing a key frame (IDR) must also include the SPS NAL unit
 
 ### `format`
 
-支持的值：`h264`。
+Supported values: `h264`.
 
-注意：压缩视频支持受硬件限制和专利许可的影响，因此并非所有平台都支持所有编码。
+Note: Compressed video support is affected by hardware limitations and patent licensing, so not all platforms support all encodings.
 
-## 参考实现
+## Reference Implementation
 
-可视化数据结构与框架无关，可以使用任何支持的消息编码来实现：
+The visualization data structure is framework-independent and can be implemented using any supported message encoding:
 
-| 编码       | 数据结构                                                                                                                    |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------- |
-| ROS 1      | [foxglove_msgs/CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/CompressedVideo.msg)       |
-| ROS 2      | [foxglove_msgs/msg/CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/CompressedVideo.msg)   |
-| JSON       | [foxglove.CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/CompressedVideo.json)      |
-| Protobuf   | [foxglove.CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/CompressedVideo.proto) |
-| FlatBuffers| [foxglove.CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/CompressedVideo.fbs)       |
-| OMG IDL    | [foxglove::CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/CompressedVideo.idl) |
+| Encoding    | Data Structure                                                                                                              |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------- |
+| ROS 1       | [foxglove_msgs/CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/CompressedVideo.msg)        |
+| ROS 2       | [foxglove_msgs/msg/CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/CompressedVideo.msg)    |
+| JSON        | [foxglove.CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/CompressedVideo.json)      |
+| Protobuf    | [foxglove.CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/CompressedVideo.proto) |
+| FlatBuffers | [foxglove.CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/CompressedVideo.fbs)       |
+| OMG IDL     | [foxglove::CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/CompressedVideo.idl) |
 
-您必须使用上面指定的数据结构名称，以便可视化能够识别该数据结构。
+You must use the data structure names specified above for the visualization to recognize the data structure.

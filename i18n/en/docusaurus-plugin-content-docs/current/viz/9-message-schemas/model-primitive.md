@@ -1,34 +1,34 @@
 # ModelPrimitive
 
-表示从外部 URL 或嵌入数据加载的 3D 模型文件的原始类型。
+Represents the original type of a 3D model file loaded from an external URL or embedded data
 
-## 父级数据结构
+## Parent Data Structure
 
-`ModelPrimitive` 出现在 [`SceneEntity`](./scene-entity) 消息数据结构中。
+`ModelPrimitive` appears in the [`SceneEntity`](./scene-entity) message data structure.
 
-## 数据结构
+## Data Structure
 
-| 字段 | 类型 | 描述 |
-| --- | --- | --- |
-| pose | [`pose`](./pose) | 相对于参考系的模型原点 |
-| scale | [`Vector3`](./vector-3) | 沿每个轴应用于模型的缩放因子 |
-| color | [`color`](./color) | 如果 override_color 为 true，则用于整个模型的纯色 |
-| override_color | [`boolean`](./built-in%20types#boolean) | 是否使用 color 中指定的颜色，而不是原始模型中嵌入的任何材质 |
-| url | [`string`](./built-in%20types#string) | 指向模型文件的 URL。应提供 url 或 data 之一 |
-| media_type | [`string`](./built-in%20types#string) | 嵌入模型的[媒体类型](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)（例如 model/gltf-binary）。如果提供 data 而不是 url，则需要此字段。如果提供了 url，则覆盖推断的媒体类型 |
-| data | [`bytes`](./built-in%20types#bytes) | 嵌入的模型。应提供 url 或 data 之一。如果提供了 data，则必须设置 media_type 以指示数据的类型 |
+| Field          | Type                                    | Description                                                                                                                                                                                                                                                                 |
+| -------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| pose           | [`pose`](./pose)                        | The origin of the model relative to the reference frame                                                                                                                                                                                                                     |
+| scale          | [`Vector3`](./vector-3)                 | The scale factor applied to the model along each axis                                                                                                                                                                                                                       |
+| color          | [`color`](./color)                      | The pure color used for the entire model if `override_color` is true                                                                                                                                                                                                        |
+| override_color | [`boolean`](./built-in%20types#boolean) | Whether to use the color specified in `color` instead of any embedded materials in the original model                                                                                                                                                                       |
+| url            | [`string`](./built-in%20types#string)   | The URL pointing to the model file. Either `url` or `data` must be provided.                                                                                                                                                                                                |
+| media_type     | [`string`](./built-in%20types#string)   | The [media type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) of the embedded model (e.g. `model/gltf-binary`). If `data` is provided instead of `url`, this field is required. If `url` is provided, it overrides the inferred media type. |
+| data           | [`bytes`](./built-in%20types#bytes)     | The embedded model. Either `url` or `data` must be provided. If `data` is provided, `media_type` must be set to indicate the type of data.                                                                                                                                  |
 
-## 参考实现
+## Reference Implementation
 
-可视化数据结构与框架无关，可以使用任何支持的消息编码来实现：
+Visualization data structures are framework-agnostic and can be implemented using any supported message encoding:
 
-| 编码    | 数据结构                                                                                                                    |
+| Encoding    | Data Structure                                                                                                            |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------- |
-| ROS 1       | [foxglove_msgs/ModelPrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/ModelPrimitive.msg)       |
-| ROS 2       | [foxglove_msgs/msg/ModelPrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/ModelPrimitive.msg)   |
+| ROS 1       | [foxglove_msgs/ModelPrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/ModelPrimitive.msg)        |
+| ROS 2       | [foxglove_msgs/msg/ModelPrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/ModelPrimitive.msg)    |
 | JSON        | [foxglove.ModelPrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/ModelPrimitive.json)      |
 | Protobuf    | [foxglove.ModelPrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/ModelPrimitive.proto) |
 | FlatBuffers | [foxglove.ModelPrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/ModelPrimitive.fbs)       |
 | OMG IDL     | [foxglove::ModelPrimitive](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/ModelPrimitive.idl) |
 
-您必须使用上面指定的数据结构名称，以便可视化能够识别该数据结构。
+You must use the data structure name specified above so that the visualization can recognize the data structure.

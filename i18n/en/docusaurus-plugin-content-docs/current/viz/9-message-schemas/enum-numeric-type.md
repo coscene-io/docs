@@ -1,21 +1,21 @@
 # NumericType
 
-数值类型
+Numeric type
 
-## 父类型
+## Parent Type
 
-`NumericType` 出现在 [`PackedElementField`](./packed-element-field) 数据结构中。
+`NumericType` appears in the [`PackedElementField`](./packed-element-field) data structure.
 
-## 值
+## Values
 
-| 名称    | 值 | 描述 |
-| ------- | ----- | ----------- |
-| UNKNOWN | 0     | 未知类型 |
-| UINT8   | 1     | 8 位无符号整数 |
-| INT8    | 2     | 8 位有符号整数 |
-| UINT16  | 3     | 16 位无符号整数 |
-| INT16   | 4     | 16 位有符号整数 |
-| UINT32  | 5     | 32 位无符号整数 |
-| INT32   | 6     | 32 位有符号整数 |
-| FLOAT32 | 7     | 32 位浮点数 |
-| FLOAT64 | 8     | 64 位浮点数 |
+| Name    | Value | Description             |
+| ------- | ----- | ----------------------- |
+| UNKNOWN | 0     | Unknown type            |
+| UINT8   | 1     | 8-bit unsigned integer  |
+| INT8    | 2     | 8-bit signed integer    |
+| UINT16  | 3     | 16-bit unsigned integer |
+| INT16   | 4     | 16-bit signed integer   |
+| UINT32  | 5     | 32-bit unsigned integer |
+| INT32   | 6     | 32-bit signed integer   |
+| FLOAT32 | 7     | 32-bit floating point   |
+| FLOAT64 | 8     | 64-bit floating point   |

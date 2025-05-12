@@ -1,24 +1,24 @@
 # FrameTransforms
 
-[`FrameTransform`](./frame-transform) 消息的数组
+An array of [`FrameTransform`](./frame-transform) messages
 
-## 数据结构
+## Data Structure
 
-| 字段       | 类型                                                                      | 描述           |
-| ---------- | ------------------------------------------------------------------------- | -------------- |
-| transforms | [FrameTransform\[\]](./frame-transform) | 变换数组       |
+| Field      | Type                                    | Description              |
+| ---------- | --------------------------------------- | ------------------------ |
+| transforms | [FrameTransform\[\]](./frame-transform) | Array of transformations |
 
-## 参考实现
+## Reference Implementation
 
-可视化数据结构是框架无关的，可以使用任何支持的消息编码来实现：
+The visualization data structure is framework-independent and can be implemented using any supported message encoding:
 
-| 编码       | 数据结构                                                                                                                      |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------- |
-| ROS 1      | [foxglove\_msgs/FrameTransforms](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/FrameTransforms.msg)       |
-| ROS 2      | [foxglove\_msgs/msg/FrameTransforms](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/FrameTransforms.msg)   |
-| JSON       | [foxglove.FrameTransforms](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/FrameTransforms.json)      |
-| Protobuf   | [foxglove.FrameTransforms](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/FrameTransforms.proto) |
-| FlatBuffers| [foxglove.FrameTransforms](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/FrameTransforms.fbs)       |
-| OMG IDL    | [foxglove::FrameTransforms](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/FrameTransforms.idl) |
+| Encoding    | Data Structure                                                                                                              |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------- |
+| ROS 1       | [foxglove_msgs/FrameTransforms](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/FrameTransforms.msg)        |
+| ROS 2       | [foxglove_msgs/msg/FrameTransforms](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/FrameTransforms.msg)    |
+| JSON        | [foxglove.FrameTransforms](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/FrameTransforms.json)      |
+| Protobuf    | [foxglove.FrameTransforms](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/FrameTransforms.proto) |
+| FlatBuffers | [foxglove.FrameTransforms](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/FrameTransforms.fbs)       |
+| OMG IDL     | [foxglove::FrameTransforms](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/FrameTransforms.idl) |
 
-您必须使用上面指定的数据结构名称，以便可视化能够识别该数据结构。
+You must use the data structure names specified above for the visualization to recognize the data structure.
