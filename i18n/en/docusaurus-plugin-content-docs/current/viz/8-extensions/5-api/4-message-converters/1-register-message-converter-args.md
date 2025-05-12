@@ -9,15 +9,15 @@ title: RegisterMessageConverterArgs<Src>
 type RegisterMessageConverterArgs<Src> = object;
 ```
 
-此类型表示传递给 `ExtensionContext.registerMessageConverter` 的参数。
+This type represents the parameters passed to `ExtensionContext.registerMessageConverter`.
 
-## 类型参数
+## Type Parameters
 
-| 类型参数 |
+| Type Parameter |
 | -------------- |
 | Src            |
 
-## 属性
+## Properties
 
 ### fromSchemaName
 
@@ -41,13 +41,13 @@ toSchemaName: string;
 converter: (msg, event) =\> unknown;
 ```
 
-#### 参数
+#### Parameters
 
-| 参数 | 类型                                                                                                               |
-| --------- | ------------------------------------------------------------------------------------------------------------------ |
-| msg       | Src                                                                                                                |
+| Parameter | Type                                                                                           |
+| --------- | ---------------------------------------------------------------------------------------------- |
+| msg       | Src                                                                                            |
 | event     | [Immutable](../6-other/2-immutable.md)\<[MessageEvent](../6-other/3-message-event.md)\<Src\>\> |
 
-#### 返回值
+#### Returns
 
-`unknown` 
+`unknown`
