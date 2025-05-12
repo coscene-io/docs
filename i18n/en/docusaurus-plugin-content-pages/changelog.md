@@ -131,7 +131,7 @@ id: changelog
 - Fixed an issue where record search results were not sorted by time.
 - Fixed an issue where the index generation status was not correctly displayed in the visualization page.
 - Fixed an issue with abnormal display of test suite lists in batch testing.
-- Fixed an issue with abnormal device traffic statistics. This can be resolved by updating the data collection client to version v1.0.2. [View update instructions](https://docs.coscene.cn/docs/recipes/device/device-collector#%E6%9B%B4%E6%96%B0%E8%AE%BE%E7%BD%AE)
+- Fixed an issue with abnormal device traffic statistics. This can be resolved by updating the data collection client to version v1.0.2.
 
 ---
 
