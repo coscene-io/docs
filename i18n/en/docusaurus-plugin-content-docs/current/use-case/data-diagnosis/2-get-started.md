@@ -191,6 +191,3 @@ Using the following scenario as an example, let's setup your automatic data coll
 2. View the automatically created record, and check the data uploaded in the record.
 
    ![auto-record-1](./img/auto-record-1.png)
-
-
-

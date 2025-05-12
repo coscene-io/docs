@@ -4,6 +4,7 @@
   "author": "minico",
   "scripts": {
     "start": "docusaurus start",
+    "dev": "docusaurus start",
     "start:en": "pnpm run start --locale en",
     "clear": "docusaurus clear",
     "build": "docusaurus build",
