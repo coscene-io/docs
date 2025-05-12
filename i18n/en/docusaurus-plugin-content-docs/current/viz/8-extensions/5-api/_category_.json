@@ -1,0 +1,9 @@
+{
+  "label": "API 参考",
+  "position": 5,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/extensions/api"
+  }
+}
