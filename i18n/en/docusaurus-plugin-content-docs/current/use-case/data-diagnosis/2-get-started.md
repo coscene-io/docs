@@ -11,7 +11,7 @@ Using the following scenario as an example, let's setup your automatic data coll
 ## Prerequisites
 
 1. Have a device ready.
-2. Create a project named `auto-upload`. See [Cerate New Project](https://docs.coscene.cn/en/docs/recipes/project) for details.
+2. Create a project named `auto-upload`.
 3. Make sure your role in the coScene organization is "Administrator". If you're not an administrator, contact your organizational admin to update your role.
    ![org-role](./img/org-role.png)
 
@@ -191,6 +191,3 @@ Using the following scenario as an example, let's setup your automatic data coll
 2. View the automatically created record, and check the data uploaded in the record.
 
    ![auto-record-1](./img/auto-record-1.png)
-
-
-

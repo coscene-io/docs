@@ -1,0 +1,9 @@
+{
+  "label": "Plugin Extensions",
+  "position": 8,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/extensions"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "Other",
+  "position": 6,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/extensions/other"
+  }
+}
