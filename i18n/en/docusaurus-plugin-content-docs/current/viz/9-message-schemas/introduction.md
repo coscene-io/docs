@@ -16,7 +16,7 @@ coScene typically requires messages to follow specific structures for proper vis
 - [TypeScript](https://github.com/foxglove/foxglove-sdk/tree/main/typescript/schemas/src/types)
 - [FlatBuffers](https://github.com/foxglove/foxglove-sdk/tree/main/schemas/flatbuffer)
 
-If you have written custom messages, you can use [Message Converter](/viz/extensions/guides/message-converters) extensions to convert them into schemas supported by coScene.
+If you have written custom messages, you can use [Message Converter](../8-extensions/4-guides/2-create-message-converter.md) extensions to convert them into schemas supported by coScene.
 
 ## Protobuf and JSON Schema Types
 
