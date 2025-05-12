@@ -598,5 +598,11 @@
   },
   "home.catalogue.apt-source-install": {
     "message": "Installing coScene Software via APT"
+  },
+  "home.catalogue.extensions": {
+    "message": "Extensions"
+  },
+  "home.catalogue.message-schemas": {
+    "message": "Message Schemas"
   }
 }
