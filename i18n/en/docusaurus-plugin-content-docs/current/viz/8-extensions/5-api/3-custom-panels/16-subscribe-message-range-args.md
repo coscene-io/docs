@@ -59,7 +59,7 @@ The end time for the subscription range. If not provided, it will use the end of
 ### onNewRangeIterator()
 
 ```typescript
-onNewRangeIterator: (itemIterator: AsyncIterableIterator<Range<MessageEvent>>) => void;
+onNewRangeIterator: (itemIterator: AsyncIterableIterator&lt;Range&lt;MessageEvent&gt;&gt;) => void;
 ```
 
 `onNewRangeIterator` is a function that receives an async iterable when message data is available on the subscription.
@@ -80,9 +80,9 @@ If your `onNewRangeIterator` function throws an error, the iterator will end, an
 
 #### Parameters
 
-| Parameter    | Type                                       |
-| ------------ | ------------------------------------------ |
-| itemIterator | AsyncIterableIterator<Range<MessageEvent>> |
+| Parameter    | Type                                                   |
+| ------------ | ------------------------------------------------------ |
+| itemIterator | AsyncIterableIterator&lt;Range&lt;MessageEvent&gt;&gt; |
 
 #### Returns
 
@@ -120,13 +120,13 @@ optional onReset: (batchIterator) => Promise<void>;
 
 #### Parameters
 
-| Parameter     | Type                                                                                                             |
-| ------------- | ---------------------------------------------------------------------------------------------------------------- |
-| batchIterator | AsyncIterable\<[Immutable](../6-other/2-immutable.md)\<[MessageEvent](../6-other/1-app-setting-value.md)\[\]\>\> |
+| Parameter     | Type                                                                     |
+| ------------- | ------------------------------------------------------------------------ |
+| batchIterator | AsyncIterable of Array of MessageEvent objects (using Immutable wrapper) |
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise<void>`
 
 #### Deprecated
 

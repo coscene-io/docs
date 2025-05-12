@@ -18,4 +18,4 @@ TopicAliasFunction receives a data source topic and variable list, and outputs a
 
 ## Return Value
 
-TopicAlias[]
+[TopicAlias](./2-topic-alias.md)[]

@@ -1,9 +1,0 @@
-{
-  "label": "可视化",
-  "position": 3,
-  "collapsible": true,
-  "link": {
-    "type": "generated-index",
-    "slug": "/category/viz"
-  }
-}

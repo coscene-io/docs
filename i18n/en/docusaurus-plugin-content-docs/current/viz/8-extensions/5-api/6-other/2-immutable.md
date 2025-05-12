@@ -13,4 +13,4 @@ type Immutable<Type> = Type extends Exclude<Builtin, Error> ? Type : Type extend
 
 | Type Parameter |
 | -------------- |
-| Type           |
+| `Type`         |

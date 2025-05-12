@@ -9,7 +9,7 @@ import { themes } from 'prism-react-renderer';
 const defaultExclude = ['**/_*.{js,jsx,ts,tsx,md,mdx}', '**/_*/**', '**/*.test.{js,jsx,ts,tsx}', '**/__tests__/**'];
 
 // some docs are not translated, so we need to exclude them in en
-const excludeInEn = ['**/viz/8-extensions/**', '**/viz/9-message-schemas/**'];
+const excludeInEn = [];
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
