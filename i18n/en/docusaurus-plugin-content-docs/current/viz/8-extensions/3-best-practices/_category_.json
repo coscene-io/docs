@@ -1,9 +1,9 @@
 {
-  "label": "可视化",
+  "label": "Best Practices",
   "position": 3,
   "collapsible": true,
   "link": {
     "type": "generated-index",
-    "slug": "/category/viz"
+    "slug": "/category/extensions/best-practices"
   }
 }

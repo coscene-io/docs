@@ -1,6 +1,7 @@
 import React from 'react';
 import { CATALOGUE } from './catalogue';
 import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 interface DocSlugProps {
   title: string;
@@ -53,9 +54,11 @@ function Card({ catalogue }: { catalogue: { header: { title: string }; docs: Doc
 }
 
 export default function HomeCatalogue() {
+  const { i18n } = useDocusaurusContext();
+
   return (
     <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {CATALOGUE.map((item, index) => (
+      {CATALOGUE(i18n.currentLocale).map((item, index) => (
         <Card key={index} catalogue={item} />
       ))}
     </div>

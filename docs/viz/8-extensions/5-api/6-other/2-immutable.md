@@ -12,5 +12,5 @@ type Immutable<Type> = Type extends Exclude<Builtin, Error> ? Type : Type extend
 ## 类型参数
 
 | 类型参数 |
-| -------------- |
-| Type           | 
+| -------- |
+| Type     |

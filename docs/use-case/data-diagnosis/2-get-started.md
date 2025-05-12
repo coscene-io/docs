@@ -14,7 +14,7 @@ sidebar_position: 2
 
 1. 请准备好一台设备
 
-2. 请创建名为 auto-upload 的项目，详情参见[创建新项目](https://docs.coscene.cn/docs/recipes/project)。
+2. 请创建名为 auto-upload 的项目
 
 3. 请确认你在 coScene 的组织角色为「管理员」。若不是管理员，请联系组织管理员更新你的组织角色。
 
@@ -96,7 +96,7 @@ sidebar_position: 2
      enabled: false
    ```
 
-   \*更多配置参见[数采规则格式](https://docs.coscene.cn/docs/recipes/device/device-collector/#%E6%95%B0%E9%87%87%E8%A7%84%E5%88%99%E6%A0%BC%E5%BC%8F)
+   更多配置参见[数采规则格式](../../device/4-device-collector.md#device-collector-format)
 
 3. 点击【保存编辑】按钮
 
