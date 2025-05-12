@@ -8,7 +8,7 @@ sidebar_position: 1
 type BaseTopic = object;
 ```
 
-## 属性
+## Properties
 
 ### name
 
@@ -22,4 +22,4 @@ name: string;
 
 ```typescript
 optional schemaName: string;
-``` 
+```

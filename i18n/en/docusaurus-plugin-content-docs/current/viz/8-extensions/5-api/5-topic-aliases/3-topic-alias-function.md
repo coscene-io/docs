@@ -8,14 +8,14 @@ sidebar_position: 3
 type TopicAliasFunction = (args) => TopicAlias[];
 ```
 
-TopicAliasFunction 接收数据源主题和变量列表，并输出别名主题列表。使用 ExtensionContext.registerTopicAliases 注册此函数。
+TopicAliasFunction receives a data source topic and variable list, and outputs a list of alias topics. Register this function using ExtensionContext.registerTopicAliases.
 
-## 参数
+## Parameters
 
-| 参数 | 类型 |
-| --- | --- |
-| args | [Immutable](../6-other/2-immutable.md)\<\{ topics: [BaseTopic](./1-base-topic.md)[]; globalVariables: Readonly\<Record\<string, [VariableValue](../6-other/8-variable-value.md)\>\>; \}\> |
+| Parameter | Type                                                                                                                                                                                      |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| args      | [Immutable](../6-other/2-immutable.md)\<\{ topics: [BaseTopic](./1-base-topic.md)[]; globalVariables: Readonly\<Record\<string, [VariableValue](../6-other/8-variable-value.md)\>\>; \}\> |
 
-## 返回值
+## Return Value
 
-TopicAlias[] 
+TopicAlias[]

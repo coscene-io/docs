@@ -8,7 +8,7 @@ sidebar_position: 2
 type TopicAlias = object;
 ```
 
-## 属性
+## Properties
 
 ### name
 
@@ -20,4 +20,4 @@ name: string;
 
 ```typescript
 sourceTopicName: string;
-``` 
+```
