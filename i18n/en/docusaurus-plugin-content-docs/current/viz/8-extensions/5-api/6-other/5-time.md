@@ -8,11 +8,11 @@ sidebar_position: 5
 type Time = object;
 ```
 
-具有纳秒精度的时间戳。
+A timestamp with nanosecond precision.
 
-时间戳通常是自 UNIX 纪元以来的纳秒数，但可能相对于其他事件（如系统启动时间或模拟开始时间），具体取决于上下文。
+Timestamps are typically nanoseconds since the UNIX epoch, but may be relative to another event (such as system start time or simulation start time) depending on context.
 
-## 属性
+## Properties
 
 ### sec
 
@@ -26,4 +26,4 @@ sec: number;
 
 ```typescript
 nsec: number;
-``` 
+```

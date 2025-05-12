@@ -8,8 +8,8 @@ sidebar_position: 7
 type VariableStruct = object;
 ```
 
-## 索引签名
+## Index Signature
 
 ```typescript
 [key: string]: VariableValue
-``` 
+```

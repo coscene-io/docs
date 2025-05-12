@@ -8,9 +8,9 @@ sidebar_position: 6
 type Topic = object;
 ```
 
-Topic 是一个命名的消息通道。
+A named message channel.
 
-## 属性
+## Properties
 
 ### name
 
@@ -18,7 +18,7 @@ Topic 是一个命名的消息通道。
 name: string;
 ```
 
-主题名称，例如 "/some/topic"
+The name of the topic, e.g. "/some/topic"
 
 ### ~~datatype~~
 
@@ -26,9 +26,9 @@ name: string;
 datatype: string;
 ```
 
-#### 已弃用
+#### Deprecated
 
-已重命名为 `schemaName`。`datatype` 将在未来版本中移除。
+Renamed to `schemaName`. `datatype` will be removed in a future version.
 
 ### schemaName
 
@@ -36,9 +36,9 @@ datatype: string;
 schemaName: string;
 ```
 
-schema 名称是此主题上消息类型的标识符。通常这是消息 schema 的完全限定名称。完全限定名称取决于数据源和由数据源加载的数据。
+The schema name is the identifier for the message type on this topic. Typically this is the fully qualified name of the message schema. The fully qualified name depends on the data source and the data loaded by the data source.
 
-例如，在 protobuf 类序列化中的 `package.Message` 或在 ROS 系统中的 `pkg/Msg`。
+For example, `package.Message` in protobuf class serialization or `pkg/Msg` in ROS systems.
 
 ### convertibleTo?
 
@@ -46,4 +46,4 @@ schema 名称是此主题上消息类型的标识符。通常这是消息 schema
 optional convertibleTo: readonly string[];
 ```
 
-列出主题订阅者可用的任何其他 schema 名称。订阅主题时，面板可以使用 Subscription.convertTo 选项请求消息自动从 schemaName 转换为 convertibleTo 中的一个 schema。 
+List any other schema names that the topic subscribers may be interested in. When subscribing to a topic, the panel can use the Subscription.convertTo option to request message auto-conversion from schemaName to one of the schemas in convertibleTo.
