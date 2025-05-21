@@ -10,16 +10,16 @@ sidebar_position: 4
 
 你是不是也经历过这样的日常？
 
-- 算法改了一行代码，结果测了一整天  
-- 本地仿真环境突然坏掉，重装又踩坑  
+- 算法改了一行代码，结果测了一整天
+- 本地仿真环境突然坏掉，重装又踩坑
 - 多人协作，各测各的，结果对不上…
 
 尤其对于**移动机器人、具身智能**等领域的研发人员来说：
 
-- 软件更新频繁  
-- 仿真环境搭建复杂  
-- 测试标准不统一  
-- 本地测试排队严重  
+- 软件迭代频繁，需要持续验证
+- 仿真环境配置复杂，维护成本高
+- 测试标准不统一，结果难以量化
+- 本地计算资源有限，测试任务排队严重
 
 这些问题导致本地测试效率低下、协作困难。
 
@@ -31,7 +31,7 @@ sidebar_position: 4
 **简单五步，完成平台搭建，你只需上传程序，平台自动运行测试、生成可视化结果，全流程在线、零依赖！**
 ![4-online-simulation-test-1](./img/4-online-simulation-test-1.png)
 
-本文以 Ubuntu22.04 + ros2-humble + gazebo 环境为例，介绍如何在修改完算法程序后通过刻行时空平台进行直接仿真测试。
+本文以 Ubuntu 22.04 + ROS 2 Humble + Gazebo 环境为例，介绍如何在完成算法修改后，通过刻行时空平台进行云端仿真测试。
 
 更多仿真软件的支持，请关注刻行时空官网：[刻行时空平台](https://www.coscene.cn/)。
 
@@ -57,15 +57,15 @@ WORKDIR /action/ros2_ws
 构建完成后，打包推送至平台镜像仓库，全公司同事可复用这个稳定的测试环境，无需本地重复搭建。
 
 1. 登录刻行时空平台，进入组织管理获取专属镜像仓库地址
-![4-online-simulation-test-2](./img/4-online-simulation-test-2.PNG)
-![4-online-simulation-test-3](./img/4-online-simulation-test-3.PNG)
-![4-online-simulation-test-4](./img/4-online-simulation-test-4.PNG)
+   ![4-online-simulation-test-2](./img/4-online-simulation-test-2.PNG)
+   ![4-online-simulation-test-3](./img/4-online-simulation-test-3.PNG)
+   ![4-online-simulation-test-4](./img/4-online-simulation-test-4.PNG)
 
 2. 登录 Docker 并打包推送镜像  
-![4-online-simulation-test-5](./img/4-online-simulation-test-5.PNG)
+   ![4-online-simulation-test-5](./img/4-online-simulation-test-5.PNG)
 
 3. 登录平台查看镜像并获取链接  
-![4-online-simulation-test-6](./img/4-online-simulation-test-6.png)
+   ![4-online-simulation-test-6](./img/4-online-simulation-test-6.png)
 
 完成上述操作后，相当于为后续的各种仿真算法测试验证，搭建了一套完整的运行环境底座，里面包含了所有需要的测试软件依赖环境。
 
@@ -81,13 +81,11 @@ WORKDIR /action/ros2_ws
 ```bash
 tar -czvf install.tar.gz ./install
 ```
+
 进入平台项目，点击上传程序按钮，平台将自动解压并在后续执行测试时，在对应容器中运行。
 ![4-online-simulation-test-8](./img/4-online-simulation-test-8.png)
-
 ![4-online-simulation-test-9](./img/4-online-simulation-test-9.png)
-
 ![4-online-simulation-test-10](./img/4-online-simulation-test-10.png)
-
 ![4-online-simulation-test-11](./img/4-online-simulation-test-11.png)
 
 同时支持：
@@ -96,7 +94,7 @@ tar -czvf install.tar.gz ./install
 
 可参考平台文档 👉 https://docs.coscene.cn/docs/sim-and-tests/regression/test-bundle-management
 
-***对于企业用户，还支持 GitHub / GitLab 持续集成上传构建产物，跳过手动上传过程。***
+**_对于企业用户，还支持 GitHub / GitLab 持续集成上传构建产物，跳过手动上传过程。_**
 
 ---
 
@@ -125,25 +123,34 @@ test_case/
 
 ![4-online-simulation-test-12](./img/4-online-simulation-test-12.png)
 
-> ℹ️ **注意：**
-> 
-> 1. 上传文件时请遵循平台规定路径结构，文档参考：https://docs.coscene.cn/docs/sim-and-tests/regression/intro
-![4-online-simulation-test-13](./img/4-online-simulation-test-13.png)  
-> 2. 需要提前为记录添加标签（如 `Navigation_Error`），用于后续自动化测试筛选触发，参考下述流程：
-![4-online-simulation-test-14](./img/4-online-simulation-test-14.png)
-![4-online-simulation-test-15](./img/4-online-simulation-test-15.png)
-![4-online-simulation-test-16](./img/4-online-simulation-test-16.png)
-![4-online-simulation-test-17](./img/4-online-simulation-test-17.png)
-完成上述流程后，在下一步的配置页面中，我们就可以设置只有带有 'Navigation_Error' 标签的记录才会作为自动化测试的输入用例。
----
+:::info 重要说明
+
+### 文件结构规范
+
+请严格遵循[平台规定的路径结构](https://docs.coscene.cn/docs/sim-and-tests/regression/intro)：
+
+![文件结构示意图](./img/4-online-simulation-test-13.png)
+
+:::
+
+### 标签管理
+
+为记录添加标签（如 `Navigation_Error`）用于测试筛选，具体步骤如下：
+
+![步骤 1：进入标签管理](./img/4-online-simulation-test-14.png)
+![步骤 2：创建新标签](./img/4-online-simulation-test-15.png)
+![步骤 3：设置标签属性](./img/4-online-simulation-test-16.png)
+![步骤 4：应用标签](./img/4-online-simulation-test-17.png)
+
+完成上述配置后，您可以在下一步使用这些标签（如 `Navigation_Error`）来筛选测试用例。
 
 ## ⚙️ Step 4：配置测试触发逻辑
 
 每个项目都可以配置自动化触发策略：
 
-- 每次上传算法自动触发测试  
-- 手动选择记录执行  
-- 按标签或版本筛选测试集    
+- 每次上传算法自动触发测试
+- 手动选择记录执行
+- 按标签或版本筛选测试集
 
 详细配置参考 👉 https://docs.coscene.cn/docs/sim-and-tests/regression/config-management
 ![4-online-simulation-test-18](./img/4-online-simulation-test-18.png)
@@ -156,8 +163,8 @@ test_case/
 
 测试运行过程中支持：
 
-- 实时查看可视化页面中机器人运行状态，支持导入 gazebo环境同步查看。  
-- 自动录制测试过程数据。  
+- 实时查看可视化页面中机器人运行状态，支持导入 gazebo环境同步查看。
+- 自动录制测试过程数据。
 - 输出标准化测试报告。
 
 ![4-online-simulation-test-21](./img/4-online-simulation-test-21.png)
@@ -166,12 +173,12 @@ test_case/
 
 报告内容：
 
-   - 📍 机器人运行轨迹
-   - ✅ 成功 / 失败评分指标
-   - 🪵 日志输出 / 异常信息
-   - 🖼️ 可视化图表与统计
-![4-online-simulation-test-24](./img/4-online-simulation-test-24.png)
-![4-online-simulation-test-25](./img/4-online-simulation-test-25.png)
+- 📍 机器人运行轨迹
+- ✅ 成功 / 失败评分指标
+- 🪵 日志输出 / 异常信息
+- 🖼️ 可视化图表与统计
+  ![4-online-simulation-test-24](./img/4-online-simulation-test-24.png)
+  ![4-online-simulation-test-25](./img/4-online-simulation-test-25.png)
 
 ---
 
