@@ -3,8 +3,11 @@ sidebar_position: 1
 ---
 
 # 快速开始
+
 ## 平台能力介绍
+
 刻行时空是一款基于 **SceneOps 理念**的多模态数据管理平台，提供了**数据采集、存储、管理、标注、审核、分析、可视化**等功能，在帮助用户更高效地管理和分析数据同时，还可以通过平台提供算力实现**云端 EB 级别数据回灌测试、云端仿真验证、算法测试**。
+
 - 数据采集：支持设备、传感器、关节等多种数据源，支持手动采集、自动采集、远程采集等多种方式。
 - 数据存储：支持多种数据存储方式，如本地存储、云存储、对象存储等。
 - 数据管理：支持数据的增删改查、权限管理、数据版本控制等，同时**支持对 hdf5、db3、mcap、bag 等主流格式的数据格式之间的相关转换。**
@@ -16,80 +19,92 @@ sidebar_position: 1
 - 权限管理：支持用户、组织、项目、记录、文件、一刻等资源的权限管理。
 
 ## 登录刻行时空
+
 刻行时空平台中，我们提供了几个核心维度的角色与权限的划分，可参考下图的组织架构图:
 ![quick-start](./img/01-quick-start-01.png)
 
 - 「组织」：组织是刻行时空平台的最高管理单位，相当于一个公司或公司内部的某个团队。
 
 - 「项目」：项目是刻行时空平台的第二级管理单位，在不同的应用场景下可以有不同的意义：
--- 在具身智能数采场景中，一个项目可以对应是一个数采工厂,然后通过第三级的记录来区分技能。也可以对应成一个技能，在项目下通过记录来管理归属于此技能的所有数据。
--- 在商清机器人运维领域中，一个项目可以对应是一个型号的机器人的全部运维问题，也可以定义成某个重点客户的运维问题。
--- 在机器人仿真验证场景中，一个项目可以对应是一个型号的机器人的全部仿真验证环境。
+
+  - 在具身智能数采场景中，一个项目可以对应是一个数采工厂,然后通过第三级的记录来区分技能。也可以对应成一个技能，在项目下通过记录来管理归属于此技能的所有数据。
+  - 在商清机器人运维领域中，一个项目可以对应是一个型号的机器人的全部运维问题，也可以定义成某个重点客户的运维问题。
+  - 在机器人仿真验证场景中，一个项目可以对应是一个型号的机器人的全部仿真验证环境。
 
 - 「设备」：设备是刻行时空平台的第二级管理单位，对应的是安装了刻行时空端侧软件的设备，如机器人、无人机等。
 
 - 「镜像仓库」：镜像仓库是刻行时空平台的第二级管理单位，用于存放镜像文件，如 Docker 镜像、ROS 镜像等。
 
-- 「记录」：记录是刻行时空平台的第三级管理单位，它一定会归属与第二级管理单位‘项目’，在不同的应用场景下可以有不同的意义：
--- 在具身智能数采场景中，一个记录可以对应是一个数采工厂中的一次数采。 
--- 在商清机器人运维场景中，一个记录可以对应是某台机器人的一次现场运维数据的记录。
--- 在仿真验证场景中，一个记录可以对应是一个仿真验证环境。
+- 「记录」：记录是刻行时空平台的第三级管理单位，它一定会归属与第二级管理单位'项目'，在不同的应用场景下可以有不同的意义：
 
-- 「自动化动作/测试程序/测试套件/触发器」：以上单位与记录同级，都需要归属与第二级管理单位‘项目’，在不同的应用场景下可以自由排列组合获得不同的能力，可查看对应文档获取详细信息。
+  - 在具身智能数采场景中，一个记录可以对应是一个数采工厂中的一次数采。
+  - 在商清机器人运维场景中，一个记录可以对应是某台机器人的一次现场运维数据的记录。
+  - 在仿真验证场景中，一个记录可以对应是一个仿真验证环境。
 
+- 「自动化动作/测试程序/测试套件/触发器」：以上单位与记录同级，都需要归属与第二级管理单位'项目'，在不同的应用场景下可以自由排列组合获得不同的能力，可查看对应文档获取详细信息。
 
 而对于我们每一位用户，**每个组织的创建者（或者首位登录者），会默认成为组织的管理员。** 其余成员可以通过与组织创建者的相同的 OA 办公软件认证登录（例如飞书/钉钉等），用户将自动加入管理员创建的组织。或者由组织管理员邀请用户加入组织（邮箱登录）。
 
-每一位用户，在进入组织后，会获得组织成员的权限，可以看到组织内的内部项目/公开项目/以及用户自己创建的私有项目。可以对组织内的设备进行查看和注册，但无管理权限。 
+每一位用户，在进入组织后，会获得组织成员的权限，可以看到组织内的内部项目/公开项目/以及用户自己创建的私有项目。可以对组织内的设备进行查看和注册，但无管理权限。
 
 用户可以创建属于自己的项目，则默认获得项目管理员权限，在该项目中用户可以创建记录、上传文件、创建自动化动作、创建测试程序、创建测试套件、创建触发器等。
 
 ### 管理员
+
 1. 通过浏览器访问[刻行时空平台](https://www.coscene.cn)，点击右上角的【快速登录】，进入登录界面。
-    
-     ![org_2](./img/org_2.png)
+
+   ![org_2](./img/org_2.png)
 
 2. 选择登录方式进入平台：邮箱、飞书、钉钉或谷歌企业邮箱。
 
-     ![org_3](./img/org_3.png)
+   ![org_3](./img/org_3.png)
 
 3. 填写「组织名称」与「组织 ID」，勾选「同意」，点击【创建组织】按钮。
-     
-     ![org_4](./img/org_4.png)
 
-4. 创建成功后，将自动进入组织首页。可以开始[管理你的组织](../collaboration/organization/1-organizations.md)啦。
+   ![org_4](./img/org_4.png)
+
+4. 创建成功后，将自动进入组织首页。可以开始[管理你的组织](../collaboration/organization/1-organizations.md)。
 
 ### 普通用户
+
 > 首先请联系组织管理员，邀请你加入组织。或者通过同一飞书/钉钉/谷歌企业邮箱等办公软件，使用相同的途径登录。
 
 1. 通过浏览器访问[刻行时空平台 https://www.coscene.cn/](https://www.coscene.cn)，点击右上角的【快速登录】，进入登录界面。
-    
-     ![org_2](./img/org_2.png)
+
+   ![org_2](./img/org_2.png)
 
 2. 选择与你组织一致的登录方式（邮箱、飞书、钉钉或谷歌企业邮箱）进行登录。
 
-     ![org_3](./img/org_3.png)
+   ![org_3](./img/org_3.png)
 
-3. 选择组织后，即可进入组织，开始你的数据之旅啦。
+3. 选择组织后，即可进入组织，开始你的数据之旅。
 
-     ![org-welcome](./img/2-1-org-welcome.png)
+   ![org-welcome](./img/2-1-org-welcome.png)
 
 ## 可视化您的数据与日志
 
 **可视化**是刻行时空平台中最核心的能力之一，基于刻行时空强大的能力，用户可以抛弃依赖繁琐的 Rviz/Rviz2 等工具，直观地查看、分析、诊断设备数据、日志、配置文件等数据，帮助用户更高效地管理和分析数据。
 
-
 ### 创建项目
+
 项目是数据管理的单元，对于数据的存储、管理、隔离和应用都发生在项目级别。一个项目可以是一个部门、一个项目组或一个业务线。更多关于项目的介绍，请参考[项目](../collaboration/project-collaboration/1-project.md)。
 
 在主页上点击"创建项目"按钮，然后按照指引步骤完成项目创建。
 
 ![create-project](./img/4-2-create-project.png)
 
-### 创建记录并上传文件
-记录是一个描述相似场景的文件集合，用于存储、管理、可视化数据。一条记录中可以存放设备发生一次故障时产生的数据、设备执行一次任务时产生的数据、待标注的一小段数据集，如 ROS Bag、日志、地图、配置文件、图片与视频等。更多关于记录的介绍，请参考[记录](../collaboration/record/1-quick-start-record.md)。
+### 创建记录
 
-1. 在项目左侧边栏，选择「记录」，点击【创建记录】按钮。
+记录（Record）是描述相关场景的文件集合，用于数据的存储、管理和可视化。记录可以包含：
+
+- 设备故障数据
+- 任务执行数据
+- 待标注数据集
+- ROS Bag、日志、地图、配置文件等
+
+详细信息请参考[记录](../collaboration/record/1-quick-start-record.md)。
+
+1. 在项目左侧导航栏，选择「记录」，点击【创建记录】。
 
 ![create-record_1](./img/create-record_1.png)
 
@@ -102,6 +117,7 @@ sidebar_position: 1
 ![create-record_3](./img/create-record_3.png)
 
 ### 可视化播放记录
+
 数据可视化界面通过可配置的「面板」和「布局」，将设备数据以直观的可视化方式呈现，助力用户高效分析与诊断各类问题。更多关于可视化的介绍，请参考[可视化数据](../viz/1-about-viz.md)。
 
 1. 在记录中上传 bag/mcap/db3/hdf5 后，点击【播放记录】，进入可视化页面。
@@ -115,8 +131,9 @@ sidebar_position: 1
 3. 点击底部【播放】按钮开始播放数据。可以通过切换不同的面板（如三维图、曲线图、状态转换图、表格等）来查看数据。更多面板使用说明，请参考[面板介绍](../viz/4-panel/1-panel-overview.md)。
 
 ![play-record_3](./img/play-record_3.png)
-        
+
 ### 创建并分享一刻
+
 在可视化界面播放数据时，你可以通过创建「一刻」来标记重要的时间点或时间段。「一刻」可以帮助你追踪关键数据变化（如设备异常、性能波动）等值得关注的信息，方便后续查看和分析。更多关于一刻的介绍，请参考[一刻](../viz/5-create-moment-viz.md)。
 
 1. 在可视化播放记录时，点击左下角【创建一刻】，可标记一刻的起点。
@@ -136,11 +153,13 @@ sidebar_position: 1
 ![分享一刻](./img/2-4-share-moment.png)
 
 ## 远程连接设备
+
 用户可以与现场正在运行的设备建立联系，详见[设备](../device/1-device.md)
 
 通过远程连接设备，可以实时查看设备的运行状态与各传感器的信息，还可以通过网页 SSH 远程连接设备，进行调试和操作。在机器人的远程运维与操作方面有极大的助力。
 
 ### 添加设备
+
 > 前提条件：支持 Linux 设备，arm64 和 x86_64 架构
 
 1. 通过右上角「我的」，进入「组织管理-设备」页面，点击【添加设备】按钮。
@@ -148,7 +167,7 @@ sidebar_position: 1
 ![添加设备入口](./img/device_1.png)
 
 2. 在弹框中，选择【系统生成 ID】，勾选【远程控制】，点击【复制】按钮，复制安装命令。
-    - 若要使用自定义的 ID，参见[设备 ID 配置](../device/2-create-device.md#设备-id-配置)
+   - 若要使用自定义的 ID，参见[设备 ID 配置](../device/2-create-device.md#设备-id-配置)
 
 ![添加设备入口](./img/device_2.png)
 **刻行时空强烈建议用户使用自定义的 ID，避免出现后续设备重复注册的问题。**
@@ -160,6 +179,7 @@ sidebar_position: 1
 ![准入设备](./img/4-3-access-device-2.png)
 
 ### 网页 SSH
+
 当设备准入后，在「组织管理-设备」页面找到该设备，点击【网页 SSH】按钮即可在浏览器中打开新标签页，远程连接到设备。更多详情请参考[网页 SSH](../device/5-device-remote-control.md#网页-ssh)。
 
 ![device ssh](./img/4-3-device-ssh.png)
@@ -178,21 +198,29 @@ sidebar_position: 1
 >      - ROS2：<u>Foxy Fitzroy</u>、<u>Galactic Geochelone</u>、<u>HumbleHawksbill</u>
 
 安装方法：
+
 - 导入公钥：
+
 ```bash
 curl -fsSL https://download.coscene.cn/coscene-apt-source/coscene.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/coscene.gpg
 ```
+
 - 添加源：
+
 ```bash
 echo "deb [signed-by=/etc/apt/trusted.gpg.d/coscene.gpg] https://download.coscene.cn/coscene-apt-source $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/coscene.list
 ```
+
 - 更新与安装：
+
 ```bash
 sudo apt update
 # CAUTION: ${ROS_DISTRO} need to be replaced by 'noetic', 'foxy' or 'humble', if ROS_DISTRO not in your env
 sudo apt install ros-${ROS_DISTRO}-cobridge -y
 ```
+
 - 运行与启动：
+
 ```bash
 source /opt/ros/${ROS_DISTRO}/setup.bash  #根据您的 ros 版本替换 ${ROS_DISTRO}
 
@@ -200,9 +228,10 @@ source /opt/ros/${ROS_DISTRO}/setup.bash  #根据您的 ros 版本替换 ${ROS_D
 roslaunch cobridge cobridge.launch
 
 # for ros 2 distribution
-ros2 launch cobridge cobridge_launch.xml 
+ros2 launch cobridge cobridge_launch.xml
 ```
-** 我们的代码是完全开源的，支持您后续根据您的需求直接基于我们的 cobridge 代码进行二次开发，并合入您的专属软件包中，可查看[ coBridge](https://github.com/coscene-io/coBridge) 源码（C++）
+
+\*\* 我们的代码是完全开源的，支持您后续根据您的需求直接基于我们的 cobridge 代码进行二次开发，并合入您的专属软件包中，可查看[ coBridge](https://github.com/coscene-io/coBridge) 源码（C++）
 
 > 2. 启动 coBridge 节点后，即可在网页端查看设备的实时数据
 
@@ -215,9 +244,11 @@ ros2 launch cobridge cobridge_launch.xml
 ![device realtime demo](./img/4-3-device-realtime-demo.png)
 
 ## 采集设备数据
-平台可以与真实设备建立连接，通用主动在平台上下发任务的方式，去采集用户需要上传到平台上的数据。 
+
+平台可以与真实设备建立连接，通用主动在平台上下发任务的方式，去采集用户需要上传到平台上的数据。
 
 ### 添加设备
+
 > 前提条件：支持 Linux 设备，arm64 和 x86_64 架构。
 
 1. 通过右上角「我的」，进入「组织管理-设备」页面，点击【添加设备】按钮。
@@ -225,8 +256,8 @@ ros2 launch cobridge cobridge_launch.xml
 ![添加设备入口](./img/device_1.png)
 
 2. 在弹框中，选择【系统生成 ID】，点击【复制】按钮，复制安装命令。
-    - 若要使用自定义的 ID，参见[设备 ID 配置](../device/2-create-device.md#设备-id-配置)
-       
+   - 若要使用自定义的 ID，参见[设备 ID 配置](../device/2-create-device.md#设备-id-配置)
+
 ![添加设备](./img/device_2.png)
 
 3. 在真实设备上打开 shell 终端，执行安装命令，设备端出现 `Installation completed successfully 🎉` 即表示安装成功。
@@ -236,6 +267,7 @@ ros2 launch cobridge cobridge_launch.xml
 ![准入设备](./img/4-3-access-device-2.png)
 
 ### 手动采集数据
+
 1. **将设备添加到项目**：进入「项目设备」页，点击【添加设备】按钮，选择需要采集数据的设备。
 
 ![添加设备](./img/4-3-device-add-project-02.png)
@@ -244,22 +276,23 @@ ros2 launch cobridge cobridge_launch.xml
 
 ![配置采集目录](./img/device-config_1.png)
 **注意：在您配置采集目录时，请确保您需要被采集的数据直接存放在该目录下。**
+
 ```yaml
-      mod:
-        name: 'default' 
-        conf:
-          enabled: true          
-          # 设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录
-          collect_dirs: 
-            - /home/bag/
-            - /home/log/
+mod:
+  name: 'default'
+  conf:
+    enabled: true
+    # 设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录
+    collect_dirs:
+      - /home/bag/
+      - /home/log/
 ```
 
 3. **创建采集任务**：进入「项目-任务-采集任务」页面，创建采集任务。
-    - 选择要采集数据的设备
-    - 选择要采集的时间范围：在目标数据路径下，采集「文件更新时间」在指定时间段内的文件
-    - 目标数据路径：默认值取自设备配置中的 `collect_dirs`，也可以自定义路径。若填写为文件夹，则采集该文件夹下符合时间范围的文件；若填写为文件，则采集该文件。
-    - 任务名称：自定义名称
+   - 选择要采集数据的设备
+   - 选择要采集的时间范围：在目标数据路径下，采集「文件更新时间」在指定时间段内的文件
+   - 目标数据路径：默认值取自设备配置中的 `collect_dirs`，也可以自定义路径。若填写为文件夹，则采集该文件夹下符合时间范围的文件；若填写为文件，则采集该文件。
+   - 任务名称：自定义名称
 
 ![创建采集任务](./img/collect_1.png)
 
@@ -269,37 +302,39 @@ ros2 launch cobridge cobridge_launch.xml
 ![查看采集记录](./img/collect_3.png)
 
 ### 自动采集数据
+
 自动采集数据是通过预定义的规则持续监测设备日志，或者监听特定的 topic，在触发特定条件时自动采集相关数据，从而实现运维故障数据的自动上传。详情请参考[数采&诊断](../use-case/data-diagnosis/3-add-rule.md)。
 
 #### 1. **将设备添加到项目**：进入「项目设备」页，点击【添加设备】按钮，选择需要采集数据的设备。
 
 ![添加设备](./img/4-3-device-add-project-02.png)
 
-#### 2. **配置监听与采集目录**：进入组织设备配置页，设置监听目录`listen_dirs` 与采集目录 `collect_dirs` 
+#### 2. **配置监听与采集目录**：进入组织设备配置页，设置监听目录`listen_dirs` 与采集目录 `collect_dirs`
+
 **注意：在您配置采集目录时，请确保您需要被采集的数据直接存放在该目录下，暂不支持自动遍历目录下的子目录，如果是存放在子目录下，需要配置完整路径。**
 
 **注意：如果我们是基于监听 topic 的方式作为基础规则，那么需要在此处配置 topics ，参考如下示例。**
 ![配置采集目录](./img/device-config_1.png)
 
 ```yaml
-      mod:
-        name: 'default' 
-        conf:
-          enabled: true          
-          # 设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录
-          collect_dirs: 
-            - /home/bag/
+mod:
+  name: 'default'
+  conf:
+    enabled: true
+    # 设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录
+    collect_dirs:
+      - /home/bag/
 
-          # 设备端的监听目录，作为项目中规则的监听目录。刻行时空的端侧软件将监控此目录下的文件（文件类型支持 mcap， bag , log 等）里是否包含您设置的 topics ，若有则触发采集
-          listen_dirs: 
-            - /home/bag/
+    # 设备端的监听目录，作为项目中规则的监听目录。刻行时空的端侧软件将监控此目录下的文件（文件类型支持 mcap， bag , log 等）里是否包含您设置的 topics ，若有则触发采集
+    listen_dirs:
+      - /home/bag/
 
-          # 设置文件监听的时效性：若文件的最后更新时间距离当前时间超过 2 小时，则不会被系统监听
-          skip_period_hours: 2
-        #监听的 topic 名称，例如您的机器人会持续发布一个叫 /error_status 的 topic 来表示出现了告警可能需要采集数据，您可以在规则中配置监听该 topic
-        topics:
-          - /error_status
-``` 
+    # 设置文件监听的时效性：若文件的最后更新时间距离当前时间超过 2 小时，则不会被系统监听
+    skip_period_hours: 2
+  #监听的 topic 名称，例如您的机器人会持续发布一个叫 /error_status 的 topic 来表示出现了告警可能需要采集数据，您可以在规则中配置监听该 topic
+  topics:
+    - /error_status
+```
 
 #### 3. **规则组**
 
@@ -341,7 +376,6 @@ ros2 launch cobridge cobridge_launch.xml
 
 ##### 设备事件监听
 
->
 > 此模块是对项目设备进行监控，当预先设定的监听目录里的文件有匹配到您设定的监听话题时，将自动上报事件并记录到当前项目的仪表盘中。
 
 ![设备事件监听](./img/device-event-monitoring.png)
@@ -427,6 +461,7 @@ ros2 launch cobridge cobridge_launch.xml
 ![诊断数据设置](./img/diagnosis-settings.png)
 
 #### 6.**确认规则**：确认规则已启用，且目标设备已拉取到最新的规则配置。
+
 - 启用规则组：点击规则组右侧的启用按钮
 
 ![启用规则组](./img/rule_5.png)
@@ -440,7 +475,6 @@ ros2 launch cobridge cobridge_launch.xml
 
 ![查看日志](./img/rule_6.png)
 
-
 #### 7.**查看采集结果**：在「项目-记录」页面，查看设备自动创建的记录。点击记录名称进入详情，查看文件与一刻信息。通过播放记录，在[可视化](../viz/1-about-viz.md)页面查看采集的数据。
 
 ![查看采集结果](./img/rule_8.png)
@@ -450,5 +484,6 @@ ros2 launch cobridge cobridge_launch.xml
 | 一刻 | <img src={require('./img/rule_10.png').default} alt="rule_10" width="1000" /> |
 
 ## 了解更多
+
 - [自动化处理数据](../workflow/1-quick-start-workflow.md)
 - [更新日志](https://docs.coscene.cn/changelog)
