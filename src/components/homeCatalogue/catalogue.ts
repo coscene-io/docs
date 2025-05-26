@@ -54,12 +54,12 @@ export const CATALOGUE = (local: string) => [
       },
       ...(local === 'zh'
         ? [
-            { docLink: '/category/extensions', title: translate({ id: 'home.catalogue.extensions', message: '插件' }) },
-            {
-              docLink: '/viz/message-schemas',
-              title: translate({ id: 'home.catalogue.message-schemas', message: '消息架构' }),
-            },
-          ]
+          { docLink: '/category/extensions', title: translate({ id: 'home.catalogue.extensions', message: '插件' }) },
+          {
+            docLink: '/viz/message-schemas',
+            title: translate({ id: 'home.catalogue.message-schemas', message: '消息架构' }),
+          },
+        ]
         : []),
     ],
   },
@@ -134,8 +134,16 @@ export const CATALOGUE = (local: string) => [
         title: translate({ id: 'home.catalogue.automated-data-processing', message: '自动化处理数据' }),
       },
       {
+        docLink: '/use-case/online-simulation-test',
+        title: translate({ id: 'home.catalogue.online-simulation-test', message: '在线仿真测试' }),
+      },
+      {
         docLink: '/category/data-collection-and-diagnosis',
         title: translate({ id: 'home.catalogue.data-collection-and-diagnosis', message: '数据自动采集与诊断' }),
+      },
+      {
+        docLink: '/use-case/embodied-intelligence-data-collection-solution',
+        title: translate({ id: 'home.catalogue.embodied-intelligence-data-collection-solution', message: '具身智能数据采集工厂接入' }),
       },
     ],
   },
