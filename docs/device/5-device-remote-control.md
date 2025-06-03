@@ -9,9 +9,10 @@ sidebar_position: 5
 ## 前提条件
 
 1. 设备端已经安装刻行相关的设备端程序，具体请参考[设备端安装](./2-create-device.md#add-device-from-device)。
-2. 组织管理员已经准入设备，允许进行远程控制设备。[设备准入](./3-manage-device.md#设备准入)请参考相关文档。
+2. 组织管理员已经准入设备，允许进行远程控制设备。[设备准入](./3-manage-device.md#device-admission)请参考相关文档。
 
 ## 实时可视化
+
 > 前提条件：
 >
 > 1. 安装 coBridge 组件
@@ -21,7 +22,6 @@ sidebar_position: 5
 >      - ROS2：<u>Foxy Fitzroy</u>、<u>Galactic Geochelone</u>、<u>Humble Hawksbill</u>
 >    - [查看 coBridge 源码（C++）](https://github.com/coscene-io/coBridge)
 >    - 强烈建议使用 coBridge 源码编译出可执行文件(编译流程文档：[CN](https://github.com/coscene-io/coBridge/blob/main/README.zh-CN.md)/[EN](https://github.com/coscene-io/coBridge/blob/main/README.md))，将其整合进机器人软件中，并在机器人启动脚本添加 `ros2 launch cobridge cobridge_launch.xml` （或者 `roslaunch cobridge cobridge_launch.xml`）命令。
->
 > 2. coBridge 节点启动后，配合 virmesh 映射的外网地址及端口，可在网页端实现订阅机器人 topic，下发 service 等操作，实现对机器人的远程实时可视化。
 
 当设备准入后，在「组织管理」里「设备」页面列表查看设备，设备会出现【实时可视化】的按钮，点击之后即可连接到机器实时展示机器的实时情况。

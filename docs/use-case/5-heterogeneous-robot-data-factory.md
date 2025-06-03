@@ -36,7 +36,7 @@ sidebar_position: 5
    - 也可参考[使用 APT 源安装刻行端侧软件](https://docs.coscene.cn/docs/client/apt-source-install)
 
 3. **对设备进行准入**
-   登录平台后，在首页即可看到“**前往组织管理**”的按钮，参考文档支持[设备准入](https://docs.coscene.cn/docs/device/manage-device#%E8%AE%BE%E5%A4%87%E5%87%86%E5%85%A5)
+   登录平台后，在首页即可看到“**前往组织管理**”的按钮，参考文档支持[设备准入](../device/3-manage-device.md#device-admission)
 
 4. **创建项目**
    登录平台后，在首页即可看到“**新建项目**”的按钮，参考文档支持[新建项目](https://docs.coscene.cn/docs/collaboration/project-collaboration/project)
