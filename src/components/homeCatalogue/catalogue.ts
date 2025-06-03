@@ -142,8 +142,8 @@ export const CATALOGUE = (local: string) => [
         title: translate({ id: 'home.catalogue.data-collection-and-diagnosis', message: '数据自动采集与诊断' }),
       },
       {
-        docLink: '/use-case/embodied-intelligence-data-collection-solution',
-        title: translate({ id: 'home.catalogue.embodied-intelligence-data-collection-solution', message: '具身智能数据采集工厂接入' }),
+        docLink: '/use-case/heterogeneous-robot-data-factory',
+        title: translate({ id: 'home.catalogue.embodied-intelligence-data-collection-solution', message: '异构机器人数据采集工厂接入' }),
       },
     ],
   },
