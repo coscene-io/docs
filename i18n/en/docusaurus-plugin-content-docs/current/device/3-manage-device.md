@@ -78,7 +78,7 @@ If a project no longer needs a certain device, you can [Remove from this Project
 
 ![Remove Project Device](./img/4-3-delete-project-device.png)
 
-## Device Admission
+## Device Admission {#device-admission}
 
 :::info
 🤖 Permission: **Only organization administrators** can perform device admission operations
