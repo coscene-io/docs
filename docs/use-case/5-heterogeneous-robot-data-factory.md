@@ -17,8 +17,8 @@ sidebar_position: 5
 ## 前提条件
 
 1. **设备注册**
-   参考如下官方链接：[登录刻行时空](https://docs.coscene.cn/docs/get-started/quick-start)，完成**登录刻行时空**部分
-   参考如下官方链接：[设备注册](https://docs.coscene.cn/docs/device/create-device)
+   参考如下官方链接：[登录刻行时空](../get-started/1-quick-start.md)，完成**登录刻行时空**部分
+   参考如下官方链接：[设备注册](../device/2-create-device.md)
 
    - 安装命令（**以下代码仅供参考示例，请务必在您的组织中复制安装指令后再添加。**）：
      ```bash
@@ -33,16 +33,19 @@ sidebar_position: 5
      ```bash
      sudo dpkg -i ros-humble-cobridge_1.0.7-0focal_arm64.deb   #以实际下载的 deb 文件为准。
      ```
-   - 也可参考[使用 APT 源安装刻行端侧软件](https://docs.coscene.cn/docs/client/apt-source-install)
+   - 也可参考[使用 APT 源安装刻行端侧软件](../client/2-apt-source-install.md)
 
 3. **对设备进行准入**
+
    登录平台后，在首页即可看到“**前往组织管理**”的按钮，参考文档支持[设备准入](../device/3-manage-device.md#device-admission)
 
 4. **创建项目**
-   登录平台后，在首页即可看到“**新建项目**”的按钮，参考文档支持[新建项目](https://docs.coscene.cn/docs/collaboration/project-collaboration/project)
+
+   登录平台后，在首页即可看到“**新建项目**”的按钮，参考文档支持[新建项目](../collaboration/project-collaboration/1-project.md)
 
 5. **项目中添加采集设备**
-   完成以上动作后，我们需要将机器人本体关联到我们的项目中，参考文档支持[新建项目](https://docs.coscene.cn/docs/collaboration/project-collaboration/project)
+
+   完成以上动作后，我们需要将机器人本体关联到我们的项目中，参考文档支持[新建项目](../collaboration/project-collaboration/1-project.md)
 
 ---
 
@@ -70,7 +73,7 @@ sidebar_position: 5
 若想快速开始，也可以联系刻行时空提供官方示例配置文件，按如下方法导入。
 ![05-data-collect-01](./img/05-data-collect-01.png)
 
-1. 进入实时可视化页面（方法参考[实时可视化](https://docs.coscene.cn/docs/device/device-remote-control)），点击【创建新布局】。
+1. 进入实时可视化页面（方法参考[实时可视化](../device/5-device-remote-control.md)），点击【创建新布局】。
    ![05-data-collect-02](./img/05-data-collect-02.png)
 
 2. 选择【数据采集】面板及其他所需面板（如三维、原始消息）。
@@ -156,14 +159,14 @@ sidebar_position: 5
 
 ![05-trigger-assignee](./img/05-trigger-assignee.png)
 
-关于触发器的配置，具体可参考 [自动化-触发器](https://docs.coscene.cn/docs/workflow/trigger)
+关于触发器的配置，具体可参考 [自动化-触发器](../workflow/3-trigger.md)
 
 ### 为任务系统配置自动化动作
 
 如我们在上一步中配置的自动化流转触发器，当采集员将任务状态修改为"完成"时，会自动调用创建标注任务的动作。
 
 刻行时空提供了适用于数据工厂的部分自动化动作：**创建通用任务**，以支持我们的数据工厂的业务需求。同时我们也支持自定义的自动化动作，以支持更适合您的工作流。
-可参考文档：[自动化-动作](https://docs.coscene.cn/docs/category/action)
+可参考文档：[自动化-动作](/docs/category/action)
 
 **刻行时空后续将推出任务配置导入/导出功能，同时提供更丰富的官方任务系统模板。敬请期待！**
 
@@ -174,7 +177,7 @@ sidebar_position: 5
 - 管理员登录平台后，进入相应的项目中，完成如下工作：
 
   - 任务配置与管理
-  - 将设备与成员关联到项目中，参考文档：[项目设备/成员](https://docs.coscene.cn/docs/collaboration/project-collaboration/project)
+  - 将设备与成员关联到项目中，参考文档：[项目设备/成员](../collaboration/project-collaboration/1-project.md)
   - 点击左侧导航栏中的**任务**，创建**通用任务**。（**注意！在此应用场景请创建通用任务，采集任务与标注任务无法满足实际需求。**）
     ![05-data-collect-26](./img/05-data-collect-26.png)
 
@@ -235,7 +238,7 @@ sidebar_position: 5
 
 ## 数据应用
 
-当我们需要使用审核通过的数据时，我们可以在**项目**中查看数据，通过**标签** 、 **自定义字段** 实现对数据的筛选点击，选择记录后 点击**下载**，即可下载数据（大于 2G 的数据请使用 [coCLI](https://docs.coscene.cn/docs/category/cocli) 下载），也可分享给其他团队成员。
+当我们需要使用审核通过的数据时，我们可以在**项目**中查看数据，通过**标签** 、 **自定义字段** 实现对数据的筛选点击，选择记录后 点击**下载**，即可下载数据（大于 2G 的数据请使用 [coCLI](/docs/category/cocli) 下载），也可分享给其他团队成员。
 
 ![05-data-collect-35](./img/05-data-collect-35.png)
 
@@ -248,7 +251,7 @@ sidebar_position: 5
   A：所有面板均支持，只要机器人发出对应消息。
 
 - **Q：还有哪些采集方式？**
-  A：平台支持按时间范围采集、自动发现采集等，详见[相关文档](https://docs.coscene.cn/docs/category/use-case)。
+  A：平台支持按时间范围采集、自动发现采集等，详见[相关文档](/docs/category/use-case)。
 
 ---
 

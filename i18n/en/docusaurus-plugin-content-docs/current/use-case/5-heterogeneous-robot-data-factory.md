@@ -17,8 +17,8 @@ This article mainly introduces the following methods:
 ## Prerequisites
 
 1. **Device Registration**
-   Refer to the official link: [Login to coScene](https://docs.coscene.cn/docs/get-started/quick-start), complete the **Login to coScene** section
-   Refer to the official link: [Device Registration](https://docs.coscene.cn/docs/device/create-device)
+   Refer to the official link: [Login to coScene](../get-started/1-quick-start.md), complete the **Login to coScene** section
+   Refer to the official link: [Device Registration](../device/2-create-device.md)
 
    - Installation command (**The following code is for reference only. Please make sure to copy the installation command from your organization before adding.**):
      ```bash
@@ -33,7 +33,7 @@ This article mainly introduces the following methods:
      ```bash
      sudo dpkg -i ros-humble-cobridge_1.0.7-0focal_arm64.deb   # Use the actual downloaded deb file.
      ```
-   - You can also refer to [Installing coScene Edge Software Using APT Repository](https://docs.coscene.cn/docs/client/apt-source-install)
+   - You can also refer to [Installing coScene Edge Software Using APT Repository](../client/2-apt-source-install.md)
 
 3. **Device Admission**
 
@@ -41,11 +41,11 @@ This article mainly introduces the following methods:
 
 4. **Create Project**
 
-   After logging into the platform, you can see the "**New Project**" button on the homepage. Refer to the documentation for [Create New Project](https://docs.coscene.cn/docs/collaboration/project-collaboration/project)
+   After logging into the platform, you can see the "**New Project**" button on the homepage. Refer to the documentation for [Create New Project](../collaboration/project-collaboration/1-project.md)
 
 5. **Add Collection Device to Project**
 
-   After completing the above actions, we need to associate the robot with our project. Refer to the documentation for [Create New Project](https://docs.coscene.cn/docs/collaboration/project-collaboration/project)
+   After completing the above actions, we need to associate the robot with our project. Refer to the documentation for [Create New Project](../collaboration/project-collaboration/1-project.md)
 
 ---
 
@@ -73,7 +73,7 @@ After entering the real-time visualization page, there is no layout by default, 
 If you want to get started quickly, you can also contact coScene to provide official example configuration files and import them as follows.
 ![05-data-collect-01](./img/05-data-collect-01.png)
 
-1. Enter the real-time visualization page (refer to [Real-time Visualization](https://docs.coscene.cn/docs/device/device-remote-control) for method), click [Create New Layout].
+1. Enter the real-time visualization page (refer to [Real-time Visualization](../device/5-device-remote-control.md) for method), click [Create New Layout].
    ![05-data-collect-02](./img/05-data-collect-02.png)
 
 2. Select [Data Collection] panel and other required panels (such as 3D, Raw Messages).
@@ -159,14 +159,14 @@ Taking a typical heterogeneous data collection task as an example, we need to co
 
 ![05-trigger-assignee](./img/05-trigger-assignee.png)
 
-For trigger configuration details, please refer to [Automation - Triggers](https://docs.coscene.cn/docs/workflow/trigger)
+For trigger configuration details, please refer to [Automation - Triggers](../workflow/3-trigger.md)
 
 ### Configure Automated Actions for Task System
 
 As we configured automated flow triggers in the previous step, when the collector changes the task status to "Complete", it will automatically call the action to create an annotation task.
 
 coScene provides some automated actions suitable for data factories: **Create General Task**, to support our data factory business needs. We also support custom automated actions to support workflows that are more suitable for you.
-Please refer to the documentation: [Automation - Actions](https://docs.coscene.cn/docs/category/action)
+Please refer to the documentation: [Automation - Actions](/docs/category/action)
 
 **coScene will launch task configuration import/export functionality in the future, along with richer official task system templates. Stay tuned!**
 
@@ -177,7 +177,7 @@ Please refer to the documentation: [Automation - Actions](https://docs.coscene.c
 - After the administrator logs into the platform, enter the corresponding project and complete the following work:
 
   - Task configuration and management
-  - Associate devices and members to the project, refer to documentation: [Project Devices/Members](https://docs.coscene.cn/docs/collaboration/project-collaboration/project)
+  - Associate devices and members to the project, refer to documentation: [Project Devices/Members](../collaboration/project-collaboration/1-project.md)
   - Click **Tasks** in the left navigation bar and create a **General Task**. (**Note! Please create general tasks in this application scenario, as collection tasks and annotation tasks cannot meet actual requirements.**)
     ![05-data-collect-26](./img/05-data-collect-26.png)
 
@@ -238,7 +238,7 @@ If the reviewer finds errors in data collection or annotation, they can mark it 
 
 ## Data Application
 
-When we need to use reviewed and approved data, we can view the data in the **Project**, filter the data through **Tags** and **Custom Fields**, select records and click **Download** to download the data (please use [coCLI](https://docs.coscene.cn/docs/category/cocli) to download data larger than 2G), or share it with other team members.
+When we need to use reviewed and approved data, we can view the data in the **Project**, filter the data through **Tags** and **Custom Fields**, select records and click **Download** to download the data (please use [coCLI](/docs/category/cocli) to download data larger than 2G), or share it with other team members.
 
 ![05-data-collect-35](./img/05-data-collect-35.png)
 
@@ -251,7 +251,7 @@ When we need to use reviewed and approved data, we can view the data in the **Pr
   A: All panels support it, as long as the robot sends corresponding messages.
 
 - **Q: What other collection methods are available?**
-  A: The platform supports time range collection, automatic discovery collection, etc. For details, see [related documentation](https://docs.coscene.cn/docs/category/use-case).
+  A: The platform supports time range collection, automatic discovery collection, etc. For details, see [related documentation](/docs/category/use-case).
 
 ---
 
