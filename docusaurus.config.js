@@ -13,6 +13,10 @@ const excludeInEn = [];
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+  future: {
+    v4: true,
+    experimental_faster: true,
+  },
   title: 'coScene',
   staticDirectories: ['public', 'static'],
   tagline: 'User Docs',
