@@ -80,7 +80,7 @@ sidebar_position: 3
 
 ![移除项目设备](./img/4-3-delete-project-device.png)
 
-## 设备准入 {#device-admission}
+## 启用设备 {#enable-device}
 
 :::info
 🤖 权限：**仅组织管理员**可进行设备启用操作

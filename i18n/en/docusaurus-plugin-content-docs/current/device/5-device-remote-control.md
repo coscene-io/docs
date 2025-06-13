@@ -9,7 +9,7 @@ The coScene platform enables real-time remote device operations, such as remote 
 ## Prerequisites
 
 1. The device has coScene client programs installed. For details, please refer to [Device Installation](./2-create-device.md#add-device-from-device).
-2. The organization administrator has granted device access and permitted remote control operations. For details, please refer to [Enable Device](./3-manage-device.md#device-admission).
+2. The organization administrator has granted device access and permitted remote control operations. For details, please refer to [Enable Device](./3-manage-device.md#enable-device).
 
 ## Real-time Visualization
 

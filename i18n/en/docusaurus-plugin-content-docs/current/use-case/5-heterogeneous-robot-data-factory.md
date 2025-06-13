@@ -37,7 +37,7 @@ This article mainly introduces the following methods:
 
 3. **Device Admission**
 
-   After logging into the platform, you can see the "**Go to Organization Management**" button on the homepage. Refer to the documentation for [Device Admission](../device/3-manage-device.md#device-admission)
+   After logging into the platform, you can see the "**Go to Organization Management**" button on the homepage. Refer to the documentation for [Device Admission](../device/3-manage-device.md#enable-device)
 
 4. **Create Project**
 

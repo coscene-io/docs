@@ -37,7 +37,7 @@ sidebar_position: 5
 
 3. **对设备进行准入**
 
-   登录平台后，在首页即可看到“**前往组织管理**”的按钮，参考文档支持[设备准入](../device/3-manage-device.md#device-admission)
+   登录平台后，在首页即可看到“**前往组织管理**”的按钮，参考文档支持[设备准入](../device/3-manage-device.md#enable-device)
 
 4. **创建项目**
 

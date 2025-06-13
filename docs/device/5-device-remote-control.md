@@ -9,7 +9,7 @@ sidebar_position: 5
 ## 前提条件
 
 1. 设备端已经安装刻行相关的设备端程序，具体请参考[设备端安装](./2-create-device.md#add-device-from-device)。
-2. 组织管理员已经准入设备，允许进行远程控制设备。[设备准入](./3-manage-device.md#device-admission)请参考相关文档。
+2. 组织管理员已经准入设备，允许进行远程控制设备。[设备准入](./3-manage-device.md#enable-device)请参考相关文档。
 
 ## 实时可视化
 
