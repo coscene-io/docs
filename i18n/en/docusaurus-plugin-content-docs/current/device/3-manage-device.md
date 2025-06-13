@@ -64,7 +64,7 @@ You can modify various information about the device by selecting the device you 
 🤖 Permission: **Organization members and above roles** can assign devices to projects
 :::
 
-### Assign Devices to Projects
+### Assign Devices to Projects {#assign-devices-to-projects}
 
 After a device is added to a project, if a data collection client is installed, the client will pull the rules that have been enabled in the project for automatic monitoring and diagnosis, and data collection tasks can also be created in the project to collect data.
 

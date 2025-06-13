@@ -86,7 +86,7 @@ sidebar_position: 2
 
    ![系统生成安装命令](./img/4-3-install-cmd.png)
 
-2. 设备端出现 `Installation completed successfully 🎉` 提示即安装成功(受设备性能影响，安装完成后设备列表页显示可能存在延迟)。此时设备已完成注册，后续操作参考[设备启用文档](./3-manage-device.md#设备启用)。
+2. 设备端出现 `Installation completed successfully 🎉` 提示即安装成功(受设备性能影响，安装完成后设备列表页显示可能存在延迟)。此时设备已完成注册，后续操作参考[设备启用文档](./3-manage-device.md#device-admission)。
 
    ![设备端安装成功](./img/4-3-install-successfully.png)
 
@@ -142,7 +142,7 @@ sidebar_position: 2
 
 ## 后续操作
 - [设备准入](./3-manage-device.md#device-admission)
-- [将设备添加到项目](./3-manage-device.md#分配设备到项目)
+- [将设备添加到项目](./3-manage-device.md#assign-devices-to-projects)
   - [手动采集数据](../use-case/1-common-task.md)
   - [根据错误码自动采集数据](../use-case/data-diagnosis/2-get-started.md)
 - [远程连接设备](./5-device-remote-control.md)
