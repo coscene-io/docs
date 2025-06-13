@@ -65,7 +65,7 @@ id: changelog
 
 ### [Added]
 
-- Added visualization plugin, supporting customized panels in the visualization interface. See [Visualization Extensions](../docusaurus-plugin-content-docs/current/viz/8-extensions/1-introduction.md)
+- Added visualization plugin, supporting customized panels in the visualization interface. See [Visualization Extensions](/docs/viz/extensions/introduction)
 - Added playback support for files in subfolders within batch test outputs
 
 ### [Improved]
