@@ -60,7 +60,7 @@ id: changelog
 
 ### 【新增】
 
-- 新增可视化插件，支持在可视化界面自定义面板。详见[可视化插件文档](../../docs/viz/8-extensions/1-introduction.md)
+- 新增可视化插件，支持在可视化界面自定义面板。详见[可视化插件文档](/docs/viz/extensions/introduction)
 - 新增批量测试输出中子文件夹内文件的播放功能
 
 ### 【改进】
