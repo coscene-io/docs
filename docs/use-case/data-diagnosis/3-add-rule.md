@@ -82,7 +82,7 @@ sidebar_position: 3
 
 - 若想监听设备中日志类型的文件，请选择`/external_log`。
 
-- 其他话题选项可在组织的数采客户端配置中设置，详情可参考[ 4-数采客户端配置](https://coscene0.feishu.cn/wiki/S3kvw7wYmic1LxkzBPxcLExHntc?fromScene=spaceOverview)文档。
+- 其他话题选项可在组织的设备配置中设置，详情可参考[ 4-设备配置](../../device/4-device-collector.md)文档。
 
 #### 3.2 匹配事件码表
 
@@ -179,7 +179,7 @@ sidebar_position: 3
 采集数据模块中包含：上传文件的时间范围、记录信息、采集限制、更多设置。其中：
 
 - 上传文件的时间范围
-  - 定义需要采集触发时间点前后多长时间范围的文件，采集目录的设置参考[数采客户端-存储设置](https://docs.coscene.cn/docs/recipes/device/device-collector#%E5%AD%98%E5%82%A8%E8%AE%BE%E7%BD%AEmod)
+  - 定义需要采集触发时间点前后多长时间范围的文件，采集目录的设置参考[设备配置-存储设置](../../device/4-device-collector.md#存储设置mod)
 - 记录信息
   - 定义保存数据的记录名称、描述与标签信息，其中名称与描述支持使用变量（如：`{scope.code}`，详见下文）
   - 当数据上传完成后，将自动在记录中添加「上传完成」标签

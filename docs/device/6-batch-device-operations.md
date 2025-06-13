@@ -5,9 +5,9 @@ sidebar_position: 6
 # 批量操作设备
 可以同时选择多台设备，进行批量操作。
 
-## 准入数采 {#data-collection-access}
-管理员可以选择多台未准入数据采集的设备，点击【准入数采】按钮，批量准入设备。
-![准入数采](./img/7-authorize-data-collection-1.png)
+## 启用客户端 {#data-collection-access}
+管理员可以选择多台未启用客户端的设备，点击【启用客户端】按钮，批量启用设备。
+![启用数采](./img/7-authorize-data-collection-1.png)
 
 ## 添加关联项目 {#add-associated-projects}
 选择需要添加的设备，点击【添加关联项目】按钮，选择需要添加的项目，点击【添加】按钮，即可将设备添加到项目中。

@@ -36,9 +36,9 @@ When replacing a device's host computer or modifying device ID, follow this proc
 
    ![Execute Installation Command](./img/4-3-install-successfully.png)
 
-4. Re-grant Device Access. After installation, contact the organization administrator to re-grant device access on the platform's device management page to restore normal device operation.
+4. Enable device client. After installation, contact the organization administrator to re-grant device access on the platform's device management page to restore normal device operation.
 
-   ![Grant Device Access](./img/4-3-access-device-2.png)
+   ![Grant Device Access](./img/4-3-access-device.png)
 
 ## In-place Version Upgrade Process
 
@@ -68,9 +68,9 @@ When only software version upgrade is needed, without changing the host computer
 
 ![Execute Installation Command](./img/4-3-install-successfully.png)
 
-4. Re-grant Device Access. After installation, contact the organization administrator to re-grant device access on the platform's device management page to ensure normal operation of the upgraded device.
+4. Enable device client. After installation, contact the organization administrator to re-grant device access on the platform's device management page to ensure normal operation of the upgraded device.
 
-   ![Grant Device Access](./img/4-3-access-device-2.png)
+   ![Grant Device Access](./img/4-3-access-device.png)
 
 ## Client Uninstallation Process
 

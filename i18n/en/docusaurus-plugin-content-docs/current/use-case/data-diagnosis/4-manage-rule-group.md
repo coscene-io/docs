@@ -15,15 +15,15 @@ An enabled rule group will be shown in blue in the rule group status list, while
 
 To enable/disable a rule group:
 
-- Go to the "Manage Project - Data Collection and Diagnostic Rules" page, select the rule group, and toggle the corresponding **[Status]** button.
+- Go to the "Data Collection and Diagnostic Rules" page, select the rule group, and toggle the corresponding **[Status]** button.
 
-![pro-rule-manage-enable](./img/pro-rule-manage-enable.png)
+![pro-rule-manage-enable](./img/9-4-enable-rule-set.png)
 
 ## Edit
 
 The operations to enter the edit rule group page are shown below, for specific operations to edit the rules in the rule group, please refer to [Rules](./3-add-rule.md#rule-group).
 
-- Go to the "Manage Project - Data Collection and Diagnostic Rules" page, select the rule group to be edited, and click the name of the rule group (Example in image: `Demo Rule Group 2`).
+- Go to the "Data Collection and Diagnostic Rules" page, select the rule group to be edited, and click the name of the rule group (Example in image: `Demo Rule Group 2`).
 
 ![pro-rule-manage-edit](./img/pro-rule-manage-edit.png)
 
@@ -35,8 +35,7 @@ If the rules within a rule group are no longer needed, the rule group can be del
 
 Here are the steps to delete a rule group:
 
-- Go to the "Manage Project - Data Collection and Diagnostic Rules" page, select the rule group to be deleted, click the corresponding `...` button on the right, and choose **[Delete]**.
+- Go to the "Data Collection and Diagnostic Rules" page, select the rule to be deleted, click the corresponding `...` button on the right, and choose **[Delete]**.
 - In the popup, select **[OK]**.
 
-![pro-rule-manage-delete](./img/pro-rule-manage-delete.png)
-![pro-rule-manage-delete-2](./img/pro-rule-manage-delete-2.png)
+![pro-rule-manage-delete](./img/9-4-pro-rule-manage-delete.png)

@@ -98,10 +98,10 @@ extract_frames(input_folder, output_folder)
 
 ## 登录镜像仓库
 
-1. 登录[刻行时空平台](https://www.coscene.cn/)，在右上角用户设置下拉面板中，访问【个人设置】，在【个人设置】页面中，访问【安全】页面
+1. 登录[刻行时空平台](https://www.coscene.cn/)，在右上角用户设置下拉面板中，访问「组织管理-镜像」页面
+   ![login-mirror-0](./img/4-13-docker-images-page.png)
 2. 点击生成访问命令，获取登录刻行镜像仓库的命令和密码
-   ![login-mirror-1](./img/3-login-mirror-1.png)
-   ![login-mirror-2](./img/3-login-mirror-2.png)
+   ![login-mirror-1](./img/4-13-generate-docker-auth.png)
 3. 在本机命令行中，输入用户名与密码，登录刻行时空的镜像仓库
    ![login-mirror-3](./img/3-login-mirror-3.png)
 4. 复制推送镜像命令中的镜像仓库地址，如下图为：`cr.coscene.cn/coscene`

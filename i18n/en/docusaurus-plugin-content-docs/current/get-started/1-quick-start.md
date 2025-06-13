@@ -112,7 +112,7 @@ Devices can establish connections with real devices, see [Device](../device/1-de
 
 4. Wait for 1-2 minutes, the device will automatically appear in the device list. Contact the organization administrator to grant device usage permissions.
 
-       ![access-device](./img/4-3-access-device-2.png)
+       ![access-device](./img/4-3-access-device.png)
 
 ### Web SSH
 After the device is granted access, find the device on the "Organization Management-Devices" page and click the【Web SSH】button to open a new tab in the browser for remote device connection. For more details, please refer to [Web SSH](../device/5-device-remote-control.md#web-ssh).
@@ -159,7 +159,7 @@ Devices can establish connections with real devices as data collection targets. 
 
 4. Wait for 1-2 minutes, the device will automatically appear in the device list. Contact the organization administrator to grant device usage permissions.
 
-       ![access-device](./img/4-3-access-device-2.png)
+       ![access-device](./img/4-3-access-device.png)
 
 ### Manual Data Collection
 1. **Add Device to Project**: Enter the "Project Devices" page, click the【Add Device】button to select the device for data collection.

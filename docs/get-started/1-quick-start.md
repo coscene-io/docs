@@ -166,7 +166,7 @@ sidebar_position: 1
 
 ![添加设备入口](./img/device_1.png)
 
-2. 在弹框中，选择【系统生成 ID】，勾选【远程控制】，点击【复制】按钮，复制安装命令。
+2. 在弹框中，选择【系统生成 ID】，点击【复制】按钮，复制安装命令。
    - 若要使用自定义的 ID，参见[设备 ID 配置](../device/2-create-device.md#设备-id-配置)
 
 ![添加设备入口](./img/device_2.png)
@@ -174,13 +174,13 @@ sidebar_position: 1
 
 3. 在真实设备上打开 shell 终端，执行安装命令，设备端出现 `Installation completed successfully 🎉` 即表示安装成功。
 
-4. 等待 1-2 分钟，设备会自动展示在设备列表中。联系组织管理员，准入设备的使用权限。
+4. 等待 1-2 分钟，设备会自动展示在设备列表中。联系组织管理员，启用设备的使用权限。
 
-![准入设备](./img/4-3-access-device-2.png)
+![启用设备](./img/4-3-access-device.png)
 
 ### 网页 SSH
 
-当设备准入后，在「组织管理-设备」页面找到该设备，点击【网页 SSH】按钮即可在浏览器中打开新标签页，远程连接到设备。更多详情请参考[网页 SSH](../device/5-device-remote-control.md#网页-ssh)。
+当设备启用后，在「组织管理-设备」页面找到该设备，点击【网页 SSH】按钮即可在浏览器中打开新标签页，远程连接到设备。更多详情请参考[网页 SSH](../device/5-device-remote-control.md#网页-ssh)。
 
 ![device ssh](./img/4-3-device-ssh.png)
 ![device ssh demo](./img/4-3-device-ssh-demo.png)
@@ -235,7 +235,7 @@ ros2 launch cobridge cobridge_launch.xml
 
 > 2. 启动 coBridge 节点后，即可在网页端查看设备的实时数据
 
-当设备准入后，在「组织管理-设备」页面找到该设备，点击【实时可视化】按钮即可在浏览器中实时查看设备的运行状态和数据。更多详情请参考[实时可视化](../device/5-device-remote-control.md#实时可视化)。
+当设备启用后，在「组织管理-设备」页面找到该设备，点击【实时可视化】按钮即可在浏览器中实时查看设备的运行状态和数据。更多详情请参考[实时可视化](../device/5-device-remote-control.md#实时可视化)。
 
 ![device realtime](./img/4-3-device-realtime.png)
 
@@ -262,9 +262,9 @@ ros2 launch cobridge cobridge_launch.xml
 
 3. 在真实设备上打开 shell 终端，执行安装命令，设备端出现 `Installation completed successfully 🎉` 即表示安装成功。
 
-4. 等待 1-2 分钟，设备会自动展示在设备列表中。联系组织管理员，准入设备的使用权限。
+4. 等待 1-2 分钟，设备会自动展示在设备列表中。联系组织管理员，启用设备的使用权限。
 
-![准入设备](./img/4-3-access-device-2.png)
+![启用设备](./img/4-3-access-device.png)
 
 ### 手动采集数据
 
@@ -386,7 +386,7 @@ mod:
 
 - 若想监听设备中日志类型的文件，请选择`/error_status`。
 
-- 其他话题选项可在组织的数采客户端配置中设置，详情可参考[ 4-数采客户端配置](https://docs.coscene.cn/docs/device/device-collector#%E8%A7%84%E5%88%99%E8%A7%A6%E5%8F%91%E8%AF%9D%E9%A2%98topics)文档。
+- 其他话题选项可在组织的设备配置中设置，详情可参考[ 4-设备配置](../device/4-device-collector.md)文档。
 
 ###### 匹配事件码表
 
