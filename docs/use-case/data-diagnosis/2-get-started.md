@@ -28,13 +28,9 @@ sidebar_position: 2
 
    ![pro-1](./img/pro-1.png)
 
-2. 在项目中，进入「数采&诊断规则」分页，点击【添加规则组】
+2. 在项目中，进入「数采&诊断规则」分页，点击【添加规则组】，添加成功后，可在该规则组内添加具体规则。
 
    ![data-2-1](./img/9-add-rule-set.png)
-
-3. 更改规则组名称后，点击【添加空白规则】
-
-   ![data-2-2](./img/9-add-rule.png)
 
 4. 更改规则名称，关注的话题选择`/external_log`，事件匹配条件输入：msg.message 包含 error 1，勾选触发操作中的采集数据和诊断数据，更改一刻名称为 `触发了 error 1`，点击【创建】
 
@@ -52,21 +48,15 @@ sidebar_position: 2
 
 ## 在项目中添加数据诊断触发器
 
-1. 进入 auto-upload 项目
-
-   ![pro-1](./img/pro-1.png)
-
-2. 在项目中，进入「自动化-触发器」页面，点击【创建触发器】
+1. 进入 auto-upload 项目的「自动化-触发器」页面，点击【创建触发器】
 
    ![pro-trigger-add](./img/pro-trigger-add.png)
 
-3. 编辑触发器内容
+2. 编辑触发器：当上传文件到记录中时，自动对文件进行诊断
 
-- 编辑触发器名称为「数据诊断」，
-- 选择关联动作为「系统动作」，
-- 从系统动作下拉框中「数据诊断」
-- 编辑文件通配符模式为`**/*` (格式使用 Glob，详细可查看[参考文档](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/))
-- 点击【创建触发器】
+- 触发器名称：数据诊断
+- 关联动作：系统动作-数据诊断
+- 文件通配符：`**/*` (格式使用 Glob，详细可查看[参考文档](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/))
 
   ![pro-trigger-base](./img/pro-trigger-edit.png)
 
@@ -74,15 +64,13 @@ sidebar_position: 2
 
 ## 配置数采设备信息
 
-1. 进入组织管理页面的「设备」分页，点击【编辑数采规则】按钮
+1. 进入【组织管理】-【设备】-【设备配置】，配置整体的数采规则信息。
 
-   ![org-device-1](./img/org-device-1.png)
+![配置采集目录](./img/device-config_1.png)
 
-2. 清空规则中的默认内容后，复制下述规则，粘贴在编辑器中
+2. 清空规则中的默认内容后，复制下述规则，粘贴在编辑器中，保存编辑
 
    ```yaml
-   collector:
-     delete_after_interval_in_hours: 48
    mod:
      conf:
        collect_dirs:
@@ -92,19 +80,13 @@ sidebar_position: 2
          - /root/logs
        skip_period_hours: 2
      name: default
-   updater:
-     enabled: false
    ```
 
-   更多配置参见[数采规则格式](../../device/4-device-collector.md#device-collector-format)
-
-3. 点击【保存编辑】按钮
-
-   ![org-device-7](./img/org-device-7.png)
+   更多配置参见[设备配置格式](../../device/4-device-collector.md#device-collector-format)
 
 <br />
 
-## 准入设备
+## 启用设备
 
 > 以 linux 设备为例。
 
@@ -122,27 +104,27 @@ sidebar_position: 2
    mkdir logs
    ```
 
-3. 在刻行平台，进入组织管理页面的「设备」分页， 点击【添加设备】
+3. 在刻行时空平台，进入组织管理页面的「设备」分页， 点击【添加设备】
 
    ![org-device](./img/org-device-add.png)
 
 4. 在弹窗中选择【从设备端添加】，复制安装命令，以 root 账户粘贴到设备终端
 
-   ![org-device-copy-command](./img/org-device-copy-command.png)
+   ![org-device-copy-command](./img/device_2.png)
 
 5. 在设备终端执行命令，查看日志
 
    ```
-    journalctl -fu cos
+    tail -f ~/.local/state/cos/logs/cos.log
    ```
 
    - 当日志中出现如下字段时，表示已安装完毕，设备正在等待管理员审核
 
      ![dev-install-1](./img/dev-install-1.png)
 
-6. 在组织管理页面的「设备」分页，找到需要审核的设备，点击【准入数采】
+6. 在组织管理页面的「设备」分页，找到需要审核的设备，点击【启用客户端】
 
-   ![org-device-authorize](./img/org-device-authorize.png)
+   ![org-device-authorize](./img/4-3-access-device.png)
 
 <br />
 

@@ -8,7 +8,7 @@ The coScene platform provides a general data collection scheme for uploading mac
 
 ## Configure Collection Rules
 
-Go to [Organization Management] - [Device] - [Edit Collection Rules] to configure the overall collection rule information.
+Go to [Organization Management] - [Device] - [Device Configuration] to configure the overall collection rule information.
 
 ![device-collector](./img/common-task-1.png)
 
@@ -31,17 +31,17 @@ updater:
   enabled: false
 ```
 
-For detailed information on the configuration file, please refer to the document [Collection Rules](../device/4-device-collector.md)
+For detailed information on the configuration file, please refer to the document [Device Configuration](../device/4-device-collector.md)
 
 ## Install Agent on Device
 
 Go to [Organization Management] - [Device] - [Add Device] to get the Agent installation command for the device.
 ![device-command](./img/common-task-2.png)
 
-The installation command supports specifying the relevant device ID file path and associated field name. If not set, a random ID will be generated to bind to the current device.
+The installation command supports specifying the relevant device ID file path and associated field name. If not set, a system ID will be generated to bind to the current device.
 ![device-install-command](./img/device-install-command.png)
 
-Open the command line terminal on the machine, paste the copied installation command from the above image, and add the `--mod=task` parameter at the end of the command to install the coScene Agent on the machine. After waiting for a few minutes, you can view the corresponding device information in the organization device list.
+Open the command line terminal on the machine, paste the copied installation command from the above image to install the coScene Agent on the machine. After waiting for a few minutes, you can view the corresponding device information in the organization device list.
 
 ![device-install-command-2](./img/device-install-command-2.png)
 

@@ -54,12 +54,12 @@ export const CATALOGUE = (local: string) => [
       },
       ...(local === 'zh'
         ? [
-            { docLink: '/category/extensions', title: translate({ id: 'home.catalogue.extensions', message: '插件' }) },
-            {
-              docLink: '/viz/message-schemas',
-              title: translate({ id: 'home.catalogue.message-schemas', message: '消息架构' }),
-            },
-          ]
+          { docLink: '/category/extensions', title: translate({ id: 'home.catalogue.extensions', message: '插件' }) },
+          {
+            docLink: '/viz/message-schemas',
+            title: translate({ id: 'home.catalogue.message-schemas', message: '消息架构' }),
+          },
+        ]
         : []),
     ],
   },
@@ -77,7 +77,7 @@ export const CATALOGUE = (local: string) => [
       },
       {
         docLink: '/device/device-collector',
-        title: translate({ id: 'home.catalogue.device-collector', message: '数采客户端配置' }),
+        title: translate({ id: 'home.catalogue.device-collector', message: '设备配置' }),
       },
       {
         docLink: '/device/device-remote-control',
@@ -134,8 +134,16 @@ export const CATALOGUE = (local: string) => [
         title: translate({ id: 'home.catalogue.automated-data-processing', message: '自动化处理数据' }),
       },
       {
+        docLink: '/use-case/online-simulation-test',
+        title: translate({ id: 'home.catalogue.online-simulation-test', message: '云端仿真自动化算法验证' }),
+      },
+      {
         docLink: '/category/data-collection-and-diagnosis',
         title: translate({ id: 'home.catalogue.data-collection-and-diagnosis', message: '数据自动采集与诊断' }),
+      },
+      {
+        docLink: '/use-case/heterogeneous-robot-data-factory',
+        title: translate({ id: 'home.catalogue.embodied-intelligence-data-collection-solution', message: '异构机器人数据采集工厂接入' }),
       },
     ],
   },

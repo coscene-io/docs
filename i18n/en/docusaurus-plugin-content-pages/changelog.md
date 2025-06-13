@@ -5,6 +5,102 @@ id: changelog
 
 # Release History
 
+## [25.24.0] - 2025-06-13
+
+### [Added]
+
+- Added "LAN Real-time Visualization" feature: 
+  - coStudio automatically detects LAN connections and uses local network for data transfer to reduce visualization latency (requires devices and clients on same LAN)
+- Added "Project Common Resources Management":
+  - Upload configuration files (URDF/TF/maps) in Project Common Resources page
+  - Directly reference URDF models from Common Resources in 3D visualization panel
+- Added "Multi-select Field Type":
+  - Support configuring multi-select type when defining global custom fields in Organization Settings
+- Added "Task Dependency Visualization":
+  - View tasks that reference current task in Task Details page
+
+### [Improved]
+
+- Enhanced "Custom Field Filtering":
+  - Added support for filtering by numeric/multi-select/time/personnel field types
+- Upgraded "Data Collection Panel":
+  - Added auto-scrolling for collection logs
+
+---
+  
+## [25.22.0] - 2025-5-30
+
+### [Added]
+
+- Added automation trigger mechanism:
+  - New trigger conditions: When record changes/When general task changes
+  - Support automatic creation of general tasks through triggers
+- Added HDF5 and MCAP format conversion actions: Can invoke system actions to convert HDF5 to MCAP, or MCAP to HDF5
+- Added automation action template variables
+  - In automation actions, support using device ID, device name, and task creation time as variables for HTTP request steps, namely: `{{device.id}}`, `{{device.display_name}}`, `{{task.create_time}}`
+- Added real-time data collection feature: Added "Data Collection" panel in visualization page, supporting real-time data collection
+- Added user roles:
+  - Added organization-level "External Member" role (limited to accessing joined projects only)
+  - Added project-level roles: Collector, Annotator, Auditor
+- Added "Testing Audit" feature:
+  - In Organization Management-Audit page, support filtering testing audit events: download test bundle, download artifacts, download test output events
+
+### [Improved]
+
+- Enhanced field management functionality:
+  - Support configuring global custom fields in organization settings, applicable to devices, records, tasks, and moment scenes
+- Enhanced task management functionality:
+  - Support quick task creation in general tasks page
+  - Support linking devices with tasks in task management
+- Optimized device registration process: In project devices page, can directly copy commands to register devices and add them to projects
+
+### [Fixed]
+
+- Fixed the issue where example project creation was not logging audit records
+- Fixed the overlapping display issue when previewing long text logs    
+
+---
+
+## [25.18.0] - 2025-4-28
+
+### [Added]
+
+- Added visualization plugin, supporting customized panels in the visualization interface. See [Visualization Extensions](/docs/viz/extensions/introduction)
+- Added playback support for files in subfolders within batch test outputs
+
+### [Improved]
+
+- Enhanced file preview functionality, supporting up/down/left/right image movement
+- Improved personal token validity period settings, supporting 1-day and 360-day options
+- Enhanced coCLI functionality, supporting download of moment files from records
+
+### [Fixed]
+
+- Fixed the issue where .active files in batch test outputs couldn't be played
+- Fixed the issue where files generated from bag file map extraction and static coordinate extraction lacked file formats
+- Fixed the issue where personal user organization switching cookies expired in 1 day, changed to 30 days
+
+---
+
+## [25.15.0] - 2025-4-10
+
+### [Added]
+
+- Added multi-tier subscription plans: supporting Free, Starter, Team, Enterprise, and other [subscription plans](https://www.coscene.io/pricing)
+- Added public project copying feature: allowing logged-in users to copy public projects to their organizations
+
+### [Improved]
+
+- Optimized device access process, merged operations into:
+  - Enable client: simultaneously enable data collection and remote access
+  - Disable client: simultaneously disable data collection and remote access
+
+### [Fixed]
+
+- Fixed compatibility issues when reading device ID from files during device registration (now supporting pure numeric format)
+
+---
+
 ## [25.12.0] - 2025-3-19
 
 ### [Added]
