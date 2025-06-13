@@ -82,7 +82,7 @@ If a project no longer needs a certain device, you can [Remove from this Project
 
 ![Remove Project Device](./img/4-3-delete-project-device.png)
 
-## Enable Device Client
+## Device Admission {#device-admission}
 
 :::info
 🤖 Permission: **Only organization administrators** can perform enable device operations
