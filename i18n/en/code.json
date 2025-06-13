@@ -572,8 +572,14 @@
   "home.catalogue.automated-data-processing": {
     "message": "Automated Data Processing"
   },
+  "home.catalogue.online-simulation-test": {
+    "message": "Online Simulation Test"
+  },
   "home.catalogue.data-collection-and-diagnosis": {
     "message": "Data Collection and Diagnose"
+  },
+  "home.catalogue.embodied-intelligence-data-collection-solution": {
+    "message": "Heterogeneous Robot Data Collection Factory Integration with coScene Platform"
   },
   "home.catalogue.docker-images": {
     "message": "Docker Images"

@@ -76,7 +76,7 @@ This method is suitable for adding a small number of devices to the platform one
 
    ![System Generated Installation Command](./img/4-3-install-cmd.png)
 
-2. When `Installation completed successfully 🎉` appears on the device side, the installation is successful. Due to device performance impacts, there may be a delay in the device list page display after installation completion. At this point, the device has completed registration. For subsequent operations, refer to the [Enable Device](./3-manage-device.md#device-admission).
+2. When `Installation completed successfully 🎉` appears on the device side, the installation is successful. Due to device performance impacts, there may be a delay in the device list page display after installation completion. At this point, the device has completed registration. For subsequent operations, refer to the [Enable Device](./3-manage-device.md#enable-device).
 
    ![Device Installation Success](./img/4-3-install-successfully.png)
 
@@ -127,7 +127,7 @@ This method creates virtual device fields in the platform database, which do not
 ![Add by Filling in Information](./img/4-3-input-information.png)
 
 ## Next Steps
-- [Enable Device](./3-manage-device.md#device-admission)
+- [Enable Device](./3-manage-device.md#enable-device)
 - [Add Device to Project](./3-manage-device.md#assign-devices-to-projects)
    - [Manual Data Collection](../use-case/1-common-task.md)
    - [Automatic Data Collection Based on Error Codes](../use-case/data-diagnosis/2-get-started.md)

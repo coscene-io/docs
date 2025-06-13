@@ -135,7 +135,7 @@ export const CATALOGUE = (local: string) => [
       },
       {
         docLink: '/use-case/online-simulation-test',
-        title: translate({ id: 'home.catalogue.online-simulation-test', message: '在线仿真测试' }),
+        title: translate({ id: 'home.catalogue.online-simulation-test', message: '云端仿真自动化算法验证' }),
       },
       {
         docLink: '/category/data-collection-and-diagnosis',
