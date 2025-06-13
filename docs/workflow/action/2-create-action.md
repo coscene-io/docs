@@ -82,7 +82,15 @@ sidebar_position: 2
     }
     ```
 
-  - 其中，`{{task.title}}` 和 `{{record.link}}` 为平台内置的变量，分别代表任务名称和记录链接。
+  - 其中，有部分平台内置的变量：
+    | 变量 | 说明 |
+    | ---- | ---- |
+    | `{{task.title}}` | 任务名称 |
+    | `{{record.link}}` | 记录链接 |
+    | `{{device.id}}` | 设备 ID |
+    | `{{device.display_name}}` | 设备名称 |
+    | `{{task.create_time}}` | 任务创建时间 |
+
   - 此动作一般用于发送任务完成通知，可根据实际需求修改请求体内容，详见钉钉的[帮助文档](https://open.dingtalk.com/document/orgapp/custom-bot-send-message-type)
 
   ![action-http_2](./img/action-http_2.png)

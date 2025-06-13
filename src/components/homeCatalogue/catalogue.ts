@@ -77,7 +77,7 @@ export const CATALOGUE = (local: string) => [
       },
       {
         docLink: '/device/device-collector',
-        title: translate({ id: 'home.catalogue.device-collector', message: '数采客户端配置' }),
+        title: translate({ id: 'home.catalogue.device-collector', message: '设备配置' }),
       },
       {
         docLink: '/device/device-remote-control',

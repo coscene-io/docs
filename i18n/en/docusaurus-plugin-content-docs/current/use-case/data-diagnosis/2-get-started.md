@@ -56,7 +56,7 @@ Using the following scenario as an example, let's setup your automatic data coll
 
 ## Configure Data Collection Device Information
 
-1. Go to the "Devices" tab on the organization management page, and click the "Edit Data Collection Rules" button.
+1. Go to the "Devices" tab on the organization management page, and click the "Device Configuration" button.
 
    ![org-device-1](./img/device-config_1.png)
 
@@ -113,7 +113,7 @@ Using the following scenario as an example, let's setup your automatic data coll
 5. Run the script, and checkout the system logs
 
    ```
-    journalctl -fu cos
+    tail -f ~/.local/state/cos/logs/cos.log
    ```
 
    - when you see the following logs, the installation is completed and wait to be permitted by the admins

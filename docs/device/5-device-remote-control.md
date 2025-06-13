@@ -24,7 +24,7 @@ sidebar_position: 5
 >    - 强烈建议使用 coBridge 源码编译出可执行文件(编译流程文档：[CN](https://github.com/coscene-io/coBridge/blob/main/README.zh-CN.md)/[EN](https://github.com/coscene-io/coBridge/blob/main/README.md))，将其整合进机器人软件中，并在机器人启动脚本添加 `ros2 launch cobridge cobridge_launch.xml` （或者 `roslaunch cobridge cobridge_launch.xml`）命令。
 > 2. coBridge 节点启动后，配合 virmesh 映射的外网地址及端口，可在网页端实现订阅机器人 topic，下发 service 等操作，实现对机器人的远程实时可视化。
 
-当设备准入后，在「组织管理」里「设备」页面列表查看设备，设备会出现【实时可视化】的按钮，点击之后即可连接到机器实时展示机器的实时情况。
+当设备启用后，在「组织管理」里「设备」页面列表查看设备，设备会出现【实时可视化】的按钮，点击之后即可连接到机器实时展示机器的实时情况。
 
 ![device realtime](./img/4-3-device-realtime.png)
 
@@ -34,7 +34,7 @@ sidebar_position: 5
 
 ## 网页 SSH
 
-当设备准入后，在「组织管理」里「设备」页面列表查看设备，设备会出现【网页 SSH】的按钮，点击之后即可在浏览器中打开新的 Tab 通过 SSH 连接到机器。
+当设备启用后，在「组织管理」里「设备」页面列表查看设备，设备会出现【网页 SSH】的按钮，点击之后即可在浏览器中打开新的 Tab 通过 SSH 连接到机器。
 
 ![device ssh](./img/4-3-device-ssh.png)
 ![device ssh demo](./img/4-3-device-ssh-demo.png)

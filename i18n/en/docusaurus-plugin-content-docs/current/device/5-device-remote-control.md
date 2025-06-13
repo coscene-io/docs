@@ -9,7 +9,7 @@ The coScene platform enables real-time remote device operations, such as remote 
 ## Prerequisites
 
 1. The device has coScene client programs installed. For details, please refer to [Device Installation](./2-create-device.md#add-device-from-device).
-2. The organization administrator has granted device access and permitted remote control operations. For details, please refer to [Device Admission](./3-manage-device.md#device-admission).
+2. The organization administrator has granted device access and permitted remote control operations. For details, please refer to [Enable Device](./3-manage-device.md#device-admission).
 
 ## Real-time Visualization
 
@@ -17,7 +17,7 @@ Before device visualization, you need to install the coBridge component on the t
 
 coScene provides [coBridge source code (C++)](https://github.com/coscene-io/coBridge), which currently supports ROS distributions including ROS1 <u>Noetic Ninjemys</u>, <u>Melodic Morenia</u>; ROS2 <u>Foxy Fitzroy</u>, <u>Galactic Geochelone</u>, <u>Humble Hawksbill</u>. For other version requirements, please contact the coScene team.
 
-We strongly recommend users to compile the executable using the source code provided by coScene (compilation process documentation: [CN](https://github.com/coscene-io/coBridge/blob/main/README.zh-CN.md)/[EN](https://github.com/coscene-io/coBridge/blob/main/README.md)), integrate it into the robot software, and add the command `ros2 launch cobridge cobridge_launch.xml` (or `roslaunch cobridge cobridge_launch.xml`) to the robot startup script.
+We strongly recommend users to compile the executable using the source code provided by coScene [compilation process documentation](https://github.com/coscene-io/coBridge/blob/main/README.md)), integrate it into the robot software, and add the command `ros2 launch cobridge cobridge_launch.xml` (or `roslaunch cobridge cobridge_launch.xml`) to the robot startup script.
 
 After the coBridge node starts, combined with the public network address and port mapped by virmesh, you can subscribe to robot topics and issue services through the web interface, achieving remote real-time visualization of the robot.
 

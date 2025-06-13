@@ -76,7 +76,7 @@ This method is suitable for adding a small number of devices to the platform one
 
    ![System Generated Installation Command](./img/4-3-install-cmd.png)
 
-2. When `Installation completed successfully 🎉` appears on the device side, the installation is successful. Due to device performance impacts, there may be a delay in the device list page display after installation completion. At this point, the device has completed registration. For subsequent operations, refer to the Device Admission section.
+2. When `Installation completed successfully 🎉` appears on the device side, the installation is successful. Due to device performance impacts, there may be a delay in the device list page display after installation completion. At this point, the device has completed registration. For subsequent operations, refer to the [Enable Device](./3-manage-device.md#device-admission).
 
    ![Device Installation Success](./img/4-3-install-successfully.png)
 
@@ -105,10 +105,10 @@ This method is suitable for adding a small number of devices to the platform one
 3. Execute the installation command (using `cos_binaries.tar.gz` located at `/root/cos_binaries.tar.gz` as an example):
 
    ```plain text
-   ./coscene.sh --server_url=*** --project_slug=*** --virmesh_endpoint=*** --use_local=/root/cos_binaries.tar.gz
+   ./install.sh --use_local=./cos_binaries.tar.gz --mod="default" --org_slug="***" --server_url="***" --coLink_endpoint="***" --coLink_network="***" --sn_file="***" --sn_field="***" --remove_config
    ```
 
-   For the parameters `--server_url`, `--project_slug`, and `--virmesh_endpoint`, please refer to the installation command generated in the web page popup to replace `***`. The parameter `--use_local` is the path to the offline binary file compression package, and you need to modify this parameter when changing the directory location.
+   The `--use_local` parameter indicates the local path to the offline installation package on the target device, which must be adjusted based on your specific environment.
 
    ![Add Using Offline Installation Package](./img/4-3-offline-install-package.png)
 
@@ -127,7 +127,7 @@ This method creates virtual device fields in the platform database, which do not
 ![Add by Filling in Information](./img/4-3-input-information.png)
 
 ## Next Steps
-- [Device Admission](./3-manage-device.md#device-admission)
+- [Enable Device](./3-manage-device.md#device-admission)
 - [Add Device to Project](./3-manage-device.md#assign-devices-to-projects)
    - [Manual Data Collection](../use-case/1-common-task.md)
    - [Automatic Data Collection Based on Error Codes](../use-case/data-diagnosis/2-get-started.md)
