@@ -180,6 +180,96 @@ topics:
 
 ---
 
+### Template Syntax Usage
+
+## Overview
+
+Template syntax is a powerful tool for dynamically generating strings, particularly suitable for dynamically generating file paths and filenames based on time ranges. Based on the [Handlebars](https://handlebarsjs.com/) template engine, integrated with the [Day.js](https://day.js.org/) time processing library.
+
+By mastering these template syntaxes, you can easily create dynamic file paths and filenames, greatly improving the flexibility and automation of data management.
+
+## Basic Syntax
+
+### Supported Variables
+
+Currently supports the following two time variables:
+
+- `start_time` - The start time of the current collection task
+- `end_time` - The end time of the current collection task
+
+### Basic Template Format
+
+```
+{{variable_name.format('format_string')}}
+```
+
+### Examples
+
+```javascript
+// Basic usage
+'{{start_time.format("YYYY-MM-DD")}}'
+// Output: "2021-01-01"
+
+// Combined usage
+'data/{{start_time.format("YYYY")}}/{{start_time.format("MM")}}/file.log'
+// Output: "data/2021/01/file.log"
+```
+
+## Time Formatting
+
+### Common Formatting Options
+
+Based on [Day.js formatting documentation](https://day.js.org/docs/en/display/format), supports the following formats:
+
+| Format | Output | Description |
+|--------|--------|-------------|
+| `YYYY` | 2021 | 4-digit year |
+| `YY` | 21 | 2-digit year |
+| `MM` | 01-12 | Month (zero-padded) |
+| `M` | 1-12 | Month |
+| `DD` | 01-31 | Date (zero-padded) |
+| `D` | 1-31 | Date |
+| `HH` | 00-23 | Hour (zero-padded) |
+| `H` | 0-23 | Hour |
+| `mm` | 00-59 | Minute (zero-padded) |
+| `m` | 0-59 | Minute |
+| `ss` | 00-59 | Second (zero-padded) |
+| `s` | 0-59 | Second |
+
+### Formatting Examples
+
+```javascript
+// Date formats
+'{{start_time.format("YYYY-MM-DD")}}'          // 2021-01-01
+'{{start_time.format("YYYY/MM/DD")}}'          // 2021/01/01
+'{{start_time.format("MM-DD-YYYY")}}'          // 01-01-2021
+
+// Time formats
+'{{start_time.format("HH:mm:ss")}}'            // 10:30:00
+'{{start_time.format("HH-mm")}}'               // 10-30
+
+// Combined formats
+'{{start_time.format("YYYY-MM-DD HH:mm:ss")}}' // 2021-01-01 10:30:00
+'{{start_time.format("YYYYMMDD_HHmmss")}}'     // 20210101_103000
+
+// Folder structure organized by year/month/day
+'logs/{{start_time.format("YYYY")}}/{{start_time.format("MM")}}/{{start_time.format("DD")}}'
+// Output: logs/2021/01/01
+
+// Time range folders
+'data/{{start_time.format("YYYY-MM-DD")}}_to_{{end_time.format("YYYY-MM-DD")}}'
+// Output: data/2021-01-01_to_2021-01-02
+```
+
+## Reference Documentation
+
+- [Handlebars Official Documentation](https://handlebarsjs.com/guide/)
+- [Day.js Official Documentation](https://day.js.org/docs/en/display/format)
+- [Day.js Formatting Options](https://day.js.org/docs/en/display/format#list-of-all-available-formats)
+
+---
+
 Through these detailed steps and instructions, administrators can comprehensively and accurately configure the device data collection client, ensuring efficient operation of device data collection.
 
 If you have any questions, please feel free to contact us for support.
+
