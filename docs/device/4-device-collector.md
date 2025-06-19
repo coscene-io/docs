@@ -190,6 +190,94 @@ topics:
 ```
 
 ---
+### 模板语法使用
+
+## 概述
+
+模板语法是一种动态生成字符串的强大工具，特别适用于根据时间范围动态生成文件路径和文件名。基于 [Handlebars](https://handlebarsjs.com/) 模板引擎，集成了 [Day.js](https://day.js.org/) 时间处理库。
+
+通过掌握这些模板语法，您可以轻松创建动态的文件路径和文件名，大大提高数据管理的灵活性和自动化程度。 
+
+## 基本语法
+
+### 支持的变量
+
+目前支持以下两个时间变量：
+
+- `start_time` - 当前采集任务的开始时间
+- `end_time` - 当前采集任务的结束时间
+
+### 基本模板格式
+
+```
+{{变量名.format('格式字符串')}}
+```
+
+### 示例
+
+```javascript
+// 基本用法
+'{{start_time.format("YYYY-MM-DD")}}'
+// 输出: "2021-01-01"
+
+// 组合使用
+'data/{{start_time.format("YYYY")}}/{{start_time.format("MM")}}/file.log'
+// 输出: "data/2021/01/file.log"
+```
+
+## 时间格式化
+
+### 常用格式化选项
+
+基于 [Day.js 格式化文档](https://day.js.org/docs/en/display/format)，支持以下格式：
+
+| 格式 | 输出 | 描述 |
+|------|------|------|
+| `YYYY` | 2021 | 四位年份 |
+| `YY` | 21 | 两位年份 |
+| `MM` | 01-12 | 月份（补零） |
+| `M` | 1-12 | 月份 |
+| `DD` | 01-31 | 日期（补零） |
+| `D` | 1-31 | 日期 |
+| `HH` | 00-23 | 小时（补零） |
+| `H` | 0-23 | 小时 |
+| `mm` | 00-59 | 分钟（补零） |
+| `m` | 0-59 | 分钟 |
+| `ss` | 00-59 | 秒（补零） |
+| `s` | 0-59 | 秒 |
+
+### 格式化示例
+
+```javascript
+// 日期格式
+'{{start_time.format("YYYY-MM-DD")}}'          // 2021-01-01
+'{{start_time.format("YYYY/MM/DD")}}'          // 2021/01/01
+'{{start_time.format("MM-DD-YYYY")}}'          // 01-01-2021
+
+// 时间格式
+'{{start_time.format("HH:mm:ss")}}'            // 10:30:00
+'{{start_time.format("HH-mm")}}'               // 10-30
+
+// 组合格式
+'{{start_time.format("YYYY-MM-DD HH:mm:ss")}}' // 2021-01-01 10:30:00
+'{{start_time.format("YYYYMMDD_HHmmss")}}'     // 20210101_103000
+
+// 按年月日组织的文件夹结构
+'logs/{{start_time.format("YYYY")}}/{{start_time.format("MM")}}/{{start_time.format("DD")}}'
+// 输出: logs/2021/01/01
+
+// 时间范围文件夹
+'data/{{start_time.format("YYYY-MM-DD")}}_to_{{end_time.format("YYYY-MM-DD")}}'
+// 输出: data/2021-01-01_to_2021-01-02
+```
+
+## 参考文档
+
+- [Handlebars 官方文档](https://handlebarsjs.com/guide/)
+- [Day.js 官方文档](https://day.js.org/docs/en/display/format)
+- [Day.js 格式化选项](https://day.js.org/docs/en/display/format#list-of-all-available-formats)
+
+---
 
 通过以上详细步骤和说明，管理员可全面、准确地对设备数采客户端进行配置，确保设备数据采集工作的高效运行。
 
