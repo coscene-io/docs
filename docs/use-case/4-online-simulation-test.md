@@ -92,7 +92,7 @@ tar -czvf install.tar.gz ./install
 
 - 源码构建与编译后的可执行程序
 
-可参考平台文档 👉 https://docs.coscene.cn/docs/sim-and-tests/regression/test-bundle-management
+可参考 [Test Bundle 管理文档](../sim-and-tests/regression/4-test-bundle-management.md) 获取更多信息
 
 **_对于企业用户，还支持 GitHub / GitLab 持续集成上传构建产物，跳过手动上传过程。_**
 
@@ -127,7 +127,7 @@ test_case/
 
 ### 文件结构规范
 
-请严格遵循[平台规定的路径结构](https://docs.coscene.cn/docs/sim-and-tests/regression/intro)：
+请严格遵循[平台规定的路径结构](../sim-and-tests/regression/1-intro.md)：
 
 ![文件结构示意图](./img/4-online-simulation-test-13.png)
 
@@ -152,7 +152,7 @@ test_case/
 - 手动选择记录执行
 - 按标签或版本筛选测试集
 
-详细配置参考 👉 https://docs.coscene.cn/docs/sim-and-tests/regression/config-management
+详细配置请参考[测试配置管理文档](../sim-and-tests/regression/3-config-management.md)
 ![4-online-simulation-test-18](./img/4-online-simulation-test-18.png)
 ![4-online-simulation-test-19](./img/4-online-simulation-test-19.png)
 ![4-online-simulation-test-20](./img/4-online-simulation-test-20.png)
