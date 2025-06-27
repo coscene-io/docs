@@ -17,7 +17,7 @@ sidebar_position: 5
 ## 前提条件
 
 1. **设备注册**
-   参考如下官方链接：[登录刻行时空](../get-started/1-quick-start.md)，完成**登录刻行时空**部分
+   参考如下官方链接：[登录刻行时空](../2-get-started/1-quick-start.md)，完成**登录刻行时空**部分
    参考如下官方链接：[设备注册](../device/2-create-device.md)
 
    - 安装命令（**以下代码仅供参考示例，请务必在您的组织中复制安装指令后再添加。**）：
@@ -41,11 +41,11 @@ sidebar_position: 5
 
 4. **创建项目**
 
-   登录平台后，在首页即可看到“**新建项目**”的按钮，参考文档支持[新建项目](../collaboration/project-collaboration/1-project.md)
+   登录平台后，在首页即可看到“**新建项目**”的按钮，参考文档支持[新建项目](../3-collaboration/project-collaboration/1-project.md)
 
 5. **项目中添加采集设备**
 
-   完成以上动作后，我们需要将机器人本体关联到我们的项目中，参考文档支持[新建项目](../collaboration/project-collaboration/1-project.md)
+   完成以上动作后，我们需要将机器人本体关联到我们的项目中，参考文档支持[新建项目](../3-collaboration/project-collaboration/1-project.md)
 
 ---
 
@@ -177,7 +177,7 @@ sidebar_position: 5
 - 管理员登录平台后，进入相应的项目中，完成如下工作：
 
   - 任务配置与管理
-  - 将设备与成员关联到项目中，参考文档：[项目设备/成员](../collaboration/project-collaboration/1-project.md)
+  - 将设备与成员关联到项目中，参考文档：[项目设备/成员](../3-collaboration/project-collaboration/1-project.md)
   - 点击左侧导航栏中的**任务**，创建**通用任务**。（**注意！在此应用场景请创建通用任务，采集任务与标注任务无法满足实际需求。**）
     ![05-data-collect-26](./img/05-data-collect-26.png)
 

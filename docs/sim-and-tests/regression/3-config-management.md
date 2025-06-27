@@ -14,7 +14,7 @@ sidebar_position: 3
 
 ### 前提条件
 
-1. 请确保已将测试数据按[记录](../../collaboration/record/1-quick-start-record.md)存储，并给每条记录打上了标签
+1. 请确保已将测试数据按[记录](../../3-collaboration/record/1-quick-start-record.md)存储，并给每条记录打上了标签
 
    ![test-suite_2](./img/test-suite_2.png)
 
@@ -167,7 +167,7 @@ sidebar_position: 3
 
 1. **问：无法保存测试套件，提示”记录错误:标签不存在:sample“**
 
-   答：请检查名为「sample」的测试套件，是否存在错误的标签，如标签不存在或书写错误。此处仅支持使用已存在的标签。了解[如何给记录添加标签](../../collaboration/record/3-manage-records.md#编辑)
+   答：请检查名为「sample」的测试套件，是否存在错误的标签，如标签不存在或书写错误。此处仅支持使用已存在的标签。了解[如何给记录添加标签](../../3-collaboration/record/3-manage-records.md#编辑)
 
 2. **问：无法保存测试套件，提示”请检查 yaml 文件格式“**
 
