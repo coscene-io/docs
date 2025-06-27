@@ -1,6 +1,6 @@
 import { translate } from '@docusaurus/Translate';
 
-export const CATALOGUE = (local: string) => [
+export const CATALOGUE = (locale: string) => [
   {
     header: { title: translate({ id: 'home.catalogue.getting-started', message: '新手入门' }) },
     docs: [
