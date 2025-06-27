@@ -75,13 +75,21 @@ mod:
     listen_dirs: 
       - /home/bag/
 
-    # 当前时间距离文件更新时间超出 {skip_period_hours} 小时的时候，文件不会被监听/采集
+    # 当前时间距离文件更新时间超出 {skip_period_hours} 小时的时候，文件不会被监听
     skip_period_hours: 2
 
     # 设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录
     collect_dirs: 
       - /home/bag/
       - /home/log/
+
+    # 递归遍历所有子文件夹设置，针对监听目录和采集目录，是否遍历填写目录下的所有嵌套子文件夹，默认为否
+    recursively_walk_dirs: true
+
+    # 手动任务采集时指定上传额外文件，支持文件夹和文件，填写绝对路径；支持特定的时间变量模版
+    additional_files:
+      - /home/just2004noetic/Downloads/testcase
+      - /additional_files/{{start_time.format('YYYY-MM-DD')}}/log/
 
 # 假设机器端存在 /home/coscene/device.yaml 文件，其内容为
 # soft_version: v1.0
@@ -124,7 +132,9 @@ collector:
   - 选填项
   - 对应标识码字段名
 
-- `skip_period_hours`：若当前时间距离文件更新时间超出设定时间，文件不会被监听/采集。
+- `skip_period_hours`：若当前时间距离文件更新时间超出设定时间，文件不会被监听。
+
+- `recursively_walk_dirs`：当监听和采集目录存在子文件夹，是否遍历嵌套子文件夹中的文件。默认为否，只读取当前文件夹下的一级所有文件
 
 - `listen_dirs`：
   - 选填项
@@ -132,6 +142,11 @@ collector:
   - 若不使用监听文件的方式，可在设备端安装 [coListener](https://github.com/coscene-io/coListener/tree/cpp) 实时监听设备端 topic 数据，
 
 - `collect_dirs`：设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录。
+
+- `additional_files`：
+  - 选填项
+  - 手动任务采集时，支持补充采集额外的文件信息（如地图、日志等）。支持填写文件夹以及文件绝对路径，文件夹会递归遍历所有的子文件
+  - 路径支持模版变量信息，如 `/home/{{start_time.format('YYYY-MM-DD')}}/log/`, 模版变量在采集任务中会替换成对应的采集任务时间信息，依据选择的采集开始和截止时间修改，变量会绑定更新，渲染为对应的值。具体的语法请参考 [模板语法使用](#模板语法使用)
 
 ```yaml
 mod:
@@ -160,6 +175,14 @@ mod:
     collect_dirs: 
       - /home/bag/
       - /home/log/
+
+    # 会递归遍历 /home/bag/ 和 /home/log/ 目录下的所有子文件夹
+    recursively_walk_dirs: true
+
+    # 手动采集任务开始时间为 2025-06-27 14:00:00，额外补充上传 /home/just2004noetic/Downloads/testcase 和 /home/2025-06-27/log 目录下的所有文件，包含子文件夹
+    additional_files:
+      - /home/just2004noetic/Downloads/testcase
+      - /home/{{start_time.format('YYYY-MM-DD')}}/log/
 ```
 
 ### 设备事件属性（device）
