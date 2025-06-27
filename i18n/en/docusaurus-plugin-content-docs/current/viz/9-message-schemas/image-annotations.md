@@ -8,7 +8,7 @@ An array of annotations for 2D images
 
 ## Panel Support
 
-`ImageAnnotations` is used in the [Image Panel](../panel/image-panel).
+`ImageAnnotations` is used in the [Image Panel](../4-panel/5-image-panel.md).
 
 ## Data Structure
 

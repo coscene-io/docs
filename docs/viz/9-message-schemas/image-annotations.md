@@ -8,24 +8,24 @@ title: ImageAnnotations
 
 ## 面板支持
 
-`ImageAnnotations` 在[图像面板](../panel/image-panel)中使用。
+`ImageAnnotations` 在[图像面板](../4-panel/5-image-panel.md)中使用。
 
 ## 数据结构
 
-| 字段     | 类型                                                                          | 描述         |
-| ------- | ----------------------------------------------------------------------------- | ------------ |
-| circles | [`CircleAnnotation\[\]`](./circle-annotation) | 圆形注释     |
-| points  | [`PointsAnnotation\[\]`](./points-annotation) | 点注释       |
-| texts   | [`TextAnnotation\[\]`](./text-annotation)     | 文本注释     |
+| 字段    | 类型                                          | 描述     |
+| ------- | --------------------------------------------- | -------- |
+| circles | [`CircleAnnotation\[\]`](./circle-annotation) | 圆形注释 |
+| points  | [`PointsAnnotation\[\]`](./points-annotation) | 点注释   |
+| texts   | [`TextAnnotation\[\]`](./text-annotation)     | 文本注释 |
 
 ## 参考实现
 
 可视化数据结构是框架无关的，可以使用任何支持的消息编码来实现：
 
-| 编码        | 数据结构                                                                                                                        |
+| 编码        | 数据结构                                                                                                                      |
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| ROS 1       | [foxglove\_msgs/ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/ImageAnnotations.msg)       |
-| ROS 2       | [foxglove\_msgs/msg/ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/ImageAnnotations.msg)   |
+| ROS 1       | [foxglove_msgs/ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/ImageAnnotations.msg)        |
+| ROS 2       | [foxglove_msgs/msg/ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/ImageAnnotations.msg)    |
 | JSON        | [foxglove.ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/ImageAnnotations.json)      |
 | Protobuf    | [foxglove.ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/ImageAnnotations.proto) |
 | FlatBuffers | [foxglove.ImageAnnotations](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/ImageAnnotations.fbs)       |

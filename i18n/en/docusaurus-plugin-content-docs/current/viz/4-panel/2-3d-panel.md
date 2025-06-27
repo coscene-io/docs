@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+id: 3d-panel
 ---
 
 # 3D Panel
@@ -169,6 +170,28 @@ Displays coordinate transformation information from ROSbag files and external tr
   - **Selection Variable**: Display data variables.
 
     ![viz-5-18-Eng](../img/viz-5-18-Eng.png)
+
+### URDF
+
+Another common task in the 3D panel is visualizing URDF models. In the coScene platform, if your data already contains URDF models, they will be automatically loaded when you revisit.
+
+If you need to specify a URDF source other than the data, you can use the specified URL or load project resources.
+
+![URDF-options](../img/4-2-URDF-options.png)
+
+#### Specify URL
+
+In the "Custom Layers" - "URDF" - "Source" option of the 3D panel, select URL to specify the URDF connection.
+
+It is important to note that this link must be publicly available on the internet, otherwise it cannot be loaded.
+
+#### Load Project Resources
+
+You can also use the URDF file uploaded in the project common resource storage as the URDF source for this 3D panel.
+
+![URDF-project-common-resource-option](../img/4-2-URDF-project-common-resource-option.png)
+![URDF-select-files-from-project-common-resource](../img/4-2-URDF-select-files-from-project-common-resource.png)
+![URDF-project-common-resource-selected](../img/4-2-URDF-project-common-resource-selected.png)
 
 ## Tools in the 3D Panel
 

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+id: 3d-panel
 ---
 
 # 三维面板
@@ -14,13 +15,13 @@ sidebar_position: 2
 ![viz-5-2.png](../img/viz-5-2.png)
 ![viz-5-3.png](../img/viz-5-3.png)
 
-### 参考系
+### 参考系{#frames}
 
 「参考系」是在三维可视化中用来定义数据和对象的位置和方向的坐标系统。它为场景中的所有元素提供了一个共同的基准，使得各种数据能够在同一个空间中正确显示和交互。
 
 ![viz-5-4.png](../img/viz-5-4.png)
 
-#### 展示参考系
+#### 展示参考系 {#display-frames}
 
 - map：常用于全局坐标系，以地图为基准，适合展示全局定位数据。
 - base_link：基于机器人或车辆中心点的参考系，通常位于车辆的几何中心，适用于展示相对于车辆本身的位置和运动数据。
@@ -50,7 +51,7 @@ sidebar_position: 2
 
 <br /><br />
 
-### 场景
+### 场景{#scene}
 
 「场景」是三维可视化界面中用于配置和展示数据的整体环境，通过调整渲染统计、背景、标签比例、忽略 COLLADA 和网格上轴属性来自定义和优化数据的显示效果。
 
@@ -87,7 +88,7 @@ sidebar_position: 2
 ![viz-5-11.png](../img/viz-5-11.png)
 <br /><br />
 
-### 视图
+### 视图{#view}
 
 「视图」是三维可视化中用于设置和调整摄像机视角和显示参数的功能模块。通过调整视图中的不同属性，用户可以获得更好的数据展示效果。
 ![viz-5-12.png](../img/viz-5-12.png)
@@ -121,7 +122,7 @@ sidebar_position: 2
   摄像机的远剪裁面距离，用于调整摄像机视图中最远的可见距离
   <br />
 
-### 变换
+### 变换{#transforms}
 
 「变换」是对物体在三维空间中的位置、旋转和缩放进行调整，使其在三维面板中能够正确显示和操作。
 
@@ -164,7 +165,7 @@ sidebar_position: 2
   - **平移 (X, Y, Z)**：调整 X、Y、Z 轴上的位置
   - **旋转 (R, P, Y)**：调整横滚角、俯仰角和偏航角的旋转
 
-### 话题
+### 话题{#topics}
 
 「话题」指的是数据流的类别或频道。每个话题代表一种特定类型的数据源或传感器数据，例如摄像头图像、激光雷达数据、注释信息等。
 ![viz-5-15.png](../img/viz-5-15.png)
@@ -263,6 +264,28 @@ sidebar_position: 2
 - **Selection Variable**
   用于显示数据变量
   <br />
+
+### URDF
+
+三维面板中的另一个常见任务是可视化 URDF 模型。在刻行平台中，如果您的数据已包含 URDF 模型，则回访时可自动加载 URDF 数据。
+
+若您需要指定数据之外的 URDF 来源，可以使用指定 URL，或者加载项目资源的形式。
+
+![URDF-options](../img/4-2-URDF-options.png)
+
+#### 指定 URL
+
+在三维面板选项中的【自定义图层】-【URDF】-【Source】选项中，选择URL，就可以指定 URDF 的连接。
+
+需要注意的是该链接必须在互联网上公开可用，否则无法加载。
+
+#### 加载项目资源
+
+您也可以使用在项目通用资源存储中已经上传的 URDF 文件， 作为该 3D 面板的 URDF 来源。
+
+![URDF-project-common-resource-option](../img/4-2-URDF-project-common-resource-option.png)
+![URDF-select-files-from-project-common-resource](../img/4-2-URDF-select-files-from-project-common-resource.png)
+![URDF-project-common-resource-selected](../img/4-2-URDF-project-common-resource-selected.png)
 
 ## 三维面板中的工具
 
