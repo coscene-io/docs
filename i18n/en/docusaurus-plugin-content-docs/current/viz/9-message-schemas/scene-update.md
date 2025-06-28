@@ -4,7 +4,7 @@ Updates to entities displayed in the 3D scene.
 
 ## Panel Support
 
-`SceneUpdate` is used in the [3D Panel](../panel/2-3d-panel) and [Image Panel](../panel/image-panel).
+`SceneUpdate` is used in the [3D Panel](../4-panel/2-3d-panel.md) and [Image Panel](../4-panel/5-image-panel.md).
 
 ## Data Structure
 

@@ -9,9 +9,10 @@ The "Log Panel" is used to display and manage machine-generated log information.
 ![viz-6-1-Eng](../img/viz-6-1-Eng.png)
 
 ## Properties in the Log Panel
+
 ### General
 
-- **Topics**: Determines the specific log sources displayed in the log panel. For example, select '/rosout' to display logs from the ROS system; select other log topics to display information from [log files in records](../../collaboration/record/5-manage-file.md).
+- **Topics**: Determines the specific log sources displayed in the log panel. For example, select '/rosout' to display logs from the ROS system; select other log topics to display information from [log files in records](../../3-collaboration/record/5-manage-file.md).
 - **Log Level**: Used to filter log information, displaying only logs at or above the specified level. For example, selecting `>= DEBUG` will display logs at DEBUG level and above, including INFO, WARN, ERROR, etc.
 
 ### Display

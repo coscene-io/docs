@@ -20,7 +20,7 @@ Batch testing is an automated solution for parallel execution of multiple test t
 The execution flow of batch testing tasks is as follows:
 
 1. Select a test suite and use its preset image as the test environment
-2. Import test bundles, test data ([records](../../collaboration/record/1-quick-start-record.md)), and test suite configuration parameters into the test environment
+2. Import test bundles, test data ([records](../../3-collaboration/record/1-quick-start-record.md)), and test suite configuration parameters into the test environment
 3. The system creates independent sub-test tasks for each record associated with the test suite
 4. After all sub-test tasks are completed, the system automatically aggregates results and generates test reports
 
@@ -80,7 +80,7 @@ Enter the project's "Batch Testing" page and create a batch test following the p
 
    - Prepare [Docker image](../../image/1-about-docker-image.md) for running batch tests
    - Push image to public platform or [coScene Image Registry](../../image/3-push-image.md)
-   - Upload test data to project and store as [records](../../collaboration/record/1-quick-start-record.md)
+   - Upload test data to project and store as [records](../../3-collaboration/record/1-quick-start-record.md)
 
 2. Configure Test Content
 

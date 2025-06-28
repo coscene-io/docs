@@ -9,9 +9,10 @@ sidebar_position: 3
 ![viz-6-1.png](../img/viz-6-1.png)
 
 ## 日志面板中的属性值
+
 ### 通用
 
-- 「话题」：确定日志面板中展示的具体日志来源。例如，选择 /rosout 来显示 ROS 系统中的日志信息；选择其他日志话题以显示[记录中日志文件的信息](../../collaboration/record/5-manage-file.md)。
+- 「话题」：确定日志面板中展示的具体日志来源。例如，选择 /rosout 来显示 ROS 系统中的日志信息；选择其他日志话题以显示[记录中日志文件的信息](../../3-collaboration/record/5-manage-file.md)。
 - 「日志级别」：用于过滤日志信息，只显示指定级别及以上的日志。例如，选择 >= DEBUG 将显示 DEBUG 级别及以上的日志，包括 INFO、WARN、ERROR 等。
 
 ### Display
@@ -39,8 +40,8 @@ sidebar_position: 3
 
 想要使用日志面板，你的数据源必须提供符合以下支持的消息类型。
 
-| 框架 | 消息类型 |
-| --- | --- |
-| ROS 1 | [rosgraph_msgs/Log](https://docs.ros.org/en/noetic/api/rosgraph_msgs/html/msg/Log.html) |
-| ROS 2 | [rcl_interfaces/msg/Log](https://github.com/ros2/rcl_interfaces/blob/master/rcl_interfaces/msg/Log.msg) |
-| 自定义 | [foxglove.Log](../message-schemas/log) |
+| 框架   | 消息类型                                                                                                |
+| ------ | ------------------------------------------------------------------------------------------------------- |
+| ROS 1  | [rosgraph_msgs/Log](https://docs.ros.org/en/noetic/api/rosgraph_msgs/html/msg/Log.html)                 |
+| ROS 2  | [rcl_interfaces/msg/Log](https://github.com/ros2/rcl_interfaces/blob/master/rcl_interfaces/msg/Log.msg) |
+| 自定义 | [foxglove.Log](../message-schemas/log)                                                                  |

@@ -63,7 +63,7 @@ sidebar_position: 1
 
    ![org_4](./img/org_4.png)
 
-4. 创建成功后，将自动进入组织首页。可以开始[管理你的组织](../collaboration/organization/1-organizations.md)。
+4. 创建成功后，将自动进入组织首页。可以开始[管理你的组织](../3-collaboration/organization/1-organizations.md)。
 
 ### 普通用户
 
@@ -87,7 +87,7 @@ sidebar_position: 1
 
 ### 创建项目
 
-项目是数据管理的单元，对于数据的存储、管理、隔离和应用都发生在项目级别。一个项目可以是一个部门、一个项目组或一个业务线。更多关于项目的介绍，请参考[项目](../collaboration/project-collaboration/1-project.md)。
+项目是数据管理的单元，对于数据的存储、管理、隔离和应用都发生在项目级别。一个项目可以是一个部门、一个项目组或一个业务线。更多关于项目的介绍，请参考[项目](../3-collaboration/project-collaboration/1-project.md)。
 
 在主页上点击"创建项目"按钮，然后按照指引步骤完成项目创建。
 
@@ -102,7 +102,7 @@ sidebar_position: 1
 - 待标注数据集
 - ROS Bag、日志、地图、配置文件等
 
-详细信息请参考[记录](../collaboration/record/1-quick-start-record.md)。
+详细信息请参考[记录](../3-collaboration/record/1-quick-start-record.md)。
 
 1. 在项目左侧导航栏，选择「记录」，点击【创建记录】。
 

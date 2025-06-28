@@ -1,6 +1,6 @@
 import { translate } from '@docusaurus/Translate';
 
-export const CATALOGUE = (local: string) => [
+export const CATALOGUE = (locale: string) => [
   {
     header: { title: translate({ id: 'home.catalogue.getting-started', message: '新手入门' }) },
     docs: [
@@ -10,7 +10,7 @@ export const CATALOGUE = (local: string) => [
         title: translate({ id: 'home.catalogue.quick-start', message: '快速开始' }),
       },
       {
-        docLink: '/browser-support',
+        docLink: '/others/browser-support',
         title: translate({ id: 'home.catalogue.browser-support', message: '浏览器支持' }),
       },
     ],
@@ -52,7 +52,7 @@ export const CATALOGUE = (local: string) => [
         docLink: '/viz/frame-rate-optimization',
         title: translate({ id: 'home.catalogue.frame-rate-optimization', message: '帧率优化选项' }),
       },
-      ...(local === 'zh'
+      ...(locale === 'zh'
         ? [
           { docLink: '/category/extensions', title: translate({ id: 'home.catalogue.extensions', message: '插件' }) },
           {

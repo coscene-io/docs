@@ -14,7 +14,7 @@ A test suite is a collection of related test cases that provides a unified confi
 
 ### Prerequisites
 
-1. Ensure that test data has been stored as [records](../../collaboration/record/1-quick-start-record.md) and each record has been labeled
+1. Ensure that test data has been stored as [records](../../3-collaboration/record/1-quick-start-record.md) and each record has been labeled
 
    ![test-suite_2](./img/test-suite_2.png)
 
@@ -163,7 +163,7 @@ When running batch tests, you can select a test suite, and the system will run t
 
 1. **Q: Cannot save test suite, error message "Record error: Label does not exist: sample"**
 
-   A: Please check if the test suite named "sample" has incorrect labels, such as non-existent or incorrectly written labels. Only existing labels are supported here. Learn [how to add labels to records](../../collaboration/record/3-manage-records.md#edit)
+   A: Please check if the test suite named "sample" has incorrect labels, such as non-existent or incorrectly written labels. Only existing labels are supported here. Learn [how to add labels to records](../../3-collaboration/record/3-manage-records.md#edit)
 
 2. **Q: Cannot save test suite, error message "Please check yaml file format"**
 
