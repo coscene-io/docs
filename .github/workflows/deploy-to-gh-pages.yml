@@ -37,6 +37,9 @@ jobs:
           # Temporarily modify the default locale to English
           sed -i 's/defaultLocale: '\''zh'\''/defaultLocale: '\''en'\''/' docusaurus.config.js
 
+          # replace default en search locale
+          sed -i '/searchParameters: {}/i \        replaceSearchResultPathname: {\n          from: "\/en\/",\n          to: "\/",\n        },' docusaurus.config.js
+
           # Uncomment and update Algolia search path for GitHub Pages deployment
           sed -i '/{ type: '\''localeDropdown'\'', position: '\''right'\'' }/d' docusaurus.config.js
           sed -i -e "s/defaultLocale: 'zh'/defaultLocale: 'en'/" -e "s/locales: \['zh', 'en'\]/locales: \['en'\]/" -e 's|coscene.cn|coscene.io|g' docusaurus.config.js
