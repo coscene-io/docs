@@ -68,25 +68,9 @@ An action can have multiple steps. The platform supports two types of steps: Ima
 
 - **Environment Variables**
 
-  Define environment variables in an action for the program to read and use during runtime.
+  When running the image code execution step, the platform automatically injects environment variables to facilitate data exchange between the action and the platform.
 
-  When defining environment variables, avoid using names preset by the platform to prevent unexpected errors in the program. The platform's preset environment variables are as follows:
-
-  | Environment Variable Name | Value            | Description                                        |
-  | ------------------------- | ---------------- | -------------------------------------------------- |
-  | `COS_FILE_VOLUME`         | `/cos/files`     | Mount directory for records                        |
-  | `COS_CODE_VOLUME`         | `/cos/codes`     | Mount directory for code                           |
-  | `COS_BIN_VOLUME`          | `/cos/bins`      | Mount directory for binary files                   |
-  | `COS_BUNDLE_VOLUME`       | `/cos/bundles`   | Mount directory for test programs in batch testing |
-  | `COS_ARTIFACT_VOLUME`     | `/cos/artifacts` | Artifact directory for batch testing               |
-  | `COS_OUTPUT_VOLUME`       | `/cos/outputs`   | Output file directory for batch testing            |
-  | `COS_ORGID`               |                  | Organization ID                                    |
-  | `COS_USERID`              |                  | User ID                                            |
-  | `COS_WAREHOUSEID`         |                  | Warehouse ID                                       |
-  | `COS_PROJECTID`           |                  | Project ID                                         |
-  | `COS_RECORDID`            |                  | Record ID                                          |
-
-  Some of the above environment variables have empty values, which are optional. If they exist, their values are in UUID format; if not, they are empty.
+  Please refer to [Action Runtime Information](./3-action-runtime.md#environment-variables) for more information about environment variables.
 
 ### HTTP Request
 

@@ -67,25 +67,9 @@ sidebar_position: 1
 
 - **环境变量**
 
-  在动作中定义环境变量，以供程序在运行过程中读取并使用。
+  平台在运行镜像代码执行步骤时，会自动注入环境变量，方便动作在运行时和平台进行数据交换。
 
-  在定义环境变量时，请避免使用平台预设的名称，防止程序出现意外错误。平台预设的环境变量如下：
-
-  | 环境变量名称          | 值               | 描述                         |
-  | --------------------- | ---------------- | ---------------------------- |
-  | `COS_FILE_VOLUME`     | `/cos/files`     | 记录的挂载目录               |
-  | `COS_CODE_VOLUME`     | `/cos/codes`     | 代码的挂载目录               |
-  | `COS_BIN_VOLUME`      | `/cos/bins`      | 二进制文件的挂载目录         |
-  | `COS_BUNDLE_VOLUME`   | `/cos/bundles`   | 批量测试中测试程序的挂载目录 |
-  | `COS_ARTIFACT_VOLUME` | `/cos/artifacts` | 批量测试的 artifact 目录     |
-  | `COS_OUTPUT_VOLUME`   | `/cos/outputs`   | 批量测试输出文件的目录       |
-  | `COS_ORGID`           |                  | 组织 ID                      |
-  | `COS_USERID`          |                  | 用户 ID                      |
-  | `COS_WAREHOUSEID`     |                  | Warehouse ID                 |
-  | `COS_PROJECTID`       |                  | 项目 ID                      |
-  | `COS_RECORDID`        |                  | 记录 ID                      |
-
-  上述环境变量中部分值为空，这些属于可选项。若存在，其值为 UUID 格式的 ID 信息；若不存在，则为空。
+  请参考[动作运行时信息](./3-action-runtime.md#environment-variables)了解环境变量。
 
 ### HTTP 请求
 
