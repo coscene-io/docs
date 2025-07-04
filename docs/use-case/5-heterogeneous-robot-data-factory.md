@@ -19,7 +19,6 @@ sidebar_position: 5
 1. **设备注册**
    参考如下官方链接：[登录刻行时空](../get-started/1-quick-start.md)，完成**登录刻行时空**部分
    参考如下官方链接：[设备注册](../device/2-create-device.md)
-
    - 安装命令（**以下代码仅供参考示例，请务必在您的组织中复制安装指令后再添加。**）：
      ```bash
      /bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/v2/install.sh)" -s --mod="default" --org_slug="codemo" --server_url="https://openapi.coscene.cn" --coLink_endpoint="https://coordinator.coscene.cn/api" --coLink_network="fb899ea7-d71b-4cec-b531-0a5fb0015c61" --sn_file="/foo/bar/sn.txt" --sn_field="sn" --remove_config  --beta
@@ -27,7 +26,6 @@ sidebar_position: 5
    - sn_file：表示为机器的序列号文件存放的地址，需要手动配置，同时确保文件存在。 sn_field：表示在上一个文件里表示机器序列号的字段，举个例子，我的机器人序列号文件的路径是 /root/robot/sn.txt, sn.txt文件里的内容是sn:123456， 那么这里我需要配置的是： --sn_file="/root/robot/sn.txt" --sn_field="sn"
 
 2. **安装 cobridge**
-
    - 下载 deb 包：[cobridge](https://github.com/coscene-io/cobridge/actions/runs/15103306677?pr=25) 根据机器人本体的计算平台选择对应的 deb 安装包（**注意科学上网进入 github 下载**）
    - 安装命令：
      ```bash
@@ -159,7 +157,7 @@ sidebar_position: 5
 
 ![05-trigger-assignee](./img/05-trigger-assignee.png)
 
-关于触发器的配置，具体可参考 [自动化-触发器](../workflow/3-trigger.md)
+关于触发器的配置，具体可参考 [自动化-触发器](../6-automation/3-trigger.md)
 
 ### 为任务系统配置自动化动作
 
@@ -175,7 +173,6 @@ sidebar_position: 5
 ### 采集数据
 
 - 管理员登录平台后，进入相应的项目中，完成如下工作：
-
   - 任务配置与管理
   - 将设备与成员关联到项目中，参考文档：[项目设备/成员](../collaboration/project-collaboration/1-project.md)
   - 点击左侧导航栏中的**任务**，创建**通用任务**。（**注意！在此应用场景请创建通用任务，采集任务与标注任务无法满足实际需求。**）
@@ -193,7 +190,6 @@ sidebar_position: 5
 
 - 任务完成后点击【结束采集】，日志提示"结束采集成功"并自动上传数据。（**具体日志内容，以服务提供的反馈为准！**）
   ![05-data-collect-18](./img/05-data-collect-18.png)
-
   - 刻行时空在这里提供了数据上传的日志提示：日志报出「结束采集成功」---「开始上传」---「文件上传中 X / N」---「文件上传完成」即完成了数据采集在采集日志中，可查看记录链接、上传文件进度。
     ![05-data-collect-19](./img/05-data-collect-19.png)
 

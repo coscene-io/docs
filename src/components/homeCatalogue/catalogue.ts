@@ -97,12 +97,12 @@ export const CATALOGUE = (local: string) => [
     header: { title: translate({ id: 'home.catalogue.workflow', message: '自动化' }) },
     docs: [
       {
-        docLink: '/workflow/quick-start-workflow',
+        docLink: '/6-automation/quick-start-workflow',
         title: translate({ id: 'home.catalogue.quick-start-workflow', message: '快速上手自动化' }),
       },
       { docLink: '/category/action', title: translate({ id: 'home.catalogue.action', message: '动作' }) },
-      { docLink: '/workflow/trigger', title: translate({ id: 'home.catalogue.trigger', message: '触发器' }) },
-      { docLink: '/workflow/invocation', title: translate({ id: 'home.catalogue.invocation', message: '调用历史' }) },
+      { docLink: '/6-automation/trigger', title: translate({ id: 'home.catalogue.trigger', message: '触发器' }) },
+      { docLink: '/6-automation/invocation', title: translate({ id: 'home.catalogue.invocation', message: '调用历史' }) },
     ],
   },
   {
