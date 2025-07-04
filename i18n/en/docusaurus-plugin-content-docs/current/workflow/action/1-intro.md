@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# About Actions
+# Building Automation Workflows with Actions
 
 Actions are the fundamental building blocks of automated workflows, representing a specific task. With actions, you can perform a series of data processing operations, including data cleaning, preprocessing, training, and testing. By invoking the corresponding actions on records, you can complete the data processing workflow.
 
