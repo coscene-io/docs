@@ -22,6 +22,8 @@ coScene has two types of users: administrators and regular users. You can create
 
    ![org_4](./img/org_4.png)
 
+   ![org_4](./img/org_4.png)
+
 4. After successful creation, you will automatically enter the organization homepage. You can start [managing your organization](../3-collaboration/organization/1-organizations.md) now.
 
 ### Regular User
@@ -115,7 +117,6 @@ Devices can establish connections with real devices, see [Device](../device/1-de
         ![add-device-entry](./img/device_1.png)
 
 2.  In the popup window, select【System Generated ID】, check【Remote Control】, click the【Copy】button to copy the installation command.
-
     - To use a custom ID, see [Device ID Configuration](../device/2-create-device.md#device-id-configuration)
       <img src={require('./img/device_2.png').default} alt="device_2" width="800" />
 
@@ -165,7 +166,6 @@ Devices can establish connections with real devices as data collection targets. 
         ![add-device-entry](./img/device_1.png)
 
 2.  In the popup window, select【System Generated ID】, click the【Copy】button to copy the installation command.
-
     - To use a custom ID, see [Device ID Configuration](../device/2-create-device.md#device-id-configuration)
       ![add-device](./img/device_2.png)
 
@@ -197,7 +197,6 @@ Devices can establish connections with real devices as data collection targets. 
    ```
 
 3. **Create Collection Task**: Enter the "Project-Tasks-Collection Tasks" page to create a collection task.
-
    - Select the device for data collection
    - Select the time range: collect files whose "file update time" is within the specified time period in the target data path
    - Target data path: default value is taken from `collect_dirs` in device configuration, or you can customize the path. If set to a folder, collect files within the time range in that folder; if set to a file, collect that file.
@@ -244,7 +243,6 @@ Automatic data collection uses predefined rules to continuously monitor device l
    ![create-rule](./img/rule_1.png)
 
 4. **Define Rule**: Define the rule's trigger conditions and collection behavior. Here's an example rule that automatically uploads data when detecting that the /spawn_entity node status is inactive in the mcap file:
-
    - Message in mcap file:
 
      <img src={require('./img/rule_2.png').default} alt="rule_2" width="300" />
@@ -252,7 +250,6 @@ Automatic data collection uses predefined rules to continuously monitor device l
    - Rule name: Monitor /spawn_entity node status
    - Event matching condition: msg["nodes"][3]["state"] contains INACTIVE
    - Trigger actions: Collect data, Diagnose data
-
      - Collect data: Collect data before and after the trigger time point, save to record; collection directory is from `collect_dirs` in device configuration; file time is taken from file timestamp, if the time period to be collected overlaps with the file, the entire file will be uploaded.
      - Diagnose data: Create a moment at the trigger time point
 
@@ -260,7 +257,6 @@ Automatic data collection uses predefined rules to continuously monitor device l
      ![define-rule](./img/rule_4.png)
 
 5. **Confirm Rule**: Confirm that the rule is enabled and the target device has pulled the latest rule configuration.
-
    - Enable rule group: Click the enable button on the right of the rule group
 
      ![enable-rule-group](./img/rule_5.png)
@@ -275,7 +271,6 @@ Automatic data collection uses predefined rules to continuously monitor device l
      ![view-logs](./img/rule_6.png)
 
 6. **Trigger Rule**: Create mcap file in the device's `listen_dirs` and `collect_dirs` directories to trigger the rule
-
    - On the device, enter `listen_dirs` and `collect_dirs` directories, execute command to download [mcap file](https://coscene-download.s3.us-east-1.amazonaws.com/sample_data/rule_sample.mcap)
 
      ```bash
@@ -304,5 +299,5 @@ Automatic data collection uses predefined rules to continuously monitor device l
 
 ## Learn More
 
-- [Automate Data Processing](../workflow/1-quick-start-workflow.md)
+- [Automate Data Processing](../6-automation/1-quick-start-workflow.md)
 - [Changelog](https://docs.coscene.io/changelog)

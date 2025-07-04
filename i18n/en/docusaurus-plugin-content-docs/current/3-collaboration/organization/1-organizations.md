@@ -45,7 +45,6 @@ Please refer to the [Projects](../project-collaboration/1-project.md) section
 The method of adding members differs depending on how the organization was created:
 
 - **Organizations created with email login**:
-
   - Organization administrators can click the [Invite Members] button on the "Organization Management-Members" page to invite members to join the organization via email.
 
     ![org_5](./img/org_5.png)
@@ -62,7 +61,7 @@ Please refer to the [Adding Devices](../../device/2-create-device.md) section
 
 ## Adding Images
 
-> Images in the organization can be used in various projects for [Automation](../../workflow/1-quick-start-workflow.md) or [Cloud Test](../../sim-and-tests/regression/1-intro.md).
+> Images in the organization can be used in various projects for [Automation](../../6-automation/1-quick-start-workflow.md) or [Cloud Test](../../sim-and-tests/regression/1-intro.md).
 
 Please refer to the [Images](../../image/1-about-docker-image.md) section
 

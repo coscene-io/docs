@@ -1,0 +1,9 @@
+{
+  "label": "自动化",
+  "position": 5,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/workflow"
+  }
+}

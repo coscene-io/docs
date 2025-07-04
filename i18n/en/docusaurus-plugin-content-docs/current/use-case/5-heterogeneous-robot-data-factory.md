@@ -19,7 +19,6 @@ This article mainly introduces the following methods:
 1. **Device Registration**
    Refer to the official link: [Login to coScene](../2-get-started/1-quick-start.md), complete the **Login to coScene** section
    Refer to the official link: [Device Registration](../device/2-create-device.md)
-
    - Installation command (**The following code is for reference only. Please make sure to copy the installation command from your organization before adding.**):
      ```bash
      /bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/v2/install.sh)" -s --mod="default" --org_slug="codemo" --server_url="https://openapi.coscene.cn" --coLink_endpoint="https://coordinator.coscene.cn/api" --coLink_network="fb899ea7-d71b-4cec-b531-0a5fb0015c61" --sn_file="/foo/bar/sn.txt" --sn_field="sn" --remove_config  --beta
@@ -27,7 +26,6 @@ This article mainly introduces the following methods:
    - sn_file: Represents the storage path of the machine's serial number file, which needs to be manually configured and the file must exist. sn_field: Represents the field that indicates the machine serial number in the above file. For example, if my robot's serial number file path is /root/robot/sn.txt, and the content in sn.txt is sn:123456, then I need to configure: --sn_file="/root/robot/sn.txt" --sn_field="sn"
 
 2. **Install coBridge**
-
    - Download the deb package: [coBridge](https://github.com/coscene-io/cobridge/actions/runs/15103306677?pr=25) Choose the corresponding deb installation package according to the robot's computing platform (**Note: VPN access required to enter GitHub for download**)
    - Installation command:
      ```bash
@@ -159,14 +157,15 @@ Taking a typical heterogeneous data collection task as an example, we need to co
 
 ![05-trigger-assignee](./img/05-trigger-assignee.png)
 
-For trigger configuration details, please refer to [Automation - Triggers](../workflow/3-trigger.md)
+For trigger configuration details, please refer to [Automation - Triggers](../6-automation/4-trigger.md)
 
 ### Configure Automated Actions for Task System
 
 As we configured automated flow triggers in the previous step, when the collector changes the task status to "Complete", it will automatically call the action to create an annotation task.
 
 coScene provides some automated actions suitable for data factories: **Create General Task**, to support our data factory business needs. We also support custom automated actions to support workflows that are more suitable for you.
-Please refer to the documentation: [Automation - Actions](/docs/category/action)
+
+Please refer to the documentation: [Automation - Actions Overview](../6-automation/2-action-overview.md)
 
 **coScene will launch task configuration import/export functionality in the future, along with richer official task system templates. Stay tuned!**
 
@@ -175,7 +174,6 @@ Please refer to the documentation: [Automation - Actions](/docs/category/action)
 ### Data Collection
 
 - After the administrator logs into the platform, enter the corresponding project and complete the following work:
-
   - Task configuration and management
   - Associate devices and members to the project, refer to documentation: [Project Devices/Members](../3-collaboration/project-collaboration/1-project.md)
   - Click **Tasks** in the left navigation bar and create a **General Task**. (**Note! Please create general tasks in this application scenario, as collection tasks and annotation tasks cannot meet actual requirements.**)
@@ -193,7 +191,6 @@ Please refer to the documentation: [Automation - Actions](/docs/category/action)
 
 - After the task is completed, click [End Collection], log prompt "End collection successful" and automatically upload data. (**Specific log content depends on the feedback provided by the service!**)
   ![05-data-collect-18](./img/05-data-collect-18.png)
-
   - coScene provides data upload log prompts here: Log shows "End collection successful" --- "Start upload" --- "File uploading X / N" --- "File upload complete" to complete data collection. In the collection log, you can view record links and upload file progress.
     ![05-data-collect-19](./img/05-data-collect-19.png)
 

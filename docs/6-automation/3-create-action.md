@@ -31,16 +31,14 @@ sidebar_position: 2
 
 - 步骤名称：unzip
 - 镜像：registry-vpc.cn-hangzhou.aliyuncs.com/coscene/cos:2025-02-06-v25.6.1
-  - 该镜像为刻行时空提供的镜像，内置 `icos` 工具，仅支持在平台内部使用，了解[镜像](../../image/1-about-docker-image.md)
+  - 该镜像为刻行时空提供的镜像，内置 `icos` 工具，仅支持在平台内部使用，了解[镜像](../image/1-about-docker-image.md)
 - 命令：icos fs decompress f \*.zip -i /cos/files -o /cos/files
-
   - 调用 `icos` 工具，对 `/cos/files` 目录（记录）下名称符合 `*.zip` 的文件进行解压，将其输出到原记录
   - 需一行填写一个参数，如第一行填写 `icos`，第二行填写 `fs`，以此类推
 
   ![action_4](./img/action_4.png)
 
 - 记录文件挂载权限：读/写
-
   - 允许该动作在执行期间对原记录进行读写操作
 
   ![action_5](./img/action_5.png)
@@ -70,7 +68,6 @@ sidebar_position: 2
 - 步骤名称：msg-to-dingding
 
 - Webhook：从钉钉自定义机器人中获取 Webhook 地址，具体步骤如下：
-
   1. 创建钉钉群
   2. 进入钉钉群，创建自定义机器人。详见[钉钉开发平台自定义机器人接入](https://open.dingtalk.com/document/robots/custom-robot-access)
   3. 复制机器人的 Webhook 地址
