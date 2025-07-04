@@ -35,7 +35,6 @@ sidebar_position: 1
 
 4. 准备一台机器人设备
 
-
 ## 配置采集规则
 
 1. 进入【组织管理】-【设备】-【设备配置】，配置整体的数采规则信息。
@@ -64,15 +63,15 @@ mod:
 ## 安装设备 Agent
 
 1. 编辑数据采集规则之后，需要安装对应设备agent。首先进入【组织管理】-【设备】-【添加设备】，获取设备 Agent 安装命令。
-![device-command](./img/common-task-2.png)
+   ![device-command](./img/common-task-2.png)
 
 2. 安装命令支持指定相关的设备 ID 文件路径以及关联字段名，若不设定则可使用系统生成 ID 绑定当前设备。最后复制下图位置的命令行，添加到对应的设备，即可连接。
-![device_2](./img//device_2.png)
+   ![device_2](./img//device_2.png)
 
 ## 添加设备至项目
 
 1. 进入对应的项目，选择【项目设备】-【添加设备】-【从组织设备选择】，选择添加刚才安装的设备到当前项目。
-![project-devices](./img/project-devices.png)
+   ![project-devices](./img/project-devices.png)
 
 ## 创建采集任务
 
@@ -93,14 +92,14 @@ mod:
 
 ## 处理数据
 
-当数据上传至平台之后，用户可以结合平台提供的[自动化](../workflow/1-quick-start-workflow.md)能力，对数据进行后续的处理，提升数据流转速度，提升研发效率。
+当数据上传至平台之后，用户可以结合平台提供的[自动化](../6-automation/1-quick-start-workflow.md)能力，对数据进行后续的处理，提升数据流转速度，提升研发效率。
 
 这里以【自动解压缩】为例，当上传的数据包含压缩包时，通过自动化的能力自动的将压缩包文件解压，避免了下载数据 - 解压 - 上传解压数据的繁琐流程。
 
 ### 配置解压触发器
 
 1. 在【自动化】-【触发器】-【创建触发器】中，创建新的触发器。当上传文件到记录时，且文件通配符满足 `*.tar.gz`, 则文件上传后会自动解压缩。
-![decompress](./img/decompress-files.png)
+   ![decompress](./img/decompress-files.png)
 
 ### 触发解压
 
@@ -113,7 +112,6 @@ mod:
 ![file-list](./img/files-list.png)
 
 ## 可能会遇到的问题
-
 
 ### Q：机器端对应时间的文件没有采集
 
