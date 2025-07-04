@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Building Automation Workflows with Actions
+# Understanding Actions
 
 Actions are the fundamental building blocks of automated workflows, representing a specific task. With actions, you can perform a series of data processing operations, including data cleaning, preprocessing, training, and testing. By invoking the corresponding actions on records, you can complete the data processing workflow.
 
@@ -52,7 +52,7 @@ An action can have multiple steps. The platform supports two types of steps: Ima
 - **Image**
 
   The image serves as the execution environment for an action, integrating all the dependencies and tools required to run the action. Currently, the following two image operation methods are supported:
-  - **Custom Image**: Upload a custom image to the platform and use the corresponding image address. For detailed operation instructions, please refer to [Images](../../image/1-about-docker-image.md).
+  - **Custom Image**: Upload a custom image to the platform and use the corresponding image address. For detailed operation instructions, please refer to [Images](../image/1-about-docker-image.md).
   - **Public Image**: Use a publicly accessible image address, such as various open images on Docker Hub.
 
 - **Command**
@@ -70,7 +70,7 @@ An action can have multiple steps. The platform supports two types of steps: Ima
 
   When running the image code execution step, the platform automatically injects environment variables to facilitate data exchange between the action and the platform.
 
-  Please refer to [Action Runtime Information](./3-action-runtime.md#environment-variables) for more information about environment variables.
+  Please refer to [Action Runtime Information](./6-action-runtime.md#environment-variables) for more information about environment variables.
 
 ### HTTP Request
 

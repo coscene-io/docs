@@ -157,7 +157,7 @@ Taking a typical heterogeneous data collection task as an example, we need to co
 
 ![05-trigger-assignee](./img/05-trigger-assignee.png)
 
-For trigger configuration details, please refer to [Automation - Triggers](../6-automation/3-trigger.md)
+For trigger configuration details, please refer to [Automation - Triggers](../6-automation/4-trigger.md)
 
 ### Configure Automated Actions for Task System
 
@@ -165,7 +165,7 @@ As we configured automated flow triggers in the previous step, when the collecto
 
 coScene provides some automated actions suitable for data factories: **Create General Task**, to support our data factory business needs. We also support custom automated actions to support workflows that are more suitable for you.
 
-Please refer to the documentation: [Automation - Actions]
+Please refer to the documentation: [Automation - Actions Overview](../6-automation/2-action-overview.md)
 
 **coScene will launch task configuration import/export functionality in the future, along with richer official task system templates. Stay tuned!**
 
