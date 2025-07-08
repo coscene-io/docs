@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # Device Replacement, Upgrade, and Uninstallation Guide
