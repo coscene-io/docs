@@ -116,7 +116,29 @@ Taking monitoring device topic `/error_status` as an example, when event codes `
             ![errorcode-list](./img/errorcode-list.png)
 
         - Rule trigger condition: msg.data contains any value from the code column in the event code table
-            - If the data field is an array, switch to "Code Mode" and enter: msg.data.exists(x, x.code.contains(scope.code))
+            - If the data field is an array, switch to "Code mode" and enter: msg.data.exists(x, x.code.contains(scope.code)).E.g.:
+  
+              ```
+               {
+               	"events_count": 3,
+               	"events_info": [{
+               			"code": "10031",
+               			"msg": "camera disconnected",
+               			"level": "p1"
+               		},
+               		{
+               			"code": "20256",
+               			"msg": "navigate to workstation failed",
+               			"level": "p2"
+               		},
+               		{
+               			"code": "30221",
+               			"msg": "low battery",
+               			"level": "p1"
+               		}
+               	]
+               }
+              ```
 
         The above information means: Monitor topic `/error_status`, determine if keywords `1001 ~ 1005` are present in its `data` field messages
 
@@ -137,6 +159,8 @@ When messages from the monitored topic on the device trigger rules, data will be
 
 ### Bag/MCAP Monitoring Collection
 Same as steps 2-3 of topic monitoring collection, no need to use coListener.
+
+Note: Only complete bag/mcap files are supported for monitoring. Real-time monitoring and collection of `.bag.active` files is currently unavailable. To collect complete bag files, set the data collection time range to "n minutes after collection" and initiate collection after the bag file writing process is completed.
 
 ## Visualization-Linked Collection
 See [Heterogeneous Robot Data Collection Factory](../use-case/5-heterogeneous-robot-data-factory.md)
