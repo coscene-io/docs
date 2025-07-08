@@ -22,7 +22,9 @@ coScene has two types of users: administrators and regular users. You can create
 
    ![org_4](./img/org_4.png)
 
-4. After successful creation, you will automatically enter the organization homepage. You can start [managing your organization](../collaboration/organization/1-organizations.md) now.
+   ![org_4](./img/org_4.png)
+
+4. After successful creation, you will automatically enter the organization homepage. You can start [managing your organization](../3-collaboration/organization/1-organizations.md) now.
 
 ### Regular User
 
@@ -44,7 +46,7 @@ coScene has two types of users: administrators and regular users. You can create
 
 ### Create Project
 
-A project is the unit of data management, where data storage, management, isolation, and application take place. A project can represent a department, a project team, or a business line. For more information about projects, please refer to [Project](../collaboration/project-collaboration/1-project.md).
+A project is the unit of data management, where data storage, management, isolation, and application take place. A project can represent a department, a project team, or a business line. For more information about projects, please refer to [Project](../3-collaboration/project-collaboration/1-project.md).
 
 Click the "Create Project" button on the homepage and follow the guided steps to complete project creation.
 
@@ -52,7 +54,7 @@ Click the "Create Project" button on the homepage and follow the guided steps to
 
 ### Create Record and Upload Files
 
-A record is a collection of files describing similar scenarios, used for storing, managing, and visualizing data. A record can contain data generated during device failures, task execution data, small datasets for annotation, such as ROS Bags, logs, maps, configuration files, images, and videos. For more information about records, please refer to [Record](../collaboration/record/1-quick-start-record.md).
+A record is a collection of files describing similar scenarios, used for storing, managing, and visualizing data. A record can contain data generated during device failures, task execution data, small datasets for annotation, such as ROS Bags, logs, maps, configuration files, images, and videos. For more information about records, please refer to [Record](../3-collaboration/record/1-quick-start-record.md).
 
 1.  In the project's left sidebar, select "Records" and click the【Create Record】button.
 

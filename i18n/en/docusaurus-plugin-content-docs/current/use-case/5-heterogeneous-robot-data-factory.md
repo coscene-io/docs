@@ -17,7 +17,7 @@ This article mainly introduces the following methods:
 ## Prerequisites
 
 1. **Device Registration**
-   Refer to the official link: [Login to coScene](../get-started/1-quick-start.md), complete the **Login to coScene** section
+   Refer to the official link: [Login to coScene](../2-get-started/1-quick-start.md), complete the **Login to coScene** section
    Refer to the official link: [Device Registration](../device/2-create-device.md)
    - Installation command (**The following code is for reference only. Please make sure to copy the installation command from your organization before adding.**):
      ```bash
@@ -39,11 +39,11 @@ This article mainly introduces the following methods:
 
 4. **Create Project**
 
-   After logging into the platform, you can see the "**New Project**" button on the homepage. Refer to the documentation for [Create New Project](../collaboration/project-collaboration/1-project.md)
+   After logging into the platform, you can see the "**New Project**" button on the homepage. Refer to the documentation for [Create New Project](../3-collaboration/project-collaboration/1-project.md)
 
 5. **Add Collection Device to Project**
 
-   After completing the above actions, we need to associate the robot with our project. Refer to the documentation for [Create New Project](../collaboration/project-collaboration/1-project.md)
+   After completing the above actions, we need to associate the robot with our project. Refer to the documentation for [Create New Project](../3-collaboration/project-collaboration/1-project.md)
 
 ---
 
@@ -175,7 +175,7 @@ Please refer to the documentation: [Automation - Actions Overview](../6-automati
 
 - After the administrator logs into the platform, enter the corresponding project and complete the following work:
   - Task configuration and management
-  - Associate devices and members to the project, refer to documentation: [Project Devices/Members](../collaboration/project-collaboration/1-project.md)
+  - Associate devices and members to the project, refer to documentation: [Project Devices/Members](../3-collaboration/project-collaboration/1-project.md)
   - Click **Tasks** in the left navigation bar and create a **General Task**. (**Note! Please create general tasks in this application scenario, as collection tasks and annotation tasks cannot meet actual requirements.**)
     ![05-data-collect-26](./img/05-data-collect-26.png)
 

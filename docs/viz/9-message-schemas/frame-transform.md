@@ -4,7 +4,7 @@
 
 ## 面板支持
 
-`FrameTransform` 在[三维面板](../panel/2-3d-panel)和[图像面板](../panel/image-panel)中使用。
+`FrameTransform` 在[三维面板](../4-panel/2-3d-panel.md)和[图像面板](../4-panel/5-image-panel.md)中使用。
 
 ## 父级数据结构
 
@@ -12,22 +12,22 @@
 
 ## 数据结构
 
-| 字段 | 类型 | 描述 |
-|:---|:---|:---|
-| timestamp | [`time`](./built-in%20types#time) | 变换的时间戳 |
+| 字段            | 类型                                  | 描述           |
+| :-------------- | :------------------------------------ | :------------- |
+| timestamp       | [`time`](./built-in%20types#time)     | 变换的时间戳   |
 | parent_frame_id | [`string`](./built-in%20types#string) | 父坐标系的名称 |
-| child_frame_id | [`string`](./built-in%20types#string) | 子坐标系的名称 |
-| translation | [`Vector3`](./vector-3) | 变换的平移分量 |
-| rotation | [`Quaternion`](./quaternion) | 变换的旋转分量 |
+| child_frame_id  | [`string`](./built-in%20types#string) | 子坐标系的名称 |
+| translation     | [`Vector3`](./vector-3)               | 变换的平移分量 |
+| rotation        | [`Quaternion`](./quaternion)          | 变换的旋转分量 |
 
 ## 参考实现
 
 可视化数据结构是框架无关的，可以使用任何支持的消息编码方式实现：
 
-| 编码方式    | 数据结构                                                                                                                    |
+| 编码方式    | 数据结构                                                                                                                  |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------- |
-| ROS 1       | [foxglove_msgs/FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/FrameTransform.msg)       |
-| ROS 2       | [foxglove_msgs/msg/FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/FrameTransform.msg)   |
+| ROS 1       | [foxglove_msgs/FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/FrameTransform.msg)        |
+| ROS 2       | [foxglove_msgs/msg/FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/FrameTransform.msg)    |
 | JSON        | [foxglove.FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/FrameTransform.json)      |
 | Protobuf    | [foxglove.FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/FrameTransform.proto) |
 | FlatBuffers | [foxglove.FrameTransform](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/FrameTransform.fbs)       |

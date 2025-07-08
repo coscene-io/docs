@@ -67,13 +67,21 @@ mod:
     listen_dirs: 
       - /home/bag/
 
-    # When the current time exceeds the file update time by more than {skip_period_hours} hours, the file will not be monitored or collected
+    # When the current time exceeds the file update time by more than {skip_period_hours} hours, the file will not be monitored
     skip_period_hours: 2
 
     # Collection directories on the device side, used as specified directories for data collection tasks and rule collection in the project
     collect_dirs: 
       - /home/bag/
       - /home/log/
+
+    # Recursive directory traversal setting - whether to traverse all nested subdirectories for listen_dirs and collect_dirs, defaults to false
+    recursively_walk_dirs: true
+
+    # Additional files to upload during manual collection tasks - supports both folders and files with absolute paths; supports time variable templates
+    additional_files:
+      - /home/just2004noetic/Downloads/testcase
+      - /additional_files/{{start_time.format('YYYY-MM-DD')}}/log/
 
 # Assuming the machine has a /home/coscene/device.yaml file with the following content:
 # soft_version: v1.0
@@ -117,9 +125,17 @@ Mainly responsible for configuring device-end data storage location information:
 
 - `listen_dirs`: Device monitoring directories, used as rule monitoring directories in projects.
 
-- `skip_period_hours`: Files won't be monitored/collected when the time difference between current time and file update time exceeds `{skip_period_hours}`.
+- `skip_period_hours`: Files won't be monitored when the time difference between current time and file update time exceeds `{skip_period_hours}`.
+
+- `recursively_walk_dirs`: Whether to traverse files in nested subdirectories when monitoring and collection directories contain subdirectories. Defaults to false, only reads files in the current directory level.
 
 - `collect_dirs`: Device collection directories, used as specified directories for project data collection tasks and rule collection.
+
+- `additional_files`:
+  - Optional field
+  - During manual collection tasks, supports collecting additional file information (such as maps, logs, etc.). Supports both folder and file absolute paths. Folders will be recursively traversed for all subfiles.
+  - Paths support template variables, such as `/home/{{start_time.format('YYYY-MM-DD')}}/log/`. Template variables will be replaced with corresponding collection task time information during collection tasks. Variables will be dynamically updated based on the selected collection start and end times. For specific syntax, please refer to [Template Syntax Usage](#template-syntax-usage)
+
 
 ```yaml
 mod:
@@ -149,6 +165,14 @@ mod:
     collect_dirs:
       - /home/bag/
       - /home/log/
+
+    # Recursively traverse all subdirectories under /home/bag/ and /home/log/
+    recursively_walk_dirs: true
+
+    # For manual collection task starting at 2025-06-27 14:00:00, additionally upload all files from /home/just2004noetic/Downloads/testcase and /home/2025-06-27/log directories, including subdirectories
+    additional_files:
+      - /home/just2004noetic/Downloads/testcase
+      - /home/{{start_time.format('YYYY-MM-DD')}}/log/
 ```
 
 ### Device Event Properties (device)

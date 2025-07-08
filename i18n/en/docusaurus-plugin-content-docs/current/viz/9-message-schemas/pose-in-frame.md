@@ -4,7 +4,7 @@ Represents a pose in 3D space with a timestamp
 
 ## Panel Support
 
-`PoseInFrame` is used in the [3D Panel](../panel/2-3d-panel) and [Image Panel](../panel/image-panel).
+`PoseInFrame` is used in the [3D Panel](../4-panel/2-3d-panel.md) and [Image Panel](../4-panel/5-image-panel.md).
 
 ## Data Structure
 

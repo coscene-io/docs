@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+id: 3d-panel
 ---
 
 # 3D Panel
@@ -31,15 +32,15 @@ Click the "3D Panel" and then click the **Panel** button in the left sidebar. Th
 
 1. **Pose**: The view follows changes in the reference frame's position and orientation. If the reference frame rotates or moves, the view also rotates and moves accordingly.
 
-    ![viz-5-3-Eng](../img/viz-5-3-Eng.png)
+   ![viz-5-3-Eng](../img/viz-5-3-Eng.png)
 
 2. **Position**: The view only follows changes in the reference frame's position, not its orientation.
 
-    ![viz-5-4-Eng](../img/viz-5-4-Eng.png)
+   ![viz-5-4-Eng](../img/viz-5-4-Eng.png)
 
 3. **Fixed**: The view does not follow any changes in the reference frame, keeping the perspective fixed.
 
-    ![viz-5-5-Eng](../img/viz-5-5-Eng.png)
+   ![viz-5-5-Eng](../img/viz-5-5-Eng.png)
 
 ### Scene
 
@@ -47,21 +48,21 @@ The "Scene" is the overall environment in the 3D visualization interface used to
 
 - **Render Stats**: Show or hide rendering statistics, enabling this option can display current rendering frame rates and other performance metrics.
 
-    ![viz-5-6-Eng](../img/viz-5-6-Eng.png)
+  ![viz-5-6-Eng](../img/viz-5-6-Eng.png)
 
 - **Background**: Set the background color of the scene to enhance contrast and visualization effect.
 
-    ![viz-5-7-Eng](../img/viz-5-7-Eng.png)
+  ![viz-5-7-Eng](../img/viz-5-7-Eng.png)
 
 - **Label Scale**: Adjust the scale size of labels displayed in the scene.
 
-    ![viz-5-8-Eng](../img/viz-5-8-Eng.png)
+  ![viz-5-8-Eng](../img/viz-5-8-Eng.png)
 
 - **Ignore COLLADA**: Choose whether to ignore the rendering of COLLADA models to speed up rendering or avoid unnecessary model displays.
 
 - **Mesh Up Axis**: Set the up axis direction of the grid in the scene, affecting the coordinate system direction of the entire scene.
 
-    ![viz-5-9-Eng](../img/viz-5-9-Eng.png)
+  ![viz-5-9-Eng](../img/viz-5-9-Eng.png)
 
 ### View
 
@@ -95,20 +96,21 @@ The "Scene" is the overall environment in the 3D visualization interface used to
 - **Line Color**: Choose the color of lines.
 - **Enable Preloading**: Control whether to enable preloading to improve display performance.
 
-    ![viz-5-12-Eng](../img/viz-5-12-Eng.png)
+  ![viz-5-12-Eng](../img/viz-5-12-Eng.png)
 
 #### Transforms
-Displays coordinate transformation information from ROSbag files and external transform data [manually imported](../../collaboration/record/5-manage-file.md) by users.
+
+Displays coordinate transformation information from ROSbag files and external transform data [manually imported](../../3-collaboration/record/5-manage-file.md) by users.
 
 - **base_link**
 
-    - **Parent Transform**: Set the parent reference frame of the current transform.
-    - **Age**: Time interval between the last frame data and current time.
-    - **History size**: Number of tf messages in the cache.
-    - **Translation (X, Y, Z)**: Adjust the position on the X, Y, Z axes.
-    - **Rotation (R, P, Y)**: Adjust the rotation on the roll, pitch, and yaw angles.
+  - **Parent Transform**: Set the parent reference frame of the current transform.
+  - **Age**: Time interval between the last frame data and current time.
+  - **History size**: Number of tf messages in the cache.
+  - **Translation (X, Y, Z)**: Adjust the position on the X, Y, Z axes.
+  - **Rotation (R, P, Y)**: Adjust the rotation on the roll, pitch, and yaw angles.
 
-        ![viz-5-13-Eng](../img/viz-5-13-Eng.png)
+    ![viz-5-13-Eng](../img/viz-5-13-Eng.png)
 
 ### Topics
 
@@ -123,6 +125,7 @@ Displays coordinate transformation information from ROSbag files and external tr
 #### Topic Classifications and Meanings
 
 - **Camera Data**: Represents calibration information and compressed image data from cameras at different positions. Users can click on camera data topics to adjust their visualization parameters.
+
   - **Distance**: Set the distance from the camera to the target object.
   - **Plane Projection Factor**: Adjust the projection ratio of the image in the 3D scene, affecting how the image fits onto the plane in the scene.
   - **Line Width**: Adjust the thickness of the image or data boundary lines.
@@ -131,6 +134,7 @@ Displays coordinate transformation information from ROSbag files and external tr
     ![viz-5-15-Eng](../img/viz-5-15-Eng.png)
 
 - **LIDAR Data**: Represents LIDAR data from different positions, usually displayed as point clouds. Users can click on LIDAR data topics to adjust their visualization parameters.
+
   - **Point Size**: By increasing or decreasing the size of points, the density and structure of point cloud data can be displayed more clearly. For example, larger points can better display sparse data, while smaller points can better show details.
   - **Point Shape**: Choosing the appropriate point shape can affect the visual effect of the point cloud. For example, circular points may better simulate the actual shape of objects, while square points can better display boundaries.
   - **Decay Time**: Set the duration before point cloud data disappears on the display, helping users observe dynamic changes in the data.
@@ -144,8 +148,10 @@ Displays coordinate transformation information from ROSbag files and external tr
     ![viz-5-16-Eng](../img/viz-5-16-Eng.png)
 
 - **Geographic and Location Data**: Represents geographic location, path, and environment information data, usually including drivable areas, global maps, semantic maps, etc.
+
   - **"drivable_area" and "map" Frame Lock**: Lock the display frame to reduce jitter or instability, ensuring consistent display.
   - **"semantic_map"**:
+
     - **Show Outlines**: Control whether to display the outlines of data to see data boundaries more clearly.
     - **Selection Variable**: Decide how to display data based on the selected variable.
 
@@ -153,16 +159,39 @@ Displays coordinate transformation information from ROSbag files and external tr
 
   - **External Map Import**
 
-    When [importing map data](../../collaboration/record/5-manage-file.md) from records, set the color mode of the corresponding map to RGBA to ensure correct display of the map data.
+    When [importing map data](../../3-collaboration/record/5-manage-file.md) from records, set the color mode of the corresponding map to RGBA to ensure correct display of the map data.
 
     ![3D-map_1](../img/3D-map_1.png)
 
 - **Markers and Annotations**: Used to add additional information or markers in the visualization scene.
+
   - **Color**: Set the display color of markers.
   - **Show Outlines**: Choose whether to show surrounding outlines to enhance visual effects.
   - **Selection Variable**: Display data variables.
 
     ![viz-5-18-Eng](../img/viz-5-18-Eng.png)
+
+### URDF
+
+Another common task in the 3D panel is visualizing URDF models. In the coScene platform, if your data already contains URDF models, they will be automatically loaded when you revisit.
+
+If you need to specify a URDF source other than the data, you can use the specified URL or load project resources.
+
+![URDF-options](../img/4-2-URDF-options.png)
+
+#### Specify URL
+
+In the "Custom Layers" - "URDF" - "Source" option of the 3D panel, select URL to specify the URDF connection.
+
+It is important to note that this link must be publicly available on the internet, otherwise it cannot be loaded.
+
+#### Load Project Resources
+
+You can also use the URDF file uploaded in the project common resource storage as the URDF source for this 3D panel.
+
+![URDF-project-common-resource-option](../img/4-2-URDF-project-common-resource-option.png)
+![URDF-select-files-from-project-common-resource](../img/4-2-URDF-select-files-from-project-common-resource.png)
+![URDF-project-common-resource-selected](../img/4-2-URDF-project-common-resource-selected.png)
 
 ## Tools in the 3D Panel
 
@@ -176,12 +205,12 @@ Used to display information about objects in the 3D scene.
 
 1. Click the **Inspect Object** button in the toolbar.
 
-    ![viz-5-20-Eng](../img/viz-5-20-Eng.png)
+   ![viz-5-20-Eng](../img/viz-5-20-Eng.png)
 
 2. Click the object you want to inspect to display the topic and other information about the object.
 3. Click the exit button.
 
-    ![viz-5-21-Eng](../img/viz-5-21-Eng.png)
+   ![viz-5-21-Eng](../img/viz-5-21-Eng.png)
 
 ### Toggle 2D/3D Camera
 
@@ -200,7 +229,7 @@ Used to measure the distance between two points in the 3D scene.
 3. Click at the endpoint to set the end of the measurement.
 4. Click the **Measuring Distance** again to clear the current measurement.
 
-    ![viz-5-24-Eng](../img/viz-5-24-Eng.png)
+   ![viz-5-24-Eng](../img/viz-5-24-Eng.png)
 
 ### Recenter & Zoom
 
@@ -210,6 +239,6 @@ Used to control the centering and zooming effects of the 3D view.
 2. Click the **+** and **-** buttons to zoom in and out of the view.
 3. You can also use the keyboard and mouse to zoom in and out of the view.
 
-    ![viz-5-25-Eng](../img/viz-5-25-Eng.png)
+   ![viz-5-25-Eng](../img/viz-5-25-Eng.png)
 
-   ---
+   ***

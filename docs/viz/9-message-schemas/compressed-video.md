@@ -4,16 +4,16 @@
 
 ## 面板支持
 
-`CompressedVideo` 在[三维面板](../panel/2-3d-panel)和[图像面板](../panel/image-panel)中使用。
+`CompressedVideo` 在[三维面板](../4-panel/2-3d-panel.md)和[图像面板](../4-panel/5-image-panel.md)中使用。
 
 ## 数据结构
 
-| 字段       | 类型                                                                  | 描述                     |
-| ---------- | --------------------------------------------------------------------- | ------------------------ |
-| `timestamp`  | [`time`](./built-in%20types#time)       | 视频帧的时间戳           |
-| `frame_id`   | [`string`](./built-in%20types#string)   | 视频的参考坐标系         |
-| `data`       | [`bytes`](./built-in%20types#bytes)     | 压缩视频帧数据           |
-| `format`     | [`string`](./built-in%20types#string)   | 视频格式                 |
+| 字段        | 类型                                  | 描述             |
+| ----------- | ------------------------------------- | ---------------- |
+| `timestamp` | [`time`](./built-in%20types#time)     | 视频帧的时间戳   |
+| `frame_id`  | [`string`](./built-in%20types#string) | 视频的参考坐标系 |
+| `data`      | [`bytes`](./built-in%20types#bytes)   | 压缩视频帧数据   |
+| `format`    | [`string`](./built-in%20types#string) | 视频格式         |
 
 ### `frame_id`
 
@@ -25,10 +25,10 @@
 
 具体来说，不同 `format` 值的要求如下：
 
-* `h264`  
-   * 使用 Annex B 格式的数据  
-   * 每个 CompressedVideo 消息应包含足够的 NAL 单元来解码恰好一个视频帧  
-   * 每个包含关键帧（IDR）的消息还必须包含 SPS NAL 单元
+- `h264`
+  - 使用 Annex B 格式的数据
+  - 每个 CompressedVideo 消息应包含足够的 NAL 单元来解码恰好一个视频帧
+  - 每个包含关键帧（IDR）的消息还必须包含 SPS NAL 单元
 
 ### `format`
 
@@ -40,13 +40,13 @@
 
 可视化数据结构与框架无关，可以使用任何支持的消息编码来实现：
 
-| 编码       | 数据结构                                                                                                                    |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------- |
-| ROS 1      | [foxglove_msgs/CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/CompressedVideo.msg)       |
-| ROS 2      | [foxglove_msgs/msg/CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/CompressedVideo.msg)   |
-| JSON       | [foxglove.CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/CompressedVideo.json)      |
-| Protobuf   | [foxglove.CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/CompressedVideo.proto) |
-| FlatBuffers| [foxglove.CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/CompressedVideo.fbs)       |
-| OMG IDL    | [foxglove::CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/CompressedVideo.idl) |
+| 编码        | 数据结构                                                                                                                    |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------- |
+| ROS 1       | [foxglove_msgs/CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/CompressedVideo.msg)        |
+| ROS 2       | [foxglove_msgs/msg/CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/CompressedVideo.msg)    |
+| JSON        | [foxglove.CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/jsonschema/CompressedVideo.json)      |
+| Protobuf    | [foxglove.CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/proto/foxglove/CompressedVideo.proto) |
+| FlatBuffers | [foxglove.CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/flatbuffer/CompressedVideo.fbs)       |
+| OMG IDL     | [foxglove::CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/omgidl/foxglove/CompressedVideo.idl) |
 
 您必须使用上面指定的数据结构名称，以便可视化能够识别该数据结构。

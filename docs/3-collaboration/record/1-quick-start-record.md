@@ -14,7 +14,6 @@ sidebar_position: 1
 
 ![record-list](./img/record-list.png)
 
-
 ### 记录详情页
 
 ![record-detail](./img/record-detail.png)
@@ -68,6 +67,7 @@ sidebar_position: 1
 ![edit-record_2](./img/edit-record_2.png)
 
 ### 管理记录
+
 在记录的【更多】操作中，可进行以下操作：
 
 - **复制记录**：将记录复制到当前项目或其他项目

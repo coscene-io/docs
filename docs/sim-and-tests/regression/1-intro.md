@@ -20,7 +20,7 @@ sidebar_position: 1
 批量测试任务的执行流程如下：
 
 1. 选择测试套件，将其预设的镜像作为测试环境
-2. 将测试程序、测试数据（[记录](../../collaboration/record/1-quick-start-record.md)）和测试套件的配置参数导入测试环境
+2. 将测试程序、测试数据（[记录](../../3-collaboration/record/1-quick-start-record.md)）和测试套件的配置参数导入测试环境
 3. 系统为测试套件关联的每条记录创建独立的子测试任务
 4. 所有子测试任务完成后，系统自动汇总结果并生成测试报告
 
@@ -80,7 +80,7 @@ sidebar_position: 1
 
    - 准备运行批量测试的 [Docker 镜像](../../image/1-about-docker-image.md)
    - 将镜像推送至公开平台或[刻行时空镜像仓库](../../image/3-push-image.md)
-   - 将测试数据上传到项目中并按[记录](../../collaboration/record/1-quick-start-record.md)存储
+   - 将测试数据上传到项目中并按[记录](../../3-collaboration/record/1-quick-start-record.md)存储
 
 2. 配置测试内容
 

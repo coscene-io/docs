@@ -92,7 +92,7 @@ sidebar_position: 3
 
 启用客户端后，若「数据采集」在线，机器端程序将按规则采集数据并自动上传至对应项目；若「远程控制」在线，用户可对机器进行 SSH 连接、结合 [coBridge](https://github.com/coscene-io/coBridge) 实时可视化设备
 
-### 查看客户端信息
+### 查看客户端信息 {#view-client-information}
 
 在设备端执行以下命令，可查看客户端的版本、日志信息。
 

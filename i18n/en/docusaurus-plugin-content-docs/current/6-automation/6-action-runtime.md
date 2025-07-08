@@ -4,9 +4,9 @@ When an action is running, it automatically prepares some environment variables 
 
 ## Environment Variables {#environment-variables}
 
-Define environment variables in an action for the program to read and use during runtime.
+In addition to the system-reserved variables listed below, you may define your own variables for use at runtime.
 
-When defining environment variables, please avoid using the names preset by the platform to prevent unexpected errors in the program. The platform's preset environment variables are as follows:
+**Avoid** naming collisions with the reserved variables to prevent unexpected errors.
 
 | Environment Variable Name | Value            | Description                                        |
 | ------------------------- | ---------------- | -------------------------------------------------- |
@@ -26,3 +26,9 @@ When defining environment variables, please avoid using the names preset by the 
 | `COS_TOKEN`               |                  | CLI and API Token                                  |
 
 Some of the above environment variables have empty values, which are optional. If they exist, their values are in UUID format; if not, they are empty.
+
+## COS_TOKEN
+
+`COS_TOKEN` is automatically injected at startup.
+
+Its permissions **mirror those of the user who triggered the action**. When performing **cross-project** operations, ensure the triggering user holds the required permissions on the target project; otherwise, related API calls will fail.

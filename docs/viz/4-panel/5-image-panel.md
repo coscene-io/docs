@@ -3,6 +3,7 @@ sidebar_position: 5
 ---
 
 # 图像面板
+
 显示原始及压缩后的图像和视频，并附带二维注释，如文本标签、圆形和点。同时叠加三维标记，以提供额外的上下文信息。
 
 ![img-panel](../img/img-panel.png)
@@ -28,6 +29,7 @@ sidebar_position: 5
 - 最大值：单通道 16 位和 16 位无符号单通道深度图像的最大缩放值（默认值：10000）。
 
 ### 场景
+
 - 渲染统计：在面板角落显示渲染性能统计信息
 - 背景：图像背后的背景颜色
 - 标签比例：文字标签的大小
@@ -35,11 +37,13 @@ sidebar_position: 5
 - 网格上轴：加载没有方向信息的网格模型（STL、OBJ 格式）时"向上"的方向（"Y 向上"、"Z 向上"）
 
 ### 图像注释
+
 2D 图像标注标记显示的主题。
 
 > 其他设置详见 [3d 面板](./2-3d-panel.md)
 
 ## 用户交互
+
 右键点击图片以将其下载为 PNG 文件格式。
 
 ![download-image](../img/download-image.png)
@@ -51,9 +55,11 @@ sidebar_position: 5
 滚动鼠标滚轮来缩放，拖动来平移。缩放时注释会重新渲染以保持清晰。
 
 ## 画面撕裂及卡顿
+
 当画面呈现撕裂和卡顿时，可能的原因是视频解码导致的延迟, 当浏览器无法使用硬件加速解码时会使用系统 CPU 解码，CPU 解码性能会显著低于硬件解码并且此时系统 CPU 负载和功耗也会影响到解码效率。硬件加速解码通常更快且性能开销更少, 请确认已启用该功能。
 
 ## 检查硬件加速:
+
 您可以通过打开 Google Chrome 并在地址栏中输入 <code>chrome://gpu</code> 来检查您的平台是否支持硬件加速视频解码。如果在此页面上未看到 <code>Video Decode: Hardware accelerated</code> 或 <code>Video Acceleration</code> 部分为空，则代表当前未开启硬件加速解码。
 
 <table>
@@ -68,6 +74,7 @@ sidebar_position: 5
 </table>
 
 ## 启用硬件加速:
+
 访问 <code>chrome://settings</code>，搜索 <code>acceleration</code>，确保 <code>Use graphics acceleration when available</code> 切换已启用。
 
 ![chrome-settings-acceleration](../img/chrome-settings-acceleration.png)
@@ -82,30 +89,30 @@ MacOS：
 
 ![chrome-flags-graphics-backend](../img/chrome-flags-graphics-backend.png)
 
-
 Linux：
 
 - 请注意，Chrome/Chromium 默认不支持 Linux 上的视频加速，可能需要使用自定义 Chrome/Chromium 标记来启用 GPU。
 - 确保您的图形驱动程序已更新并正确安装。
 
 ## 支持的消息类型
+
 想要使用图像面板,你的数据源必须提供 3D 标记类型的消息或者以下支持的消息类型。
 
 ### `RawImage`
 
-| 框架 | 消息类型 |
-| --- | --- |
-| ROS 1 | [sensor_msgs/Image](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html) |
-| ROS 2 | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/Image.msg) |
-| 自定义 | [foxglove.RawImage](../message-schemas/raw-image) |
+| 框架   | 消息类型                                                                                             |
+| ------ | ---------------------------------------------------------------------------------------------------- |
+| ROS 1  | [sensor_msgs/Image](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html)              |
+| ROS 2  | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/Image.msg) |
+| 自定义 | [foxglove.RawImage](../message-schemas/raw-image)                                                    |
 
 ### `CompressedImage`
 
-| 框架 | 消息类型 |
-| --- | --- |
-| ROS 1 | [sensor_msgs/CompressedImage](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CompressedImage.html) |
-| ROS 2 | [sensor_msgs/CompressedImage](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
-| 自定义 | [foxglove.CompressedImage](../message-schemas/compressed-image) |
+| 框架   | 消息类型                                                                                                                 |
+| ------ | ------------------------------------------------------------------------------------------------------------------------ |
+| ROS 1  | [sensor_msgs/CompressedImage](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CompressedImage.html)              |
+| ROS 2  | [sensor_msgs/CompressedImage](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
+| 自定义 | [foxglove.CompressedImage](../message-schemas/compressed-image)                                                          |
 
 ### `CameraCalibration`
 
@@ -113,18 +120,16 @@ Linux：
 
 可视化支持 plumb_bob 和 rational_polynomial 畸变模型。
 
-| 框架 | 消息类型 |
-| --- | --- |
-| ROS 1 | [sensor_msgs/CameraInfo](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CameraInfo.html) |
-| ROS 2 | [sensor_msgs/CameraInfo](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CameraInfo.msg) |
-| 自定义 | [foxglove.CameraCalibration](../message-schemas/camera-calibration) |
-
+| 框架   | 消息类型                                                                                                       |
+| ------ | -------------------------------------------------------------------------------------------------------------- |
+| ROS 1  | [sensor_msgs/CameraInfo](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CameraInfo.html)              |
+| ROS 2  | [sensor_msgs/CameraInfo](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CameraInfo.msg) |
+| 自定义 | [foxglove.CameraCalibration](../message-schemas/camera-calibration)                                            |
 
 ### `ImageAnnotations`
 
-| 框架 | 消息类型 |
-| --- | --- |
-| ROS 1 | [visualization_msgs/ImageMarker](https://docs.ros.org/en/noetic/api/visualization_msgs/html/msg/ImageMarker.html) |
-| ROS 2 | [visualization_msgs/ImageMarker](https://github.com/ros2/common_interfaces/blob/master/visualization_msgs/msg/ImageMarker.msg) |
-| 自定义 | [foxglove.ImageAnnotations](../message-schemas/image-annotations) |
-
+| 框架   | 消息类型                                                                                                                       |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| ROS 1  | [visualization_msgs/ImageMarker](https://docs.ros.org/en/noetic/api/visualization_msgs/html/msg/ImageMarker.html)              |
+| ROS 2  | [visualization_msgs/ImageMarker](https://github.com/ros2/common_interfaces/blob/master/visualization_msgs/msg/ImageMarker.msg) |
+| 自定义 | [foxglove.ImageAnnotations](../message-schemas/image-annotations)                                                              |

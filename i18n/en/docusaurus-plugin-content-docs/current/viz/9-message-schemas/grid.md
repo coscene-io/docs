@@ -8,7 +8,7 @@ A two-dimensional grid of data.
 
 ## Panel Support
 
-`Grid` is used in the [3D Panel](../panel/2-3d-panel) and [Image Panel](../panel/image-panel).
+`Grid` is used in the [3D Panel](../4-panel/2-3d-panel.md) and [Image Panel](../4-panel/5-image-panel.md).
 
 ## Data Structure
 
