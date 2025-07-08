@@ -111,8 +111,30 @@ sidebar_position: 5
             ![errorcode-list](./img/errorcode-list.png)
 
         - 规则触发条件：mag.data 包含事件码表 code 列任一行的值
-            - 若 data 字段为数组，则可切换为「代码模式」，输入： msg.data.exists(x, x.code.contains(scope.code))
-
+            - 若 data 字段为数组，则可切换为「代码模式」，输入： msg.data.exists(x, x.code.contains(scope.code))，示例消息如下：
+              
+              ```
+              {
+	            "events_count": 3,
+	            "events_info": [{
+		            	"code": "10031",
+	            		"msg": "camera disconnected",
+	            		"level": "p1"
+	            	},
+	            	{
+		            	"code": "20256",
+		            	"msg": "navigate to workstation failed",
+		            	"level": "p2"
+		            },
+		            {
+		            	"code": "30221",
+		            	"msg": "low battery",
+		            	"level": "p1"
+		            }
+	            ]
+              }
+              ```
+            
         上述信息表示：监听 topic `/error_status`，判断其字段 `data` 的消息中，是否包含关键词 `1001 ~ 1005`
 
     - 采集数据
@@ -132,6 +154,8 @@ sidebar_position: 5
 
 ### 监听 bag/mcap 采集
 同监听 topic 采集的 2-3 步骤，无需使用 coListener。
+
+注意：仅支持监听完整的 bag/mcap，暂不支持监听与采集 bag.active。如需采集完整的 bag 文件，可将采集数据的时间范围设置为「采集后 n 分钟」，等待 bag 写入完成后进行采集。
 
 ## 可视化联动采集
 详见[异构机器人数据采集工厂](../use-case/5-heterogeneous-robot-data-factory.md)
