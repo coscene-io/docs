@@ -102,7 +102,7 @@ Once the client is enabled:
     - Establish SSH connections to the machine
     - Perform real-time device visualization using [coBridge](https://github.com/coscene-io/coBridge)
 
-### View Client Information
+### View Client Information {#view-client-information}
 
 
 On the device side, execute the following command to view the client version and log information.
