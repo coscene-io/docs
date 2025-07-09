@@ -12,7 +12,7 @@ id: changelog
 - Added "Batch Add Field Enum Values" feature: When defining "selector" type fields in organization settings, you can now batch add field enum values
 - Added "Copy Project": When creating a project, you can now copy the configuration information from an existing project
 - Added "Organization Role Management": In the Organization Settings - Role Management page, you can now set default organization roles for new members
-- Added "Collection Path Variables": When manually collecting device data, you can now use start and end time variables as file paths. You can also directly define variables in the organization device configuration. See [Manual Collection Documentation](/docs/device/device-collect#manual-collection) for more details
+- Added "Collection Path Variables": When manually collecting device data, you can now use start and end time variables as file paths. You can also directly define variables in the organization device configuration. See [Manual Collection Documentation](https://docs.coscene.io/docs/device/device-collect#manual-collection) for more details
 - Added Data Collection Client v1.1.7:
   - Manual/Rule-based collection now supports collecting additional folders
   - When manually collecting, file creation times are now read and can be used as an additional time judgment reference
