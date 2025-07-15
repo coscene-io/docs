@@ -6,31 +6,9 @@ sidebar_position: 1
 
 [coBridge](https://github.com/coscene-io/coBridge) is an open-source edge software provided by coScene, currently supporting **ros1** `noetic`, **ros2** `foxy` and `humble` versions. coBridge runs as a ros node on the robot side and interacts with the cloud through websocket connections. After establishing a connection with the cloud, coBridge can subscribe to ros topics and call ros services based on cloud commands, enabling real-time robot status monitoring, remote command deployment, and other functionalities.
 
-## Install coBridge
+## Prepare coBridge {#prepare-cobridge}
 
-On the device side, open a terminal and follow these steps to install coBridge.
-
-1. Import the public key.
-
-```bash
-  wget https://download.coscene.cn/cobridge/coscene.gpg && sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/coscene.gpg coscene.gpg
-```
-
-2. Add the source.
-
-```bash
-  echo "deb [signed-by=/etc/apt/trusted.gpg.d/coscene.gpg] https://download.coscene.cn/cobridge $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cobridge.list
-```
-
-3. Update apt and install.
-
-```bash
-  sudo apt update
-  # Note: If ROS_DISTRO is not in your environment variables, ${ROS_DISTRO} should be replaced with 'noetic', 'foxy' or 'humble'
-  sudo apt install ros-${ROS_DISTRO}-cobridge -y
-```
-
-4. Run coBridge.
+Please refer to [Install coScene Software Using APT](./2-apt-source-install.md) to install coBridge. Launch the ROS node afterwards.
 
 ```bash
   source /opt/ros/${ROS_DISTRO}/setup.bash
