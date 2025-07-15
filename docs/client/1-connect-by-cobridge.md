@@ -8,39 +8,7 @@ sidebar_position: 1
 
 ## 安装 coBridge
 
-在机器端，打开 terminal，依照以下流程安装 coBridge。
-
-1. 导入公钥。
-
-```bash
-  wget https://download.coscene.cn/cobridge/coscene.gpg && sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/coscene.gpg coscene.gpg
-```
-
-2. 添加源。
-
-```bash
-  echo "deb [signed-by=/etc/apt/trusted.gpg.d/coscene.gpg] https://download.coscene.cn/cobridge $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cobridge.list
-```
-
-3. 更新apt并安装。
-
-```bash
-  sudo apt update
-  # 注意: 如果 ROS_DISTRO 没有在你的环境变量里面，${ROS_DISTRO} 需要被 'noetic', 'foxy' or 'humble' 替换
-  sudo apt install ros-${ROS_DISTRO}-cobridge -y
-```
-
-4. 运行 coBridge。
-
-```bash
-  source /opt/ros/${ROS_DISTRO}/setup.bash
-
-  # for ros 1 distribution
-  roslaunch cobridge cobridge.launch
-
-  # for ros 2 distribution
-  ros2 launch cobridge cobridge_launch.xml
-```
+请参照 [使用 APT 安装 coScene 软件](./2-apt-source-install.md) 安装 `coBridge` 软件
 
 ## 使用 coStudio 对机器进行实时可视化
 
