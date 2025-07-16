@@ -50,7 +50,59 @@ sidebar_position: 5
 ## 准备与启动 ROS node
 
 - 机器人本体上需要有可以提供 **service** 的**数据录制节点**，并且提供 **开始录制** （如/start_record）， **取消录制** （如/cancel_record）， **结束录制** （如/stop_record）之类的服务供刻行时空调用。
-  -- **注意：**： 目前只支持**service** 类型的消息。
+  -- **注意：** 
+  1. 目前只支持**service** 类型的消息。
+  2. 消息的格式需要符合 ROS/ROS2 消息定义规范，如：
+  ```
+  std_srvs/Empty "start_record"
+  std_srvs/Empty "cancel_record"
+  std_srvs/Empty "stop_record"
+  ```
+  3. 各接口请求和返回，需要满足一定的要求，如：
+  ```
+  - /start_record
+    - Request
+      {
+        "record_opt": "-a"  //可选，取决于您的服务是否支持传参
+      }
+    - Response
+      {
+        "success": true / false , // 表示是否成功启动录制，必须返回
+        "message": ""
+      }
+  ```
+  ```
+  - /cancel_record
+    - Request
+      {
+         "auto_remove": true  //可选，取决于您的服务是提供对应删除废弃数据的能力
+      }
+    - Response
+      {
+        "success": true / false, // 表示是否成功取消录制，必须返回
+        "message": ""   // 可选，是否返回必要信息
+      }
+  ```
+  ```
+  - /stop_record
+    - Request
+      { } //可支持传参
+    - Response
+      {
+          "success": true,   // 如果 success 为 true 则读取 type 来判断行为, 
+          // "NORMAL" - 需要把生成的bag上传
+          // "SKIP_CAPTURE" - 采集出现问题(e.g.: 未能通过bag质量检测),不需要上传，非必须。
+          "type": "NORMAL" | "SKIP_CAPTURE"  ,
+          "message": "",   // 可选，是否返回必要信息
+          "record_name": "",  // 可选，是否要指定平台记录的名称
+          "tags": ["01", "02"], // 可选，是否要指定平台记录的标签
+          "files": [     // 必须返回此次录制数据的绝对路径
+              "/home/cos/bags/1.bag",
+              "/home/cos/bags/2.bag",
+              "/home/cos/bags/3.bag"
+          ]
+      }
+
 - 启动 coBridge 前需 source **数据录制节点** 的 workspace 环境变量。
 - 示例启动脚本（请根据实际情况修改）：
   ```bash
