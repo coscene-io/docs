@@ -3,79 +3,176 @@ slug: record-operations
 sidebar_position: 2
 ---
 
-# 使用命令行操作记录（Records）
+# 操作记录和文件
 
-关于 coScene 命令行中操作记录的详细信息，您可以使用 `cocli record -h` 来查看详细用法
+记录是刻行平台中的核心概念，本文列举了记录和其中文件的常见操作，并附简单的例子。
 
-![cli-record-help](./img/2-cocli-record-help.png)
-
-以下是一些常见操作的示例：
-
-## 创建记录
+关于具体命令的的详细参数，可以使用 `cocli [command] -h` 来查看。
 
 ```bash
-# 创建一个叫做 <预留文件> 的记录
-cocli record create -t 预留文件
+cocli record -h
 ```
 
-![cocli-record-create](./img/2-cocli-record-create.png)
+```bash
+Work with coScene record.
 
-您可以点击结果中的网址，在网页中查看刚创建的记录
+Usage:
+  cocli record [command]
 
-## 查看项目中的记录
+Available Commands:
+  copy          Copy a record to target project/record
+  create        Create a new record
+  create-moment Create moment in the record
+  delete        Delete a record
+  describe      Describe record metadata.
+  download      Download files from record to directory.
+  file          Manage files in records
+  list          List records in the project.
+  list-moments  List moments in the record
+  update        Update record.
+  upload        Upload files in directory to a record in coScene.
+  view          View record.
+
+Flags:
+  -h, --help   help for record
+
+Global Flags:
+      --config string      config file path (default "/Users/yujing/.cocli.yaml")
+      --log-level string   log level, one of: trace|debug|info|warn|error (default "info")
+
+Use "cocli record [command] --help" for more information about a command.
+```
+
+## 记录操作
+
+### 创建记录
+
+```bash
+cocli record create -t humanoid-episode-01 -d "the first episode of data collection"
+```
+
+```bash
+Record created successfully!
+-------------------------------------------------------------
+Field                    Value
+ID:                      c5f7a2fa-a366-41e0-b1d8-1498b75348f0
+Name:                    projects/b3d9cb59-aeff-4448-aded-808b27608675/records/c5f7a2fa-a366-41e0-b1d8-1498b75348f0
+Title:                   humanoid-episode-01
+Description:             the first episode of data collection
+Create Time:             2025-07-17T21:56:07+08:00
+Update Time:             2025-07-17T21:56:07+08:00
+Archived:                false
+URL:                     https://coscene.cn/coscene-lark/docs/records/c5f7a2fa-a366-41e0-b1d8-1498b75348f0
+-------------------------------------------------------------
+```
+
+### 列举项目中的记录
 
 ```bash
 cocli record list
 ```
 
-![cocli-record-list](./img/2-cocli-record-list.png)
-
-List 命令会将项目中的所有记录列出，我们可以通过串联`grep` 和 `cut` 等命令来获取某个记录的 ID
-
 ```bash
-cocli record list | grep '预留' | cut -d ' ' -f1
+Note: Showing first 100 records (default page size). Use --all to list all records or --page-size to specify page size.
+
+ID                                       TITLE                                        LABELS                        CREATE TIME
+9c9177f6-8194-4d69-8536-3cfebce6fc23     humanoid-episode-200                                                       2025-07-17T21:59:04+08:00
+c729f6ab-f4e8-4d1e-adf4-24d0165939e9     humanoid-episode-199                                                       2025-07-17T21:59:04+08:00
+5ac02141-1ac9-4b5b-b0d0-6ea8df6bfcf4     humanoid-episode-198                                                       2025-07-17T21:59:04+08:00
+ab1eab19-6f46-422a-bb54-24157e7f24b3     humanoid-episode-197                                                       2025-07-17T21:59:04+08:00
+fe67cd75-6422-44cc-bd80-17a51c1f86a7     humanoid-episode-196                                                       2025-07-17T21:59:03+08:00
+44bb67cb-db4f-4aa8-9ef7-7354870a8b65     humanoid-episode-195                                                       2025-07-17T21:59:03+08:00
+c58469bd-6373-42cd-9bf0-e0e69adc440b     humanoid-episode-194                                                       2025-07-17T21:59:03+08:00
+f1f6a93e-0d00-4c88-aadb-3483366fb864     humanoid-episode-193                                                       2025-07-17T21:59:03+08:00
+662464e6-9acd-4228-908b-013a714f8491     humanoid-episode-192                                                       2025-07-17T21:59:03+08:00
+72c569d8-20ba-4810-9db7-7fb6b9e928db     humanoid-episode-191                                                       2025-07-17T21:59:02+08:00
+7a338e0c-619a-4b9d-8dca-c6486c6da4af     humanoid-episode-190                                                       2025-07-17T21:59:02+08:00
+47f3b154-dfee-4a64-aaba-b869545fb18e     humanoid-episode-189                                                       2025-07-17T21:59:02+08:00
+6b4e938c-eaa0-4e6f-9d12-d1ab79679e22     humanoid-episode-188                                                       2025-07-17T21:59:02+08:00
+ed3c6fdf-9fe9-4ebe-af4f-fb2f761a27f5     humanoid-episode-187                                                       2025-07-17T21:59:02+08:00
+d00077d9-65f6-4b30-a92a-61a6ec1e478e     humanoid-episode-186                                                       2025-07-17T21:59:01+08:00
+fcd65058-d777-48ca-99f3-606fc02834e6     humanoid-episode-185                                                       2025-07-17T21:59:01+08:00
+53ffbdfa-43ae-44bf-abcd-a99548175776     humanoid-episode-184                                                       2025-07-17T21:59:01+08:00
+...
 ```
 
-![cocli-record-get-id](./img/2-cocli-record-get-id.png)
+List 命令会将项目中的所有记录列出，当记录数量增长到一定程度后，也可以通过指定 `page` 和 `page size` 来对记录列表进行分页查询。
 
-## 上传文件到记录
+```bash
+cocli record list --page-size 10 --page 2
+```
 
-您可以将任意指定的文件或者目录内的文件上传到特定记录，我们以前述的`预留文件`记录为例
+### 上传文件到记录
+
+您可以将任意指定的文件或者目录内的文件上传到特定记录
 
 ```bash
 # 创建一个临时文件
-touch TEST_FILE
+touch episode-1.mcap
 
 # 将该文件上传到前面创建的 Record
-cocli record upload acd706d9-0879-4d88-8550-e69bb8ff8f6b ./TEST_FILE
+cocli record upload 9c9177f6-8194-4d69-8536-3cfebce6fc2 ./episode-1.mcap
 ```
-
-![cocli-upload-file-to-record](./img/2-cocli-upload-file-to-record.png)
-
-此时再刷新网页中的记录，就可以看到我们刚上传的文件了
-
-![view-just-uploaded-file](./img/2-view-just-uploaded-file.png)
-
-## 下载记录中的文件
-
-我们也可以将记录中的文件下载到本地，在`预留文件`这个记录中，我们又上传了一些随机文件作为示例。
-
-![cocli-record-download-prepare-files](./img/2-cocli-record-download-prepare-files.png)
 
 ```bash
-cocli record download acd706d9-0879-4d88-8550-e69bb8ff8f6b .
+-------------------------------------------------------------
+Uploading files to record: 9c9177f6-8194-4d69-8536-3cfebce6fc23
+Upload Status:
+/Users/yujing/Workspace/co/docs/episode-1.mcap:                                                              Upload completed
+
+Total: 1, Skipped: 0, Success: 1
+View record at: https://coscene.cn/coscene-lark/docs/records/9c9177f6-8194-4d69-8536-3cfebce6fc2
 ```
 
-![cocli-record-download-to-local](./img/2-cocli-record-download-to-local.png)
+### 下载记录中的文件
+
+```bash
+cocli record download 9c9177f6-8194-4d69-8536-3cfebce6fc2 .
+```
+
+```
+-------------------------------------------------------------
+Downloading record 9c9177f6-8194-4d69-8536-3cfebce6fc23
+View record at: https://staging.coscene.cn/coscene-lark/docs/records/9c9177f6-8194-4d69-8536-3cfebce6fc23
+Saving to /Users/yujing/Workspace/co/docs/9c9177f6-8194-4d69-8536-3cfebce6fc23
+
+Downloading #1 file: episode-1.mcap
+
+Download completed!
+All 1 / 1 files are saved to /Users/yujing/Workspace/co/docs/9c9177f6-8194-4d69-8536-3cfebce6fc23
+```
 
 命令行工具会将记录中的所有文件打包在以记录 ID 为名字的文件夹内，这个功能在您之后可能会遇到的下载多个记录中帮助您保持文件的独立性，方便管理。
 
-## 删除记录
+### 删除记录
 
 命令行工具也可以用来删除记录，删除记录是一个非常危险的操作，请在删除时手工确认是否真的需要
 删除记录，或者使用 `-f` 标记来强制删除。
 
-![delete-a-record](./img/2-delete-a-record.png)
+```bash
+cocli record delete 9c9177f6-8194-4d69-8536-3cfebce6fc23
+```
+
+```bash
+Are you sure you want to delete the record? (y/n) y
+Record successfully deleted.
+```
+
+### 查看记录信息
+
+### 更新记录信息
+
+命令行也支持更改记录的名字和描述信息，下列的命令找出了记录中带有 `empty-record` 标签的第一个记录，更新了该记录的
+名字和描述，让用户更方便的理解这个记录的意思
+
+```bash
+RECORD_ID=$(cocli record list | grep 'empty-record' | head -n1 | cut -d ' ' -f1)
+
+cocli record update $RECORD_ID -t "Fancy Empty Record Title" \n
+  -d "Do you really need a description for an empty record"
+```
+
+![update-record-title-and-description](./img/2-update-record-title-and-description.png)
 
 ## 管理记录的标签
 
@@ -112,17 +209,3 @@ cocli record update f3cb29c5-4312-40b0-8fcd-1df4402824fc --delete-labels sunny
 通过命令行删除 `sunny` 标签，可以看到现在只剩下了 `morning` 的标签了
 
 ![cocli-record-delete-labels-list](./img/2-cocli-record-delete-labels-list.png)
-
-## 更新记录的原信息
-
-命令行也支持更改记录的名字和描述信息，下列的命令找出了记录中带有 `empty-record` 标签的第一个记录，更新了该记录的
-名字和描述，让用户更方便的理解这个记录的意思
-
-```bash
-RECORD_ID=$(cocli record list | grep 'empty-record' | head -n1 | cut -d ' ' -f1)
-
-cocli record update $RECORD_ID -t "Fancy Empty Record Title" \n
-  -d "Do you really need a description for an empty record"
-```
-
-![update-record-title-and-description](./img/2-update-record-title-and-description.png)
