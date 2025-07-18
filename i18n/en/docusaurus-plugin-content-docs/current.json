@@ -71,13 +71,9 @@
     "message": "Automation",
     "description": "The label for category 自动化 in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.命令行工具 coCLI - Beta": {
-    "message": "coCLI(Beta)",
-    "description": "The label for category 命令行工具 coCLI - Beta in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.命令行工具 coCLI - Beta.link.generated-index.description": {
-    "message": "Please note coCLI is under active development and might have unexpected problems. We are working on improving the tool constantly. We apologize if you encounter any issues.",
-    "description": "The generated-index page description for category 命令行工具 coCLI - Beta in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.命令行工具 coCLI": {
+    "message": "coCLI",
+    "description": "The label for category 命令行工具 coCLI in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.典型使用场景": {
     "message": "Common Use Cases",
