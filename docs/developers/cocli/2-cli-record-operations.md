@@ -45,7 +45,7 @@ Use "cocli record [command] --help" for more information about a command.
 
 ## 记录操作
 
-### 创建记录
+### 创建记录 {#create-record}
 
 ```bash
 cocli record create -t humanoid-episode-01 -d "the first episode of data collection"
@@ -66,7 +66,7 @@ URL:                     https://coscene.cn/coscene-lark/docs/records/c5f7a2fa-a
 -------------------------------------------------------------
 ```
 
-### 列举项目中的记录
+### 列举项目中的记录 {#list-records}
 
 ```bash
 cocli record list
@@ -102,7 +102,7 @@ List 命令会将项目中的所有记录列出，当记录数量增长到一定
 cocli record list --page-size 10 --page 2
 ```
 
-### 上传文件到记录
+### 上传文件到记录 {#upload-files-to-record}
 
 您可以将任意指定的文件或者目录内的文件上传到特定记录
 
@@ -124,7 +124,7 @@ Total: 1, Skipped: 0, Success: 1
 View record at: https://coscene.cn/coscene-lark/docs/records/9c9177f6-8194-4d69-8536-3cfebce6fc2
 ```
 
-### 下载记录中的文件
+### 下载记录中的文件 {#download-files-from-record}
 
 ```bash
 cocli record download 9c9177f6-8194-4d69-8536-3cfebce6fc2 .
@@ -144,7 +144,7 @@ All 1 / 1 files are saved to /Users/yujing/Workspace/co/docs/9c9177f6-8194-4d69-
 
 命令行工具会将记录中的所有文件打包在以记录 ID 为名字的文件夹内，这个功能在您之后可能会遇到的下载多个记录中帮助您保持文件的独立性，方便管理。
 
-### 删除记录
+### 删除记录 {#delete-record}
 
 命令行工具也可以用来删除记录，删除记录是一个非常危险的操作，请在删除时手工确认是否真的需要
 删除记录，或者使用 `-f` 标记来强制删除。
@@ -158,23 +158,61 @@ Are you sure you want to delete the record? (y/n) y
 Record successfully deleted.
 ```
 
-### 查看记录信息
+### 查看记录信息 {#view-record}
 
-### 更新记录信息
-
-命令行也支持更改记录的名字和描述信息，下列的命令找出了记录中带有 `empty-record` 标签的第一个记录，更新了该记录的
-名字和描述，让用户更方便的理解这个记录的意思
+命令行工具可以通过 `describe` 或者 `view` 命令来查看记录的详细信息。`describe` 命令会输出记录的详细信息，而 `view` 命令则会输出记录的 URL。
 
 ```bash
-RECORD_ID=$(cocli record list | grep 'empty-record' | head -n1 | cut -d ' ' -f1)
-
-cocli record update $RECORD_ID -t "Fancy Empty Record Title" \n
-  -d "Do you really need a description for an empty record"
+cocli record describe 52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
-![update-record-title-and-description](./img/2-update-record-title-and-description.png)
+```bash
+Field         Value
+ID:           52c5afac-22ca-4ab5-b9cf-fc069053b1af
+Name:         projects/b3d9cb59-aeff-4448-aded-808b27608675/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
+Title:        humanoid-episode-100
+Description:  episode #100 of data collection
+Create Time:  2025-07-17T21:58:43+08:00
+Update Time:  2025-07-17T21:58:43+08:00
+Archived:     false
+URL:          https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
+```
+
+```bash
+cocli record describe 52c5afac-22ca-4ab5-b9cf-fc069053b1af
+```
+
+```bash
+The record url is: https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
+```
+
+### 更新记录信息 {#update-record}
+
+命令行也支持更改记录的名字、描述等信息，完整的更新列表请查看帮助。
+
+```bash
+cocli record update 52c5afac-22ca-4ab5-b9cf-fc069053b1af -d "物体运行过程中，机械臂扭矩未达到预期，失败" # 更新记录描述
+```
+
+```
+Successfully updated record projects/b3d9cb59-aeff-4448-aded-808b27608675/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
+```
 
 ## 管理记录的标签
+
+标签是管理和查询记录的重要手段，通过对记录添加和删除标签，我们可以在批处理和自动化的过程中，对不同的数据进行简单的区分。
+
+### 添加标签
+
+```bash
+
+```
+
+### 删除标签
+
+```bash
+
+```
 
 `cocli record list` 可以很方便的看到记录的标签，我们也可以对记录的标签进行更多的操作。我们以列表中的第一个记录举例。
 
