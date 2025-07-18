@@ -250,3 +250,30 @@ Update Time:             2025-07-18T15:21:07+08:00
 Archived:                false
 URL:                     https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
+
+## 更多的文件操作 {#file-operations}
+
+### 列举文件
+
+```bash
+cocli record file list 52c5afac-22ca-4ab5-b9cf-fc069053b1af
+```
+
+```bash
+FILENAME          SIZE                UPDATE TIME                   CREATE TIME
+episode-1.bag     500.6 MB            2025-07-18T15:25:25+08:00     2025-07-18T15:25:25+08:00
+metadata.json     626 kB              2025-07-18T15:25:20+08:00     2025-07-18T15:25:20+08:00
+map.png           174 kB              2025-07-18T15:25:16+08:00     2025-07-18T15:25:16+08:00
+node-logs.log     522 kB              2025-07-18T15:25:12+08:00     2025-07-18T15:25:12+08:00
+```
+
+### 删除文件
+
+```bash
+cocli record file delete 52c5afac-22ca-4ab5-b9cf-fc069053b1af node-logs.bag
+```
+
+```
+Are you sure you want to delete the file 'node-logs.log' from record? (y/n) y
+File 'node-logs.log' successfully deleted.
+```
