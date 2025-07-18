@@ -7,7 +7,9 @@ sidebar_position: 2
 
 记录是刻行平台中的核心概念，本文列举了记录和其中文件的常见操作，并附简单的例子。
 
-关于具体命令的的详细参数，可以使用 `cocli [command] -h` 来查看。
+:::warning
+关于具体命令的的详细参数，都以使用 `cocli [command] [subcommand] -h` 来查看。本文中只列举了常用的命令和参数及用法。
+:::
 
 ```bash
 cocli record -h
