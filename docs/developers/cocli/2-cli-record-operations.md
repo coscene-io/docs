@@ -133,7 +133,7 @@ cocli record download 9c9177f6-8194-4d69-8536-3cfebce6fc2 .
 ```
 -------------------------------------------------------------
 Downloading record 9c9177f6-8194-4d69-8536-3cfebce6fc23
-View record at: https://staging.coscene.cn/coscene-lark/docs/records/9c9177f6-8194-4d69-8536-3cfebce6fc23
+View record at: https://coscene.cn/coscene-lark/docs/records/9c9177f6-8194-4d69-8536-3cfebce6fc23
 Saving to /Users/yujing/Workspace/co/docs/9c9177f6-8194-4d69-8536-3cfebce6fc23
 
 Downloading #1 file: episode-1.mcap
@@ -205,45 +205,48 @@ Successfully updated record projects/b3d9cb59-aeff-4448-aded-808b27608675/record
 ### 添加标签
 
 ```bash
+cocli record update 52c5afac-22ca-4ab5-b9cf-fc069053b1af --append-labels "end-effector,wheels"
+```
 
+```bash
+Successfully updated record projects/b3d9cb59-aeff-4448-aded-808b27608675/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
 ### 删除标签
 
 ```bash
-
+cocli record update 52c5afac-22ca-4ab5-b9cf-fc069053b1af --delete-labels "end-effector"
 ```
 
-`cocli record list` 可以很方便的看到记录的标签，我们也可以对记录的标签进行更多的操作。我们以列表中的第一个记录举例。
-
-![cocli-labels-list-record](./img/2-cocli-labels-list-record.png)
-
-### 给记录添加标签
-
-```
-cocli record update f3cb29c5-4312-40b0-8fcd-1df4402824fc --append-labels afternoon,rainy
+```bash
+Successfully updated record projects/b3d9cb59-aeff-4448-aded-808b27608675/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
-记录成功的添加了 afternoon 和 rainy 的标签
+### 整体替换标签
 
-![cocli-record-append-labels](./img/2-cocli-record-append-labels.png)
-
-### 替换记录的已有标签
-
-```
-cocli record update f3cb29c5-4312-40b0-8fcd-1df4402824fc --update-labels sunny,morning
+```bash
+cocli record update 52c5afac-22ca-4ab5-b9cf-fc069053b1af --update-labels "end-effector,pick-and-place"
 ```
 
-可以看到现在的记录的标签已经从 afternoon, rainy 更新成了 sunny, morning
-
-![cocli-record-update-labels](./img/2-cocli-record-update-labels.png)
-
-### 删除指定标签
-
-```
-cocli record update f3cb29c5-4312-40b0-8fcd-1df4402824fc --delete-labels sunny
+```bash
+Successfully updated record projects/b3d9cb59-aeff-4448-aded-808b27608675/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
-通过命令行删除 `sunny` 标签，可以看到现在只剩下了 `morning` 的标签了
+最后我们确认下，记录的标签已经被更新了。
 
-![cocli-record-delete-labels-list](./img/2-cocli-record-delete-labels-list.png)
+```bash
+cocli record describe 52c5afac-22ca-4ab5-b9cf-fc069053b1af
+```
+
+```bash
+Field                    Value
+ID:                      52c5afac-22ca-4ab5-b9cf-fc069053b1af
+Name:                    projects/b3d9cb59-aeff-4448-aded-808b27608675/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
+Title:                   humanoid-episode-100
+Description:             物体运行过程中，机械臂扭矩未达到预期，失败
+Labels:                  pick-and-place, end-effector
+Create Time:             2025-07-17T21:58:43+08:00
+Update Time:             2025-07-18T15:21:07+08:00
+Archived:                false
+URL:                     https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
+```
