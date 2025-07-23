@@ -200,6 +200,61 @@ cocli record update 52c5afac-22ca-4ab5-b9cf-fc069053b1af -d "物体运行过程�
 Successfully updated record projects/b3d9cb59-aeff-4448-aded-808b27608675/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
+## 管理一刻 {#manage-moments}
+
+一刻是记录中的一个重要概念，它代表了记录中的一个时间点或事件。通过命令行工具，我们可以对记录中的一刻进行管理。
+
+### 创建一刻 {#create-moment}
+
+```bash
+cocli record create-moment bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 -n "first trigger" -D 120 -T 1753271704
+```
+
+```bash
+INFO created moment: projects/b3d9cb59-aeff-4448-aded-808b27608675/events/17a9c804-6306-4da2-ab77-7765fac7023d
+INFO upserted task: projects/b3d9cb59-aeff-4448-aded-808b27608675/tasks/5a650b42-8cf8-4583-a419-82d9b063c65f
+```
+
+### 列举一刻 {#list-moments}
+
+```bash
+cocli record list-moments bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6
+```
+
+```bash
+NAME              TRIGGER TIME                  DURATION
+first trigger     2025-07-23T19:55:04+08:00     2m0s
+intersection      2025-07-21T19:55:04+08:00     1m30s
+traffic light     2025-07-20T19:55:04+08:00     1m15s
+```
+
+### 下载一刻 {#download-moments}
+
+```bash
+cocli record list-moments bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 -o json
+```
+
+```json
+{
+  "events": [
+    {
+      "name": "projects/b3d9cb59-aeff-4448-aded-808b27608675/events/17a9c804-6306-4da2-ab77-7765fac7023d",
+      "displayName": "first trigger",
+      "triggerTime": "2025-07-23T11:55:04Z",
+      "createTime": "2025-07-23T11:55:25.600Z",
+      "updateTime": "2025-07-23T11:55:25.600Z",
+      "duration": "120s",
+      "device": {},
+      "task": {},
+      "creator": "users/883c8529-1c1a-403b-960d-71eff4699aa3",
+      "record": "projects/b3d9cb59-aeff-4448-aded-808b27608675/records/bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6",
+      "rule": {}
+    }
+  ],
+  "totalSize": "1"
+}
+```
+
 ## 管理记录的标签
 
 标签是管理和查询记录的重要手段，通过对记录添加和删除标签，我们可以在批处理和自动化的过程中，对不同的数据进行简单的区分。
