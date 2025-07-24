@@ -45,7 +45,7 @@ Global Flags:
 Use "cocli record [command] --help" for more information about a command.
 ```
 
-## 记录操作
+## 记录操作 {#record-operations}
 
 ### 创建记录 {#create-record}
 
