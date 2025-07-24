@@ -1,9 +1,0 @@
-{
-  "label": "Message Schemas",
-  "position": 9,
-  "collapsible": true,
-  "link": {
-    "type": "generated-index",
-    "slug": "/viz/message-schemas"
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "label": "Entry Point",
-  "position": 2,
-  "collapsible": true,
-  "link": {
-    "type": "generated-index",
-    "slug": "/category/extensions/entry-point"
-  }
-}
