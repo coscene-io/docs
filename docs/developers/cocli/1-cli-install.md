@@ -16,10 +16,26 @@ curl -fL https://download.coscene.cn/cocli/install.sh | sh
 在命令行中可以使用 `cocli -h` 来确认命令行工具已经成功安装，并查看工具的基基本用法。
 
 ```bash
-cocli -h
-```
+Usage:
+  cocli [command]
 
-![cocli-help](./img/1-cocli-help.png)
+Available Commands:
+  action      Work with coScene action.
+  completion  Generate the autocompletion script for cocli for the specified shell. Supporting Zsh and Bash.
+  help        Help about any command
+  login       Login to coScene
+  project     Work with coScene project.
+  record      Work with coScene record.
+  update      Update cocli version
+
+Flags:
+      --config string      config file path (default "/Users/yujing/.cocli.yaml")
+  -h, --help               help for cocli
+      --log-level string   log level, one of: trace|debug|info|warn|error (default "info")
+  -v, --version            version for cocli
+
+Use "cocli [command] --help" for more information about a command.
+```
 
 ### 更新至最新版本
 
@@ -68,17 +84,39 @@ cocli login set -p <项目 slug> -t <个人访问令牌> -e <openapi 地址>
 
 命令行成功认证之后，就可以使用命令行来切换默认的工作项目，我们可以首先列出组织中所有用户有权限访问的项目和对应的项目 Slug
 
-```
+```bash
 cocli project list
 ```
 
-![cocli-list-user-projects](./img/1-cocli-list-user-projects.png)
+```bash
+ID                                       SLUG
+43f54f09-3164-4e30-80a8-c63e25ca81af     starbase
+3f09b8b5-3b31-436e-9232-0a8ffbc298da     mcap
+```
 
 找到目标项目之后，使用 `cocli login set` 来更新默认的工作项目， 如果需要，可以使用 `cocli login current` 来确认
 
 ```bash
 cocli login set -p mcap
+```
+
+```bash
+Profile set successful.
+Current Profile is:
+Profile Name:        saas
+Endpoint:            https://openapi.coscene.cn
+Organization:        coscene-lark
+Default Project:     mcap
+```
+
+```bash
 cocli login current
 ```
 
-![cocli-update-default-project-slug](./img/1-cocli-update-default-project-slug.png)
+```bash
+Current Profile:
+Profile Name:        saas
+Endpoint:            https://openapi.coscene.cn
+Organization:        coscene-lark
+Default Project:     mcap
+```

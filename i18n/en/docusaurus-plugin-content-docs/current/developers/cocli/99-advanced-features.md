@@ -44,7 +44,3 @@ After switching, it will prompt the currently active credential. You can also co
 ```bash
 cocli login current
 ```
-
-## Linking Local Folders and Cloud Records
-
-The command line also provides a `link` mode for cloud records and local folders. Once linked, you won't need to specify the record ID again for uploading and downloading files:
