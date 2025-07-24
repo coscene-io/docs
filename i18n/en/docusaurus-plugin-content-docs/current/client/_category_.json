@@ -1,9 +1,0 @@
-{
-  "label": "client",
-  "position": 12,
-  "collapsible": true,
-  "link": {
-    "type": "generated-index",
-    "slug": "/category/client"
-  }
-}

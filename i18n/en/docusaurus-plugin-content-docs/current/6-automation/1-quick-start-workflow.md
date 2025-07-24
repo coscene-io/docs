@@ -18,7 +18,7 @@ Automation is a task-based workflow system. With its flexible and powerful featu
 
 ### System Directories
 
-The directory structure supported by automation is as follows:
+During runtime, action containers mount multiple system directories to facilitate interaction with platform data. The following are common directories. For the complete directory list, please refer to [Action Runtime Information](./6-action-runtime.md)."
 
 | Directory    | Explanation                                            |
 | ------------ | ------------------------------------------------------ |

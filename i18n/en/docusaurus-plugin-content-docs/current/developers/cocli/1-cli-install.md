@@ -15,7 +15,27 @@ curl -fL https://download.coscene.cn/cocli/install.sh | sh
 
 You can use `cocli -h` in the terminal to confirm that the CLI tool has been successfully installed and to see the basic usage of the tool.
 
-![cocli-help](./img/cocli-help.png)
+```
+Usage:
+  cocli [command]
+
+Available Commands:
+  action      Work with coScene action.
+  completion  Generate the autocompletion script for cocli for the specified shell. Supporting Zsh and Bash.
+  help        Help about any command
+  login       Login to coScene
+  project     Work with coScene project.
+  record      Work with coScene record.
+  update      Update cocli version
+
+Flags:
+      --config string      config file path (default "/Users/yujing/.cocli.yaml")
+  -h, --help               help for cocli
+      --log-level string   log level, one of: trace|debug|info|warn|error (default "info")
+  -v, --version            version for cocli
+
+Use "cocli [command] --help" for more information about a command.
+```
 
 ### Update to the Latest Version
 
@@ -64,17 +84,39 @@ cocli login set -p <PROJECT_SLUG> -t <TOKEN> -e <ENDPOINT>
 
 After successfully authenticating the CLI, you can use the command line to switch the default working project. First, we can list all the projects in the organization that the user has access to, along with their corresponding project slugs:
 
-```
+```bash
 cocli project list
 ```
 
-![cocli-list-user-projects](./img/cocli-list-user-projects.png)
+```bash
+ID                                       SLUG
+43f54f09-3164-4e30-80a8-c63e25ca81af     starbase
+3f09b8b5-3b31-436e-9232-0a8ffbc298da     mcap
+```
 
 After finding the target project, use `cocli login set` to update the default working project. If needed, you can use `cocli login current` to confirm.
 
 ```bash
-cocli login set -p starbase
+cocli login set -p mcap
+```
+
+```bash
+Profile set successful.
+Current Profile is:
+Profile Name:        saas
+Endpoint:            https://openapi.coscene.cn
+Organization:        coscene-lark
+Default Project:     mcap
+```
+
+```bash
 cocli login current
 ```
 
-![cocli-update-default-project-slug](./img/cocli-update-default-project-slug.png)
+```bash
+Current Profile:
+Profile Name:        saas
+Endpoint:            https://openapi.coscene.cn
+Organization:        coscene-lark
+Default Project:     mcap
+```

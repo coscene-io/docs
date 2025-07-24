@@ -1,9 +1,0 @@
-{
-  "label": "Topic Aliases",
-  "position": 5,
-  "collapsible": true,
-  "link": {
-    "type": "generated-index",
-    "slug": "/category/extensions/topic-aliases"
-  }
-}

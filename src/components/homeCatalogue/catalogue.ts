@@ -115,10 +115,7 @@ export const CATALOGUE = (locale: string) => [
     header: { title: translate({ id: 'home.catalogue.developer', message: '开发者' }) },
     docs: [
       { docLink: '/category/core-concepts', title: translate({ id: 'home.catalogue.core-concepts', message: '概念' }) },
-      {
-        docLink: '/category/cocli',
-        title: translate({ id: 'home.catalogue.cocli', message: '命令行工具 coCLI - Beta' }),
-      },
+      { docLink: '/developers/cocli/install', title: translate({ id: 'home.catalogue.cocli', message: '命令行工具 coCLI' }), },
       { docLink: '/category/openapi', title: translate({ id: 'home.catalogue.openapi', message: '开放平台 OpenAPI' }) },
     ],
   },

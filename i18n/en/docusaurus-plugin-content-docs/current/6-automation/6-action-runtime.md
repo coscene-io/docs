@@ -32,3 +32,65 @@ Some of the above environment variables have empty values, which are optional. I
 `COS_TOKEN` is automatically injected at startup.
 
 Its permissions **mirror those of the user who triggered the action**. When performing **cross-project** operations, ensure the triggering user holds the required permissions on the target project; otherwise, related API calls will fail.
+
+## Using Output Directory to Create and Update Records
+
+During action runtime, you can use `COS_TOKEN` to call OpenAPI or coCLI to perform almost all platform operations.
+
+For common operations like creating and updating records, you can also output files according to a specified file structure, and the action runtime environment will automatically complete record creation and updates.
+
+After the action finishes running, the platform will automatically scan the specific directory structure under `COS_OUTPUT_VOLUME` and automatically create or update records based on configuration files, while uploading related files.
+
+### Directory Structure Convention {#directory-convention}
+
+Please organize files according to the following structure within the mounted `COS_OUTPUT_VOLUME` directory:
+
+```
+$COS_OUTPUT_VOLUME
+└── records
+    ├── record-directory-1/      # Any name
+    │   ├── front-001.jpg        # Files to be uploaded
+    │   ├── front-002.jpg
+    │   └── .cos/
+    │       └── record.patch.json
+    └── record-directory-2/
+        ├── rear-001.jpg
+        ├── rear-002.jpg
+        └── .cos/
+            └── record.patch.json
+```
+
+Key requirements:
+
+- Each first-level subdirectory under `/records` represents a record operation.
+- Each record directory must contain a `.cos/` subdirectory.
+- The `.cos/` directory must contain a `record.patch.json` file.
+- Other files in the record directory will be automatically uploaded to the corresponding record.
+
+### Declaration File Format {#declaration-file-schema}
+
+`record.patch.json` defines record creation or update operations in the following format:
+
+```json
+{
+  "projectSlug": "project-slug", // Optional, defaults to current project
+  "id": "record UUID", // Required for update or delete operations
+  "labels": [],
+  "title": "Record Title", // Required when creating records
+  "description": "Record Description", // Optional
+  // Other record properties, optional
+  "patch": [
+    // RFC 6902 JSON Patch standard
+    { "op": "replace", "path": "/title", "value": "Cam-front (night)" },
+    { "op": "add", "path": "/labels/-", "value": "night-run" },
+    { "op": "remove", "path": "/labels/0" },
+    { "op": "add", "path": "/files/path/to/file", "value": "../1.jpg" }
+  ]
+}
+```
+
+This JSON file mainly contains three parts:
+
+- Special properties: If you need to perform cross-project operations, specify `projectSlug`.
+- Regular properties: Describe basic record information. When no `id` is specified, it indicates creating a new record.
+- patch array: Provides fine-grained property modification control, following the RFC 6902 standard.

@@ -1,9 +1,0 @@
-{
-  "label": "Message Converters",
-  "position": 4,
-  "collapsible": true,
-  "link": {
-    "type": "generated-index",
-    "slug": "/category/extensions/message-converters"
-  }
-}

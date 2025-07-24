@@ -235,7 +235,7 @@ If the reviewer finds errors in data collection or annotation, they can mark it 
 
 ## Data Application
 
-When we need to use reviewed and approved data, we can view the data in the **Project**, filter the data through **Tags** and **Custom Fields**, select records and click **Download** to download the data (please use [coCLI](/docs/category/cocli) to download data larger than 2G), or share it with other team members.
+When we need to use reviewed and approved data, we can view the data in the **Project**, filter the data through **Tags** and **Custom Fields**, select records and click **Download** to download the data (please use [coCLI](../developers/cocli/1-cli-install.md) to download files larger than 2G), or share it with other team members.
 
 ![05-data-collect-35](./img/05-data-collect-35.png)
 

@@ -1,9 +1,0 @@
-{
-  "label": "Panel",
-  "position": 4,
-  "collapsible": true,
-  "link": {
-    "type": "generated-index",
-    "slug": "/category/panel"
-  }
-}
