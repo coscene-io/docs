@@ -1,5 +1,9 @@
 {
   "label": "命令行工具 coCLI",
   "position": 2,
-  "collapsible": true
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/cocli"
+  }
 }
