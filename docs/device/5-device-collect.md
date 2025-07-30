@@ -24,29 +24,33 @@ sidebar_position: 5
 
 1. 在项目设备页面，选择设备，点击采集数据
 
-   ![pro-device](./img/pro-device.png)
    ![device-collect](./img/device-collect_1.png)
 
-2. 选择需要采集的时间范围、采集路径、任务与记录名称，开始采集
+2. 选择需要采集的时间范围、采集路径、采集名称与记录名称，开始采集
 
    ![device-collect](./img/device-collect_2.png)
 
-- **采集时间范围**
-  - 时间判断依据：文件的创建时间与最后修改时间
-  - 注：部分文件系统可能无法获取文件创建时间，仅根据最后修改时间判断文件是否在时间范围内
-- **时间范围采集路径**
-  - 输入需要根据时间范围进行采集的绝对文件路径，如：`/home/bag/`，系统将采集该路径下（包括子文件夹）所有符合时间范围的文件
-  - 建议在[组织设备配置](./4-device-collector.md#数据收集器设置collector)中，将该路径设置为默认采集路径`collect_dirs`，以便后续无需手动输入
-- **具体附加文件路径**
-  - 输入需要额外采集的绝对文件路径(文件夹/文件)，与时间范围无关，如：`/home/map/`、`/home/device/config.yaml`，系统将采集整个文件夹中的文件或指定的文件
-  - 建议在[组织设备配置](./4-device-collector.md#数据收集器设置collector)中，将该路径设置为默认采集路径`additional_files`，以便后续无需手动输入
-- **任务&记录名称**
-  - 任务名称：用于标识该次采集任务
-  - 记录名称：用于标识该次采集将数据保存到的记录
+    - **采集时间范围**
+      - 时间判断依据：文件的创建时间与最后修改时间
+      - 注：部分文件系统可能无法获取文件创建时间，仅根据最后修改时间判断文件是否在时间范围内
+    - **时间范围采集路径**
+      - 输入需要根据时间范围进行采集的绝对文件路径，如：`/home/bag/`，系统将采集该路径下（包括子文件夹）所有符合时间范围的文件
+      - 建议在[组织设备配置](./4-device-collector.md#数据收集器设置collector)中，将该路径设置为默认采集路径`collect_dirs`，以便后续无需手动输入
+    - **具体附加文件路径**
+      - 输入需要额外采集的绝对文件路径(文件夹/文件)，与时间范围无关，如：`/home/map/`、`/home/device/config.yaml`，系统将采集整个文件夹中的文件或指定的文件
+      - 建议在[组织设备配置](./4-device-collector.md#数据收集器设置collector)中，将该路径设置为默认采集路径`additional_files`，以便后续无需手动输入
+    - **采集名称&记录名称**
+      - 采集名称：用于标识该次采集
+      - 记录名称：用于标识该次采集将数据保存到的记录
 
-3. 采集完成后，数据将自动上传至记录中
+3. 采集过程中，可在设备执行历史中查看采集进度
 
-   ![collect-record](./img/collect-record.png)
+   ![collect-progress](./img/device-collect_3.png)
+   ![collect-progress](./img/device-collect_4.png)
+
+4. 采集完成后，数据将自动上传至记录中
+
+   ![collect-record](./img/collect-record_1.png)
    ![record-file](./img/record-file.png)
 
 ## 规则引擎驱动采集
@@ -72,27 +76,12 @@ sidebar_position: 5
 
 以监听设备端 topic `/error_status` 为例，当该 topic 的 `data` 字段中出现事件码 `1001 ~ 1005` 时，自动采集该时间点前 5 分钟后 1 分钟的数据，保存到记录。消息内容如下：
 
-![errortopic](./img/errortopic.png)
+    ![errortopic](./img/errortopic.png)
 
-1.  在设备端安装并启用话题监听器（[coListener](https://github.com/coscene-io/coListener/tree/cpp)）：
-    - 下载对应版本的 [coListener 安装包](https://github.com/coscene-io/coListener/tree/cpp?tab=readme-ov-file#download-deb-for-installation)
-    - 安装 coListener，如：
-
-      ```
-      sudo dpkg -i ***.deb
-      ```
-
-      其中 `***.deb` 需替换为对应的 deb 包名
-
-    - source ROS 环境变量，如：
-
-      ```
-      source /opt/ros/$ROS_DISTRO/setup.bash
-      ```
-
-      其中，`$ROS_DISTRO` 需替换为对应的 ROS 版本名，如 `noetic`
-
+1.  确认已在设备端安装并启用话题监听器（[coListener](https://github.com/coscene-io/coListener/tree/cpp)），该节点是 ROS 套件中的一部分，若已安装并启用 ROS node，则无需再次安装：
+    - 查看 [coListener 安装教程](../client/2-apt-source-install.md)
     - 启用 coListener
+
       ROS1：
 
       ```
@@ -106,7 +95,7 @@ sidebar_position: 5
       ```
 
 2.  在项目中添加并启用规则
-    - 在项目的「数采&定位」页面，添加规则
+    - 在项目的「设备-规则&定位」页面，添加规则
 
       ![add-rule_1](./img/add-rule_1.png)
       ![add-rule_2](./img/add-rule_2.png)
@@ -152,12 +141,16 @@ sidebar_position: 5
         - 如：`code: {scope.code}-name: {scope.name}`，当触发了事件码`1002`时，本次采集的数据将生成一条名为「code:1002-name:目标点不可达！请协助」的记录
     - 关键时刻定位
       - 当数据上传到记录后，自动在触发时间点「创建一刻」，标记关键时刻，便于后续分析问题
+    - 启用规则
+      - 规则启用后，项目设备才会使用该规则进行数据监听
+
+      ![rule-enable](./img/rule-enable.png)
 
 3.  查看采集结果
+
     当设备端监听的 topic 发出的消息触发规则时，将自动上传数据到记录中
 
         ![collect-record](./img/collect-record.png)
-        ![record-file](./img/record-file.png)
 
 ### 监听 bag/mcap 采集
 
@@ -174,5 +167,5 @@ sidebar_position: 5
 - [添加规则](../use-case/data-diagnosis/3-add-rule.md)
 - 采集完成后自动发送通知
   - [创建发送通知的动作](../6-automation/3-create-action.md#添加http-请求步骤创建动作)
-  - [当采集完成后触发动作](../6-automation/4-trigger.md#任务状态变更时)
+  - [当采集完成后触发动作](../6-automation/4-trigger.md#collect-status-change)
 - [可视化回放数据](../viz/1-about-viz.md)

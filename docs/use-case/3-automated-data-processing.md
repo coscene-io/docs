@@ -142,7 +142,7 @@ docker push cr.coscene.cn/coscene/frame:latest
 1. 点击项目名称，进入项目
    ![create-action-1](./img/3-create-action-1.png)
 2. 进入项目-自动化-动作页面，点击【创建动作】
-   ![create-action-2](./img/3-create-action-2.png)
+   ![action_1](./img/action_1.png)
 3. 在创建动作页面，输入以下内容后，点击【保存】
 
 - 动作名称：`extract-images`
@@ -153,7 +153,7 @@ docker push cr.coscene.cn/coscene/frame:latest
 ## 设置触发器
 
 1. 进入项目-自动化-触发器页面，点击【创建触发器】
-   ![create-trigger-1](./img/3-create-trigger-1.png)
+   ![trigger_1](./img/trigger_1.png)
 2. 在创建触发器页面，输入以下内容后，点击【保存】
 
 - 触发器名称：`auto-extract-images`

@@ -49,7 +49,7 @@ collector:
   skip_check_same_file: false # By default, checks if a file with the same sha256 exists in the cloud. If it exists, skips upload and directly references the cloud file to avoid duplicate uploads
 
 mod:
-  # mod name, default is 'default', supports monitoring files in specified directories on the device side. For custom monitoring methods, please contact coScene
+  # mod name, default is 'default'
   name: 'default' 
 
   conf:
@@ -63,27 +63,27 @@ mod:
     sn_file: /home/coscene/example.yaml
     sn_field: serial_num
     
-    # Monitoring directories on the device side, used as the monitoring directories for rules in the project
+    # (Used for rule-based collection) Monitoring directories on the device side, used as the monitoring directories for rules in the project
     listen_dirs: 
       - /home/bag/
 
-    # When the current time exceeds the file update time by more than {skip_period_hours} hours, the file will not be monitored
+    # (Used for rule-based collection) When the current time exceeds the file update time by more than {skip_period_hours} hours, the file will not be monitored
     skip_period_hours: 2
 
-    # Collection directories on the device side, used as specified directories for data collection tasks and rule collection in the project
+    # (Used for rule-based & manual collection) Collection directories on the device side, used as specified directories for data collection tasks and rule collection in the project
     collect_dirs: 
       - /home/bag/
       - /home/log/
 
-    # Recursive directory traversal setting - whether to traverse all nested subdirectories for listen_dirs and collect_dirs, defaults to false
-    recursively_walk_dirs: true
+    # (Used for rule-based collection) Recursive directory traversal setting - whether to traverse all nested subdirectories for listen_dirs and collect_dirs, defaults to false
+    recursively_walk_dirs: false
 
-    # Additional files to upload during manual collection tasks - supports both folders and files with absolute paths; supports time variable templates
+    # (Used for manual collection) Additional files to upload during manual collection tasks - supports both folders and files with absolute paths; supports time variable templates
     additional_files:
       - /home/just2004noetic/Downloads/testcase
       - /additional_files/{{start_time.format('YYYY-MM-DD')}}/log/
 
-# Assuming the machine has a /home/coscene/device.yaml file with the following content:
+# (Used for rule-based collection) Assuming the machine has a /home/coscene/device.yaml file with the following content:
 # soft_version: v1.0
 #
 # When the device triggers a rule, it will read the value of soft_version: v1.0 from the device.yaml file as an attribute for the generated event.
@@ -93,11 +93,10 @@ device:
     - /home/coscene/device1.yaml
     - /home/coscene/device2.yaml
 
-# Topics, used as the source of options for rule trigger topics in the project to narrow down the scope of rule matching
+# (Used for rule-based collection) Topics, used as the source of options for rule trigger topics in the project to narrow down the scope of rule matching
 # Assuming there's an /error_code topic
 topics:
   - /error_code
-
 ```
 
 Let's go through each function and its usage:
@@ -117,21 +116,22 @@ Mainly responsible for configuring device-end data storage location information:
 
 - `name`: Default name is `default`, supports monitoring files in specified device directories. For custom monitoring methods, please contact coScene.
 
-- `conf`: Enable switch, `true/false`, enabled by default.
+- `enabled`: Enable switch, `true/false`, enabled by default.
 
 - `sn_file`: Assuming there's a corresponding file on the machine end (e.g., `/home/coscene/example.yaml`) containing a unique device identifier (e.g., `serial_num: 1234`), during machine registration, it will read the specified field value (`1234`) as the machine's unique identifier.
 
 - `sn_field`: Corresponding identifier field name.
 
-- `listen_dirs`: Device monitoring directories, used as rule monitoring directories in projects.
+- `listen_dirs`: (Used for rule-based collection) Device monitoring directories, used as rule monitoring directories in projects.
 
-- `skip_period_hours`: Files won't be monitored when the time difference between current time and file update time exceeds `{skip_period_hours}`.
+- `skip_period_hours`: (Used for rule-based collection) Files won't be monitored when the time difference between current time and file update time exceeds `{skip_period_hours}`.
 
-- `recursively_walk_dirs`: Whether to traverse files in nested subdirectories when monitoring and collection directories contain subdirectories. Defaults to false, only reads files in the current directory level.
+- `recursively_walk_dirs`: (Used for rule-based collection) Whether to traverse files in nested subdirectories when monitoring and collection directories contain subdirectories. Defaults to false, only reads files in the current directory level.
 
 - `collect_dirs`: Device collection directories, used as specified directories for project data collection tasks and rule collection.
 
 - `additional_files`:
+  - Used for manual collection
   - Optional field
   - During manual collection tasks, supports collecting additional file information (such as maps, logs, etc.). Supports both folder and file absolute paths. Folders will be recursively traversed for all subfiles.
   - Paths support template variables, such as `/home/{{start_time.format('YYYY-MM-DD')}}/log/`. Template variables will be replaced with corresponding collection task time information during collection tasks. Variables will be dynamically updated based on the selected collection start and end times. For specific syntax, please refer to [Template Syntax Usage](#template-syntax-usage)
@@ -139,8 +139,7 @@ Mainly responsible for configuring device-end data storage location information:
 
 ```yaml
 mod:
-  # mod name, default is 'default', supports monitoring files in specified device directories
-  # For custom monitoring methods, please contact coScene
+  # mod name, default is 'default'
   name: 'default'
 
   conf:
@@ -154,11 +153,11 @@ mod:
     sn_file: /home/coscene/example.yaml
     sn_field: serial_num
 
-    # Device monitoring directories, used as rule monitoring directories in projects
+    # (Used for rule-based collection) Device monitoring directories, used as rule monitoring directories in projects
     listen_dirs:
       - /home/bag/
 
-    # Files won't be monitored/collected when the time difference between current time and file update time exceeds {skip_period_hours}
+    # (Used for rule-based collection) Files won't be monitored/collected when the time difference between current time and file update time exceeds {skip_period_hours}
     skip_period_hours: 2
 
     # Device collection directories, used as specified directories for project data collection tasks and rule collection
@@ -166,10 +165,10 @@ mod:
       - /home/bag/
       - /home/log/
 
-    # Recursively traverse all subdirectories under /home/bag/ and /home/log/
-    recursively_walk_dirs: true
+    # (Used for rule-based collection) Recursively traverse all subdirectories under /home/bag/ and /home/log/
+    recursively_walk_dirs: false
 
-    # For manual collection task starting at 2025-06-27 14:00:00, additionally upload all files from /home/just2004noetic/Downloads/testcase and /home/2025-06-27/log directories, including subdirectories
+    # (Used for manual collection) For manual collection task starting at 2025-06-27 14:00:00, additionally upload all files from /home/just2004noetic/Downloads/testcase and /home/2025-06-27/log directories, including subdirectories
     additional_files:
       - /home/just2004noetic/Downloads/testcase
       - /home/{{start_time.format('YYYY-MM-DD')}}/log/
@@ -180,7 +179,7 @@ mod:
 Assuming there's a specific file on the machine end (e.g., `/home/coscene/device.yaml` with content `soft_version: v1.0`), after device rule triggering, it will read the specified content (e.g., `soft_version: v1.0`) as the generated event's attribute value. Additional related files can be configured through `extra_files`.
 
 ```yaml
-# Assuming there's a file /home/coscene/device.yaml on the machine end with content:
+# (Used for rule-based collection) Assuming there's a file /home/coscene/device.yaml on the machine end with content:
 # soft_version: v1.0
 #
 # After device rule triggering, it will read soft_version: v1.0 from device.yaml as the generated event's attribute value
@@ -196,7 +195,7 @@ device:
 Topics serve as options for rule trigger topics in projects, helping narrow down rule matching scope and improve monitoring efficiency. For example, assuming there's an `error_code` topic:
 
 ```yaml
-# Topics serve as options for rule trigger topics in projects to narrow down rule matching scope
+# (Used for rule-based collection) Topics serve as options for rule trigger topics in projects to narrow down rule matching scope
 # Assuming there's an error_code topic
 topics:
   - error_code
@@ -204,15 +203,10 @@ topics:
 
 ---
 
-### Template Syntax Usage
-
-## Overview
-
+## Template Syntax Usage
 Template syntax is a powerful tool for dynamically generating strings, particularly suitable for dynamically generating file paths and filenames based on time ranges. Based on the [Handlebars](https://handlebarsjs.com/) template engine, integrated with the [Day.js](https://day.js.org/) time processing library.
 
 By mastering these template syntaxes, you can easily create dynamic file paths and filenames, greatly improving the flexibility and automation of data management.
-
-## Basic Syntax
 
 ### Supported Variables
 
@@ -221,13 +215,13 @@ Currently supports the following two time variables:
 - `start_time` - The start time of the current collection task
 - `end_time` - The end time of the current collection task
 
-### Basic Template Format
+Basic template format:
 
 ```
 {{variable_name.format('format_string')}}
 ```
 
-### Examples
+Examples:
 
 ```javascript
 // Basic usage
@@ -239,10 +233,7 @@ Currently supports the following two time variables:
 // Output: "data/2021/01/file.log"
 ```
 
-## Time Formatting
-
-### Common Formatting Options
-
+### Time Formatting
 Based on [Day.js formatting documentation](https://day.js.org/docs/en/display/format), supports the following formats:
 
 | Format | Output | Description |
@@ -260,7 +251,7 @@ Based on [Day.js formatting documentation](https://day.js.org/docs/en/display/fo
 | `ss` | 00-59 | Second (zero-padded) |
 | `s` | 0-59 | Second |
 
-### Formatting Examples
+Formatting examples:
 
 ```javascript
 // Date formats
@@ -285,7 +276,7 @@ Based on [Day.js formatting documentation](https://day.js.org/docs/en/display/fo
 // Output: data/2021-01-01_to_2021-01-02
 ```
 
-## Reference Documentation
+### Reference Documentation
 
 - [Handlebars Official Documentation](https://handlebarsjs.com/guide/)
 - [Day.js Official Documentation](https://day.js.org/docs/en/display/format)

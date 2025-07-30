@@ -103,9 +103,14 @@ Once the client is enabled:
     - Perform real-time device visualization using [coBridge](https://github.com/coscene-io/coBridge)
 
 ### View Client Information {#view-client-information}
+Run the following command on the device to check the client version:
 
+```bash
+./script/install.sh --version
+```
 
-On the device side, execute the following command to view the client version and log information.
+If there's no output, you can check the version and logs of each individual client-side component separately.
+
 | Name | View Version | View Logs |
 | ---- | -------- | -------- |
 | Data Collection (coScout) ≥ v1.1.2 | `~/.local/bin/cos --version` | `tail -f ~/.local/state/cos/logs/cos.log` |
