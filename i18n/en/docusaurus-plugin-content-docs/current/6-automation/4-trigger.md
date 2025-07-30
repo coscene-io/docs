@@ -19,7 +19,9 @@ Fill in meaningful name information according to business requirements.
 The platform supports the following two triggering moments:
 
 - When update file to record
-- When the task status updated
+- When device collection state updated
+- When record updated
+- When general task updated
 
 ### Update file to record
 
@@ -33,16 +35,32 @@ For example, if the file wildcard matches `*.mcap`, the file source includes `Me
 
 ![trigger_6](./img/trigger_6.png)
 
-### Task status updated
+### Device collection state updated
 
-When the status of a "Manual Collection Task" or a "Rule-based Collection Task" changes, the trigger will check whether the task status meets the triggering conditions.
+When the status of a "Manual Collection" or a "Rule-based Collection" changes, the trigger will check whether the task status meets the triggering conditions.
 
-For example, when a manual collection task is completed, the trigger will execute the action.
+For example, when a manual collection is completed, the trigger will execute the action.
 
 ![trigger_7](./img/trigger_7.png)
+
+### On Record Change
+
+When the tags or custom fields of a record are modified, the trigger will check whether the changes meet the triggering conditions.
+
+For example: when the `uploaded` tag is added to a record, the trigger will execute the associated action.
+
+![trigger_8](./img/trigger_8.png)
+
+### On General Task Change
+
+When fields in a **General Task** are modified, the trigger will check whether the changes meet the triggering conditions.
+
+For example: when the task status becomes **Done**, the trigger will execute the associated action.
+
+![trigger_9](./img/trigger_9.png)
 
 ## Associated Actions
 
 All actions created by the user on the Actions page are project actions and can be selected as needed. Based on common business scenarios of customers, the platform has pre-developed and built-in a series of general system actions, such as the data diagnosis function.
 
-![trigger_8](./img/trigger_8.png)
+![trigger_10](./img/trigger_10.png)

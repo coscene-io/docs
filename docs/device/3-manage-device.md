@@ -94,7 +94,13 @@ sidebar_position: 3
 
 ### 查看客户端信息 {#view-client-information}
 
-在设备端执行以下命令，可查看客户端的版本、日志信息。
+在设备端执行以下命令，可查看客户端的版本信息：
+
+```bash
+./script/install.sh --version
+```
+
+若无输出，可单独查看各个端侧软件的版本与日志：
 
 | 名称 | 查看版本 | 查看日志 |
 | ---- | -------- | -------- |
@@ -102,7 +108,7 @@ sidebar_position: 3
 | 数据采集（coScout）v1.1.2 以下 | `~/.local/bin/cos --version` | `journalctl -fu cos` |
 | 远程控制（coLink） | `colink --version` | `journalctl -fu colink` |
 
-### 卸载数据采集、远程控制客户端
+### 卸载客户端
 
 在设备端中，执行以下命令可卸载数据采集、远程控制客户端，执行过程中需观察输出直至卸载流程完成。
 

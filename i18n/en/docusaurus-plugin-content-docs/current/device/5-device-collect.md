@@ -30,24 +30,31 @@ Collect existing files from devices including logs, images, and configurations.
    ![device-collect](./img/device-collect_1.png)
 
 2. Configure parameters:
+
    ![device-collect](./img/device-collect_2.png)
 
-- **Time Range**
-  - Based on file creation/modification timestamps (Note: Some filesystems may not provide creation time)
+    - **Time Range**
+      - Based on file creation/modification timestamps (Note: Some filesystems may not provide creation time)
 
-- **Collection Path**
-  - Absolute path (e.g., `/home/bag/`)
-  - Recommend pre-configuring in [Device configuration](./4-device-collector.md#collection-rule-format-details)
+    - **Collection Path**
+      - Absolute path (e.g., `/home/bag/`)
+      - Recommend pre-configuring in [Device configuration](./4-device-collector.md#collection-rule-format-details)
 
-- **Additional Files**
-  - Paths to collect regardless of time (files/directories)
-  - Pre-configure in [Device configuration](./4-device-collector.md#collection-rule-format-details)
+    - **Additional Files**
+      - Paths to collect regardless of time (files/directories)
+      - Pre-configure in [Device configuration](./4-device-collector.md#collection-rule-format-details)
 
-- **Naming Convention**
-  - Task Name: Identifier for collection job
-  - Record Name: Target storage record
+    - **Naming Convention**
+      - Collection Name: Identifier for collection job
+      - Record Name: Target storage record
 
-3. Post-collection auto-upload:
+3. During the collection process, you can view the progress in the device execution history.
+
+    ![collect-progress](./img/device-collect_3.png)
+    ![collect-progress](./img/device-collect_4.png)
+
+4. After the collection is complete, the data will be automatically uploaded to the record.
+
    ![collect-record](./img/collect-record.png)
    ![record-file](./img/record-file.png)
 
@@ -74,26 +81,11 @@ In Organization Management - Devices - Device Configuration, enter directories f
 
 Taking monitoring device topic `/error_status` as an example, when event codes `1001 ~ 1005` appear in the `data` field of this topic, automatically collect data from 5 minutes before to 1 minute after this time point, saving to a record. Message content as follows:
 
-1.  Install and enable topic listener ([coListener](https://github.com/coscene-io/coListener/tree/cpp)) on the device:
-    - Download the corresponding version of [coListener installation package](https://github.com/coscene-io/coListener/tree/cpp?tab=readme-ov-file#download-deb-for-installation)
+1.  Make sure the topic listener ([coListener](https://github.com/coscene-io/coListener/tree/cpp)) is installed and enabled on the device. This node is part of the ROS suite. If the ROS node is already installed and running, you do not need to install it again:
 
-    - Install coListener, e.g.:
+  - See the [coListener installation guide](../client/2-apt-source-install.md)
+  - Enable coListener
 
-      ```
-      sudo dpkg -i ***.deb
-      ```
-
-      Replace `***.deb` with the corresponding deb package name
-
-    - Source ROS environment variables, e.g.:
-
-      ```
-      source /opt/ros/$ROS_DISTRO/setup.bash
-      ```
-
-      Replace `$ROS_DISTRO` with the corresponding ROS version name, like `noetic`
-
-    - Enable coListener
       ROS1:
 
       ```
@@ -107,7 +99,7 @@ Taking monitoring device topic `/error_status` as an example, when event codes `
       ```
 
 2.  Add and enable rules in the project
-    - On the project's "Collection & matching" page, add rules
+    - On the project's "Rule & matching" page, add rules
 
       ![add-rule_1](./img/add-rule_1.png)
       ![add-rule_2](./img/add-rule_2.png)
@@ -158,7 +150,6 @@ Taking monitoring device topic `/error_status` as an example, when event codes `
     When messages from the monitored topic on the device trigger rules, data will be automatically uploaded to records
 
         ![collect-record](./img/collect-record.png)
-        ![record-file](./img/record-file.png)
 
 ### Bag/MCAP Monitoring Collection
 
