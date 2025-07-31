@@ -71,7 +71,7 @@ sidebar_position: 8
 > 注意：若数采客户端安装在 root 用户下，卸载时需切换为 root 用户。
 
    ```bash
-   /bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall.sh)"
+   /bin/bash -c "$(curl -fsSL https://download.coscene.cn/cosbinary/script/latest/uninstall.sh)"
    ```
 
 2. 执行过程中需密切观察输出，直至卸载流程完成，确保 coLink 服务、cos 服务及其相关配置文件和目录等均被成功移除

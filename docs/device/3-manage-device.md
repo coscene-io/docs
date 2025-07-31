@@ -115,7 +115,7 @@ sidebar_position: 3
 注意：若数采客户端安装在 root 用户下，卸载时需切换为 root 用户。
 
 ```yaml
-/bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall.sh)"
+/bin/bash -c "$(curl -fsSL https://download.coscene.cn/cosbinary/script/latest/uninstall.sh)"
 ```
 
 ![卸载客户端](./img/4-3-unload-1.png)

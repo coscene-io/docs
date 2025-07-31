@@ -69,7 +69,7 @@ When only software version upgrade is needed, without changing the host computer
 1. Execute the following command in the terminal
 
 ```yaml
-/bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall.sh)"
+/bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall_en.sh)"
 ```
 
 2. Closely monitor the output during execution until the uninstallation process is complete, ensuring that coLink service, cos service, and their related configuration files and directories are successfully removed
