@@ -12,7 +12,7 @@ id: changelog
 - Added "Action Execution on Filtered Records" feature:
   - After filtering records by conditions, you can use the current filter as input to batch execute actions
 - Added "ROS Suite" installation feature:
-  - When registering a device, you can choose to install the ROS Suite to support real-time fault monitoring and device visualization. See [Add Device](../docusaurus-plugin-content-docs/current/device/2-create-device.md) for details
+  - When registering a device, you can choose to install the ROS Suite to support real-time fault monitoring and device visualization. See [Add Device](/docs/device/create-device) for details
 - Added "Visualization Task Panel":
   - In record playback and real-time visualization, a task panel is visible on the left, showing the current user's tasks in the current project
   - During real-time visualization, when a task is highlighted, the records collected in the data collection panel will be automatically associated with the highlighted task
@@ -31,7 +31,7 @@ id: changelog
 - Improved "File Preview" feature: When previewing bag and mcap files, more file information is available
 - Improved slug definition and display
   - Project slug now supports `-` and `_` input
-  - Organization slug and project slug can be quickly obtained on the organization homepage and in projects, for use with command-line tool [coCLI](../docusaurus-plugin-content-docs/current/developers/cocli/1-cli-install.md) and other scenarios
+  - Organization slug and project slug can be quickly obtained on the organization homepage and in projects, for use with command-line tool [coCLI](/docs/developers/cocli/install) and other scenarios
 - Optimized table information display
   - Tables remember the number of entries displayed per page on your computer, showing the same number on your next visit
   - Improved mouse hover style when viewing tags
