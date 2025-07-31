@@ -21,7 +21,7 @@ sidebar_position: 4
 
 2. **监听与采集信息**
    - 定义监听目录、采集目录
-   - 与手动采集、[规则采集](../use-case/data-diagnosis/1-intro.md)配合使用
+   - 与手动采集、规则采集配合使用
 
 3. **设备属性信息**
    - 定义项目规则中可使用的 topic
@@ -57,7 +57,7 @@ collector:
   skip_check_same_file: false # 默认检查云端是否存在相同 sha256 的文件，若存在，则不上传，直接引用云端的文件，避免重复上传相同文件
 
 mod:
-  # mod 名称，默认 default，支持监听设备端指定目录下的文件，若有自定义的监听形式，请联系刻行时空
+  # mod 名称，默认 default
   name: 'default' 
 
   conf:
@@ -71,27 +71,29 @@ mod:
     sn_file: /home/coscene/example.yaml
     sn_field: serial_num
     
-    # 设备端的监听目录，作为项目中规则的监听目录
+    # （用于规则采集）设备端的监听目录，作为项目中规则的监听目录
     listen_dirs: 
       - /home/bag/
 
-    # 当前时间距离文件更新时间超出 {skip_period_hours} 小时的时候，文件不会被监听
+    # （用于规则采集）当前时间距离文件更新时间超出 {skip_period_hours} 小时的时候，文件不会被监听
     skip_period_hours: 2
 
-    # 设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录
+    # （用于手动采集与规则采集）设备端的采集目录，作为项目中手动采集与规则采集的指定目录
     collect_dirs: 
       - /home/bag/
       - /home/log/
 
-    # 递归遍历所有子文件夹设置，针对监听目录和采集目录，是否遍历填写目录下的所有嵌套子文件夹，默认为否
+    # （用于规则采集）递归遍历所有子文件夹设置，针对监听目录和采集目录，是否遍历填写目录下的所有嵌套子文件夹，默认为否
     recursively_walk_dirs: true
 
-    # 手动任务采集时指定上传额外文件，支持文件夹和文件，填写绝对路径；支持特定的时间变量模版
+    # （用于手动采集）手动采集时指定上传额外文件，支持文件夹和文件，填写绝对路径；支持特定的时间变量模版
+    # 若在文件夹路径后加 `/`，则会直接上传该路径下的所有文件
+    # 若不在文件夹路径后加 `/`，则会上传该文件夹
     additional_files:
       - /home/just2004noetic/Downloads/testcase
       - /additional_files/{{start_time.format('YYYY-MM-DD')}}/log/
 
-# 假设机器端存在 /home/coscene/device.yaml 文件，其内容为
+# （用于规则采集）假设机器端存在 /home/coscene/device.yaml 文件，其内容为
 # soft_version: v1.0
 #
 # 则设备触发规则后，将读取 device.yaml 文件中的 soft_version: v1.0 作为生成事件的属性值
@@ -101,7 +103,7 @@ device:
     - /home/coscene/device1.yaml
     - /home/coscene/device2.yaml
 
-# 话题，作为项目中规则触发话题的选项来源，以缩小规则匹配的范围
+# （用于规则采集）话题，作为项目中规则触发话题的选项来源，以缩小规则匹配的范围
 # 假设存在 /error_code 话题
 topics:
   - /error_code
@@ -120,9 +122,9 @@ collector:
 
 主要负责设置设备端数据的存储地址相关信息：
 
-- `name`：名称默认名称 `default`，支持监听设备端指定目录下的文件，如有自定义监听形式，请联系刻行时空。
+- `name`：名称默认名称 `default`。
 
-- `conf`：启用开关，`true/false`，默认启用。
+- `enabled`：启用开关，`true/false`，默认启用。
 
 - `sn_file`：
   - 选填项
@@ -132,25 +134,28 @@ collector:
   - 选填项
   - 对应标识码字段名
 
-- `skip_period_hours`：若当前时间距离文件更新时间超出设定时间，文件不会被监听。
+- `skip_period_hours`：用于规则采集，若当前时间距离文件更新时间超出设定时间，文件不会被监听。
 
-- `recursively_walk_dirs`：当监听和采集目录存在子文件夹，是否遍历嵌套子文件夹中的文件。默认为否，只读取当前文件夹下的一级所有文件
+- `recursively_walk_dirs`：用于规则采集，当监听和采集目录存在子文件夹，是否遍历嵌套子文件夹中的文件。默认为否，只读取当前文件夹下的一级所有文件
 
 - `listen_dirs`：
+  - 用于规则采集
   - 选填项
   - 设备端的监听目录，作为项目中规则的监听目录
-  - 若不使用监听文件的方式，可在设备端安装 [coListener](https://github.com/coscene-io/coListener/tree/cpp) 实时监听设备端 topic 数据，
+  - 若不使用监听文件的方式，可在设备端安装 [coListener](https://github.com/coscene-io/coListener/tree/cpp) 实时监听设备端 topic 数据
 
-- `collect_dirs`：设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录。
+- `collect_dirs`：设备端的采集目录，作为项目中手动采集与规则采集的指定目录。
 
 - `additional_files`：
+  - 用于手动采集
   - 选填项
-  - 手动任务采集时，支持补充采集额外的文件信息（如地图、日志等）。支持填写文件夹以及文件绝对路径，文件夹会递归遍历所有的子文件
-  - 路径支持模版变量信息，如 `/home/{{start_time.format('YYYY-MM-DD')}}/log/`, 模版变量在采集任务中会替换成对应的采集任务时间信息，依据选择的采集开始和截止时间修改，变量会绑定更新，渲染为对应的值。具体的语法请参考 [模板语法使用](#模板语法使用)
+  - 手动采集时，支持补充采集额外的文件信息（如地图、日志等）。支持填写文件夹以及文件绝对路径，文件夹会递归遍历所有的子文件
+  - 路径支持模版变量信息，如 `/home/{{start_time.format('YYYY-MM-DD')}}/log`, 模版变量在采集任务中会替换成对应的采集任务时间信息，依据选择的采集开始和截止时间修改，变量会绑定更新，渲染为对应的值。具体的语法请参考 [模板语法使用](#模板语法使用)
+  - 若在文件夹路径后加 `/`，则会直接上传该路径下的所有文件；若不在文件夹路径后加 `/`，则会上传该文件夹
 
 ```yaml
 mod:
-  # mod 名称，默认 default，支持监听设备端指定目录下的文件，若有自定义的监听形式，请联系刻行时空
+  # mod 名称，默认 default
   name: 'default' 
 
   conf:
@@ -164,25 +169,27 @@ mod:
     sn_file: /home/coscene/example.yaml
     sn_field: serial_num
     
-    # 设备端的监听目录，作为项目中规则的监听目录
+    # （用于规则采集）设备端的监听目录，作为项目中规则的监听目录
     listen_dirs: 
       - /home/bag/
 
-    # 当前时间距离文件更新时间超出 {skip_period_hours} 小时的时候，文件不会被监听/采集
+    # （用于规则采集）当前时间距离文件更新时间超出 {skip_period_hours} 小时的时候，文件不会被监听
     skip_period_hours: 2
 
-    # 设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录
+    # （用于手动采集与规则采集）设备端的采集目录，作为项目中手动采集与规则采集的指定目录
     collect_dirs: 
       - /home/bag/
       - /home/log/
 
-    # 会递归遍历 /home/bag/ 和 /home/log/ 目录下的所有子文件夹
+    # （用于规则采集）递归遍历所有子文件夹设置，针对监听目录和采集目录，是否遍历填写目录下的所有嵌套子文件夹，默认为否
     recursively_walk_dirs: true
 
-    # 手动采集任务开始时间为 2025-06-27 14:00:00，额外补充上传 /home/just2004noetic/Downloads/testcase 和 /home/2025-06-27/log 目录下的所有文件，包含子文件夹
+    # （用于手动采集）手动采集时指定上传额外文件，支持文件夹和文件，填写绝对路径；支持特定的时间变量模版
+    # 若在文件夹路径后加 `/`，则会直接上传该路径下的所有文件
+    # 若不在文件夹路径后加 `/`，则会上传该文件夹
     additional_files:
       - /home/just2004noetic/Downloads/testcase
-      - /home/{{start_time.format('YYYY-MM-DD')}}/log/
+      - /additional_files/{{start_time.format('YYYY-MM-DD')}}/log/
 ```
 
 ### 设备事件属性（device）
@@ -190,7 +197,7 @@ mod:
 假设机器端存在特定文件（如 `/home/coscene/device.yaml`，内容为 `soft_version: v1.0`），则设备触发规则后，将读取该文件中的指定内容（如 `soft_version: v1.0`）作为生成事件的属性值。还可通过 `extra_files` 配置其他相关文件。
 
 ```yaml
-# 假设机器端存在 /home/coscene/device.yaml 文件，其内容为
+# （用于规则采集）假设机器端存在 /home/coscene/device.yaml 文件，其内容为
 # soft_version: v1.0
 #
 # 则设备触发规则后，将读取 device.yaml 文件中的 soft_version: v1.0 作为生成事件的属性值
@@ -206,22 +213,17 @@ device:
 话题作为项目中规则触发话题的选项来源，可缩小规则匹配的范围，提高监听效率。例如，假设存在 `error_code` 话题，可进行如下配置：
 
 ```yaml
-# 话题，作为项目中规则触发话题的选项来源，以缩小规则匹配的范围
+# （用于规则采集）话题，作为项目中规则触发话题的选项来源，以缩小规则匹配的范围
 # 假设存在 error_code 话题
 topics:
   - error_code
 ```
 
 ---
-### 模板语法使用
-
-## 概述
-
+## 模板语法使用
 模板语法是一种动态生成字符串的强大工具，特别适用于根据时间范围动态生成文件路径和文件名。基于 [Handlebars](https://handlebarsjs.com/) 模板引擎，集成了 [Day.js](https://day.js.org/) 时间处理库。
 
 通过掌握这些模板语法，您可以轻松创建动态的文件路径和文件名，大大提高数据管理的灵活性和自动化程度。 
-
-## 基本语法
 
 ### 支持的变量
 
@@ -230,13 +232,13 @@ topics:
 - `start_time` - 当前采集任务的开始时间
 - `end_time` - 当前采集任务的结束时间
 
-### 基本模板格式
+基本模板格式：
 
 ```
 {{变量名.format('格式字符串')}}
 ```
 
-### 示例
+示例：
 
 ```javascript
 // 基本用法
@@ -248,10 +250,7 @@ topics:
 // 输出: "data/2021/01/file.log"
 ```
 
-## 时间格式化
-
-### 常用格式化选项
-
+### 时间格式化
 基于 [Day.js 格式化文档](https://day.js.org/docs/en/display/format)，支持以下格式：
 
 | 格式 | 输出 | 描述 |
@@ -269,7 +268,7 @@ topics:
 | `ss` | 00-59 | 秒（补零） |
 | `s` | 0-59 | 秒 |
 
-### 格式化示例
+格式化示例：
 
 ```javascript
 // 日期格式
@@ -294,7 +293,7 @@ topics:
 // 输出: data/2021-01-01_to_2021-01-02
 ```
 
-## 参考文档
+### 参考文档
 
 - [Handlebars 官方文档](https://handlebarsjs.com/guide/)
 - [Day.js 官方文档](https://day.js.org/docs/en/display/format)

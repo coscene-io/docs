@@ -22,8 +22,6 @@ coScene has two types of users: administrators and regular users. You can create
 
    ![org_4](./img/org_4.png)
 
-   ![org_4](./img/org_4.png)
-
 4. After successful creation, you will automatically enter the organization homepage. You can start [managing your organization](../3-collaboration/organization/1-organizations.md) now.
 
 ### Regular User
@@ -110,14 +108,15 @@ Devices can establish connections with real devices, see [Device](../device/1-de
 
 ### Add Device
 
-> Prerequisites: Supports Linux devices, arm64 and x86_64 architectures
+> Prerequisites: Supports Linux devices, see [Device supported versions](../device/2-create-device.md#supported-versions)
 
-1.  Through the top-right "My Account", enter the "Organization Management-Devices" page and click the【Add Device】button.
+1.  Through the top-right "My Account", enter the "Organization Management-Devices" page and click the [Add Device] button.
 
-        ![add-device-entry](./img/device_1.png)
+      ![add-device-entry](./img/device_1.png)
 
-2.  In the popup window, select【System Generated ID】, check【Remote Control】, click the【Copy】button to copy the installation command.
+2.  In the popup window, select [System Generated ID], click the [Copy] button to copy the installation command.
     - To use a custom ID, see [Device ID Configuration](../device/2-create-device.md#device-id-configuration)
+
       <img src={require('./img/device_2.png').default} alt="device_2" width="800" />
 
 3.  Open a shell terminal on the real device, execute the installation command. When the device shows `Installation completed successfully 🎉`, the installation is successful.
@@ -126,9 +125,13 @@ Devices can establish connections with real devices, see [Device](../device/1-de
 
     ![access-device](./img/4-3-access-device.png)
 
+5. Add device to project.
+
+   ![add-device-project](./img/4-3-device-add-project-02.png)
+
 ### Web SSH
 
-After the device is granted access, find the device on the "Organization Management-Devices" page and click the【Web SSH】button to open a new tab in the browser for remote device connection. For more details, please refer to [Web SSH](../device/5-device-remote-control.md#web-ssh).
+After the device is granted access, find the device on the "Project-Devices" page and click the [Web SSH] button to open a new tab in the browser for remote device connection. For more details, please refer to [Web SSH](../device/5-device-remote-control.md#web-ssh).
 
 ![device ssh](./img/4-3-device-ssh.png)
 ![device ssh demo](./img/4-3-device-ssh-demo.png)
@@ -163,7 +166,7 @@ Devices can establish connections with real devices as data collection targets. 
 
 1.  Through the top-right "My Account", enter the "Organization Management-Devices" page and click the【Add Device】button.
 
-        ![add-device-entry](./img/device_1.png)
+      ![add-device-entry](./img/device_1.png)
 
 2.  In the popup window, select【System Generated ID】, click the【Copy】button to copy the installation command.
     - To use a custom ID, see [Device ID Configuration](../device/2-create-device.md#device-id-configuration)
@@ -175,13 +178,13 @@ Devices can establish connections with real devices as data collection targets. 
 
     ![access-device](./img/4-3-access-device.png)
 
+5. Add device to project.
+
+   ![add-device-project](./img/4-3-device-add-project-02.png)
+
 ### Manual Data Collection
 
-1. **Add Device to Project**: Enter the "Project Devices" page, click the【Add Device】button to select the device for data collection.
-
-   ![add-device-to-project](./img/4-3-device-add-project-02.png)
-
-2. **Configure Collection Directory**: Enter the organization device configuration page, set `collect_dirs` as the directories for storing data on the device, such as: `/home/bag/` and `/home/log/`.
+1. **Configure Collection Directory**: Enter the organization device configuration page, set `collect_dirs` as the directories for storing data on the device, such as: `/home/bag/` and `/home/log/`.
 
    ![configure-collection-directory](./img/device-config_1.png)
 
@@ -196,28 +199,40 @@ Devices can establish connections with real devices as data collection targets. 
          - /home/log/
    ```
 
-3. **Create Collection Task**: Enter the "Project-Tasks-Collection Tasks" page to create a collection task.
-   - Select the device for data collection
-   - Select the time range: collect files whose "file update time" is within the specified time period in the target data path
-   - Target data path: default value is taken from `collect_dirs` in device configuration, or you can customize the path. If set to a folder, collect files within the time range in that folder; if set to a file, collect that file.
-   - Task name: custom name
+2. **Create Collection Task**: Enter the "Project-Devices" page to collect data.
 
-     ![create-collection-task](./img/collect_1.png)
+   ![create-collection-task](./img/device-collect_1.png)
 
-4. **View Collection Results**: Enter the "Project-Tasks-Collection Tasks" page, click the task name to view collection results. Collected data will be automatically saved to records.
+   Choose the time range, collection path, collection name, and record name to begin data collection.
 
-   ![view-collection-task](./img/collect_2.png)
-   ![view-collection-record](./img/collect_3.png)
+   ![create-collection-task](./img/device-collect_2.png)
+
+   - Time Range for Collection
+      - Time basis: file creation time and last modified time
+      - Note: Some file systems may not support file creation time. In such cases, only the last modified time is used.
+   - Paths for Time Range Collection
+      - Default paths are from `collect_dirs`; you can also input absolute file paths like `/home/bag2/`. The system will collect all files within this path (including subfolders) that match the time range.
+   - Additional Specific File Paths
+      - Input absolute paths of extra files/folders to be collected regardless of time range, e.g., `/home/map/`, `/home/device/config.yaml`. The system will collect the specified file or all files in the folder.
+   - Collection Name & Record Name
+      - Collection Name: used to identify this specific data collection task
+      - Record Name: identifies the record where collected data is saved
+
+3. **View Collection Results**: While collecting, you can view progress in the device execution history. The collected data will be automatically saved to the designated record.
+
+   ![view-collection-task](./img/device-collect_3.png)
+   ![view-collection-record](./img/device-collect_4.png)
 
 ### Automatic Data Collection
 
 Automatic data collection uses predefined rules to continuously monitor device logs and automatically collect relevant data when specific conditions are triggered, enabling automatic analysis of device failures and early warning of potential risks. For more details, please refer to [Data Collection & Diagnosis](../use-case/data-diagnosis/3-add-rule.md).
 
-1. **Add Device to Project**: Enter the "Project Devices" page, click the【Add Device】button to select the device for data collection.
+1. **Configure Monitoring and Collection Directories**: Enter the organization device configuration page, set `listen_dirs`, `collect_dirs` and `topics`
 
-   ![add-device-to-project](./img/4-3-device-add-project-02.png)
+   Note:
 
-2. **Configure Monitoring and Collection Directories**: Enter the organization device configuration page, set `listen_dirs` and `collect_dirs`
+   - Ensure files exist in the configured directories. Only files directly under these directories are handled by default. To process nested subfolders, set   `recursively_walk_dirs` to `true`.
+   - If you're using real-time topic listening, install and start the ROS node (see [Add Device](../device/2-create-device.md)).
 
    ![configure-collection-directory](./img/device-config_1.png)
 
@@ -227,77 +242,72 @@ Automatic data collection uses predefined rules to continuously monitor device l
      conf:
        enabled: true
        # Device collection directories, used as specified directories for project data collection tasks and rule collection
-       collect_dirs:
+      
+       # (Used for rule-based collection) Monitoring directories on the device side, used as the monitoring directories for rules in the project
+      listen_dirs: 
          - /home/bag/
 
-       # Device monitoring directories, used as monitoring directories for project rules
-       listen_dirs:
-         - /home/bag/
-
-       # Set file monitoring effectiveness: if a file's last update time is more than 2 hours from the current time, it will not be monitored by the system
+       # (Used for rule-based collection) When the current time exceeds the file update time by more than {skip_period_hours} hours, the file will not be monitored
        skip_period_hours: 2
+
+       # (Used for rule-based & manual collection) Collection directories on the device side, used as specified directories for data collection tasks and rule collection in the project
+       collect_dirs: 
+          - /home/bag/
+          - /home/log/
+
+       # (Used for rule-based collection) Recursive directory traversal setting - whether to traverse all nested subdirectories for listen_dirs and collect_dirs, defaults to false
+       recursively_walk_dirs: false
    ```
 
-3. **Create Rule**: Enter the "Project-Data Collection & Diagnosis" page to create a rule.
+3. **Create Rule**:
 
-   ![create-rule](./img/rule_1.png)
+   Suppose mcap files are continually generated in `/home/bag/`. To collect data based on these files:
+   
+   - Condition: If topic `/error_status` in an mcap file contains a data field with event codes 1001~1005
+   - Action: Automatically collect files in `/home/bag/` from 5 minutes before to 1 minute after the event, and save to a record
+   - Message Example:
 
-4. **Define Rule**: Define the rule's trigger conditions and collection behavior. Here's an example rule that automatically uploads data when detecting that the /spawn_entity node status is inactive in the mcap file:
-   - Message in mcap file:
+      ![errortopic](./img/errortopic.png)
 
-     <img src={require('./img/rule_2.png').default} alt="rule_2" width="300" />
+   Rule Setup:
+   | You can directly use the "Error Code Collection Rule" template
 
-   - Rule name: Monitor /spawn_entity node status
-   - Event matching condition: msg["nodes"][3]["state"] contains INACTIVE
-   - Trigger actions: Collect data, Diagnose data
-     - Collect data: Collect data before and after the trigger time point, save to record; collection directory is from `collect_dirs` in device configuration; file time is taken from file timestamp, if the time period to be collected overlaps with the file, the entire file will be uploaded.
-     - Diagnose data: Create a moment at the trigger time point
+   - Add and enable the rule in your project via "Device - Rules & matching"
 
-     ![define-rule](./img/rule_3.png)
-     ![define-rule](./img/rule_4.png)
+      ![add-rule_1](./img/add-rule_1.png)
+      ![add-rule_2](./img/add-rule_2.png)
 
-5. **Confirm Rule**: Confirm that the rule is enabled and the target device has pulled the latest rule configuration.
-   - Enable rule group: Click the enable button on the right of the rule group
+   - Input event detection details
+      - Monitored topic: `/error_status`
+      - Upload a CSV file as the event code table (used to verify whether topic messages contain codes listed in the `code` column)
 
-     ![enable-rule-group](./img/rule_5.png)
+         ![errorcode-list](./img/errorcode-list.png)
+      - Rule Trigger Condition: mag.data contains any value from the `code` column in the uploaded table
 
-   - Execute the following command on the device to check if the latest rule configuration has been pulled, looking for keywords `Updated rules`, `listen_dirs`, `collect_dirs`
+      This means: if `/error_status` topic's data field contains a keyword like `1001~1005`, the rule will be triggered.
 
-     ```bash
-     # View data collection client logs
-     tail -f ~/.local/state/cos/logs/cos.log
-     ```
+   - Data Collection
+      - Time Range: 
+         - collect files in `collect_dirs` from 5 minutes before to 1 minute after the event
+         - Time basis: based on timestamps within file contents
+      - Record: identifies where collected data is saved, e.g., `code: {scope.code}-name: {scope.name}`. If event 1002 triggers, the record name will be: code:1002-name:Goal point unreachable! Please assist.
+   - Key Moment Tagging
+      - Once data is uploaded to the record, a "moment" will be created at the trigger time to help with later analysis
 
-     ![view-logs](./img/rule_6.png)
+   - Enable Rule
+      - Devices in the project will only follow the rule once it’s enabled
 
-6. **Trigger Rule**: Create mcap file in the device's `listen_dirs` and `collect_dirs` directories to trigger the rule
-   - On the device, enter `listen_dirs` and `collect_dirs` directories, execute command to download [mcap file](https://coscene-download.s3.us-east-1.amazonaws.com/sample_data/rule_sample.mcap)
+         ![rule-enable](./img/rule-enable.png)
 
-     ```bash
-     # Enter listen_dirs directory
-     cd /home/bag/
-     # Download mcap file
-     wget https://coscene-download.s3.us-east-1.amazonaws.com/sample_data/rule_sample.mcap
-     ```
+   - View Results
+      - When a new mcap file appears in /home/bag/ and meets the rule conditions, data will be automatically uploaded
+      - You can download [sample mcap file](https://coscene-download.s3.us-east-1.amazonaws.com/sample_data/example_code.mcap), copy it to /home/bag/, and wait 3-5 minutes to trigger the upload
 
-   - Execute command to view data collection client logs, check if the rule is triggered and data is uploaded, looking for keywords `triggered`, `upload all files successfully`
-
-     ```bash
-     # View data collection client logs
-     tail -f ~/.local/state/cos/logs/cos.log
-     ```
-
-     ![view-logs](./img/rule_7.png)
-
-7. **View Collection Results**: On the "Project-Records" page, view the records automatically created by the device. Click the record name to enter details and view file and moment information. Play the record to view the collected data in the [Visualization](../viz/1-about-viz.md) page.
-
-   ![view-collection-results](./img/rule_8.png)
-   | Content | Example |
-   | :---: | :---: |
-   | Files | <img src={require('./img/rule_9.png').default} alt="rule_9" width="1000" /> |
-   | Moments | <img src={require('./img/rule_10.png').default} alt="rule_10" width="1000" /> |
+         ![collect-record](./img/collect-record.png)
 
 ## Learn More
 
 - [Automate Data Processing](../6-automation/1-quick-start-workflow.md)
 - [Changelog](https://docs.coscene.io/changelog)
+
+

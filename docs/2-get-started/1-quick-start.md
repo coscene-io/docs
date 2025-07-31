@@ -158,7 +158,7 @@ sidebar_position: 1
 
 ### 添加设备
 
-> 前提条件：支持 Linux 设备，arm64 和 x86_64 架构
+> 前提条件：支持 Linux 设备，查看[设备版本支持说明](../device/2-create-device.md#supported-versions)
 
 1. 通过右上角「我的」，进入「组织管理-设备」页面，点击【添加设备】按钮。
 
@@ -167,7 +167,7 @@ sidebar_position: 1
 2. 在弹框中，选择【系统生成 ID】，点击【复制】按钮，复制安装命令。
    - 若要使用自定义的 ID，参见[设备 ID 配置](../device/2-create-device.md#设备-id-配置)
 
-![添加设备入口](./img/device_2.png)
+![添加设备命令](./img/device_2.png)
 **刻行时空强烈建议用户使用自定义的 ID，避免出现后续设备重复注册的问题。**
 
 3. 在真实设备上打开 shell 终端，执行安装命令，设备端出现 `Installation completed successfully 🎉` 即表示安装成功。
@@ -176,9 +176,13 @@ sidebar_position: 1
 
 ![启用设备](./img/4-3-access-device.png)
 
+5. 将设备添加到项目中
+
+![从项目设备添加](./img/4-3-device-add-project-02.png)
+
 ### 网页 SSH
 
-当设备启用后，在「组织管理-设备」页面找到该设备，点击【网页 SSH】按钮即可在浏览器中打开新标签页，远程连接到设备。更多详情请参考[网页 SSH](../device/5-device-remote-control.md#网页-ssh)。
+在「项目-设备」页面找到该设备，当客户端状态为在线时，点击【网页 SSH】按钮即可在浏览器中打开新标签页，远程连接到设备。更多详情请参考[网页 SSH](../device/5-device-remote-control.md#网页-ssh)。
 
 ![device ssh](./img/4-3-device-ssh.png)
 ![device ssh demo](./img/4-3-device-ssh-demo.png)
@@ -189,51 +193,22 @@ sidebar_position: 1
 
 > 前提条件：
 >
-> 1. 安装 coBridge 组件
->    - coBridge 是一个独立的 ROS 节点，负责通过 WebSocket 协议将设备数据实时传输到前端
->    - 支持的 ROS 版本：
->      - ROS1：<u>Noetic Ninjemys</u>、<u>Melodic Morenia</u>
->      - ROS2：<u>Foxy Fitzroy</u>、<u>Galactic Geochelone</u>、<u>HumbleHawksbill</u>
+> 确认已在设备端安装并启动 coBridge 组件：coBridge 是一个独立的 ROS 节点，负责通过 WebSocket 协议将设备数据实时传输到前端。该节点是 ROS 套件中的一部分，若已安装并启用 ROS node，则无需再次安装
+> 
+> - 查看 [coBridge 安装教程](../client/2-apt-source-install.md)
+> - 运行与启动：
+> 
+> ```bash
+> # for ros 1 distribution
+> roslaunch cobridge cobridge.launch
+>
+> # for ros 2 distribution
+> ros2 launch cobridge cobridge_launch.xml
+> ```
+> \*\* 我们的代码是完全开源的，支持您根据需求直接基于 [coBridge 源码](https://github.com/coscene-io/coBridge)进行二次开发，并合入您的专属软件包中
 
-安装方法：
 
-- 导入公钥：
-
-```bash
-curl -fsSL https://download.coscene.cn/coscene-apt-source/coscene.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/coscene.gpg
-```
-
-- 添加源：
-
-```bash
-echo "deb [signed-by=/etc/apt/trusted.gpg.d/coscene.gpg] https://download.coscene.cn/coscene-apt-source $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/coscene.list
-```
-
-- 更新与安装：
-
-```bash
-sudo apt update
-# CAUTION: ${ROS_DISTRO} need to be replaced by 'noetic', 'foxy' or 'humble', if ROS_DISTRO not in your env
-sudo apt install ros-${ROS_DISTRO}-cobridge -y
-```
-
-- 运行与启动：
-
-```bash
-source /opt/ros/${ROS_DISTRO}/setup.bash  #根据您的 ros 版本替换 ${ROS_DISTRO}
-
-# for ros 1 distribution
-roslaunch cobridge cobridge.launch
-
-# for ros 2 distribution
-ros2 launch cobridge cobridge_launch.xml
-```
-
-\*\* 我们的代码是完全开源的，支持您后续根据您的需求直接基于我们的 cobridge 代码进行二次开发，并合入您的专属软件包中，可查看[ coBridge](https://github.com/coscene-io/coBridge) 源码（C++）
-
-> 2. 启动 coBridge 节点后，即可在网页端查看设备的实时数据
-
-当设备启用后，在「组织管理-设备」页面找到该设备，点击【实时可视化】按钮即可在浏览器中实时查看设备的运行状态和数据。更多详情请参考[实时可视化](../device/5-device-remote-control.md#实时可视化)。
+在「项目-设备」页面找到该设备，当客户端状态为在线时，点击【实时可视化】按钮即可在浏览器中实时查看设备的运行状态和数据。更多详情请参考[实时可视化](../device/5-device-remote-control.md#realtime-visualization)。
 
 ![device realtime](./img/4-3-device-realtime.png)
 
@@ -247,7 +222,7 @@ ros2 launch cobridge cobridge_launch.xml
 
 ### 添加设备
 
-> 前提条件：支持 Linux 设备，arm64 和 x86_64 架构。
+> 前提条件：支持 Linux 设备，查看[设备版本支持说明](../device/2-create-device.md#supported-versions)
 
 1. 通过右上角「我的」，进入「组织管理-设备」页面，点击【添加设备】按钮。
 
@@ -264,222 +239,138 @@ ros2 launch cobridge cobridge_launch.xml
 
 ![启用设备](./img/4-3-access-device.png)
 
+5. 将设备添加到项目中
+
+![从项目设备添加](./img/4-3-device-add-project-02.png)
+
 ### 手动采集数据
 
-1. **将设备添加到项目**：进入「项目设备」页，点击【添加设备】按钮，选择需要采集数据的设备。
+1. **配置采集目录**：进入组织设备配置页，设置采集目录 `collect_dirs` 为设备上存储数据的目录，如：`/home/bag/` 和 `/home/log/`。
 
-![添加设备](./img/4-3-device-add-project-02.png)
+   ![配置采集目录](./img/device-config_1.png)
 
-2. **配置采集目录**：进入组织设备配置页，设置采集目录 `collect_dirs` 为设备上存储数据的目录，如：`/home/bag/` 和 `/home/log/`。
+   **注意：在您配置采集目录时，请确保您需要被采集的数据直接存放在该目录下。**
 
-![配置采集目录](./img/device-config_1.png)
-**注意：在您配置采集目录时，请确保您需要被采集的数据直接存放在该目录下。**
+   ```yaml
+   mod:
+   name: 'default'
+   conf:
+      enabled: true
+      # （用于手动采集与规则采集）设备端的采集目录，作为项目中手动采集与规则采集的指定目录
+      collect_dirs:
+         - /home/bag/
+         - /home/log/
+   ```
 
-```yaml
-mod:
-  name: 'default'
-  conf:
-    enabled: true
-    # 设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录
-    collect_dirs:
-      - /home/bag/
-      - /home/log/
-```
+2. **采集数据**：在项目设备页面，选择设备，点击采集数据
 
-3. **创建采集任务**：进入「项目-任务-采集任务」页面，创建采集任务。
-   - 选择要采集数据的设备
-   - 选择要采集的时间范围：在目标数据路径下，采集「文件更新时间」在指定时间段内的文件
-   - 目标数据路径：默认值取自设备配置中的 `collect_dirs`，也可以自定义路径。若填写为文件夹，则采集该文件夹下符合时间范围的文件；若填写为文件，则采集该文件。
-   - 任务名称：自定义名称
+   ![device-collect](./img/device-collect_1.png)
 
-![创建采集任务](./img/collect_1.png)
+   选择需要采集的时间范围、采集路径、采集名称与记录名称，开始采集
 
-4. **查看采集结果**：进入「项目-任务-采集任务」页面，点击任务名称查看采集结果，采集完成的数据将自动保存到记录中。
+   ![device-collect](./img/device-collect_2.png)
 
-![查看采集任务](./img/collect_2.png)
-![查看采集记录](./img/collect_3.png)
+    - **采集时间范围**
+      - 时间判断依据：文件的创建时间与最后修改时间
+      - 注：部分文件系统可能无法获取文件创建时间，仅根据最后修改时间判断文件是否在时间范围内
+    - **时间范围采集路径**
+      - 默认为 `collect_dirs` 中的路径，可自定义输入绝对文件路径，如：`/home/bag2/`，系统将采集该路径下（包括子文件夹）所有符合时间范围的文件
+    - **具体附加文件路径**
+      - 输入需要额外采集的绝对文件路径(文件夹/文件)，与时间范围无关，如：`/home/map/`、`/home/device/config.yaml`，系统将采集整个文件夹中的文件或指定的文件
+    - **采集名称&记录名称**
+      - 采集名称：用于标识该次采集
+      - 记录名称：用于标识该次采集将数据保存到的记录
+
+3. **查看采集结果**：采集过程中，可在设备执行历史中查看采集进度，采集完成的数据将自动保存到记录中。
+
+   ![collect-progress](./img/device-collect_3.png)
+   ![collect-progress](./img/device-collect_4.png)
 
 ### 自动采集数据
 
 自动采集数据是通过预定义的规则持续监测设备日志，或者监听特定的 topic，在触发特定条件时自动采集相关数据，从而实现运维故障数据的自动上传。详情请参考[数采&诊断](../use-case/data-diagnosis/3-add-rule.md)。
 
-#### 1. **将设备添加到项目**：进入「项目设备」页，点击【添加设备】按钮，选择需要采集数据的设备。
+前提条件：确认数据格式符合要求，详见[特定数据格式](../use-case/data-diagnosis/3-add-rule.md#特定数据格式)
 
-![添加设备](./img/4-3-device-add-project-02.png)
+1. **配置监听与采集目录**：进入组织设备配置页，设置监听目录 `listen_dirs` 、采集目录 `collect_dirs`、监听的话题 `topics`
 
-#### 2. **配置监听与采集目录**：进入组织设备配置页，设置监听目录`listen_dirs` 与采集目录 `collect_dirs`
+   **注意**：
+   - 在配置监听&采集目录时，请确保该目录下有文件，默认只处理该目录下的文件，不处理子目录。如需处理多级目录，则需在 `recursively_walk_dirs` 中设置为 `true`
+   - 若基于监听实时 topic 的方式自动采集数据，则需安装并启动 ROS node，详见[添加设备](../device/2-create-device.md)
 
-**注意：在您配置采集目录时，请确保您需要被采集的数据直接存放在该目录下，暂不支持自动遍历目录下的子目录，如果是存放在子目录下，需要配置完整路径。**
+   ![配置采集目录](./img/device-config_1.png)
 
-**注意：如果我们是基于监听 topic 的方式作为基础规则，那么需要在此处配置 topics ，参考如下示例。**
-![配置采集目录](./img/device-config_1.png)
+   ```yaml
+   mod:
+   name: 'default'
+   conf:
+      enabled: true
+      # （用于手动采集与规则采集）设备端的采集目录，作为项目中手动采集与规则采集的指定目录
+      collect_dirs:
+         - /home/bag/
 
-```yaml
-mod:
-  name: 'default'
-  conf:
-    enabled: true
-    # 设备端的采集目录，作为项目中数据采集任务与规则采集的指定目录
-    collect_dirs:
-      - /home/bag/
+      # （用于规则采集）设备端的监听目录，作为项目中规则的监听目录。刻行时空的端侧软件将监控此目录下的文件（文件类型支持 mcap， bag , log 等）里是否包含您设置的 topics ，若有则触发采集
+      listen_dirs:
+         - /home/bag/
 
-    # 设备端的监听目录，作为项目中规则的监听目录。刻行时空的端侧软件将监控此目录下的文件（文件类型支持 mcap， bag , log 等）里是否包含您设置的 topics ，若有则触发采集
-    listen_dirs:
-      - /home/bag/
+      # （用于规则采集）设置文件监听的时效性：若文件的最后更新时间距离当前时间超过 2 小时，则不会被系统监听
+      skip_period_hours: 2
 
-    # 设置文件监听的时效性：若文件的最后更新时间距离当前时间超过 2 小时，则不会被系统监听
-    skip_period_hours: 2
-  #监听的 topic 名称，例如您的机器人会持续发布一个叫 /error_status 的 topic 来表示出现了告警可能需要采集数据，您可以在规则中配置监听该 topic
-  topics:
-    - /error_status
-```
+      # （用于规则采集）递归遍历所有子文件夹设置，针对监听目录和采集目录，是否遍历填写目录下的所有嵌套子文件夹，默认为否
+      recursively_walk_dirs: false
 
-#### 3. **规则组**
+   #（用于规则采集）监听的 topic 名称，例如您的机器人会持续发布一个叫 /error_status 的 topic 来表示出现了告警可能需要采集数据，您可以在规则中配置监听该 topic
+   topics:
+      - /error_status
+   ```
 
-规则组是规则的集合，用于对规则进行分类管理。
+2. **创建规则**
 
-##### 添加规则组
+假设设备的 /home/bag/ 目录下会持续生成新的 mcap 文件，以监听 mcap 文件内容为例：
 
-在项目中，进入「数采&诊断规则」分页，点击【添加规则组】，添加成功后，可在该规则组内添加具体规则。
+- 条件：当 mcap 文件中包含 topic `/error_status`，且 topic 的 `data` 字段中出现事件码 `1001 ~ 1005` 时
+- 操作：自动采集 /home/bag/ 目录中，时间范围在该时间点前 5 分钟后 1 分钟的数据，保存到记录
+- 消息内容如下：
 
-![添加规则组](./img/add-rule-group.png)
+    ![errortopic](./img/errortopic.png)
 
-##### 规则组的启用与关闭
+则对应的规则配置如下：
+> 可通过「从规则模版创建-错误码采集规则」直接创建以下规则
 
-新添加的规则组默认处于「关闭状态」，若要让项目设备使用其中的规则进行数据监听，需手动开启；
+- 在项目中添加并启用规则
+    - 在项目的「设备-规则&定位」页面，添加规则
 
-若暂时不需要使用，但后续还会用到，也可将其设为「关闭状态」。
+      ![add-rule_1](./img/add-rule_1.png)
+      ![add-rule_2](./img/add-rule_2.png)
 
-![规则组启用与关闭](./img/rule-group-toggle.png)
+- 输入事件检测信息
+   - 关注的话题：选择需要监听的 topic `/error_status`
+   - 事件码表：上传符合格式的 **csv 文件**，用于判断 topic 消息中是否包含 `code` 列中的内容，如下图：
 
-#### 4. 规则组管理
+      ![errorcode-list](./img/errorcode-list.png)
 
-在更多操作中，可进行规则组的重命名和删除操作。
+   - 规则触发条件：mag.data 包含事件码表 code 列任一行的值
+   
+   上述信息表示：监听 topic `/error_status`，判断其字段 `data` 的消息中，是否包含关键词 `1001 ~ 1005`
 
-![规则组管理](./img/rule-group-management.png)
+- 采集数据
+   - 时间范围：
+      - 采集 `collect_dirs` 中，在触发时间点前 5 分钟，后 1 分钟的文件
+      - 时间判断依据：根据文件内容获取起止时间
+   - 记录：用于标识每次采集将数据保存到的记录
+      - 如：`code: {scope.code}-name: {scope.name}`，当触发了事件码`1002`时，本次采集的数据将生成一条名为「code:1002-name:目标点不可达！请协助」的记录
+- 关键时刻定位
+   - 当数据上传到记录后，自动在触发时间点「创建一刻」，标记关键时刻，便于后续分析问题
+- 启用规则
+   - 规则启用后，项目设备才会使用该规则进行数据监听
 
-#### 5.**规则创建与配置**
+   ![rule-enable](./img/rule-enable.png)
 
-规则是规则组中的单个规则，用于定义触发数据采集与诊断的条件，以及触发后的操作。
+- 查看采集结果
+   - 当设备端监听目录 /home/bag/ 中出现新的 mcap 文件，且文件内的 topic 消息触发规则时，将自动上传数据到记录中
+   - 用户可下载[示例 mcap 文件](https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/sample_data/example_code.mcap)，将其复制到 /home/bag/ 中，等待约 3-5 分钟即可触发上传
 
-##### 添加规则
-
-在规则组中，可通过点击【创建空白规则】或【从规则模板创建】来添加新规则，下面主要介绍创建空白规则的步骤。
-
-![添加规则](./img/add-rule.png)
-
-为规则命名，规则名称用于区分不同规则，方便后续管理和识别。
-
-![规则基础信息](./img/rule-basic-info.png)
-
-##### 设备事件监听
-
-> 此模块是对项目设备进行监控，当预先设定的监听目录里的文件有匹配到您设定的监听话题时，将自动上报事件并记录到当前项目的仪表盘中。
-
-![设备事件监听](./img/device-event-monitoring.png)
-
-###### 关注的话题
-
-- 设置关注的触发话题能缩小规则匹配范围，提高规则诊断的性能、速度和准确度。
-
-- 若想监听设备中日志类型的文件，请选择`/error_status`。
-
-- 其他话题选项可在组织的设备配置中设置，详情可参考[ 4-设备配置](../device/4-device-collector.md)文档。
-
-###### 匹配事件码表
-
-- 在事件码表中，可定义事件的 code 值、事件名称、等级、解决方案等信息。事件码表必须包含 code 列，作为事件的唯一标识符。
-
-- 上传事件码表（支持 JSON 或 CSV 文件）后，系统会自动解析，还支持预览、下载、删除操作。若要修改表内容，可先下载到本地电脑修改后再上传。
-
-![事件码表](./img/event-code-table.png)
-
-###### 事件匹配条件
-
-- 根据设备消息字段与某个值的匹配关系判断事件是否触发。
-
-- 点击【切换】按钮可在 code 表头和具体值输入框之间切换。
-
-- 在预定义输入框中，设定了事件码表中的 code 值作为匹配变量。
-
-- 在具体值输入框中，直接输入文字信息。
-
-- 若要检测 log 文件中是否有关键词 error 1，则需填写：msg.message 包含 error 1，并且「关注的话题」一栏需要选择 /error_status(这里参考我们第二步中配置的 topic 名称)。
-
-- 若要检测 bag 文件的 /error_status 话题（消息类型为 std_msgs/string）中的 msg.data 消息字段中有关键词 error 1，则需要填写：msg.data 包含 error 1。
-
-- 多行逻辑判断条件之间是并且关系，需同时满足才生效。
-
-![事件匹配条件](./img/event-match-condition.png)
-
-###### 事件去重时长
-
-- 若新事件（同一事件）在上次合并事件后的设定时间内发生，则与原事件合并。每次新事件发生时，都重置时间，直到超出时间窗口都无新事件发生时，完成合并。
-
-- 支持范围设置在 1 秒 \~ 86400 秒（1 天）之间。
-
-![事件去重设置](./img/event-deduplication.png)
-
-当 log 文件中出现：1001、1002 或 1003 时（即事件码表中的 code 列任一行值），即可判断为事件匹配成功。
-
-触发操作是指规则条件满足后触发后的操作，目前支持了采集数据、诊断数据两个模块。
-
-##### 采集数据
-
-- 规则条件在设备端触发后，会在本项目中自动创建一条采集任务，采集对应时间的设备数据，采集完成后在记录中生成一条记录，包含触发条件满足时的数据。
-
-![采集数据配置1](./img/data-collection-1.png)
-
-![采集数据配置2](./img/data-collection-2.png)
-
-- 可以设定上传文件的时间范围、记录名称、记录描述、记录标签、采集限制。
-
-- 上传文件指上传数采目录中符合时间范围的所有文件。
-
-- 记录名称、记录描述支持使用代码变量（使用 `{scope.表头名称}` 的格式）与正文穿插书写。
-
-![采集数据配置3](./img/data-collection-3.png)
-
-- 在更多设置中，可利用[文件通配符](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/)进行二次筛选。
-
-- 若有具体的附加文件，如地图文件，可在此处写明具体文件所在地址。
-
-![采集数据配置4](./img/data-collection-4.png)
-
-##### 诊断数据
-
-- 对已经采集到平台中的记录执行数据诊断动作，符合触发条件的时间点将自动创建一刻，可在采集后的记录中查看相关一刻。
-
-![诊断数据配置](./img/data-diagnosis.png)
-
-- 支持设定一刻名称、一刻描述、一刻的属性值，以及是否为诊断出的一刻创建关联的通用任务进行流转。
-
-- 一刻名称、一刻描述、一刻的属性值支持使用代码变量（使用 `{scope.表头名称}` 的格式）与正文穿插书写。
-
-![诊断数据设置](./img/diagnosis-settings.png)
-
-#### 6.**确认规则**：确认规则已启用，且目标设备已拉取到最新的规则配置。
-
-- 启用规则组：点击规则组右侧的启用按钮
-
-![启用规则组](./img/rule_5.png)
-
-- 在设备端执行以下命令，查看是否拉取到最新的规则配置，即出现关键词 `Updated rules`、`listen_dirs`、`collect_dirs`
-
-```bash
-      # 查看数采客户端日志
-      tail -f ~/.local/state/cos/logs/cos.log
-```
-
-![查看日志](./img/rule_6.png)
-
-#### 7.**查看采集结果**：在「项目-记录」页面，查看设备自动创建的记录。点击记录名称进入详情，查看文件与一刻信息。通过播放记录，在[可视化](../viz/1-about-viz.md)页面查看采集的数据。
-
-![查看采集结果](./img/rule_8.png)
-| 内容 | 示例 |
-| :---: | :---: |
-| 文件 | <img src={require('./img/rule_9.png').default} alt="rule_9" width="1000" /> |
-| 一刻 | <img src={require('./img/rule_10.png').default} alt="rule_10" width="1000" /> |
+        ![collect-record](./img/collect-record.png)
 
 ## 了解更多
 

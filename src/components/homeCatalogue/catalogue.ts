@@ -28,6 +28,10 @@ export const CATALOGUE = (locale: string) => [
         title: translate({ id: 'home.catalogue.organization-and-team', message: '组织和团队' }),
       },
       {
+        docLink: '/collaboration/common-resource',
+        title: translate({ id: 'home.catalogue.common-resource', message: '通用资源存储' }),
+      },
+      {
         docLink: '/category/3rd-party-integration',
         title: translate({ id: 'home.catalogue.3rd-party-integration', message: '服务集成' }),
       },
@@ -80,6 +84,10 @@ export const CATALOGUE = (locale: string) => [
         title: translate({ id: 'home.catalogue.device-collector', message: '设备配置' }),
       },
       {
+        docLink: '/device/device-collect',
+        title: translate({ id: 'home.catalogue.device-collect', message: '采集设备数据' }),
+      },
+      {
         docLink: '/device/device-remote-control',
         title: translate({ id: 'home.catalogue.device-remote-control', message: '远程连接设备' }),
       },
@@ -100,9 +108,11 @@ export const CATALOGUE = (locale: string) => [
         docLink: '/automation/quick-start-workflow',
         title: translate({ id: 'home.catalogue.quick-start-workflow', message: '快速上手自动化' }),
       },
-      { docLink: '/automation/action-overview', title: translate({ id: 'home.catalogue.action', message: '动作' }) },
+      { docLink: '/automation/action-overview', title: translate({ id: 'home.catalogue.action', message: '了解自动化动作' }) },
+      { docLink: '/automation/create-action', title: translate({ id: 'home.catalogue.create-action', message: '创建动作' }) },
       { docLink: '/automation/trigger', title: translate({ id: 'home.catalogue.trigger', message: '触发器' }) },
       { docLink: '/automation/invocation', title: translate({ id: 'home.catalogue.invocation', message: '调用历史' }) },
+      { docLink: '/automation/action-runtime', title: translate({ id: 'home.catalogue.action-runtime', message: '动作运行时信息' }) },
     ],
   },
   {
@@ -115,10 +125,7 @@ export const CATALOGUE = (locale: string) => [
     header: { title: translate({ id: 'home.catalogue.developer', message: '开发者' }) },
     docs: [
       { docLink: '/category/core-concepts', title: translate({ id: 'home.catalogue.core-concepts', message: '概念' }) },
-      {
-        docLink: '/category/cocli',
-        title: translate({ id: 'home.catalogue.cocli', message: '命令行工具 coCLI - Beta' }),
-      },
+      { docLink: '/category/cocli', title: translate({ id: 'home.catalogue.cocli', message: '命令行工具 coCLI' }), },
       { docLink: '/category/openapi', title: translate({ id: 'home.catalogue.openapi', message: '开放平台 OpenAPI' }) },
     ],
   },

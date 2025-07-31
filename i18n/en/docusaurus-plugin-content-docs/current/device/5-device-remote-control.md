@@ -10,18 +10,33 @@ The coScene platform enables real-time remote device operations, such as remote 
 
 1. The device has coScene client programs installed. For details, please refer to [Device Installation](./2-create-device.md#add-device-from-device).
 2. The organization administrator has granted device access and permitted remote control operations. For details, please refer to [Enable Device](./3-manage-device.md#enable-device).
+3. The device has been added to the project. For details, see [Assign Devices to Projects](./3-manage-device.md#assign-devices-to-projects).
 
 ## Real-time Visualization
+> **Prerequisites**:
+>
+> Ensure that the [coBridge](https://github.com/coscene-io/coBridge) component is installed and running on the device.  
+> coBridge is an independent ROS node responsible for real-time transmission of device data to the frontend via the WebSocket protocol.  
+> It is part of the ROS suite. If the ROS node has already been installed and enabled, coBridge does not need to be installed again.
+>
+> - See [coBridge Installation Guide](../client/2-apt-source-install.md)
+> - Run and start:
+>
+> ```bash
+> # for ROS 1 distribution
+> roslaunch cobridge cobridge.launch
+>
+> # for ROS 2 distribution
+> ros2 launch cobridge cobridge_launch.xml
+> ```
+>
+> - It is strongly recommended to compile coBridge from source ([Build Guide](https://github.com/coscene-io/coBridge/blob/main/README.md)), integrate it into your robot software, and add the startup command to the robot’s startup script.
+>
+> - Once the coBridge node is running, with a public address and port mapped via virmesh, you can subscribe to robot topics, call services, and perform other operations through the web interface to achieve real-time remote visualization of the robot.
 
-Before device visualization, you need to install the coBridge component on the target machine. This component will run as a separate ROS node and transmit subscribed data to the frontend through the WebSocket protocol.
+On the **Project - Devices** page, when the client status is **Online**, a **Realtime Viz** button will appear next to the device.  
 
-coScene provides [coBridge source code (C++)](https://github.com/coscene-io/coBridge), which currently supports ROS distributions including ROS1 <u>Noetic Ninjemys</u>, <u>Melodic Morenia</u>; ROS2 <u>Foxy Fitzroy</u>, <u>Galactic Geochelone</u>, <u>Humble Hawksbill</u>. For other version requirements, please contact the coScene team.
-
-We strongly recommend users to compile the executable using the source code provided by coScene [compilation process documentation](https://github.com/coscene-io/coBridge/blob/main/README.md)), integrate it into the robot software, and add the command `ros2 launch cobridge cobridge_launch.xml` (or `roslaunch cobridge cobridge_launch.xml`) to the robot startup script.
-
-After the coBridge node starts, combined with the public network address and port mapped by virmesh, you can subscribe to robot topics and issue services through the web interface, achieving remote real-time visualization of the robot.
-
-After device access is granted, you can view devices in the "Devices" page under "Organization Management". A [Real-time Visualization] button will appear, which allows you to connect and view the device's real-time status.
+Click the button to view the live status of the machine.
 
 ![device realtime](./img/4-3-device-realtime.png)
 
@@ -29,7 +44,7 @@ After device access is granted, you can view devices in the "Devices" page under
 
 ## Web SSH
 
-After device access is granted, you can view devices in the "Devices" page under "Organization Management". A [Web SSH] button will appear, which opens a new browser tab to establish an SSH connection to the device.
+On the **Project - Devices** page, when the client status is **Online**, a **Web SSH** button will appear, which opens a new browser tab to establish an SSH connection to the device.
 
 ![device ssh](./img/4-3-device-ssh.png)
 ![device ssh demo](./img/4-3-device-ssh-demo.png)
@@ -42,7 +57,7 @@ When a device is online remotely, users can execute specific tasks by sending co
 
 ![device cmd](./img/6-remote-command-1.png)
 
-Click the [Execute Remote Command] button, enter the command you want to execute in the popup window, and click the [Confirm] button to execute the command on the device.
+Click the [Execute Remote Command] button, enter the command you want to execute in the popup window, and click the [OK] button to execute the command on the device.
 ![device cmd](./img/6-remote-command-2.png)
 ![device cmd](./img/6-remote-command-3.png)
 
