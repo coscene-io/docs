@@ -5,6 +5,39 @@ id: changelog
 
 # Release History
 
+## [25.31.0] - 2025-7-31
+
+### [Added]
+
+- Added "Action Execution on Filtered Records" feature:
+  - After filtering records by conditions, you can use the current filter as input to batch execute actions
+- Added "ROS Suite" installation feature:
+  - When registering a device, you can choose to install the ROS Suite to support real-time fault monitoring and device visualization. See [Add Device](../docusaurus-plugin-content-docs/current/device/2-create-device.md) for details
+- Added "Visualization Task Panel":
+  - In record playback and real-time visualization, a task panel is visible on the left, showing the current user's tasks in the current project
+  - During real-time visualization, when a task is highlighted, the records collected in the data collection panel will be automatically associated with the highlighted task
+- Added "Select Device When Creating Task" feature: When creating a general task, you can directly select "Associated device"
+- Added "Cross-Organization Record Copy" feature: Select records and call "System Action - Copy records" to copy records to projects in the target organization
+- Added "Action Log Download" feature: Support downloading invocation logs after action execution is completed
+- Added "User Feedback" feature: Support user issue reporting
+- Added Data Collection Client v1.1.8: Support proxy forwarding functionality
+
+### [Improved]
+
+- Improved device-related module display
+  - In projects, moved the collection capability from "Tasks - Collection Tasks" to the "Devices" page, showing corresponding collection history in "Devices - Execution history"
+  - Moved the original "Data Collection & Diagnostics" module to the "Devices - Rules & matching" page
+- Improved automation module display: Moved actions, triggers, and invocations from the sidebar to the list page
+- Improved "File Preview" feature: When previewing bag and mcap files, more file information is available
+- Improved slug definition and display
+  - Project slug now supports `-` and `_` input
+  - Organization slug and project slug can be quickly obtained on the organization homepage and in projects, for use with command-line tool [coCLI](../docusaurus-plugin-content-docs/current/developers/cocli/1-cli-install.md) and other scenarios
+- Optimized table information display
+  - Tables remember the number of entries displayed per page on your computer, showing the same number on your next visit
+  - Improved mouse hover style when viewing tags
+
+---
+
 ## [25.28.0] - 2025-7-9
 
 ### [Added]
