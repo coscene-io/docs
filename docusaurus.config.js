@@ -96,7 +96,7 @@ const config = {
           { href: 'https://www.coscene.cn', label: '官方网站', position: 'right' },
           { href: 'https://github.com/coscene-io', label: 'GitHub', position: 'right' },
           {
-            href: 'https://petstore.swagger.io/?url=https://download.coscene.cn/openapi/openapi.yaml',
+            href: 'https://petstore.swagger.io/?url=https://coscene-download.s3.us-east-1.amazonaws.com/openapi/openapi.yaml',
             label: 'OpenAPI',
             position: 'right',
           },
