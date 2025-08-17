@@ -197,26 +197,82 @@ Example:
 
   ![errorcode-list](./img/errorcode-list.png)
 
-* Triggered Event:
+* The triggered event is a message from the `/error_status` topic:
 
-  ![errortopic](./img/errortopic.png)
+  ```
+  "msg": {
+    "code": "1001",
+    "message": "Positioning lost",
+    "label": [
+        "Positioning issue",
+        "Version:v1.0",
+        "Other tags"
+    ],
+    "files": [
+        "/home/coscene/20250808_1.bag",
+        "/home/coscene/20250808_2.bag"
+    ]
+  }
+
+  ```
 
 Variable reference table:
 
-| Variable                                                        | Meaning                                           | Example                                                                  |
-| --------------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
-| `{scope.code}`                                                  | The `code` of the event from the event code table | `1002`                                                                   |
-| `{scope.name}`                                                  | The `name` of the corresponding event             | `Target unreachable! Please assist.`                                     |
-| `{msg}`                                                         | The triggered message content                     | `data:{"code": "1002", "message": "Target unreachable! Please assist."}` |
-| `{topic}`                                                       | The triggered topic                               | `/error_status`                                                          |
-| `{ts}`                                                          | The trigger timestamp                             | `1751436062.133`                                                         |
-| `timestamp(ts).format("%Y-%m-%d %H:%M:%S", "America/New_York")` | Format timestamp to New York time                 | `2025-02-07 03:09:40`                                                    |
+| Variable | Meaning | Example |
+| --- | --- | --- |
+| `{scope.code}` | The `code` of the event from the event code table | `1001` |
+| `{scope.name}` | The `name` of the corresponding event | `Positioning lost` |
+| {msg} | The message content that triggered the rule | {msg} represents the entire message content |
+| {msg.label} | The value of the `label` field in the message that triggered the rule | {msg.label} = `"Positioning issue","Version:v1.0","Other tags"` |
+| {msg.files} | The value of the `files` field in the message that triggered the rule | {msg.files} = `"/home/coscene/20250808_1.bag","/home/coscene/20250808_2.bag"` |
+| `{topic}` | The triggered topic | `/error_status` |
+| `{ts}` | The trigger timestamp | `1751436062.133` |
+| `{timestamp(ts).format("%Y-%m-%d %H:%M:%S", "America/New_York")}` | Format timestamp to New York time | `2025-07-02 02:01:02`|
 
 **Note:**
 
 * When used in rule **conditions**, write the variable directly (no `{}`).
 * When used in **non-conditions**, like record name/description, use `{}`.
 * Expressions follow [CEL syntax](https://github.com/google/cel-spec/blob/master/doc/langdef.md).
+
+Example usage of rule variables:
+
+1. **Record Name**
+
+    - Input: Error Code:{scope.code} @ {timestamp(ts).format("%Y-%m-%d %H:%M:%S", "Asia/Shanghai")}
+    - Output: Error Code:1001 @ 2025-07-02 14:01:02
+
+2. **Record Description**
+
+    - Input: {msg.message}
+    - Output: Positioning lost
+
+3. **Record label**
+
+    - Input: {msg.label}
+        - If the message field type is an array/single string, its content can be automatically parsed as record label
+    - Output: Positioning issue, Version:v1.0, Other tags
+
+4. **More Settings – Specific Attached Files**
+
+    - Input: {msg.files}
+        - If the message field type is an array, the file list inside it can be automatically parsed as attached files for upload
+        - If you only need to upload the file list defined in the message {msg.files}, there is no need to configure the collection path `collect_dirs` in Organization → Device → Device Configuration
+    - Output: /home/coscene/20250808_1.bag, /home/coscene/20250808_2.bag
+
+5. **Moment Name**
+
+    - Input: {scope.code}-{scope.name}
+    - Output: 1001-Positioning Lost
+
+6. **Moment Attributes**
+
+    - Input:
+        - Attribute Name Input: Error Level
+        - Attribute Value Input: {scope.level}
+    - Output:
+        - Attribute Name: Error Level
+        - Attribute Value: P1
 
 ### Custom Functions
 
