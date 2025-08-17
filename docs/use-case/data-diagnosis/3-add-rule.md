@@ -171,20 +171,36 @@ sidebar_position: 3
 
   ![errorcode-list](./img/errorcode-list.png)
 
-- 触发事件为：
+- 触发事件为 `/error_status` topic 中的消息：
 
-  ![errortopic](./img/errortopic.png)
+  ```
+  "msg": {
+                "code": "1001",
+                "message": "定位丢失",
+                "tags": [
+                    "定位问题",
+                    "版本:v1.0",
+                    "其他标签"
+                ],
+                "files": [
+                    "/home/coscene/20250808_1.bag",
+                    "/home/coscene/20250808_2.bag"
+                ]
+            },
+  ```
 
 规则变量书写规范见下表：
 
 | 变量名 | 含义 | 示例 |
 | --- | --- | --- |
-| `{scope.code}` | 触发事件在事件码表中的 `code` 值 | `{scope.code}` 为 `1002` |
-| `{scope.name}` | 触发事件在事件码表中对应行的 `name` 值 | `{scope.name}` 为 `目标点不可达！请协助` |
-| `{msg}` | 触发规则的消息内容 | `{msg}` 为 `data:{"code": "1002", "message": "目标点不可达！请协助"}` |
+| `{scope.code}` | 触发事件在事件码表中的 `code` 值 | `{scope.code}` 为 `1001` |
+| `{scope.name}` | 触发事件在事件码表中对应行的 `name` 值 | `{scope.name}` 为 `定位丢失` |
+| `{msg}` | 触发规则的消息内容 | `{msg}` 为整条消息的内容 |
+| `{msg.tags}` | 触发规则的消息中的 `tags` 字段值 | `{msg.tags}` 为`"定位问题","版本:v1.0","其他标签"`|
+| `{msg.files}` | 触发规则的消息中的 `files` 字段值 | `{msg.files}` 为`"/home/coscene/20250808_1.bag","/home/coscene/20250808_2.bag"`|
 | `{topic}` | 触发规则的话题 | `{topic}` 为 `/error_status` |
 | `{ts}` | 触发规则时的时间戳 | `{ts}` 为 `1751436062.133` |
-| `timestamp(ts).format("%Y-%m-%d %H:%M:%S", "America/New_York")` | 将时间戳转为格式为 `%Y-%m-%d %H:%M:%S`的纽约时区（西五区）时间 | `2025-02-07 03:09:40` |
+| `{timestamp(ts).format("%Y-%m-%d %H:%M:%S", "Asia/Shanghai")}` | 将时间戳转为格式为 `%Y-%m-%d %H:%M:%S`的上海时区时间 | `2025-07-02 14:01:02` |
 
 **注意：**
 
@@ -192,6 +208,44 @@ sidebar_position: 3
 - 在非规则条件中使用变量或表达式时，例如记录名称，记录描述等，请用 `{}` 包裹。
 - 表达式的语法遵循 [CEL 语法](https://github.com/google/cel-spec/blob/master/doc/langdef.md)
 
+规则变量的使用示例如下：
+1. **记录名称：**
+   
+   - 输入：错误码:{scope.code} @ {timestamp(ts).format("%Y-%m-%d %H:%M:%S", "Asia/Shanghai")}
+   - 输出：错误码:1001 @ 2025-07-02 14:01:02
+
+2. **记录描述**
+
+   - 输入：{msg.message}
+   - 输出：定位丢失
+  
+3. **记录标签**
+
+   - 输入：{msg.tags}
+     -  若输入的消息字段类型为**数组/单个 string**，则可自动将其内容解析为记录标签
+   - 输出：定位问题，版本:v1.0，其他标签
+  
+4. **更多设置-具体附加文件**
+
+   - 输入：{msg.files}
+     - 若输入的消息字段类型为**数组**，则可自动将其中的文件清单解析为附加文件进行上传
+     - 若仅需上传消息中定义的文件清单 {msg.files}，则无需在「组织-设备-设备配置」页面中设置采集路径 `collect_dirs`
+   - 输出：/home/coscene/20250808_1.bag,/home/coscene/20250808_2.bag
+  
+5. **一刻名称**
+
+   - 输入：{scope.code}-{scope.name}
+   - 输出：1001-定位丢失
+
+6. **一刻属性**
+
+   - 输入：
+     - 属性名称输入：错误等级
+     - 属性值输入：{scope.level}
+   - 输出：
+     - 属性名称：错误等级
+     - 属性值：P1
+    
 ### 自定义函数
 
 除了 [CEL 语法](https://github.com/google/cel-spec/blob/master/doc/langdef.md) 支持的函数，还额外支持了以下函数(以下定义参照 CEL)
