@@ -29,24 +29,32 @@ Collect existing files from devices including logs, images, and configurations.
    ![pro-device](./img/pro-device.png)
    ![device-collect](./img/device-collect_1.png)
 
-2. Configure parameters:
+2. Depending on your needs, choose to collect data by time range or by file path.
 
-   ![device-collect](./img/device-collect_2.png)
+   - **Collect by time range**
 
-    - **Time Range**
-      - Based on file creation/modification timestamps (Note: Some filesystems may not provide creation time)
+      ![device-collect](./img/device-collect-time.png)
+   
+       - **Time Range**
+         - Based on file creation/modification timestamps (Note: Some filesystems may not provide creation time)
+   
+       - **Collection Path**
+         - Absolute path (e.g., `/home/bag/`)
+         - Recommend pre-configuring in [Device configuration](./4-device-collector.md#collection-rule-format-details)
+   
+       - **Additional Files**
+         - Paths to collect regardless of time (files/directories)
+         - Pre-configure in [Device configuration](./4-device-collector.md#collection-rule-format-details)
+   
+       - **Naming Convention**
+         - Collection Name: Identifier for collection job
+         - Record Name: Target storage record
+   
+   - **Collect by file path**
 
-    - **Collection Path**
-      - Absolute path (e.g., `/home/bag/`)
-      - Recommend pre-configuring in [Device configuration](./4-device-collector.md#collection-rule-format-details)
+     Enter the absolute file path to be collected (folder/file), for example: `/home/map/` or `/home/device/config.yaml`. The system will collect all files in the folder or the specified file.
 
-    - **Additional Files**
-      - Paths to collect regardless of time (files/directories)
-      - Pre-configure in [Device configuration](./4-device-collector.md#collection-rule-format-details)
-
-    - **Naming Convention**
-      - Collection Name: Identifier for collection job
-      - Record Name: Target storage record
+     ![device-collect](./img/device-collect-path.png)
 
 3. During the collection process, you can view the progress in the device execution history.
 
