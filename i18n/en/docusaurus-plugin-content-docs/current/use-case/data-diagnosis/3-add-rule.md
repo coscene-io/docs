@@ -192,20 +192,12 @@ Example:
 - The triggered event is a message from the `/error_status` topic:
 
   ```
-  "msg": {
+  {
     "code": "1001",
     "message": "Positioning lost",
-    "label": [
-        "Positioning issue",
-        "Version:v1.0",
-        "Other tags"
-    ],
-    "files": [
-        "/home/coscene/20250808_1.bag",
-        "/home/coscene/20250808_2.bag"
-    ]
+    "label": ["Positioning issue","Version:v1.0","Other tags"],
+    "files": ["/home/coscene/20250808_1.bag","/home/coscene/20250808_2.bag"]
   }
-
   ```
 
 Variable reference table:
