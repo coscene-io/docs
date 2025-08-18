@@ -155,7 +155,7 @@ This module defines: file time range, record info, collection limits, and more s
     * Use [glob pattern](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/) to whitelist specific files.
   * Additional Files:
 
-    * Specify absolute paths of extra files to upload (e.g., maps, config files).
+    * Specify absolute paths of extra files/folder to upload (e.g., maps, config files).
 
 Data collection example:
 
