@@ -186,19 +186,13 @@ sidebar_position: 3
 - 触发事件为 `/error_status` topic 中的消息：
 
   ```
-  "msg": {
-                "code": "1001",
-                "message": "定位丢失",
-                "tags": [
-                    "定位问题",
-                    "版本:v1.0",
-                    "其他标签"
-                ],
-                "files": [
-                    "/home/coscene/20250808_1.bag",
-                    "/home/coscene/20250808_2.bag"
-                ]
-            },
+  {
+    "code": "1001",
+    "message": "定位丢失",
+    "tags": ["定位问题", "版本:v1.0", "其他标签"],
+    "files": ["/home/coscene/20250808_1.bag", "/home/coscene/20250808_2.bag"]
+  }
+
   ```
 
 规则变量书写规范见下表：
