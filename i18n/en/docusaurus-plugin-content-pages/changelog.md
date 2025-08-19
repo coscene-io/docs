@@ -5,6 +5,33 @@ id: changelog
 
 # Release History
 
+## [25.34.0] - 2025-8-20
+
+### 【Added】
+
+- Added display and filtering features for "more basic record information"
+  - In the record list, you can now view file count, record size, net playable time, and time span of the record
+  - In the record details, you can view the overall topic information within the record
+  - In the record’s More filter options, you can now filter by file count, record size, net playable time, record time span, topic, schema, and more
+- Added configuration for "Real-time visualization inactivity timeout"
+  - In the Visualization → My Settings page, you can configure the auto-disconnect duration. By default, if there is no activity for 30 minutes, the real-time visualization session will automatically disconnect. You can also set it to never disconnect
+- Added display of "more fields for public project records"
+  - In the public project record list, new fields are now displayed: record label, file count, record size, net playable time, and time span
+- Added Data Collection Client v1.1.9:
+  - In device auto-collection rules, content from topic messages can now be used as label variables and attached file variables
+- Added pause/resume upload APIs, allowing devices to pause/resume file uploads via API calls
+
+### 【Improved】
+
+- Improved the device data collection dialog, now supports choosing collection mode: collect by time range / collect by file path
+- Improved the project member adding dialog, now supports batch selecting users to add to a project
+
+### 【Fixed】
+
+- Fixed an issue where visualization playback of H264 data did not support AUD frames
+
+---
+
 ## [25.31.0] - 2025-7-31
 
 ### [Added]
