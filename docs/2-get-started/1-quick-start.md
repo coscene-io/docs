@@ -266,9 +266,9 @@ sidebar_position: 1
 
    ![device-collect](./img/device-collect_1.png)
 
-   选择需要采集的时间范围、采集路径、采集名称与记录名称，开始采集
+   选择需要采集的时间范围、采集路径、采集名称与记录名称，开始采集(或切换为按文件路径直接采集指定文件)
 
-   ![device-collect](./img/device-collect_2.png)
+   ![device-collect](./img/device-collect-time.png)
 
     - **采集时间范围**
       - 时间判断依据：文件的创建时间与最后修改时间
