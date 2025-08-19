@@ -3,6 +3,7 @@ sidebar_position: 3
 ---
 
 # Add Rule
+
 > **Permissions**: Only **Project Admins** and **Organization Admins** can manage rules. Other roles can only view rule content.
 
 On the "Rules & matching" page of project devices, you can add rules to automatically monitor and collect data from project devices.
@@ -45,13 +46,12 @@ Rules consist of **Basic info**, **Event detection**, and **Trigger action**:
 
 Monitor newly generated files/data. If the content matches the event condition, an event is triggered and reported. Handled content includes:
 
-* Files in the device's `listen_dirs`, see [Device Configuration](../../device/4-device-collector.md)
-* Messages from a specific device-side topic
+- Files in the device's `listen_dirs`, see [Device Configuration](../../device/4-device-collector.md)
+- Messages from a specific device-side topic
+  - Requires installation and activation of the ROS suite, see [Add Device](../../device/2-create-device.md)
 
-  * Requires installation and activation of the ROS suite, see [Add Device](../../device/2-create-device.md)
-* Files within a record
-
-  * Requires using the **Data matching** action within the record to detect events
+- Files within a record
+  - Requires using the **Data matching** action within the record to detect events
 
 ![Device Event Monitoring](./img/device-event-monitoring.png)
 
@@ -61,8 +61,8 @@ Monitor newly generated files/data. If the content matches the event condition, 
 
 The system provides two default topics:
 
-* `/error_status`: For use with the **Error code collection rule** template, see [Get Started with Rule Collection](./2-get-started.md)
-* `/external_log`: For handling `.log` files that meet certain conditions
+- `/error_status`: For use with the **Error code collection rule** template, see [Get Started with Rule Collection](./2-get-started.md)
+- `/external_log`: For handling `.log` files that meet certain conditions
 
 To configure more options, click **View device configuration** to go to the [Device Configuration](../../device/4-device-collector.md) page.
 
@@ -75,11 +75,10 @@ The event code table defines event `code`, name, severity, and resolution, used 
 ![Event Code Table](./img/rule-eventlist.png)
 ![Preview Code Table](./img/errorcode-list.png)
 
-* The code table **must contain a `code` column** as the event's unique identifier. Other columns are optional.
+- The code table **must contain a `code` column** as the event's unique identifier. Other columns are optional.
 
-* After uploading the table (supports JSON or CSV), you can preview, download, or delete it.
-
-  * To modify, download the original, delete it from the rule, and upload the modified file.
+- After uploading the table (supports JSON or CSV), you can preview, download, or delete it.
+  - To modify, download the original, delete it from the rule, and upload the modified file.
 
 ### Rule Trigger Conditions
 
@@ -89,30 +88,26 @@ Assume topic `/error_status` with message type `std_msgs/String`, for example:
 
 ![errortopic](./img/errortopic.png)
 
-* To detect if `data` contains any value from the event code table:
-
-  * Input: `msg.data contains the value of the code column`
+- To detect if `data` contains any value from the event code table:
+  - Input: `msg.data contains the value of the code column`
 
   ![rule-simple](./img/rule-simple.png)
 
-* To detect if `data` equals a specific code `1001`:
-
-  * Switch to fixed value input
-  * Input: `msg.data equals 1001`
+- To detect if `data` equals a specific code `1001`:
+  - Switch to fixed value input
+  - Input: `msg.data equals 1001`
 
   ![rule-simple-value](./img/rule-simple-value.png)
 
-* If `data` is an array and needs to check for any match with the code column:
+- If `data` is an array and needs to check for any match with the code column:
+  - Switch to code mode
+  - Input: `msg.data.exists(x, x.code.contains(scope.code))`
 
-  * Switch to code mode
-  * Input: `msg.data.exists(x, x.code.contains(scope.code))`
+  ![rule-code_1](./img/rule-code_1.png)
+  ![rule-code_2](./img/rule-code_2.png)
 
-  ![rule-code\_1](./img/rule-code_1.png)
-  ![rule-code\_2](./img/rule-code_2.png)
-
-* To detect if a log contains keyword `error 1`:
-
-  * Input: `msg.message contains error 1` and select `/external_log` as the monitored topic
+- To detect if a log contains keyword `error 1`:
+  - Input: `msg.message contains error 1` and select `/external_log` as the monitored topic
 
   ![rule-simple-log](./img/rule-simple-log.png)
 
@@ -120,7 +115,7 @@ Assume topic `/error_status` with message type `std_msgs/String`, for example:
 
 If a new event (of the same type) occurs within a set time since the last event merge, it will be merged. The timer resets with each new occurrence, and final merge completes after no further events occur within the window.
 
-* Supported range: 1 to 86400 seconds (1 day)
+- Supported range: 1 to 86400 seconds (1 day)
 
 ![Event Deduplication](./img/event-deduplication.png)
 
@@ -136,26 +131,24 @@ This module defines: file time range, record info, collection limits, and more s
 
 <img src={require('./img/rule-collect-setting.png').default} alt="rule-collect-setting" width="700" />
 
-* **Upload Time Range**
+- **Upload Time Range**
+  - Defines how much time before and after the trigger time to collect files.
 
-  * Defines how much time before and after the trigger time to collect files.
-* **Record Info**
+- **Record Info**
+  - Set record name, description, and labels. Name/description can use variables (e.g., `{scope.code}`, see below).
+  - The tag `uploaded` is automatically added once data is uploaded.
 
-  * Set record name, description, and labels. Name/description can use variables (e.g., `{scope.code}`, see below).
-  * The tag `uploaded` is automatically added once data is uploaded.
-* **Collection Limits**
+- **Collection Limits**
+  - Define max number of uploads per day per device or across all devices for repeated events.
+  - Recommended to set limits to avoid excessive uploads.
 
-  * Define max number of uploads per day per device or across all devices for repeated events.
-  * Recommended to set limits to avoid excessive uploads.
-* **More Settings**
+- **More Settings**
+  - File Filtering:
+    - By default, all files in the data directory during the time window are uploaded.
+    - Use [glob pattern](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/) to whitelist specific files.
 
-  * File Filtering:
-
-    * By default, all files in the data directory during the time window are uploaded.
-    * Use [glob pattern](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/) to whitelist specific files.
-  * Additional Files:
-
-    * Specify absolute paths of extra files to upload (e.g., maps, config files).
+  - Additional Files:
+    - Specify absolute paths of extra files/folder to upload (e.g., maps, config files).
 
 Data collection example:
 
@@ -169,19 +162,18 @@ Data auto-uploaded to record example:
 
 After rule is triggered, a **Moment** is automatically created in the record to mark a critical time point.
 
-* After collecting data into a record, a Moment is created at the trigger timestamp.
-* For manually created records, invoking the **Data matching** action will match against rules marked with **Key moment identification**.
+- After collecting data into a record, a Moment is created at the trigger timestamp.
+- For manually created records, invoking the **Data matching** action will match against rules marked with **Key moment identification**.
 
 This module defines: Moment Info and Task Info
 
 <img src={require('./img/diagnosis-settings.png').default} alt="diagnosis-settings" width="700" />
 
-* **Moment Info**
+- **Moment Info**
+  - Define name, description, and attributes of the moment. Supports variables (e.g., `{scope.code}`).
 
-  * Define name, description, and attributes of the moment. Supports variables (e.g., `{scope.code}`).
-* **Task Info**
-
-  * Configure task creation, assignee, and [syncing to ticket systems](../../3-collaboration/integration/1-jira-integration.md).
+- **Task Info**
+  - Configure task creation, assignee, and [syncing to ticket systems](../../3-collaboration/integration/1-jira-integration.md).
 
 Auto-created moment example:
 
@@ -193,54 +185,94 @@ You can use variables/expressions in rule actions to reference values at the tim
 
 Example:
 
-* Event Code Table:
+- Event Code Table:
 
   ![errorcode-list](./img/errorcode-list.png)
 
-* Triggered Event:
+- The triggered event is a message from the `/error_status` topic:
 
-  ![errortopic](./img/errortopic.png)
+  ```
+  {
+    "code": "1001",
+    "message": "Positioning lost",
+    "label": ["Positioning issue","Version:v1.0","Other tags"],
+    "files": ["/home/coscene/20250808_1.bag","/home/coscene/20250808_2.bag"]
+  }
+  ```
 
 Variable reference table:
 
-| Variable                                                        | Meaning                                           | Example                                                                  |
-| --------------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
-| `{scope.code}`                                                  | The `code` of the event from the event code table | `1002`                                                                   |
-| `{scope.name}`                                                  | The `name` of the corresponding event             | `Target unreachable! Please assist.`                                     |
-| `{msg}`                                                         | The triggered message content                     | `data:{"code": "1002", "message": "Target unreachable! Please assist."}` |
-| `{topic}`                                                       | The triggered topic                               | `/error_status`                                                          |
-| `{ts}`                                                          | The trigger timestamp                             | `1751436062.133`                                                         |
-| `timestamp(ts).format("%Y-%m-%d %H:%M:%S", "America/New_York")` | Format timestamp to New York time                 | `2025-02-07 03:09:40`                                                    |
+| Variable                                                          | Meaning                                                               | Example                                                                         |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `{scope.code}`                                                    | The `code` of the event from the event code table                     | `1001`                                                                          |
+| `{scope.name}`                                                    | The `name` of the corresponding event                                 | `Positioning lost`                                                              |
+| `{msg}`                                                           | The message content that triggered the rule                           | `{msg}` represents the entire message content                                   |
+| `{msg.label}`                                                     | The value of the `label` field in the message that triggered the rule | `{msg.label}` = `"Positioning issue","Version:v1.0","Other tags"`               |
+| `{msg.files}`                                                     | The value of the `files` field in the message that triggered the rule | `{msg.files}` = `"/home/coscene/20250808_1.bag","/home/coscene/20250808_2.bag"` |
+| `{topic}`                                                         | The triggered topic                                                   | `/error_status`                                                                 |
+| `{ts}`                                                            | The trigger timestamp                                                 | `1751436062.133`                                                                |
+| `{timestamp(ts).format("%Y-%m-%d %H:%M:%S", "America/New_York")}` | Format timestamp to New York time                                     | `2025-07-02 02:01:02`                                                           |
 
 **Note:**
 
-* When used in rule **conditions**, write the variable directly (no `{}`).
-* When used in **non-conditions**, like record name/description, use `{}`.
-* Expressions follow [CEL syntax](https://github.com/google/cel-spec/blob/master/doc/langdef.md).
+- When used in rule **conditions**, write the variable directly (no `{}`).
+- When used in **non-conditions**, like record name/description, use `{}`.
+- Expressions follow [CEL syntax](https://github.com/google/cel-spec/blob/master/doc/langdef.md).
+
+Example usage of rule variables:
+
+1. **Record Name**
+   - Input: Error Code:`{scope.code} @ {timestamp(ts).format("%Y-%m-%d %H:%M:%S", "Asia/Shanghai")}`
+   - Output: Error Code:1001 @ 2025-07-02 14:01:02
+
+2. **Record Description**
+   - Input: `{msg.message}`
+   - Output: Positioning lost
+
+3. **Record label**
+   - Input: `{msg.label}`
+     - If the message field type is an array/single string, its content can be automatically parsed as record label
+   - Output: Positioning issue, Version:v1.0, Other tags
+
+4. **More Settings – Specific Attached Files**
+   - Input: `{msg.files}`
+     - If the message field type is an array, the file list inside it can be automatically parsed as attached files for upload
+     - If you only need to upload the file list defined in the message `{msg.files}`, there is no need to configure the collection path `collect_dirs` in Organization → Device → Device Configuration
+   - Output: /home/coscene/20250808_1.bag, /home/coscene/20250808_2.bag
+
+5. **Moment Name**
+   - Input: `{scope.code}-{scope.name}`
+   - Output: 1001-Positioning Lost
+
+6. **Moment Attributes**
+   - Input:
+     - Attribute Name Input: Error Level
+     - Attribute Value Input: `{scope.level}`
+   - Output:
+     - Attribute Name: Error Level
+     - Attribute Value: P1
 
 ### Custom Functions
 
 In addition to [CEL syntax](https://github.com/google/cel-spec/blob/master/doc/langdef.md), the following functions are also supported:
 
-* **timestamp** – Convert various types to timestamp
+- **timestamp** – Convert various types to timestamp
+  - Signature:
+    - `timestamp(double) -> google.protobuf.Timestamp`
 
-  * Signature:
-
-    * `timestamp(double) -> google.protobuf.Timestamp`
-  * Example:
+  - Example:
 
     ```cel
     timestamp(1738915780.123) -> timestamp("2025-02-07T08:09:40.123")
     ```
 
-* **format** – Format timestamp as a string
+- **format** – Format timestamp as a string
+  - Signature:
+    - `google.protobuf.Timestamp.format(string) -> string`
+    - `google.protobuf.Timestamp.format(string, string) -> string`
+    - `google.protobuf.Timestamp.format(string, int) -> string`
 
-  * Signature:
-
-    * `google.protobuf.Timestamp.format(string) -> string`
-    * `google.protobuf.Timestamp.format(string, string) -> string`
-    * `google.protobuf.Timestamp.format(string, int) -> string`
-  * Example:
+  - Example:
 
     ```cel
     timestamp("2025-02-07T08:09:40.123").format("%Y-%m-%d %H:%M:%S") -> "UTC: 2025-02-07 08:09:40"
@@ -250,10 +282,10 @@ In addition to [CEL syntax](https://github.com/google/cel-spec/blob/master/doc/l
 
 **Note:**
 
-* Timestamp format strings follow `man 3 strftime` ([learn more](https://linux.die.net/man/3/strftime))
-* Timezones support [IANA standard names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+- Timestamp format strings follow `man 3 strftime` ([learn more](https://linux.die.net/man/3/strftime))
+- Timezones support [IANA standard names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
 ## Next Steps
 
-* [Debug and Enable Rules](./4-manage-rule-group.md)
-* [Add Device](../../device/2-create-device.md)
+- [Debug and Enable Rules](./4-manage-rule-group.md)
+- [Add Device](../../device/2-create-device.md)

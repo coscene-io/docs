@@ -203,9 +203,9 @@ Devices can establish connections with real devices as data collection targets. 
 
    ![create-collection-task](./img/device-collect_1.png)
 
-   Choose the time range, collection path, collection name, and record name to begin data collection.
+   Choose the time range, collection path, collection name, and record name to begin data collection.(Or switch to collecting specified files directly by file path)
 
-   ![create-collection-task](./img/device-collect_2.png)
+   ![create-collection-task](./img/device-collect-time.png)
 
    - Time Range for Collection
       - Time basis: file creation time and last modified time

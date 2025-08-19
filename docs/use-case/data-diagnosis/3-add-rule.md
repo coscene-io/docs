@@ -3,6 +3,7 @@ sidebar_position: 3
 ---
 
 # 添加规则
+
 > 权限：仅**项目管理员**和**组织管理员**可管理规则，其他角色仅能查看规则内容
 
 在项目设备的规则&定位页面，可添加规则，实现项目设备数据的自动监听与采集。
@@ -26,6 +27,7 @@ sidebar_position: 3
 若有其他格式的时间戳需要支持的，请联系我们。
 
 ## 添加规则
+
 规则组是规则的集合，用于对规则进行分类管理。规则用于定义触发数据采集的条件以及触发后的操作。
 
 在项目的「设备-规则&定位」页面，点击【添加规则组】
@@ -41,6 +43,7 @@ sidebar_position: 3
 ![rule-info](./img/rule-info.png)
 
 ## 事件检测
+
 检测新生成的文件/数据，当内容符合事件匹配条件时，触发事件上报。处理的内容如下：
 
 - 设备监听目录 `listen_dirs` 中的文件，详见[设备配置](../../device/4-device-collector.md)
@@ -52,6 +55,7 @@ sidebar_position: 3
 ![设备事件监听](./img/device-event-monitoring.png)
 
 ### 关注的话题
+
 > 建议将设备上的错误码统一发到一个 topic，如 /error_code topic，以便于实现标准化的错误码采集
 
 系统默认提供了两个话题，分别是：
@@ -61,13 +65,14 @@ sidebar_position: 3
 
 若需配置更多选项，可点击【查看设备配置】前往组织的[设备配置](../../device/4-device-collector.md)中设置
 
-  ![rule-topic](./img/rule-topic.png)
+![rule-topic](./img/rule-topic.png)
 
 ### 匹配事件码表
+
 在事件码表中，可定义事件的 code 值、事件名称、等级、解决方案等信息，用于在事件与一刻中展示对应的信息
 
-  ![事件码表](./img/rule-eventlist.png)
-  ![预览事件码表](./img/errorcode-list.png)
+![事件码表](./img/rule-eventlist.png)
+![预览事件码表](./img/errorcode-list.png)
 
 - 事件码表必须包含 code 列，作为事件的唯一标识符，可根据实际情况增加或删除列
   - 注：表头名称需为英文，且无空格
@@ -75,11 +80,12 @@ sidebar_position: 3
   - 若要修改表内容，可先下载到本地电脑，删除规则中的原表后再上传修改后的表格
 
 ### 规则触发条件
+
 根据设备消息字段与某个值的匹配关系判断事件是否触发。
 
 假设存在 topic `/error_status`（消息类型为 `std_msgs/string`），示例如下：
 
-  ![errortopic](./img/errortopic.png)
+![errortopic](./img/errortopic.png)
 
 - 若要检测 `data` 字段中是否出现事件码表中的 code 值，即 `1001~1005`：
   - 填写：msg.data 包含 事件码表 code 列任一行的值
@@ -105,6 +111,7 @@ sidebar_position: 3
   ![rule-simple-log](./img/rule-simple-log.png)
 
 ### 事件去重时长
+
 若新事件（同一事件）在上次合并事件后的设定时间内发生，则与原事件合并。每次新事件发生时，都重置时间，直到超出时间窗口都无新事件发生时，完成合并。
 
 - 支持范围设置在 1 秒 \~ 86400 秒（1 天）之间
@@ -112,14 +119,16 @@ sidebar_position: 3
 ![事件去重设置](./img/event-deduplication.png)
 
 ## 触发操作
+
 触发操作是指规则条件满足后执行的操作，包括采集数据、关键时刻定位。
 
 ### 采集数据
+
 设备端触发规则后，将自动采集对应时间的数据，并保存到记录。
 
 该模块主要定义：上传文件时间范围、记录信息、采集限制、更多设置
 
-  <img src={require('./img/rule-collect-setting.png').default} alt="rule-collect-setting" width="700" />  
+<img src={require('./img/rule-collect-setting.png').default} alt="rule-collect-setting" width="700" />
 
 - **上传文件的时间范围**
   - 定义需要采集触发时间点前后多长时间范围的文件。（数据采集目录的设置详见[设备配置](../../device/4-device-collector.md)）
@@ -134,24 +143,26 @@ sidebar_position: 3
   - 筛选文件范围：
     - 默认情况下，所有在指定时间范围内的数据采集目录中的文件都会被上传
     - 支持利用[文件通配符](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/)设置上传白名单，对既定的文件上传清单进行二次筛选，仅上传在白名单中的文件，以减少设备流量开支
-  - 具体附加文件：添加需要额外上传的设备文件绝对路径，一般为地图、配置文件等非实时产生的设备文件
+  - 具体附加文件：添加需要额外上传的设备文件/文件夹绝对路径，一般为地图、配置文件等非实时产生的设备文件
 
 规则触发的自动采集示例：
 
-  ![采集数据配置1](./img/data-collection-1.png)
+![采集数据配置1](./img/data-collection-1.png)
 
 采集数据自动上传至记录示例：
 
-  ![采集数据配置2](./img/data-collection-2.png)
+![采集数据配置2](./img/data-collection-2.png)
 
 ### 关键时刻定位
+
 设备或记录触发规则后，在记录中自动创建一刻，标记关键时间点
+
 - 从设备端采集数据保存到记录后，自动在规则触发时间点创建一刻
 - 手动创建的记录可通过调用「数据定位」动作自动标记关键时间点。「数据定位」动作会聚合项目中勾选了「关键时刻定位」模块的所有规则，对记录中的文件进行规则匹配。
 
 该模块主要定义：一刻信息、任务信息
 
-<img src={require('./img/diagnosis-settings.png').default} alt="diagnosis-settings" width="700" />  
+<img src={require('./img/diagnosis-settings.png').default} alt="diagnosis-settings" width="700" />
 
 - **一刻信息**
   - 定义触发时间点的一刻名称、描述、属性值等，支持使用代码变量（如：`{scope.code}`，详见下文）
@@ -163,6 +174,7 @@ sidebar_position: 3
 ![auto-record-3](./img/auto-record-3.png)
 
 ## 规则变量
+
 在规则的触发操作中，支持使用变量或表达式来获取触发时的相关数据值。
 
 以如下信息为例：
@@ -171,26 +183,69 @@ sidebar_position: 3
 
   ![errorcode-list](./img/errorcode-list.png)
 
-- 触发事件为：
+- 触发事件为 `/error_status` topic 中的消息：
 
-  ![errortopic](./img/errortopic.png)
+  ```
+  {
+    "code": "1001",
+    "message": "定位丢失",
+    "tags": ["定位问题", "版本:v1.0", "其他标签"],
+    "files": ["/home/coscene/20250808_1.bag", "/home/coscene/20250808_2.bag"]
+  }
+
+  ```
 
 规则变量书写规范见下表：
 
-| 变量名 | 含义 | 示例 |
-| --- | --- | --- |
-| `{scope.code}` | 触发事件在事件码表中的 `code` 值 | `{scope.code}` 为 `1002` |
-| `{scope.name}` | 触发事件在事件码表中对应行的 `name` 值 | `{scope.name}` 为 `目标点不可达！请协助` |
-| `{msg}` | 触发规则的消息内容 | `{msg}` 为 `data:{"code": "1002", "message": "目标点不可达！请协助"}` |
-| `{topic}` | 触发规则的话题 | `{topic}` 为 `/error_status` |
-| `{ts}` | 触发规则时的时间戳 | `{ts}` 为 `1751436062.133` |
-| `timestamp(ts).format("%Y-%m-%d %H:%M:%S", "America/New_York")` | 将时间戳转为格式为 `%Y-%m-%d %H:%M:%S`的纽约时区（西五区）时间 | `2025-02-07 03:09:40` |
+| 变量名                                                         | 含义                                                 | 示例                                                                            |
+| -------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `{scope.code}`                                                 | 触发事件在事件码表中的 `code` 值                     | `{scope.code}` 为 `1001`                                                        |
+| `{scope.name}`                                                 | 触发事件在事件码表中对应行的 `name` 值               | `{scope.name}` 为 `定位丢失`                                                    |
+| `{msg}`                                                        | 触发规则的消息内容                                   | `{msg}` 为整条消息的内容                                                        |
+| `{msg.tags}`                                                   | 触发规则的消息中的 `tags` 字段值                     | `{msg.tags}` 为`"定位问题","版本:v1.0","其他标签"`                              |
+| `{msg.files}`                                                  | 触发规则的消息中的 `files` 字段值                    | `{msg.files}` 为`"/home/coscene/20250808_1.bag","/home/coscene/20250808_2.bag"` |
+| `{topic}`                                                      | 触发规则的话题                                       | `{topic}` 为 `/error_status`                                                    |
+| `{ts}`                                                         | 触发规则时的时间戳                                   | `{ts}` 为 `1751436062.133`                                                      |
+| `{timestamp(ts).format("%Y-%m-%d %H:%M:%S", "Asia/Shanghai")}` | 将时间戳转为格式为 `%Y-%m-%d %H:%M:%S`的上海时区时间 | `2025-07-02 14:01:02`                                                           |
 
 **注意：**
 
 - 在规则条件中使用变量或表达式时，请直接使用，不要用 `{}` 包裹
 - 在非规则条件中使用变量或表达式时，例如记录名称，记录描述等，请用 `{}` 包裹。
 - 表达式的语法遵循 [CEL 语法](https://github.com/google/cel-spec/blob/master/doc/langdef.md)
+
+规则变量的使用示例如下：
+
+1. **记录名称：**
+   - 输入：错误码:`{scope.code} @ {timestamp(ts).format("%Y-%m-%d %H:%M:%S", "Asia/Shanghai")}`
+   - 输出：错误码:1001 @ 2025-07-02 14:01:02
+
+2. **记录描述**
+   - 输入：`{msg.message}`
+   - 输出：定位丢失
+
+3. **记录标签**
+   - 输入：`{msg.tags}`
+     - 若输入的消息字段类型为**数组/单个 string**，则可自动将其内容解析为记录标签
+   - 输出：定位问题，版本:v1.0，其他标签
+
+4. **更多设置-具体附加文件**
+   - 输入：`{msg.files}`
+     - 若输入的消息字段类型为**数组**，则可自动将其中的文件清单解析为附加文件进行上传
+     - 若仅需上传消息中定义的文件清单`{msg.files}`，则无需在「组织-设备-设备配置」页面中设置采集路径 `collect_dirs`
+   - 输出：/home/coscene/20250808_1.bag,/home/coscene/20250808_2.bag
+
+5. **一刻名称**
+   - 输入：`{scope.code}-{scope.name}`
+   - 输出：1001-定位丢失
+
+6. **一刻属性**
+   - 输入：
+     - 属性名称输入：错误等级
+     - 属性值输入：`{scope.level}`
+   - 输出：
+     - 属性名称：错误等级
+     - 属性值：P1
 
 ### 自定义函数
 
@@ -223,6 +278,6 @@ sidebar_position: 3
 - 时区支持 `UTC`、`Asia/Shanghai`、`America/New_York` 等 IANA 规范的时区，[了解更多](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
 ## 后续操作
+
 - [调试并启用规则](./4-manage-rule-group.md)
 - [添加设备](../../device/2-create-device.md)
-
