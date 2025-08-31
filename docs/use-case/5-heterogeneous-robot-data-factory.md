@@ -49,8 +49,53 @@ sidebar_position: 5
 
 ## 准备与启动 ROS node
 
-- 机器人本体上需要有可以提供 **service** 的**数据录制节点**，并且提供 **开始录制** （如/start_record）， **取消录制** （如/cancel_record）， **结束录制** （如/stop_record）之类的服务供刻行时空调用。
-  -- **注意：**： 目前只支持**service** 类型的消息。
+- 机器人本体上需要有可以提供 **service** 的**数据录制节点**，并且提供 **开始录制** （如/start_record）， **取消录制** （如/cancel_record）， **结束录制** （如/stop_record）之类的服务供可视化页面调用。以下是三个服务的简单实例, 
+  - 开始录制 (/start_record)
+    
+    ```C++
+    # start_record.srv
+    
+    # 一些录制需要的参数，比如存储路径，录制的topic，压缩方案等，可为空，非必选
+    string record_opt
+    ---
+    # 以下两字段为必选字段，如缺失，实时可视化的页面端无法获知是否正确启动了录制服务
+    bool success
+    string message
+    ```
+  - 取消录制 (/cancel_record)
+
+    ```C++
+    # cancel_record.srv
+    
+    # 一些取消录制的参数，比如是否自动删除录制的文件等，可为空，非必选
+    bool auto_remove  # remove bags that are recorded
+    ---
+    # 以下两字段为必选字段，如缺失，实时可视化的页面端无法获知是否正确取消了录制服务
+    bool success
+    string message
+    ```
+  - 结束录制 (/stop_record)
+
+    ```C++
+    # request
+    # 一些结束录制的参数，比如是否自动删除录制的文件等，可为空，非必选
+    ---
+    # response
+    # 结束录制是否成功
+    bool success
+    string message
+    # type 字段可选值为"NORMAL"，"SKIP_CAPTURE"
+    # 如果 success 为 true 则读取 type 来判断行为, 
+    # "NORMAL" - 需要把生成的bag上传
+    # "SKIP_CAPTURE" - 采集出现问题(e.g.: 未能通过bag质量检测),不需要上传
+    string type
+    # 需要创建的 record 名字
+    string record_name
+    # 需要向 record 附加的标签列表
+    string[] tags
+    # 本次录制的文件列表
+    string[] files
+    ```
 - 启动 coBridge 前需 source **数据录制节点** 的 workspace 环境变量。
 - 示例启动脚本（请根据实际情况修改）：
   ```bash
