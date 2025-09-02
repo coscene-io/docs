@@ -50,7 +50,82 @@ sidebar_position: 5
 ## 准备与启动 ROS node
 
 - 机器人本体上需要有可以提供 **service** 的**数据录制节点**，并且提供 **开始录制** （如/start_record）， **取消录制** （如/cancel_record）， **结束录制** （如/stop_record）之类的服务供刻行时空调用。
-  -- **注意：**： 目前只支持**service** 类型的消息。
+  -- **注意：** 
+1. /start_record service
+   
+  e.g.:
+  ```C++
+  # request
+  string record_opt
+  ---
+  # response
+  bool success
+  string message
+  ```
+  start_record request 无任何要求,可以在此处添加一些例如 `saving directory` 等字段, 供`数据录制节点`使用。
+
+  start_record response 必须需包含 `success` 和 `message` 字段, 用于通知 web 端是否已经成功开启了录制功能。
+  
+2. /cancel_record service
+
+  e.g.:
+  ```C++
+  # request
+  bool auto_remove  # remove bags that are recorded
+  ---
+  # response
+  bool success
+  string message 
+  ```
+  cancel_record request 无任何要求,可以在此处添加一些例如 `auto_remove` 等字段, 供`数据录制节点`使用。
+
+  cancel_record response 必须需包含 `success` 和 `message` 字段, 用于通知 web 端是否已经成功取消了录制功能。
+
+3. /stop_record service
+  
+  e.g.:
+  ```C++
+  # request
+  ---
+  # response
+  bool success
+  string type
+  string message
+  string record_name
+  string[] tags
+  string[] files
+  ```
+  stop_record request 无任何要求,可以在此处添加一些字段, 供`数据录制节点`使用。
+
+  stop_record response 必须需包含示例中的所有字段。
+
+  | 字段          | 含义                                   | 备注                                                                                               |
+  |-------------|--------------------------------------|--------------------------------------------------------------------------------------------------|
+  | success     | 停止录制是否成功                             | 不可为空                                                                                             |
+  | type        | 是否需要上传录制的包                           | 不可为空,type 的值为以下之一:<br/> "NORMAL": 需要把生成的bag上传<br/>"SKIP_CAPTURE":采集出现问题(e.g.: 未能通过bag质量检测),不需要上传 |
+  | message     | success 为 false时, 用于返回 error message | 可以为空                                                                                             |
+  | record_name | 指定平台记录的名称                            | 如果record_name=="", 则使用默认 record 名称 "deviceSN-startTime"                                          |
+  | tags        | 对 record 添加的 tag                     | 可以为空                                                                                             |
+  | files       | 需要上传的文件列表                            | 不可为空                                                                                             |
+
+**response示例:**
+```json
+{
+    "success": true,
+    "type": "NORMAL",
+    "message": "采集成功",
+    "record_name": "",
+    "tags": ["01", "02"],
+    "files": [
+        "/home/cos/bags/1.bag",
+        "/home/cos/bags/2.bag",
+        "/home/cos/bags/3.bag"
+    ]
+}
+```
+   
+
+
 - 启动 coBridge 前需 source **数据录制节点** 的 workspace 环境变量。
 - 示例启动脚本（请根据实际情况修改）：
   ```bash
