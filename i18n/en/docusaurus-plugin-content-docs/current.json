@@ -83,6 +83,10 @@
     "message": "OpenAPI",
     "description": "The label for category 开放平台 OpenAPI in sidebar tutorialSidebar"
   },
+  "sidebar.tutorialSidebar.category.S3 存储": {
+    "message": "S3 Storage",
+    "description": "The label for category S3 存储 in sidebar tutorialSidebar"
+  },
   "sidebar.tutorialSidebar.category.组织和团队": {
     "message": "Organization and Team",
     "description": "The label for category 组织和团队 in sidebar tutorialSidebar"
