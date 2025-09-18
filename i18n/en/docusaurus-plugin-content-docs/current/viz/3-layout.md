@@ -4,91 +4,101 @@ sidebar_position: 3
 
 # Layout
 
-"Layout" refers to the arrangement of elements in the visualization interface, which can be shared with project and organization members.
+"Layout" is the way to arrange elements in a visual interface. It can be shared with project members, helping to present device data in an intuitive visual manner, enabling users to efficiently view and analyze various types of multimodal data.
 
-## Creating a Layout
+## Create a layout
 
-Click the **Layout Menu** to create a layout through the following methods: **Create Blank Layout**, **Copy Existing Layout**, or **Import Layout from File**.
+Click on **Layout** in the upper - right corner of the visual interface to enter the layout management page. You can create a layout in the following ways: **Create blank layout**, **Copy from other project**, or **Import from file**.
 
 ![viz-8-1-Eng](./img/viz-8-1-Eng.png)
-
-### Create Blank Layout
-
-Click the **Create Blank Layout** button in the Layout Menu to enter the following page, then select a desired panel.
-
 ![viz-8-2-Eng](./img/viz-8-2-Eng.png)
 
-### Copy Layout Creation
+### Create blank layout
 
-1. For a preferred layout existing in the organization, right-click and select **Create Personal Copy** from the popup menu to add the layout to personal layouts.
+1. Fill in the new layout name, type (Personal layout or Project layout), and the optional folder for storing the layout.
 
-    ![viz-8-3-Eng](./img/viz-8-3-Eng.png)
+![viz-8-3-Eng](./img/viz-8-3-Eng.png)
 
-2. Similarly, right-click **Duplicate** in personal layouts to create a copy of the layout.
+2. After confirmation, enter the new layout configuration page. You can directly select the panels you are interested in from the page, or click the "Add Panel" button in the upper - right corner to select more panels.
 
     ![viz-8-4-Eng](./img/viz-8-4-Eng.png)
 
-### Import Layout
+:::info
+🤖 If you want to use more panels in a layout, use the **Tab** panel function. Hold down Shift and click multiple panels, then select **Group by Tabs**, and you can organize them immediately without manual dragging.
+:::
 
-Import a local layout file into personal layouts through **Import from File** in the Layout Menu.
+3. After the configuration is completed
+ - You can click the **Save** button at the top to save the layout permanently.
+ - If you do not click to save the changes, they will be stored in the cache of the current browser for use in the next data visualization.
+ - Click the **Revert** button, and the layout will return to its last saved state.
+   
+    ![viz-8-5-Eng](./img/viz-8-5-Eng.png)
 
-![viz-8-5-Eng](./img/viz-8-5-Eng.png)
 
-## Recommended Layouts
+### Copy from other project
 
-"Recommended Layouts" are preset and suggested layout types, including **Organization Recommended Layouts** and **Project Recommended Layouts**.
+By copying the layout of an existing project, you can quickly obtain a basic layout framework that meets some of your requirements. Then, you can modify and adjust it based on this framework, which greatly saves the time of layout design and improves work efficiency.
 
-### Organization Recommended
-> Only organization administrators can configure
+    ![viz-8-6-Eng](./img/viz-8-6-Eng.png)
 
-Newly created projects will automatically use the "Organization Recommended Layout" as the "Project Recommended Layout". When project members play a record without any available layouts, the project layout will be used by default.
+### Import from file
 
-You can access **Layout Configuration** in **Organization Management** from the avatar menu to select the recommended layout for your organization.
-
-![viz-8-6-Eng](./img/viz-8-6-Eng.png)
-
-### Project Recommended
-> Only project administrators and higher roles can configure
-
-When project members play a record without any available layouts, the project layout will be used by default.
-
-You can access **Layout Configuration** in **Project Settings** to select the recommended layout for your project.
+You will be prompted to select a layout json file from the file system of your current computer for import.
 
 ![viz-8-7-Eng](./img/viz-8-7-Eng.png)
 
-### Record Recommended
-The "Record Recommended Layout" is the default layout for a record. When any user plays this record, this layout will be used.
+## Layout use cases
 
-In the visualization page, right-click the layout you want to set in the **Layout Menu** and click "Copy as Record Default Layout".
+### Personal layout
+
+Only you can access your personal layout - no one else can view, load, or edit it.
+
+Changes to your personal layout will be synced to all your computers and can be copied as a project layout for sharing.
+
+### Project layout
+
+Project layouts provide a way for teams to organize a set of standardized layouts for common data visualization within the project.
+
+When a project is made public, the project layouts will also be made public so that visitors can use suitable layouts when browsing the visualized data.
+
+## Manage layouts
+
+You can directly browse the layout folders on the left side. They are divided into: All, Personal, and Project.
 
 ![viz-8-8-Eng](./img/viz-8-8-Eng.png)
 
-As shown in the figure, the layout "NuScenes" has been successfully set as the record recommended layout. Entering the visualization interface of the record will then use this layout by default.
+### Use layout
+
+In the layout management section, find the layout you want to use and click the **Use Layout** button in front of the layout name to switch to the corresponding layout.
 
 ![viz-8-9-Eng](./img/viz-8-9-Eng.png)
 
-## Layout Priority
-For records with all three recommended layouts set, the priority is **Record Recommended Layout** > **Project Recommended Layout** > **Organization Recommended Layout**.
-
-## Managing Layouts
-Click the **Actions** icon next to the layout name to manage the layout, including: save changes, revert, rename, copy, share, export, delete, etc.
-
-![viz-8-11-Eng](./img/viz-8-11-Eng.png)
+:::info
+🤖 The system will remember the layout you last used in the current project. The next time you perform a visualization operation, it will default to using the last - used layout.
+:::
 
 ### Rename
 
-Change the name of the layout for better identification and categorization.
+Modify the name of the layout for better identification and classification.
+
+### Copy
+
+Copy the layout as a personal/current project layout.
+
+### Move to folder
+
+Move the layout to other folders within the current category (personal/project).
 
 ### Export
 
-Save the layout as a file for sharing or use in other environments.
-
-### Share with Team
-
-Share the layout with the team, allowing organization members to use and modify shared layout copies.
+Export the layout as a json file for sharing or use in other environments.
 
 ### Delete
 
-Remove layouts that are no longer needed to keep the layout list clean and efficient.
+Delete layouts that are no longer needed to keep the layout list clean and efficient.
+
+:::info
+🤖 If you delete a project layout, users who can access this project will no longer be able to use this layout.
+:::
 
 ---
