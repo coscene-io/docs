@@ -1,0 +1,9 @@
+{
+  "label": "S3 存储",
+  "position": 4,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/category/s3"
+  }
+}

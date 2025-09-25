@@ -5,6 +5,28 @@ id: changelog
 
 # Release History
 
+## [25.37.0] - 2025-9-12
+
+### [Added]
+
+- Added message-by-message playback feature:
+  - Support viewing messages one by one in the raw message and table panels
+  - Support custom playback step size: On the right side of the visualization timeline, you can adjust the forward/backward duration when paused
+- Added S3 storage functionality: Support connecting to projects within the organization via the S3 protocol to perform read/write operations. See [S3 Documentation](/docs/developers/s3/s3-authentication)
+- Added device ID anomaly detection: Real-time detection of duplicate IDs and inconsistencies between device-side and web-side IDs
+- Added file search functionality: Support keyword search when previewing text files
+- Added Data Collection Client v1.1.10:
+  - Added IP reporting functionality: View device IP addresses on the device details page
+  - Fixed issue with delayed upload resumption on devices under weak network conditions
+  - Fixed issue where linked files could not be uploaded after changes in symbolic link mode
+
+### [Improved]
+
+- Improved device real-time operation entry permissions, closed organization-level real-time visualization and web SSH entry, only supporting real-time operation of devices within projects
+- Improved visualization playback loading logic, supporting parallel loading of multi-tab data
+
+---
+
 ## [25.34.0] - 2025-8-20
 
 ### 【Added】

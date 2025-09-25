@@ -8,7 +8,7 @@ The data visualization interface presents device data in an intuitive visual man
 
 ## How to Enter the Visualization Interface
 
-In a Record, click **Play** or directly click the file to enter the visualization interface.
+In a Record, click **Play** to enter the visualization interface.
 
 ![viz-1-1-Eng](./img/viz-1-1-Eng.png)
 
@@ -99,9 +99,10 @@ The functions in this area include:
 2. Display of the start time, end time, and duration of file playback
 3. Current progress timestamp
 4. **Pause** and **forward**/**backward** buttons
-5. **Loop playback** button
-6. **Playback speed** button
-7. **Playback quality** button
-8. **Absolute**/**Relative** time toggle button
+5. **Playback Step**：Adjust the forward/backward duration when paused
+6. **Loop playback** button
+7. **Playback speed** button
+8. **Moment**：A moment is represented by a blue rectangle on the timeline
+9. **Playable Time Range**：The playable time range is represented by a light blue rectangle on the timeline
 
 ---

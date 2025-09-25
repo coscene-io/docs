@@ -21,7 +21,7 @@ Custom panels are ideal when your visualization or interaction requirements are 
 - Guide: Creating Custom Panels
 - Building Custom Panel Extensions (React)
 
-## Message Converters
+## Message Converters {#message-converters}
 
 Message converter extensions allow you to transform messages from one schema to another. By converting messages to schemas supported by visualization, you can inspect them using visualization's built-in visualization features. For example, you can use a message converter to transform custom GPS messages into foxglove.LocationFix messages for visualization in the map panel.
 

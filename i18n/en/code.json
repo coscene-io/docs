@@ -575,6 +575,9 @@
   "home.catalogue.openapi": {
     "message": "OpenAPI Platform"
   },
+  "home.catalogue.s3": {
+    "message": "S3 Storage"
+  },
   "home.catalogue.use-case": {
     "message": "Use Cases"
   },
