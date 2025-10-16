@@ -5,6 +5,29 @@ id: changelog
 
 # Release History
 
+## [25.42.0] - 2025-10-15
+
+### [Added]
+
+- Added "User Script Panel": Support for custom scripts in the visualization interface to transform input messages and output to new topics, see [documentation](/docs/viz/panel/user-scripts)
+- Added "Real-time Visualization Playback" feature: During device real-time visualization, you can switch to playback mode via the timeline to review the most recent 30 seconds of data
+- Added "Action System Error Display" feature: When an action execution fails, you can view the corresponding error information in the step details of the invocations
+
+### [Improved]
+
+- Improved record filtering functionality:
+  - Added "Moment" filtering feature
+  - Enhanced logical operation support (AND/OR condition combinations)
+  - Support filtering based on condition groups
+- Improved record loading mechanism: Changed from page-based loading to scroll-based loading
+- Improved layout management functionality:
+  - Streamlined to personal layouts and project layouts, retired organization layouts and record layouts (migrated to project layouts)
+  - Support cross-project layout copying
+  - Support managing layouts with folders
+- Improved action editing interface: Support directly selecting images from the organization when editing actions, no manual input required
+
+---
+
 ## [25.37.0] - 2025-9-12
 
 ### [Added]
