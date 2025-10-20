@@ -69,7 +69,7 @@ You can directly browse the layout folders on the left side. They are divided in
 
 ### Use layout
 
-In the layout management section, find the layout you want to use and click the **Use Layout** button in front of the layout name to switch to the corresponding layout.
+In the layout management section, find the layout you want to use and click the layout name to switch to the corresponding layout.
 
 ![viz-8-9-Eng](./img/viz-8-9-Eng.png)
 
