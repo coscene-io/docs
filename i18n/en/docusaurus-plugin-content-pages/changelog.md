@@ -5,6 +5,236 @@ id: changelog
 
 # Release History
 
+## [25.42.0] - 2025-10-15
+
+### [Added]
+
+- Added "User Script Panel": Support for custom scripts in the visualization interface to transform input messages and output to new topics, see [documentation](/docs/viz/panel/user-scripts)
+- Added "Real-time Visualization Playback" feature: During device real-time visualization, you can switch to playback mode via the timeline to review the most recent 30 seconds of data
+- Added "Action System Error Display" feature: When an action execution fails, you can view the corresponding error information in the step details of the invocations
+
+### [Improved]
+
+- Improved record filtering functionality:
+  - Added "Moment" filtering feature
+  - Enhanced logical operation support (AND/OR condition combinations)
+  - Support filtering based on condition groups
+- Improved record loading mechanism: Changed from page-based loading to scroll-based loading
+- Improved layout management functionality:
+  - Streamlined to personal layouts and project layouts, retired organization layouts and record layouts (migrated to project layouts)
+  - Support cross-project layout copying
+  - Support managing layouts with folders
+- Improved action editing interface: Support directly selecting images from the organization when editing actions, no manual input required
+
+---
+
+## [25.37.0] - 2025-9-12
+
+### [Added]
+
+- Added message-by-message playback feature:
+  - Support viewing messages one by one in the raw message and table panels
+  - Support custom playback step size: On the right side of the visualization timeline, you can adjust the forward/backward duration when paused
+- Added S3 storage functionality: Support connecting to projects within the organization via the S3 protocol to perform read/write operations. See [S3 Documentation](/docs/developers/s3/s3-authentication)
+- Added device ID anomaly detection: Real-time detection of duplicate IDs and inconsistencies between device-side and web-side IDs
+- Added file search functionality: Support keyword search when previewing text files
+- Added Data Collection Client v1.1.10:
+  - Added IP reporting functionality: View device IP addresses on the device details page
+  - Fixed issue with delayed upload resumption on devices under weak network conditions
+  - Fixed issue where linked files could not be uploaded after changes in symbolic link mode
+
+### [Improved]
+
+- Improved device real-time operation entry permissions, closed organization-level real-time visualization and web SSH entry, only supporting real-time operation of devices within projects
+- Improved visualization playback loading logic, supporting parallel loading of multi-tab data
+
+---
+
+## [25.34.0] - 2025-8-20
+
+### 【Added】
+
+- Added display and filtering features for "more basic record information"
+  - In the record list, you can now view file count, record size, net playable time, and time span of the record
+  - In the record details, you can view the overall topic information within the record
+  - In the record’s More filter options, you can now filter by file count, record size, net playable time, record time span, topic, schema, and more
+- Added configuration for "Real-time visualization inactivity timeout"
+  - In the Visualization → My Settings page, you can configure the auto-disconnect duration. By default, if there is no activity for 30 minutes, the real-time visualization session will automatically disconnect. You can also set it to never disconnect
+- Added display of "more fields for public project records"
+  - In the public project record list, new fields are now displayed: record label, file count, record size, net playable time, and time span
+- Added Data Collection Client v1.1.9:
+  - In device auto-collection rules, content from topic messages can now be used as label variables and attached file variables
+- Added pause/resume upload APIs, allowing devices to pause/resume file uploads via API calls
+
+### 【Improved】
+
+- Improved the device data collection dialog, now supports choosing collection mode: collect by time range / collect by file path
+- Improved the project member adding dialog, now supports batch selecting users to add to a project
+
+### 【Fixed】
+
+- Fixed an issue where visualization playback of H264 data did not support AUD frames
+
+---
+
+## [25.31.0] - 2025-7-31
+
+### [Added]
+
+- Added "Action Execution on Filtered Records" feature:
+  - After filtering records by conditions, you can use the current filter as input to batch execute actions
+- Added "ROS Suite" installation feature:
+  - When registering a device, you can choose to install the ROS Suite to support real-time fault monitoring and device visualization. See [Add Device](/docs/device/create-device) for details
+- Added "Visualization Task Panel":
+  - In record playback and real-time visualization, a task panel is visible on the left, showing the current user's tasks in the current project
+  - During real-time visualization, when a task is highlighted, the records collected in the data collection panel will be automatically associated with the highlighted task
+- Added "Select Device When Creating Task" feature: When creating a general task, you can directly select "Associated device"
+- Added "Cross-Organization Record Copy" feature: Select records and call "System Action - Copy records" to copy records to projects in the target organization
+- Added "Action Log Download" feature: Support downloading invocation logs after action execution is completed
+- Added "User Feedback" feature: Support user issue reporting
+- Added Data Collection Client v1.1.8: Support proxy forwarding functionality
+
+### [Improved]
+
+- Improved device-related module display
+  - In projects, moved the collection capability from "Tasks - Collection Tasks" to the "Devices" page, showing corresponding collection history in "Devices - Execution history"
+  - Moved the original "Data Collection & Diagnostics" module to the "Devices - Rules & matching" page
+- Improved automation module display: Moved actions, triggers, and invocations from the sidebar to the list page
+- Improved "File Preview" feature: When previewing bag and mcap files, more file information is available
+- Improved slug definition and display
+  - Project slug now supports `-` and `_` input
+  - Organization slug and project slug can be quickly obtained on the organization homepage and in projects, for use with command-line tool [coCLI](/docs/developers/cocli/install) and other scenarios
+- Optimized table information display
+  - Tables remember the number of entries displayed per page on your computer, showing the same number on your next visit
+  - Improved mouse hover style when viewing tags
+
+---
+
+## [25.28.0] - 2025-7-9
+
+### [Added]
+
+- Added "Batch Add Field Enum Values" feature: When defining "selector" type fields in organization settings, you can now batch add field enum values
+- Added "Copy Project": When creating a project, you can now copy the configuration information from an existing project
+- Added "Organization Role Management": In the Organization Settings - Role Management page, you can now set default organization roles for new members
+- Added "Collection Path Variables": When manually collecting device data, you can now use start and end time variables as file paths. You can also directly define variables in the organization device configuration. See [Manual Collection Documentation](https://docs.coscene.io/docs/device/device-collect#manual-collection) for more details
+- Added Data Collection Client v1.1.7:
+  - Manual/Rule-based collection now supports collecting additional folders
+  - When manually collecting, file creation times are now read and can be used as an additional time judgment reference
+  - Manual collection now supports collecting files pointed to by symbolic links
+  - Rule-based collection now supports monitoring and collecting files within multi-level directories
+
+### [Improved]
+
+- Improved "Personnel Type Field Selection":
+  - Optimized personnel grouping display logic, grouping by project internal/external
+  - Collectors, annotators, and auditors in the project can now only view users within the project
+- Improved "Visualization Page Error Handling": Errors no longer automatically redirect to the issue page
+- Optimized Automation Task Title Generation: The title now supports referencing the field values of triggering content
+
+### [Fixed]
+
+- Fixed an issue where rule listeners did not process messages in the correct order according to the message timestamp
+- Fixed a cursor misalignment issue on the organization device configuration page
+
+---
+
+## [25.24.0] - 2025-06-13
+
+### [Added]
+
+- Added "LAN Real-time Visualization" feature:
+  - coStudio automatically detects LAN connections and uses local network for data transfer to reduce visualization latency (requires devices and clients on same LAN)
+- Added "Project Common Resources Management":
+  - Upload configuration files (URDF/TF/maps) in Project Common Resources page
+  - Directly reference URDF models from Common Resources in 3D visualization panel
+- Added "Multi-select Field Type":
+  - Support configuring multi-select type when defining global custom fields in Organization Settings
+- Added "Task Dependency Visualization":
+  - View tasks that reference current task in Task Details page
+
+### [Improved]
+
+- Enhanced "Custom Field Filtering":
+  - Added support for filtering by numeric/multi-select/time/personnel field types
+- Upgraded "Data Collection Panel":
+  - Added auto-scrolling for collection logs
+
+---
+
+## [25.22.0] - 2025-5-30
+
+### [Added]
+
+- Added automation trigger mechanism:
+  - New trigger conditions: When record changes/When general task changes
+  - Support automatic creation of general tasks through triggers
+- Added HDF5 and MCAP format conversion actions: Can invoke system actions to convert HDF5 to MCAP, or MCAP to HDF5
+- Added automation action template variables
+  - In automation actions, support using device ID, device name, and task creation time as variables for HTTP request steps, namely: `{{device.id}}`, `{{device.display_name}}`, `{{task.create_time}}`
+- Added real-time data collection feature: Added "Data Collection" panel in visualization page, supporting real-time data collection
+- Added user roles:
+  - Added organization-level "External Member" role (limited to accessing joined projects only)
+  - Added project-level roles: Collector, Annotator, Auditor
+- Added "Testing Audit" feature:
+  - In Organization Management-Audit page, support filtering testing audit events: download test bundle, download artifacts, download test output events
+
+### [Improved]
+
+- Enhanced field management functionality:
+  - Support configuring global custom fields in organization settings, applicable to devices, records, tasks, and moment scenes
+- Enhanced task management functionality:
+  - Support quick task creation in general tasks page
+  - Support linking devices with tasks in task management
+- Optimized device registration process: In project devices page, can directly copy commands to register devices and add them to projects
+
+### [Fixed]
+
+- Fixed the issue where example project creation was not logging audit records
+- Fixed the overlapping display issue when previewing long text logs
+
+---
+
+## [25.18.0] - 2025-4-28
+
+### [Added]
+
+- Added visualization plugin, supporting customized panels in the visualization interface. See [Visualization Extensions](/docs/viz/extensions/introduction)
+- Added playback support for files in subfolders within batch test outputs
+
+### [Improved]
+
+- Enhanced file preview functionality, supporting up/down/left/right image movement
+- Improved personal token validity period settings, supporting 1-day and 360-day options
+- Enhanced coCLI functionality, supporting download of moment files from records
+
+### [Fixed]
+
+- Fixed the issue where .active files in batch test outputs couldn't be played
+- Fixed the issue where files generated from bag file map extraction and static coordinate extraction lacked file formats
+- Fixed the issue where personal user organization switching cookies expired in 1 day, changed to 30 days
+
+---
+
+## [25.15.0] - 2025-4-10
+
+### [Added]
+
+- Added multi-tier subscription plans: supporting Free, Starter, Team, Enterprise, and other [subscription plans](https://www.coscene.io/pricing)
+- Added public project copying feature: allowing logged-in users to copy public projects to their organizations
+
+### [Improved]
+
+- Optimized device access process, merged operations into:
+  - Enable client: simultaneously enable data collection and remote access
+  - Disable client: simultaneously disable data collection and remote access
+
+### [Fixed]
+
+- Fixed compatibility issues when reading device ID from files during device registration (now supporting pure numeric format)
+
+---
+
 ## [25.12.0] - 2025-3-19
 
 ### [Added]
@@ -131,7 +361,7 @@ id: changelog
 - Fixed an issue where record search results were not sorted by time.
 - Fixed an issue where the index generation status was not correctly displayed in the visualization page.
 - Fixed an issue with abnormal display of test suite lists in batch testing.
-- Fixed an issue with abnormal device traffic statistics. This can be resolved by updating the data collection client to version v1.0.2. [View update instructions](https://docs.coscene.cn/docs/recipes/device/device-collector#%E6%9B%B4%E6%96%B0%E8%AE%BE%E7%BD%AE)
+- Fixed an issue with abnormal device traffic statistics. This can be resolved by updating the data collection client to version v1.0.2.
 
 ---
 
@@ -254,7 +484,6 @@ id: changelog
 ### [New]
 
 - Now "Action Run" can update the record files it ran against
-
   - When defining an action and its artifacts, there are now two options
     - If you want to save artifacts to the "Action Run" output, you can have the files saved to /cos/output folder. Files under this path will automatically be saved as the "Action Run" output.
     - If you want to update the record the action ran against, like update the calibration files per the testing result, you can directly modify the original files under /cos/files. In order to use feature, you have to enable the "Modify Original Record Files" options in the action

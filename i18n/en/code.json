@@ -479,6 +479,9 @@
   "home.catalogue.organization-and-team": {
     "message": "Organization and Team"
   },
+  "home.catalogue.common-resource": {
+    "message": "Common Resource Storage"
+  },
   "home.catalogue.3rd-party-integration": {
     "message": "3rd party Integration"
   },
@@ -503,9 +506,6 @@
   "home.catalogue.frame-rate-optimization": {
     "message": "Frame Rate Optimization"
   },
-  "home.catalogue.extensions": {
-    "message": "Extensions"
-  },
   "home.catalogue.options": {
     "message": "Visualization Options"
   },
@@ -525,10 +525,13 @@
     "message": "Batch Device Operations"
   },
   "home.catalogue.device-collector": {
-    "message": "Data Collection Rules"
+    "message": "Data Collection Client Configuration"
   },
   "home.catalogue.change-device-guide": {
     "message": "Device Change, Upgrade and Uninstall Guide"
+  },
+  "home.catalogue.device-collect": {
+    "message": "Device Data Collection"
   },
   "home.catalogue.device-remote-control": {
     "message": "Remote Control Device"
@@ -540,13 +543,19 @@
     "message": "Quick Start with Automation"
   },
   "home.catalogue.action": {
-    "message": "Actions"
+    "message": "Understanding Actions"
+  },
+  "home.catalogue.create-action": {
+    "message": "Create an Action"
   },
   "home.catalogue.trigger": {
     "message": "Triggers"
   },
   "home.catalogue.invocation": {
     "message": "Invocations"
+  },
+  "home.catalogue.action-runtime": {
+    "message": "Action Runtime Information"
   },
   "home.catalogue.sim-and-tests": {
     "message": "Simulation and Testing"
@@ -561,10 +570,13 @@
     "message": "Core Concepts"
   },
   "home.catalogue.cocli": {
-    "message": "Command Line Tool coCLI - Beta"
+    "message": "Command Line Tool coCLI"
   },
   "home.catalogue.openapi": {
     "message": "OpenAPI Platform"
+  },
+  "home.catalogue.s3": {
+    "message": "S3 Storage"
   },
   "home.catalogue.use-case": {
     "message": "Use Cases"
@@ -575,8 +587,14 @@
   "home.catalogue.automated-data-processing": {
     "message": "Automated Data Processing"
   },
+  "home.catalogue.online-simulation-test": {
+    "message": "Online Simulation Test"
+  },
   "home.catalogue.data-collection-and-diagnosis": {
     "message": "Data Collection and Diagnose"
+  },
+  "home.catalogue.embodied-intelligence-data-collection-solution": {
+    "message": "Heterogeneous Robot Data Collection Factory Integration with coScene Platform"
   },
   "home.catalogue.docker-images": {
     "message": "Docker Images"
@@ -601,5 +619,11 @@
   },
   "home.catalogue.apt-source-install": {
     "message": "Installing coScene Software via APT"
+  },
+  "home.catalogue.extensions": {
+    "message": "Extensions"
+  },
+  "home.catalogue.message-schemas": {
+    "message": "Message Schemas"
   }
 }

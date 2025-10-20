@@ -17,8 +17,14 @@ sidebar_position: 8
 
 ## 支持的消息类型
 
-- ROS 1: `geometry_msgs/Twist`
-- ROS 2: `geometry_msgs/msg/Twist`
+要使用此面板，您的数据源必须提供符合以下支持的消息类型。
+
+`Twist`
+
+| 框架 | 消息类型 |
+| --- | --- |
+| ROS 1 | [geometry_msgs/Twist](https://docs.ros.org/en/noetic/api/std_msgs/html/msg/ColorRGBA.html) |
+| ROS 2 | [geometry_msgs/msg/Twist](https://github.com/ros2/common_interfaces/blob/master/geometry_msgs/msg/Twist.msg) |
 
 ## 技术实现
 

@@ -65,5 +65,5 @@ You've now set up an automated workflow that:
 
 This example demonstrates just one possibility of coScene's automation capabilities. For more advanced use cases and features, explore the following resources:
 
-- [Automation Documentation](https://docs.coscene.cn/docs/category/%E8%87%AA%E5%8A%A8%E5%8C%96/)
-- [Image Registry Guide](https://docs.coscene.cn/docs/category/%E9%95%9C%E5%83%8F/)
+- [Automation Documentation](../6-automation/1-quick-start-workflow.md)
+- [Image Registry Guide](../image/1-about-docker-image.md)

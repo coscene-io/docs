@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # Device Replacement, Upgrade, and Uninstallation Guide
@@ -22,11 +22,9 @@ When replacing a device's host computer or modifying device ID, follow this proc
 
 2. Get Installation Command
 
-- Ensure the device ID information is correct
-
-- Select required client installation options
-
-- Check "Initialize Program Configuration" to clear old configuration files
+   - Ensure the device ID information is correct
+   - Select required client installation options
+   - Check "Reinstall", it will automatically clear the existing device configuration
 
   ![Check Initialize](./img/4-3-add-device-initialize-true.png)
 
@@ -36,9 +34,9 @@ When replacing a device's host computer or modifying device ID, follow this proc
 
    ![Execute Installation Command](./img/4-3-install-successfully.png)
 
-4. Re-grant Device Access. After installation, contact the organization administrator to re-grant device access on the platform's device management page to restore normal device operation.
+4. Enable device client. After installation, contact the organization administrator to re-grant device access on the platform's device management page to restore normal device operation.
 
-   ![Grant Device Access](./img/4-3-access-device-2.png)
+   ![Grant Device Access](./img/4-3-access-device.png)
 
 ## In-place Version Upgrade Process
 
@@ -54,30 +52,24 @@ When only software version upgrade is needed, without changing the host computer
 
 2. Get Installation Command
 
-3. Ensure the device ID information is correct
+   - Ensure the device ID information is correct
+   - Select required client installation options
+   - Installation Scenario: Select First install / upgrade client. Use this option when upgrading the client software version without needing to re-enable the device.
 
-4. Select required client installation options
-
-5. In the program configuration area of the Add Device page, uncheck [Initialize Program Configuration] to avoid affecting ongoing collection tasks.
-
-![Uncheck Initialize](./img/4-3-add-device-initialize-false.png)
+   ![Uncheck Initialize](./img/4-3-add-device-initialize-false.png)
 
 3. Execute Command on Device Terminal
 
-1. Open the device terminal, paste and execute the copied command. Ensure stable network connection and proper terminal environment during execution
+4. Open the device terminal, paste and execute the copied command. Ensure stable network connection and proper terminal environment during execution
 
-![Execute Installation Command](./img/4-3-install-successfully.png)
-
-4. Re-grant Device Access. After installation, contact the organization administrator to re-grant device access on the platform's device management page to ensure normal operation of the upgraded device.
-
-   ![Grant Device Access](./img/4-3-access-device-2.png)
+   ![Execute Installation Command](./img/4-3-install-successfully.png)
 
 ## Client Uninstallation Process
 
 1. Execute the following command in the terminal
 
 ```yaml
-/bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall.sh)"
+/bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall_en.sh)"
 ```
 
 2. Closely monitor the output during execution until the uninstallation process is complete, ensuring that coLink service, cos service, and their related configuration files and directories are successfully removed

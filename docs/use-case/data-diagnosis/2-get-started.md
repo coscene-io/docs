@@ -2,225 +2,160 @@
 sidebar_position: 2
 ---
 
-# 实现你的数据采集与诊断
+# 实现你的规则采集
+以设定场景为例，快速上手自动采集流程：
 
-以设定场景为例，实现你的数据自动采集与诊断：
+- 当设备中新生成的 mcap 文件中包含 topic `/error_status`，且该 topic 的 `data` 字段中出现事件码 `1001 ~ 1005` 时，自动采集该时间点前 5 分钟后 1 分钟的数据，保存到记录。消息内容如下：
 
-- 当设备 dev-A 的 log 中出现字段「error 1」时，上传 log 文件到记录中，并在字段出现的时间点创建一刻
-
-<br />
+    ![errortopic](./img/errortopic.png)
 
 ## 前提条件
-
-1. 请准备好一台设备
-
-2. 请创建名为 auto-upload 的项目，详情参见[创建新项目](https://docs.coscene.cn/docs/recipes/project)。
-
-3. 请确认你在 coScene 的组织角色为「管理员」。若不是管理员，请联系组织管理员更新你的组织角色。
+1. 请准备好一台 linux 设备
+2. 请创建名为 auto-upload 的项目
+3. 请确认你的角色为「组织管理员」。若不是管理员，请联系组织管理员更新你的组织角色
 
    ![org-role](./img/org-role.png)
 
-<br />
+## 设备配置
 
-## 在项目中添加规则
+1. 进入「组织管理-设备-设备配置」页面，配置全局的规则采集信息
 
-1. 进入 auto-upload 项目
+   ![配置采集目录](./img/device-config_1.png)
 
-   ![pro-1](./img/pro-1.png)
-
-2. 在项目中，进入「数采&诊断规则」分页，点击【添加规则组】
-
-   ![data-2-1](./img/9-add-rule-set.png)
-
-3. 更改规则组名称后，点击【添加空白规则】
-
-   ![data-2-2](./img/9-add-rule.png)
-
-4. 更改规则名称，关注的话题选择`/external_log`，事件匹配条件输入：msg.message 包含 error 1，勾选触发操作中的采集数据和诊断数据，更改一刻名称为 `触发了 error 1`，点击【创建】
-
-   ![pro-rule-base-rule](./img/pro-rule-base-rule-1.png)
-
-   ![pro-rule-base-rule](./img/pro-rule-base-rule-2.png)
-
-5. 回到「数采&诊断规则」页面，选择刚刚添加的规则组，点击启用按钮
-
-   ![data-2-3](./img/9-enable-rule-set.png)
-
-   \*更多规则条件样式参见[规则组](./3-add-rule.md#rule-group)
-
-<br />
-
-## 在项目中添加数据诊断触发器
-
-1. 进入 auto-upload 项目
-
-   ![pro-1](./img/pro-1.png)
-
-2. 在项目中，进入「自动化-触发器」页面，点击【创建触发器】
-
-   ![pro-trigger-add](./img/pro-trigger-add.png)
-
-3. 编辑触发器内容
-
-- 编辑触发器名称为「数据诊断」，
-- 选择关联动作为「系统动作」，
-- 从系统动作下拉框中「数据诊断」
-- 编辑文件通配符模式为`**/*` (格式使用 Glob，详细可查看[参考文档](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns/))
-- 点击【创建触发器】
-
-  ![pro-trigger-base](./img/pro-trigger-edit.png)
-
-<br />
-
-## 配置数采设备信息
-
-1. 进入组织管理页面的「设备」分页，点击【编辑数采规则】按钮
-
-   ![org-device-1](./img/org-device-1.png)
-
-2. 清空规则中的默认内容后，复制下述规则，粘贴在编辑器中
+2. 假设设备端的 bag 存放路径为 `/home/bag`，需要监听的 topic 为 `/error_status`，则配置如下：
 
    ```yaml
-   collector:
-     delete_after_interval_in_hours: 48
    mod:
-     conf:
-       collect_dirs:
-         - /root/logs
-       enabled: true
-       listen_dirs:
-         - /root/logs
-       skip_period_hours: 2
-     name: default
-   updater:
-     enabled: false
+   # mod 名称，默认 default
+   name: 'default'
+   conf:
+      # 是否启用，默认为 true
+      enabled: true
+
+      # （用于规则采集）设备端的监听目录，作为项目中规则的监听目录
+      listen_dirs: 
+         - /home/bag/
+
+      # （用于手动采集与规则采集）设备端的采集目录，作为项目中手动采集与规则采集的指定目录
+      collect_dirs: 
+         - /home/bag/
+         
+   # （用于规则采集）话题，作为项目中规则触发话题的选项来源，以缩小规则匹配的范围
+   # 假设存在 /error_status 话题
+   topics:
+   - /error_status
    ```
 
-   \*更多配置参见[数采规则格式](https://docs.coscene.cn/docs/recipes/device/device-collector/#%E6%95%B0%E9%87%87%E8%A7%84%E5%88%99%E6%A0%BC%E5%BC%8F)
+   更多配置参见[设备配置格式](../../device/4-device-collector.md#device-collector-format)
 
-3. 点击【保存编辑】按钮
 
-   ![org-device-7](./img/org-device-7.png)
+## 创建规则
+1. 进入 auto-upload 项目
 
-<br />
+   <img src={require('./img/pro-1.png').default} alt="pro-1" width="500" />  
 
-## 准入设备
+2. 在项目的「设备-规则&定位」页面，从规则模版创建规则
 
-> 以 linux 设备为例。
+   ![add-rule-demo_1](./img/add-rule-demo_1.png)
 
-<br />
+3. 选择错误码采集规则并下载示例 mcap 文件
 
-1. 打开设备终端，执行以下命令并输入密码，进入 root
+   ![add-rule-demo_2](./img/add-rule-demo_2.png)
+
+4. 查看并保存规则
+
+   ![add-rule_2](./img/add-rule_2.png)
+
+    - 输入事件检测信息
+      - 关注的话题：选择需要监听的 topic `/error_status`
+      - 事件码表：上传符合格式的 csv/json 文件，用于判断 topic 消息中是否包含 `code` 列中的内容，如下图：
+
+        ![errorcode-list](./img/errorcode-list.png)
+
+      - 规则触发条件：mag.data 包含事件码表 code 列任一行的值
+        
+      上述信息表示：监听 topic `/error_status`，判断其字段 `data` 的消息中，是否包含关键词 `1001 ~ 1005`
+
+    - 采集数据
+      - 时间范围：
+        - 采集 `collect_dirs` 中，在触发时间点前 5 分钟，后 1 分钟的文件
+        - 时间判断依据：根据文件内容获取起止时间
+      - 记录：用于标识每次采集将数据保存到的记录
+        - 如：`code: {scope.code}-name: {scope.name}`，当触发了事件码 `1002` 时，本次采集的数据将生成一条名为「code:1002-name:目标点不可达！请协助」的记录
+    - 关键时刻定位
+      - 当数据上传到记录后，自动在触发时间点「创建一刻」，标记关键时刻，便于后续分析问题
+
+5. 启用规则
+
+   规则启用后，项目设备才会使用该规则进行数据监听
+
+   ![rule-enable](./img/rule-enable.png)
+
+   \*更多规则条件样式参见[规则](./3-add-rule.md)
+
+## 添加设备到项目
+1. 在设备上创建文件监听与采集目录 `/home/bag/`
 
    ```
-   sudo su
+   cd /home
+   mkdir bag
    ```
 
-2. 在设备终端，创建文件监听目录 `/root/logs`
+2. 在「项目-设备」页面，获取设备安装命令
+   
+   ![pro-add-device_1](./img/pro-add-device_1.png)
 
-   ```
-   mkdir logs
-   ```
+3. 在设备端执行安装命令
 
-3. 在刻行平台，进入组织管理页面的「设备」分页， 点击【添加设备】
+   ![pro-add-device_2](./img/pro-add-device_2.png)
 
-   ![org-device](./img/org-device-add.png)
+4. 安装完成后，设备会自动添加到项目中。前往「组织管理-设备」页面启用此设备后，即可根据项目规则自动采集数据
 
-4. 在弹窗中选择【从设备端添加】，复制安装命令，以 root 账户粘贴到设备终端
+   ![enable-device](./img/enable-device.png)
 
-   ![org-device-copy-command](./img/org-device-copy-command.png)
+## 在设备中写入文件
+1. 确认设备已获取到规则
 
-5. 在设备终端执行命令，查看日志
+   - 在设备端执行命令查看日志
 
-   ```
-    journalctl -fu cos
-   ```
+      ```bash
+      tail -f ~/.local/state/cos/logs/cos.log
+      ```
 
-   - 当日志中出现如下字段时，表示已安装完毕，设备正在等待管理员审核
-
-     ![dev-install-1](./img/dev-install-1.png)
-
-6. 在组织管理页面的「设备」分页，找到需要审核的设备，点击【准入数采】
-
-   ![org-device-authorize](./img/org-device-authorize.png)
-
-<br />
-
-## 将设备添加到项目里
-
-1.  在项目的「项目设备」分页，点击【添加设备】
-
-    ![pro-device-add](./img/pro-device-add-1.png)
-
-2.  勾选需要添加的设备，点击【确定】
-
-    ![pro-device-add-2](./img/pro-device-add-2.png)
-
-## 在设备监听目录中写入文件
-
-1. 确认设备已获取到数采与诊断规则
-
-   - 当日志中出现如下字段时，表示已成功获取到规则
+   - 当日志中出现 `received rules` 时，表示已成功获取到规则
 
      ![rule-log-1](./img/rule-log-1.png)
 
-2. <a href="https://coscene-artifacts-prod.oss-cn-hangzhou.aliyuncs.com/docs/4-recipes/data-diagnosis/dev-A.log.zip" download>点击此处下载</a> 设备 dev-A 生成的 dev-A.log。其内容如下：
+2. 将本文「创建规则-第 3 步」中的 mcap 文件复制到设备端 `/home/bag/` 目录中
 
-   ```
-   2023-09-01 11:28:47.000 INFO "Demo Log message 1"
-   2023-09-01 11:28:48.000 INFO "Demo Log message 2"
-   2023-09-01 11:28:49.000 INFO "Demo Log message 3"
-   2023-09-01 11:28:50.000 WARN "Demo Log message 4"
-   2023-09-01 11:28:51.000 INFO "Demo Log message 5"
-   2023-09-01 11:28:52.000 INFO "Demo Log message 6"
-   2023-09-01 11:28:53.000 INFO "Demo Log message 7"
-   2023-09-01 11:28:54.000 INFO "Demo Log message 8"
-   2023-09-01 11:28:55.000 INFO "Demo Log message 9"
-   2023-09-01 11:28:56.000 INFO "Demo Log message 10"
-   2023-09-01 11:28:57.000 WARN "Demo Log message 11"
-   2023-09-01 11:28:58.000 ERROR "Demo Log message 12 error 1"
-   2023-09-01 11:28:59.000 INFO "Demo Log message 13"
-   2023-09-01 11:29:00.000 INFO "Demo Log message 14"
-   2023-09-01 11:29:01.000 INFO "Demo Log message 15"
-   2023-09-01 11:29:02.000 INFO "Demo Log message 16"
-   2023-09-01 11:29:03.000 INFO "Demo Log message 17"
-   2023-09-01 11:29:04.000 INFO "Demo Log message 18"
-   2023-09-01 11:29:05.000 INFO "Demo Log message 19"
-   2023-09-01 11:29:06.000 INFO "Demo Log message 20"
-   ```
+3. mcap 自动上传
 
-3. 在本机终端执行命令，将文件 dev-A.log 复制到设备端 `/root/logs/` 中
-
-   ```
-   scp Downloads/dev-A.log root@ubuntu:/root/logs
-
-   # 其中 Downloads/dev-A.log 为本机 dev-A.log 文件所在目录，root@ubuntu 为设备名称，二者需按实修改
-   ```
-
-4. log 数据上传
-
-   - 当日志中出现如下字段时，表示 log 数据正在上传到刻行时空平台
+   - 当日志中出现如下字段时，表示已检测到 mcap 文件触发了规则
 
      ![rule-log-2](./img/rule-log-2.png)
 
-<br />
+   - 当日志中出现 `uploaded` 时，表示已成功上传 mcap 文件
+
+     ![rule-log-3](./img/rule-log-3.png)
 
 ## 查看创建的记录
 
-1. 进入 auto-upload 项目
+1. 进入项目，查看自动创建的记录
 
-   ![pro-1](./img/pro-1.png)
+   ![collect-record](./img/collect-record.png)
 
-2. 查看自动创建的记录
-
-   ![auto-record-1](./img/auto-record-1.png)
-
-3. 查看记录中上传的数据
+2. 查看记录中上传的数据
 
    ![auto-record-2](./img/auto-record-2.png)
 
-4. 查看在触发时间点创建的一刻
+3. 查看在触发时间点创建的一刻
 
    ![auto-record-3](./img/auto-record-3.png)
 
-<br />
+## 了解更多
+
+- [添加规则](./3-add-rule.md)
+- 采集完成后自动发送通知
+  - [创建发送通知的动作](../../6-automation/3-create-action.md#添加http-请求步骤创建动作)
+  - [当采集完成后触发动作](../../6-automation/4-trigger.md#collect-status-change)
+- [可视化回放数据](../../viz/1-about-viz.md)

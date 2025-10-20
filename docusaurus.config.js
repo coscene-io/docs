@@ -6,8 +6,17 @@
 
 import { themes } from 'prism-react-renderer';
 
+const defaultExclude = ['**/_*.{js,jsx,ts,tsx,md,mdx}', '**/_*/**', '**/*.test.{js,jsx,ts,tsx}', '**/__tests__/**'];
+
+// some docs are not translated, so we need to exclude them in en
+const excludeInEn = [];
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+  future: {
+    v4: true,
+    experimental_faster: true,
+  },
   title: 'coScene',
   staticDirectories: ['public', 'static'],
   tagline: 'User Docs',
@@ -35,19 +44,7 @@ const config = {
   organizationName: 'coScene', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
 
-  plugins: [
-    async function myPlugin(context, options) {
-      return {
-        name: 'docusaurus-tailwindcss',
-        configurePostCss(postcssOptions) {
-          // Appends TailwindCSS and AutoPrefixer.
-          postcssOptions.plugins.push(require('tailwindcss'));
-          postcssOptions.plugins.push(require('autoprefixer'));
-          return postcssOptions;
-        },
-      };
-    },
-  ],
+  plugins: [require.resolve('./tailwind.plugin.js')],
 
   presets: [
     [
@@ -60,6 +57,8 @@ const config = {
           // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
+          exclude:
+            process.env.DOCUSAURUS_CURRENT_LOCALE === 'en' ? [...defaultExclude, ...excludeInEn] : defaultExclude,
         },
         blog: false,
         // blog: {
@@ -93,10 +92,7 @@ const config = {
             label: '文档',
           },
           { to: '/changelog', label: '更新历史', position: 'left' },
-          {
-            type: 'localeDropdown',
-            position: 'right',
-          },
+          { type: 'localeDropdown', position: 'right' },
           { href: 'https://www.coscene.cn', label: '官方网站', position: 'right' },
           { href: 'https://github.com/coscene-io', label: 'GitHub', position: 'right' },
           {

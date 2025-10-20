@@ -29,19 +29,19 @@
   },
   "link.item.label.隐私政策": {
     "message": "Privacy Policy",
-    "description": "The label of footer link with label=隐私政策 linking to /legal/privacy/zh/privacy.html"
+    "description": "The label of footer link with label=隐私政策 linking to /legal/privacy"
   },
   "link.item.label.服务协议": {
     "message": "Terms of Service",
-    "description": "The label of footer link with label=服务协议 linking to /legal/terms/zh/terms.html"
+    "description": "The label of footer link with label=服务协议 linking to /legal/terms"
   },
   "link.item.label.刻行数据安全白皮书": {
     "message": "coScene Data Security White Paper",
-    "description": "The label of footer link with label=刻行数据安全白皮书 linking to /security/security-white-paper/en/security-white-paper.html"
+    "description": "The label of footer link with label=刻行数据安全白皮书 linking to /security/security-white-paper"
   },
   "link.item.label.刻行数据安全方案": {
     "message": "coScene Data Security Solution",
-    "description": "The label of footer link with label=刻行数据安全方案 linking to /security/data-security-solution/en/data-security-solution.html"
+    "description": "The label of footer link with label=刻行数据安全方案 linking to /security/data-security-solution"
   },
   "link.title.法律协议": {
     "message": "Legel",

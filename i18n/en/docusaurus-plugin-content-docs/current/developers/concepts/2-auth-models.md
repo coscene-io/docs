@@ -23,6 +23,7 @@ Based on the above permission system and principles, the coScene platform predef
 1. Organization Administrator: Can manage all resources and permissions within the organization
 2. Member: Can manage all data within the organization that members have permission to
 3. Read-only Member: Can read all data within the organization that members have permission to
+4. External User: Not an actual user within the organization, can join the organization by invitation and access the projects added by the organization
 
 ### Project
 
@@ -30,4 +31,8 @@ Based on the above permission system and principles, the coScene platform predef
 2. Member: Can manage all data within the project
 3. Read-only Member: Can read all data within the project
 
-When a user has a role in a project, the user's role within the project will be prioritized. The only exception is the organizational administrator, who currently has the highest system permission, can access all projects, and will ignore the role settings within the project (if any).
+When a user has a role in a project, the user's role within the project will be prioritized. The only exception is the organizational administrator, who currently has the highest system permission, can access all projects.
+
+The operation permissions for each role are as follows:
+
+![auth.png](./img/auth.png)

@@ -1,12 +1,12 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Batch Device Operations
 You can select multiple devices simultaneously for batch operations.
 
 ## Data Collection Access {#data-collection-access}
-Administrators can select multiple devices that have not been granted data collection access, and click the [Authorize Data Collection] button to authorize devices in batch.
+Administrators can select multiple devices that do not have the client enabled and click the [Enable Client] button to enable the devices in batches.
 ![Authorize Data Coll.](./img/7-authorize-data-collection-1.png)
 
 ## Add Associated Projects {#add-associated-projects}

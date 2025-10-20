@@ -20,4 +20,4 @@ name: string;
 
 ```typescript
 sourceTopicName: string;
-``` 
+```

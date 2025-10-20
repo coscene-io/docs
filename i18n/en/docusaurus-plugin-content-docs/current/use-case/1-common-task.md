@@ -4,98 +4,138 @@ sidebar_position: 1
 
 # General Data Collection
 
-The coScene platform provides a general data collection scheme for uploading machine-side data based on time periods, allowing users to quickly obtain machine-side data. Users create collection tasks on the platform, confirm the data time range, and the machine-side Agent scans the file data based on the configured file address and uploads the files that meet the time requirements to the platform.
+## Background
 
-## Configure Collection Rules
+In the robotics industry, devices often encounter environmental, software, and hardware failures. It usually takes significant time and effort for operations personnel to **gather data** to troubleshoot problems. The CoScene Platform provides a general data collection solution based on **time ranges and file paths**, allowing users to quickly access machine-side data.
 
-Go to [Organization Management] - [Device] - [Edit Collection Rules] to configure the overall collection rule information.
+This guide illustrates how to collect and automatically process remote data using the CoScene Platform, using the example of an operations engineer collecting on-site data remotely.
 
-![device-collector](./img/common-task-1.png)
+Assume that a device named `coScene-device` at Site A encountered a failure on 2025-07-23 at 16:00. The operations team needs to collect the bag, log, and additional map data from approximately 30 minutes before the failure. The main steps are:
 
-```yaml
-mod:
-  # mod name, default is 'default', supports monitoring files in specified directories on the device side, contact Kexing for custom versions
-  name: 'default'
-  conf:
-    # Enable switch, true/false, enabled by default
-    enabled: true
+1. Configure collection directories  
+2. Add device to the project  
+3. Collect device data  
+4. Track file upload progress  
+5. Process the data
 
-    # Monitored directories on the device side, used as specified directories for data collection tasks and rule collection in the project
-    base_dirs:
-      - /home/bag/
-      - /home/log/
+## Preparation
 
-# Automatic update
-updater:
-  # Auto-update switch for the data collection client, true/false, disabled by default
-  enabled: false
-```
+First, log into the CoScene Platform and create a project:
 
-For detailed information on the configuration file, please refer to the document [Collection Rules](../device/4-device-collector.md)
+1. Visit [https://www.coscene.io/](https://www.coscene.io/), click **Login** in the upper right corner, and choose a login method to access the platform.
 
-## Install Agent on Device
+   ![login-page](./img/5-2-login-page.png)
 
-Go to [Organization Management] - [Device] - [Add Device] to get the Agent installation command for the device.
-![device-command](./img/common-task-2.png)
+2. Create a **Project** on the platform. Projects are the unit of data management, handling data storage, management, isolation, and access control.
 
-The installation command supports specifying the relevant device ID file path and associated field name. If not set, a random ID will be generated to bind to the current device.
-![device-install-command](./img/device-install-command.png)
+   ![create-project](./img/4-2-create-project.png)
 
-Open the command line terminal on the machine, paste the copied installation command from the above image, and add the `--mod=task` parameter at the end of the command to install the coScene Agent on the machine. After waiting for a few minutes, you can view the corresponding device information in the organization device list.
+3. Confirm your role is **Organization Administrator**. For data security, only organization admins have permissions to **enable devices** and **configure global collection directories**. If you are not an admin, please contact one to update your role.
 
-![device-install-command-2](./img/device-install-command-2.png)
+   ![org-role](./img/org-role.png)
 
-View the relevant device on the web page. If the device does not appear, the first installation process may be slow, so please wait patiently for 1 minute and then refresh the web page. Find the corresponding machine and click [Admit Collection] to allow the device to perform data collection operations.
+4. Prepare a robot device.
+
+## Collecting Data
+
+### Configure Collection Directory
+
+1. Go to **Organization Management → Devices → Device Configuration** and set up the global collection directories under `collect_dirs`.
+
+   ![device-config_1](./img/device-config_1.png)
+
+2. Suppose the bag files are stored at `/home/bag` and log files at `/home/log`, configure as follows:
+
+   ```yaml
+   mod:
+   name: 'default'
+   conf:
+     enabled: true
+     collect_dirs: 
+       - /home/bag/
+       - /home/log/
+   ```
+
+3. For more configuration details, refer to the [Device Configuration documentation](../device/4-device-collector.md).
 
 ## Add Device to Project
 
-Enter the corresponding project, select [Project Device] - [Add Device] - [Select from Organization Devices], and select the device just installed to add it to the current project.
-![project-devices](./img/project-devices.png)
+1. On the Project → Devices page, get the device installation command.
 
-## Create Collection Task
+    ![pro-add-device_1](./img/pro-add-device_1.png)
 
-In the project, go to [Tasks] - [Auto Collection Task] - [Create Task], select the corresponding device, fill in the time period and related description for the collection, and click create task.
+2. Run the installation command on the device.
 
-![create-upload-task](./img/upload-task.png)
+    ![pro-add-device_2](./img/pro-add-device_2.png)
 
-## Wait for Collection Task to Complete
+3. fter installation, the device will be automatically added to the project. Go to Organization Management → Devices to enable it.
 
-After creating the task, the machine-side Agent will obtain the corresponding task information and process it according to the task's time period and configured file address information, then upload the files that meet the requirements to the coScene platform. Depending on the network speed of the machine side and the number of files being uploaded, the completion time of a single task varies. Please wait patiently.
+  ![enable-device](./img/enable-device.png)
 
-After the task collection is complete, the task details will link to the record information associated with this task. Click to view the record to see the related file information. A single data collection task is thus completed, and it's that simple.
+## Collect Device Data
+> Scenario: Device `coScene-device` at Site A failed at 2025-07-23 16:00. The operations team needs bag, log, and map data from 30 minutes before the failure.
 
-![task-record](./img/task-record.png)
+1. On the Project → Devices page, select `coScene-device` and click Data collection.
 
-![task-record-detail](./img/task-record-detail.png)
+  ![device-collect](./img/device-collect_1.png)
 
-## Subsequent Data Processing
+2. Configure the collection task:
 
-Once the data is uploaded to the coScene platform, users can leverage the platform's [automation](../workflow/1-quick-start-workflow.md) capabilities for subsequent processing to improve data flow speed and enhance development efficiency.
+  - Time Range: 2025-07-23 15:30 to 16:00
+  - Paths: /home/bag/, /home/log/
+  - Additional File: /home/map.png
+  - Collection & Record Name: Collect data from Site A
 
-Here is an example of [automatic decompression]. When the uploaded data contains compressed packages, the automation capability automatically decompresses the compressed package files, avoiding the cumbersome process of downloading data, decompressing, and re-uploading the decompressed data.
+  This collects files from the given paths created or modified between the specified time range and uploads them along with the map file to the record named Collect data from Site A.
 
-### Configure Decompression Trigger
+  ![device-collect](./img/device-collect_2.png)
 
-In [Automation] - [Trigger] - [Create Trigger], create a new trigger. Fill in the file wildcard with `*.tar.gz` and `finish.flag`, which determines the presence of a compressed package and triggers when the file upload is complete (the Agent will upload the finish.flag marker file to indicate the end of the file upload process).
-![decompress](./img/decompress-files.png)
-![trigger_2](./img/trigger_2.png)
+3. Once the device receives the task, it scans for matching files and generates an upload list.
 
-### Trigger Decompression
+## Track File Upload Progress
+1. During the collection, view progress in Device execution history.
 
-Manually upload a compressed package file in the record created earlier, and observe that the corresponding decompression workflow has been automatically triggered.
+   ![collect-progress](./img/device-collect_3.png)
+   ![collect-progress](./img/device-collect_4.png)
 
-![decompress-action](./img/decompress-action.png)
+2. Or run the following command on the device to view real-time logs:
 
-Wait for the decompression operation to complete, and check the file list to see a corresponding decompressed folder.
+    ```
+    tail -f ~/.local/state/cos/logs/cos.log
+    ```
 
-![file-list](./img/files-list.png)
+3. After collection completes, view the files by opening the associated record.
 
-## Q&A
+    ![task-record-detail](./img/device-collect_5.png)
 
-### Q: The files corresponding to the time on the machine side are not collected.
+## Processing Data
+After uploading, you can use the platform’s [Automation](../6-automation/1-quick-start-workflow.md) capabilities to process data and improve operational efficiency.
 
-A: The file time for data collection uses the last modification time of the file. You can check the file's modification time on the machine side using `ls -l --time-style=+"%Y-%m-%d %H:%M:%S"` to ensure that the file's time is indeed within the task's time range.
+### Configure Unzip Trigger
+On the Project → Automation → Triggers page, create a trigger:
+
+When a file matching *.zip is uploaded to a record, it will be automatically unzipped.
+
+  ![decompress](./img/trigger_2.png)
+
+## Trigger Decompression
+Go to Project → Records, upload a compressed file, and view the triggered unzip workflow.
+
+  ![decompress-action](./img/decompress-action.png)
+
+Once unzipping is complete, open the extracted folder to view the files.
+
+  ![file-list](./img/files-list.png)
+
+## FAQ
+**Q: The expected file was not collected.**
+
+A:
+
+Ensure the file's modification or creation time falls within the selected range.
+
+- Some systems do not track file creation time; only the last modification time is used. You can check this using: `ls -l --time-style=+"%Y-%m-%d %H:%M:%S"`
+- You cannot collect future data — confirm the time range is not set in the future.
 
 ## Summary
-
-The above introduced a scenario process where a user creates a collection task, and the machine-side Agent automatically uploads relevant files to the coScene platform based on the task information. By combining the platform's automation capabilities, you can create data diagnosis, data processing, and other processes to quickly build a data flow process that meets your business needs, greatly improving development efficiency.
+This guide covers how users can manually initiate data collection and have the device automatically upload files to the platform. By integrating with CoScene’s automation features, you can build efficient workflows for diagnostics, processing, and data management to greatly enhance maintenance operations.

@@ -16,7 +16,7 @@ Devices are managed at the organization level, and only users with organization 
 
 ### Filter Device Information
 
-The system by default supports filtering by "Device ID", "Access Status", and "Online Status" - these 3 fields. In the "More" option, you can also select custom device fields for filtering operations to meet more personalized information search needs.
+The system by default supports filtering by "Device ID", "Client Status", and "Online Status" - these 3 fields. In the "More" option, you can also select custom device fields for filtering operations to meet more personalized information search needs.
 
 ![Organization Device Filtering](./img/4-3-device-filter.png)
 
@@ -32,15 +32,19 @@ When there are many device fields, you can use the settings button in the upper 
 🤖 Permission: Only **organization administrators** have the authority to set device custom fields
 :::
 
-- **Entry:** Through the "Organization Management - Settings - Device Field Configuration - Edit Configuration" path to enter the settings page, administrators can add relevant device fields according to actual needs. After saving the settings, these custom fields will appear in the device information display.
+1. Define organization-wide fields in Organization Management → Settings → Custom Fields
+
+    ![Set Device Custom Fields](./img/4-3-setting-device-fields.png)
+
+2. Select fields for devices in Device Field Configuration
+
+    ![Device Custom Fields Popup](./img/4-3-fields-popup.png)
+
+3. These custom fields will appear when creating/viewing devices
+    
+    ![Device Table with Custom Fields](./img/4-3-device-table-fields.png)
 
 - **Notes:** If an administrator deletes a device custom field, all data for that field will be deleted and cannot be recovered, so operation must be done with caution.
-
-![Set Device Custom Fields](./img/4-3-setting-device-fields.png)
-
-![Device Custom Fields Popup](./img/4-3-fields-popup.png)
-
-![Device Table with Custom Fields](./img/4-3-device-table-fields.png)
 
 ## Edit Device Information
 
@@ -60,7 +64,7 @@ You can modify various information about the device by selecting the device you 
 🤖 Permission: **Organization members and above roles** can assign devices to projects
 :::
 
-### Assign Devices to Projects
+### Assign Devices to Projects {#assign-devices-to-projects}
 
 After a device is added to a project, if a data collection client is installed, the client will pull the rules that have been enabled in the project for automatic monitoring and diagnosis, and data collection tasks can also be created in the project to collect data.
 
@@ -78,31 +82,46 @@ If a project no longer needs a certain device, you can [Remove from this Project
 
 ![Remove Project Device](./img/4-3-delete-project-device.png)
 
-## Device Admission
+## Device Admission {#enable-device}
 
 :::info
-🤖 Permission: **Only organization administrators** can perform device admission operations
+🤖 Permission: **Only organization administrators** can perform enable device operations
 :::
 
-After completing device addition, the [Admit] operation button will appear in the device list. On the device details page, you can separately admit the "Data Collection" and "Remote Control" modules.
+After completing device addition, an [Enable Client] action button will appear in the device list.
 
-![Admit Device](./img/4-3-access-device-2.png)
+![Admit Device](./img/4-3-access-device.png)
 
-After "Data Collection" admission, the machine-side program will collect data according to rules and automatically upload it to the corresponding project;
+Once the client is enabled:
 
-After "Remote Control" admission, users can perform SSH connections, real-time visualization, and other operations on the machine through the coScene platform.
+- If Data Collection is online:
+    The machine-side program will collect data according to configured rules and automatically upload to the corresponding project.
 
-### View Data Collection Client Logs
+- If Remote Control is online:
+    Users can:
+    - Establish SSH connections to the machine
+    - Perform real-time device visualization using [coBridge](https://github.com/coscene-io/coBridge)
 
-Execute the following command on the device side to view the log information of the data collection client, making it convenient for users to understand the situation during the data collection process.
+### View Client Information {#view-client-information}
+Run the following command on the device to check the client version:
 
-```go
-journalctl --user-unit=cos -f -n 50
+```bash
+./script/install.sh --version
 ```
+
+If there's no output, you can check the version and logs of each individual client-side component separately.
+
+| Name | View Version | View Logs |
+| ---- | -------- | -------- |
+| Data Collection (coScout) ≥ v1.1.2 | `~/.local/bin/cos --version` | `tail -f ~/.local/state/cos/logs/cos.log` |
+| Data Collection (coScout) ＜ v1.1.2 - | `~/.local/bin/cos --version` | `journalctl -fu cos` |
+| Remote Control (coLink) | `colink --version` | `journalctl -fu colink` |
 
 ### Uninstall Data Collection and Remote Control Clients
 
 On the device side, execute the following command to uninstall the data collection and remote control clients. During execution, observe the output until the uninstallation process is complete.
+
+Note: If the coScout client is installed under the root user, you need to switch to the root user when uninstalling.
 
 ```yaml
 /bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall_en.sh)"
@@ -118,13 +137,11 @@ On the device side, execute the following command to uninstall the data collecti
 
 Select the device you want to delete in the device list and click [Delete Device], and confirm twice to delete. After deleting the device:
 
-1. Admitted devices will have their admission canceled and will not be able to automatically upload data
-
-2. The device and requests from the device side will be cleared in the organization
-
-3. The device cannot be added to records
-
-4. Detailed information about the device cannot be viewed in records
+1. All requests from the device will be removed from the organization.
+2. The device will be removed from the records.
+3. In the records, the detailed information of this device will not be viewable.
+4. Unable to add this device to the project.
+5. Already added devices in the project will be synchronized and removed from the project devices.
 
 ![Delete Device](./img/4-3-device-delete.png)
 
