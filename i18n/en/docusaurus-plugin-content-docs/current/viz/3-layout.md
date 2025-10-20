@@ -39,7 +39,7 @@ Click on **Layout** in the upper - right corner of the visual interface to enter
 
 By copying the layout of an existing project, you can quickly obtain a basic layout framework that meets some of your requirements. Then, you can modify and adjust it based on this framework, which greatly saves the time of layout design and improves work efficiency.
 
-    ![viz-8-6-Eng](./img/viz-8-6-Eng.png)
+![viz-8-6-Eng](./img/viz-8-6-Eng.png)
 
 ### Import from file
 
