@@ -24,11 +24,13 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
-  onBrokenMarkdownLinks: 'throw',
   onDuplicateRoutes: 'throw',
   favicon: 'img/favicon.ico',
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
   },
   themes: ['@docusaurus/theme-mermaid'],
 
