@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_coscene_io_docs=self.webpackChunk_coscene_io_docs||[]).push([["4316"],{45527:function(e,c,s){s.d(c,{createArchitectureServices:()=>o.S});var o=s(77954);s(68777)}}]);
