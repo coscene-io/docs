@@ -33,7 +33,7 @@ Global Flags:
 Use "cocli action [command] --help" for more information about a command.
 ```
 
-# 列出当前项目中的动作
+# 列出当前项目中的动作 {#list-actions-in-the-current-project}
 
 ```bash
 cocli action list
@@ -59,7 +59,7 @@ fb1bb37a-7b27-11ee-b962-0242ac120002     system      ros2-mcap-converter        
 6cdf7cf9-d635-4cad-9333-cb58fc6a8e24     system      yw-cyber-converter                                          1970-01-01T08:00:00+08:00
 ```
 
-## 触发动作
+## 触发动作 {#trigger-an-action}
 
 找到我们想要的执行的动作之后，我们可以在命令行中，直接触发这个动作，实现全流程的自动化。
 
@@ -73,7 +73,10 @@ ACTION_ID=$(cocli action list | grep 'coScene-test' | cut -d ' ' -f1)
 cocli action run $ACTION_ID $RECORD_ID
 ```
 
-![cocli-run-action-manual-confirm](./img/6-3-run-action-confirm.png)
+```
+The final parameters in the action run to be created:
+Action run created successfully.
+```
 
 执行动作是一个比较消耗计算和存储资源的操作，在没有 `-f` 标识位的情况下，需要手动确认
 才会真正执行。如果对当前操作不需要进行手动确认的，可以使用 `-f` 标志直接跳过。这在批量
@@ -83,7 +86,10 @@ cocli action run $ACTION_ID $RECORD_ID
 cocli action run $ACTION_ID $RECORD_ID -f
 ```
 
-![cocli-run-action-force](./img/6-3-run-action-force.png)
+```
+The final parameters in the action run to be created:
+Action run created successfully.
+```
 
 较为复杂的动作可能会需要额外的参数对动作进行定制，您可以使用 `-p` 的标志位提供这些参数
 
