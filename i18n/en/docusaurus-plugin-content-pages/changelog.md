@@ -5,6 +5,32 @@ id: changelog
 
 # Release History
 
+## [25.45.0] - 2025-11-05
+
+### [Added]
+
+- Added coStudio configuration features
+  - Support for project selection to directly use project layouts
+  - Support for configuring allowed login domains
+  - Support for automatic LAN connection for real-time visualization
+
+### [Improved]
+
+- Enhanced visualization chart panels
+  - Support for one-click expand/collapse all data series
+  - Support for adding new data series directly under any existing data series
+- Improved description and comment styles
+  - Enhanced display styles for descriptions and comments in records, projects, and tasks
+  - Support for direct import and rendering of Markdown content
+- Improved batch test report display
+  - Optimized test report page structure: changed from directly displaying test suites and test cases to default showing test suites, with corresponding test cases viewable upon click
+- Improved project settings structure
+  - Moved project descriptions to unified management in project overview introduction
+  - Removed description editing entry from project settings
+- Improved sidebar interaction: removed expansion state
+
+---
+
 ## [25.42.0] - 2025-10-15
 
 ### [Added]
