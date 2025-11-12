@@ -8,7 +8,7 @@ Records support the following operations:
 
 - **Basic operations**: view, edit, copy, move, archive, delete
 - **Data processing**: invoke actions, annotation
-- **Search and statistics**: search filtering, label statistics
+- **Search and filter**: Filter records
 
 ## Basic Operations
 
@@ -82,21 +82,28 @@ Select [Delete] from more operations in record details. The record will be delet
 
 ### Batch Operations
 
-On the record list page, select records to perform batch operations like editing labels, copying, moving, archiving, deleting, etc.
+On the record list page, select records to perform batch operations like edit labels, copy to, move to, archive, delete, etc.
 
 ![manage-record_11](./img/manage-record_11.png)
 
 ## Data Processing
 
-### Invoke Actions
+### Invoke actions
 
-On the record details page, you can invoke actions to process records, such as: data trimming, automatic diagnostics, data comparison, etc.
+On the record details page, you can invoke actions to process record, such as: data trimming, automatic diagnostics, data comparison, etc.
 
-1. On the record details page, click the [Invoke Action] button and select the operation to perform on the record.
+1. On the record details page, click the [Invoke action] button and select the operation to perform on the record.
 
    ![manage-record_2](./img/manage-record_2.png)
 
-2. When the action is complete, you can view the results in the "Invocations". See [Automated Actions](../../6-automation/1-quick-start-workflow.md) chapter for details.
+2. If you need to make a large - scale batch call of the same action for records:
+  - Select multiple records in the record list，and click the [Invoke action] button and select the operation to perform on the records
+  - You can also perform filtering, and then use the [Invoke Action for All Records under the Current Filter] button in the upper - right corner of the page to carry out the operation.
+
+  ![manage-record_14](./img/manage-record_14.png)
+
+
+3. When the action is complete, you can view the results in the "Invocations". See [Automated actions](../../6-automation/1-quick-start-workflow.md) chapter for details.
 
 ### Annotation
 
@@ -106,24 +113,32 @@ On the record list page, select records to annotate and click the [Create Annota
 
 ![manage-record_3](./img/manage-record_3.png)
 
-## Search and Statistics
+## Search and filter
 
-### Search and Filter
+### Search
 
-- **Search**
-
-  Enter keywords in the search box of the record list to search record names, descriptions and labels:
+  You can search of the record list, enter keywords from the record name for a fuzzy search. You can view the number of search results in the lower - right corner of the page.
 
   ![manage-record_5](./img/manage-record_5.png)
 
-- **Filter**
+### Filter
 
-  In the filter items of the record list, you can filter by record labels, creator, device, record custom fields, device custom fields and other properties:
+  1. In the record list, you can filter records by record labels, creator, device, record custom fields, device custom fields, and other properties:
 
   ![manage-record_6](./img/manage-record_6.png)
 
-### Label Statistics
+  2. Add more filtering conditions by clicking "Add Condition" and "Add Condition Group":
+  - Multiple filtering conditions are supported.
+  - Operators for filtering conditions are supported, such as equals, does not equal, contains, does not contain, etc.
+  - Up to 3 layers of nested condition groups can be added.
+  - By default, the relationship between each condition is "AND", and it can be manually switched to "OR".
+  - Click the cross at the end of each row of conditions to delete that condition.
+  - Click the delete button at the end of each group of conditions to delete that group of conditions.
 
-Click the [Statistics] button in the record list to view the number of records under each label:
+   ![manage-record_12](./img/manage-record_12.png)
 
-![manage-record_4](./img/manage-record_4.png)
+3. Set the filter conditions and click the "Query" button to filter the records. 
+ - The system will display the filtered records in the record list.
+ - Click the "Clear" button to clear all filter conditions.
+
+   ![manage-record_13](./img/manage-record_13.png)

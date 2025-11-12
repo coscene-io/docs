@@ -4,25 +4,10 @@ sidebar_position: 1
 
 # Quick Start with Records
 
-## Understanding Records
+## Introduction
 
 Records are collections of files describing similar scenarios, used for storing, managing, and visualizing data. A record can store data generated during a device failure, data produced during a device task execution, or a small segment of a dataset pending annotation, such as ROS Bags, logs, maps, configuration files, images, and videos.
 
-## Record Interface
-
-### Record List Page
-
-![record-list](./img/record-list.png)
-
-### Record Detail Page
-
-![record-detail](./img/record-detail.png)
-
-- **Files**: Files uploaded to the record
-- **Moments**: Key timestamps in the record, e.g., when a failure occurred
-- **Invocations**: History of actions called in the record for data processing
-- **Testing**: History of batch tests performed on the record data
-- **Related Tasks**: General tasks, collection tasks, annotation tasks, and comments associated with the record
 
 ## Getting Started with Records
 

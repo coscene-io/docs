@@ -8,9 +8,9 @@ sidebar_position: 1
 
 In the robotics industry, devices often encounter environmental, software, and hardware failures. It usually takes significant time and effort for operations personnel to **gather data** to troubleshoot problems. The CoScene Platform provides a general data collection solution based on **time ranges and file paths**, allowing users to quickly access machine-side data.
 
-This guide illustrates how to collect and automatically process remote data using the CoScene Platform, using the example of an operations engineer collecting on-site data remotely.
+This guide illustrates how to collect and automatically process remote data using the CoScene Platform, using the example of **an operations engineer collecting on-site data remotely**.
 
-Assume that a device named `coScene-device` at Site A encountered a failure on 2025-07-23 at 16:00. The operations team needs to collect the bag, log, and additional map data from approximately 30 minutes before the failure. The main steps are:
+Assume that a device named `coScene-device` at Site A encountered a failure on 2025-07-25 at 16:00. The operations team needs to collect the bag, log, and additional map data from approximately 30 minutes before the failure. The main steps are:
 
 1. Configure collection directories  
 2. Add device to the project  
@@ -73,7 +73,7 @@ First, log into the CoScene Platform and create a project:
   ![enable-device](./img/enable-device.png)
 
 ## Collect Device Data
-> Scenario: Device `coScene-device` at Site A failed at 2025-07-23 16:00. The operations team needs bag, log, and map data from 30 minutes before the failure.
+> Scenario: Device `coScene-device` at Site A failed at 2025-07-25 16:00. The operations team needs bag, log, and map data from 30 minutes before the failure.
 
 1. On the Project → Devices page, select `coScene-device` and click Data collection.
 
@@ -81,7 +81,7 @@ First, log into the CoScene Platform and create a project:
 
 2. Configure the collection task:
 
-  - Time Range: 2025-07-23 15:30 to 16:00
+  - Time Range: 2025-07-25 15:30 to 16:00
   - Paths: /home/bag/, /home/log/
   - Additional File: /home/map.png
   - Collection & Record Name: Collect data from Site A
