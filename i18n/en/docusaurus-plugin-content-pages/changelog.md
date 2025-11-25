@@ -5,6 +5,20 @@ id: changelog
 
 # Release History
 
+## [25.48.0] - 2025-11-26
+
+### [Added]
+- Added access token renewal feature: Supports extending the validity period of access tokens on the "My Settings - Security" page
+- Added record attributes auto-parsing feature: Uploading a `metadata.yaml` file to the record root directory now automatically extracts its content as record attributes, which also enables attribute-based search.
+
+### [Improved]
+
+- Improved visualization playback performance: Optimized underlying rendering mechanism to enhance playback smoothness and reduce lag issues
+- Updated record details page information layout: Integrated key information such as record duration, file count, and record size below the record name
+- Enhanced visualization layout switching logic: No longer shows save confirmation prompt when switching project layouts
+
+---
+
 ## [25.45.0] - 2025-11-05
 
 ### [Added]
