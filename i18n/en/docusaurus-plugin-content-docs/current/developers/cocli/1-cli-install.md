@@ -26,6 +26,7 @@ Available Commands:
   login       Login to coScene
   project     Work with coScene project.
   record      Work with coScene record.
+  registry    Manage coScene container registry access
   update      Update cocli version
 
 Flags:

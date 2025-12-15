@@ -209,6 +209,17 @@ cocli record view 52c5afac-22ca-4ab5-b9cf-fc069053b1af
 The record url is: https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
+```bash
+cocli record describe 52c5afac-22ca-4ab5-b9cf-fc069053b1af
+```
+
+```bash
+Field                    Value
+ID:                      52c5afac-22ca-4ab5-b9cf-fc069053b1af
+...
+URL:                     https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
+```
+
 ### 更新记录信息 {#update-record}
 
 命令行也支持更改记录的名字、描述等信息，完整的更新列表请查看帮助。
