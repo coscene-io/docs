@@ -1,9 +1,5 @@
 {
   "label": "其他",
   "position": 99,
-  "collapsible": true,
-  "link": {
-    "type": "generated-index",
-    "slug": "/category/others"
-  }
+  "collapsible": true
 }
