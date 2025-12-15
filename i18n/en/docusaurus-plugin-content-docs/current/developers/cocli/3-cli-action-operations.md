@@ -66,10 +66,15 @@ Here, we have prepared an action that will list the files in the current directo
 
 Actions require data from records to run. We first find the required action ID and record ID, and then use these IDs to trigger the action.
 
+:::tip Recommend Using JSON Output
+Using JSON output with the `jq` tool to extract IDs is more reliable and stable.
+:::
+
 ```bash
-RECORD_ID=$(cocli record list | grep -v ID | cut -d ' ' -f1 | head -n1)
-ACTION_ID=$(cocli action list | grep 'coScene-test' | cut -d ' ' -f1)
-cocli action run $ACTION_ID $RECORD_ID
+# Use JSON output to get record and action, e.g., to run the coScene-test action on the first record
+RECORD_NAME=$(cocli record list -o json | jq -r '.records[0].name')
+ACTION_NAME=$(cocli action list -o json | jq -r '.actions[] | select(.spec.name | contains("coScene-test")) | .name')
+cocli action run $ACTION_NAME $RECORD_NAME
 ```
 
 ```
@@ -80,7 +85,7 @@ Action run created successfully.
 Executing an action is a resource-intensive operation. Without the `-f` flag, you need to manually confirm the execution. If you do not need manual confirmation for the current operation, you can use the `-f` flag to skip it. This is very useful when processing large amounts of data in bulk.
 
 ```bash
-cocli action run $ACTION_ID $RECORD_ID -f
+cocli action run $ACTION_NAME $RECORD_NAME -f
 ```
 
 ```
@@ -91,7 +96,7 @@ Action run created successfully.
 More complex actions may require additional parameters for customization. You can provide these parameters using the `-p` flag.
 
 ```bash
-cocli action run $ACTION_ID $RECORD_ID -f -p parameter1=123 -p parameter2=456
+cocli action run $ACTION_NAME $RECORD_NAME -f -p parameter1=123 -p parameter2=456
 ```
 
 Please note that in this calling mode, if there are parameters other than `parameter1` and `parameter2`, the remaining parameters will use the default values defined in the action if not explicitly provided.
@@ -102,4 +107,10 @@ After successfully triggering an action, you can view the invocation history to 
 
 ```bash
 cocli action list-run
+```
+
+For more detailed information or for script processing, you can use JSON format output:
+
+```bash
+cocli action list-run -o json
 ```

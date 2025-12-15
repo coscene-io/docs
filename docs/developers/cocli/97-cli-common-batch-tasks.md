@@ -5,16 +5,21 @@ sidebar_position: 4
 
 # 常见批量操作举例
 
+:::tip 推荐使用 JSON 输出
+本文档中的批量操作示例使用 `jq` 工具来解析 JSON 输出，这比解析表格输出更加可靠和稳定。
+如果您的系统没有安装 `jq`，可以通过以下命令安装：
+- macOS: `brew install jq`
+- Ubuntu/Debian: `sudo apt-get install jq`
+- CentOS/RHEL: `sudo yum install jq`
+:::
+
 ## 上传同一个文件到项目中的所有记录中
 
 ```bash
-cocli record list | \
-  grep -v 'ID' | \
-  cut -d ' ' -f1 | \
+# 使用 JSON 输出和 jq 提取记录 ID
+cocli record list -o json | jq -r '.records[].name' | \
   xargs -I {} cocli record upload {} ./FILE_FLAG
 ```
-
-![cocli-upload-file-to-all-records](./img/6-4-upload-file-to-all-records.png)
 
 ## 为当前目录下的所有文件夹建立一个记录并上传文件
 
@@ -27,11 +32,11 @@ cocli record list | \
 ```bash
 # 遍历当前目录下的所有子目录
 for dir in */; do
-  # 去除目录名称末尾的斜杠，并创建一个新的记录，获取记录ID
-  record_id=$(cocli record create -t "${dir%/}" | head -n1 | cut -d " " -f3)
+  # 去除目录名称末尾的斜杠，并创建一个新的记录，获取记录的完整资源名称
+  record_name=$(cocli record create -t "${dir%/}" -o json | jq -r '.name')
 
   # 上传当前子目录的内容到创建的记录中
-  cocli record upload -R "$record_id" "$dir"
+  cocli record upload -R "$record_name" "$dir"
 done
 ```
 
@@ -46,9 +51,10 @@ done
 一种常见的命令行操作模式是遍历用户指定项目内的所有记录，并根据特定的模式进行操作
 
 ```bash
-# 获取项目中的所有记录列表，遍历并提供 Record 的 ID 作为后续操作的依据
-for id in $(cocli record list | grep -v 'ID' | cut -d ' ' -f1); do
-    # 使用 $id 进行后续的批量操作
+# 使用 JSON 输出获取项目中的所有记录，遍历并提供记录的完整资源名称
+cocli record list -o json | jq -r '.records[].name' | while read -r record_name; do
+    # 使用 $record_name 进行后续的批量操作
+    # 如需提取 record ID，可以使用: record_id=$(basename "$record_name")
 done
 ```
 
@@ -57,14 +63,15 @@ done
 ### 找出所有不含任何文件的空记录
 
 ```bash
-for id in $(cocli record list | grep -v 'ID' | cut -d ' ' -f1); do
-    # 获取记录中的文件列表，去掉表头
-    files=$(cocli record list-files $id | tail -n +2)
+cocli record list -o json | jq -r '.records[].name' | while read -r record_name; do
+    # 获取记录中的文件数量
+    file_count=$(cocli record file list "$record_name" -o json 2>/dev/null | jq '.files | length')
 
     # 检查文件列表是否为空
-    if [[ -z "$files" ]]; then
-        # 如果文件列表为空，则输出该记录ID
-        echo "Record $id has no files."
+    if [[ "$file_count" -eq 0 ]]; then
+        # 提取记录 ID 并输出
+        record_id=$(basename "$record_name")
+        echo "Record $record_id has no files."
     fi
 done
 ```
@@ -72,14 +79,14 @@ done
 ### 给所有空记录打上标签
 
 ```bash
-for id in $(cocli record list | grep -v 'ID' | cut -d ' ' -f1); do
-    # 获取记录中的文件列表，去掉表头
-    files=$(cocli record list-files $id | tail -n +2)
+cocli record list -o json | jq -r '.records[].name' | while read -r record_name; do
+    # 获取记录中的文件数量
+    file_count=$(cocli record file list "$record_name" -o json 2>/dev/null | jq '.files | length')
 
     # 检查文件列表是否为空
-    if [[ -z "$files" ]]; then
+    if [[ "$file_count" -eq 0 ]]; then
         # 给所有空的记录打上标签 empty-record
-        cocli record update $id -l empty-record
+        cocli record update "$record_name" --append-labels empty-record
     fi
 done
 ```
@@ -87,9 +94,10 @@ done
 ### 批量下载所有有特定标签的记录到文件夹
 
 ```bash
-for id in $(cocli record list -v | grep 'test-label' | cut -d ' ' -f1); do
+# 使用 --labels 参数过滤特定标签的记录
+cocli record list --labels test-label -o json | jq -r '.records[].name' | while read -r record_name; do
     # 下载所有有 test-label 标签的记录
-    cocli record download $id download-folder
+    cocli record download "$record_name" download-folder
 done
 ```
 
@@ -100,14 +108,14 @@ done
 :::
 
 ```bash
-for id in $(cocli record list | grep -v 'ID' | cut -d ' ' -f1); do
-    # 获取记录中的文件列表，去掉表头
-    files=$(cocli record list-files $id | tail -n +2)
+cocli record list -o json | jq -r '.records[].name' | while read -r record_name; do
+    # 获取记录中的文件数量
+    file_count=$(cocli record file list "$record_name" -o json 2>/dev/null | jq '.files | length')
 
     # 检查文件列表是否为空
-    if [[ -z "$files" ]]; then
+    if [[ "$file_count" -eq 0 ]]; then
         # 删除当前记录，使用 -f 标志来跳过手工确认的步骤
-        cocli record delete $id -f
+        cocli record delete "$record_name" -f
     fi
 done
 ```

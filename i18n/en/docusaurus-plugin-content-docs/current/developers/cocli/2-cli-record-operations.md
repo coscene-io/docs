@@ -22,18 +22,18 @@ Usage:
   cocli record [command]
 
 Available Commands:
-  copy          Copy a record to target project/record
-  create        Create a new record
-  create-moment Create moment in the record
-  delete        Delete a record
-  describe      Describe record metadata.
-  download      Download files from record to directory.
-  file          Manage files in records
-  list          List records in the project.
-  list-moments  List moments in the record
-  update        Update record.
-  upload        Upload files in directory to a record in coScene.
-  view          View record.
+  copy        Copy a record to target project
+  create      Create a new record
+  delete      Delete a record
+  describe    Describe record metadata
+  download    Download all files from a record
+  file        Manage files in records
+  list        List records in a project
+  moment      Manage moments in records
+  move        Move a record to target project
+  update      Update record metadata
+  upload      Upload files or directory to a record
+  view        View record details
 
 Flags:
   -h, --help   help for record
@@ -75,8 +75,6 @@ cocli record list
 ```
 
 ```bash
-Note: Showing first 100 records (default page size). Use --all to list all records or --page-size to specify page size.
-
 ID                                       TITLE                                        LABELS                        CREATE TIME
 9c9177f6-8194-4d69-8536-3cfebce6fc23     humanoid-episode-200                                                       2025-07-17T21:59:04+08:00
 c729f6ab-f4e8-4d1e-adf4-24d0165939e9     humanoid-episode-199                                                       2025-07-17T21:59:04+08:00
@@ -96,12 +94,31 @@ d00077d9-65f6-4b30-a92a-61a6ec1e478e     humanoid-episode-186                   
 fcd65058-d777-48ca-99f3-606fc02834e6     humanoid-episode-185                                                       2025-07-17T21:59:01+08:00
 53ffbdfa-43ae-44bf-abcd-a99548175776     humanoid-episode-184                                                       2025-07-17T21:59:01+08:00
 ...
+
+Next page available. To continue, add: --page-token "TOKEN_HERE"
 ```
 
-The list command will display all records in the project. When the number of records grows to a certain extent, you can also use the `page` and `page size` parameters to paginate the record list.
+The list command will display records in the project, showing 100 records per page by default. You can use pagination options to browse all records:
 
 ```bash
-cocli record list --page-size 10 --page 2
+# Use page-token for pagination (recommended)
+cocli record list --page-size 10 --page-token "TOKEN_FROM_PREVIOUS_RESPONSE"
+
+# Or use --all to get all records
+cocli record list --all
+```
+
+You can also use filter options to filter records:
+
+```bash
+# Filter by labels
+cocli record list --labels "label1,label2"
+
+# Filter by title keywords
+cocli record list --keywords "keyword1,keyword2"
+
+# Include archived records
+cocli record list --include-archive
 ```
 
 ### Upload Files to a Record {#upload-files-to-record}
@@ -179,12 +196,27 @@ Archived:     false
 URL:          https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
+:::tip
+If the record is associated with a device or contains custom field values, this information will also be displayed in the `describe` command output.
+:::
+
 ```bash
 cocli record view 52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
 ```bash
 The record url is: https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
+```
+
+```bash
+cocli record describe 52c5afac-22ca-4ab5-b9cf-fc069053b1af
+```
+
+```bash
+Field                    Value
+ID:                      52c5afac-22ca-4ab5-b9cf-fc069053b1af
+...
+URL:                     https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
 ### Update Record Information {#update-record}
@@ -206,7 +238,7 @@ Moments are an important concept in records, representing a point in time or an 
 ### Create a Moment {#create-moment}
 
 ```bash
-cocli record create-moment bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 -n "first trigger" -D 120 -T 1753271704
+cocli record moment create bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 -n "first trigger" -D 120 -T 1753271704
 ```
 
 ```bash
@@ -216,8 +248,10 @@ INFO upserted task: projects/b3d9cb59-aeff-4448-aded-808b27608675/tasks/5a650b42
 
 ### List Moments {#list-moments}
 
+View the list of moments in a record:
+
 ```bash
-cocli record list-moments bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6
+cocli record moment list bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6
 ```
 
 ```bash
@@ -227,10 +261,10 @@ intersection      2025-07-21T19:55:04+08:00     1m30s
 traffic light     2025-07-20T19:55:04+08:00     1m15s
 ```
 
-### Download Moments {#download-moments}
+For processing moment data in scripts, you can use JSON format output:
 
 ```bash
-cocli record list-moments bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 -o json
+cocli record moment list bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 -o json
 ```
 
 ```json
@@ -252,6 +286,18 @@ cocli record list-moments bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 -o json
   ],
   "totalSize": "1"
 }
+```
+
+### Download Moment Data {#download-moments}
+
+Download moment data as a `moments.json` file to a local directory:
+
+```bash
+# Download to a specified directory (creates a subfolder named after the record-id)
+cocli record moment download bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 ./output
+
+# Download directly to the current directory (without creating a subfolder)
+cocli record moment download bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 . --flat
 ```
 
 ## Managing Record Labels
@@ -307,9 +353,11 @@ Archived:                false
 URL:                     https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
-## More File Operations {#file-operations}
+## File Operations {#file-operations}
 
-### List Files
+The CLI tool provides rich file management features, including listing, deleting, copying, and moving files.
+
+### List Files {#list-files}
 
 ```bash
 cocli record file list 52c5afac-22ca-4ab5-b9cf-fc069053b1af
@@ -323,7 +371,20 @@ map.png           174 kB              2025-07-18T15:25:16+08:00     2025-07-18T1
 node-logs.log     522 kB              2025-07-18T15:25:12+08:00     2025-07-18T15:25:12+08:00
 ```
 
-### Delete Files
+You can also use additional options to filter and view files:
+
+```bash
+# Recursively list all files (including subdirectories)
+cocli record file list 52c5afac-22ca-4ab5-b9cf-fc069053b1af -R
+
+# List files in a specific directory
+cocli record file list 52c5afac-22ca-4ab5-b9cf-fc069053b1af --dir "logs/"
+
+# Use JSON format output (for script processing)
+cocli record file list 52c5afac-22ca-4ab5-b9cf-fc069053b1af -o json
+```
+
+### Delete Files {#delete-file}
 
 ```bash
 cocli record file delete 52c5afac-22ca-4ab5-b9cf-fc069053b1af node-logs.log
@@ -332,4 +393,20 @@ cocli record file delete 52c5afac-22ca-4ab5-b9cf-fc069053b1af node-logs.log
 ```
 Are you sure you want to delete the file 'node-logs.log' from record? (y/n) y
 File 'node-logs.log' successfully deleted.
+```
+
+### Copy Files {#copy-file}
+
+You can copy a file from one record to another:
+
+```bash
+cocli record file copy <source-record-id> <target-record-id> <filename>
+```
+
+### Move Files {#move-file}
+
+You can also move a file from one record to another:
+
+```bash
+cocli record file move <source-record-id> <target-record-id> <filename>
 ```
