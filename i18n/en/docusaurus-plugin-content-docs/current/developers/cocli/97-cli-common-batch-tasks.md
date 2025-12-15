@@ -21,8 +21,6 @@ cocli record list -o json | jq -r '.records[].name' | \
   xargs -I {} cocli record upload {} ./FILE_FLAG
 ```
 
-![cocli-upload-file-to-all-records](./img/cocli-upload-file-to-all-records.png)
-
 ## Create a Record for Each Folder in the Current Directory and Upload Files
 
 Assume we have the following 5 folders, each containing several random files and folders, as shown in the structure below.
@@ -41,8 +39,6 @@ for dir in */; do
   cocli record upload -R "$record_name" "$dir"
 done
 ```
-
-![cocli-create-and-upload-multiple-folders](./img/cocli-create-and-upload-multiple-folders.png)
 
 Open any record on the web interface to see that the command line has uploaded all files and folders from the local directory to the corresponding record.
 
