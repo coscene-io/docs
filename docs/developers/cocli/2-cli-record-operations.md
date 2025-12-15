@@ -22,18 +22,18 @@ Usage:
   cocli record [command]
 
 Available Commands:
-  copy          Copy a record to target project/record
-  create        Create a new record
-  create-moment Create moment in the record
-  delete        Delete a record
-  describe      Describe record metadata.
-  download      Download files from record to directory.
-  file          Manage files in records
-  list          List records in the project.
-  list-moments  List moments in the record
-  update        Update record.
-  upload        Upload files in directory to a record in coScene.
-  view          View record.
+  copy        Copy a record to target project
+  create      Create a new record
+  delete      Delete a record
+  describe    Describe record metadata
+  download    Download all files from a record
+  file        Manage files in records
+  list        List records in a project
+  moment      Manage moments in records
+  move        Move a record to target project
+  update      Update record metadata
+  upload      Upload files or directory to a record
+  view        View record details
 
 Flags:
   -h, --help   help for record
@@ -75,8 +75,6 @@ cocli record list
 ```
 
 ```bash
-Note: Showing first 100 records (default page size). Use --all to list all records or --page-size to specify page size.
-
 ID                                       TITLE                                        LABELS                        CREATE TIME
 9c9177f6-8194-4d69-8536-3cfebce6fc23     humanoid-episode-200                                                       2025-07-17T21:59:04+08:00
 c729f6ab-f4e8-4d1e-adf4-24d0165939e9     humanoid-episode-199                                                       2025-07-17T21:59:04+08:00
@@ -96,12 +94,31 @@ d00077d9-65f6-4b30-a92a-61a6ec1e478e     humanoid-episode-186                   
 fcd65058-d777-48ca-99f3-606fc02834e6     humanoid-episode-185                                                       2025-07-17T21:59:01+08:00
 53ffbdfa-43ae-44bf-abcd-a99548175776     humanoid-episode-184                                                       2025-07-17T21:59:01+08:00
 ...
+
+Next page available. To continue, add: --page-token "TOKEN_HERE"
 ```
 
-List 命令会将项目中的所有记录列出，当记录数量增长到一定程度后，也可以通过指定 `page` 和 `page size` 来对记录列表进行分页查询。
+List 命令会将项目中的记录列出，默认每页显示 100 条记录。您可以使用分页选项来浏览所有记录：
 
 ```bash
-cocli record list --page-size 10 --page 2
+# 使用 page-token 进行分页（推荐）
+cocli record list --page-size 10 --page-token "TOKEN_FROM_PREVIOUS_RESPONSE"
+
+# 或者使用 --all 获取所有记录
+cocli record list --all
+```
+
+您还可以使用过滤选项来筛选记录：
+
+```bash
+# 按标签过滤
+cocli record list --labels "label1,label2"
+
+# 按标题关键字过滤
+cocli record list --keywords "keyword1,keyword2"
+
+# 包含已归档的记录
+cocli record list --include-archive
 ```
 
 ### 上传文件到记录 {#upload-files-to-record}
@@ -180,8 +197,12 @@ Archived:     false
 URL:          https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
+:::tip
+如果记录关联了设备或包含自定义字段值，这些信息也会在 `describe` 命令的输出中显示。
+:::
+
 ```bash
-cocli record describe 52c5afac-22ca-4ab5-b9cf-fc069053b1af
+cocli record view 52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
 ```bash
@@ -207,7 +228,7 @@ Successfully updated record projects/b3d9cb59-aeff-4448-aded-808b27608675/record
 ### 创建一刻 {#create-moment}
 
 ```bash
-cocli record create-moment bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 -n "first trigger" -D 120 -T 1753271704
+cocli record moment create bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 -n "first trigger" -D 120 -T 1753271704
 ```
 
 ```bash
@@ -217,8 +238,10 @@ INFO upserted task: projects/b3d9cb59-aeff-4448-aded-808b27608675/tasks/5a650b42
 
 ### 列举一刻 {#list-moments}
 
+查看记录中的一刻列表：
+
 ```bash
-cocli record list-moments bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6
+cocli record moment list bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6
 ```
 
 ```bash
@@ -228,10 +251,10 @@ intersection      2025-07-21T19:55:04+08:00     1m30s
 traffic light     2025-07-20T19:55:04+08:00     1m15s
 ```
 
-### 下载一刻 {#download-moments}
+如需在脚本中处理一刻数据，可以使用 JSON 格式输出：
 
 ```bash
-cocli record list-moments bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 -o json
+cocli record moment list bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 -o json
 ```
 
 ```json
@@ -253,6 +276,18 @@ cocli record list-moments bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 -o json
   ],
   "totalSize": "1"
 }
+```
+
+### 下载一刻数据 {#download-moments}
+
+将一刻数据下载为 `moments.json` 文件保存到本地目录：
+
+```bash
+# 下载到指定目录（会在目录下创建以 record-id 命名的子文件夹）
+cocli record moment download bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 ./output
+
+# 直接下载到当前目录（不创建子文件夹）
+cocli record moment download bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 . --flat
 ```
 
 ## 管理记录的标签
@@ -308,9 +343,11 @@ Archived:                false
 URL:                     https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9cf-fc069053b1af
 ```
 
-## 更多的文件操作 {#file-operations}
+## 文件操作 {#file-operations}
 
-### 列举文件
+命令行工具提供了丰富的文件管理功能，包括列举、删除、复制和移动文件等操作。
+
+### 列举文件 {#list-files}
 
 ```bash
 cocli record file list 52c5afac-22ca-4ab5-b9cf-fc069053b1af
@@ -324,13 +361,42 @@ map.png           174 kB              2025-07-18T15:25:16+08:00     2025-07-18T1
 node-logs.log     522 kB              2025-07-18T15:25:12+08:00     2025-07-18T15:25:12+08:00
 ```
 
-### 删除文件
+您也可以使用额外的选项来过滤和查看文件：
 
 ```bash
-cocli record file delete 52c5afac-22ca-4ab5-b9cf-fc069053b1af node-logs.bag
+# 递归列举所有文件（包括子目录）
+cocli record file list 52c5afac-22ca-4ab5-b9cf-fc069053b1af -R
+
+# 列举特定目录下的文件
+cocli record file list 52c5afac-22ca-4ab5-b9cf-fc069053b1af --dir "logs/"
+
+# 使用 JSON 格式输出（便于脚本处理）
+cocli record file list 52c5afac-22ca-4ab5-b9cf-fc069053b1af -o json
+```
+
+### 删除文件 {#delete-file}
+
+```bash
+cocli record file delete 52c5afac-22ca-4ab5-b9cf-fc069053b1af node-logs.log
 ```
 
 ```
 Are you sure you want to delete the file 'node-logs.log' from record? (y/n) y
 File 'node-logs.log' successfully deleted.
+```
+
+### 复制文件 {#copy-file}
+
+您可以将文件从一个记录复制到另一个记录：
+
+```bash
+cocli record file copy <source-record-id> <target-record-id> <filename>
+```
+
+### 移动文件 {#move-file}
+
+您也可以将文件从一个记录移动到另一个记录：
+
+```bash
+cocli record file move <source-record-id> <target-record-id> <filename>
 ```
