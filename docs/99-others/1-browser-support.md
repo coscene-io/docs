@@ -1,5 +1,5 @@
 ---
-sidebar_position: 14
+sidebar_position: 1
 ---
 
 # 浏览器支持
