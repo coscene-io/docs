@@ -151,7 +151,11 @@
     "message": "Topic Aliases",
     "description": "The label for category 话题别名 in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.其他": {
+  "sidebar.tutorialSidebar.category.general-other": {
+    "message": "Others",
+    "description": "The label for category 其他 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.viz-extensions-other": {
     "message": "Others",
     "description": "The label for category 其他 in sidebar tutorialSidebar"
   },

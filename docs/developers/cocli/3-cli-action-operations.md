@@ -67,10 +67,15 @@ fb1bb37a-7b27-11ee-b962-0242ac120002     system      ros2-mcap-converter        
 
 动作需要记录的数据进行运行，我们先找到我们需要的动作 ID 和记录 ID，然后使用这两个 ID，触发动作。
 
+:::tip 推荐使用 JSON 输出
+使用 JSON 输出和 `jq` 工具来提取 ID 更加可靠和稳定。
+:::
+
 ```bash
-RECORD_ID=$(cocli record list | grep -v ID | cut -d ' ' -f1 | head -n1)
-ACTION_ID=$(cocli action list | grep 'coScene-test' | cut -d ' ' -f1)
-cocli action run $ACTION_ID $RECORD_ID
+# 使用 JSON 输出获取记录和动作, 比如要在第一个记录中执行 coScene-test 动作
+RECORD_NAME=$(cocli record list -o json | jq -r '.records[0].name')
+ACTION_NAME=$(cocli action list -o json | jq -r '.actions[] | select(.spec.name | contains("coScene-test")) | .name')
+cocli action run $ACTION_NAME $RECORD_NAME
 ```
 
 ```
@@ -83,7 +88,7 @@ Action run created successfully.
 处理大量数据的情况下非常实用。
 
 ```bash
-cocli action run $ACTION_ID $RECORD_ID -f
+cocli action run $ACTION_NAME $RECORD_NAME -f
 ```
 
 ```
@@ -94,7 +99,7 @@ Action run created successfully.
 较为复杂的动作可能会需要额外的参数对动作进行定制，您可以使用 `-p` 的标志位提供这些参数
 
 ```bash
-cocli action run $ACTION_ID $RECORD_ID -f -p 参数1=123 -p 参数2=456
+cocli action run $ACTION_NAME $RECORD_NAME -f -p 参数1=123 -p 参数2=456
 ```
 
 请注意在这种调用模式下，如果有 `参数1` 和 `参数2` 之外的参数，那么剩余的这些未提供明确数值的参数会使用动作中定义的默认值
@@ -105,4 +110,10 @@ cocli action run $ACTION_ID $RECORD_ID -f -p 参数1=123 -p 参数2=456
 
 ```bash
 cocli action list-run
+```
+
+如需查看更详细的信息或用于脚本处理，可以使用 JSON 格式输出：
+
+```bash
+cocli action list-run -o json
 ```
