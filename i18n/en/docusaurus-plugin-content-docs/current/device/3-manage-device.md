@@ -124,7 +124,7 @@ On the device side, execute the following command to uninstall the data collecti
 Note: If the coScout client is installed under the root user, you need to switch to the root user when uninstalling.
 
 ```yaml
-/bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall_en.sh)"
+/bin/bash -c "$(curl -fsSL https://download.coscene.io/cosbinary/script/latest/uninstall.sh)"
 ```
 
 ![Uninstall Client](./img/4-3-unload-1.png)
