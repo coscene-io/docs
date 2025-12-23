@@ -127,7 +127,6 @@ Note: If the coScout client is installed under the root user, you need to switch
 /bin/bash -c "$(curl -fsSL https://download.coscene.io/cosbinary/script/latest/uninstall.sh)"
 ```
 
-![Uninstall Client](./img/4-3-unload-1.png)
 
 ## Delete Devices
 
