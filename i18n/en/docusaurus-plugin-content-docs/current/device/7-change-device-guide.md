@@ -74,7 +74,6 @@ When only software version upgrade is needed, without changing the host computer
 
 2. Closely monitor the output during execution until the uninstallation process is complete, ensuring that coLink service, cos service, and their related configuration files and directories are successfully removed
 
-   ![Uninstall Client](./img/4-3-unload-1.png)
 
 3. The device data is still retained in the backend database. If the device is no longer needed on the platform, click the [Delete] button in the organization devices to remove it
 
