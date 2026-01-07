@@ -41,7 +41,7 @@ sidebar_position: 4
 
 ## 设备配置内容详解 {#device-collector-format}
 
-主要对 4 个模块进行设置：
+主要对 5 个模块进行设置：
 
 | 模块名称                    | 功能描述                                                       |
 | --------------------------- | -------------------------------------------------------------- |
@@ -49,6 +49,7 @@ sidebar_position: 4
 | 存储设置（mod）             | 设备 ID 存放位置；监听目录；客户端初始化监听时间范围；采集目录 |
 | 设备事件属性（device）      | 事件的属性值                                                   |
 | 规则触发话题（topic）       | 规则触发话题                                                   |
+| 上传管理器（upload）       | 上传管理器                                                   |
 
 示例模板如下：
 
@@ -107,6 +108,10 @@ device:
 # 假设存在 /error_code 话题
 topics:
   - /error_code
+
+# 上传管理器相关配置
+upload:
+  rate_limit: 5MB
 ```
 
 ### 数据收集器设置（collector）
@@ -217,6 +222,17 @@ device:
 # 假设存在 error_code 话题
 topics:
   - error_code
+```
+
+### 上传管理器（upload）
+
+用于控制上传过程中部分功能，例如上传速度限制。
+
+```yaml
+upload:
+  # 控制上传上限速度，0MB 表示不限速，支持单位 MB，MiB，KB，KiB
+  rate_limit: 5MB
+
 ```
 
 ---
