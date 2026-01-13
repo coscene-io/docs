@@ -1,0 +1,62 @@
+---
+sidebar_position: 2.1
+---
+
+# Extension Installation
+
+For regular users, three installation methods are currently supported:
+
+- Install from local extension files
+- Install from remote URL
+- Install from project resources
+
+## Install from Local Extension Files
+
+You can install local extension files in the following two ways:
+
+1. **Drag and Drop**: Simply drag and drop the extension file (`.coe` format) onto the visualization page to complete the installation.
+
+2. **Menu Installation**: Click the plus icon in the right-side plugin panel, select 【Install from Local】, and then choose the corresponding local extension file to install.
+
+<img src={require('./img/local-install-extensions.png').default} alt="Install extension from local" style={{width: '50%'}} />
+
+## Install from Remote URL
+
+When installing extensions from a remote URL, you need to provide the network address of the extension file.
+
+### Protocol Support
+
+- **Web Application**: Only supports remote URLs with `https` protocol
+- **Desktop Application**: Supports remote URLs with both `http` and `https` protocols
+
+### Installation Steps
+
+1. Click the plus icon in the right-side plugin panel
+2. Select 【Install from URL】
+3. Enter the URL address of the remote extension file in the popup window
+4. Click confirm to complete the installation
+
+:::tip Note
+When using remote URL installation, please ensure that the file server has configured CORS (Cross-Origin Resource Sharing) to allow coScene platform to access the file.
+:::
+
+<div style={{display: 'flex', gap: '16px', marginBottom: '16px'}}>
+  <img src={require('./img/remote-install-extensions-1.png').default} alt="Install extension from remote URL 1" style={{flex: 1, width: '50%'}} />
+  <img src={require('./img/remote-install-extensions-2.png').default} alt="Install extension from remote URL 2" style={{flex: 1, width: '50%'}} />
+</div>
+
+## Install from Project Resources
+
+If the extension file has been uploaded to the project's common files, you can install it directly from project resources.
+
+### Installation Steps
+
+1. Click the plus icon in the right-side plugin panel
+2. Select 【Install from Project Resources】
+3. Select the corresponding extension file from the file list
+4. Click confirm to complete the installation
+
+<div style={{display: 'flex', gap: '16px', marginBottom: '16px'}}>
+  <img src={require('./img/project-install-extensions-1.png').default} alt="Install extension from project resources 1" style={{flex: 1, width: '50%'}} />
+  <img src={require('./img/project-install-extensions-2.png').default} alt="Install extension from project resources 2" style={{flex: 1, width: '50%'}} />
+</div>
