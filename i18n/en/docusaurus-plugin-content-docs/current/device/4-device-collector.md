@@ -33,7 +33,7 @@ After completing the configuration, click [Save], and the configuration will tak
 
 ## Collection Rule Format Details
 
-Collection rules primarily configure 4 modules:
+Collection rules primarily configure 5 modules:
 
 | Module Name | Function Description |
 | ----------- | ------------------- |
@@ -41,6 +41,7 @@ Collection rules primarily configure 4 modules:
 | Storage Settings (mod) | Device ID storage location; monitoring directory; client initialization monitoring time range; collection directory |
 | Device Event Properties (device) | Event attribute values |
 | Rule Trigger Topics (topic) | Rule trigger topics |
+| Upload Manager (upload) | Upload manager |                                            |
 
 Example template as follows:
 
@@ -97,6 +98,10 @@ device:
 # Assuming there's an /error_code topic
 topics:
   - /error_code
+
+# Upload Manager Configuration
+upload:
+  rate_limit: 5MB
 ```
 
 Let's go through each function and its usage:
@@ -199,6 +204,16 @@ Topics serve as options for rule trigger topics in projects, helping narrow down
 # Assuming there's an error_code topic
 topics:
   - error_code
+```
+
+### Upload Manager (upload)
+
+Used to control certain functions during upload, such as upload rate limiting.
+
+```yaml
+upload:
+  # Controls the maximum upload speed. 0MB means no limit. Units supported: MB, MiB, KB, KiB
+  rate_limit: 5MB
 ```
 
 ---
