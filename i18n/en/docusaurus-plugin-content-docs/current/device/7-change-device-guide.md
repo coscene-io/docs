@@ -69,12 +69,11 @@ When only software version upgrade is needed, without changing the host computer
 1. Execute the following command in the terminal
 
 ```yaml
-/bin/bash -c "$(curl -fsSL https://download.coscene.cn/coscout/uninstall_en.sh)"
+/bin/bash -c "$(curl -fsSL https://download.coscene.io/cosbinary/script/latest/uninstall.sh)"
 ```
 
 2. Closely monitor the output during execution until the uninstallation process is complete, ensuring that coLink service, cos service, and their related configuration files and directories are successfully removed
 
-   ![Uninstall Client](./img/4-3-unload-1.png)
 
 3. The device data is still retained in the backend database. If the device is no longer needed on the platform, click the [Delete] button in the organization devices to remove it
 

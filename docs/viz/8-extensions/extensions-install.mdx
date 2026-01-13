@@ -1,0 +1,61 @@
+---
+sidebar_position: 2.1
+---
+
+# 扩展安装
+
+对于普通用户，目前支持三种安装方式：
+- 引用本地扩展文件安装
+- 通过远程 URL 引用远程扩展文件安装
+- 通过项目资源进行安装
+
+## 引用本地扩展文件安装
+
+您可以通过以下两种方式安装本地扩展文件：
+
+1. **拖拽安装**：直接将扩展文件（`.coe` 格式）拖拽到可视化页面中即可完成安装。
+
+2. **菜单安装**：点击右侧插件面板中的加号图标，选择【从本地安装】，然后选择对应的本地扩展文件进行安装。
+
+<img src={require('./img/local-install-extensions.png').default} alt="本地安装扩展" style={{width: '50%'}} />
+
+## 通过远程 URL 引用远程扩展文件安装
+
+通过远程 URL 安装扩展时，您需要提供扩展文件的网络地址。
+
+### 协议支持
+
+- **Web 应用**：仅支持 `https` 协议的远程 URL
+- **桌面应用**：支持 `http` 和 `https` 协议的远程 URL
+
+### 安装步骤
+
+1. 点击右侧插件面板中的加号图标
+2. 选择【通过 URL 安装】
+3. 在弹窗中输入远程扩展文件的 URL 地址
+4. 点击确认完成安装
+
+:::tip 注意事项
+使用远程 URL 安装时，请确保文件服务器已配置 CORS（跨域资源共享），允许刻行时空平台访问该文件。
+:::
+
+<div style={{display: 'flex', gap: '16px', marginBottom: '16px'}}>
+  <img src={require('./img/remote-install-extensions-1.png').default} alt="远程安装扩展 1" style={{flex: 1, width: '50%'}} />
+  <img src={require('./img/remote-install-extensions-2.png').default} alt="远程安装扩展 2" style={{flex: 1, width: '50%'}} />
+</div>
+
+## 通过项目资源进行安装
+
+如果扩展文件已上传到项目的通用文件中，您可以直接从项目资源中安装。
+
+### 安装步骤
+
+1. 点击右侧插件面板中的加号图标
+2. 选择【从项目资源安装】
+3. 在文件列表中选择对应的扩展文件
+4. 点击确认完成安装
+
+<div style={{display: 'flex', gap: '16px', marginBottom: '16px'}}>
+  <img src={require('./img/project-install-extensions-1.png').default} alt="项目资源安装扩展 1" style={{flex: 1, width: '50%'}} />
+  <img src={require('./img/project-install-extensions-2.png').default} alt="项目资源安装扩展 2" style={{flex: 1, width: '50%'}} />
+</div>
