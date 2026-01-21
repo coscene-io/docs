@@ -73,8 +73,8 @@ fb1bb37a-7b27-11ee-b962-0242ac120002     system      ros2-mcap-converter        
 
 ```bash
 # 使用 JSON 输出获取记录和动作, 比如要在第一个记录中执行 coScene-test 动作
-RECORD_NAME=$(cocli record list -o json | jq -r '.records[0].name')
-ACTION_NAME=$(cocli action list -o json | jq -r '.actions[] | select(.spec.name | contains("coScene-test")) | .name')
+RECORD_NAME=$(cocli record list --page-size 10 -o json | jq -r '.records[0].name')
+ACTION_NAME=$(cocli action list --all -o json | jq -r '.actions[] | select(.spec.name | contains("coScene-test")) | .name')
 cocli action run $ACTION_NAME $RECORD_NAME
 ```
 
