@@ -93,3 +93,53 @@ Linux:
 
 - Note that Chrome/Chromium does not support video acceleration on Linux by default, and may require using custom Chrome/Chromium flags to enable GPU.
 - Ensure that your graphics driver is updated and correctly installed.
+
+## Supported Messages
+
+To use the Image panel, your data source must provide 3D marker message types or one of the following supported schemas.
+
+### `RawImage`
+
+| Framework | Message Type                                                                                         |
+| --------- | ---------------------------------------------------------------------------------------------------- |
+| ROS 1     | [sensor_msgs/Image](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html)              |
+| ROS 2     | [sensor_msgs/Image](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/Image.msg) |
+| Custom    | [foxglove.RawImage](../message-schemas/raw-image)                                                    |
+
+### `CompressedImage`
+
+| Framework | Message Type                                                                                                             |
+| --------- | ------------------------------------------------------------------------------------------------------------------------ |
+| ROS 1     | [sensor_msgs/CompressedImage](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CompressedImage.html)              |
+| ROS 2     | [sensor_msgs/CompressedImage](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
+| Custom    | [foxglove.CompressedImage](../message-schemas/compressed-image)                                                          |
+
+### `CompressedVideo`
+
+For compressed video streams. Supported encodings include `h264`, `h265` (HEVC). Support depends on hardware and licensing, so availability may vary by platform.
+
+| Framework | Message Type                                                                                                         |
+| --------- | -------------------------------------------------------------------------------------------------------------------- |
+| ROS 1     | [foxglove_msgs/CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/CompressedVideo.msg) |
+| ROS 2     | [foxglove_msgs/CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/CompressedVideo.msg) |
+| Custom    | [foxglove.CompressedVideo](../message-schemas/compressed-video)                                                      |
+
+### `CameraCalibration`
+
+Provide optional camera calibration data to render 3D entities in the Image panel, or render images in the 3D panel. Calibration data is not required since ImageAnnotations use pixel coordinates.
+
+The visualization supports `plumb_bob` and `rational_polynomial` distortion models.
+
+| Framework | Message Type                                                                                                   |
+| --------- | -------------------------------------------------------------------------------------------------------------- |
+| ROS 1     | [sensor_msgs/CameraInfo](https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/CameraInfo.html)              |
+| ROS 2     | [sensor_msgs/CameraInfo](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CameraInfo.msg) |
+| Custom    | [foxglove.CameraCalibration](../message-schemas/camera-calibration)                                            |
+
+### `ImageAnnotations`
+
+| Framework | Message Type                                                                                                                   |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| ROS 1     | [visualization_msgs/ImageMarker](https://docs.ros.org/en/noetic/api/visualization_msgs/html/msg/ImageMarker.html)              |
+| ROS 2     | [visualization_msgs/ImageMarker](https://github.com/ros2/common_interfaces/blob/master/visualization_msgs/msg/ImageMarker.msg) |
+| Custom    | [foxglove.ImageAnnotations](../message-schemas/image-annotations)                                                              |
