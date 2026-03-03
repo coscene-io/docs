@@ -5,6 +5,65 @@ id: changelog
 
 # Release History
 
+## [26.10.0] - 2026-03-04
+
+### [Added]
+
+- Added Data Collection Client v1.1.14:
+  - Added cache directory size limit feature: Supports configuring cache space upper limit
+
+### [Fixed]
+
+- Fixed issue where changes to record custom fields did not automatically trigger actions
+- Fixed occasional automatic logout issue during visualization
+- Fixed visualization file time processing logic: Changed from publish time to log time
+- Fixed issue where page failed to load when there were too many visualization tasks
+
+---
+
+## [26.6.0] - 2026-02-04
+
+### [Added]
+
+- Added batch record mounting feature: When creating actions, you can choose whether to batch mount records to the action for execution
+- Added public project content scope: When making a project public, you can now choose to expose record custom fields, moments, and resources
+- Added H265 encoding support for image panels
+- Added Data Collection Client v1.1.13:
+  - Added cache directory customization feature: Supports configuring cache path, automatically clears cache files after upload completion
+  - Added single file size limit: Supports setting upload file size upper limit
+  - Added log information: Adds matching information records during file scanning
+
+### [Improved]
+
+- Improved storage service stability and performance
+
+---
+
+## [26.3.0] - 2026-01-10
+
+### [Added]
+
+- Added visualization plugin feature: Supports importing plugins from local, project resources, or external links. See [plugin installation documentation](/docs/viz/extensions/extensions-install) for details
+- Added Data Collection Client v1.1.12:
+  - Added upload speed limit feature: Supports setting upload speed upper limit. See [upload manager](/docs/device/device-collector#device-collector-format) for details
+  - Added file creation time retrieval feature: Rule-based collection now supports filtering files based on file creation time
+
+---
+
+## [25.51.0] - 2025-12-17
+
+### [Added]
+
+- Added Data Collection Client v1.1.11:
+  - Supports multi-board collection: Add `--enable_master` parameter to the master board's installation command, and configure master and slave board IP addresses in the slave board's installation command to enable multi-board collaborative data collection
+
+### [Improved]
+
+- Improved visualization tab rendering logic: In visualization settings, you can choose whether to render all tabs
+- Optimized visualization memory usage, enhancing playback smoothness and system stability
+
+---
+
 ## [25.48.0] - 2025-11-26
 
 ### [Added]

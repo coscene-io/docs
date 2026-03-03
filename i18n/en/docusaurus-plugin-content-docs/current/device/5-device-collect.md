@@ -40,11 +40,11 @@ Collect existing files from devices including logs, images, and configurations.
    
        - **Collection Path**
          - Absolute path (e.g., `/home/bag/`)
-         - Recommend pre-configuring in [Device configuration](./4-device-collector.md#collection-rule-format-details)
+         - Recommend pre-configuring in [Device configuration](./4-device-collector.md#device-collector-format)
    
        - **Additional Files**
          - Paths to collect regardless of time (files/directories)
-         - Pre-configure in [Device configuration](./4-device-collector.md#collection-rule-format-details)
+         - Pre-configure in [Device configuration](./4-device-collector.md#device-collector-format)
    
        - **Naming Convention**
          - Collection Name: Identifier for collection job
@@ -83,7 +83,7 @@ See [Specific Data Format](../use-case/data-diagnosis/3-add-rule.md#specific-dat
 
 > Only organization administrators can configure
 
-In Organization Management - Devices - Device Configuration, enter directories for monitoring and collection: `listen_dirs`, `collect_dirs`. To monitor topics for collection, add `topics` definition. See [Device Configuration](./4-device-collector.md#collection-rule-format-details)
+In Organization Management - Devices - Device Configuration, enter directories for monitoring and collection: `listen_dirs`, `collect_dirs`. To monitor topics for collection, add `topics` definition. See [Device Configuration](./4-device-collector.md#device-collector-format)
 
 ### Topic Monitoring Collection
 

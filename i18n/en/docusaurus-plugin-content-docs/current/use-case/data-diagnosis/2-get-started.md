@@ -44,7 +44,7 @@ Use the following scenario as an example to quickly get started with the automat
    - /error_status
    ```
 
-   For more configuration options, see [Device Configuration Format](../../device/4-device-collector.md).
+   For more configuration options, see [Device Configuration Format](../../device/4-device-collector.md#device-collector-format).
 
 ## Create Rule
 1. Enter the auto-upload project
