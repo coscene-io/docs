@@ -27,7 +27,7 @@ id: changelog
 
 - Added batch record mounting feature: When creating actions, you can choose whether to batch mount records to the action for execution
 - Added public project content scope: When making a project public, you can now choose to expose record custom fields, moments, and resources
-- Added H265 encoding support for visualization
+- Added H265 encoding support for image panels
 - Added Data Collection Client v1.1.13:
   - Added cache directory customization feature: Supports configuring cache path, automatically clears cache files after upload completion
   - Added single file size limit: Supports setting upload file size upper limit
