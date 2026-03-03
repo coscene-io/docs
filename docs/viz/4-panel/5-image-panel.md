@@ -114,6 +114,16 @@ Linux：
 | ROS 2  | [sensor_msgs/CompressedImage](https://github.com/ros2/common_interfaces/blob/master/sensor_msgs/msg/CompressedImage.msg) |
 | 自定义 | [foxglove.CompressedImage](../message-schemas/compressed-image)                                                          |
 
+### `CompressedVideo`
+
+用于压缩视频流。编码格式支持 `h264`、`h265`（HEVC）。由于硬件与专利限制，不同平台的支持情况可能不同。
+
+| 框架   | 消息类型                                                                                                             |
+| ------ | -------------------------------------------------------------------------------------------------------------------- |
+| ROS 1  | [foxglove_msgs/CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros1/CompressedVideo.msg) |
+| ROS 2  | [foxglove_msgs/CompressedVideo](https://github.com/foxglove/foxglove-sdk/blob/main/schemas/ros2/CompressedVideo.msg) |
+| 自定义 | [foxglove.CompressedVideo](../message-schemas/compressed-video)                                                      |
+
 ### `CameraCalibration`
 
 提供可选的相机校准数据以在图像面板中渲染 3D 实体，或在 3D 面板中渲染图像。校准数据不是必需的，因为 ImageAnnotations 使用像素坐标。

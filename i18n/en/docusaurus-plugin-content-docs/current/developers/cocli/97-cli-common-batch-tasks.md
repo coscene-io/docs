@@ -17,7 +17,7 @@ If your system doesn't have `jq` installed, you can install it with the followin
 
 ```bash
 # Use JSON output and jq to extract record names
-cocli record list -o json | jq -r '.records[].name' | \
+cocli record list --all -o json | jq -r '.records[].name' | \
   xargs -I {} cocli record upload {} ./FILE_FLAG
 ```
 
@@ -50,7 +50,7 @@ A common command line operation pattern is to iterate through all records in a u
 
 ```bash
 # Use JSON output to get all records in the project, iterate and provide the full resource name
-cocli record list -o json | jq -r '.records[].name' | while read -r record_name; do
+cocli record list --all -o json | jq -r '.records[].name' | while read -r record_name; do
     # Use $record_name for subsequent batch operations
     # To extract record ID, you can use: record_id=$(basename "$record_name")
 done
@@ -61,7 +61,7 @@ This pattern can be extended to connect more complex batch operations.
 ### Find All Empty Records Without Any Files
 
 ```bash
-cocli record list -o json | jq -r '.records[].name' | while read -r record_name; do
+cocli record list --all -o json | jq -r '.records[].name' | while read -r record_name; do
     # Get the number of files in the record
     file_count=$(cocli record file list "$record_name" -o json 2>/dev/null | jq '.files | length')
 
@@ -77,7 +77,7 @@ done
 ### Tag All Empty Records
 
 ```bash
-cocli record list -o json | jq -r '.records[].name' | while read -r record_name; do
+cocli record list --all -o json | jq -r '.records[].name' | while read -r record_name; do
     # Get the number of files in the record
     file_count=$(cocli record file list "$record_name" -o json 2>/dev/null | jq '.files | length')
 
@@ -93,7 +93,7 @@ done
 
 ```bash
 # Use --labels parameter to filter records with specific labels
-cocli record list --labels test-label -o json | jq -r '.records[].name' | while read -r record_name; do
+cocli record list --labels test-label --all -o json | jq -r '.records[].name' | while read -r record_name; do
     # Download all records with test-label
     cocli record download "$record_name" download-folder
 done
@@ -106,7 +106,7 @@ Please be very careful with the `delete` operation, as it may delete important d
 :::
 
 ```bash
-cocli record list -o json | jq -r '.records[].name' | while read -r record_name; do
+cocli record list --all -o json | jq -r '.records[].name' | while read -r record_name; do
     # Get the number of files in the record
     file_count=$(cocli record file list "$record_name" -o json 2>/dev/null | jq '.files | length')
 

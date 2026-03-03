@@ -31,7 +31,7 @@ After completing the configuration, click [Save], and the configuration will tak
 
 ![org-dev-rule-save](./img/4-3-device-save-collector.png)
 
-## Collection Rule Format Details
+## Collection Rule Format Details {#device-collector-format}
 
 Collection rules primarily configure 5 modules:
 

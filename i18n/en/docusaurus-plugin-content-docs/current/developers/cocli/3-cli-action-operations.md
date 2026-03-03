@@ -73,7 +73,7 @@ Using JSON output with the `jq` tool to extract IDs is more reliable and stable.
 ```bash
 # Use JSON output to get record and action, e.g., to run the coScene-test action on the first record
 RECORD_NAME=$(cocli record list -o json | jq -r '.records[0].name')
-ACTION_NAME=$(cocli action list -o json | jq -r '.actions[] | select(.spec.name | contains("coScene-test")) | .name')
+ACTION_NAME=$(cocli action list --all -o json | jq -r '.actions[] | select(.spec.name | contains("coScene-test")) | .name')
 cocli action run $ACTION_NAME $RECORD_NAME
 ```
 

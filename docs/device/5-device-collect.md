@@ -39,10 +39,10 @@ sidebar_position: 5
          - 注：部分文件系统可能无法获取文件创建时间，仅根据最后修改时间判断文件是否在时间范围内
        - **时间范围采集路径**
          - 输入需要根据时间范围进行采集的绝对文件路径，如：`/home/bag/`，系统将采集该路径下（包括子文件夹）所有符合时间范围的文件
-         - 建议在[组织设备配置](./4-device-collector.md#数据收集器设置collector)中，将该路径设置为默认采集路径`collect_dirs`，以便后续无需手动输入
+         - 建议在[组织设备配置](./4-device-collector.md#device-collector-format)中，将该路径设置为默认采集路径`collect_dirs`，以便后续无需手动输入
        - **具体附加文件路径**
          - 输入需要额外采集的绝对文件路径(文件夹/文件)，与时间范围无关，如：`/home/map/`、`/home/device/config.yaml`，系统将采集整个文件夹中的文件或指定的文件
-         - 建议在[组织设备配置](./4-device-collector.md#数据收集器设置collector)中，将该路径设置为默认采集路径`additional_files`，以便后续无需手动输入
+         - 建议在[组织设备配置](./4-device-collector.md#device-collector-format)中，将该路径设置为默认采集路径`additional_files`，以便后续无需手动输入
        - **采集名称&记录名称**
          - 采集名称：用于标识该次采集
          - 记录名称：用于标识该次采集将数据保存到的记录

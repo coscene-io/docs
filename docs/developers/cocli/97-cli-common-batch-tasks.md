@@ -17,7 +17,7 @@ sidebar_position: 4
 
 ```bash
 # 使用 JSON 输出和 jq 提取记录 ID
-cocli record list -o json | jq -r '.records[].name' | \
+cocli record list --all -o json | jq -r '.records[].name' | \
   xargs -I {} cocli record upload {} ./FILE_FLAG
 ```
 
@@ -52,7 +52,7 @@ done
 
 ```bash
 # 使用 JSON 输出获取项目中的所有记录，遍历并提供记录的完整资源名称
-cocli record list -o json | jq -r '.records[].name' | while read -r record_name; do
+cocli record list --all -o json | jq -r '.records[].name' | while read -r record_name; do
     # 使用 $record_name 进行后续的批量操作
     # 如需提取 record ID，可以使用: record_id=$(basename "$record_name")
 done
@@ -63,7 +63,7 @@ done
 ### 找出所有不含任何文件的空记录
 
 ```bash
-cocli record list -o json | jq -r '.records[].name' | while read -r record_name; do
+cocli record list --all -o json | jq -r '.records[].name' | while read -r record_name; do
     # 获取记录中的文件数量
     file_count=$(cocli record file list "$record_name" -o json 2>/dev/null | jq '.files | length')
 
@@ -79,7 +79,7 @@ done
 ### 给所有空记录打上标签
 
 ```bash
-cocli record list -o json | jq -r '.records[].name' | while read -r record_name; do
+cocli record list --all -o json | jq -r '.records[].name' | while read -r record_name; do
     # 获取记录中的文件数量
     file_count=$(cocli record file list "$record_name" -o json 2>/dev/null | jq '.files | length')
 
@@ -95,7 +95,7 @@ done
 
 ```bash
 # 使用 --labels 参数过滤特定标签的记录
-cocli record list --labels test-label -o json | jq -r '.records[].name' | while read -r record_name; do
+cocli record list --labels test-label --all -o json | jq -r '.records[].name' | while read -r record_name; do
     # 下载所有有 test-label 标签的记录
     cocli record download "$record_name" download-folder
 done
@@ -108,7 +108,7 @@ done
 :::
 
 ```bash
-cocli record list -o json | jq -r '.records[].name' | while read -r record_name; do
+cocli record list --all -o json | jq -r '.records[].name' | while read -r record_name; do
     # 获取记录中的文件数量
     file_count=$(cocli record file list "$record_name" -o json 2>/dev/null | jq '.files | length')
 
