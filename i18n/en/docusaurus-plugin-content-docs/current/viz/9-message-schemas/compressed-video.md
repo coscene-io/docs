@@ -30,9 +30,14 @@ Specifically, the requirements for different `format` values are as follows:
   - Each CompressedVideo message should contain enough NAL units to decode exactly one video frame
   - Each message containing a key frame (IDR) must also include the SPS NAL unit
 
+- `h265`
+  - Use Annex A formatted data
+  - Each CompressedVideo message should contain enough NAL units to decode exactly one video frame
+  - Each message containing a key frame (IRAP) must also include relevant VPS/SPS/PPS NAL units
+
 ### `format`
 
-Supported values: `h264`.
+Supported values: `h264`, `h265`.
 
 Note: Compressed video support is affected by hardware limitations and patent licensing, so not all platforms support all encodings.
 
