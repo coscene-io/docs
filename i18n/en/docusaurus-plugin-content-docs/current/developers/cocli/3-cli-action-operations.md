@@ -58,6 +58,8 @@ fb1bb37a-7b27-11ee-b962-0242ac120002     system      ros2-mcap-converter        
 6cdf7cf9-d635-4cad-9333-cb58fc6a8e24     system      yw-cyber-converter                                          1970-01-01T08:00:00+08:00
 ```
 
+`cocli action list` lists actions in the current project and, when permitted, merges in system-level actions. This subcommand has **no** `--all` flag (unlike `cocli record list`).
+
 ## Trigger an Action
 
 After finding the action we want to execute, we can directly trigger it from the command line to achieve full automation.
@@ -72,8 +74,8 @@ Using JSON output with the `jq` tool to extract IDs is more reliable and stable.
 
 ```bash
 # Use JSON output to get record and action, e.g., to run the coScene-test action on the first record
-RECORD_NAME=$(cocli record list -o json | jq -r '.records[0].name')
-ACTION_NAME=$(cocli action list --all -o json | jq -r '.actions[] | select(.spec.name | contains("coScene-test")) | .name')
+RECORD_NAME=$(cocli record list --page-size 10 -o json | jq -r '.records[0].name')
+ACTION_NAME=$(cocli action list -o json | jq -r '.actions[] | select(.spec.name | contains("coScene-test")) | .name')
 cocli action run $ACTION_NAME $RECORD_NAME
 ```
 
@@ -93,10 +95,10 @@ The final parameters in the action run to be created:
 Action run created successfully.
 ```
 
-More complex actions may require additional parameters for customization. You can provide these parameters using the `-p` flag.
+More complex actions may require additional parameters for customization. Use **`-P` (uppercase)** or **`--param`** with `key=value` (repeatable). **`-p` is reserved for `--project`** on this command; do not use lowercase `-p` for action parameters.
 
 ```bash
-cocli action run $ACTION_NAME $RECORD_NAME -f -p parameter1=123 -p parameter2=456
+cocli action run $ACTION_NAME $RECORD_NAME -f -P parameter1=123 -P parameter2=456
 ```
 
 Please note that in this calling mode, if there are parameters other than `parameter1` and `parameter2`, the remaining parameters will use the default values defined in the action if not explicitly provided.

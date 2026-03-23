@@ -13,6 +13,7 @@ sidebar_position: 99
 
 ```bash
 cocli login add -n <凭证名字> -p <项目Slug> -t <访问令牌>
+# 需指定 OpenAPI 端点时，可加上 -e <openapi 地址>（与 login set 一致）
 ```
 
 我们可以使用如下命令来获取当前所有可用的凭证

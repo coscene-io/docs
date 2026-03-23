@@ -13,7 +13,7 @@ sidebar_position: 1
 curl -fL https://download.coscene.cn/cocli/install.sh | sh
 ```
 
-在命令行中可以使用 `cocli -h` 来确认命令行工具已经成功安装，并查看工具的基基本用法。
+在命令行中可以使用 `cocli -h` 来确认命令行工具已经成功安装，并查看工具的基本用法。
 
 ```bash
 Usage:
@@ -27,7 +27,9 @@ Available Commands:
   project     Work with coScene project.
   record      Work with coScene record.
   registry    Manage coScene container registry access
+  role        Work with coScene roles.
   update      Update cocli version
+  user        Work with coScene users.
 
 Flags:
       --config string      config file path (default "/Users/yujing/.cocli.yaml")

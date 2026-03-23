@@ -8,7 +8,7 @@ sidebar_position: 2
 记录是刻行平台中的核心概念，本文列举了记录和其中文件的常见操作，并附简单的例子。
 
 :::warning
-关于具体命令的的详细参数，都以使用 `cocli [command] [subcommand] -h` 来查看。本文中只列举了常用的命令和参数及用法。
+关于具体命令的详细参数，都以使用 `cocli [command] [subcommand] -h` 来查看。本文中只列举了常用的命令和参数及用法。
 :::
 
 ```bash
@@ -68,6 +68,12 @@ URL:                     https://coscene.cn/coscene-lark/docs/records/c5f7a2fa-a
 -------------------------------------------------------------
 ```
 
+创建记录时可通过 `--custom` 设置自定义字段（`key=value` 形式，可重复指定多项）：
+
+```bash
+cocli record create -t my-record --custom "priority=high" --custom "batch=2025-03"
+```
+
 ### 列举项目中的记录 {#list-records}
 
 ```bash
@@ -121,16 +127,33 @@ cocli record list --keywords "keyword1,keyword2"
 cocli record list --include-archive
 ```
 
+`list` 的输出格式可通过 `-o` 指定，除默认表格外还支持 `wide`、`csv`、`json`、`yaml`。其中 `wide` 与 `csv` 会尽量将创建人、用户型自定义字段等解析为可读名称（需能访问对应用户信息）。
+
+**分页与导出：**`wide`、`csv`、`json`、`yaml` 与表格一样，**默认只包含当前页**（由服务端分页决定，未指定 `--page-size` 时常见为每页最多 100 条）。若要**一次性导出当前筛选条件下的全部记录**，请加上 `--all`（记录量很大时请求会更久，也可改用上面的 `--page-token` 分页拉取后在脚本里拼接）。`--labels`、`--keywords` 等过滤与 `--all` 可同时使用，表示「符合条件的全部」。
+
+使用 `-s` / `--search` 可传入与网页端高级搜索一致的 **JSON Logic** 查询字符串，做更复杂的筛选。注意：**`--search` 与 `--include-archive`、`--labels`、`--keywords` 不能同时使用**，请择一组合。
+
+```bash
+# 宽表输出（便于一眼看到更多列）
+cocli record list -o wide
+
+# 导出当前页为 CSV（仅本页数据）
+cocli record list -o csv > records-page.csv
+
+# 导出符合条件的全部记录为 CSV（常用作完整导出）
+cocli record list --all -o csv > records-all.csv
+```
+
 ### 上传文件到记录 {#upload-files-to-record}
 
-您可以将任意指定的文件或者目录内的文件上传到特定记录
+您可以将**一个或多个**本地路径（文件或目录）上传到指定记录。上传目录时**默认递归**包含子目录中的文件，无需额外参数。多个路径写在记录 ID 或资源名之后即可，例如：`cocli record upload <record> ./a.mcap ./more-data/`。
 
 ```bash
 # 创建一个临时文件
 touch episode-1.mcap
 
 # 将该文件上传到前面创建的 Record
-cocli record upload 9c9177f6-8194-4d69-8536-3cfebce6fc2 ./episode-1.mcap
+cocli record upload 9c9177f6-8194-4d69-8536-3cfebce6fc23 ./episode-1.mcap
 ```
 
 ```bash
@@ -140,13 +163,17 @@ Upload Status:
 /Users/yujing/Workspace/co/docs/episode-1.mcap:                                                              Upload completed
 
 Total: 1, Skipped: 0, Success: 1
-View record at: https://coscene.cn/coscene-lark/docs/records/9c9177f6-8194-4d69-8536-3cfebce6fc2
+View record at: https://coscene.cn/coscene-lark/docs/records/9c9177f6-8194-4d69-8536-3cfebce6fc23
 ```
+
+:::tip
+在交互式终端中上传时，进行中的文件会显示进度条（以 `=` 表示已传比例），并可能显示**上传速率**与**已用时间**；无 TUI 环境可使用 `cocli record upload -h` 中说明的 `--no-tty` 等选项。
+:::
 
 ### 下载记录中的文件 {#download-files-from-record}
 
 ```bash
-cocli record download 9c9177f6-8194-4d69-8536-3cfebce6fc2 .
+cocli record download 9c9177f6-8194-4d69-8536-3cfebce6fc23 .
 ```
 
 ```
@@ -198,7 +225,7 @@ URL:          https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9
 ```
 
 :::tip
-如果记录关联了设备或包含自定义字段值，这些信息也会在 `describe` 命令的输出中显示。
+如果记录关联了设备或包含自定义字段值，这些信息也会在 `describe` 命令的输出中显示。`describe` 的 `-o` 支持 `table`、`json`、`yaml`。
 :::
 
 ```bash
@@ -222,7 +249,7 @@ URL:                     https://coscene.cn/coscene-lark/docs/records/52c5afac-2
 
 ### 更新记录信息 {#update-record}
 
-命令行也支持更改记录的名字、描述等信息，完整的更新列表请查看帮助。
+命令行也支持更改记录的名字、描述、标签与自定义字段等信息，完整的更新列表请查看帮助。更新自定义字段同样使用 `--custom key=value`，可重复指定。
 
 ```bash
 cocli record update 52c5afac-22ca-4ab5-b9cf-fc069053b1af -d "物体运行过程中，机械臂扭矩未达到预期，失败" # 更新记录描述
@@ -304,6 +331,10 @@ cocli record moment download bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 . --flat
 ## 管理记录的标签
 
 标签是管理和查询记录的重要手段，通过对记录添加和删除标签，我们可以在批处理和自动化的过程中，对不同的数据进行简单的区分。
+
+:::tip
+同一次 `record update` 中，`--append-labels`、`--update-labels` 与 `--delete-labels` 仅能使用其中一类（互斥）。下文各小节为分步示例。
+:::
 
 ### 添加标签
 

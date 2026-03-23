@@ -35,8 +35,8 @@ for dir in */; do
   # 去除目录名称末尾的斜杠，并创建一个新的记录，获取记录的完整资源名称
   record_name=$(cocli record create -t "${dir%/}" -o json | jq -r '.name')
 
-  # 上传当前子目录的内容到创建的记录中
-  cocli record upload -R "$record_name" "$dir"
+  # 上传当前子目录的内容到创建的记录中（目录默认递归上传，无需额外参数）
+  cocli record upload "$record_name" "$dir"
 done
 ```
 
