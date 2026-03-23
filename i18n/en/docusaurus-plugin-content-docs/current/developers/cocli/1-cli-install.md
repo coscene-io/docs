@@ -27,7 +27,9 @@ Available Commands:
   project     Work with coScene project.
   record      Work with coScene record.
   registry    Manage coScene container registry access
+  role        Work with coScene roles.
   update      Update cocli version
+  user        Work with coScene users.
 
 Flags:
       --config string      config file path (default "/Users/yujing/.cocli.yaml")

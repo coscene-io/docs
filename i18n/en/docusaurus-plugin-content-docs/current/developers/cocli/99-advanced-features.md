@@ -13,6 +13,7 @@ Once you have your default credentials, you can add a new credential using the f
 
 ```bash
 cocli login add -n <credential name> -p <project Slug> -t <access token>
+# To specify openapi endpoint, add -e <openapi endpoint> (same as login set)
 ```
 
 The screenshot below shows how to add a credential named typ:
