@@ -127,21 +127,29 @@ cocli record list --keywords "keyword1,keyword2"
 cocli record list --include-archive
 ```
 
-Use `-o` to choose the output format: besides the default table, `wide`, `csv`, `json`, and `yaml` are supported. For `wide` and `csv`, creator and user-type custom fields are shown as readable names when user data can be resolved.
+Use `-o` to choose the output format: besides the default table, `wide`, `csv`, `json`, and `yaml` are supported. For `wide` and `csv`, creator and user-type custom fields are resolved to readable names when the corresponding user information is accessible.
 
-**Pagination and export:** `wide`, `csv`, `json`, and `yaml` behave like the table view and **only include the current page** by default (server-side pagination; when `--page-size` is omitted, up to 100 rows per page is typical). To **export all records matching the current filters in one go**, add `--all` (this can be slower for very large projects; you can also page with `--page-token` and merge in a script). Filters such as `--labels` and `--keywords` can be combined with `--all` to mean “all matching rows.”
-
-Use `-s` / `--search` for a **JSON Logic** query string aligned with the web advanced search. **`--search` cannot be used together with** `--include-archive`, `--labels`, or `--keywords`—pick one approach.
+**Pagination and export:** `wide`, `csv`, `json`, and `yaml` behave like the table view and **only include the current page** by default (server-side pagination; when `--page-size` is omitted, up to 100 rows per page is typical). To **export all records matching the current filters in one go**, add `--all` (for very large result sets this may take longer; you can also use `--page-token` pagination as above and merge in a script). `--labels`, `--keywords`, and other filters can be used together with `--all` to mean **all rows that match the filters**.
 
 ```bash
 # Wide table (more columns at a glance)
 cocli record list -o wide
 
-# Export current page to CSV
+# Export current page to CSV (this page only)
 cocli record list -o csv > records-page.csv
 
 # Export all matching records to CSV (typical full export)
 cocli record list --all -o csv > records-all.csv
+```
+
+Use `-s` / `--search` to pass a **JSON Logic** query string consistent with the web UI’s advanced search for more complex filtering. **Note: `--search` cannot be used together with `--include-archive`, `--labels`, or `--keywords`.** Choose one combination.
+
+```bash
+# Use single quotes around the JSON filter copied from the web UI
+cocli record list --search '<search_json>'
+
+# Example
+cocli record list --search '{"and":[{"==":[{"var":"isArchived"},"false"]},{"and":[{"in":[{"var":"relatedLabels.id"},["29fd2ca8-edc6-433a-8cb7-94b1b340102d"]]},{">=":[{"var":"byteSize"},104857600]},{">=":[{"var":"summary.filesDuration"},0]}]}]}'
 ```
 
 ### Upload Files to a Record {#upload-files-to-record}

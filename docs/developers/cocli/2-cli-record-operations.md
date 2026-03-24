@@ -131,8 +131,6 @@ cocli record list --include-archive
 
 **分页与导出：**`wide`、`csv`、`json`、`yaml` 与表格一样，**默认只包含当前页**（由服务端分页决定，未指定 `--page-size` 时常见为每页最多 100 条）。若要**一次性导出当前筛选条件下的全部记录**，请加上 `--all`（记录量很大时请求会更久，也可改用上面的 `--page-token` 分页拉取后在脚本里拼接）。`--labels`、`--keywords` 等过滤与 `--all` 可同时使用，表示「符合条件的全部」。
 
-使用 `-s` / `--search` 可传入与网页端高级搜索一致的 **JSON Logic** 查询字符串，做更复杂的筛选。注意：**`--search` 与 `--include-archive`、`--labels`、`--keywords` 不能同时使用**，请择一组合。
-
 ```bash
 # 宽表输出（便于一眼看到更多列）
 cocli record list -o wide
@@ -142,6 +140,16 @@ cocli record list -o csv > records-page.csv
 
 # 导出符合条件的全部记录为 CSV（常用作完整导出）
 cocli record list --all -o csv > records-all.csv
+```
+
+使用 `-s` / `--search` 可传入与网页端高级搜索一致的 **JSON Logic** 查询字符串，做更复杂的筛选。注意：**`--search` 与 `--include-archive`、`--labels`、`--keywords` 不能同时使用**，请择一组合。
+
+```bash
+# 使用单引号将网页端复制的 json 过滤条件括起来
+cocli record list --search '<search_json>'
+
+# e.g. 示例
+cocli record list --search '{"and":[{"==":[{"var":"isArchived"},"false"]},{"and":[{"in":[{"var":"relatedLabels.id"},["29fd2ca8-edc6-433a-8cb7-94b1b340102d"]]},{">=":[{"var":"byteSize"},104857600]},{">=":[{"var":"summary.filesDuration"},0]}]}]}'
 ```
 
 ### 上传文件到记录 {#upload-files-to-record}
