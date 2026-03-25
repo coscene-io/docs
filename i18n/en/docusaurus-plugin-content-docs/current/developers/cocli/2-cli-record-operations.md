@@ -68,6 +68,12 @@ URL:                     https://coscene.cn/coscene-lark/docs/records/c5f7a2fa-a
 -------------------------------------------------------------
 ```
 
+When creating a record, you can set custom fields with `--custom` in `key=value` form (repeat as needed):
+
+```bash
+cocli record create -t my-record --custom "priority=high" --custom "batch=2025-03"
+```
+
 ### List Records in a Project {#list-records}
 
 ```bash
@@ -121,16 +127,41 @@ cocli record list --keywords "keyword1,keyword2"
 cocli record list --include-archive
 ```
 
+Use `-o` to choose the output format: besides the default table, `wide`, `csv`, `json`, and `yaml` are supported. For `wide` and `csv`, creator and user-type custom fields are resolved to readable names when the corresponding user information is accessible.
+
+**Pagination and export:** `wide`, `csv`, `json`, and `yaml` behave like the table view and **only include the current page** by default (server-side pagination; when `--page-size` is omitted, up to 100 rows per page is typical). To **export all records matching the current filters in one go**, add `--all` (for very large result sets this may take longer; you can also use `--page-token` pagination as above and merge in a script). `--labels`, `--keywords`, and other filters can be used together with `--all` to mean **all rows that match the filters**.
+
+```bash
+# Wide table (more columns at a glance)
+cocli record list -o wide
+
+# Export current page to CSV (this page only)
+cocli record list -o csv > records-page.csv
+
+# Export all matching records to CSV (typical full export)
+cocli record list --all -o csv > records-all.csv
+```
+
+Use `-s` / `--search` to pass a **JSON Logic** query string consistent with the web UI’s advanced search for more complex filtering. **Note: `--search` cannot be used together with `--include-archive`, `--labels`, or `--keywords`.** Choose one combination.
+
+```bash
+# Use single quotes around the JSON filter copied from the web UI
+cocli record list --search '<search_json>'
+
+# Example
+cocli record list --search '{"and":[{"==":[{"var":"isArchived"},"false"]},{"and":[{"in":[{"var":"relatedLabels.id"},["29fd2ca8-edc6-433a-8cb7-94b1b340102d"]]},{">=":[{"var":"byteSize"},104857600]},{">=":[{"var":"summary.filesDuration"},0]}]}]}'
+```
+
 ### Upload Files to a Record {#upload-files-to-record}
 
-You can upload any specified files or files within a directory to a specific record.
+You can upload **one or more** local paths (files or directories) to a record. Directory uploads **recurse into subdirectories by default**; no extra flag is required. List multiple paths after the record ID or resource name, e.g. `cocli record upload <record> ./a.mcap ./more-data/`.
 
 ```bash
 # Create a temporary file
 touch episode-1.mcap
 
 # Upload the file to the previously created Record
-cocli record upload 9c9177f6-8194-4d69-8536-3cfebce6fc2 ./episode-1.mcap
+cocli record upload 9c9177f6-8194-4d69-8536-3cfebce6fc23 ./episode-1.mcap
 ```
 
 ```bash
@@ -140,13 +171,17 @@ Upload Status:
 /Users/yujing/Workspace/co/docs/episode-1.mcap:                                                              Upload completed
 
 Total: 1, Skipped: 0, Success: 1
-View record at: https://coscene.cn/coscene-lark/docs/records/9c9177f6-8194-4d69-8536-3cfebce6fc2
+View record at: https://coscene.cn/coscene-lark/docs/records/9c9177f6-8194-4d69-8536-3cfebce6fc23
 ```
+
+:::tip
+In an interactive terminal, in-progress uploads show a progress bar (filled with `=`) and may show **transfer rate** and **elapsed time**; for environments without a TUI, see `--no-tty` and related flags in `cocli record upload -h`.
+:::
 
 ### Download Files from a Record {#download-files-from-record}
 
 ```bash
-cocli record download 9c9177f6-8194-4d69-8536-3cfebce6fc2 .
+cocli record download 9c9177f6-8194-4d69-8536-3cfebce6fc23 .
 ```
 
 ```
@@ -197,7 +232,7 @@ URL:          https://coscene.cn/coscene-lark/docs/records/52c5afac-22ca-4ab5-b9
 ```
 
 :::tip
-If the record is associated with a device or contains custom field values, this information will also be displayed in the `describe` command output.
+If the record is associated with a device or contains custom field values, this information will also be displayed in the `describe` command output. For `describe`, `-o` supports `table`, `json`, and `yaml`.
 :::
 
 ```bash
@@ -221,7 +256,7 @@ URL:                     https://coscene.cn/coscene-lark/docs/records/52c5afac-2
 
 ### Update Record Information {#update-record}
 
-The CLI also supports changing the record's name, description, and other information. For a complete list of updates, please check the help documentation.
+The CLI also supports changing the record's name, description, labels, and custom fields. See the command help for the full flag list. Custom fields use `--custom key=value` and may be repeated.
 
 ```bash
 cocli record update 52c5afac-22ca-4ab5-b9cf-fc069053b1af -d "Object movement process, mechanical arm torque did not reach expected level, failed" # Update record description
@@ -303,6 +338,10 @@ cocli record moment download bcdcb5f5-0246-4416-b9a4-4b1df7aa48c6 . --flat
 ## Managing Record Labels
 
 Labels are an important means of managing and querying records. By adding and removing labels from records, we can easily distinguish different data during batch processing and automation.
+
+:::tip
+In a single `record update`, only one of `--append-labels`, `--update-labels`, or `--delete-labels` may be used (mutually exclusive). The sections below are separate examples.
+:::
 
 ### Add Labels
 

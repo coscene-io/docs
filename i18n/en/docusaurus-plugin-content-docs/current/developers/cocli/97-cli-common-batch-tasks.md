@@ -35,8 +35,8 @@ for dir in */; do
   # Remove the trailing slash from the directory name and create a new record, getting the full resource name
   record_name=$(cocli record create -t "${dir%/}" -o json | jq -r '.name')
 
-  # Upload the contents of the current subdirectory to the created record
-  cocli record upload -R "$record_name" "$dir"
+  # Upload the contents of the current subdirectory to the created record (recursive by default; no extra flag needed)
+  cocli record upload "$record_name" "$dir"
 done
 ```
 
