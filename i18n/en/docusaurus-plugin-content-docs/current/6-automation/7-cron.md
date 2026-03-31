@@ -1,6 +1,6 @@
 # Cron
 
-Cron syntax is used to schedule when jobs should run.
+Cron syntax is used to schedule when actions should run.
 
 ## Cron syntax
 
@@ -23,7 +23,7 @@ In cron syntax, the asterisk (\*) means ’every,’ so the following cron strin
 - Run once an hour at the beginning of the hour: `0 * * * *`
 - Run once a day at midnight: `0 0 * * *`
 - Run once a week at midnight on Sunday morning: `0 0 * * 0`
-- Run once a month at midnight of the first day of the month: `0 0 1 _ _`
+- Run once a month at midnight of the first day of the month: `0 0 1 * *`
 - Run once a month on the 22nd: `0 0 22 * *`
 - Run once a year at midnight of 1 January: `0 0 1 1 *`
 - Run twice a month at 3 AM, on the 1st and 15th of the month: `0 3 1,15 * *`

@@ -1,42 +1,42 @@
-# Cron
+# Cron 触发时间
 
-Cron syntax is used to schedule when jobs should run.
+Cron 语法用于安排自动化动作的运行时间。
 
-## Cron syntax
+## Cron 语法
 
-Cron scheduling uses a series of five numbers, separated by spaces:
+Cron 调度使用由空格分隔的五个数字：
 
 ```
-# ┌───────────── minute (0 - 59)
-# │ ┌───────────── hour (0 - 23)
-# │ │ ┌───────────── day of the month (1 - 31)
-# │ │ │ ┌───────────── month (1 - 12)
-# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday)
+# ┌───────────── 分钟 (0 - 59)
+# │ ┌───────────── 小时 (0 - 23)
+# │ │ ┌───────────── 日期 (1 - 31)
+# │ │ │ ┌───────────── 月份 (1 - 12)
+# │ │ │ │ ┌───────────── 星期 (0 - 6)（星期日到星期六）
 # │ │ │ │ │
 # │ │ │ │ │
 # │ │ │ │ │
-# * * * * * <command to execute>
+# * * * * * <要执行的命令>
 ```
 
-In cron syntax, the asterisk (\*) means ’every,’ so the following cron strings are valid:
+在 cron 语法中，星号（\*）表示"每个"，因此以下 cron 字符串是有效的：
 
-- Run once an hour at the beginning of the hour: `0 * * * *`
-- Run once a day at midnight: `0 0 * * *`
-- Run once a week at midnight on Sunday morning: `0 0 * * 0`
-- Run once a month at midnight of the first day of the month: `0 0 1 _ _`
-- Run once a month on the 22nd: `0 0 22 * *`
-- Run once a year at midnight of 1 January: `0 0 1 1 *`
-- Run twice a month at 3 AM, on the 1st and 15th of the month: `0 3 1,15 * *`
+- 每小时在整点运行一次：`0 * * * *`
+- 每天在午夜运行一次：`0 0 * * *`
+- 每周在星期日午夜运行一次：`0 0 * * 0`
+- 每月在第一天午夜运行一次：`0 0 1 * *`
+- 每月在 22 日运行一次：`0 0 22 * *`
+- 每年在 1 月 1 日午夜运行一次：`0 0 1 1 *`
+- 每月在第 1 天和第 15 天的凌晨 3 点运行两次：`0 3 1,15 * *`
 
-## Cron examples
+## Cron 示例
 
 ```
-# Run at 7:00pm every day:
+# 每天晚上 7:00 运行：
 0 19 * * *
 
-# Run every minute on the 3rd of June:
+# 在 6 月 3 日每分钟运行：
 * * 3 6 *
 
-# Run at 06:30 every Friday:
+# 每周五 06:30 运行：
 30 6 * * 5
 ```
