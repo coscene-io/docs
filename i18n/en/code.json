@@ -557,6 +557,9 @@
   "home.catalogue.action-runtime": {
     "message": "Action Runtime Information"
   },
+  "home.catalogue.cron": {
+    "message": "Cron"
+  },
   "home.catalogue.sim-and-tests": {
     "message": "Simulation and Testing"
   },
