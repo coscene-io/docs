@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_coscene_io_docs=self.webpackChunk_coscene_io_docs||[]).push([["7812"],{8025(e,c,s){s.r(c),s.d(c,{default:()=>u});var n=s(25105),o=s(44213);function u(){return(0,n.jsx)(o.A,{children:(0,n.jsx)("h1",{children:" About "})})}s(58101)}}]);
