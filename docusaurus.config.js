@@ -15,7 +15,7 @@ const excludeInEn = [];
 const config = {
   future: {
     v4: true,
-    experimental_faster: true,
+    faster: true,
   },
   title: 'coScene',
   staticDirectories: ['public', 'static'],
@@ -28,6 +28,11 @@ const config = {
   favicon: 'img/favicon.ico',
   markdown: {
     mermaid: true,
+    mdx1Compat: {
+      comments: true,
+      admonitions: true,
+      headingIds: true,
+    },
     hooks: {
       onBrokenMarkdownLinks: 'throw',
     },
