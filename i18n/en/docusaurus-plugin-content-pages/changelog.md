@@ -5,6 +5,26 @@ id: changelog
 
 # Release History
 
+## [26.13.0] - 2026-04-14
+
+### [Added]
+
+- Added trigger scheduled execution feature
+- Added automation support for mounting project resources
+- Added filtering and display of project storage regions on coScene homepage
+- Added state memory for sidebar tags in visualization pages: Automatically restores previous selection state upon return
+
+### [Fixed]
+
+- Fixed "Moment" time range adjustment feature: Supports modifying corresponding time intervals by dragging the bottom timeline in visualization pages
+- Fixed alignment issue in coScene verification code email templates in Gmail
+
+### [Improved]
+
+- Improved record page browsing experience: Automatically returns to the original record position with background color indication when navigating back from the details page
+
+---
+
 ## [26.10.0] - 2026-03-04
 
 ### [Added]
