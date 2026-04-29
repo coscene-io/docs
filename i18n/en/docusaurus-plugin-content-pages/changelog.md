@@ -5,6 +5,14 @@ id: changelog
 
 # Release History
 
+## [26.18.0] - 2026-04-29
+
+### [Contributors]
+
+- Jiaqi, Linyi, and Jingyi
+
+---
+
 ## [26.10.0] - 2026-03-04
 
 ### [Added]
