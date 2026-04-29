@@ -26,6 +26,17 @@ const config = {
   onBrokenAnchors: 'throw',
   onDuplicateRoutes: 'throw',
   favicon: 'img/favicon.ico',
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        type: 'text/plain',
+        title: 'LLMs.txt',
+        href: '/llms.txt',
+      },
+    },
+  ],
   markdown: {
     mermaid: true,
     mdx1Compat: {
@@ -76,6 +87,11 @@ const config = {
         // },
         theme: {
           customCss: './src/css/custom.css',
+        },
+        sitemap: {
+          lastmod: 'date',
+          changefreq: 'weekly',
+          priority: 0.5,
         },
       },
     ],
