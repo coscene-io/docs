@@ -1,10 +1,10 @@
 # Cron
 
-Cron syntax is used to schedule when actions should run.
+Cron syntax is used to schedule when automation actions should run. In coScene automation, Cron only describes when to trigger. The action to execute and the record inputs are determined by the trigger's associated action and record conditions.
 
 ## Cron syntax
 
-Cron scheduling uses a series of five numbers, separated by spaces:
+Cron scheduling uses 5 fields separated by spaces:
 
 ```
 # ┌───────────── minute (0 - 59)
@@ -13,10 +13,12 @@ Cron scheduling uses a series of five numbers, separated by spaces:
 # │ │ │ ┌───────────── month (1 - 12)
 # │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday)
 # │ │ │ │ │
-# │ │ │ │ │
-# │ │ │ │ │
-# * * * * * <command to execute>
+# * * * * *
 ```
+
+:::tip
+When creating a scheduled trigger, you also choose a time zone. The hour and date fields in the Cron expression are interpreted in that selected time zone. For example, `0 9 * * 1` with `Asia/Shanghai` runs every Monday at 09:00 Beijing time.
+:::
 
 In cron syntax, the asterisk (\*) means ’every,’ so the following cron strings are valid:
 
@@ -40,3 +42,9 @@ In cron syntax, the asterisk (\*) means ’every,’ so the following cron strin
 # Run at 06:30 every Friday:
 30 6 * * 5
 ```
+
+## Common Notes
+
+- coScene automation uses 5-field Cron expressions and does not include a seconds field.
+- The Cron expression itself does not include a command to execute. The action is configured in the trigger's associated action.
+- Scheduled triggers can be combined with record conditions to restrict which records are matched each time the schedule fires.
