@@ -40,10 +40,10 @@ if __name__ == "__main__":
 
 ## 打包镜像
 
-我们假设镜像名字为 `cr.coscene.cn/coscene/helloworld`, 标签为 `latest`
+我们假设当前组织 slug 为 `<org-slug>`，镜像名字为 `cr.coscene.cn/<org-slug>/helloworld`，标签为 `latest`
 
 ```bash
-docker build -f dockerfile -t cr.coscene.cn/coscene/helloword:latest .
+docker build -f dockerfile -t cr.coscene.cn/<org-slug>/helloworld:latest .
 
 ```
 如果需要镜像支持不同的平台而进行交叉编译，具体请查看[文档](https://docs.docker.com/build/building/multi-platform/)
@@ -54,7 +54,7 @@ docker build -f dockerfile -t cr.coscene.cn/coscene/helloword:latest .
 
 ```bash
 
-docker run cr.coscene.cn/coscene/helloword:latest  
+docker run cr.coscene.cn/<org-slug>/helloworld:latest
 
 ```
 
