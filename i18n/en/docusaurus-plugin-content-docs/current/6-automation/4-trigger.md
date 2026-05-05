@@ -1,6 +1,6 @@
-***
-
-## sidebar\_position: 3
+---
+sidebar_position: 3
+---
 
 # Triggers
 
@@ -64,11 +64,11 @@ In the **Action** section, complete the following configuration:
 
 After completing all configurations, click the **Create Trigger** button in the lower-left corner of the page. The trigger will take effect immediately. When files meeting the conditions are uploaded, the system will automatically execute the actions you set.
 
-<br />
-
 ### 1.3 Common Notes
 
 - **Wildcard rules**: `**` matches any path, `*` matches any character. They can be flexibly combined to adapt to different file formats.
+- **File source**: Used to match whether the user uploading the file is a member or a device.
+- **Record label**: Used to match the labels on the record. Labels are evaluated only when the file upload event occurs. Adding or removing labels on an existing record will not trigger this file-upload trigger. To react to label changes, use a record-updated trigger instead.
 - **Condition logic**: "And" means all conditions must be met simultaneously; "Or" means any condition can trigger the action.
 - **View execution records**: In the **Invocations** tab, you can view all trigger execution logs to troubleshoot trigger anomalies.
 
@@ -82,7 +82,7 @@ After completing all configurations, click the **Create Trigger** button in the 
 
 ![trigger\_06](./img/trigger_06.png)
 
-## 2. "When device collection state updated"
+## 2. "When device collection state updated"{#collect-status-change}
 
 ### 2.1 Feature Introduction
 
@@ -165,7 +165,7 @@ In the **Basic info** section, find the trigger name input box and fill in a cle
 
 1. **Select trigger timing**: In the "Trigger Timing" dropdown menu, select "Record updated".
 2. **Select  record updated field**: In the "**Record updated field**" dropdown box, select the target field to monitor (e.g., "QC Reviewer"). The system will only trigger actions when this field's content changes.
-3. **(Optional) Add additional filter conditions**: For more precise trigger control, click **+ And/Or **to set field matching rules (e.g., trigger only when "QC Reviewer contains Jacqui"). Without special requirements, you can keep only the field monitoring rule.
+3. **(Optional) Add additional filter conditions**: For more precise trigger control, click **+ And/Or** to set field matching rules (e.g., trigger only when "QC Reviewer contains Jacqui"). Without special requirements, you can keep only the field monitoring rule.
 
 ![trigger\_013](./img/trigger_013.png)
 
@@ -272,7 +272,7 @@ In the **Basic info** section, find the trigger name input box and fill in an id
 1. **Select trigger timing**: In the "Trigger Timing" dropdown menu, select "Scheduled".
 2. **Set trigger time**:
    - In the "Trigger timing" input box, fill in the time according to the rules (format examples: `0 9 * * *` means execute daily at 9 AM, `0 0 1 * *` means execute on the 1st of each month at midnight, `* * * * *` means execute every minute)
-   - Time zone defaults to Asia/Shanghai (GMT+08:00) (Beijing time), no modification needed
+   - Time zone is used to interpret the hour and date fields in the Cron expression. New triggers default to the current browser time zone, and you can change it manually.
    - After filling in, check the "Next run time" to confirm the time setting is correct
 3. **(Optional) Add filter conditions**: To execute only when specific conditions are met, click **+ And/Or** to set filtering rules such as tags and fields. No need to fill in without special requirements.
 
@@ -286,17 +286,19 @@ In the **Action** section, click the dropdown menu to select the action you want
 
 #### Step 5: Save and activate
 
-After completing all configurations, click the **Creat tigger** button at the bottom of the page. The trigger will automatically run according to your configured rules without manual repetitive operations.
+After completing all configurations, click the **Create Trigger** button at the bottom of the page. The trigger will automatically run according to your configured rules without manual repetitive operations.
 
 ### 5.3 Common Notes
 
-- **Time format explanation**: `* * * * *` corresponds to "minute hour day month week", which can be flexibly configured according to requirements.
-- **Time zone explanation**: Beijing time (Asia/Shanghai) is used uniformly to avoid execution time confusion.
+- **Cron**: Use a 5-field Cron expression to define the schedule. `* * * * *` corresponds to "minute hour day month week" and can be flexibly configured according to requirements. See [Cron](./7-cron.md).
+- **Time zone**: Used to interpret the hour and date fields in the Cron expression, and it can be changed manually based on the trigger's requirements.
+- **Record conditions**: Optionally restrict which records are matched by the scheduled trigger using record fields, labels, or custom fields.
 - **View execution records**: In the **Invocations** tab, view all trigger execution logs to troubleshoot issues.
+
+For example, `0 9 * * 1` with the `Asia/Shanghai` time zone runs every Monday at 09:00 Beijing time.
 
 ### 5.4 Precautions
 
 - It is recommended to use clear and understandable trigger names to distinguish different scheduled tasks.
 - After configuration, be sure to check the "Next run time" to ensure the time setting meets expectations.
 - To modify rules, re-enter the edit page to make adjustments. The new rules will take effect immediately after saving.
-
