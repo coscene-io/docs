@@ -45,6 +45,52 @@ const config = {
   },
 
   scripts: [{ src: 'https://plausible.io/js/script.js', defer: true, 'data-domain': 'docs.coscene.cn' }],
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        type: 'text/markdown',
+        href: '/llms.txt',
+        hreflang: 'zh',
+        title: 'coScene docs index',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        type: 'text/markdown',
+        href: '/en/llms.txt',
+        hreflang: 'en',
+        title: 'coScene docs index',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        type: 'text/markdown',
+        href: '/llms-full.txt',
+        hreflang: 'zh',
+        title: 'coScene full docs',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate',
+        type: 'text/markdown',
+        href: '/en/llms-full.txt',
+        hreflang: 'en',
+        title: 'coScene full docs',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: { rel: 'api-catalog', type: 'application/linkset+json', href: '/.well-known/api-catalog' },
+    },
+  ],
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -68,6 +114,9 @@ const config = {
             process.env.DOCUSAURUS_CURRENT_LOCALE === 'en' ? [...defaultExclude, ...excludeInEn] : defaultExclude,
         },
         blog: false,
+        sitemap: {
+          lastmod: 'date',
+        },
         // blog: {
         //   showReadingTime: true,
         //   // Please change this to your repo.
