@@ -1,4 +1,3 @@
-import { createHash } from 'node:crypto';
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,59 +7,6 @@ const repoRoot = path.resolve(__dirname, '..');
 const buildDir = path.join(repoRoot, 'build');
 const docsDataDir = path.join(repoRoot, '.docusaurus/docusaurus-plugin-content-docs/default');
 const pagesDataDir = path.join(docsDataDir, 'p');
-const origin = 'https://docs.coscene.cn';
-
-const skillDefinitions = [
-  {
-    name: 'coscene-docs-index',
-    description: 'Find the right coScene docs entry point, including llms.txt, llms-full.txt, OpenAPI docs, and coCLI docs.',
-    body: `# coScene Docs Index
-
-Use this skill when an agent needs to answer questions from the public coScene documentation.
-
-1. Start with /llms.txt for a compact map of the docs.
-2. Use /llms-full.txt when the task needs a broader offline context snapshot.
-3. Prefer /docs/developers/openapi/intro for OpenAPI discovery.
-4. Prefer /docs/developers/cocli/install for coCLI installation and command workflows.
-5. Keep product naming exact: coScene, coCLI, or cocli.
-`,
-  },
-  {
-    name: 'coscene-openapi',
-    description: 'Discover coScene OpenAPI documentation and the canonical OpenAPI YAML document.',
-    body: `# coScene OpenAPI
-
-Use this skill when an agent needs to inspect or call the public coScene OpenAPI.
-
-Canonical resources:
-
-- Docs: /docs/developers/openapi/intro
-- Endpoint docs: /docs/developers/openapi/endpoint
-- API key docs: /docs/developers/openapi/apikey
-- OpenAPI YAML: https://download.coscene.cn/openapi/openapi.yaml
-
-Do not assume undocumented private APIs exist. Use the public OpenAPI YAML as the contract.
-`,
-  },
-  {
-    name: 'coscene-cocli',
-    description: 'Find coCLI installation, record, action, user, role, registry, and batch task documentation.',
-    body: `# coCLI Documentation
-
-Use this skill when an agent needs to operate or explain coCLI.
-
-Start here:
-
-- Install and initialize: /docs/developers/cocli/install
-- Record operations: /docs/developers/cocli/record-operations
-- Action operations: /docs/developers/cocli/action-operations
-- User, role, and registry operations: /docs/developers/cocli/user-role-registry
-- Batch task patterns: /docs/developers/cocli/common-batch-tasks
-
-Product naming: coCLI or cocli are acceptable; coScene uses lowercase c.
-`,
-  },
-];
 
 async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'));
@@ -71,8 +17,16 @@ async function writeText(filePath, content) {
   await writeFile(filePath, content.endsWith('\n') ? content : `${content}\n`, 'utf8');
 }
 
-function sha256(content) {
-  return createHash('sha256').update(content).digest('hex');
+async function readSiteOrigin() {
+  const i18n = await readJson(path.join(repoRoot, '.docusaurus/i18n.json'));
+  const defaultLocale = i18n.defaultLocale || 'zh';
+  const origin = i18n.localeConfigs?.[defaultLocale]?.url;
+
+  if (!origin) {
+    throw new Error('Unable to find site URL in Docusaurus i18n metadata');
+  }
+
+  return origin.replace(/\/$/, '');
 }
 
 function stripFrontMatter(markdown) {
@@ -215,7 +169,6 @@ function formatLlmsIndex(locale, docs) {
     `- [Full documentation snapshot](${prefix}/llms-full.txt): Generated from the Docusaurus docs source during build.`,
     '- [Sitemap](/sitemap.xml): Canonical page inventory.',
     '- [OpenAPI YAML](https://download.coscene.cn/openapi/openapi.yaml): Public API contract.',
-    '- [Agent skills index](/.well-known/agent-skills/index.json): Skill discovery for agents.',
     '- [API catalog](/.well-known/api-catalog): Linkset for public API discovery.',
     '',
     '## Docs',
@@ -258,36 +211,12 @@ function formatLlmsFull(locale, docs) {
   return `${lines.join('\n').replace(/\n{4,}/g, '\n\n\n')}\n`;
 }
 
-function formatHomeMarkdown(locale, docs) {
-  const topDocs = docs.slice(0, 24);
-  const lines = [
-    `# ${localeTitle(locale)}`,
-    '',
-    introText(locale),
-    '',
-    '## Start Here',
-    '',
-    ...topDocs.map((doc) => `- [${doc.title}](${doc.href})${doc.description ? ` - ${doc.description}` : ''}`),
-    '',
-    '## Agent Resources',
-    '',
-    '- /llms.txt',
-    '- /llms-full.txt',
-    '- /.well-known/api-catalog',
-    '- /.well-known/agent-skills/index.json',
-    '- https://download.coscene.cn/openapi/openapi.yaml',
-    '',
-  ];
-
-  return lines.join('\n');
-}
-
-function robotsTxt() {
+function robotsTxt(origin) {
   return `User-agent: *
 Allow: /
 
 User-agent: GPTBot
-Allow: /
+Disallow: /
 
 User-agent: OAI-SearchBot
 Allow: /
@@ -299,20 +228,20 @@ User-agent: Claude-Web
 Allow: /
 
 User-agent: ClaudeBot
-Allow: /
+Disallow: /
 
 User-agent: PerplexityBot
 Allow: /
 
 User-agent: Google-Extended
-Allow: /
+Disallow: /
 
 Content-Signal: ai-train=no, search=yes, ai-input=yes
 Sitemap: ${origin}/sitemap.xml
 `;
 }
 
-function apiCatalog() {
+function apiCatalog(origin) {
   return JSON.stringify(
     {
       linkset: [
@@ -355,35 +284,8 @@ function apiCatalog() {
   );
 }
 
-async function writeAgentSkills() {
-  const skills = [];
-
-  for (const skill of skillDefinitions) {
-    const skillPath = `/.well-known/agent-skills/${skill.name}/SKILL.md`;
-    await writeText(path.join(buildDir, skillPath), skill.body);
-    skills.push({
-      name: skill.name,
-      type: 'skill-md',
-      description: skill.description,
-      url: skillPath,
-      digest: `sha256:${sha256(skill.body.endsWith('\n') ? skill.body : `${skill.body}\n`)}`,
-    });
-  }
-
-  await writeText(
-    path.join(buildDir, '.well-known/agent-skills/index.json'),
-    JSON.stringify(
-      {
-        $schema: 'https://schemas.agentskills.io/discovery/0.2.0/schema.json',
-        skills,
-      },
-      null,
-      2,
-    ),
-  );
-}
-
 async function main() {
+  const origin = await readSiteOrigin();
   const zhDocs = await collectDocs('zh');
   const enDocs = await collectDocs('en');
 
@@ -392,12 +294,8 @@ async function main() {
   await writeText(path.join(buildDir, 'en/llms.txt'), formatLlmsIndex('en', enDocs));
   await writeText(path.join(buildDir, 'en/llms-full.txt'), formatLlmsFull('en', enDocs));
 
-  await writeText(path.join(buildDir, 'markdown/index.md'), formatHomeMarkdown('zh', zhDocs));
-  await writeText(path.join(buildDir, 'en/markdown/index.md'), formatHomeMarkdown('en', enDocs));
-
-  await writeText(path.join(buildDir, 'robots.txt'), robotsTxt());
-  await writeText(path.join(buildDir, '.well-known/api-catalog'), apiCatalog());
-  await writeAgentSkills();
+  await writeText(path.join(buildDir, 'robots.txt'), robotsTxt(origin));
+  await writeText(path.join(buildDir, '.well-known/api-catalog'), apiCatalog(origin));
 
   console.log(`Generated agent readiness artifacts for ${zhDocs.length} zh docs and ${enDocs.length} en docs.`);
 }
