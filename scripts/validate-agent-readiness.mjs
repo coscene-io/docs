@@ -42,6 +42,12 @@ async function validateLlms() {
 
   const indexHtml = await readText('index.html');
   assert(indexHtml.includes('/agent-tools.js'), 'homepage does not load /agent-tools.js');
+  assert(indexHtml.includes('href=/llms.txt'), 'homepage head missing /llms.txt discovery link');
+  assert(indexHtml.includes('href=/.well-known/api-catalog'), 'homepage head missing API catalog discovery link');
+  assert(indexHtml.includes('href=/.well-known/agent-skills/index.json'), 'homepage head missing agent skills discovery link');
+
+  const enIndexHtml = await readText('en/index.html');
+  assert(enIndexHtml.includes('href=/llms.txt'), 'English homepage head missing /llms.txt discovery link');
 }
 
 async function validateApiCatalog() {
@@ -69,12 +75,18 @@ async function validateCloudflareRoutes() {
   assert(Array.isArray(routes.include) && routes.include.includes('/*'), '_routes.json must include /* for Pages Functions');
 }
 
+async function validateSitemap() {
+  const sitemap = await readText('sitemap.xml');
+  assert(sitemap.includes('<lastmod>'), 'sitemap.xml missing lastmod entries');
+}
+
 async function main() {
   await validateRobots();
   await validateLlms();
   await validateApiCatalog();
   await validateAgentSkills();
   await validateCloudflareRoutes();
+  await validateSitemap();
   console.log('Agent readiness artifacts validated.');
 }
 

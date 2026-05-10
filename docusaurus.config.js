@@ -48,6 +48,23 @@ const config = {
     { src: 'https://plausible.io/js/script.js', defer: true, 'data-domain': 'docs.coscene.cn' },
     { src: '/agent-tools.js', defer: true },
   ],
+  headTags: [
+    { tagName: 'link', attributes: { rel: 'alternate', type: 'text/markdown', href: '/llms.txt', title: 'coScene docs index' } },
+    {
+      tagName: 'link',
+      attributes: { rel: 'alternate', type: 'text/markdown', href: '/llms-full.txt', title: 'coScene full docs' },
+    },
+    { tagName: 'link', attributes: { rel: 'api-catalog', type: 'application/linkset+json', href: '/.well-known/api-catalog' } },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'service-desc',
+        type: 'application/json',
+        href: '/.well-known/agent-skills/index.json',
+        title: 'coScene agent skills',
+      },
+    },
+  ],
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -71,6 +88,9 @@ const config = {
             process.env.DOCUSAURUS_CURRENT_LOCALE === 'en' ? [...defaultExclude, ...excludeInEn] : defaultExclude,
         },
         blog: false,
+        sitemap: {
+          lastmod: 'date',
+        },
         // blog: {
         //   showReadingTime: true,
         //   // Please change this to your repo.
