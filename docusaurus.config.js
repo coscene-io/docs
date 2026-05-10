@@ -44,7 +44,10 @@ const config = {
     locales: ['zh', 'en'],
   },
 
-  scripts: [{ src: 'https://plausible.io/js/script.js', defer: true, 'data-domain': 'docs.coscene.cn' }],
+  scripts: [
+    { src: 'https://plausible.io/js/script.js', defer: true, 'data-domain': 'docs.coscene.cn' },
+    { src: '/agent-tools.js', defer: true },
+  ],
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
