@@ -27,9 +27,9 @@ sidebar_position: 1
 
 ![action-overview_3](./img/action-overview_3.png)
 
-参数包含 Key 和 Value，在步骤的命令中可使用 `{{parameter.key}}` 引用参数。
+参数包含 Key 和 Value，在步骤的命令中可使用 `{{parameters.key}}` 引用参数。
 
-例如：Key 为 `input`，Value 为 `hello world`，则在步骤的命令中可使用 `{{parameter.input}}` 引用参数。
+例如：Key 为 `input`，Value 为 `hello world`，则在步骤的命令中可使用 `{{parameters.input}}` 引用参数。
 
 ## 步骤类型及信息
 
