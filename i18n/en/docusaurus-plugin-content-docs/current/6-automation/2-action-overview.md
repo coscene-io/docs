@@ -28,9 +28,9 @@ Actions are the fundamental building blocks of automated workflows, representing
 
 ![action-overview_3](./img/action-overview_3.png)
 
-Parameters consist of a Key and a Value. You can reference parameters in step commands using `{{parameter.key}}`.
+Parameters consist of a Key and a Value. You can reference parameters in step commands using `{{parameters.key}}`.
 
-For example, if the Key is `input` and the Value is `hello world`, you can reference the parameter in a step command using `{{parameter.input}}`.
+For example, if the Key is `input` and the Value is `hello world`, you can reference the parameter in a step command using `{{parameters.input}}`.
 
 ## Step Types and Information
 
