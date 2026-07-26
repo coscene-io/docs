@@ -12,7 +12,24 @@ sidebar_position: 3
 
 ## 推送镜像至刻行镜像仓库
 
-### 1. 认证和登录刻行的镜像仓库
+每个组织都会自动分配一个刻行镜像仓库，地址通常为 `cr.coscene.cn/<org-slug>`。推送镜像前，需要先在本地 Docker 登录该镜像仓库。
+
+### 1. 使用 coCLI 登录刻行镜像仓库（推荐）
+
+确认已经完成 [coCLI 登录](../developers/cocli/1-cli-install.md#登录) 后，运行：
+
+```bash
+cocli registry login
+```
+
+`cocli` 会根据当前 profile 的 OpenAPI endpoint 推断镜像仓库地址，并调用本机 Docker 完成登录。登录完成后，即可将镜像打上组织仓库地址并推送：
+
+```bash
+docker tag local-image:latest cr.coscene.cn/<org-slug>/local-image:latest
+docker push cr.coscene.cn/<org-slug>/local-image:latest
+```
+
+### 2. 在网页端生成登录凭证
 
 登录刻行平台，在右上角用户设置下拉面板中，选择[【组织管理】-【镜像】](https://coscene.cn/org/images)。
 

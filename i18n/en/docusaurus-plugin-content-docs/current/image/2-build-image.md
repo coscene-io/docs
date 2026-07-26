@@ -37,10 +37,10 @@ if __name__ == "__main__":
 
 ## Building the Image
 
-Let's assume the image name is `cr.coscene.cn/coscene/helloworld` with the tag `latest`
+Assume the current organization slug is `<org-slug>` and the image name is `cr.coscene.cn/<org-slug>/helloworld` with the tag `latest`.
 
 ```bash
-docker build -f dockerfile -t cr.coscene.cn/coscene/helloword:latest .
+docker build -f dockerfile -t cr.coscene.cn/<org-slug>/helloworld:latest .
 ```
 
 If you need cross-compilation support for different platforms, please check the [documentation](https://docs.docker.com/build/building/multi-platform/)
@@ -50,7 +50,7 @@ If you need cross-compilation support for different platforms, please check the 
 After the image is built, we can run it to verify the code functionality.
 
 ```bash
-docker run cr.coscene.cn/coscene/helloword:latest
+docker run cr.coscene.cn/<org-slug>/helloworld:latest
 ```
 
 Check the output - if the image was built correctly, it should show our expected result.

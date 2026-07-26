@@ -46,13 +46,19 @@ sidebar_position: 1
   ![action_3](./img/action_3.png)
 
 - 步骤名称：unzip
-- 镜像：registry-vpc.cn-hangzhou.aliyuncs.com/coscene/cos:2025-02-06-v25.6.1
-  - 该镜像为刻行时空提供的镜像，内置 `icos` 工具，仅支持在平台内部使用，了解[镜像](../image/1-about-docker-image.md)
-- 命令：icos fs decompress f \*.zip -i /cos/files -o /cos/files
-  - 调用 `icos` 工具，对 `/cos/files` 目录（记录）下名称符合 `*.zip` 的文件进行解压，将其输出到原记录
-  - 需一行填写一个参数，如第一行填写 `icos`，第二行填写 `fs`，以此类推
+- 镜像：`python:3.12-slim`
+  - 这是 Docker Hub 上公开可拉取的 Python 镜像，适合用于快速验证自动化流程。
+  - 生产环境建议将脚本和依赖打包为自己的镜像，并推送到组织镜像仓库。每个组织都会自动分配一个刻行镜像仓库，地址通常为 `cr.coscene.cn/<org-slug>`；使用 `cocli registry login` 可完成本地 Docker 登录，动作运行时会自动获得拉取当前组织镜像的授权。
+- 命令：将下面 3 行分别填入命令输入框，每一行都是一个独立参数。
 
-  ![action_4](./img/action_4.png)
+  ```bash
+  python
+  -c
+  import pathlib,zipfile;root=pathlib.Path('/cos/files');[zipfile.ZipFile(p).extractall(root) for p in root.rglob('*.zip')]
+  ```
+
+  - 该命令使用 Python 标准库扫描 `/cos/files` 下的 `*.zip` 文件，并把内容解压回原记录。
+  - 命令和参数需要逐行填写；不要把 `python -c ...` 合并成一行。
 
 - 记录文件挂载权限：读/写
   - 允许该动作在执行期间对原记录进行读写操作
