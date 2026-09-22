@@ -8,6 +8,8 @@ sidebar_position: 1
 
 ![viz-4-1-Eng](../img/viz-4-1-Eng.png)
 
+Plot, Raw Messages, Gauge, Indicator, and State Transitions use [message path syntax](../message-path-syntax.md) to select fields, filter data, and transform values with functions.
+
 ## Basic Elements of the Panel
 
 The basic elements of the "Panel" include the **Panel Top Bar** and the **Panel Scene**.
