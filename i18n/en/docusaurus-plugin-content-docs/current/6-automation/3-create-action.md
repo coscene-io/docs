@@ -28,13 +28,19 @@ Take creating an action for "Unzipping Files" as an example to illustrate how to
   ![action_3](./img/action_3.png)
 
 - Step name: unzip
-- Image: registry-vpc.cn-hangzhou.aliyuncs.com/coscene/cos:2025-02-06-v25.6.1
-  - This image is provided by Kehang Space-Time, with the `icos` tool built - in. It only supports use within the platform. Learn more about [images](../image/1-about-docker-image.md).
-- Command: icos fs decompress f \*.zip -i /cos/files -o /cos/files
-  - Call the `icos` tool to decompress files whose names match `*.zip` in the `/cos/files` directory (record), and output the results to the original record.
-  - You need to fill in one parameter per line. For example, fill in `icos` on the first line, `fs` on the second line, and so on.
+- Image: `python:3.12-slim`
+  - This is a publicly pullable Python image from Docker Hub, suitable for quickly verifying the automation flow.
+  - For production actions, package your script and dependencies into your own image and push it to the organization image registry. Each organization is automatically assigned a coScene image registry, usually in the form `cr.coscene.cn/<org-slug>`. Use `cocli registry login` to authenticate local Docker pushes; action runs are automatically authorized to pull images from the current organization registry.
+- Command: enter the following 3 lines into the command fields. Each line is one separate argument.
 
-  ![action_4](./img/action_4.png)
+  ```bash
+  python
+  -c
+  import pathlib,zipfile;root=pathlib.Path('/cos/files');[zipfile.ZipFile(p).extractall(root) for p in root.rglob('*.zip')]
+  ```
+
+  - This command uses Python's standard library to scan for `*.zip` files under `/cos/files` and extract them back to the original record.
+  - Commands and arguments must be entered line by line; do not merge `python -c ...` into a single line.
 
 - Record file mount permission: Read/Write
   - Allow this action to read from and write to the original record during execution.
@@ -60,7 +66,7 @@ Take creating an action for "Unzipping Files" as an example to illustrate how to
 
   <img src={require('./img/action-copy_1.png').default} alt="action-copy_1" width="500" />
 
-- Add a parameter: Add the parameter `filename` with a value of `*.zip` for the command `{{parameters.filename}}` to reference this parameter, indicating that files whose names match `*.zip` in the specified directory will be decompressed.
+- Add a parameter: Add the parameter `filename` with a value of `*.zip` for the command `{{parameter.filename}}` to reference this parameter, indicating that files whose names match `*.zip` in the specified directory will be decompressed.
 
   ![action-copy_2](./img/action-copy_2.png)
 

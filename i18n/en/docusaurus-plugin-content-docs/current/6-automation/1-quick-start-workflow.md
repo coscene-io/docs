@@ -46,13 +46,19 @@ This section will introduce in detail how to create an automation process throug
   ![action_3](./img/action_3.png)
 
 - Step Name: unzip
-- Image: registry-vpc.cn-hangzhou.aliyuncs.com/coscene/cos:2025-02-06-v25.6.1
-  - This image is provided by Kehang Shikong and has the `icos` tool built - in. It is only supported for use within the platform. Learn more about [Images](../image/1-about-docker-image.md).
-- Command: icos fs decompress f \*.zip -i /cos/files -o /cos/files
-  - Call the `icos` tool to decompress files with names matching `*.zip` in the `/cos/files` directory (record) and output them to the original record.
-  - You need to fill in one parameter per line. For example, fill in `icos` on the first line, `fs` on the second line, and so on.
+- Image: `python:3.12-slim`
+  - This is a publicly pullable Python image from Docker Hub, suitable for quickly verifying the automation flow.
+  - For production actions, package your script and dependencies into your own image and push it to the organization image registry. Each organization is automatically assigned a coScene image registry, usually in the form `cr.coscene.cn/<org-slug>`. Use `cocli registry login` to authenticate local Docker pushes; action runs are automatically authorized to pull images from the current organization registry.
+- Command: enter the following 3 lines into the command fields. Each line is one separate argument.
 
-  ![action_4](./img/action_4.png)
+  ```bash
+  python
+  -c
+  import pathlib,zipfile;root=pathlib.Path('/cos/files');[zipfile.ZipFile(p).extractall(root) for p in root.rglob('*.zip')]
+  ```
+
+  - This command uses Python's standard library to scan for `*.zip` files under `/cos/files` and extract them back to the original record.
+  - Commands and arguments must be entered line by line; do not merge `python -c ...` into a single line.
 
 - Record File Mount Permission: Read/Write
   - Allow the action to read from and write to the original record during execution.

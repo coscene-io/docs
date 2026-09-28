@@ -16,7 +16,24 @@ You can refer to the documentation [Pushing a Docker container image to Docker H
 
 ## Push Images to coScene Container Registry
 
-### 1. Authenticate and Log in to coScene Container Registry
+Each organization is automatically assigned a coScene image registry, usually in the form `cr.coscene.cn/<org-slug>`. Before pushing an image, authenticate local Docker against that registry.
+
+### 1. Log in with coCLI (Recommended)
+
+After completing [coCLI login](../developers/cocli/1-cli-install.md#login), run:
+
+```bash
+cocli registry login
+```
+
+`cocli` infers the image registry host from the current profile's OpenAPI endpoint and calls local Docker to complete the login. After login, tag the image with your organization registry path and push it:
+
+```bash
+docker tag local-image:latest cr.coscene.cn/<org-slug>/local-image:latest
+docker push cr.coscene.cn/<org-slug>/local-image:latest
+```
+
+### 2. Generate Login Credentials in the Web UI
 
 Log in to coScene platform, access [Profile Settings] from the user settings dropdown menu in the top right corner, then navigate to the [Security](https://coscene.cn/profile?section=security) page in [Profile Settings].
 
