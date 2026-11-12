@@ -19,7 +19,7 @@ Custom panels are ideal when your visualization or interaction requirements are 
 ### Links and Resources
 
 - Guide: Creating Custom Panels
-- Building Custom Panel Extensions (React)
+- [Building Custom Panel Extensions (React)](./3-best-practices/2-custom-panel.md)
 
 ## Message Converters {#message-converters}
 
@@ -45,19 +45,20 @@ coScene provides a set of starter templates and commands in the [create-coscene-
 
 Requirements:
 
-- Node.js 14+
+- Node.js 24 (the version used by the generator CI)
 
 To set up your extension project, navigate to the directory where you want your source code to reside, and run the following command in a terminal window:
 
 ```
-npm init coscene-extension@latest my-extension-name
+npm init coscene-extension@1.1.0 my-extension-name
+cd my-extension-name
 ```
 
-This will set up the extension directory structure. Your extension entry point is the `index.ts` file.
+This command uses generator 1.1.0 to create a React 19.3.1 panel and install its dependencies. The extension entry point is `src/index.ts`. React and ReactDOM are bundled with the extension. For existing extensions, see [React 19 Compatibility and Migration](./3-react-19-migration.md).
 
-The entry point script must export an ExtensionModule — a function named `activate` that accepts a single `ExtensionContext` parameter.
+The entry module follows the `ExtensionModule` interface and must export an `activate` function accepting a single `ExtensionContext` parameter.
 
 ## API Reference
 
 - [ExtensionContext](/docs/viz/extensions/api/entry-point/extension-context)
-- @coscene/coscene-extension
+- [`@coscene/extension` SDK](https://www.npmjs.com/package/@coscene/extension)

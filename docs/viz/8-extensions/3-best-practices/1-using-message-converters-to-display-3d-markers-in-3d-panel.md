@@ -17,12 +17,13 @@ sidebar_position: 1
 - 刻行时空可视化功能的基础使用
 - [js/ts 的基础语法](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 - [npm 等前端包管理工具的基础使用](https://docs.npmjs.com/)
-- [当前设备安装 nodejs 14 及以上版本](https://nodejs.org/en/download/)
+- [当前设备安装 Node.js 24](https://nodejs.org/en/download/)
 
 ## 初始化项目
 使用 [create-coscene-extension](https://github.com/coscene-io/create-coscene-extension) 创建一个项目：
 ```bash
-npm init coscene-extension@latest mySceneUpdateConverter 
+npm init coscene-extension@1.1.0 mySceneUpdateConverter
+cd mySceneUpdateConverter
 ```
 这条命令将创建一个 `mySceneUpdateConverter` 目录，里面包含一些模板源代码。
 

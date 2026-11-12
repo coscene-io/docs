@@ -41,3 +41,9 @@ This function is called when your panel is initialized.
 `void` | () => `void`
 
 (Optional) A function that will be called when the panel is removed or replaced. Perform any cleanup logic here to gracefully dismantle your panel.
+
+Return synchronous, idempotent cleanup. A React panel normally calls `root.unmount()` here and releases timers, workers, listeners, or GPU resources it created.
+
+On removal or replacement, the host first invalidates the context and revokes subscriptions, publishers, and other resources. It then invokes this function outside the host’s React commit. Do not rely on `saveState`, `publish`, or other context mutations during cleanup; persist state while the panel is active. Do not add another delayed unmount.
+
+Each `initPanel` call should create its own root and resources. Do not reuse an unmounted root or the context from an earlier invocation. See [React 19 Compatibility and Migration](../../3-react-19-migration.md#lifecycle).

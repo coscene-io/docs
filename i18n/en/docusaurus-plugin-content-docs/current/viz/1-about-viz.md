@@ -87,22 +87,33 @@ The "Right Sidebar" in the visualization interface allows editing variable infor
 
 ![viz-1-11-Eng](./img/viz-1-11-Eng.png)
 
-### Timeline
+### Timeline {#timeline}
 
-The "Timeline" is a tool for controlling and viewing the playback progress of visualizations, displaying precise timestamps of different moments.
+Use the timeline to play, pause, seek, and inspect Moments. Drag its upper edge to adjust its height, or the divider beside the track list to adjust the list width.
 
-![viz-1-12-Eng](./img/viz-1-12-Eng.png)
+| Control                                     | Purpose                                                                                                      |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Seek backward / forward                     | Seek by the configured step interval while paused. Set the interval in More timeline tools.                  |
+| Play / Pause                                | Start or pause playback.                                                                                     |
+| Loop playback                               | Repeat the current playback range; when replaying a Moment, use it to review that segment repeatedly.        |
+| Current playback time / Time display format | View and adjust playback time, and change its display format.                                                |
+| Create Moment                               | Select start and end points on the timeline to create a segment.                                             |
+| Moment subtitles / Linked event adjustment  | Control subtitles for Moment names and linked adjustment when editing time ranges.                           |
+| Zoom / Zoom to fit                          | Change the visible timeline range. This is separate from playback speed.                                     |
+| More timeline tools                         | View keyboard shortcuts, change the step interval, and open project settings for Moment grouping and tracks. |
 
-The functions in this area include:
+![More timeline tools: keyboard shortcuts, step size, and Moment grouping and tracks](./img/1-timeline-tools.jpg)
 
-1. **Create Moment** button for selecting the start and end points of a "Moment"
-2. Display of the start time, end time, and duration of file playback
-3. Current progress timestamp
-4. **Pause** and **forward**/**backward** buttons
-5. **Playback Step**：Adjust the forward/backward duration when paused
-6. **Loop playback** button
-7. **Playback speed** button
-8. **Moment**：A moment is represented by a blue rectangle on the timeline
-9. **Playable Time Range**：The playable time range is represented by a light blue rectangle on the timeline
+#### Playback speed {#playback-speed}
+
+Click the speed button and drag the slider to select a preset from **0.01× to 10×**. The reset button restores **1×**. With the slider focused, use the arrow keys to move between presets. Speed changes affect playback without changing the original data timestamps.
+
+![Playback speed slider and reset button](./img/1-playback-speed.jpg)
+
+#### Moment tracks {#moment-tracks}
+
+Moments appear in groups and custom-field tracks according to project settings. Tracks and field values can use different colors; Moments are no longer all represented by one blue rectangle. Expand or collapse groups and use the eye icon on tracks that support visibility controls. Hiding a track does not delete its Moments.
+
+See [Moments](./5-create-moment-viz.md#grouping-and-tracks) for grouping, field tracks, and creation steps.
 
 ---

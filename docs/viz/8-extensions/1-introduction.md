@@ -18,8 +18,8 @@ sidebar_position: 1
 
 ### 链接和资源
 
-* 指南：创建自定义面板
-* 构建自定义面板扩展（React）
+- [指南：创建自定义面板](./4-guides/1-create-custom-panel.md)
+- [构建自定义面板扩展（React）](./3-best-practices/2-custom-panel.md)
 
 ## 消息转换器 {#message-converters}
 
@@ -29,9 +29,9 @@ sidebar_position: 1
 
 ### 链接和资源
 
-* 指南：创建消息转换器
-* 编写消息转换器扩展（地图面板）
-* 编写消息转换器扩展（3D 面板）
+- 指南：创建消息转换器
+- 编写消息转换器扩展（地图面板）
+- 编写消息转换器扩展（3D 面板）
 
 ## 主题别名
 
@@ -45,21 +45,20 @@ sidebar_position: 1
 
 要求：
 
-* Node.js 14+
+- Node.js 24（与脚手架 CI 使用的版本一致）
 
 要设置您的扩展项目，请导航到您希望源代码所在的目录，并在终端窗口中运行以下命令：
 
 ```
-npm init coscene-extension@latest my-extension-name
+npm init coscene-extension@1.1.0 my-extension-name
+cd my-extension-name
 ```
 
-这将设置扩展目录结构。您的扩展入口点是 `index.ts` 文件。
+此命令使用脚手架 1.1.0 创建 React 19.3.1 面板，并安装依赖。扩展入口点是 `src/index.ts`。React 与 ReactDOM 随扩展一起打包。已有扩展是否需要迁移，请参阅 [React 19 兼容与迁移](./3-react-19-migration.md)。
 
-入口点脚本必须导出一个 ExtensionModule — 即一个接受单个 `ExtensionContext` 参数的 `activate` 函数。
+入口模块遵循 `ExtensionModule` 接口，必须导出一个接受单个 `ExtensionContext` 参数的 `activate` 函数。
 
 ## API 参考
 
-* [ExtensionContext](/docs/viz/extensions/api/entry-point/extension-context)
-* @coscene/coscene-extension
-
-
+- [ExtensionContext](/docs/viz/extensions/api/entry-point/extension-context)
+- [`@coscene/extension` SDK](https://www.npmjs.com/package/@coscene/extension)

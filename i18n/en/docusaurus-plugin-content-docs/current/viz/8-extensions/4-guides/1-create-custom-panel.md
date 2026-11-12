@@ -8,10 +8,11 @@ Build a simple panel extension that subscribes to a topic, then register it so y
 
 ## Setup
 
-In your terminal window, `cd` to the directory where your source code resides, then run the following command:
+Use Node.js 24. In your terminal window, `cd` to the directory where your source code resides, then run the following command:
 
 ```
-npm init coscene-extension@latest myExtensionName
+npm init coscene-extension@1.1.0 myExtensionName
+cd myExtensionName
 ```
 
 This will use create-coscene-extension to create a `myExtensionName` directory containing the source code for a sample custom panel.
@@ -38,6 +39,48 @@ The panel file referenced in `index.ts` defines the behavior and UI of the custo
 While `ExamplePanel.tsx` is written in React, panels are framework-agnostic – meaning they can be written using DOM primitives, React, or any other frontend framework. See the custom-image-extension for an example panel not written in React.
 
 The `initPanel` function accepts a `PanelExtensionContext` parameter, which contains properties and methods for accessing panel data and rendering UI updates. It can also return an optional cleanup function that runs when the extension's `panelElement` is unmounted.
+
+The entry point above imports `ExtensionContext` from `@coscene/extension` and `initExamplePanel` from `./ExamplePanel`. Generator 1.1.0 uses React 19.3.1. Keep the template’s root management. This minimal example displays the number of messages in the current batch; replace `/some/topic` with a topic from your data source.
+
+```tsx
+import { PanelExtensionContext } from '@coscene/extension';
+import { ReactElement, useEffect, useLayoutEffect, useState } from 'react';
+import { createRoot } from 'react-dom/client';
+
+function ExamplePanel({ context }: { context: PanelExtensionContext }): ReactElement {
+  const [messageCount, setMessageCount] = useState(0);
+  const [renderDone, setRenderDone] = useState<(() => void) | undefined>();
+
+  useLayoutEffect(() => {
+    context.onRender = (renderState, done) => {
+      setMessageCount(renderState.currentFrame?.length ?? 0);
+      setRenderDone(() => done);
+    };
+    context.watch('currentFrame');
+    context.subscribe([{ topic: '/some/topic' }]);
+
+    return () => {
+      context.onRender = undefined;
+    };
+  }, [context]);
+
+  useEffect(() => {
+    renderDone?.();
+  }, [renderDone]);
+
+  return <div>{messageCount}</div>;
+}
+
+export function initExamplePanel(context: PanelExtensionContext): () => void {
+  const root = createRoot(context.panelElement);
+  root.render(<ExamplePanel context={context} />);
+  return () => {
+    root.unmount();
+  };
+}
+```
+
+Call `done` in an effect after the React update commits. Calling it immediately after `setState` does not establish that the UI has updated. On removal, the host invalidates the context before calling the returned cleanup, so save state while the panel is active. Call `root.unmount()` directly during cleanup and release resources you created. Do not add another delayed unmount. See [React 19 Compatibility and Migration](../3-react-19-migration.md).
 
 ### `PanelExtensionContext`
 

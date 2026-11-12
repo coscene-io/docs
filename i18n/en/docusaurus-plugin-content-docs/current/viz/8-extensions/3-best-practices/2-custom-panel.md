@@ -23,14 +23,15 @@ Before starting, you need to understand/install some basic concepts/environments
 - [Basic JS/TS syntax](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 - [Basic React usage](https://react.dev/)
 - [Basic usage of frontend package managers like npm](https://docs.npmjs.com/)
-- [Node.js version 14 or higher installed on your current device](https://nodejs.org/en/download/)
+- [Node.js 24 installed on your current device](https://nodejs.org/en/download/)
 
 ## Initialize Project
 
 Create a project using [create-coscene-extension](https://github.com/coscene-io/create-coscene-extension):
 
 ```bash
-npm init coscene-extension@latest custom-raw-message-panel
+npm init coscene-extension@1.1.0 custom-raw-message-panel
+cd custom-raw-message-panel
 ```
 
 This command will create a `custom-raw-message-panel` directory containing some template source code.
@@ -42,7 +43,7 @@ Then, we need to install some dependencies in our project:
 - `lodash` is a well-known JavaScript utility library that provides many useful functions, including array operations, object operations, etc.
 
 ```bash
-npm install @microlink/react-json-view immer lodash
+npm install --save-exact @microlink/react-json-view@1.26.1 immer@10.1.1 lodash@4.17.21
 ```
 
 Then we open the `package.json` file and modify the `displayName` and `description` fields to `custom raw message panel`. The modified `package.json` file should look like this:
@@ -60,6 +61,8 @@ Then we open the `package.json` file and modify the `displayName` and `descripti
 
 Now open the `custom-raw-message-panel` folder in your chosen editor, then open the `src/index.ts` file. You'll see that the file already registers an example panel as `example-panel`. First, we need to change this example panel's name to `custom-raw-message-panel`. The modified `index.ts` file should look like this:
 
+Import `ReactElement`, `Fragment`, and the hooks used below from `react`. Keep the template’s `createRoot` and `root.unmount()` calls; see [Create a Custom Panel](../4-guides/1-create-custom-panel.md) for the complete root and cleanup example. This tutorial pins the dependencies used in the upgrade acceptance checks. Commit `package.json` and the lockfile together, and revalidate after upgrading third-party components.
+
 ```ts
 import { ExtensionContext } from '@coscene/extension';
 
@@ -76,11 +79,11 @@ export function activate(extensionContext: ExtensionContext): void {
 Then we open the `src/ExamplePanel.tsx` file. In the `src/ExamplePanel.tsx` file, you'll see a simple panel component. We need to first explain the code in this file, then modify it according to our needs. This file uses React's state management to track subscribed topics, messages, and their rendering state.
 
 ```ts
-function ExamplePanel({ context }: { context: PanelExtensionContext }): JSX.Element {
+function ExamplePanel({ context }: { context: PanelExtensionContext }): ReactElement {
   const [topics, setTopics] = useState<readonly Topic[] | undefined>();
   const [messages, setMessages] = useState<readonly MessageEvent<unknown>[] | undefined>();
 
-  const [renderDone, setRenderDone] = useState<() => void | undefined>();
+  const [renderDone, setRenderDone] = useState<(() => void) | undefined>();
 ```
 
 In the example, when relevant updates are detected, the `onRender` event will run:
@@ -91,6 +94,10 @@ useLayoutEffect(() => {
     setRenderDone(() => done);
     setTopics(renderState.topics);
     setMessages(renderState.currentFrame);
+  };
+
+  return () => {
+    context.onRender = undefined;
   };
 }, [context]);
 ```
@@ -116,7 +123,7 @@ context.watch('currentFrame');
 Then we need to use the `context.subscribe` function to subscribe to the topic array. Messages from these topics will be populated into `renderState.currentFrame`
 
 ```ts
-context.subscribe(['/some/topic']);
+context.subscribe([{ topic: '/some/topic' }]);
 ```
 
 Finally, when the panel finishes rendering, we need to call the `renderDone` function to indicate that the panel has completed the previous rendering cycle
@@ -135,10 +142,10 @@ return (
     <h2>Welcome to your new extension panel!</h2>
     {/* ... */}
     {(topics ?? []).map((topic) => (
-      <>
-        <div key={topic.name}>{topic.name}</div>
-        <div key={topic.datatype}>{topic.datatype}</div>
-      </>
+      <Fragment key={topic.name}>
+        <div>{topic.name}</div>
+        <div>{topic.schemaName}</div>
+      </Fragment>
     ))}
     {/* ... */}
   </div>
@@ -214,7 +221,7 @@ import { set } from 'lodash';
 
 // Build our panel state from the context's initialState, filling in any missing values.
 const [state, setState] = useState<State>(() => {
-  const partialState = context.initialState as Partial<State>;
+  const partialState = (context.initialState ?? {}) as Partial<State>;
   return {
     data: {
       label: partialState.data?.label ?? 'Data',
@@ -239,16 +246,13 @@ const actionHandler = useCallback(
       // Since our data node contains label and visibility properties, this combination can automatically handle label editing and node visibility toggling,
       // without needing to write special handling logic.
       setState(produce((draft) => set(draft, path, value)));
-
-      // If the topic is changed, update our subscription.
-      if (path[1] === 'topic') {
-        context.subscribe([{ topic: value as string }]);
-      }
     }
   },
-  [context],
+  [],
 );
 ```
+
+Subscriptions are managed by the effect below, which depends on `state.data.topic`. Clearing the selection calls `context.subscribe([])` to remove the previous subscription.
 
 Next, we use `context.updatePanelSettingsEditor` to register settings in our panel, and when the settings state changes, use `context.saveState` to save the state to the layout.
 
@@ -338,10 +342,12 @@ useLayoutEffect(() => {
   // Tell the panel context we want to subscribe to messages in the current frame
   context.watch("currentFrame");
 
-  // Subscribe to our initial topic
-  if (state.data.topic) {
-    context.subscribe([{ topic: state.data.topic }]);
-  }
+  // Update the subscription, or clear it when no topic is selected
+  context.subscribe(state.data.topic ? [{ topic: state.data.topic }] : []);
+
+  return () => {
+    context.onRender = undefined;
+  };
 }, [context, state.data.topic]);
 ```
 
@@ -378,14 +384,19 @@ To build and install the plugin for local testing in coStudio, run the following
 npm run local-install
 ```
 
-In coStudio, open the plugin list on the right side, and you'll now see `custom raw message panel` in the list of installed plugins:
-![extensionList](./img/customRawMessageExtensionList.png)
+To test in the Web app, run `npm run package`, then choose the generated `.coe` file from **Extensions** → **Install Extension** → **Install from Local** in the right sidebar. `local-install` does not update browser extensions.
+
+Open the extension list on the right side, and you'll now see `custom raw message panel` in the list of installed extensions:
+
+![Installed custom raw message panel extension](./img/3-2-custom-panel-extensions.jpg)
 
 The panel list will also have a new `custom-raw-message-panel` panel. Add our panel and open any file, and you can use our custom `custom-raw-message-panel` panel:
-![customRawMessagePanel](./img/customRawMessagePanelList.png)
+
+![Custom raw message panel in the panel catalog](./img/3-2-custom-panel-catalog.jpg)
 
 You can choose the topic you want to view in the settings and customize the panel's appearance to view messages for the corresponding topic in the panel:
-![customRawMessagePanel](./img/customRawMessagePanel.png)
+
+![Custom raw message panel with topic and appearance settings](./img/3-2-custom-panel-settings.jpg)
 
 ## Share Your Plugin
 

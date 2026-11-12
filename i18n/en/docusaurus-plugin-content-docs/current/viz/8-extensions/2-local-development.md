@@ -4,21 +4,45 @@ sidebar_position: 2
 
 # Local Development
 
-Build and test your custom visualization extensions locally before publishing.
+Use Node.js 24 and run the commands below from the extension project root. Create a new project with `npm init coscene-extension@1.1.0 my-extension`, which installs dependencies. For an existing project, use `npm ci` to install from the committed lockfile.
 
-## Installation
+## Build and check {#build}
 
-To build and install your extension to the local coStudio extensions folder, run `npm run local-install`. This will create a folder under your user home directory (e.g., `~/.coStudio/extensions/unknown.myExtensionName-0.0.0`) containing your compiled extension.
+```bash
+npm run lint:ci
+npm run build
+```
 
-Open the latest version of the coStudio desktop application. You should now see `myExtensionName` in the list of installed extensions in the application settings.
+`build` checks whether the extension compiles. For React 19 projects, also review runtime packages, types, component libraries, and bundling boundaries in [React 19 Compatibility and Migration](./3-react-19-migration.md).
 
-After installation, you should be able to open the "Add Panel" menu and see an option called `ExamplePanel`. You have successfully loaded your first visualization extension!
+## Develop in the desktop application {#desktop}
 
-(🏗️ Work in progress, expected to launch in May 2025)
-To install local extensions on the web application, you must first package your extension, then drag and drop the `.coe` file onto an open visualization page. You can also open `.coe` files in the desktop application by dragging and dropping or double-clicking.
+```bash
+npm run local-install
+```
 
-## Development
+This builds the extension and copies the output into the local coStudio extension directory, for example `~/.coStudio/extensions/unknown.my-extension-0.0.0`. Open the target coStudio version and confirm the extension appears in the extension list and Add Panel menu.
 
-Every time you make changes to your extension, you must run `npm run local-install` to build it into the local extensions folder.
+After each code change, run `npm run local-install` again, then reload or restart coStudio. This command installs only into the local desktop application; it does not update extensions in the browser.
 
-Reload or restart coStudio to execute the latest version of your extension code in the application. Alternatively, you can simply run `npm run build` to confirm that your code compiles without installing it locally.
+## Validate in the Web application {#web}
+
+```bash
+npm run package
+```
+
+This creates a `.coe` file. Install it in the target Web application using the local file method in [Extension Installation](./extensions-install.mdx). For a new release, update the extension’s own `version`, package it again, and install the new artifact. The generator version and the extension’s own version are separate.
+
+## Runtime validation {#runtime-validation}
+
+Validate the actual Web and desktop builds you need to support:
+
+1. Add the panel, select a data source and topic, and check the initial state and displayed messages.
+2. Play, pause, seek, and switch topics. Confirm that every delivered `onRender` calls `done` after the corresponding UI update commits.
+3. Change settings and reload. Confirm `initialState` restores saved content.
+4. Repeatedly remove, reopen, or replace the panel. Check for duplicate messages and leftover workers, timers, or listeners.
+5. Exercise editors, canvas, drag/drop, and other third-party components, and check the console for React errors.
+
+The host invalidates the context immediately when a panel closes. Save state while active; cleanup should only unmount and release resources. When checking the build artifact, confirm React, ReactDOM, and the JSX runtime are bundled with the extension rather than resolved from the host.
+
+After validation, commit the source, `package.json`, and lockfile together, and distribute the tested `.coe`.

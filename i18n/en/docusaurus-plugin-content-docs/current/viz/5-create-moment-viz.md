@@ -48,6 +48,25 @@ Click the delete button shown in the illustration to delete this moment.
 
 <img src={require('./img/viz-9-7-Eng.png').default} alt="viz-9-7" width="800" />
 
+## Grouping and custom-field tracks {#grouping-and-tracks}
+
+Open More timeline tools and select Moment grouping and tracks to visit the current project’s Moment custom-field settings.
+
+![Entry point for Moment grouping and tracks](./img/1-timeline-tools.jpg)
+
+- **Grouping:** Single-select enum fields form a hierarchy in the configured order, with up to five levels. Moments without a field value appear in the Not filled group. Group names and field values come from project configuration.
+- **Custom-field tracks:** Configured fields appear as additional tracks so you can compare values for the same Moments. A Moment appearing on multiple field tracks does not create duplicate records.
+- **Colors:** Group tracks and field values use colors for distinction. Colors are not a universal status rule; read them together with track labels and field values.
+- **Collapse and visibility:** Use arrows to expand or collapse groups. Tracks without child groups, and custom-field tracks, offer eye icons to hide or restore visibility. Hiding does not delete data.
+
+Grouping and track rules belong to the project and affect its Moment display. Timeline visibility and collapse controls adjust the current view without changing Moment field values.
+
+## Creation and playback tips {#creation-and-playback}
+
+When creating a Moment, the visualization remembers the previous Moment’s custom fields within the current session to reduce repeated entry. Review those values before submitting a new segment.
+
+After navigating to a Moment, enable loop playback to review the segment repeatedly and adjust speed using the [playback speed slider](./1-about-viz.md#playback-speed). Before editing a Moment range, check the linked adjustment setting to avoid unexpected changes to neighboring ranges.
+
 ## Viewing Moments
 
 1. Click the record name in the top toolbar of the visualization page to go to the record details page.

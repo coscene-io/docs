@@ -78,6 +78,10 @@ context.onRender = (renderState, done) => {
 };
 ```
 
+React’s `setState` and `root.render()` schedule updates; returning from these calls does not mean an update has committed. A React panel should call the current `done` in an effect after the corresponding commit, as shown in [Create a Custom Panel](../../4-guides/1-create-custom-panel.md).
+
+The effect registering the handler should return cleanup that sets `context.onRender = undefined`. While rendering is busy, input is coalesced into a pending update; historical frames are not buffered indefinitely. Incoming state is read-only. Message arrays and payloads can share references, so do not mutate them.
+
 #### Parameters
 
 | Parameter   | Type                                                                                          |

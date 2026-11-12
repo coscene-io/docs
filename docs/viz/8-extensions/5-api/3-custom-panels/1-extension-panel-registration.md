@@ -41,3 +41,9 @@ initPanel: (context) => void | () => void;
 `void` | () => `void`
 
 （可选）一个函数，当面板被移除或替换时将被调用。在这里执行任何清理逻辑，以优雅地拆除你的面板。
+
+返回同步、可重复安全调用的清理函数。React 面板通常在此调用 `root.unmount()`，并释放自己创建的定时器、Worker、监听器或 GPU 资源。
+
+面板被移除或替换时，宿主先使 context 失效并撤销订阅、发布者等资源，再在宿主 React commit 之外调用此函数。因此，不应依赖清理阶段的 `saveState`、`publish` 或其他 context 修改；需要持久化的状态应在面板活动期间保存。无需自行增加第二次延迟卸载。
+
+每次 `initPanel` 调用都应创建独立 root 和资源，不能复用已卸载的 root 或前一次调用的 context。参见 [React 19 兼容与迁移](../../3-react-19-migration.md#lifecycle)。

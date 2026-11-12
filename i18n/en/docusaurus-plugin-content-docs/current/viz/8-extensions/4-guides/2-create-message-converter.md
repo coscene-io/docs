@@ -8,22 +8,23 @@ Build a simple message converter to transform custom GPS messages into messages 
 
 ## Setup
 
-In your terminal window, `cd` to the directory where your source code resides, then run the following command:
+Use Node.js 24. In your terminal window, `cd` to the directory where your source code resides, then run the following command:
 
 ```
-npm init coscene-extension@latest myExtensionName
+npm init coscene-extension@1.1.0 myExtensionName
+cd myExtensionName
 ```
 
-This will use create-coscene-extension to create a `myExtensionName` directory containing the source code for a sample message converter.
+This creates the default React panel template and installs its dependencies in `myExtensionName`. Replace the panel registration in `src/index.ts` with the converter below. If this extension only provides a converter, remove the unused `src/ExamplePanel.tsx` and React dependencies.
 
 ## Registering the Converter
 
 The `index.ts` file in your project's `src` folder is the entry point for your extension source code. It must export an `activate` function that accepts an `extensionContext` parameter of type ExtensionContext.
 
-To register a message converter, call `registerMessageConverter` on the `extensionContext` parameter, passing three arguments: the source schema type, the target schema type, and the actual `converter` function.
+To register a message converter, call `registerMessageConverter` on the `extensionContext` parameter, passing an object with three properties: the source schema type, the target schema type, and the `converter` function.
 
 ```
-import { MessageEvent } from "@coscene/extension";
+import { ExtensionContext, MessageEvent } from "@coscene/extension";
 
 export function activate(extensionContext: ExtensionContext) {
   extensionContext.registerMessageConverter({

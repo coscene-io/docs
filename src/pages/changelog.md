@@ -5,6 +5,16 @@ id: changelog
 
 # 发布历史
 
+## [create-coscene-extension 1.1.0] - 2026-11-12
+
+### 【开发者工具】
+
+- 扩展脚手架默认生成 React / ReactDOM 19.3.1 面板，使用 React 19.3.0 类型；推荐 Node.js 24。
+- 更新面板卸载清理和示例兼容性。SDK 仍为 `@coscene/extension` 1.x，`.coe` 格式未改变，自包含的旧 React 18 插件不必仅因宿主升级而重写。
+- 新增 [React 19 兼容与迁移指南](/docs/viz/extensions/react-19-migration)，包含依赖打包、渲染完成回调和分发前验证。工具发布见 [v1.1.0](https://github.com/coscene-io/create-coscene-extension/releases/tag/v1.1.0)。
+
+---
+
 ## [26.13.0] - 2026-04-14
 
 ### 【新增】
