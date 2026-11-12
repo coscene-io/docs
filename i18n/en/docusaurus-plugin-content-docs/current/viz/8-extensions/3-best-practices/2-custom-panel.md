@@ -384,14 +384,16 @@ To build and install the plugin for local testing in coStudio, run the following
 npm run local-install
 ```
 
-In coStudio, open the plugin list on the right side, and you'll now see `custom raw message panel` in the list of installed plugins:
-![extensionList](./img/customRawMessageExtensionList.png)
+To test in the Web app, run `npm run package`, then choose the generated `.coe` file from **Extensions** → **Install Extension** → **Install from local** in the right sidebar. `local-install` does not update browser extensions.
+
+Open the extension list on the right side, and you'll now see `custom raw message panel` in the list of installed extensions:
+![Installed custom raw message panel extension](./img/3-2-custom-panel-extensions.jpg)
 
 The panel list will also have a new `custom-raw-message-panel` panel. Add our panel and open any file, and you can use our custom `custom-raw-message-panel` panel:
-![customRawMessagePanel](./img/customRawMessagePanelList.png)
+![Custom raw message panel in the panel catalog](./img/3-2-custom-panel-catalog.jpg)
 
 You can choose the topic you want to view in the settings and customize the panel's appearance to view messages for the corresponding topic in the panel:
-![customRawMessagePanel](./img/customRawMessagePanel.png)
+![Custom raw message panel with topic and appearance settings](./img/3-2-custom-panel-settings.jpg)
 
 ## Share Your Plugin
 

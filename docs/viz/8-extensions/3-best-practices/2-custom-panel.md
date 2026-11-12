@@ -359,14 +359,16 @@ return (
 npm run local-install
 ```
 
-在 coStudio 中，打开右侧的插件列表，您现在将看到 `custom raw message panel` 已安装插件的列表中：
-![extensionList](./img/customRawMessageExtensionList.png)
+在 Web 应用中测试时，运行 `npm run package`，然后通过右侧“插件”中的“安装插件”→“从本地安装”选择生成的 `.coe` 文件。`local-install` 不会更新浏览器中的插件。
+
+打开右侧的插件列表，您现在将看到 `custom raw message panel` 已在安装列表中：
+![已安装的自定义消息面板插件](./img/3-2-custom-panel-extensions.jpg)
 
 面板列表中也将多出一个 `custom-raw-message-panel` 的面板，添加我们的面板，并且打开任意文件，你就可以使用我们自定义的 `custom-raw-message-panel` 面板了：
-![customRawMessagePanel](./img/customRawMessagePanelList.png)
+![面板目录中的自定义消息面板](./img/3-2-custom-panel-catalog.jpg)
 
 你可以在设置中选择你要查看的话题，并且自定义面板的外观，在面板中查看到对应话题的消息：
-![customRawMessagePanel](./img/customRawMessagePanel.png)
+![自定义消息面板及话题和外观设置](./img/3-2-custom-panel-settings.jpg)
 
 ## 分享您的插件
 要与他人分享您的插件，您需要将其打包为 .coe 文件。为此，请在插件目录中运行以下命令：
