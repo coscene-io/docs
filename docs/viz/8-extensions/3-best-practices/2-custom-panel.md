@@ -24,6 +24,7 @@ sidebar_position: 2
 使用 [create-coscene-extension](https://github.com/coscene-io/create-coscene-extension) 创建一个项目：
 ```bash
 npm init coscene-extension@1.1.0 custom-raw-message-panel
+cd custom-raw-message-panel
 ```
 这条命令将创建一个 `custom-raw-message-panel` 目录，里面已经包含一些模板源代码
 
@@ -200,7 +201,7 @@ import { set } from "lodash";
 
 // 从上下文的 initialState 构建我们的面板状态，填充任何可能缺失的值。
 const [state, setState] = useState<State>(() => {
-  const partialState = context.initialState as Partial<State>;
+  const partialState = (context.initialState ?? {}) as Partial<State>;
   return {
     data: {
       label: partialState.data?.label ?? "Data",
@@ -225,16 +226,13 @@ const actionHandler = useCallback(
       // 由于我们的数据节点包含了 label 和 visibility 属性，这种组合方式可以自动处理标签编辑和节点可见性切换，
       // 而不需要编写特殊的处理逻辑。
       setState(produce((draft) => set(draft, path, value)));
-
-      // 如果主题被更改，更新我们的订阅。
-      if (path[1] === "topic") {
-        context.subscribe([{ topic: value as string }]);
-      }
     }
   },
-  [context],
+  [],
 );
 ```
+
+订阅由下文依赖 `state.data.topic` 的 effect 统一管理。清空话题选择时，调用 `context.subscribe([])` 取消旧订阅。
 
 接下来，我们使用 `context.updatePanelSettingsEditor` 来将设置注册到我们的面板中，并且当设置的状态变化时，使用 `context.saveState` 将状态保存到布局中。
 ```ts
@@ -321,10 +319,8 @@ useLayoutEffect(() => {
   // 告诉面板上下文我们想要订阅当前帧的消息
   context.watch("currentFrame");
 
-  // 订阅我们初始的话题
-  if (state.data.topic) {
-    context.subscribe([{ topic: state.data.topic }]);
-  }
+  // 根据当前选择更新订阅；未选择时取消订阅
+  context.subscribe(state.data.topic ? [{ topic: state.data.topic }] : []);
 
   return () => {
     context.onRender = undefined;

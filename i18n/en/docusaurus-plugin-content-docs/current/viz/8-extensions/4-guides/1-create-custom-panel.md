@@ -12,6 +12,7 @@ Use Node.js 24. In your terminal window, `cd` to the directory where your source
 
 ```
 npm init coscene-extension@1.1.0 myExtensionName
+cd myExtensionName
 ```
 
 This will use create-coscene-extension to create a `myExtensionName` directory containing the source code for a sample custom panel.

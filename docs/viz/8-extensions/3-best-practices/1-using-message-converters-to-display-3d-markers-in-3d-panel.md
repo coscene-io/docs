@@ -23,6 +23,7 @@ sidebar_position: 1
 使用 [create-coscene-extension](https://github.com/coscene-io/create-coscene-extension) 创建一个项目：
 ```bash
 npm init coscene-extension@1.1.0 mySceneUpdateConverter
+cd mySceneUpdateConverter
 ```
 这条命令将创建一个 `mySceneUpdateConverter` 目录，里面包含一些模板源代码。
 

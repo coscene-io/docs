@@ -8,22 +8,23 @@ sidebar_position: 2
 
 ## 设置
 
-在终端窗口中，`cd` 到您的源代码所在的目录，然后运行以下命令：
+使用 Node.js 24。在终端窗口中，`cd` 到您的源代码所在的目录，然后运行以下命令：
 
 ```
 npm init coscene-extension@1.1.0 myExtensionName
+cd myExtensionName
 ```
 
-这将使用 create-coscene-extension 创建一个 `myExtensionName` 目录，其中包含示例消息转换器的源代码。
+此命令在 `myExtensionName` 中创建默认的 React 面板模板并安装依赖。将 `src/index.ts` 中的面板注册替换为下文的转换器注册。如果扩展只提供转换器，可删除未使用的 `src/ExamplePanel.tsx` 及 React 依赖。
 
 ## 注册转换器
 
 项目 `src` 文件夹中的 `index.ts` 文件是扩展源代码的入口点。它必须导出一个 `activate` 函数，该函数接受一个类型为 ExtensionContext 的 `extensionContext` 参数。
 
-要注册消息转换器，我们在 `extensionContext` 参数上调用 `registerMessageConverter`，并传入三个参数：源架构类型、目标架构类型和实际的 `converter` 函数。
+要注册消息转换器，我们在 `extensionContext` 参数上调用 `registerMessageConverter`，并传入一个包含三个属性的对象：源架构类型、目标架构类型和实际的 `converter` 函数。
 
 ```
-import { MessageEvent } from "@coscene/extension";
+import { ExtensionContext, MessageEvent } from "@coscene/extension";
 
 export function activate(extensionContext: ExtensionContext) {
   extensionContext.registerMessageConverter({

@@ -51,6 +51,7 @@ To set up your extension project, navigate to the directory where you want your 
 
 ```
 npm init coscene-extension@1.1.0 my-extension-name
+cd my-extension-name
 ```
 
 This command uses generator 1.1.0 to create a React 19.3.1 panel and install its dependencies. The extension entry point is `src/index.ts`. React and ReactDOM are bundled with the extension. For existing extensions, see [React 19 Compatibility and Migration](./3-react-19-migration.md).

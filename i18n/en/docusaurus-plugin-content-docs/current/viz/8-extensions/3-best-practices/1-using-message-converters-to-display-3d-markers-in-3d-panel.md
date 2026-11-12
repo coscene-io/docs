@@ -30,6 +30,7 @@ Create a project using [create-coscene-extension](https://github.com/coscene-io/
 
 ```bash
 npm init coscene-extension@1.1.0 mySceneUpdateConverter
+cd mySceneUpdateConverter
 ```
 
 This command will create a `mySceneUpdateConverter` directory containing some template source code.

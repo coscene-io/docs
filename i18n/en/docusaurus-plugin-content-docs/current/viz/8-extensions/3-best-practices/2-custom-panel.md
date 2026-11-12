@@ -31,6 +31,7 @@ Create a project using [create-coscene-extension](https://github.com/coscene-io/
 
 ```bash
 npm init coscene-extension@1.1.0 custom-raw-message-panel
+cd custom-raw-message-panel
 ```
 
 This command will create a `custom-raw-message-panel` directory containing some template source code.
@@ -220,7 +221,7 @@ import { set } from 'lodash';
 
 // Build our panel state from the context's initialState, filling in any missing values.
 const [state, setState] = useState<State>(() => {
-  const partialState = context.initialState as Partial<State>;
+  const partialState = (context.initialState ?? {}) as Partial<State>;
   return {
     data: {
       label: partialState.data?.label ?? 'Data',
@@ -245,16 +246,13 @@ const actionHandler = useCallback(
       // Since our data node contains label and visibility properties, this combination can automatically handle label editing and node visibility toggling,
       // without needing to write special handling logic.
       setState(produce((draft) => set(draft, path, value)));
-
-      // If the topic is changed, update our subscription.
-      if (path[1] === 'topic') {
-        context.subscribe([{ topic: value as string }]);
-      }
     }
   },
-  [context],
+  [],
 );
 ```
+
+Subscriptions are managed by the effect below, which depends on `state.data.topic`. Clearing the selection calls `context.subscribe([])` to remove the previous subscription.
 
 Next, we use `context.updatePanelSettingsEditor` to register settings in our panel, and when the settings state changes, use `context.saveState` to save the state to the layout.
 
@@ -344,10 +342,8 @@ useLayoutEffect(() => {
   // Tell the panel context we want to subscribe to messages in the current frame
   context.watch("currentFrame");
 
-  // Subscribe to our initial topic
-  if (state.data.topic) {
-    context.subscribe([{ topic: state.data.topic }]);
-  }
+  // Update the subscription, or clear it when no topic is selected
+  context.subscribe(state.data.topic ? [{ topic: state.data.topic }] : []);
 
   return () => {
     context.onRender = undefined;

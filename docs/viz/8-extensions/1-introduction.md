@@ -51,6 +51,7 @@ sidebar_position: 1
 
 ```
 npm init coscene-extension@1.1.0 my-extension-name
+cd my-extension-name
 ```
 
 此命令使用脚手架 1.1.0 创建 React 19.3.1 面板，并安装依赖。扩展入口点是 `src/index.ts`。React 与 ReactDOM 随扩展一起打包。已有扩展是否需要迁移，请参阅 [React 19 兼容与迁移](./3-react-19-migration.md)。

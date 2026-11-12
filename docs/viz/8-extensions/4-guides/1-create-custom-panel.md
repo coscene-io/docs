@@ -12,6 +12,7 @@ sidebar_position: 1
 
 ```
 npm init coscene-extension@1.1.0 myExtensionName
+cd myExtensionName
 ```
 
 这将使用 create-coscene-extension 创建一个 `myExtensionName` 目录，其中包含示例自定义面板的源代码。
