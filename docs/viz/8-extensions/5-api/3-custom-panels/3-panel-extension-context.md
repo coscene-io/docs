@@ -78,6 +78,10 @@ context.onRender = (renderState, done) => {
 };
 ```
 
+React 的 `setState` 和 `root.render()` 会调度更新，它们返回时不代表更新已经提交。React 面板应在对应更新提交后的 effect 中调用本次 `done`，可参考[创建自定义面板](../../4-guides/1-create-custom-panel.md)。
+
+注册处理器的 effect 应返回清理函数并设置 `context.onRender = undefined`。渲染未完成时，新输入会合并为待处理更新，不保证无限缓冲历史帧。传入的状态是只读数据；消息数组和内容可能共享引用，不要直接修改。
+
 #### 参数
 
 | 参数        | 类型                                                                                                        |

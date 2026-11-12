@@ -18,12 +18,12 @@ sidebar_position: 2
 - [js/ts 的基础语法](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 - [react 的基础使用](https://react.dev/)
 - [npm 等前端包管理工具的基础使用](https://docs.npmjs.com/)
-- [当前设备安装 nodejs 14 及以上版本](https://nodejs.org/en/download/)
+- [当前设备安装 Node.js 24](https://nodejs.org/en/download/)
 
 ## 初始化项目
 使用 [create-coscene-extension](https://github.com/coscene-io/create-coscene-extension) 创建一个项目：
 ```bash
-npm init coscene-extension@latest custom-raw-message-panel 
+npm init coscene-extension@1.1.0 custom-raw-message-panel
 ```
 这条命令将创建一个 `custom-raw-message-panel` 目录，里面已经包含一些模板源代码
 
@@ -33,7 +33,7 @@ npm init coscene-extension@latest custom-raw-message-panel
 - `lodash` 是知名的 JavaScript 工具库，提供了许多实用的函数，包括数组操作、对象操作等
 
 ```bash
-npm install @microlink/react-json-view immer lodash
+npm install --save-exact @microlink/react-json-view@1.26.1 immer@10.1.1 lodash@4.17.21
 ```
 
 然后我们打开 `package.json` 文件，修改 `displayName` 和 `description` 字段为 `custom raw message panel`，修改后的 `package.json` 文件内的内容应该如下。
@@ -45,6 +45,8 @@ npm install @microlink/react-json-view immer lodash
   ...
 }
 ```
+
+下方代码中的 `ReactElement`、`Fragment` 和 hooks 均从 `react` 导入。请保留模板中的 `createRoot` 和 `root.unmount()`，完整的根节点与清理示例见[创建自定义面板](../4-guides/1-create-custom-panel.md)。本教程固定到升级验收使用的依赖版本；请将 `package.json` 与 lockfile 一起提交，升级第三方组件后重新验证。
 
 ## 编写自定义面板
 现在在您选择的编辑器中打开 `custom-raw-message-panel` 文件夹，然后打开其中的 `src/index.ts` 文件，您将看到文件中已经注册了一个示例面板，该面板已注册为 `example-panel`，第一步，我们需要将这个示例面板的名称修改为 `custom-raw-message-panel`，修改后的 `index.ts` 文件内的内容应该如下。
@@ -63,11 +65,11 @@ export function activate(extensionContext: ExtensionContext): void {
 
 然后我们打开 `src/ExamplePanel.tsx` 文件，在 `src/ExamplePanel.tsx` 文件中，你会看到一个简单的面板组件，我们需要先解释一下这个文件中的代码，然后根据我们的需求，修改这个文件，这个文件中它使用 React 的状态管理来跟踪订阅的主题、消息及其渲染状态。
 ```ts
-function ExamplePanel({ context }: { context: PanelExtensionContext }): JSX.Element {
+function ExamplePanel({ context }: { context: PanelExtensionContext }): ReactElement {
   const [topics, setTopics] = useState<readonly Topic[] | undefined>();
   const [messages, setMessages] = useState<readonly MessageEvent<unknown>[] | undefined>();
 
-  const [renderDone, setRenderDone] = useState<() => void | undefined>();
+  const [renderDone, setRenderDone] = useState<(() => void) | undefined>();
 ```
 
 示例中当检测到相关更新时将运行 `onRender` 事件 
@@ -77,6 +79,10 @@ useLayoutEffect(() => {
     setRenderDone(() => done);
     setTopics(renderState.topics);
     setMessages(renderState.currentFrame);
+  };
+
+  return () => {
+    context.onRender = undefined;
   };
 }, [context]);
 ```
@@ -98,7 +104,7 @@ context.watch("currentFrame");
 
 然后我们需要使用 `context.subscribe` 函数来订阅主题数组，这些主题的消息将被填充到 `renderState.currentFrame` 中
 ```ts
-context.subscribe(["/some/topic"]);
+context.subscribe([{ topic: "/some/topic" }]);
 ```
 
 最后，当面板完成渲染后，我们需要调用 `renderDone` 函数，标识面板已经完成上一个渲染周期
@@ -115,10 +121,10 @@ return (
     <h2>Welcome to your new extension panel!</h2>
     {/* ... */}
     {(topics ?? []).map((topic) => (
-      <>
-        <div key={topic.name}>{topic.name}</div>
-        <div key={topic.datatype}>{topic.datatype}</div>
-      </>
+      <Fragment key={topic.name}>
+        <div>{topic.name}</div>
+        <div>{topic.schemaName}</div>
+      </Fragment>
     ))}
     {/* ... */}
   </div>
@@ -319,6 +325,10 @@ useLayoutEffect(() => {
   if (state.data.topic) {
     context.subscribe([{ topic: state.data.topic }]);
   }
+
+  return () => {
+    context.onRender = undefined;
+  };
 }, [context, state.data.topic]);
 ```
 

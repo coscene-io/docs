@@ -23,14 +23,14 @@ Before starting, you need to understand/install some basic concepts/environments
 - [Basic JS/TS syntax](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 - [Basic React usage](https://react.dev/)
 - [Basic usage of frontend package managers like npm](https://docs.npmjs.com/)
-- [Node.js version 14 or higher installed on your current device](https://nodejs.org/en/download/)
+- [Node.js 24 installed on your current device](https://nodejs.org/en/download/)
 
 ## Initialize Project
 
 Create a project using [create-coscene-extension](https://github.com/coscene-io/create-coscene-extension):
 
 ```bash
-npm init coscene-extension@latest custom-raw-message-panel
+npm init coscene-extension@1.1.0 custom-raw-message-panel
 ```
 
 This command will create a `custom-raw-message-panel` directory containing some template source code.
@@ -42,7 +42,7 @@ Then, we need to install some dependencies in our project:
 - `lodash` is a well-known JavaScript utility library that provides many useful functions, including array operations, object operations, etc.
 
 ```bash
-npm install @microlink/react-json-view immer lodash
+npm install --save-exact @microlink/react-json-view@1.26.1 immer@10.1.1 lodash@4.17.21
 ```
 
 Then we open the `package.json` file and modify the `displayName` and `description` fields to `custom raw message panel`. The modified `package.json` file should look like this:
@@ -60,6 +60,8 @@ Then we open the `package.json` file and modify the `displayName` and `descripti
 
 Now open the `custom-raw-message-panel` folder in your chosen editor, then open the `src/index.ts` file. You'll see that the file already registers an example panel as `example-panel`. First, we need to change this example panel's name to `custom-raw-message-panel`. The modified `index.ts` file should look like this:
 
+Import `ReactElement`, `Fragment`, and the hooks used below from `react`. Keep the template’s `createRoot` and `root.unmount()` calls; see [Create a Custom Panel](../4-guides/1-create-custom-panel.md) for the complete root and cleanup example. This tutorial pins the dependencies used in the upgrade acceptance checks. Commit `package.json` and the lockfile together, and revalidate after upgrading third-party components.
+
 ```ts
 import { ExtensionContext } from '@coscene/extension';
 
@@ -76,11 +78,11 @@ export function activate(extensionContext: ExtensionContext): void {
 Then we open the `src/ExamplePanel.tsx` file. In the `src/ExamplePanel.tsx` file, you'll see a simple panel component. We need to first explain the code in this file, then modify it according to our needs. This file uses React's state management to track subscribed topics, messages, and their rendering state.
 
 ```ts
-function ExamplePanel({ context }: { context: PanelExtensionContext }): JSX.Element {
+function ExamplePanel({ context }: { context: PanelExtensionContext }): ReactElement {
   const [topics, setTopics] = useState<readonly Topic[] | undefined>();
   const [messages, setMessages] = useState<readonly MessageEvent<unknown>[] | undefined>();
 
-  const [renderDone, setRenderDone] = useState<() => void | undefined>();
+  const [renderDone, setRenderDone] = useState<(() => void) | undefined>();
 ```
 
 In the example, when relevant updates are detected, the `onRender` event will run:
@@ -91,6 +93,10 @@ useLayoutEffect(() => {
     setRenderDone(() => done);
     setTopics(renderState.topics);
     setMessages(renderState.currentFrame);
+  };
+
+  return () => {
+    context.onRender = undefined;
   };
 }, [context]);
 ```
@@ -116,7 +122,7 @@ context.watch('currentFrame');
 Then we need to use the `context.subscribe` function to subscribe to the topic array. Messages from these topics will be populated into `renderState.currentFrame`
 
 ```ts
-context.subscribe(['/some/topic']);
+context.subscribe([{ topic: '/some/topic' }]);
 ```
 
 Finally, when the panel finishes rendering, we need to call the `renderDone` function to indicate that the panel has completed the previous rendering cycle
@@ -135,10 +141,10 @@ return (
     <h2>Welcome to your new extension panel!</h2>
     {/* ... */}
     {(topics ?? []).map((topic) => (
-      <>
-        <div key={topic.name}>{topic.name}</div>
-        <div key={topic.datatype}>{topic.datatype}</div>
-      </>
+      <Fragment key={topic.name}>
+        <div>{topic.name}</div>
+        <div>{topic.schemaName}</div>
+      </Fragment>
     ))}
     {/* ... */}
   </div>
@@ -342,6 +348,10 @@ useLayoutEffect(() => {
   if (state.data.topic) {
     context.subscribe([{ topic: state.data.topic }]);
   }
+
+  return () => {
+    context.onRender = undefined;
+  };
 }, [context, state.data.topic]);
 ```
 

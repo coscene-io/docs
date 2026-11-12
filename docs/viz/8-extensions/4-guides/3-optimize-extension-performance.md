@@ -14,11 +14,11 @@ sidebar_position: 3
 
 ```typescript
 export function activate(extensionContext: ExtensionContext) {
-  extensionContext.registerPanel({ name: "my-panel", initPanel: initCustomPanel });
-  extensionContext.registerPanel({ name: "my-other-panel", initPanel: initAnotherCustomPanel });
+  extensionContext.registerPanel({ name: 'my-panel', initPanel: initCustomPanel });
+  extensionContext.registerPanel({ name: 'my-other-panel', initPanel: initAnotherCustomPanel });
   extensionContext.registerMessageConverter({
-    fromSchemaName: "...",
-    toSchemaName: "...",
+    fromSchemaName: '...',
+    toSchemaName: '...',
     converter: (inputMessage: MyInputType, messageEvent: MessageEvent<MyInputType>) => {
       // ...
     },
@@ -43,3 +43,9 @@ module.exports = {
   },
 };
 ```
+
+## 保留自包含的 React 运行时 {#react-bundle}
+
+合并扩展可以共享同一包内的依赖，但不要通过将 React、ReactDOM 或 JSX runtime 加到 webpack `externals` 来减小体积。默认配置只 externalize `@coscene/extension`；React 面板应随包携带配对的 React 与 ReactDOM，详见 [React 19 兼容与迁移](../3-react-19-migration.md#bundling)。
+
+避免无界保存历史消息。保持传入消息只读，按实际需要计算派生结果，而不是为每帧深拷贝所有消息。面板关闭时释放自身资源，并通过反复添加、移除面板确认内存、DOM 和监听器数量没有持续增长。

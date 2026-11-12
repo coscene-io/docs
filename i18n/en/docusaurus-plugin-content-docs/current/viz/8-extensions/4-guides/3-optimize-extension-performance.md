@@ -43,3 +43,9 @@ module.exports = {
   },
 };
 ```
+
+## Keep the React runtime self-contained {#react-bundle}
+
+Combining extensions can share dependencies within one package, but do not reduce size by adding React, ReactDOM, or JSX runtimes to webpack `externals`. The default configuration externalizes only `@coscene/extension`. React panels should bundle matching React and ReactDOM packages; see [React 19 Compatibility and Migration](../3-react-19-migration.md#bundling).
+
+Avoid storing an unbounded message history. Treat incoming messages as read-only and compute derived results as needed instead of deep-copying every message each frame. Release resources when the panel closes, and repeatedly add and remove panels to check that memory, DOM nodes, and listeners do not grow continuously.

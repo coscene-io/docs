@@ -5,6 +5,16 @@ id: changelog
 
 # Release History
 
+## [create-coscene-extension 1.1.0] - 2026-11-12
+
+### [Developer Tools]
+
+- The extension generator now creates React / ReactDOM 19.3.1 panels with React 19.3.0 types. Node.js 24 is recommended.
+- Update panel cleanup and example compatibility. The SDK remains `@coscene/extension` 1.x and the `.coe` format is unchanged. Self-contained React 18 plugins do not require a rewrite solely because the host upgrades.
+- Add the [React 19 Compatibility and Migration guide](/en/docs/viz/extensions/react-19-migration), covering bundling, render completion, and validation before distribution. See the tool’s [v1.1.0 release](https://github.com/coscene-io/create-coscene-extension/releases/tag/v1.1.0).
+
+---
+
 ## [26.13.0] - 2026-04-14
 
 ### [Added]

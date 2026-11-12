@@ -11,7 +11,7 @@ sidebar_position: 2
 在终端窗口中，`cd` 到您的源代码所在的目录，然后运行以下命令：
 
 ```
-npm init coscene-extension@latest myExtensionName
+npm init coscene-extension@1.1.0 myExtensionName
 ```
 
 这将使用 create-coscene-extension 创建一个 `myExtensionName` 目录，其中包含示例消息转换器的源代码。

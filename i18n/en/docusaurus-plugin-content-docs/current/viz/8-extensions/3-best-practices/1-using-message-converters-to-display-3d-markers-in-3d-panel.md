@@ -22,14 +22,14 @@ Before we begin, you should be familiar with or have installed:
 - Basic usage of coScene visualization features
 - [Basic JavaScript/TypeScript syntax](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 - [Basic usage of frontend package managers like npm](https://docs.npmjs.com/)
-- [Node.js version 14 or higher installed on your current device](https://nodejs.org/en/download/)
+- [Node.js 24 installed on your current device](https://nodejs.org/en/download/)
 
 ## Initialize the Project
 
 Create a project using [create-coscene-extension](https://github.com/coscene-io/create-coscene-extension):
 
 ```bash
-npm init coscene-extension@latest mySceneUpdateConverter
+npm init coscene-extension@1.1.0 mySceneUpdateConverter
 ```
 
 This command will create a `mySceneUpdateConverter` directory containing some template source code.

@@ -11,7 +11,7 @@ Build a simple message converter to transform custom GPS messages into messages 
 In your terminal window, `cd` to the directory where your source code resides, then run the following command:
 
 ```
-npm init coscene-extension@latest myExtensionName
+npm init coscene-extension@1.1.0 myExtensionName
 ```
 
 This will use create-coscene-extension to create a `myExtensionName` directory containing the source code for a sample message converter.
