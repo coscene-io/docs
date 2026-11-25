@@ -43,8 +43,6 @@ RUN --mount=type=secret,id=netrc,target=/root/.netrc,required=true \
       'matrix-action-sdk @ git+https://github.com/coscene-io/matrix.git@48868eaaa042b2650827621ca2c69676c289416a#subdirectory=ray-runtime' && \
     python -m pip check
 COPY checksums.py .
-RUN useradd --create-home --uid 10001 matrix
-USER 10001
 RUN ray-runner check-image && python -c "from checksums import sha256_files"
 ```
 
