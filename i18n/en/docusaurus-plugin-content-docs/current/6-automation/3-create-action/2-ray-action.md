@@ -2,9 +2,11 @@
 
 This action computes the SHA-256 digest of each file in a record. Each record runs independently. The step logs one JSON line per file with its relative path, size in bytes, and digest.
 
-## Build and push the worker image
+## Write a Ray Task and a Ray Actor
 
-This example targets a Matrix head running CPython 3.12.16 and Ray 2.51.1. Configure your GitHub username and a token with read access to `coscene-io/matrix` in the build host’s `~/.netrc` entry for `github.com`, then run `chmod 600 ~/.netrc`. Create `checksums.py` in an empty directory.
+Matrix selects the execution mode from each step’s Python target and schedules the work. Define synchronous functions or classes with typed step inputs and returns. You can omit `@ray.remote`.
+
+**Ray Task** suits independent work on each record. Create `checksums.py` in an empty directory and add this top-level function. Each call reads one record, logs file digests, and returns the file count to the next step.
 
 ```python
 import hashlib
@@ -30,6 +32,27 @@ def sha256_files() -> int:
     return count
 ```
 
+**Ray Actor** suits steps that reuse a model, rules, or a connection across records. Append this top-level class to `checksums.py` and create `rules.json` alongside it containing `{"minimum_files": 1}`. Each instance loads the rules once in `setup()`, then processes its assigned records one at a time in `run()`. The class must support construction without arguments and implement `run()`. The optional `setup()` and `close()` methods initialize and release resources.
+
+```python
+from pathlib import Path
+
+
+class FileCountCheck:
+    def setup(self):
+        with Path(__file__).with_name("rules.json").open() as stream:
+            self.minimum = json.load(stream)["minimum_files"]
+
+    def run(self, checksum: int) -> bool:
+        passed = checksum >= self.minimum
+        print(json.dumps({"files": checksum, "passed": passed}), flush=True)
+        return passed
+```
+
+## Build and push the worker image
+
+This example targets a Matrix head running CPython 3.12.16 and Ray 2.51.1. Configure your GitHub username and a token with read access to `coscene-io/matrix` in the build host’s `~/.netrc` entry for `github.com`, then run `chmod 600 ~/.netrc`.
+
 Create a `Dockerfile` in the same directory. BuildKit mounts `.netrc` only for the dependency installation step. pip installs the Matrix Action SDK from a pinned Git commit over HTTPS.
 
 ```dockerfile
@@ -42,8 +65,8 @@ RUN --mount=type=secret,id=netrc,target=/root/.netrc,required=true \
     python -m pip install --no-cache-dir "ray[default]==2.51.1" \
       'matrix-action-sdk @ git+https://github.com/coscene-io/matrix.git@48868eaaa042b2650827621ca2c69676c289416a#subdirectory=ray-runtime' && \
     python -m pip check
-COPY checksums.py .
-RUN ray-runner check-image && python -c "from checksums import sha256_files"
+COPY checksums.py rules.json ./
+RUN ray-runner check-image && python -c "from checksums import sha256_files, FileCountCheck"
 ```
 
 Set `image` to a registry path you can push to and the project can pull from. Sign in to that registry, then build, check, and push the image.
@@ -61,6 +84,32 @@ docker push "$image"
 1. In your project, open **Automation → Actions**, click **Create Action**, name the action `record-checksums`, and select **Use Ray**.
 2. Enter the full image reference you pushed in the worker image field (`ray.image`). Set **Concurrent records** to `2` to process up to two records at once. All Python steps use this image.
 3. Name the step `checksum`, enter `checksums.sha256_files` as its **Python target** (`jobs[].python.target`), and select 1 CPU and 2 GiB of memory.
-4. Save the action, then [select records and invoke it](../5-invocation.md). In each record’s `checksum` step log, check the `file`, `bytes`, and `sha256` fields. The final line reports the total file count and bytes for that record.
+4. Add a step named `check` with `checksum` as its dependency. Set its **Python target** to the class name `checksums.FileCountCheck` and select the same resources.
+5. Save the action, then [select records and invoke it](../5-invocation.md). In each record’s `checksum` step log, check the `file`, `bytes`, and `sha256` fields. The final line reports the total file count and bytes for that record.
 
-To run your own function, replace `checksums.py` with your module, update the Dockerfile’s `COPY` and import check, and install any additional business dependencies. Rebuild and push the image, then update the action’s image reference and Python target.
+The equivalent Action YAML is shown below. Replace `ray.image` with the image reference you pushed.
+
+```yaml
+name: record-checksums
+ray:
+  image: registry.example.com/my-team/ray-sha256:v1
+  concurrency: 2
+jobs:
+  - name: checksum
+    python:
+      target: checksums.sha256_files
+      resources:
+        cpu: CPU_QUOTA_1C
+        memory: MEMORY_QUOTA_2G
+  - name: check
+    depends: [checksum]
+    python:
+      target: checksums.FileCountCheck
+      resources:
+        cpu: CPU_QUOTA_1C
+        memory: MEMORY_QUOTA_2G
+```
+
+For each record, `depends: [checksum]` makes `check` wait for that record’s Task. The SDK passes the returned file count to the matching parameter in `run(self, checksum: int)`. For a record with two files, the `check` log contains `{"files": 2, "passed": true}`.
+
+With `ray.concurrency: 2`, up to two records can be in the pipeline at once. Matrix creates two independent instances for this Actor step. Each loads its own rules and can process further records in the same action run. Store reusable resources on the instance and keep record-specific data in local variables inside `run()`.
