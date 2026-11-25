@@ -1,46 +1,45 @@
 # 创建 Ray 动作
 
-在已启用 Ray 的环境中，可以用同一组 Python 步骤并行处理多条记录。下面以「统计文件数」为例，每条记录独立执行一次，结果打印到对应的步骤日志。
+下面以计算文件 SHA-256 为例。动作按记录并行处理，每个文件在步骤日志中输出一行 JSON，包含相对路径、字节数和 SHA-256 摘要。
 
 ## 构建并推送 worker 镜像
 
-向平台管理员获取目标环境的 Ray head 镜像完整地址（配置项 `actionScheduling.ray.headImage`）。下面用它作为 worker 的基础镜像，复用环境中匹配的 Python、Ray 和 Matrix Action SDK。
+准备与目标环境匹配的 Matrix 运行时源码。使用 `ray-runtime/examples/sha256/` 下以 `FROM python:3.11.14-slim-bookworm` 开头的独立构建示例。如果没有这版源码，可向平台管理员获取。
 
-1. 新建目录，将以下函数保存为 `steps.py`。
+示例 Dockerfile 从官方 Python 镜像开始，按 `requirements.lock` 安装 Ray 及其依赖，从源码安装 Matrix Action SDK，再把业务模块复制到 `/opt/action`。最后以 worker 用户身份检查运行时并导入 Python 入口。
 
-   ```python
-   from matrix_action_sdk import current_context
+```dockerfile
+FROM python:3.11.14-slim-bookworm
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PYTHONPATH=/opt/action
+WORKDIR /opt/sdk
+COPY requirements.lock .
+RUN python -m pip install --only-binary=:all: --require-hashes --no-cache-dir -r requirements.lock
+COPY pyproject.toml .
+COPY matrix_action_sdk ./matrix_action_sdk
+RUN python -m pip install --no-index --no-build-isolation --no-cache-dir . && python -m pip check
 
+WORKDIR /opt/action
+COPY examples/sha256/checksums.py .
+RUN useradd --create-home --uid 10001 matrix
+USER 10001
+RUN ray-runner check-image && python -c "from checksums import sha256_files"
+```
 
-   def count_files() -> int:
-       files = current_context().record.files_dir
-       count = sum(1 for path in files.rglob("*") if path.is_file())
-       print(f"file_count={count}", flush=True)
-       return count
-   ```
+在 Matrix 仓库根目录执行以下命令。将 `image` 替换为你能推送、项目能拉取的完整镜像地址，并先登录该仓库。构建上下文使用整个 `ray-runtime` 目录，以便 Docker 同时读取依赖锁文件、SDK 源码和示例代码。
 
-2. 在同一目录创建 `Dockerfile`。基础镜像已将 `/opt/matrix` 加入 Python 模块搜索路径。构建时先检查运行时版本，再验证示例函数能否导入。
-
-   ```dockerfile
-   ARG MATRIX_RAY_BASE
-   FROM ${MATRIX_RAY_BASE}
-   COPY --chmod=0444 steps.py /opt/matrix/steps.py
-   RUN ray-runner check-image && python -c "from steps import count_files"
-   ```
-
-3. 登录所需的镜像仓库。在该目录执行以下命令，将 `base` 替换为管理员提供的镜像地址，将 `image` 替换为你可以推送、项目可以拉取的完整镜像地址。示例面向 Linux AMD64 worker。
-
-   ```bash
-   base='registry.example.com/platform/matrix-ray-head:VERSION'
-   image='registry.example.com/my-team/count-files:v1'
-   docker buildx build --platform linux/amd64 \
-     --build-arg MATRIX_RAY_BASE="$base" \
-     --tag "$image" --push .
-   ```
+```bash
+image='registry.example.com/my-team/ray-sha256:v1'
+docker buildx build --platform linux/amd64 --load \
+  -f ray-runtime/examples/sha256/Dockerfile -t "$image" ray-runtime
+docker run --rm --platform linux/amd64 "$image" ray-runner check-image
+docker push "$image"
+```
 
 ## 配置并调用动作
 
-1. 在项目的「自动化 → 动作」页面点击【创建动作】，填写动作名称 `count-files`，勾选【使用 Ray】。
-2. 在 worker 镜像字段填写上一步推送的完整 `image` 地址，将【记录并发度】设为 `2`，表示同一时间最多有两条记录处于流水线中。这个动作的所有 Python 步骤共用该镜像。
-3. 将步骤命名为 `count`，在【Python 入口】填写 `steps.count_files`，选择 1 核 CPU 和 2 GiB 内存。这组资源用于该步骤的一次执行。
-4. 保存动作，然后[选择记录并调用动作](../5-invocation.md)。在每条记录对应的 `count` 步骤日志中查看 `file_count=...`。函数通过只读输入目录统计当前记录的文件。
+1. 在项目的「自动化 → 动作」页面点击【创建动作】，填写动作名称 `record-checksums`，勾选【使用 Ray】。
+2. 在 worker 镜像字段（`ray.image`）填写刚推送的完整镜像地址，将【记录并发度】设为 `2`，表示同时最多处理两条记录。动作中的所有 Python 步骤共用该镜像。
+3. 将步骤命名为 `checksum`，在【Python 入口】（`jobs[].python.target`）填写 `checksums.sha256_files`，选择 1 核 CPU 和 2 GiB 内存。
+4. 保存动作，然后[选择记录并调用动作](../5-invocation.md)。在每条记录的 `checksum` 步骤日志中查看每个文件的 `file`、`bytes` 和 `sha256` 字段。最后一行汇总当前记录的文件数和总字节数。
+
+使用自己的函数时，将 `checksums.py` 换成业务模块，同步修改 Dockerfile 中的 `COPY` 路径和导入检查，按需安装业务依赖。重新构建并推送镜像后，在动作中更新镜像地址和 Python 入口。
