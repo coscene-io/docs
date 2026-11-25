@@ -28,9 +28,13 @@ def sha256_files() -> int:
                           "bytes": size, "sha256": digest}), flush=True)
         count += 1
         total += size
-    print(json.dumps({"files": count, "bytes": total}), flush=True)
+    summary = json.dumps({"files": count, "bytes": total})
+    (current_context().outputs_dir / "summary.json").write_text(summary, encoding="utf-8")
+    print(summary, flush=True)
     return count
 ```
+
+The record input directory, `current_context().record.files_dir`, is read-only. The function returns the file count to the next step, uses `print` for the step log, and writes `summary.json` to `current_context().outputs_dir` as an output file for this record’s JobRun.
 
 **Ray Actor** suits steps that reuse a model, rules, or a connection across records. Append this top-level class to `checksums.py` and create `rules.json` alongside it containing `{"minimum_files": 1}`. Each instance loads the rules once in `setup()`, then processes its assigned records one at a time in `run()`. The class must support construction without arguments and implement `run()`. The optional `setup()` and `close()` methods initialize and release resources.
 
@@ -51,7 +55,11 @@ class FileCountCheck:
 
 ## Build and push the worker image
 
-This example targets a Matrix head running CPython 3.12.16 and Ray 2.51.1. Configure your GitHub username and a token with read access to `coscene-io/matrix` in the build host’s `~/.netrc` entry for `github.com`, then run `chmod 600 ~/.netrc`.
+This example targets a Matrix head running CPython 3.12.16 and Ray 2.51.1. Before building, confirm the target head versions with your platform administrator. Match the worker’s Python interpreter down to the patch version and use the same Ray version. You can version your application code independently.
+
+At build time, `ray-runner check-image` checks the image against the SDK requirements. At startup, Ray checks the worker against the actual head. A mismatch prevents that worker from joining the cluster or executing your Python target. Rebuild and push a compatible image, update the action’s `ray.image`, and invoke it again.
+
+Configure your GitHub username and a token with read access to `coscene-io/matrix` in the build host’s `~/.netrc` entry for `github.com`, then run `chmod 600 ~/.netrc`.
 
 Create a `Dockerfile` in the same directory. BuildKit mounts `.netrc` only for the dependency installation step. pip installs the Matrix Action SDK from a pinned Git commit over HTTPS.
 
@@ -113,3 +121,16 @@ jobs:
 For each record, `depends: [checksum]` makes `check` wait for that record’s Task. The SDK passes the returned file count to the matching parameter in `run(self, checksum: int)`. For a record with two files, the `check` log contains `{"files": 2, "passed": true}`.
 
 With `ray.concurrency: 2`, up to two records can be in the pipeline at once. Matrix creates two independent instances for this Actor step. Each loads its own rules and can process further records in the same action run. Store reusable resources on the instance and keep record-specific data in local variables inside `run()`.
+
+See [explicit input bindings and Actor resource usage](../6-action-runtime.md#ray-steps).
+
+## Verify a trial run
+
+With the example rule `minimum_files: 1`, select one record containing files and one empty record. For each JobRun, compare the file count and byte total in the `checksum` log and the output file `summary.json`. The `check` log should show `"passed": true` for the first record and `"passed": false` for the empty record. Both JobRuns should complete successfully because `False` is a valid boolean result.
+
+To fail the current JobRun when the record is empty, add the following inside `run()`, before `return passed`:
+
+```python
+if not passed:
+    raise ValueError(f"Expected at least {self.minimum} files, got {checksum}")
+```

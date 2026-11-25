@@ -94,3 +94,21 @@ This JSON file mainly contains three parts:
 - Special properties: If you need to perform cross-project operations, specify `projectSlug`.
 - Regular properties: Describe basic record information. When no `id` is specified, it indicates creating a new record.
 - patch array: Provides fine-grained property modification control, following the RFC 6902 standard.
+
+## Ray step inputs and resources {#ray-steps}
+
+In [Create a Ray Action](./3-create-action/2-ray-action.md), the SDK passes the result of the direct dependency `checksum` to the parameter of the same name. If you change the method to `run(self, file_count: int) -> bool` and use `file_count` in the method body, update the step in `jobs` as shown below. Keep `depends` for execution order. In `python.bindings`, the key is the argument name and the value is the upstream step name.
+
+```yaml
+- name: check
+  depends: [checksum]
+  python:
+    target: checksums.FileCountCheck
+    bindings:
+      file_count: checksum
+    resources:
+      cpu: CPU_QUOTA_1C
+      memory: MEMORY_QUOTA_2G
+```
+
+Each Actor step has its own pool with one instance per concurrency slot. If `setup()` loads a model and `ray.concurrency` is 2, that step loads two copies. Size the step resources for one instance at peak usage. When increasing concurrency, account for all instances when estimating total memory and, for GPU models, total GPU memory.

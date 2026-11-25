@@ -28,9 +28,13 @@ def sha256_files() -> int:
                           "bytes": size, "sha256": digest}), flush=True)
         count += 1
         total += size
-    print(json.dumps({"files": count, "bytes": total}), flush=True)
+    summary = json.dumps({"files": count, "bytes": total})
+    (current_context().outputs_dir / "summary.json").write_text(summary, encoding="utf-8")
+    print(summary, flush=True)
     return count
 ```
+
+记录的输入目录 `current_context().record.files_dir` 只读。这个函数通过 `return count` 将文件数传给下游步骤，通过 `print` 写步骤日志，并将 `summary.json` 写入 `current_context().outputs_dir`，作为当前记录这次 JobRun 的输出文件。
 
 **Ray Actor** 适合跨记录复用模型、规则或连接。在同一个 `checksums.py` 中追加以下顶层类，并在旁边创建 `rules.json`，内容为 `{"minimum_files": 1}`。每个实例在 `setup()` 中加载一次规则，随后串行调用 `run()` 检查分配给它的记录。类须支持无参构造，必须实现 `run()`；可选的 `setup()` 和 `close()` 分别用于初始化和释放资源。
 
@@ -51,7 +55,11 @@ class FileCountCheck:
 
 ## 构建并推送 worker 镜像
 
-本例适用于 CPython 3.12.16、Ray 2.51.1 的 Matrix head。在构建机的 `~/.netrc` 中配置 `github.com` 的用户名和有权读取 `coscene-io/matrix` 的 token，并执行 `chmod 600 ~/.netrc`。
+本例适用于 CPython 3.12.16、Ray 2.51.1 的 Matrix head。 构建前，向平台管理员确认目标集群 head 的版本。worker 镜像中的 Python 解释器须与 head 匹配到补丁号，Ray 版本也须一致。业务代码可以独立更新。
+
+构建时，`ray-runner check-image` 检查镜像是否符合 SDK 要求。启动时，Ray 再将 worker 的实际版本与 head 核对。版本不匹配时，该 worker 无法加入集群，业务入口也不会在它上面执行。使用匹配的版本重新构建并推送镜像，更新动作的 `ray.image` 后重新调用。
+
+在构建机的 `~/.netrc` 中配置 `github.com` 的用户名和有权读取 `coscene-io/matrix` 的 token，并执行 `chmod 600 ~/.netrc`。
 
 在同一目录创建 `Dockerfile`。BuildKit 仅在安装依赖的步骤挂载 `.netrc`。pip 通过 Git HTTPS 从固定提交安装 Matrix Action SDK。
 
@@ -113,3 +121,16 @@ jobs:
 对每条记录，`depends: [checksum]` 让 `check` 等待该记录的 Task 完成。SDK 将 Task 返回的文件数传给同名参数 `run(self, checksum: int)`。例如，含两个文件的记录会在 `check` 的日志中输出 `{"files": 2, "passed": true}`。
 
 `ray.concurrency: 2` 表示整个动作同时最多处理两条记录。Matrix 为这个 Actor 步骤创建两个独立实例，每个实例分别加载规则，并可在本次运行中继续处理后续记录。把可复用的资源放在实例属性里，把单条记录的数据保存在 `run()` 的局部变量里。
+
+详见[显式输入绑定和 Actor 资源开销](../6-action-runtime.md#ray-steps)。
+
+## 试跑并核对结果
+
+使用示例规则 `minimum_files: 1`，先选择一条有文件的记录和一条空记录。分别打开两个 JobRun 的 `checksum` 日志和输出文件 `summary.json`，核对文件数和字节数，再查看 `check` 日志：有文件的记录输出 `"passed": true`，空记录输出 `"passed": false`。两条记录都应正常完成，因为 `False` 是有效的布尔返回值。
+
+如果空记录应当导致当前 JobRun 失败，可在 `run()` 中、`return passed` 之前添加：
+
+```python
+if not passed:
+    raise ValueError(f"Expected at least {self.minimum} files, got {checksum}")
+```

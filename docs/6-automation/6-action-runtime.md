@@ -94,3 +94,21 @@ $COS_OUTPUT_VOLUME
 - 特殊属性：如需要进行跨项目操作，请指定 `projectSlug`。
 - 常规属性：描述记录的基本信息，未指定 id 时表示创建新记录。
 - patch 数组：提供细粒度的属性修改控制，格式遵循 RFC 6902 标准。
+
+## Ray 步骤的输入绑定和资源 {#ray-steps}
+
+在[创建 Ray 动作](./3-create-action/2-ray-action.md)的示例中，平台自动将直接上游步骤 `checksum` 的返回值传给同名参数。如果将方法签名改为 `run(self, file_count: int) -> bool`，并在方法体内使用 `file_count`，请对应更新 `jobs` 中的步骤。保留 `depends` 声明执行顺序，在 `python.bindings` 中以参数名为键、上游步骤名为值。
+
+```yaml
+- name: check
+  depends: [checksum]
+  python:
+    target: checksums.FileCountCheck
+    bindings:
+      file_count: checksum
+    resources:
+      cpu: CPU_QUOTA_1C
+      memory: MEMORY_QUOTA_2G
+```
+
+每个 Actor 步骤有独立的实例池，实例数等于 `ray.concurrency`。如果 `setup()` 加载一个模型，并发度为 2 时，这个步骤会加载两份模型。按单个实例执行时的峰值配置步骤资源；提高并发度时，按实例数估算总内存，以及模型在 GPU 上运行时所需的总显存。
