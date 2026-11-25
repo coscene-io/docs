@@ -34,7 +34,7 @@ For example, if the Key is `input` and the Value is `hello world`, you can refer
 
 ## Step Types and Information
 
-An action can have multiple steps. The platform supports two types of steps: Image Code Execution and HTTP Request.
+An action can have multiple steps. Standard actions support Image Code Execution and HTTP Request steps. Enabling Ray lets you configure Python steps and set how many records the action processes concurrently. See [Create a Ray action](./3-create-action.md#create-ray-action).
 
 - The "Image Code Execution" step executes custom code logic in a specified image environment.
 - The "HTTP Request" step sends an HTTP request to a specified URL and retrieves the response.
