@@ -67,6 +67,10 @@
     "message": "Writing Guide",
     "description": "The label for category 写作指南 in sidebar tutorialSidebar"
   },
+  "sidebar.tutorialSidebar.category.创建动作": {
+    "message": "Create an Action",
+    "description": "The label for category 创建动作 in sidebar tutorialSidebar"
+  },
   "sidebar.tutorialSidebar.category.自动化": {
     "message": "Automation",
     "description": "The label for category 自动化 in sidebar tutorialSidebar"

@@ -33,7 +33,7 @@ sidebar_position: 1
 
 ## 步骤类型及信息
 
-一个动作可添加多个步骤，普通动作支持「镜像代码执行」和「HTTP 请求」步骤。勾选「使用 Ray」后，可以配置 Python 步骤，并设置同时处理的记录数。详见[创建 Ray 动作](./3-create-action.md#create-ray-action)。
+一个动作可添加多个步骤，普通动作支持「镜像代码执行」和「HTTP 请求」步骤。勾选「使用 Ray」后，可以配置 Python 步骤，并设置同时处理的记录数。详见[创建 Ray 动作](./3-create-action/2-ray-action.md)。
 
 - 「镜像代码执行」步骤是在指定的镜像环境中执行自定义的代码逻辑。
 - 「HTTP 请求」步骤是向指定的 URL 发送 HTTP 请求，并获取响应结果。

@@ -1,0 +1,9 @@
+{
+  "label": "创建动作",
+  "position": 2,
+  "collapsible": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/automation/create-action"
+  }
+}
