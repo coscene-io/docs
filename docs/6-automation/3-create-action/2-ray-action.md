@@ -4,14 +4,7 @@
 
 ## 构建并推送 worker 镜像
 
-本例适用于 CPython 3.12.16、Ray 2.51.1 的 Matrix head。先确认目标环境的版本。在空目录中，使用本机的 Python 3.12 和有权读取 `coscene-io/matrix` 的 GitHub SSH 身份，从 `main` 上的固定提交构建 SDK wheel。
-
-```bash
-python3.12 -m pip wheel --no-deps --wheel-dir wheels \
-  'matrix-action-sdk @ git+ssh://git@github.com/coscene-io/matrix.git@48868eaaa042b2650827621ca2c69676c289416a#subdirectory=ray-runtime'
-```
-
-在同一目录中创建 `checksums.py`，定义计算入口。
+本例适用于 CPython 3.12.16、Ray 2.51.1 的 Matrix head。在构建机的 `~/.netrc` 中配置 `github.com` 的用户名和有权读取 `coscene-io/matrix` 的 token，并执行 `chmod 600 ~/.netrc`。在一个空目录中创建 `checksums.py`。
 
 ```python
 import hashlib
@@ -37,15 +30,18 @@ def sha256_files() -> int:
     return count
 ```
 
-在 `checksums.py` 旁创建以下 `Dockerfile`，安装 SDK wheel 和 Ray。Git 身份验证在宿主机完成。
+在同一目录创建 `Dockerfile`。BuildKit 仅在安装依赖的步骤挂载 `.netrc`。pip 通过 Git HTTPS 从固定提交安装 Matrix Action SDK。
 
 ```dockerfile
+# syntax=docker/dockerfile:1
 FROM python:3.12.16-slim-bookworm
 ENV PYTHONUNBUFFERED=1 PYTHONPATH=/opt/action
 WORKDIR /opt/action
-COPY wheels/matrix_action_sdk-0.1.0-py3-none-any.whl /tmp/
-RUN python -m pip install --no-cache-dir "ray[default]==2.51.1" \
-    /tmp/matrix_action_sdk-0.1.0-py3-none-any.whl && python -m pip check
+RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN --mount=type=secret,id=netrc,target=/root/.netrc,required=true \
+    python -m pip install --no-cache-dir "ray[default]==2.51.1" \
+      'matrix-action-sdk @ git+https://github.com/coscene-io/matrix.git@48868eaaa042b2650827621ca2c69676c289416a#subdirectory=ray-runtime' && \
+    python -m pip check
 COPY checksums.py .
 RUN useradd --create-home --uid 10001 matrix
 USER 10001
@@ -56,7 +52,8 @@ RUN ray-runner check-image && python -c "from checksums import sha256_files"
 
 ```bash
 image='registry.example.com/my-team/ray-sha256:v1'
-docker buildx build --platform linux/amd64 --load -t "$image" .
+docker buildx build --platform linux/amd64 --secret id=netrc,src="$HOME/.netrc" \
+  --load -t "$image" .
 docker run --rm --platform linux/amd64 "$image" ray-runner check-image
 docker push "$image"
 ```

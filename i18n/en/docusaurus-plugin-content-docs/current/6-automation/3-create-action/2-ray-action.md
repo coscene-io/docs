@@ -4,14 +4,7 @@ This action computes the SHA-256 digest of each file in a record. Each record ru
 
 ## Build and push the worker image
 
-This example targets a Matrix head running CPython 3.12.16 and Ray 2.51.1. Confirm the versions in your environment before building. In an empty directory, use Python 3.12 and a GitHub SSH identity with read access to `coscene-io/matrix` to build the SDK wheel from the pinned commit on `main`.
-
-```bash
-python3.12 -m pip wheel --no-deps --wheel-dir wheels \
-  'matrix-action-sdk @ git+ssh://git@github.com/coscene-io/matrix.git@48868eaaa042b2650827621ca2c69676c289416a#subdirectory=ray-runtime'
-```
-
-Save the following step in `checksums.py` in the same directory.
+This example targets a Matrix head running CPython 3.12.16 and Ray 2.51.1. Configure your GitHub username and a token with read access to `coscene-io/matrix` in the build host’s `~/.netrc` entry for `github.com`, then run `chmod 600 ~/.netrc`. Create `checksums.py` in an empty directory.
 
 ```python
 import hashlib
@@ -37,15 +30,18 @@ def sha256_files() -> int:
     return count
 ```
 
-Save this `Dockerfile` alongside `checksums.py`. It installs the wheel and Ray into the worker image. Git authentication takes place on the build host.
+Create a `Dockerfile` in the same directory. BuildKit mounts `.netrc` only for the dependency installation step. pip installs the Matrix Action SDK from a pinned Git commit over HTTPS.
 
 ```dockerfile
+# syntax=docker/dockerfile:1
 FROM python:3.12.16-slim-bookworm
 ENV PYTHONUNBUFFERED=1 PYTHONPATH=/opt/action
 WORKDIR /opt/action
-COPY wheels/matrix_action_sdk-0.1.0-py3-none-any.whl /tmp/
-RUN python -m pip install --no-cache-dir "ray[default]==2.51.1" \
-    /tmp/matrix_action_sdk-0.1.0-py3-none-any.whl && python -m pip check
+RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN --mount=type=secret,id=netrc,target=/root/.netrc,required=true \
+    python -m pip install --no-cache-dir "ray[default]==2.51.1" \
+      'matrix-action-sdk @ git+https://github.com/coscene-io/matrix.git@48868eaaa042b2650827621ca2c69676c289416a#subdirectory=ray-runtime' && \
+    python -m pip check
 COPY checksums.py .
 RUN useradd --create-home --uid 10001 matrix
 USER 10001
@@ -56,7 +52,8 @@ Set `image` to a registry path you can push to and the project can pull from. Si
 
 ```bash
 image='registry.example.com/my-team/ray-sha256:v1'
-docker buildx build --platform linux/amd64 --load -t "$image" .
+docker buildx build --platform linux/amd64 --secret id=netrc,src="$HOME/.netrc" \
+  --load -t "$image" .
 docker run --rm --platform linux/amd64 "$image" ray-runner check-image
 docker push "$image"
 ```
