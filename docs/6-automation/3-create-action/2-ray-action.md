@@ -4,33 +4,59 @@
 
 ## 构建并推送 worker 镜像
 
-准备与目标环境匹配的 Matrix 运行时源码。使用 `ray-runtime/examples/sha256/` 下以 `FROM python:3.11.14-slim-bookworm` 开头的独立构建示例。如果没有这版源码，可向平台管理员获取。
+本例适用于 CPython 3.12.16、Ray 2.51.1 的 Matrix head。先确认目标环境的版本。在空目录中，使用本机的 Python 3.12 和有权读取 `coscene-io/matrix` 的 GitHub SSH 身份，从 `main` 上的固定提交构建 SDK wheel。
 
-示例 Dockerfile 从官方 Python 镜像开始，按 `requirements.lock` 安装 Ray 及其依赖，从源码安装 Matrix Action SDK，再把业务模块复制到 `/opt/action`。最后以 worker 用户身份检查运行时并导入 Python 入口。
+```bash
+python3.12 -m pip wheel --no-deps --wheel-dir wheels \
+  'matrix-action-sdk @ git+ssh://git@github.com/coscene-io/matrix.git@48868eaaa042b2650827621ca2c69676c289416a#subdirectory=ray-runtime'
+```
+
+在同一目录中创建 `checksums.py`，定义计算入口。
+
+```python
+import hashlib
+import json
+
+from matrix_action_sdk import current_context
+
+
+def sha256_files() -> int:
+    root = current_context().record.files_dir
+    count = total = 0
+    for path in sorted(root.rglob("*")):
+        if path.is_symlink() or not path.is_file():
+            continue
+        with path.open("rb") as stream:
+            digest = hashlib.file_digest(stream, "sha256").hexdigest()
+            size = path.stat().st_size
+        print(json.dumps({"file": path.relative_to(root).as_posix(),
+                          "bytes": size, "sha256": digest}), flush=True)
+        count += 1
+        total += size
+    print(json.dumps({"files": count, "bytes": total}), flush=True)
+    return count
+```
+
+在 `checksums.py` 旁创建以下 `Dockerfile`，安装 SDK wheel 和 Ray。Git 身份验证在宿主机完成。
 
 ```dockerfile
-FROM python:3.11.14-slim-bookworm
-ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PYTHONPATH=/opt/action
-WORKDIR /opt/sdk
-COPY requirements.lock .
-RUN python -m pip install --only-binary=:all: --require-hashes --no-cache-dir -r requirements.lock
-COPY pyproject.toml .
-COPY matrix_action_sdk ./matrix_action_sdk
-RUN python -m pip install --no-index --no-build-isolation --no-cache-dir . && python -m pip check
-
+FROM python:3.12.16-slim-bookworm
+ENV PYTHONUNBUFFERED=1 PYTHONPATH=/opt/action
 WORKDIR /opt/action
-COPY examples/sha256/checksums.py .
+COPY wheels/matrix_action_sdk-0.1.0-py3-none-any.whl /tmp/
+RUN python -m pip install --no-cache-dir "ray[default]==2.51.1" \
+    /tmp/matrix_action_sdk-0.1.0-py3-none-any.whl && python -m pip check
+COPY checksums.py .
 RUN useradd --create-home --uid 10001 matrix
 USER 10001
 RUN ray-runner check-image && python -c "from checksums import sha256_files"
 ```
 
-在 Matrix 仓库根目录执行以下命令。将 `image` 替换为你能推送、项目能拉取的完整镜像地址，并先登录该仓库。构建上下文使用整个 `ray-runtime` 目录，以便 Docker 同时读取依赖锁文件、SDK 源码和示例代码。
+将 `image` 替换为你能推送、项目能拉取的镜像地址，登录该仓库后执行以下命令。
 
 ```bash
 image='registry.example.com/my-team/ray-sha256:v1'
-docker buildx build --platform linux/amd64 --load \
-  -f ray-runtime/examples/sha256/Dockerfile -t "$image" ray-runtime
+docker buildx build --platform linux/amd64 --load -t "$image" .
 docker run --rm --platform linux/amd64 "$image" ray-runner check-image
 docker push "$image"
 ```
