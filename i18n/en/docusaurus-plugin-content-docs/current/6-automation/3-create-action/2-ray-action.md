@@ -138,10 +138,11 @@ COPY camera.py ./
 RUN ray-runner check-image && python -c "from camera import sample_frames, ObjectDetector"
 ```
 
-Set `image` to a registry path you can push to and the project can pull from. Sign in to that registry, then build, check, and push the image.
+This example pushes the image to the Huiyang organization in the Volcengine environment. For another organization, update the image reference in both the build command and the Action YAML.
 
 ```bash
-image='registry.example.com/my-team/mcap-object-detection:v1'
+docker login cr.volc.coscene.cn
+image='cr.volc.coscene.cn/coscene-hy/mcap-object-detection:v1'
 docker buildx build --platform linux/amd64 --secret id=netrc,src="$HOME/.netrc" \
   --load -t "$image" .
 docker run --rm --platform linux/amd64 "$image" ray-runner check-image
@@ -155,12 +156,12 @@ Under **Automation → Actions**, create an action named `camera-detection`, sel
 1. For `sample`, enter the function `camera.sample_frames` as the Python target.
 2. For `detect`, select `sample` as its dependency and enter the class `camera.ObjectDetector` as its target. Matrix recognizes functions as Tasks and classes as Actors. The SDK passes the returned manifest path to the matching argument in `run(self, sample: str)`.
 
-Replace the image reference in the equivalent Action YAML below.
+The equivalent Action YAML uses the image pushed in the previous step.
 
 ```yaml
 name: camera-detection
 ray:
-  image: registry.example.com/my-team/mcap-object-detection:v1
+  image: cr.volc.coscene.cn/coscene-hy/mcap-object-detection:v1
   concurrency: 2
 jobs:
   - name: sample

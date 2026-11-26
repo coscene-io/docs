@@ -138,10 +138,11 @@ COPY camera.py ./
 RUN ray-runner check-image && python -c "from camera import sample_frames, ObjectDetector"
 ```
 
-将 `image` 替换为你能推送、项目能拉取的镜像地址，登录该仓库后执行以下命令。
+以下示例将镜像推送到火山环境的惠阳组织。使用其他组织时，请同步修改构建命令和 Action YAML 中的镜像地址。
 
 ```bash
-image='registry.example.com/my-team/mcap-object-detection:v1'
+docker login cr.volc.coscene.cn
+image='cr.volc.coscene.cn/coscene-hy/mcap-object-detection:v1'
 docker buildx build --platform linux/amd64 --secret id=netrc,src="$HOME/.netrc" \
   --load -t "$image" .
 docker run --rm --platform linux/amd64 "$image" ray-runner check-image
@@ -155,12 +156,12 @@ docker push "$image"
 1. `sample` 的 Python 入口填写函数 `camera.sample_frames`。
 2. `detect` 依赖 `sample`，Python 入口填写类名 `camera.ObjectDetector`。平台按入口自动识别 Task 和 Actor，并将上游返回的清单路径传给同名参数 `run(self, sample: str)`。
 
-对应的 Action YAML 如下。请替换镜像地址。
+对应的 Action YAML 使用上一步推送的镜像。
 
 ```yaml
 name: camera-detection
 ray:
-  image: registry.example.com/my-team/mcap-object-detection:v1
+  image: cr.volc.coscene.cn/coscene-hy/mcap-object-detection:v1
   concurrency: 2
 jobs:
   - name: sample
