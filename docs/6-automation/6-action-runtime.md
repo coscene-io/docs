@@ -94,3 +94,36 @@ $COS_OUTPUT_VOLUME
 - 特殊属性：如需要进行跨项目操作，请指定 `projectSlug`。
 - 常规属性：描述记录的基本信息，未指定 id 时表示创建新记录。
 - patch 数组：提供细粒度的属性修改控制，格式遵循 RFC 6902 标准。
+
+## Ray 步骤的输入绑定和资源 {#ray-steps}
+
+在[创建 Ray 动作](./3-create-action/2-ray-action.md)中，`sample` 返回当前记录的抽帧清单路径。`detect` 用 `depends` 声明执行顺序，并通过 `python.bindings` 指定参数的来源：键 `manifest_path` 是 Python 方法的参数名，值 `sample` 是产生该值的步骤名。如果将参数也命名为 `sample`，SDK 可按名称自动绑定这个直接依赖的返回值，此时可以省略 `bindings`。
+
+```yaml
+- name: detect
+  depends: [sample]
+  python:
+    target: camera.ObjectDetector
+    bindings:
+      manifest_path: sample
+    resources:
+      cpu: CPU_QUOTA_1C
+      memory: MEMORY_QUOTA_2G
+```
+
+每个 Actor 步骤有独立的实例池，实例数等于 `ray.concurrency`。如果 `setup()` 加载一个模型，并发度为 2 时，这个步骤会加载两份模型。按单个实例执行时的峰值配置步骤资源；提高并发度时，按实例数估算总内存，以及模型在 GPU 上运行时所需的总显存。
+
+### 获取当前步骤的上下文 {#ray-step-context}
+
+在 Task 函数或 Actor 的 `run` 方法中调用 `ctx = current_context()`。这个 SDK 函数无需传参。运行时会在每次调用步骤时设置上下文，因此 Actor 处理多条记录时，应在每次进入 `run` 时获取当前记录的上下文。在 Actor 构造函数中调用会抛出 `RuntimeError`。
+
+| 属性 | 类型 | 用途 |
+| --- | --- | --- |
+| `ctx.action_run_id` | `str` | 本次动作调用的 ID。 |
+| `ctx.job_run_id` | `str` | 本次调用中处理当前记录的 JobRun ID。 |
+| `ctx.step` | `str` | 当前步骤在动作 YAML 中的名称，例如 `detect`。 |
+| `ctx.record.id` | `str` | 当前输入记录的 ID。 |
+| `ctx.record.files_dir` | `pathlib.Path` | 当前记录的只读文件目录，可从这里打开 MCAP。 |
+| `ctx.outputs_dir` | `pathlib.Path` | 当前 JobRun 的可写输出目录，同一条记录的多个步骤可在这里共享文件。 |
+| `ctx.parameters` | 只读映射 | 本次动作调用的参数，按参数名读取。通过 `python.bindings` 绑定的上游返回值则通过步骤函数或方法的形参接收。 |
+| `ctx.logger` | `logging.LoggerAdapter` | 写入携带 ActionRun ID、JobRun ID、记录 ID 和步骤名的日志。 |

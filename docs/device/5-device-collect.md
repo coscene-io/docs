@@ -176,6 +176,6 @@ sidebar_position: 5
 
 - [添加规则](../use-case/data-diagnosis/3-add-rule.md)
 - 采集完成后自动发送通知
-  - [创建发送通知的动作](../6-automation/3-create-action.md#添加http-请求步骤创建动作)
+  - [创建发送通知的动作](../6-automation/3-create-action/1-image-action.md#添加http-请求步骤创建动作)
   - [当采集完成后触发动作](../6-automation/4-trigger.md#collect-status-change)
 - [可视化回放数据](../viz/1-about-viz.md)
