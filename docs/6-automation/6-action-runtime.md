@@ -97,15 +97,15 @@ $COS_OUTPUT_VOLUME
 
 ## Ray 步骤的输入绑定和资源 {#ray-steps}
 
-在[创建 Ray 动作](./3-create-action/2-ray-action.md)的示例中，平台自动将直接上游步骤 `checksum` 的返回值传给同名参数。如果将方法签名改为 `run(self, file_count: int) -> bool`，并在方法体内使用 `file_count`，请对应更新 `jobs` 中的步骤。保留 `depends` 声明执行顺序，在 `python.bindings` 中以参数名为键、上游步骤名为值。
+在[创建 Ray 动作](./3-create-action/2-ray-action.md)的示例中，平台自动将直接上游步骤 `sample` 的返回值传给同名参数。如果将方法签名改为 `run(self, manifest_path: str) -> int`，并在方法体内使用 `manifest_path`，请对应更新 `jobs` 中的步骤。保留 `depends` 声明执行顺序，在 `python.bindings` 中以参数名为键、上游步骤名为值。
 
 ```yaml
-- name: check
-  depends: [checksum]
+- name: detect
+  depends: [sample]
   python:
-    target: checksums.FileCountCheck
+    target: camera.PersonDetector
     bindings:
-      file_count: checksum
+      manifest_path: sample
     resources:
       cpu: CPU_QUOTA_1C
       memory: MEMORY_QUOTA_2G

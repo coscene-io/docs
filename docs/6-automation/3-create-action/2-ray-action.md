@@ -1,61 +1,92 @@
 # 创建 Ray 动作
 
-下面以计算文件 SHA-256 为例。动作按记录并行处理，每个文件在步骤日志中输出一行 JSON，包含相对路径、字节数和 SHA-256 摘要。
+本例从每条记录的 MCAP 相机画面中抽帧，并在 CPU 上检测行人。Ray Task 负责每条记录独立的解码和抽帧，Ray Actor 负责加载 OpenCV 自带的 HOG 行人检测模型，复用于后续记录。
 
-## 编写 Ray Task 和 Ray Actor
+## 编写抽帧 Task
 
-动作根据每个步骤的 Python 入口自动选择执行方式，平台负责提交和调度。直接编写带类型注解的同步函数或类即可，无需添加 `@ray.remote`。
+准备至少一份 ROS 2 MCAP：示例读取 `/camera/image/compressed` 上以 CDR 编码的 `sensor_msgs/msg/CompressedImage`（JPEG 或 PNG）。如果相机使用其他 topic，请修改 `TOPIC`。在空目录中创建 `camera.py`，写入以下同步函数。
 
-**Ray Task** 适合每条记录独立执行的计算。在空目录中创建 `checksums.py`，定义以下顶层函数。每次调用读取当前记录，打印文件摘要，并将文件数返回给下游步骤。
+每个 MCAP 取第 1、31、61、91、121 帧中实际存在的帧。从只读的记录输入读取图像，把抽样帧和清单写入当前 JobRun 的共享输出目录；下游步骤只需接收清单路径。
 
 ```python
-import hashlib
 import json
-
-from matrix_action_sdk import current_context
-
-
-def sha256_files() -> int:
-    root = current_context().record.files_dir
-    count = total = 0
-    for path in sorted(root.rglob("*")):
-        if path.is_symlink() or not path.is_file():
-            continue
-        with path.open("rb") as stream:
-            digest = hashlib.file_digest(stream, "sha256").hexdigest()
-            size = path.stat().st_size
-        print(json.dumps({"file": path.relative_to(root).as_posix(),
-                          "bytes": size, "sha256": digest}), flush=True)
-        count += 1
-        total += size
-    summary = json.dumps({"files": count, "bytes": total})
-    (current_context().outputs_dir / "summary.json").write_text(summary, encoding="utf-8")
-    print(summary, flush=True)
-    return count
-```
-
-记录的输入目录 `current_context().record.files_dir` 只读。这个函数通过 `return count` 将文件数传给下游步骤，通过 `print` 写步骤日志，并将 `summary.json` 写入 `current_context().outputs_dir`，作为当前记录这次 JobRun 的输出文件。
-
-**Ray Actor** 适合跨记录复用模型、规则或连接。在同一个 `checksums.py` 中追加以下顶层类，并在旁边创建 `rules.json`，内容为 `{"minimum_files": 1}`。每个实例在 `setup()` 中加载一次规则，随后串行调用 `run()` 检查分配给它的记录。类须支持无参构造，必须实现 `run()`；可选的 `setup()` 和 `close()` 分别用于初始化和释放资源。
-
-```python
 from pathlib import Path
 
+import cv2
+import numpy as np
+from mcap.reader import make_reader
+from mcap_ros2.decoder import DecoderFactory
+from matrix_action_sdk import current_context
 
-class FileCountCheck:
+TOPIC = "/camera/image/compressed"
+
+
+def sample_frames() -> str:
+    ctx = current_context()
+    root = ctx.record.files_dir
+    folder = ctx.outputs_dir / "frames"
+    folder.mkdir(exist_ok=True)
+    frames = []
+    for path in sorted(root.rglob("*.mcap")):
+        with path.open("rb") as stream:
+            reader = make_reader(stream, decoder_factories=[DecoderFactory()])
+            messages = reader.iter_decoded_messages(topics=[TOPIC])
+            for index, (schema, _, message, image) in enumerate(messages):
+                if schema.name != "sensor_msgs/msg/CompressedImage":
+                    raise ValueError(f"Unexpected schema on {TOPIC}: {schema.name}")
+                if index % 30:
+                    continue
+                pixels = cv2.imdecode(np.frombuffer(bytes(image.data), np.uint8), cv2.IMREAD_COLOR)
+                if pixels is None:
+                    raise ValueError(f"Invalid compressed image in {path.name}")
+                filename = f"{len(frames):06}.jpg"
+                if not cv2.imwrite(str(folder / filename), pixels):
+                    raise OSError(f"Could not write {filename}")
+                frames.append({"mcap": path.relative_to(root).as_posix(),
+                               "log_time_ns": message.log_time, "image": filename})
+                if index == 120:
+                    break
+    if not frames:
+        raise ValueError(f"No frames found on {TOPIC}")
+    manifest = folder / "manifest.json"
+    manifest.write_text(json.dumps(frames), encoding="utf-8")
+    print(f"sampled_frames={len(frames)}", flush=True)
+    return str(manifest)
+```
+
+## 编写检测 Actor
+
+在同一份 `camera.py` 中追加以下类。`setup()` 为每个 Actor 实例初始化一次预训练模型；`run()` 每次只处理当前记录的抽样帧。目标是检测画面中站立的行人，每个框以原图像素坐标 `[x, y, width, height]` 表示。模型随 OpenCV 安装，可以离线运行。
+
+```python
+class PersonDetector:
     def setup(self):
-        with Path(__file__).with_name("rules.json").open() as stream:
-            self.minimum = json.load(stream)["minimum_files"]
+        self.model = cv2.HOGDescriptor()
+        self.model.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 
-    def run(self, checksum: int) -> bool:
-        passed = checksum >= self.minimum
-        print(json.dumps({"files": checksum, "passed": passed}), flush=True)
-        return passed
+    def run(self, sample: str) -> int:
+        manifest = Path(sample)
+        frames = json.loads(manifest.read_text(encoding="utf-8"))
+        total = 0
+        output = current_context().outputs_dir / "detections.jsonl"
+        with output.open("w", encoding="utf-8") as stream:
+            for frame in frames:
+                image = cv2.imread(str(manifest.parent / frame["image"]))
+                if image is None:
+                    raise ValueError(f"Cannot read {frame['image']}")
+                boxes = []
+                if image.shape[0] >= 128 and image.shape[1] >= 64:
+                    rects, _ = self.model.detectMultiScale(image, winStride=(8, 8))
+                    boxes = [list(map(int, rect)) for rect in rects]
+                stream.write(json.dumps({**frame, "person_boxes": boxes}) + "\n")
+                total += len(boxes)
+        print(f"frames={len(frames)} person_boxes={total}", flush=True)
+        return total
 ```
 
 ## 构建并推送 worker 镜像
 
-本例适用于 CPython 3.12.16、Ray 2.51.1 的 Matrix head。 构建前，向平台管理员确认目标集群 head 的版本。worker 镜像中的 Python 解释器须与 head 匹配到补丁号，Ray 版本也须一致。业务代码可以独立更新。
+本例适用于 CPython 3.12.16、Ray 2.51.1 的 Matrix head。构建前，向平台管理员确认目标集群 head 的版本。worker 镜像中的 Python 解释器须与 head 匹配到补丁号，Ray 版本也须一致。业务代码可以独立更新。
 
 构建时，`ray-runner check-image` 检查镜像是否符合 SDK 要求。启动时，Ray 再将 worker 的实际版本与 head 核对。版本不匹配时，该 worker 无法加入集群，业务入口也不会在它上面执行。使用匹配的版本重新构建并推送镜像，更新动作的 `ray.image` 后重新调用。
 
@@ -70,17 +101,18 @@ ENV PYTHONUNBUFFERED=1 PYTHONPATH=/opt/action
 WORKDIR /opt/action
 RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates && rm -rf /var/lib/apt/lists/*
 RUN --mount=type=secret,id=netrc,target=/root/.netrc,required=true \
-    python -m pip install --no-cache-dir "ray[default]==2.51.1" \
+    python -m pip install --no-cache-dir "ray[default]==2.51.1" "mcap-ros2-support==0.5.7" \
+      "opencv-python-headless==4.11.0.86" "numpy==2.2.6" \
       'matrix-action-sdk @ git+https://github.com/coscene-io/matrix.git@48868eaaa042b2650827621ca2c69676c289416a#subdirectory=ray-runtime' && \
     python -m pip check
-COPY checksums.py rules.json ./
-RUN ray-runner check-image && python -c "from checksums import sha256_files, FileCountCheck"
+COPY camera.py ./
+RUN ray-runner check-image && python -c "from camera import sample_frames, PersonDetector"
 ```
 
 将 `image` 替换为你能推送、项目能拉取的镜像地址，登录该仓库后执行以下命令。
 
 ```bash
-image='registry.example.com/my-team/ray-sha256:v1'
+image='registry.example.com/my-team/mcap-person-detection:v1'
 docker buildx build --platform linux/amd64 --secret id=netrc,src="$HOME/.netrc" \
   --load -t "$image" .
 docker run --rm --platform linux/amd64 "$image" ray-runner check-image
@@ -89,48 +121,38 @@ docker push "$image"
 
 ## 配置并调用动作
 
-1. 在项目的「自动化 → 动作」页面点击【创建动作】，填写动作名称 `record-checksums`，勾选【使用 Ray】。
-2. 在 worker 镜像字段（`ray.image`）填写刚推送的完整镜像地址，将【记录并发度】设为 `2`，表示同时最多处理两条记录。动作中的所有 Python 步骤共用该镜像。
-3. 将步骤命名为 `checksum`，在【Python 入口】（`jobs[].python.target`）填写 `checksums.sha256_files`，选择 1 核 CPU 和 2 GiB 内存。
-4. 添加步骤 `check`，将依赖设为 `checksum`，【Python 入口】填写类名 `checksums.FileCountCheck`，资源同上。
-5. 保存动作，然后[选择记录并调用动作](../5-invocation.md)。在每条记录的 `checksum` 步骤日志中查看每个文件的 `file`、`bytes` 和 `sha256` 字段。最后一行汇总当前记录的文件数和总字节数。
+在项目的「自动化 → 动作」中创建动作 `camera-detection`，勾选【使用 Ray】，填写刚推送的 worker 镜像地址，并将记录并发度设为 2。添加以下两个步骤，每步选择 1 核 CPU、2 GiB 内存：
 
-对应的 Action YAML 如下。将 `ray.image` 替换为刚推送的镜像地址。
+1. `sample` 的 Python 入口填写函数 `camera.sample_frames`。
+2. `detect` 依赖 `sample`，Python 入口填写类名 `camera.PersonDetector`。平台按入口自动识别 Task 和 Actor，并将上游返回的清单路径传给同名参数 `run(self, sample: str)`。
+
+对应的 Action YAML 如下。请替换镜像地址。
 
 ```yaml
-name: record-checksums
+name: camera-detection
 ray:
-  image: registry.example.com/my-team/ray-sha256:v1
+  image: registry.example.com/my-team/mcap-person-detection:v1
   concurrency: 2
 jobs:
-  - name: checksum
+  - name: sample
     python:
-      target: checksums.sha256_files
+      target: camera.sample_frames
       resources:
         cpu: CPU_QUOTA_1C
         memory: MEMORY_QUOTA_2G
-  - name: check
-    depends: [checksum]
+  - name: detect
+    depends: [sample]
     python:
-      target: checksums.FileCountCheck
+      target: camera.PersonDetector
       resources:
         cpu: CPU_QUOTA_1C
         memory: MEMORY_QUOTA_2G
 ```
 
-对每条记录，`depends: [checksum]` 让 `check` 等待该记录的 Task 完成。SDK 将 Task 返回的文件数传给同名参数 `run(self, checksum: int)`。例如，含两个文件的记录会在 `check` 的日志中输出 `{"files": 2, "passed": true}`。
-
-`ray.concurrency: 2` 表示整个动作同时最多处理两条记录。Matrix 为这个 Actor 步骤创建两个独立实例，每个实例分别加载规则，并可在本次运行中继续处理后续记录。把可复用的资源放在实例属性里，把单条记录的数据保存在 `run()` 的局部变量里。
-
-详见[显式输入绑定和 Actor 资源开销](../6-action-runtime.md#ray-steps)。
+并发度 2 表示同时最多处理两条记录。检测步骤有两个独立的 Actor 实例，每个实例各持有一份模型，并串行处理分配给它的记录。帧和检测框按 JobRun 隔离。[显式输入绑定和 Actor 资源开销](../6-action-runtime.md#ray-steps)
 
 ## 试跑并核对结果
 
-使用示例规则 `minimum_files: 1`，先选择一条有文件的记录和一条空记录。分别打开两个 JobRun 的 `checksum` 日志和输出文件 `summary.json`，核对文件数和字节数，再查看 `check` 日志：有文件的记录输出 `"passed": true`，空记录输出 `"passed": false`。两条记录都应正常完成，因为 `False` 是有效的布尔返回值。
+保存动作后，[选择一条含相机数据的记录并调用](../5-invocation.md)。在 `sample` 日志查看抽帧数，再打开该 JobRun 的输出：`frames/manifest.json` 记录 MCAP 文件名、消息时间和抽样图片，`detections.jsonl` 每帧一行。按图片名对应两份文件，用左上角和宽高核对检测框。
 
-如果空记录应当导致当前 JobRun 失败，可在 `run()` 中、`return passed` 之前添加：
-
-```python
-if not passed:
-    raise ValueError(f"Expected at least {self.minimum} files, got {checksum}")
-```
+如果图像中没有检出行人，`person_boxes` 为空数组，该帧仍会出现在结果中。小于检测窗口（宽 64、高 128 像素）的帧也输出空数组。如果整条记录都没有目标 topic 的图像，`sample` 会抛出异常，此记录的 `detect` 步骤不会执行。

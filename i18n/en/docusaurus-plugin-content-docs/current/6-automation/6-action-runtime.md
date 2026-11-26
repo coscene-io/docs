@@ -97,15 +97,15 @@ This JSON file mainly contains three parts:
 
 ## Ray step inputs and resources {#ray-steps}
 
-In [Create a Ray Action](./3-create-action/2-ray-action.md), the SDK passes the result of the direct dependency `checksum` to the parameter of the same name. If you change the method to `run(self, file_count: int) -> bool` and use `file_count` in the method body, update the step in `jobs` as shown below. Keep `depends` for execution order. In `python.bindings`, the key is the argument name and the value is the upstream step name.
+In [Create a Ray Action](./3-create-action/2-ray-action.md), the SDK passes the result of the direct dependency `sample` to the parameter of the same name. If you change the method to `run(self, manifest_path: str) -> int` and use `manifest_path` in the method body, update the step in `jobs` as shown below. Keep `depends` for execution order. In `python.bindings`, the key is the argument name and the value is the upstream step name.
 
 ```yaml
-- name: check
-  depends: [checksum]
+- name: detect
+  depends: [sample]
   python:
-    target: checksums.FileCountCheck
+    target: camera.PersonDetector
     bindings:
-      file_count: checksum
+      manifest_path: sample
     resources:
       cpu: CPU_QUOTA_1C
       memory: MEMORY_QUOTA_2G
