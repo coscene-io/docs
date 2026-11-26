@@ -20,8 +20,11 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: cos-m
     timeout-minutes: 30
+    concurrency:
+      group: docs-oss-${{ inputs.environment }}
+      cancel-in-progress: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -48,17 +51,40 @@ jobs:
           export NODE_OPTIONS=--max_old_space_size=5632
           pnpm build
 
-      - name: Setup OSS
-        uses: coscene-io/setup-ossutil@v2
-        with:
-          endpoint: oss-cn-hangzhou.aliyuncs.com
-          access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
-          access-key-secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
-
-      - name: Deploy to OSS
+      - name: Install ossutil
         run: |
-          ossutil rm -rf oss://${{ secrets.OSS_TARGET_BUCKET }}/
-          ossutil cp -rf build/  oss://${{ secrets.OSS_TARGET_BUCKET }}/
+          set -euo pipefail
+          archive="$RUNNER_TEMP/ossutil.zip"
+          curl --fail --silent --show-error --location --retry 3 \
+            https://gosspublic.alicdn.com/ossutil/v2/2.2.0/ossutil-2.2.0-linux-amd64.zip -o "$archive"
+          echo "9e02837d806cfe976ae6c1fc22557d8e0a394ca6d298b45fb9f48a360d3a67f4  $archive" | sha256sum -c -
+          unzip -oq "$archive" -d "$RUNNER_TEMP"
+          chmod +x "$RUNNER_TEMP/ossutil-2.2.0-linux-amd64/ossutil"
+          echo "$RUNNER_TEMP/ossutil-2.2.0-linux-amd64" >> "$GITHUB_PATH"
+
+      - name: Publish changed site files to OSS
+        env:
+          OSS_ACCESS_KEY_ID: ${{ secrets.OSS_ACCESS_KEY_ID }}
+          OSS_ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+          OSS_REGION: cn-hangzhou
+          SITE_BUCKET: ${{ secrets.OSS_TARGET_BUCKET }}
+        run: |
+          set -euo pipefail
+          test -s build/index.html
+          test -s build/en/index.html
+          test -d build/assets
+          target="oss://${SITE_BUCKET:?}/"
+          options=(--checksum --force --no-progress)
+          if [[ -n "${HTTPS_PROXY:-}" ]]; then
+            options+=(--proxy "$HTTPS_PROXY")
+            echo "Using runner proxy for OSS"
+          fi
+          echo "Publishing assets"
+          ossutil sync build/ "$target" "${options[@]}" --exclude '*.html'
+          echo "Publishing HTML"
+          ossutil sync build/ "$target" "${options[@]}" --include '*.html'
+          echo "Removing stale files after publication"
+          ossutil sync build/ "$target" "${options[@]}" --delete
 
       - name: Notification to Feishu
         uses: foxundermoon/feishu-action@v2
