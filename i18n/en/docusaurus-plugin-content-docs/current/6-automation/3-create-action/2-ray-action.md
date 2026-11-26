@@ -8,6 +8,8 @@ Prepare a ROS 2 MCAP with JPEG or PNG images on `/camera/image/compressed`, enco
 
 The function takes frames 1, 31, 61, 91, and 121 from each MCAP when available. It reads the record’s read-only input, writes frames and a manifest to the shared JobRun output directory, and passes the manifest path downstream.
 
+[See all `current_context()` attributes and when to use them](../6-action-runtime.md#ray-step-context).
+
 ```python
 import json
 from pathlib import Path

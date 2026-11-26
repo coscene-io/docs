@@ -112,3 +112,18 @@ In [Create a Ray Action](./3-create-action/2-ray-action.md), `sample` returns th
 ```
 
 Each Actor step has its own pool with one instance per concurrency slot. If `setup()` loads a model and `ray.concurrency` is 2, that step loads two copies. Size the step resources for one instance at peak usage. When increasing concurrency, account for all instances when estimating total memory and, for GPU models, total GPU memory.
+
+### Access the current step context {#ray-step-context}
+
+Call `ctx = current_context()` inside a Task function or an Actor’s `run` method. The SDK function takes no arguments. The runtime sets the context for each step invocation, so an Actor processing multiple records should get the current context each time it enters `run`. Calling it in the Actor constructor raises `RuntimeError`.
+
+| Attribute | Type | Use |
+| --- | --- | --- |
+| `ctx.action_run_id` | `str` | ID of this action invocation. |
+| `ctx.job_run_id` | `str` | ID of the JobRun processing this record. |
+| `ctx.step` | `str` | Name of the current step in the action YAML, such as `detect`. |
+| `ctx.record.id` | `str` | ID of the current input record. |
+| `ctx.record.files_dir` | `pathlib.Path` | Read-only directory containing the record’s files, including its MCAP files. |
+| `ctx.outputs_dir` | `pathlib.Path` | Writable JobRun output directory shared by steps processing this record. |
+| `ctx.parameters` | Read-only mapping | Action invocation parameters, looked up by name. Upstream return values configured with `python.bindings` arrive as arguments to the step function or method. |
+| `ctx.logger` | `logging.LoggerAdapter` | Logger carrying the ActionRun ID, JobRun ID, record ID, and step name. |

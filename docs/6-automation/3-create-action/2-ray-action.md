@@ -8,6 +8,8 @@
 
 每个 MCAP 取第 1、31、61、91、121 帧中实际存在的帧。从只读的记录输入读取图像，把抽样帧和清单写入当前 JobRun 的共享输出目录；下游步骤只需接收清单路径。
 
+[查看 `current_context()` 的全部属性和使用时机](../6-action-runtime.md#ray-step-context)。
+
 ```python
 import json
 from pathlib import Path
