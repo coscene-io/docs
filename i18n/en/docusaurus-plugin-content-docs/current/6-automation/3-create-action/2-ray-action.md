@@ -86,8 +86,8 @@ class ObjectDetector:
                                 "box": list(map(int, (x1, y1, x2 - x1, y2 - y1)))})
         return objects
 
-    def run(self, sample: str) -> int:
-        manifest = Path(sample)
+    def run(self, manifest_path: str) -> int:
+        manifest = Path(manifest_path)
         frames = json.loads(manifest.read_text(encoding="utf-8"))
         total = 0
         output = current_context().outputs_dir / "detections.jsonl"
@@ -154,7 +154,7 @@ docker push "$image"
 Under **Automation → Actions**, create an action named `camera-detection`, select **Use Ray**, enter the worker image reference you pushed, and set concurrent records to 2. Create two steps with 1 CPU and 2 GiB of memory each:
 
 1. For `sample`, enter the function `camera.sample_frames` as the Python target.
-2. For `detect`, select `sample` as its dependency and enter the class `camera.ObjectDetector` as its target. Matrix recognizes functions as Tasks and classes as Actors. The SDK passes the returned manifest path to the matching argument in `run(self, sample: str)`.
+2. Set the Python target of `detect` to the class `camera.ObjectDetector`. The dependency `depends: [sample]` makes it wait until sampling finishes for this record. In the YAML below, set `manifest_path: sample` under `python.bindings` to pass the manifest path returned by `sample` to the Actor’s `manifest_path` argument.
 
 The equivalent Action YAML uses the image pushed in the previous step.
 
@@ -174,6 +174,8 @@ jobs:
     depends: [sample]
     python:
       target: camera.ObjectDetector
+      bindings:
+        manifest_path: sample
       resources:
         cpu: CPU_QUOTA_1C
         memory: MEMORY_QUOTA_2G

@@ -97,7 +97,7 @@ $COS_OUTPUT_VOLUME
 
 ## Ray 步骤的输入绑定和资源 {#ray-steps}
 
-在[创建 Ray 动作](./3-create-action/2-ray-action.md)的示例中，平台自动将直接上游步骤 `sample` 的返回值传给同名参数。如果将方法签名改为 `run(self, manifest_path: str) -> int`，并在方法体内使用 `manifest_path`，请对应更新 `jobs` 中的步骤。保留 `depends` 声明执行顺序，在 `python.bindings` 中以参数名为键、上游步骤名为值。
+在[创建 Ray 动作](./3-create-action/2-ray-action.md)中，`sample` 返回当前记录的抽帧清单路径。`detect` 用 `depends` 声明执行顺序，并通过 `python.bindings` 指定参数的来源：键 `manifest_path` 是 Python 方法的参数名，值 `sample` 是产生该值的步骤名。如果将参数也命名为 `sample`，SDK 可按名称自动绑定这个直接依赖的返回值，此时可以省略 `bindings`。
 
 ```yaml
 - name: detect

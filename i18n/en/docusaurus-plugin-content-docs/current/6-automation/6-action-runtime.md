@@ -97,7 +97,7 @@ This JSON file mainly contains three parts:
 
 ## Ray step inputs and resources {#ray-steps}
 
-In [Create a Ray Action](./3-create-action/2-ray-action.md), the SDK passes the result of the direct dependency `sample` to the parameter of the same name. If you change the method to `run(self, manifest_path: str) -> int` and use `manifest_path` in the method body, update the step in `jobs` as shown below. Keep `depends` for execution order. In `python.bindings`, the key is the argument name and the value is the upstream step name.
+In [Create a Ray Action](./3-create-action/2-ray-action.md), `sample` returns the frame manifest path for the current record. The `detect` step uses `depends` to declare the execution order and `python.bindings` to supply the method argument. The key `manifest_path` names the Python argument and the value `sample` names the step that produces it. If the argument is also named `sample`, you can omit `bindings` and the SDK matches it to the direct dependency by name.
 
 ```yaml
 - name: detect

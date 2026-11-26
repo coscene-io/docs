@@ -86,8 +86,8 @@ class ObjectDetector:
                                 "box": list(map(int, (x1, y1, x2 - x1, y2 - y1)))})
         return objects
 
-    def run(self, sample: str) -> int:
-        manifest = Path(sample)
+    def run(self, manifest_path: str) -> int:
+        manifest = Path(manifest_path)
         frames = json.loads(manifest.read_text(encoding="utf-8"))
         total = 0
         output = current_context().outputs_dir / "detections.jsonl"
@@ -154,7 +154,7 @@ docker push "$image"
 在项目的「自动化 → 动作」中创建动作 `camera-detection`，勾选【使用 Ray】，填写刚推送的 worker 镜像地址，并将记录并发度设为 2。添加以下两个步骤，每步选择 1 核 CPU、2 GiB 内存：
 
 1. `sample` 的 Python 入口填写函数 `camera.sample_frames`。
-2. `detect` 依赖 `sample`，Python 入口填写类名 `camera.ObjectDetector`。平台按入口自动识别 Task 和 Actor，并将上游返回的清单路径传给同名参数 `run(self, sample: str)`。
+2. `detect` 的 Python 入口填写类名 `camera.ObjectDetector`。`depends: [sample]` 让它等待当前记录抽帧完成。在下方 YAML 的 `python.bindings` 中填写 `manifest_path: sample`，将 `sample` 返回的清单路径传给 Actor 的 `manifest_path` 参数。
 
 对应的 Action YAML 使用上一步推送的镜像。
 
@@ -174,6 +174,8 @@ jobs:
     depends: [sample]
     python:
       target: camera.ObjectDetector
+      bindings:
+        manifest_path: sample
       resources:
         cpu: CPU_QUOTA_1C
         memory: MEMORY_QUOTA_2G
