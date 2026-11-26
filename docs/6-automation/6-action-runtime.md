@@ -103,7 +103,7 @@ $COS_OUTPUT_VOLUME
 - name: detect
   depends: [sample]
   python:
-    target: camera.PersonDetector
+    target: camera.ObjectDetector
     bindings:
       manifest_path: sample
     resources:

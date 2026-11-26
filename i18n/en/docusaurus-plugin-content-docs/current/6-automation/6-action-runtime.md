@@ -103,7 +103,7 @@ In [Create a Ray Action](./3-create-action/2-ray-action.md), the SDK passes the 
 - name: detect
   depends: [sample]
   python:
-    target: camera.PersonDetector
+    target: camera.ObjectDetector
     bindings:
       manifest_path: sample
     resources:

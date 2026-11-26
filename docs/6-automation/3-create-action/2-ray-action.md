@@ -1,6 +1,6 @@
 # 创建 Ray 动作
 
-本例从每条记录的 MCAP 相机画面中抽帧，并在 CPU 上检测行人。Ray Task 负责每条记录独立的解码和抽帧，Ray Actor 负责加载 OpenCV 自带的 HOG 行人检测模型，复用于后续记录。
+本例从每条记录的 MCAP 相机画面中抽帧，并在 CPU 上识别瓶子、椅子、自行车等物品。Ray Task 负责抽帧，Ray Actor 加载一次 MobileNet-SSD 模型，复用于分配给它的多条记录。
 
 ## 编写抽帧 Task
 
@@ -56,13 +56,35 @@ def sample_frames() -> str:
 
 ## 编写检测 Actor
 
-在同一份 `camera.py` 中追加以下类。`setup()` 为每个 Actor 实例初始化一次预训练模型；`run()` 每次只处理当前记录的抽样帧。目标是检测画面中站立的行人，每个框以原图像素坐标 `[x, y, width, height]` 表示。模型随 OpenCV 安装，可以离线运行。
+在同一份 `camera.py` 中追加以下代码。`setup()` 从镜像加载预训练模型，每次 `run()` 检测当前记录的抽样帧。字典中的编号来自该模型的 PASCAL VOC 类别表，可以按需要调整保留的类别。
 
 ```python
-class PersonDetector:
+ITEMS = {2: "bicycle", 5: "bottle", 9: "chair", 11: "diningtable",
+         16: "pottedplant", 18: "sofa", 20: "tvmonitor"}
+
+
+class ObjectDetector:
     def setup(self):
-        self.model = cv2.HOGDescriptor()
-        self.model.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+        folder = Path(__file__).with_name("model")
+        self.model = cv2.dnn.readNetFromCaffe(
+            str(folder / "deploy.prototxt"), str(folder / "weights.caffemodel")
+        )
+
+    def detect(self, image):
+        height, width = image.shape[:2]
+        blob = cv2.dnn.blobFromImage(image, 0.007843, (300, 300), (127.5,) * 3)
+        self.model.setInput(blob)
+        objects = []
+        for _, class_id, score, left, top, right, bottom in self.model.forward().reshape(-1, 7):
+            label = ITEMS.get(int(class_id))
+            if label is None or score < 0.5:
+                continue
+            x1, x2 = (np.clip([left, right], 0, 1) * width).astype(int)
+            y1, y2 = (np.clip([top, bottom], 0, 1) * height).astype(int)
+            if x2 > x1 and y2 > y1:
+                objects.append({"label": label, "score": round(float(score), 3),
+                                "box": list(map(int, (x1, y1, x2 - x1, y2 - y1)))})
+        return objects
 
     def run(self, sample: str) -> int:
         manifest = Path(sample)
@@ -74,13 +96,10 @@ class PersonDetector:
                 image = cv2.imread(str(manifest.parent / frame["image"]))
                 if image is None:
                     raise ValueError(f"Cannot read {frame['image']}")
-                boxes = []
-                if image.shape[0] >= 128 and image.shape[1] >= 64:
-                    rects, _ = self.model.detectMultiScale(image, winStride=(8, 8))
-                    boxes = [list(map(int, rect)) for rect in rects]
-                stream.write(json.dumps({**frame, "person_boxes": boxes}) + "\n")
-                total += len(boxes)
-        print(f"frames={len(frames)} person_boxes={total}", flush=True)
+                objects = self.detect(image)
+                stream.write(json.dumps({**frame, "objects": objects}) + "\n")
+                total += len(objects)
+        print(f"frames={len(frames)} objects={total}", flush=True)
         return total
 ```
 
@@ -91,6 +110,15 @@ class PersonDetector:
 构建时，`ray-runner check-image` 检查镜像是否符合 SDK 要求。启动时，Ray 再将 worker 的实际版本与 head 核对。版本不匹配时，该 worker 无法加入集群，业务入口也不会在它上面执行。使用匹配的版本重新构建并推送镜像，更新动作的 `ray.image` 后重新调用。
 
 在构建机的 `~/.netrc` 中配置 `github.com` 的用户名和有权读取 `coscene-io/matrix` 的 token，并执行 `chmod 600 ~/.netrc`。
+
+在 `camera.py` 所在目录下载固定版本的模型配置和权重。Docker 会将两者复制进镜像，worker 可离线推理。
+
+```bash
+mkdir -p model
+base=https://raw.githubusercontent.com/chuanqi305/MobileNet-SSD/bb17b6c3eef36d80be441ae8e5339be66e8e3b7a
+curl -fL "$base/deploy.prototxt" -o model/deploy.prototxt
+curl -fL "$base/mobilenet_iter_73000.caffemodel" -o model/weights.caffemodel
+```
 
 在同一目录创建 `Dockerfile`。BuildKit 仅在安装依赖的步骤挂载 `.netrc`。pip 通过 Git HTTPS 从固定提交安装 Matrix Action SDK。
 
@@ -105,14 +133,15 @@ RUN --mount=type=secret,id=netrc,target=/root/.netrc,required=true \
       "opencv-python-headless==4.11.0.86" "numpy==2.2.6" \
       'matrix-action-sdk @ git+https://github.com/coscene-io/matrix.git@48868eaaa042b2650827621ca2c69676c289416a#subdirectory=ray-runtime' && \
     python -m pip check
+COPY model/ ./model/
 COPY camera.py ./
-RUN ray-runner check-image && python -c "from camera import sample_frames, PersonDetector"
+RUN ray-runner check-image && python -c "from camera import sample_frames, ObjectDetector"
 ```
 
 将 `image` 替换为你能推送、项目能拉取的镜像地址，登录该仓库后执行以下命令。
 
 ```bash
-image='registry.example.com/my-team/mcap-person-detection:v1'
+image='registry.example.com/my-team/mcap-object-detection:v1'
 docker buildx build --platform linux/amd64 --secret id=netrc,src="$HOME/.netrc" \
   --load -t "$image" .
 docker run --rm --platform linux/amd64 "$image" ray-runner check-image
@@ -124,14 +153,14 @@ docker push "$image"
 在项目的「自动化 → 动作」中创建动作 `camera-detection`，勾选【使用 Ray】，填写刚推送的 worker 镜像地址，并将记录并发度设为 2。添加以下两个步骤，每步选择 1 核 CPU、2 GiB 内存：
 
 1. `sample` 的 Python 入口填写函数 `camera.sample_frames`。
-2. `detect` 依赖 `sample`，Python 入口填写类名 `camera.PersonDetector`。平台按入口自动识别 Task 和 Actor，并将上游返回的清单路径传给同名参数 `run(self, sample: str)`。
+2. `detect` 依赖 `sample`，Python 入口填写类名 `camera.ObjectDetector`。平台按入口自动识别 Task 和 Actor，并将上游返回的清单路径传给同名参数 `run(self, sample: str)`。
 
 对应的 Action YAML 如下。请替换镜像地址。
 
 ```yaml
 name: camera-detection
 ray:
-  image: registry.example.com/my-team/mcap-person-detection:v1
+  image: registry.example.com/my-team/mcap-object-detection:v1
   concurrency: 2
 jobs:
   - name: sample
@@ -143,7 +172,7 @@ jobs:
   - name: detect
     depends: [sample]
     python:
-      target: camera.PersonDetector
+      target: camera.ObjectDetector
       resources:
         cpu: CPU_QUOTA_1C
         memory: MEMORY_QUOTA_2G
@@ -155,4 +184,4 @@ jobs:
 
 保存动作后，[选择一条含相机数据的记录并调用](../5-invocation.md)。在 `sample` 日志查看抽帧数，再打开该 JobRun 的输出：`frames/manifest.json` 记录 MCAP 文件名、消息时间和抽样图片，`detections.jsonl` 每帧一行。按图片名对应两份文件，用左上角和宽高核对检测框。
 
-如果图像中没有检出行人，`person_boxes` 为空数组，该帧仍会出现在结果中。小于检测窗口（宽 64、高 128 像素）的帧也输出空数组。如果整条记录都没有目标 topic 的图像，`sample` 会抛出异常，此记录的 `detect` 步骤不会执行。
+每个检测结果包括类别 `label`、置信度 `score` 和原图像素坐标 `box`（左上角 x、y、宽、高）。选择有已配置物品的画面试跑。没有物品达到 0.5 阈值时，该帧仍输出一行，`objects` 为空数组。如果整条记录都没有目标 topic 的图像，`sample` 会抛出异常，此记录的 `detect` 步骤不会执行。

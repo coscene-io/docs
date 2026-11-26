@@ -1,6 +1,6 @@
 # Create a Ray Action
 
-This action samples camera frames from each record’s MCAP files and detects pedestrians on CPU. A Ray Task handles decoding and sampling for each record. A Ray Actor loads OpenCV’s pretrained HOG pedestrian detector and reuses it across records.
+This action samples camera frames from MCAP files and detects objects such as bottles, chairs, and bicycles on CPU. A Ray Task samples each record. Each Ray Actor loads MobileNet-SSD once and reuses it across its assigned records.
 
 ## Write the sampling Task
 
@@ -56,13 +56,35 @@ def sample_frames() -> str:
 
 ## Write the detection Actor
 
-Append this class to the same `camera.py`. Each Actor instance initializes its pretrained detector once in `setup()`. Each call to `run()` processes frames from a single record. The detector looks for upright pedestrians and returns boxes in original image pixels as `[x, y, width, height]`. OpenCV includes the model, so inference can run offline.
+Append this code to `camera.py`. Each instance loads the pretrained model from the image in `setup()`. Each call to `run()` processes one record. The dictionary maps selected PASCAL VOC class IDs to output labels. Adjust it to keep the classes you need.
 
 ```python
-class PersonDetector:
+ITEMS = {2: "bicycle", 5: "bottle", 9: "chair", 11: "diningtable",
+         16: "pottedplant", 18: "sofa", 20: "tvmonitor"}
+
+
+class ObjectDetector:
     def setup(self):
-        self.model = cv2.HOGDescriptor()
-        self.model.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+        folder = Path(__file__).with_name("model")
+        self.model = cv2.dnn.readNetFromCaffe(
+            str(folder / "deploy.prototxt"), str(folder / "weights.caffemodel")
+        )
+
+    def detect(self, image):
+        height, width = image.shape[:2]
+        blob = cv2.dnn.blobFromImage(image, 0.007843, (300, 300), (127.5,) * 3)
+        self.model.setInput(blob)
+        objects = []
+        for _, class_id, score, left, top, right, bottom in self.model.forward().reshape(-1, 7):
+            label = ITEMS.get(int(class_id))
+            if label is None or score < 0.5:
+                continue
+            x1, x2 = (np.clip([left, right], 0, 1) * width).astype(int)
+            y1, y2 = (np.clip([top, bottom], 0, 1) * height).astype(int)
+            if x2 > x1 and y2 > y1:
+                objects.append({"label": label, "score": round(float(score), 3),
+                                "box": list(map(int, (x1, y1, x2 - x1, y2 - y1)))})
+        return objects
 
     def run(self, sample: str) -> int:
         manifest = Path(sample)
@@ -74,13 +96,10 @@ class PersonDetector:
                 image = cv2.imread(str(manifest.parent / frame["image"]))
                 if image is None:
                     raise ValueError(f"Cannot read {frame['image']}")
-                boxes = []
-                if image.shape[0] >= 128 and image.shape[1] >= 64:
-                    rects, _ = self.model.detectMultiScale(image, winStride=(8, 8))
-                    boxes = [list(map(int, rect)) for rect in rects]
-                stream.write(json.dumps({**frame, "person_boxes": boxes}) + "\n")
-                total += len(boxes)
-        print(f"frames={len(frames)} person_boxes={total}", flush=True)
+                objects = self.detect(image)
+                stream.write(json.dumps({**frame, "objects": objects}) + "\n")
+                total += len(objects)
+        print(f"frames={len(frames)} objects={total}", flush=True)
         return total
 ```
 
@@ -91,6 +110,15 @@ This example targets a Matrix head running CPython 3.12.16 and Ray 2.51.1. Befor
 At build time, `ray-runner check-image` checks the image against the SDK requirements. At startup, Ray checks the worker against the actual head. A mismatch prevents that worker from joining the cluster or executing your Python target. Rebuild and push a compatible image, update the action’s `ray.image`, and invoke it again.
 
 Configure your GitHub username and a token with read access to `coscene-io/matrix` in the build host’s `~/.netrc` entry for `github.com`, then run `chmod 600 ~/.netrc`.
+
+Download the pinned model configuration and weights alongside `camera.py`. Docker copies both files into the image so the workers can run inference offline.
+
+```bash
+mkdir -p model
+base=https://raw.githubusercontent.com/chuanqi305/MobileNet-SSD/bb17b6c3eef36d80be441ae8e5339be66e8e3b7a
+curl -fL "$base/deploy.prototxt" -o model/deploy.prototxt
+curl -fL "$base/mobilenet_iter_73000.caffemodel" -o model/weights.caffemodel
+```
 
 Create a `Dockerfile` in the same directory. BuildKit mounts `.netrc` only for the dependency installation step. pip installs the Matrix Action SDK from a pinned Git commit over HTTPS.
 
@@ -105,14 +133,15 @@ RUN --mount=type=secret,id=netrc,target=/root/.netrc,required=true \
       "opencv-python-headless==4.11.0.86" "numpy==2.2.6" \
       'matrix-action-sdk @ git+https://github.com/coscene-io/matrix.git@48868eaaa042b2650827621ca2c69676c289416a#subdirectory=ray-runtime' && \
     python -m pip check
+COPY model/ ./model/
 COPY camera.py ./
-RUN ray-runner check-image && python -c "from camera import sample_frames, PersonDetector"
+RUN ray-runner check-image && python -c "from camera import sample_frames, ObjectDetector"
 ```
 
 Set `image` to a registry path you can push to and the project can pull from. Sign in to that registry, then build, check, and push the image.
 
 ```bash
-image='registry.example.com/my-team/mcap-person-detection:v1'
+image='registry.example.com/my-team/mcap-object-detection:v1'
 docker buildx build --platform linux/amd64 --secret id=netrc,src="$HOME/.netrc" \
   --load -t "$image" .
 docker run --rm --platform linux/amd64 "$image" ray-runner check-image
@@ -124,14 +153,14 @@ docker push "$image"
 Under **Automation → Actions**, create an action named `camera-detection`, select **Use Ray**, enter the worker image reference you pushed, and set concurrent records to 2. Create two steps with 1 CPU and 2 GiB of memory each:
 
 1. For `sample`, enter the function `camera.sample_frames` as the Python target.
-2. For `detect`, select `sample` as its dependency and enter the class `camera.PersonDetector` as its target. Matrix recognizes functions as Tasks and classes as Actors. The SDK passes the returned manifest path to the matching argument in `run(self, sample: str)`.
+2. For `detect`, select `sample` as its dependency and enter the class `camera.ObjectDetector` as its target. Matrix recognizes functions as Tasks and classes as Actors. The SDK passes the returned manifest path to the matching argument in `run(self, sample: str)`.
 
 Replace the image reference in the equivalent Action YAML below.
 
 ```yaml
 name: camera-detection
 ray:
-  image: registry.example.com/my-team/mcap-person-detection:v1
+  image: registry.example.com/my-team/mcap-object-detection:v1
   concurrency: 2
 jobs:
   - name: sample
@@ -143,7 +172,7 @@ jobs:
   - name: detect
     depends: [sample]
     python:
-      target: camera.PersonDetector
+      target: camera.ObjectDetector
       resources:
         cpu: CPU_QUOTA_1C
         memory: MEMORY_QUOTA_2G
@@ -155,4 +184,4 @@ With concurrency set to 2, up to two records can be in the pipeline. The detecti
 
 Save the action and [invoke it on a record with camera data](../5-invocation.md). Check the sampled frame count in the `sample` log. In the JobRun outputs, `frames/manifest.json` lists the MCAP file, timestamp, and sampled image name. Each line of `detections.jsonl` corresponds to one frame. Match the image names and check the boxes using their top-left coordinates, widths, and heights.
 
-Frames with no detected pedestrians still appear in the results with an empty `person_boxes` array. Frames smaller than the detection window (64 pixels wide by 128 pixels high) also produce an empty array. If the record has no frames on the target topic, `sample` raises an exception and `detect` does not run for that record.
+Each detection includes a class label, confidence score, and a box in original image pixels (left, top, width, height). Try a frame containing one of the selected objects. Frames without a selected detection at or above the 0.5 threshold still produce a line with an empty `objects` array. If the record has no frames on the target topic, `sample` raises an exception and `detect` does not run for that record.
